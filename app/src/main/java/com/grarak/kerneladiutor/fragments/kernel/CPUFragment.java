@@ -135,6 +135,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
         private PopupCardView.DPopupCard[] mCpuBoostInputFreqCard;
         private SwitchCardView.DSwitchCard mCpuBoostWakeupCard;
         private SwitchCardView.DSwitchCard mCpuBoostHotplugCard;
+        private SwitchCardView.DSwitchCard mMSM_Limiter_EnableCard;
 
         private SwitchCardView.DSwitchCard mCpuTouchBoostCard;
 
@@ -178,6 +179,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
             int count = getCount();
             if (CPU.hasMcPowerSaving()) mcPowerSavingInit();
             if (CPU.hasPowerSavingWq()) powerSavingWqInit();
+            if (CPU.hasMSM_Limiter()) MSM_LimiterInit();
             if (CPU.hasCFSScheduler()) cfsSchedulerInit();
             if (CPU.hasCpuQuiet()) cpuQuietInit();
             if (CPU.hasCpuBoost()) cpuBoostInit();
@@ -373,6 +375,16 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
 
             addView(mPowerSavingWqCard);
         }
+
+        private void MSM_LimiterInit() {
+            mMSM_Limiter_EnableCard = new SwitchCardView.DSwitchCard();
+            mMSM_Limiter_EnableCard.setDescription(getString(R.string.cpu_msm_limiter));
+            mMSM_Limiter_EnableCard.setChecked(CPU.isMSM_LimiterActive());
+            mMSM_Limiter_EnableCard.setOnDSwitchCardListener(this);
+
+            addView(mMSM_Limiter_EnableCard);
+        }
+
 
         private void cfsSchedulerInit() {
             mCFSSchedulerCard = new PopupCardView.DPopupCard(CPU.getAvailableCFSSchedulers());
@@ -638,6 +650,8 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 CPU.activateCpuBoostHotplug(checked, getActivity());
             else if (dSwitchCard == mCpuTouchBoostCard)
                 CPU.activateCpuTouchBoost(checked, getActivity());
+            else if (dSwitchCard == mMSM_Limiter_EnableCard)
+                CPU.activateMSM_Limiter(checked, getActivity());
         }
 
         @Override

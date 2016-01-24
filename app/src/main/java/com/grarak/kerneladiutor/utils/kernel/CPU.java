@@ -181,6 +181,18 @@ public class CPU implements Constants {
         return Utils.existFile(CPU_BOOST);
     }
 
+    public static boolean hasMSM_Limiter() {
+        return Utils.existFile(CPU_MSM_LIMITER_ENABLE);
+    }
+
+    public static void activateMSM_Limiter(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", CPU_MSM_LIMITER_ENABLE, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean isMSM_LimiterActive() {
+        return Utils.readFile(CPU_MSM_LIMITER_ENABLE).equals("1");
+    }
+
     public static void setCpuQuietGovernor(String value, Context context) {
         Control.runCommand(value, CPU_QUIET_CURRENT_GOVERNOR, Control.CommandType.GENERIC, context);
     }
