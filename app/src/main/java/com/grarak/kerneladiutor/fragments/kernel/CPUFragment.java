@@ -103,7 +103,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
         private AppCompatTextView[] mCoreUsageText;
         private AppCompatTextView[] mCoreFreqText;
 
-        private PopupCardView.DPopupCard mMaxFreqCard, mMinFreqCard, mMaxScreenOffFreqCard, mMSM_LimiterResumeMaxFreqCard, mMSM_LimiterSuspendMinFreqCard;
+        private PopupCardView.DPopupCard mMaxFreqCard, mMinFreqCard, mMaxScreenOffFreqCard, mMSM_LimiterResumeMaxFreqCard, mMSM_LimiterSuspendMinFreqCard, mMSM_LimiterSuspendMaxFreqCard;
 
         private PopupCardView.DPopupCard mGovernorCard;
         private CardViewItem.DCardView mGovernorTunableCard;
@@ -402,6 +402,20 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 views.add(mMSM_LimiterResumeMaxFreqCard);
            }
 
+            if (CPU.hasMSM_LimiterSuspendMaxFreq()) {
+                List<String> freqs = new ArrayList<>();
+                for (int freq : CPU.getFreqs())
+                    freqs.add(freq / 1000 + getString(R.string.mhz));
+
+                mMSM_LimiterSuspendMaxFreqCard = new PopupCardView.DPopupCard(freqs);
+                mMSM_LimiterSuspendMaxFreqCard.setTitle(getString(R.string.cpu_msm_limiter_suspend_max));
+                mMSM_LimiterSuspendMaxFreqCard.setDescription(getString(R.string.cpu_msm_limiter_suspend_max_summary));
+                mMSM_LimiterSuspendMaxFreqCard.setItem(CPU.getMSM_LimiterSuspendMaxFreq() / 1000 + getString(R.string.mhz));
+                mMSM_LimiterSuspendMaxFreqCard.setOnDPopupCardListener(this);
+
+                views.add(mMSM_LimiterSuspendMaxFreqCard);
+            }
+
             if (CPU.hasMSM_LimiterSuspendMinFreq()) {
                 List<String> freqs = new ArrayList<>();
                 for (int freq : CPU.getFreqs())
@@ -620,6 +634,8 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 CPU.setMinFreq(CPU.getFreqs().get(position), getActivity());
             else if (dPopupCard == mMSM_LimiterResumeMaxFreqCard)
                 CPU.setMSM_LimiterResumeMaxFreq(CPU.getFreqs().get(position), getActivity());
+            else if (dPopupCard == mMSM_LimiterSuspendMaxFreqCard)
+                CPU.setMSM_LimiterSuspendMaxFreq(CPU.getFreqs().get(position), getActivity());
             else if (dPopupCard == mMSM_LimiterSuspendMinFreqCard)
                 CPU.setMSM_LimiterSuspendMinFreq(CPU.getFreqs().get(position), getActivity());
             else if (dPopupCard == mMaxScreenOffFreqCard)

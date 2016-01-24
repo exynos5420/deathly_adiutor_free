@@ -253,6 +253,22 @@ public class CPU implements Constants {
         Control.runCommand(String.valueOf(freq), CPU_MSM_LIMITER_RESUME_MAX, Control.CommandType.GENERIC, context);
     }
 
+    public static boolean hasMSM_LimiterSuspendMaxFreq() {
+        return Utils.existFile(CPU_MSM_LIMITER_SUSPEND_MAX);
+    }
+
+    public static int getMSM_LimiterSuspendMaxFreq () {
+        if (Utils.existFile(CPU_MSM_LIMITER_SUSPEND_MAX)) {
+            String value = Utils.readFile(CPU_MSM_LIMITER_SUSPEND_MAX);
+            if (value != null) return Utils.stringToInt(value);
+        }
+        return 0;
+    }
+
+    public static void setMSM_LimiterSuspendMaxFreq(int freq, Context context) {
+        Control.runCommand(String.valueOf(freq), CPU_MSM_LIMITER_SUSPEND_MAX, Control.CommandType.GENERIC, context);
+    }
+
     public static boolean hasMSM_LimiterSuspendMinFreq() {
         return Utils.existFile(CPU_MSM_LIMITER_SUSPEND_MIN);
     }
