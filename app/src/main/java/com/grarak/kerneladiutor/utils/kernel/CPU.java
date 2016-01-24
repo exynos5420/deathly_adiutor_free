@@ -238,7 +238,10 @@ public class CPU implements Constants {
     }
 
     public static boolean hasMSM_LimiterResumeMaxFreq() {
-        return Utils.existFile(CPU_MSM_LIMITER_RESUME_MAX);
+        if (Utils.readFile(CPU_MSM_LIMITER_ENABLE).equals("1")) {
+            return Utils.existFile(CPU_MSM_LIMITER_RESUME_MAX);
+        }
+        else return false;
     }
 
     public static int getMSM_LimiterResumeMaxFreq () {
@@ -254,7 +257,10 @@ public class CPU implements Constants {
     }
 
     public static boolean hasMSM_LimiterSuspendMinFreq() {
-        return Utils.existFile(CPU_MSM_LIMITER_SUSPEND_MIN);
+        if (Utils.readFile(CPU_MSM_LIMITER_ENABLE).equals("1")) {
+            return Utils.existFile(CPU_MSM_LIMITER_SUSPEND_MIN);
+        }
+        else return false;
     }
 
     public static int getMSM_LimiterSuspendMinFreq () {
