@@ -65,6 +65,7 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
     private EditTextCardView.DEditTextCard mHostnameCard;
 
     private SwitchCardView.DSwitchCard mSmb135xWakeLockCard;
+    private SwitchCardView.DSwitchCard mBlueSleepWakeLockCard;
     private SwitchCardView.DSwitchCard mSensorIndWakeLockCard;
     private SwitchCardView.DSwitchCard mMsmHsicHostWakeLockCard;
     private SwitchCardView.DSwitchCard mWlanrxWakelockCard;
@@ -254,6 +255,16 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
             views.add(mSmb135xWakeLockCard);
         }
 
+        if (Misc.hasBlueSleepWakeLock()) {
+            mBlueSleepWakeLockCard = new SwitchCardView.DSwitchCard();
+            mBlueSleepWakeLockCard.setTitle(getString(R.string.bluesleep_wakelock));
+            mBlueSleepWakeLockCard.setDescription(getString(R.string.bluesleep_wakelock_summary));
+            mBlueSleepWakeLockCard.setChecked(Misc.isBlueSleepWakeLockActive());
+            mBlueSleepWakeLockCard.setOnDSwitchCardListener(this);
+
+            views.add(mBlueSleepWakeLockCard);
+        }
+
         if (Misc.hasSensorIndWakeLock()) {
             mSensorIndWakeLockCard = new SwitchCardView.DSwitchCard();
             mSensorIndWakeLockCard.setTitle(getString(R.string.sensor_ind_wakelock));
@@ -403,6 +414,8 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
             } else dSwitchCard.setChecked(Misc.isOldPowerSuspendStateActive());
         else if (dSwitchCard == mSmb135xWakeLockCard)
             Misc.activateSmb135xWakeLock(checked, getActivity());
+        else if (dSwitchCard == mBlueSleepWakeLockCard)
+            Misc.activateBlueSleepWakeLock(checked, getActivity());
         else if (dSwitchCard == mSensorIndWakeLockCard)
             Misc.activateSensorIndWakeLock(checked, getActivity());
         else if (dSwitchCard == mMsmHsicHostWakeLockCard)

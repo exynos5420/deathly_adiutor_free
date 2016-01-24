@@ -697,6 +697,8 @@ public interface Constants {
             "/sys/module/wakeup/parameters/enable_smb135x_wake_ws"
     };
 
+    String BLUESLEEP_WAKELOCK = "/sys/module/wakeup/parameters/enable_bluesleep_ws";
+
     String SENSOR_IND_WAKELOCK = "/sys/module/wakeup/parameters/enable_si_ws";
     String MSM_HSIC_HOST_WAKELOCK = "/sys/module/wakeup/parameters/enable_msm_hsic_ws";
 

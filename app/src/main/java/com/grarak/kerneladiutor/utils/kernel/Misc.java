@@ -141,6 +141,20 @@ public class Misc implements Constants {
         return Utils.existFile(MSM_HSIC_HOST_WAKELOCK);
     }
 
+    public static void activateBlueSleepWakeLock(boolean active, Context context) {
+        Control.runCommand(active ? "Y" : "N", BLUESLEEP_WAKELOCK, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean isBlueSleepWakeLockActive() {
+        return Utils.readFile(BLUESLEEP_WAKELOCK).equals("Y");
+    }
+
+    public static boolean hasBlueSleepWakeLock() {
+        return Utils.existFile(BLUESLEEP_WAKELOCK);
+    }
+
+
+
     public static void activateSensorIndWakeLock(boolean active, Context context) {
         Control.runCommand(active ? "Y" : "N", SENSOR_IND_WAKELOCK, Control.CommandType.GENERIC, context);
     }
