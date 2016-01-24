@@ -103,7 +103,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
         private AppCompatTextView[] mCoreUsageText;
         private AppCompatTextView[] mCoreFreqText;
 
-        private PopupCardView.DPopupCard mMaxFreqCard, mMinFreqCard, mMaxScreenOffFreqCard, mMSM_LimiterResumeMaxFreqCard;
+        private PopupCardView.DPopupCard mMaxFreqCard, mMinFreqCard, mMaxScreenOffFreqCard, mMSM_LimiterResumeMaxFreqCard, mMSM_LimiterSuspendMinFreqCard;
 
         private PopupCardView.DPopupCard mGovernorCard;
         private CardViewItem.DCardView mGovernorTunableCard;
@@ -401,6 +401,19 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 addView(mMSM_LimiterResumeMaxFreqCard);
            }
 
+            if (CPU.hasMSM_LimiterSuspendMinFreq()) {
+                List<String> freqs = new ArrayList<>();
+                for (int freq : CPU.getFreqs())
+                    freqs.add(freq / 1000 + getString(R.string.mhz));
+
+                mMSM_LimiterSuspendMinFreqCard = new PopupCardView.DPopupCard(freqs);
+                mMSM_LimiterSuspendMinFreqCard.setTitle(getString(R.string.cpu_msm_limiter_suspend_min));
+                mMSM_LimiterSuspendMinFreqCard.setDescription(getString(R.string.cpu_msm_limiter_suspend_min_summary));
+                mMSM_LimiterSuspendMinFreqCard.setItem(CPU.getMSM_LimiterSuspendMinFreq() / 1000 + getString(R.string.mhz));
+                mMSM_LimiterSuspendMinFreqCard.setOnDPopupCardListener(this);
+
+                addView(mMSM_LimiterSuspendMinFreqCard);
+            }
 
         }
 
@@ -598,6 +611,8 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 CPU.setMinFreq(CPU.getFreqs().get(position), getActivity());
             else if (dPopupCard == mMSM_LimiterResumeMaxFreqCard)
                 CPU.setMSM_LimiterResumeMaxFreq(CPU.getFreqs().get(position), getActivity());
+            else if (dPopupCard == mMSM_LimiterSuspendMinFreqCard)
+                CPU.setMSM_LimiterSuspendMinFreq(CPU.getFreqs().get(position), getActivity());
             else if (dPopupCard == mMaxScreenOffFreqCard)
                 CPU.setMaxScreenOffFreq(CPU.getFreqs().get(position), getActivity());
             else if (dPopupCard == mGovernorCard)

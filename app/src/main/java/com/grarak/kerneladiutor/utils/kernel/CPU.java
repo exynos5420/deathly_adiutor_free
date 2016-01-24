@@ -253,6 +253,23 @@ public class CPU implements Constants {
         Control.runCommand(String.valueOf(freq), CPU_MSM_LIMITER_RESUME_MAX, Control.CommandType.GENERIC, context);
     }
 
+    public static boolean hasMSM_LimiterSuspendMinFreq() {
+        return Utils.existFile(CPU_MSM_LIMITER_SUSPEND_MIN);
+    }
+
+    public static int getMSM_LimiterSuspendMinFreq () {
+        if (Utils.existFile(CPU_MSM_LIMITER_SUSPEND_MIN)) {
+            String value = Utils.readFile(CPU_MSM_LIMITER_SUSPEND_MIN);
+            if (value != null) return Utils.stringToInt(value);
+        }
+        return 0;
+    }
+
+    public static void setMSM_LimiterSuspendMinFreq(int freq, Context context) {
+        Control.runCommand(String.valueOf(freq), CPU_MSM_LIMITER_SUSPEND_MIN, Control.CommandType.GENERIC, context);
+    }
+
+
     public static void setCFSScheduler(String value, Context context) {
         Control.runCommand(value, CPU_CURRENT_CFS_SCHEDULER, Control.CommandType.GENERIC, context);
     }
