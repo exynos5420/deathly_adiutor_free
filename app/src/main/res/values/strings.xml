@@ -583,6 +583,8 @@
     <string name="wlan_wakelock_summary">Prevent wlan wakelock.</string>
     <string name="wlan_rx_wakelock_divider">wlan_rx Wakelock Divider</string>
     <string name="msm_hsic_wakelock_divider">msm_hsic Wakelock Divider</string>
+    <string name="bcmdhd_wakelock_divider">BCMDHD Wakelock Divider</string>
+
 
     <!-- Plugins -->
     <string name="plugin_warning">I, the creator of this application, am not responsible for any damages that third party apps produce! I also can\'t guarantee for the functionality of them. Please be careful which applications you download!</string>

@@ -78,6 +78,21 @@ public class Misc implements Constants {
         return Utils.existFile(WLAN_RX_WAKELOCK_DIVIDER);
     }
 
+    public static void setBCMDHDWakelockDivider(int value, Context context) {
+        String command = String.valueOf(value + 1);
+        Control.runCommand(command, BCMDHD_WAKELOCK_DIVIDER, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getBCMDHDWakelockDivider() {
+        int value = Utils.stringToInt(Utils.readFile(BCMDHD_WAKELOCK_DIVIDER));
+        return value - 1;
+    }
+
+    public static boolean hasBCMDHDWakelockDivider() {
+        return Utils.existFile(BCMDHD_WAKELOCK_DIVIDER);
+    }
+
+
     public static void activateWlanWakeLock(boolean active, Context context) {
         Control.runCommand(active ? "Y" : "N", WLAN_WAKELOCK_FILE, Control.CommandType.GENERIC, context);
     }
