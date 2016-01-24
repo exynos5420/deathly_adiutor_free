@@ -180,8 +180,11 @@ public class CPU implements Constants {
     public static boolean hasCpuBoost() {
         return Utils.existFile(CPU_BOOST);
     }
-
     public static boolean hasMSM_Limiter() {
+        return Utils.existFile(CPU_MSM_LIMITER);
+    }
+
+    public static boolean hasMSM_LimiterEnabled() {
         return Utils.existFile(CPU_MSM_LIMITER_ENABLE);
     }
 
@@ -232,6 +235,22 @@ public class CPU implements Constants {
 
     public static boolean hasCpuQuiet() {
         return Utils.existFile(CPU_QUIET);
+    }
+
+    public static boolean hasMSM_LimiterResumeMaxFreq() {
+        return Utils.existFile(CPU_MSM_LIMITER_RESUME_MAX);
+    }
+
+    public static int getMSM_LimiterResumeMaxFreq () {
+        if (Utils.existFile(CPU_MSM_LIMITER_RESUME_MAX)) {
+            String value = Utils.readFile(CPU_MSM_LIMITER_RESUME_MAX);
+            if (value != null) return Utils.stringToInt(value);
+        }
+        return 0;
+    }
+
+    public static void setMSM_LimiterResumeMaxFreq(int freq, Context context) {
+        Control.runCommand(String.valueOf(freq), CPU_MSM_LIMITER_RESUME_MAX, Control.CommandType.GENERIC, context);
     }
 
     public static void setCFSScheduler(String value, Context context) {
