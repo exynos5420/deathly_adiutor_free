@@ -377,6 +377,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
         }
 
         private void MSM_LimiterInit() {
+            List<DAdapter.DView> views = new ArrayList<>();
 
             if (CPU.hasMSM_LimiterEnabled()) {
                 mMSM_Limiter_EnableCard = new SwitchCardView.DSwitchCard();
@@ -384,7 +385,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 mMSM_Limiter_EnableCard.setChecked(CPU.isMSM_LimiterActive());
                 mMSM_Limiter_EnableCard.setOnDSwitchCardListener(this);
 
-                addView(mMSM_Limiter_EnableCard);
+                views.add(mMSM_Limiter_EnableCard);
             }
 
             if (CPU.hasMSM_LimiterResumeMaxFreq()) {
@@ -398,7 +399,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 mMSM_LimiterResumeMaxFreqCard.setItem(CPU.getMSM_LimiterResumeMaxFreq() / 1000 + getString(R.string.mhz));
                 mMSM_LimiterResumeMaxFreqCard.setOnDPopupCardListener(this);
 
-                addView(mMSM_LimiterResumeMaxFreqCard);
+                views.add(mMSM_LimiterResumeMaxFreqCard);
            }
 
             if (CPU.hasMSM_LimiterSuspendMinFreq()) {
@@ -412,7 +413,15 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 mMSM_LimiterSuspendMinFreqCard.setItem(CPU.getMSM_LimiterSuspendMinFreq() / 1000 + getString(R.string.mhz));
                 mMSM_LimiterSuspendMinFreqCard.setOnDPopupCardListener(this);
 
-                addView(mMSM_LimiterSuspendMinFreqCard);
+                views.add(mMSM_LimiterSuspendMinFreqCard);
+            }
+
+            if (views.size() > 0) {
+                DDivider mMSM_LimitertDividerCard = new DDivider();
+                mMSM_LimitertDividerCard.setText("MSM Limiter");
+                addView(mMSM_LimitertDividerCard);
+
+                addAllViews(views);
             }
 
         }
