@@ -46,6 +46,8 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
     private SeekBarCardView.DSeekBarCard mVibrationCard;
 
     private SwitchCardView.DSwitchCard mLoggerEnableCard;
+    
+    private SwitchCardView.DSwitchCard mBclCard;
 
     private SwitchCardView.DSwitchCard mCrcCard;
 
@@ -77,6 +79,7 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
 
         if (Misc.hasVibration()) vibrationInit();
         if (Misc.hasLoggerEnable()) loggerInit();
+        if (Misc.hasBcl()) bclInit();
         if (Misc.hasCrc()) crcInit();
         fsyncInit();
         if (Misc.hasGentleFairSleepers()) gentlefairsleepersInit();
@@ -111,6 +114,16 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
 
         addView(mLoggerEnableCard);
     }
+
+    private void bclInit() {
+         mBclCard = new SwitchCardView.DSwitchCard();
+         mBclCard.setTitle(getString(R.string.bcl));
+         mBclCard.setDescription(getString(R.string.bcl_summary));
+         mBclCard.setChecked(Misc.isBclActive());
+         mBclCard.setOnDSwitchCardListener(this);
+ 
+         addView(mBclCard);
+     }
 
     private void crcInit() {
         mCrcCard = new SwitchCardView.DSwitchCard();
@@ -372,6 +385,8 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
     public void onChecked(SwitchCardView.DSwitchCard dSwitchCard, boolean checked) {
         if (dSwitchCard == mLoggerEnableCard)
             Misc.activateLogger(checked, getActivity());
+        else if (dSwitchCard == mBclCard)
+            Misc.activateBcl(checked, getActivity());
         else if (dSwitchCard == mCrcCard)
             Misc.activateCrc(checked, getActivity());
         else if (dSwitchCard == mFsyncCard)
