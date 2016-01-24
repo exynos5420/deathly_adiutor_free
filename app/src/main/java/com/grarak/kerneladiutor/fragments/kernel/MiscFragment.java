@@ -274,6 +274,19 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
             views.add(mMsmHsicHostWakeLockCard);
         }
 
+        if (Misc.hasMsmHsicWakelockDivider()) {
+            List<String> list = new ArrayList<>();
+            for (int i = 1; i < 17; i++) list.add((100 / i) + "%");
+            list.add("0%");
+
+            mMsmHsicWakelockDividerCard = new SeekBarCardView.DSeekBarCard(list);
+            mMsmHsicWakelockDividerCard.setTitle(getString(R.string.msm_hsic_wakelock_divider));
+            mMsmHsicWakelockDividerCard.setProgress(Misc.getMsmHsicWakelockDivider());
+            mMsmHsicWakelockDividerCard.setOnDSeekBarCardListener(this);
+
+            views.add(mMsmHsicWakelockDividerCard);
+        }
+
         if (Misc.hasWlanrxWakeLock()) {
             mWlanrxWakelockCard = new SwitchCardView.DSwitchCard();
             mWlanrxWakelockCard.setTitle(getString(R.string.wlan_rx_wakelock));
@@ -315,19 +328,6 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
             mWlanrxWakelockDividerCard.setOnDSeekBarCardListener(this);
 
             views.add(mWlanrxWakelockDividerCard);
-        }
-
-        if (Misc.hasMsmHsicWakelockDivider()) {
-            List<String> list = new ArrayList<>();
-            for (int i = 1; i < 17; i++) list.add((100 / i) + "%");
-            list.add("0%");
-
-            mMsmHsicWakelockDividerCard = new SeekBarCardView.DSeekBarCard(list);
-            mMsmHsicWakelockDividerCard.setTitle(getString(R.string.msm_hsic_wakelock_divider));
-            mMsmHsicWakelockDividerCard.setProgress(Misc.getMsmHsicWakelockDivider());
-            mMsmHsicWakelockDividerCard.setOnDSeekBarCardListener(this);
-
-            views.add(mMsmHsicWakelockDividerCard);
         }
 
         if (!views.isEmpty()) {
