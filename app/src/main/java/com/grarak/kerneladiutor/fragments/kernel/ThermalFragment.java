@@ -51,7 +51,7 @@ public class ThermalFragment extends RecyclerViewFragment implements SwitchCardV
     private SeekBarCardView.DSeekBarCard mCoreTempHysteresisDegCCard;
     private SeekBarCardView.DSeekBarCard mFreqStepCard;
     private SwitchCardView.DSwitchCard mImmediatelyLimitStopCard;
-    private SeekBarCardView.DSeekBarCard mPollMsCard;
+    private SeekBarCardView.DSeekBarCard mPollMsCard, mFrancoThermalPollCard;
     private SeekBarCardView.DSeekBarCard mTempHysteresisDegCCard;
     private SeekBarCardView.DSeekBarCard mThermalLimitLowCard;
     private SeekBarCardView.DSeekBarCard mThermalLimitHighCard;
@@ -73,14 +73,12 @@ public class ThermalFragment extends RecyclerViewFragment implements SwitchCardV
     private SeekBarCardView.DSeekBarCard mCheckIntervalMsCard;
     private SeekBarCardView.DSeekBarCard mShutdownFreqCard;
 
+    private PopupCardView.DPopupCard mFrancoThermalStageOneCard, mFrancoThermalStageTwoCard, mFrancoThermalStageThreeCard, mFrancoThermalStageFourCard;
+    private SeekBarCardView.DSeekBarCard mFrancoThermalStepCard;
+
     @Override
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
-
-        final InformationCardView.DInformationCard mInformationCard = new InformationCardView.DInformationCard();
-        mInformationCard.setText(getString(R.string.thermal_info));
-
-        addView(mInformationCard);
 
         if (Thermal.hasThermald()) thermaldInit();
         if (Thermal.hasThermalSettings()) thermalInit();
@@ -296,6 +294,87 @@ public class ThermalFragment extends RecyclerViewFragment implements SwitchCardV
             addView(mFreqLimitDebugCard);
         }
 
+        if (Thermal.hasFrancoThermalStageOne()) {
+            List<String> freqs = new ArrayList<>();
+            for (int freq : CPU.getFreqs())
+                freqs.add(freq / 1000 + getString(R.string.mhz));
+
+            mFrancoThermalStageOneCard = new PopupCardView.DPopupCard(freqs);
+            mFrancoThermalStageOneCard.setTitle(getString(R.string.thermal_franco_stage_one));
+            mFrancoThermalStageOneCard.setDescription(getString(R.string.thermal_franco_stage_one_summary));
+            mFrancoThermalStageOneCard.setItem(Thermal.getFrancoThermalStageOne() / 1000 + getString(R.string.mhz));
+            mFrancoThermalStageOneCard.setOnDPopupCardListener(this);
+
+            addView(mFrancoThermalStageOneCard);
+        }
+
+        if (Thermal.hasFrancoThermalStageTwo()) {
+            List<String> freqs = new ArrayList<>();
+            for (int freq : CPU.getFreqs())
+                freqs.add(freq / 1000 + getString(R.string.mhz));
+
+            mFrancoThermalStageTwoCard = new PopupCardView.DPopupCard(freqs);
+            mFrancoThermalStageTwoCard.setTitle(getString(R.string.thermal_franco_stage_two));
+            mFrancoThermalStageTwoCard.setDescription(getString(R.string.thermal_franco_stage_two_summary));
+            mFrancoThermalStageTwoCard.setItem(Thermal.getFrancoThermalStageTwo() / 1000 + getString(R.string.mhz));
+            mFrancoThermalStageTwoCard.setOnDPopupCardListener(this);
+
+            addView(mFrancoThermalStageTwoCard);
+        }
+
+        if (Thermal.hasFrancoThermalStageThree()) {
+            List<String> freqs = new ArrayList<>();
+            for (int freq : CPU.getFreqs())
+                freqs.add(freq / 1000 + getString(R.string.mhz));
+
+            mFrancoThermalStageThreeCard = new PopupCardView.DPopupCard(freqs);
+            mFrancoThermalStageThreeCard.setTitle(getString(R.string.thermal_franco_stage_three));
+            mFrancoThermalStageThreeCard.setDescription(getString(R.string.thermal_franco_stage_three_summary));
+            mFrancoThermalStageThreeCard.setItem(Thermal.getFrancoThermalStageThree() / 1000 + getString(R.string.mhz));
+            mFrancoThermalStageThreeCard.setOnDPopupCardListener(this);
+
+            addView(mFrancoThermalStageThreeCard);
+        }
+
+        if (Thermal.hasFrancoThermalStageFour()) {
+            List<String> freqs = new ArrayList<>();
+            for (int freq : CPU.getFreqs())
+                freqs.add(freq / 1000 + getString(R.string.mhz));
+
+            mFrancoThermalStageFourCard = new PopupCardView.DPopupCard(freqs);
+            mFrancoThermalStageFourCard.setTitle(getString(R.string.thermal_franco_stage_four));
+            mFrancoThermalStageFourCard.setDescription(getString(R.string.thermal_franco_stage_four_summary));
+            mFrancoThermalStageFourCard.setItem(Thermal.getFrancoThermalStageFour() / 1000 + getString(R.string.mhz));
+            mFrancoThermalStageFourCard.setOnDPopupCardListener(this);
+
+            addView(mFrancoThermalStageFourCard);
+        }
+
+        if (Thermal.hasFrancoThermalPoll()) {
+            List<String> list = new ArrayList<>();
+            for (int i = 0; i < 301; i++) list.add((i * 10000) + getString(R.string.microsec));
+
+            mFrancoThermalPollCard = new SeekBarCardView.DSeekBarCard(list);
+            mFrancoThermalPollCard.setTitle(getString(R.string.thermal_franco_thermal_poll));
+            mFrancoThermalPollCard.setProgress(Thermal.getFrancoThermalPoll() / 10000 );
+            mFrancoThermalPollCard.setOnDSeekBarCardListener(this);
+
+            addView(mFrancoThermalPollCard);
+        }
+
+        if (Thermal.hasFrancoThermalStep()) {
+            List<String> list = new ArrayList<>();
+            for (int i = 1; i < 7; i++) list.add(String.valueOf(i));
+
+            mFrancoThermalStepCard = new SeekBarCardView.DSeekBarCard(list);
+            mFrancoThermalStepCard.setTitle(getString(R.string.thermal_franco_thermal_step));
+            mFrancoThermalStepCard.setDescription(getString(R.string.thermal_franco_thermal_step_summary));
+            mFrancoThermalStepCard.setProgress(Thermal.getFrancoThermalStep());
+            mFrancoThermalStepCard.setOnDSeekBarCardListener(this);
+
+            addView(mFrancoThermalStepCard);
+        }
+
         if (Thermal.hasMinFreqIndex() && CPU.getFreqs() != null) {
             List<String> list = new ArrayList<>();
             for (int freq : CPU.getFreqs()) list.add((freq / 1000) + getString(R.string.mhz));
@@ -499,7 +578,10 @@ public class ThermalFragment extends RecyclerViewFragment implements SwitchCardV
             Thermal.setCoreTempHysteresisDegC(position, getActivity());
         else if (dSeekBarCard == mFreqStepCard)
             Thermal.setFreqStep(position + 1, getActivity());
-        else if (dSeekBarCard == mPollMsCard) Thermal.setPollMs(position * 10, getActivity());
+        else if (dSeekBarCard == mPollMsCard)
+            Thermal.setPollMs(position * 10, getActivity());
+        else if (dSeekBarCard == mFrancoThermalPollCard)
+            Thermal.setFrancoThermalPoll(position * 10000, getActivity());
         else if (dSeekBarCard == mTempHysteresisDegCCard)
             Thermal.setTempHysteresisDegC(position, getActivity());
         else if (dSeekBarCard == mThermalLimitLowCard)
@@ -524,6 +606,8 @@ public class ThermalFragment extends RecyclerViewFragment implements SwitchCardV
             Thermal.setCheckIntervalMs(position * 50, getActivity());
         else if (dSeekBarCard == mShutdownFreqCard)
             Thermal.setShutdownTemp(position + 40, getActivity());
+        else if (dSeekBarCard == mFrancoThermalStepCard)
+            Thermal.setFrancoThermalStep(position, getActivity());
     }
 
     @Override
@@ -536,5 +620,13 @@ public class ThermalFragment extends RecyclerViewFragment implements SwitchCardV
             Thermal.setAllowedMidFreq(CPU.getFreqs().get(position), getActivity());
         else if (dPopupCard == mAllowedMaxFreqCard)
             Thermal.setAllowedMaxFreq(CPU.getFreqs().get(position), getActivity());
+        else if (dPopupCard == mFrancoThermalStageOneCard)
+            Thermal.setFrancoThermalStageOne(CPU.getFreqs().get(position), getActivity());
+        else if (dPopupCard == mFrancoThermalStageTwoCard)
+            Thermal.setFrancoThermalStageTwo(CPU.getFreqs().get(position), getActivity());
+        else if (dPopupCard == mFrancoThermalStageThreeCard)
+            Thermal.setFrancoThermalStageThree(CPU.getFreqs().get(position), getActivity());
+        else if (dPopupCard == mFrancoThermalStageFourCard)
+            Thermal.setFrancoThermalStageFour(CPU.getFreqs().get(position), getActivity());
     }
 }

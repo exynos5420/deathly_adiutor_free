@@ -17,6 +17,7 @@
 package com.grarak.kerneladiutor.utils.kernel;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;
@@ -466,6 +467,98 @@ public class Thermal implements Constants {
         for (String[] arrays : THERMAL_ARRAYS)
             for (String file : arrays) if (Utils.existFile(file)) return true;
         return false;
+    }
+
+    public static boolean hasFrancoThermalStageOne() {
+        return Utils.existFile(THERMAL_FRANCO_STAGE_ONE);
+    }
+
+    public static int getFrancoThermalStageOne () {
+        if (Utils.existFile(THERMAL_FRANCO_STAGE_ONE)) {
+            String value = Utils.readFile(THERMAL_FRANCO_STAGE_ONE);
+            if (value != null) return Utils.stringToInt(value);
+        }
+        return 0;
+    }
+
+    public static void setFrancoThermalStageOne(int freq, Context context) {
+        Control.runCommand(String.valueOf(freq), THERMAL_FRANCO_STAGE_ONE, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean hasFrancoThermalStageTwo() {
+        return Utils.existFile(THERMAL_FRANCO_STAGE_TWO);
+    }
+
+    public static int getFrancoThermalStageTwo () {
+        if (Utils.existFile(THERMAL_FRANCO_STAGE_TWO)) {
+            String value = Utils.readFile(THERMAL_FRANCO_STAGE_TWO);
+            if (value != null) return Utils.stringToInt(value);
+        }
+        return 0;
+    }
+
+    public static void setFrancoThermalStageTwo(int freq, Context context) {
+        Control.runCommand(String.valueOf(freq), THERMAL_FRANCO_STAGE_TWO, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean hasFrancoThermalStageThree() {
+        return Utils.existFile(THERMAL_FRANCO_STAGE_THREE);
+    }
+
+    public static int getFrancoThermalStageThree () {
+        if (Utils.existFile(THERMAL_FRANCO_STAGE_THREE)) {
+            String value = Utils.readFile(THERMAL_FRANCO_STAGE_THREE);
+            if (value != null) return Utils.stringToInt(value);
+        }
+        return 0;
+    }
+
+    public static void setFrancoThermalStageThree(int freq, Context context) {
+        Control.runCommand(String.valueOf(freq), THERMAL_FRANCO_STAGE_THREE, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean hasFrancoThermalStageFour() {
+        return Utils.existFile(THERMAL_FRANCO_STAGE_FOUR);
+    }
+
+    public static int getFrancoThermalStageFour () {
+        if (Utils.existFile(THERMAL_FRANCO_STAGE_FOUR)) {
+            String value = Utils.readFile(THERMAL_FRANCO_STAGE_FOUR);
+            if (value != null) return Utils.stringToInt(value);
+        }
+        return 0;
+    }
+
+    public static void setFrancoThermalStageFour(int freq, Context context) {
+        Control.runCommand(String.valueOf(freq), THERMAL_FRANCO_STAGE_FOUR, Control.CommandType.GENERIC, context);
+    }
+
+    public static void setFrancoThermalPoll(int value, Context context) {
+        String command = String.valueOf(value);
+        Control.runCommand(command, THERMAL_FRANCO_POLL, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getFrancoThermalPoll() {
+        int value = Utils.stringToInt(Utils.readFile(THERMAL_FRANCO_POLL));
+        return value;
+    }
+
+    public static boolean hasFrancoThermalPoll() {
+        return Utils.existFile(THERMAL_FRANCO_POLL);
+    }
+
+    public static void setFrancoThermalStep(int value, Context context) {
+        String command = String.valueOf(value + 1);
+        Control.runCommand(command, THERMAL_FRANCO_STEP, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getFrancoThermalStep() {
+        int value = Utils.stringToInt(Utils.readFile(THERMAL_FRANCO_STEP));
+        return value - 1;
+    }
+
+    public static boolean hasFrancoThermalStep() {
+        return Utils.existFile(THERMAL_FRANCO_STEP);
     }
 
 }

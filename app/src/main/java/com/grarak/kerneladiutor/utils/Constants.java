@@ -285,9 +285,17 @@ public interface Constants {
     String MSM_THERMAL_FREQ_LIMIT_DEBUG = MSM_THERMAL + "/parameters/freq_limit_debug";
     String MSM_THERMAL_MIN_FREQ_INDEX = MSM_THERMAL + "/parameters/min_freq_index";
     String TEMPCONTROL_TEMP_LIMIT = "/sys/class/misc/tempcontrol/templimit";
+    String THERMAL_FRANCO_STAGE_ONE = "/sys/module/msm_thermal/parameters/freq_warm";
+    String THERMAL_FRANCO_STAGE_TWO = "/sys/module/msm_thermal/parameters/freq_hot";
+    String THERMAL_FRANCO_STAGE_THREE = "/sys/module/msm_thermal/parameters/freq_very_hot";
+    String THERMAL_FRANCO_STAGE_FOUR = "/sys/module/msm_thermal/parameters/freq_hell";
+    String THERMAL_FRANCO_POLL = "/sys/module/msm_thermal/parameters/poll_interval";
+    String THERMAL_FRANCO_STEP = "/sys/module/msm_thermal/parameters/temp_step";
 
     String[] TEMP_LIMIT_ARRAY = {MSM_THERMAL_THROTTLE_TEMP, MSM_THERMAL_TEMP_MAX, MSM_THERMAL_TEMP_THRESHOLD,
-            MSM_THERMAL_FREQ_LIMIT_DEBUG, MSM_THERMAL_MIN_FREQ_INDEX, TEMPCONTROL_TEMP_LIMIT};
+            MSM_THERMAL_FREQ_LIMIT_DEBUG, MSM_THERMAL_MIN_FREQ_INDEX, TEMPCONTROL_TEMP_LIMIT, THERMAL_FRANCO_STAGE_ONE,
+            THERMAL_FRANCO_STAGE_TWO, THERMAL_FRANCO_STAGE_THREE, THERMAL_FRANCO_STAGE_FOUR, THERMAL_FRANCO_POLL,
+            THERMAL_FRANCO_STEP };
 
     String MSM_THERMAL_CONF = "/sys/kernel/msm_thermal/conf";
     String CONF_ALLOWED_LOW_LOW = MSM_THERMAL_CONF + "/allowed_low_low";
