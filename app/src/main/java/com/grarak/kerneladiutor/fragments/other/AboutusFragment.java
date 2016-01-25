@@ -29,10 +29,8 @@ import com.grarak.kerneladiutor.utils.Utils;
  */
 public class AboutusFragment extends RecyclerViewFragment {
 
-    private final String APP_SOURCE = "https://github.com/Grarak/KernelAdiutor";
-    private final String ISSUE_LINK = "https://github.com/Grarak/KernelAdiutor/issues";
-    private final String COMMUNITY_LINK = "https://plus.google.com/u/0/communities/108445529270785762340";
-    private final String TRANSLATE_LINK = "https://crowdin.com/project/kernel-adiutor";
+    private final String APP_SOURCE = "https://github.com/Team-Singularity/KernelAdiutor";
+    private final String ISSUE_LINK = "https://github.com/Team-Singularity/KernelAdiutor/issues";
 
     @Override
     public boolean showApplyOnBoot() {
@@ -47,8 +45,6 @@ public class AboutusFragment extends RecyclerViewFragment {
         licenseInit();
         appSourceInit();
         featureRequestInit();
-        communityInit();
-        translationInit();
     }
 
     private void ModififactionInit() {
@@ -56,7 +52,7 @@ public class AboutusFragment extends RecyclerViewFragment {
             mModificationCard.setTitle(getString(R.string.modification));
             mModificationCard.setDescription(getString(R.string.modification_summary));
 
-            addView(mModificationCard);
+        addView(mModificationCard);
         }
 
     private void licenseInit() {
@@ -95,34 +91,6 @@ public class AboutusFragment extends RecyclerViewFragment {
         });
 
         addView(mFeatureRequestCard);
-    }
-
-    private void communityInit() {
-        CardViewItem.DCardView mCommunityCard = new CardViewItem.DCardView();
-        mCommunityCard.setTitle(getString(R.string.google_plus));
-        mCommunityCard.setDescription(getString(R.string.google_plus_summary));
-        mCommunityCard.setOnDCardListener(new CardViewItem.DCardView.OnDCardListener() {
-            @Override
-            public void onClick(CardViewItem.DCardView dCardView) {
-                Utils.launchUrl(getActivity(), COMMUNITY_LINK);
-            }
-        });
-
-        addView(mCommunityCard);
-    }
-
-    private void translationInit() {
-        CardViewItem.DCardView mTranslationCard = new CardViewItem.DCardView();
-        mTranslationCard.setTitle(getString(R.string.translation));
-        mTranslationCard.setDescription(getString(R.string.translation_summary));
-        mTranslationCard.setOnDCardListener(new CardViewItem.DCardView.OnDCardListener() {
-            @Override
-            public void onClick(CardViewItem.DCardView dCardView) {
-                Utils.launchUrl(getActivity(), TRANSLATE_LINK);
-            }
-        });
-
-        addView(mTranslationCard);
     }
 
 }
