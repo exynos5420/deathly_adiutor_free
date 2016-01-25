@@ -232,7 +232,7 @@ public class IOFragment extends ViewPagerFragment implements Constants {
             else if (dPopupCard == mIOAffinityCard)
                 IO.setIOAffinity(position, getActivity());
         }
-        
+
     @Override
     public void onClick(CardViewItem.DCardView dCardView) {
             ioFragment.storageType = dCardView == mInternalTunableCard ? IO.StorageType.INTERNAL : IO.StorageType.EXTERNAL;
