@@ -715,10 +715,11 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 CPU.activateCpuBoostHotplug(checked, getActivity());
             else if (dSwitchCard == mCpuTouchBoostCard)
                 CPU.activateCpuTouchBoost(checked, getActivity());
-            else if (dSwitchCard == mMSM_Limiter_EnableCard)
+            else if (dSwitchCard == mMSM_Limiter_EnableCard) {
                 CPU.activateMSM_Limiter(checked, getActivity());
                 CPUFragment.cpuFragment.cpuPart.view.invalidate();
                 getActivity().getSupportFragmentManager().beginTransaction().detach(this).attach(this).commit();
+            }
         }
 
         @Override
