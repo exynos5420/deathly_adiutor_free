@@ -20,6 +20,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.grarak.kerneladiutor.R;
+import com.grarak.kerneladiutor.fragments.kernel.CPUFragment;
 import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;
 import com.grarak.kerneladiutor.utils.root.Control;
@@ -185,7 +186,7 @@ public class CPU implements Constants {
     }
 
     public static boolean hasMSM_LimiterEnabled() {
-        return Utils.existFile(CPU_MSM_LIMITER_ENABLE);
+        return Utils.readFile(CPU_MSM_LIMITER_ENABLE).equals("1");
     }
 
     public static void activateMSM_Limiter(boolean active, Context context) {
