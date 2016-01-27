@@ -245,9 +245,16 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
             views.clear();
             freqs.clear();
 
+            if (CPU.isMSM_LimiterActive()) {
+                DDivider mMSM_LimiterHeaderCard = new DDivider();
+                mMSM_LimiterHeaderCard.setText("MSM_Limiter");
+                addView(mMSM_LimiterHeaderCard);
+            }
+
             if (CPU.hasMSM_Limiter()) {
                 mMSM_Limiter_EnableCard = new SwitchCardView.DSwitchCard();
-                mMSM_Limiter_EnableCard.setDescription(getString(R.string.cpu_msm_limiter));
+                mMSM_Limiter_EnableCard.setTitle(getString(R.string.cpu_msm_limiter));
+                mMSM_Limiter_EnableCard.setDescription(getString(R.string.cpu_msm_limiter_summary));
                 mMSM_Limiter_EnableCard.setChecked(CPU.isMSM_LimiterActive());
                 mMSM_Limiter_EnableCard.setOnDSwitchCardListener(this);
 
@@ -285,6 +292,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
 
             }
             if (CPU.isMSM_LimiterActive()) {
+
                 if (!CPU.isPerCoreControlActive()){
 
                     if (CPU.hasMSM_LimiterResumeMaxFreq()) {
@@ -416,7 +424,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
 
         private void governorInit() {
             views.clear();
-            
+
             mGovernorCard = new PopupCardView.DPopupCard(CPU.getAvailableGovernors());
             mGovernorCard.setTitle(getString(R.string.cpu_governor));
             mGovernorCard.setDescription(getString(R.string.cpu_governor_summary));
