@@ -57,7 +57,7 @@ public interface Constants {
     String CPU_SCALING_GOVERNOR = "/sys/devices/system/cpu/cpu%d/cpufreq/scaling_governor";
     String CPU_AVAILABLE_GOVERNORS = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors";
     // dummy sysfs path to hold a per-core toggle. this will need to be implemented in the kernel
-    String CPU_PER_CORE_CONTROL = "/sys/devices/system/cpu/cpufreq/stats/cpu0/per_core_control";
+    String CPU_PER_CORE_CONTROL = "/sys/module/cpufreq/parameters/per_core_control";
 
 
     String CPU_GOVERNOR_TUNABLES = "/sys/devices/system/cpu/cpufreq";
