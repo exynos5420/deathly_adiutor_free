@@ -194,7 +194,12 @@ public class CPU implements Constants {
     }
 
     public static boolean isMSM_LimiterActive() {
-        return Utils.readFile(CPU_MSM_LIMITER_ENABLE).equals("1");
+        if (Utils.existFile(CPU_MSM_LIMITER_ENABLE)) {
+            return Utils.readFile(CPU_MSM_LIMITER_ENABLE).equals("1");
+        }
+        else {
+            return false;
+        }
     }
 
     public static void setCpuQuietGovernor(String value, Context context) {
