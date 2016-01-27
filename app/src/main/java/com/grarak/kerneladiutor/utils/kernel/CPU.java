@@ -351,6 +351,15 @@ public class CPU implements Constants {
         return new ArrayList<>(Arrays.asList(mAvailableGovernors[core]));
     }
 
+    public static boolean isPerCoreControlActive () {
+        if (Utils.existFile(CPU_PER_CORE_CONTROL)) {
+            return Utils.readFile(CPU_PER_CORE_CONTROL).equals("1");
+        }
+        else {
+            return false;
+        }
+    }
+
     public static void setGovernor(String governor, Context context) {
         setGovernor(Control.CommandType.CPU, governor, context);
     }

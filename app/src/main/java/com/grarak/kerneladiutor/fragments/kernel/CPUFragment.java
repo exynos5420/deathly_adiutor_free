@@ -97,6 +97,9 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
             SeekBarCardView.DSeekBarCard.OnDSeekBarCardListener,
             SwitchCardView.DSwitchCard.OnDSwitchCardListener {
 
+        List<DAdapter.DView> views = new ArrayList<>();
+        List<String> freqs = new ArrayList<>();
+
         private UsageCardView.DUsageCard mUsageCard;
 
         private CardViewItem.DCardView mTempCard;
@@ -238,50 +241,61 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
         }
 
         private void freqInit() {
-            List<String> freqs = new ArrayList<>();
-            for (int freq : CPU.getFreqs())
-                freqs.add(freq / 1000 + getString(R.string.mhz));
+            views.clear();
+            freqs.clear();
+            if (!CPU.isPerCoreControlActive()) {
+                for (int freq : CPU.getFreqs())
+                    freqs.add(freq / 1000 + getString(R.string.mhz));
 
-            mMaxFreqCard = new PopupCardView.DPopupCard(freqs);
-            mMaxFreqCard.setTitle(getString(R.string.cpu_max_freq));
-            mMaxFreqCard.setDescription(getString(R.string.cpu_max_freq_summary));
-            mMaxFreqCard.setItem(CPU.getMaxFreq(true) / 1000 + getString(R.string.mhz));
-            mMaxFreqCard.setOnDPopupCardListener(this);
+                mMaxFreqCard = new PopupCardView.DPopupCard(freqs);
+                mMaxFreqCard.setTitle(getString(R.string.cpu_max_freq));
+                mMaxFreqCard.setDescription(getString(R.string.cpu_max_freq_summary));
+                mMaxFreqCard.setItem(CPU.getMaxFreq(true) / 1000 + getString(R.string.mhz));
+                mMaxFreqCard.setOnDPopupCardListener(this);
 
-            mMinFreqCard = new PopupCardView.DPopupCard(freqs);
-            mMinFreqCard.setTitle(getString(R.string.cpu_min_freq));
-            mMinFreqCard.setDescription(getString(R.string.cpu_min_freq_summary));
-            mMinFreqCard.setItem(CPU.getMinFreq(true) / 1000 + getString(R.string.mhz));
-            mMinFreqCard.setOnDPopupCardListener(this);
+                mMinFreqCard = new PopupCardView.DPopupCard(freqs);
+                mMinFreqCard.setTitle(getString(R.string.cpu_min_freq));
+                mMinFreqCard.setDescription(getString(R.string.cpu_min_freq_summary));
+                mMinFreqCard.setItem(CPU.getMinFreq(true) / 1000 + getString(R.string.mhz));
+                mMinFreqCard.setOnDPopupCardListener(this);
 
-            addView(mMaxFreqCard);
-            addView(mMinFreqCard);
+                views.add(mMaxFreqCard);
+                views.add(mMinFreqCard);
 
-            if (CPU.hasMaxScreenOffFreq()) {
-                mMaxScreenOffFreqCard = new PopupCardView.DPopupCard(freqs);
-                mMaxScreenOffFreqCard.setTitle(getString(R.string.cpu_max_screen_off_freq));
-                mMaxScreenOffFreqCard.setDescription(getString(R.string.cpu_max_screen_off_freq_summary));
-                mMaxScreenOffFreqCard.setItem(CPU.getMaxScreenOffFreq(true) / 1000 + getString(R.string.mhz));
-                mMaxScreenOffFreqCard.setOnDPopupCardListener(this);
+                if (CPU.hasMaxScreenOffFreq()) {
+                    mMaxScreenOffFreqCard = new PopupCardView.DPopupCard(freqs);
+                    mMaxScreenOffFreqCard.setTitle(getString(R.string.cpu_max_screen_off_freq));
+                    mMaxScreenOffFreqCard.setDescription(getString(R.string.cpu_max_screen_off_freq_summary));
+                    mMaxScreenOffFreqCard.setItem(CPU.getMaxScreenOffFreq(true) / 1000 + getString(R.string.mhz));
+                    mMaxScreenOffFreqCard.setOnDPopupCardListener(this);
 
-                addView(mMaxScreenOffFreqCard);
+                    views.add(mMaxScreenOffFreqCard);
+                }
             }
+
+            addAllViews(views);
         }
 
         private void governorInit() {
-            mGovernorCard = new PopupCardView.DPopupCard(CPU.getAvailableGovernors());
-            mGovernorCard.setTitle(getString(R.string.cpu_governor));
-            mGovernorCard.setDescription(getString(R.string.cpu_governor_summary));
-            mGovernorCard.setItem(CPU.getCurGovernor(true));
-            mGovernorCard.setOnDPopupCardListener(this);
+            views.clear();
+            if (!CPU.isPerCoreControlActive()) {
 
+                mGovernorCard = new PopupCardView.DPopupCard(CPU.getAvailableGovernors());
+                mGovernorCard.setTitle(getString(R.string.cpu_governor));
+                mGovernorCard.setDescription(getString(R.string.cpu_governor_summary));
+                mGovernorCard.setItem(CPU.getCurGovernor(true));
+                mGovernorCard.setOnDPopupCardListener(this);
+                views.add(mGovernorCard);
+
+            }
             mGovernorTunableCard = new CardViewItem.DCardView();
             mGovernorTunableCard.setTitle(getString(R.string.cpu_governor_tunables));
             mGovernorTunableCard.setDescription(getString(R.string.cpu_governor_tunables_summary));
             mGovernorTunableCard.setOnDCardListener(this);
+            views.add(mGovernorTunableCard);
 
-            addView(mGovernorCard);
-            addView(mGovernorTunableCard);
+            addAllViews(views);
+
         }
 
         private void coreLITTLEInit() {
@@ -380,7 +394,6 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
         }
 
         private void MSM_LimiterInit() {
-            List<DAdapter.DView> views = new ArrayList<>();
             views.clear();
 
             if (CPU.hasMSM_Limiter()) {
@@ -477,7 +490,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
         }
 
         private void cpuBoostInit() {
-            List<DAdapter.DView> views = new ArrayList<>();
+            views.clear();
             if (CPU.hasCpuBoostEnable()) {
                 mCpuBoostEnableCard = new SwitchCardView.DSwitchCard();
                 mCpuBoostEnableCard.setDescription(getString(R.string.cpu_boost));
