@@ -382,6 +382,9 @@ public class CPU implements Constants {
         Control.runCommand(governor, CPU_SCALING_GOVERNOR, command, context);
     }
 
+    public static void setMSMLimiterGovernor(String governor, Context context) {
+        Control.runCommand(governor, CPU_MSM_LIMITER_SCALING_GOVERNOR, Control.CommandType.GENERIC, context);
+    }
     public static String getCurGovernor(boolean forceRead) {
         return getCurGovernor(getBigCore(), forceRead);
     }
@@ -392,6 +395,14 @@ public class CPU implements Constants {
                 activateCore(core, true, null);
         if (Utils.existFile(String.format(CPU_SCALING_GOVERNOR, core))) {
             String value = Utils.readFile(String.format(CPU_SCALING_GOVERNOR, core));
+            if (value != null) return value;
+        }
+        return "";
+    }
+
+    public static String getMSMLimiterGoveror () {
+        if (Utils.existFile(CPU_MSM_LIMITER_SCALING_GOVERNOR)) {
+            String value = Utils.readFile(CPU_MSM_LIMITER_SCALING_GOVERNOR);
             if (value != null) return value;
         }
         return "";
