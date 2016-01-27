@@ -110,8 +110,8 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
         private AppCompatTextView[] mCoreFreqText;
 
         private PopupCardView.DPopupCard mMaxFreqCard, mMinFreqCard, mMaxScreenOffFreqCard, mMSM_LimiterResumeMaxFreqCard, mMSM_LimiterSuspendMinFreqCard, mMSM_LimiterSuspendMaxFreqCard;
-        private PopupCardView.DPopupCard mMaxFreqCardCore0, mMaxFreqCardCore1, mMaxFreqCardCore2, mMaxFreqCardCore3;
-        private PopupCardView.DPopupCard mMinFreqCardCore0, mMinFreqCardCore1, mMinFreqCardCore2, mMinFreqCardCore3;
+        private PopupCardView.DPopupCard mMSM_LimiterResumeMaxFreqCard0, mMSM_LimiterResumeMaxFreqCard1, mMSM_LimiterResumeMaxFreqCard2, mMSM_LimiterResumeMaxFreqCard3;
+        private PopupCardView.DPopupCard mMSM_LimiterSuspendMinFreqCard0, mMSM_LimiterSuspendMinFreqCard1, mMSM_LimiterSuspendMinFreqCard2, mMSM_LimiterSuspendMinFreqCard3;
 
         private PopupCardView.DPopupCard mGovernorCard;
         private CardViewItem.DCardView mGovernorTunableCard;
@@ -187,7 +187,6 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
             int count = getCount();
             if (CPU.hasMcPowerSaving()) mcPowerSavingInit();
             if (CPU.hasPowerSavingWq()) powerSavingWqInit();
-            if (CPU.hasMSM_Limiter()) MSM_LimiterInit();
             if (CPU.hasCFSScheduler()) cfsSchedulerInit();
             if (CPU.hasCpuQuiet()) cpuQuietInit();
             if (CPU.hasCpuBoost()) cpuBoostInit();
@@ -245,17 +244,27 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
         private void freqInit() {
             views.clear();
             freqs.clear();
-            if (CPU.hasPerCoreControl()) {
+
+            if (CPU.hasMSM_Limiter()) {
+                mMSM_Limiter_EnableCard = new SwitchCardView.DSwitchCard();
+                mMSM_Limiter_EnableCard.setDescription(getString(R.string.cpu_msm_limiter));
+                mMSM_Limiter_EnableCard.setChecked(CPU.isMSM_LimiterActive());
+                mMSM_Limiter_EnableCard.setOnDSwitchCardListener(this);
+
+                views.add(mMSM_Limiter_EnableCard);
+            }
+
+            if (CPU.hasPerCoreControl() && CPU.isMSM_LimiterActive()) {
                 mPerCoreControlCard = new SwitchCardView.DSwitchCard();
                 mPerCoreControlCard.setDescription(getString(R.string.cpu_per_core_control));
                 mPerCoreControlCard.setChecked(CPU.isPerCoreControlActive());
                 mPerCoreControlCard.setOnDSwitchCardListener(this);
 
-                addView(mPerCoreControlCard);
+                views.add(mPerCoreControlCard);
 
             }
 
-            if (!CPU.isPerCoreControlActive()) {
+            if (!CPU.isPerCoreControlActive() && !CPU.isMSM_LimiterActive()) {
                 for (int freq : CPU.getFreqs())
                     freqs.add(freq / 1000 + getString(R.string.mhz));
 
@@ -275,7 +284,39 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 views.add(mMinFreqCard);
 
             }
-            else if (CPU.isPerCoreControlActive()) {
+            if (CPU.isMSM_LimiterActive()) {
+                if (!CPU.isPerCoreControlActive()){
+
+                    if (CPU.hasMSM_LimiterResumeMaxFreq()) {
+                        List<String> freqs = new ArrayList<>();
+                        for (int freq : CPU.getFreqs())
+                            freqs.add(freq / 1000 + getString(R.string.mhz));
+
+                        mMSM_LimiterResumeMaxFreqCard = new PopupCardView.DPopupCard(freqs);
+                        mMSM_LimiterResumeMaxFreqCard.setTitle(getString(R.string.cpu_msm_limiter_resume_max));
+                        mMSM_LimiterResumeMaxFreqCard.setDescription(getString(R.string.cpu_msm_limiter_resume_max_summary));
+                        mMSM_LimiterResumeMaxFreqCard.setItem(CPU.getMSM_LimiterResumeMaxFreq() / 1000 + getString(R.string.mhz));
+                        mMSM_LimiterResumeMaxFreqCard.setOnDPopupCardListener(this);
+
+                        views.add(mMSM_LimiterResumeMaxFreqCard);
+                    }
+
+                    if (CPU.hasMSM_LimiterSuspendMinFreq()) {
+                        List<String> freqs = new ArrayList<>();
+                        for (int freq : CPU.getFreqs())
+                            freqs.add(freq / 1000 + getString(R.string.mhz));
+
+                        mMSM_LimiterSuspendMinFreqCard = new PopupCardView.DPopupCard(freqs);
+                        mMSM_LimiterSuspendMinFreqCard.setTitle(getString(R.string.cpu_msm_limiter_suspend_min));
+                        mMSM_LimiterSuspendMinFreqCard.setDescription(getString(R.string.cpu_msm_limiter_suspend_min_summary));
+                        mMSM_LimiterSuspendMinFreqCard.setItem(CPU.getMSM_LimiterSuspendMinFreq() / 1000 + getString(R.string.mhz));
+                        mMSM_LimiterSuspendMinFreqCard.setOnDPopupCardListener(this);
+
+                        views.add(mMSM_LimiterSuspendMinFreqCard);
+                    }
+                }
+
+                else if (CPU.isPerCoreControlActive()) {
                     for (int freq : CPU.getFreqs())
                         freqs.add(freq / 1000 + getString(R.string.mhz));
 
@@ -283,67 +324,81 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                     mMaxFreqPerCoreCard.setText("Max Freq per Core");
                     views.add(mMaxFreqPerCoreCard);
 
-                    mMaxFreqCardCore0 = new PopupCardView.DPopupCard(freqs);
-                    mMaxFreqCardCore0.setTitle(String.format(getString(R.string.cpu_max_freq_per_core), 0));
-                    mMaxFreqCardCore0.setDescription(getString(R.string.cpu_max_freq_summary_per_core));
-                    mMaxFreqCardCore0.setItem(CPU.getMaxFreqPerCore(0) / 1000 + getString(R.string.mhz));
-                    mMaxFreqCardCore0.setOnDPopupCardListener(this);
-                    views.add(mMaxFreqCardCore0);
+                    mMSM_LimiterResumeMaxFreqCard0 = new PopupCardView.DPopupCard(freqs);
+                    mMSM_LimiterResumeMaxFreqCard0.setTitle(String.format(getString(R.string.cpu_msm_limiter_resume_max_per_core), 0));
+                    mMSM_LimiterResumeMaxFreqCard0.setDescription(getString(R.string.cpu_msm_limiter_resume_max_summary));
+                    mMSM_LimiterResumeMaxFreqCard0.setItem(CPU.getMSM_LimiterResumeMaxFreqPerCore(0) / 1000 + getString(R.string.mhz));
+                    mMSM_LimiterResumeMaxFreqCard0.setOnDPopupCardListener(this);
+                    views.add(mMSM_LimiterResumeMaxFreqCard0);
 
-                    mMaxFreqCardCore1 = new PopupCardView.DPopupCard(freqs);
-                    mMaxFreqCardCore1.setTitle(String.format(getString(R.string.cpu_max_freq_per_core), 1));
-                    mMaxFreqCardCore1.setDescription(getString(R.string.cpu_max_freq_summary_per_core));
-                    mMaxFreqCardCore1.setItem(CPU.getMaxFreqPerCore(1) / 1000 + getString(R.string.mhz));
-                    mMaxFreqCardCore1.setOnDPopupCardListener(this);
-                    views.add(mMaxFreqCardCore1);
+                    mMSM_LimiterResumeMaxFreqCard1 = new PopupCardView.DPopupCard(freqs);
+                    mMSM_LimiterResumeMaxFreqCard1.setTitle(String.format(getString(R.string.cpu_msm_limiter_resume_max_per_core), 1));
+                    mMSM_LimiterResumeMaxFreqCard1.setDescription(getString(R.string.cpu_msm_limiter_resume_max_summary));
+                    mMSM_LimiterResumeMaxFreqCard1.setItem(CPU.getMSM_LimiterResumeMaxFreqPerCore(1) / 1000 + getString(R.string.mhz));
+                    mMSM_LimiterResumeMaxFreqCard1.setOnDPopupCardListener(this);
+                    views.add(mMSM_LimiterResumeMaxFreqCard1);
 
-                    mMaxFreqCardCore2 = new PopupCardView.DPopupCard(freqs);
-                    mMaxFreqCardCore2.setTitle(String.format(getString(R.string.cpu_max_freq_per_core), 2));
-                    mMaxFreqCardCore2.setDescription(getString(R.string.cpu_max_freq_summary_per_core));
-                    mMaxFreqCardCore2.setItem(CPU.getMaxFreqPerCore(2) / 1000 + getString(R.string.mhz));
-                    mMaxFreqCardCore2.setOnDPopupCardListener(this);
-                    views.add(mMaxFreqCardCore2);
+                    mMSM_LimiterResumeMaxFreqCard2 = new PopupCardView.DPopupCard(freqs);
+                    mMSM_LimiterResumeMaxFreqCard2.setTitle(String.format(getString(R.string.cpu_msm_limiter_resume_max_per_core), 2));
+                    mMSM_LimiterResumeMaxFreqCard2.setDescription(getString(R.string.cpu_msm_limiter_resume_max_summary));
+                    mMSM_LimiterResumeMaxFreqCard2.setItem(CPU.getMSM_LimiterResumeMaxFreqPerCore(2) / 1000 + getString(R.string.mhz));
+                    mMSM_LimiterResumeMaxFreqCard2.setOnDPopupCardListener(this);
+                    views.add(mMSM_LimiterResumeMaxFreqCard2);
 
-                    mMaxFreqCardCore3 = new PopupCardView.DPopupCard(freqs);
-                    mMaxFreqCardCore3.setTitle(String.format(getString(R.string.cpu_max_freq_per_core), 3));
-                    mMaxFreqCardCore3.setDescription(getString(R.string.cpu_max_freq_summary_per_core));
-                    mMaxFreqCardCore3.setItem(CPU.getMaxFreqPerCore(3) / 1000 + getString(R.string.mhz));
-                    mMaxFreqCardCore3.setOnDPopupCardListener(this);
-                views.add(mMaxFreqCardCore3);
+                    mMSM_LimiterResumeMaxFreqCard3 = new PopupCardView.DPopupCard(freqs);
+                    mMSM_LimiterResumeMaxFreqCard3.setTitle(String.format(getString(R.string.cpu_msm_limiter_resume_max_per_core), 3));
+                    mMSM_LimiterResumeMaxFreqCard3.setDescription(getString(R.string.cpu_msm_limiter_resume_max_summary));
+                    mMSM_LimiterResumeMaxFreqCard3.setItem(CPU.getMSM_LimiterResumeMaxFreqPerCore(3) / 1000 + getString(R.string.mhz));
+                    mMSM_LimiterResumeMaxFreqCard3.setOnDPopupCardListener(this);
+                    views.add(mMSM_LimiterResumeMaxFreqCard3);
 
                     DDivider mMinFreqPerCoreCard = new DDivider();
                     mMinFreqPerCoreCard.setText("Min Freq per Core");
-                    mMinFreqPerCoreCard.setDescription("If Touch Boost is enabled, the displayed value may reflect the Touch Boost value. This is because Touch Boost sets each core's minimum on touch for the specified duration. Unfortunately, this means that while the view is loaded and the values are read the temporary value for Touch Boost is preset. The actual value is whatever was previously selected");
-                views.add(mMinFreqPerCoreCard);
+                    views.add(mMinFreqPerCoreCard);
 
-                    mMinFreqCardCore0 = new PopupCardView.DPopupCard(freqs);
-                    mMinFreqCardCore0.setTitle(String.format(getString(R.string.cpu_min_freq_per_core), 0));
-                    mMinFreqCardCore0.setDescription(getString(R.string.cpu_min_freq_summary));
-                    mMinFreqCardCore0.setItem(CPU.getMinFreqPerCore(0) / 1000 + getString(R.string.mhz));
-                    mMinFreqCardCore0.setOnDPopupCardListener(this);
-                    views.add(mMinFreqCardCore0);
+                    mMSM_LimiterSuspendMinFreqCard0 = new PopupCardView.DPopupCard(freqs);
+                    mMSM_LimiterSuspendMinFreqCard0.setTitle(String.format(getString(R.string.cpu_msm_limiter_suspend_min_per_core), 0));
+                    mMSM_LimiterSuspendMinFreqCard0.setDescription(getString(R.string.cpu_msm_limiter_suspend_min_summary));
+                    mMSM_LimiterSuspendMinFreqCard0.setItem(CPU.getMinFreqPerCore(0) / 1000 + getString(R.string.mhz));
+                    mMSM_LimiterSuspendMinFreqCard0.setOnDPopupCardListener(this);
+                    views.add(mMSM_LimiterSuspendMinFreqCard0);
 
-                    mMinFreqCardCore1 = new PopupCardView.DPopupCard(freqs);
-                    mMinFreqCardCore1.setTitle(String.format(getString(R.string.cpu_min_freq_per_core), 1));
-                    mMinFreqCardCore1.setDescription(getString(R.string.cpu_min_freq_summary));
-                    mMinFreqCardCore1.setItem(CPU.getMinFreqPerCore(1) / 1000 + getString(R.string.mhz));
-                    mMinFreqCardCore1.setOnDPopupCardListener(this);
-                    views.add(mMinFreqCardCore1);
+                    mMSM_LimiterSuspendMinFreqCard1 = new PopupCardView.DPopupCard(freqs);
+                    mMSM_LimiterSuspendMinFreqCard1.setTitle(String.format(getString(R.string.cpu_msm_limiter_suspend_min_per_core), 1));
+                    mMSM_LimiterSuspendMinFreqCard1.setDescription(getString(R.string.cpu_msm_limiter_suspend_min_summary));
+                    mMSM_LimiterSuspendMinFreqCard1.setItem(CPU.getMinFreqPerCore(1) / 1000 + getString(R.string.mhz));
+                    mMSM_LimiterSuspendMinFreqCard1.setOnDPopupCardListener(this);
+                    views.add(mMSM_LimiterSuspendMinFreqCard1);
 
-                    mMinFreqCardCore2 = new PopupCardView.DPopupCard(freqs);
-                    mMinFreqCardCore2.setTitle(String.format(getString(R.string.cpu_min_freq_per_core), 2));
-                    mMinFreqCardCore2.setDescription(getString(R.string.cpu_min_freq_summary));
-                    mMinFreqCardCore2.setItem(CPU.getMinFreqPerCore(2) / 1000 + getString(R.string.mhz));
-                    mMinFreqCardCore2.setOnDPopupCardListener(this);
-                    views.add(mMinFreqCardCore2);
+                    mMSM_LimiterSuspendMinFreqCard2 = new PopupCardView.DPopupCard(freqs);
+                    mMSM_LimiterSuspendMinFreqCard2.setTitle(String.format(getString(R.string.cpu_msm_limiter_suspend_min_per_core), 2));
+                    mMSM_LimiterSuspendMinFreqCard2.setDescription(getString(R.string.cpu_msm_limiter_suspend_min_summary));
+                    mMSM_LimiterSuspendMinFreqCard2.setItem(CPU.getMinFreqPerCore(2) / 1000 + getString(R.string.mhz));
+                    mMSM_LimiterSuspendMinFreqCard2.setOnDPopupCardListener(this);
+                    views.add(mMSM_LimiterSuspendMinFreqCard2);
 
-                    mMinFreqCardCore3 = new PopupCardView.DPopupCard(freqs);
-                    mMinFreqCardCore3.setTitle(String.format(getString(R.string.cpu_min_freq_per_core), 3));
-                    mMinFreqCardCore3.setDescription(getString(R.string.cpu_min_freq_summary));
-                    mMinFreqCardCore3.setItem(CPU.getMinFreqPerCore(3) / 1000 + getString(R.string.mhz));
-                    mMinFreqCardCore3.setOnDPopupCardListener(this);
-                    views.add(mMinFreqCardCore3);
+                    mMSM_LimiterSuspendMinFreqCard3 = new PopupCardView.DPopupCard(freqs);
+                    mMSM_LimiterSuspendMinFreqCard3.setTitle(String.format(getString(R.string.cpu_msm_limiter_suspend_min_per_core), 3));
+                    mMSM_LimiterSuspendMinFreqCard3.setDescription(getString(R.string.cpu_msm_limiter_suspend_min_summary));
+                    mMSM_LimiterSuspendMinFreqCard3.setItem(CPU.getMinFreqPerCore(3) / 1000 + getString(R.string.mhz));
+                    mMSM_LimiterSuspendMinFreqCard3.setOnDPopupCardListener(this);
+                    views.add(mMSM_LimiterSuspendMinFreqCard3);
 
+                }
+
+                if (CPU.hasMSM_LimiterSuspendMaxFreq()) {
+                    List<String> freqs = new ArrayList<>();
+                    for (int freq : CPU.getFreqs())
+                        freqs.add(freq / 1000 + getString(R.string.mhz));
+
+                    mMSM_LimiterSuspendMaxFreqCard = new PopupCardView.DPopupCard(freqs);
+                    mMSM_LimiterSuspendMaxFreqCard.setTitle(getString(R.string.cpu_msm_limiter_suspend_max));
+                    mMSM_LimiterSuspendMaxFreqCard.setDescription(getString(R.string.cpu_msm_limiter_suspend_max_summary));
+                    mMSM_LimiterSuspendMaxFreqCard.setItem(CPU.getMSM_LimiterSuspendMaxFreq() / 1000 + getString(R.string.mhz));
+                    mMSM_LimiterSuspendMaxFreqCard.setOnDPopupCardListener(this);
+
+                    views.add(mMSM_LimiterSuspendMaxFreqCard);
+                }
             }
 
             if (CPU.hasMaxScreenOffFreq()) {
@@ -361,16 +416,13 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
 
         private void governorInit() {
             views.clear();
-                DDivider mGovernorDividerCard = new DDivider();
-                mGovernorDividerCard.setText("");
-                addView(mGovernorDividerCard);
-
-                mGovernorCard = new PopupCardView.DPopupCard(CPU.getAvailableGovernors());
-                mGovernorCard.setTitle(getString(R.string.cpu_governor));
-                mGovernorCard.setDescription(getString(R.string.cpu_governor_summary));
-                mGovernorCard.setItem(CPU.getCurGovernor(true));
-                mGovernorCard.setOnDPopupCardListener(this);
-                views.add(mGovernorCard);
+            
+            mGovernorCard = new PopupCardView.DPopupCard(CPU.getAvailableGovernors());
+            mGovernorCard.setTitle(getString(R.string.cpu_governor));
+            mGovernorCard.setDescription(getString(R.string.cpu_governor_summary));
+            mGovernorCard.setItem(CPU.getCurGovernor(true));
+            mGovernorCard.setOnDPopupCardListener(this);
+            views.add(mGovernorCard);
 
             mGovernorTunableCard = new CardViewItem.DCardView();
             mGovernorTunableCard.setTitle(getString(R.string.cpu_governor_tunables));
@@ -476,71 +528,6 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
 
             addView(mPowerSavingWqCard);
         }
-
-        private void MSM_LimiterInit() {
-            views.clear();
-
-            if (CPU.hasMSM_Limiter()) {
-                mMSM_Limiter_EnableCard = new SwitchCardView.DSwitchCard();
-                mMSM_Limiter_EnableCard.setDescription(getString(R.string.cpu_msm_limiter));
-                mMSM_Limiter_EnableCard.setChecked(CPU.isMSM_LimiterActive());
-                mMSM_Limiter_EnableCard.setOnDSwitchCardListener(this);
-
-                views.add(mMSM_Limiter_EnableCard);
-            }
-            if (CPU.hasMSM_LimiterEnabled()) {
-                if (CPU.hasMSM_LimiterResumeMaxFreq()) {
-                    List<String> freqs = new ArrayList<>();
-                    for (int freq : CPU.getFreqs())
-                        freqs.add(freq / 1000 + getString(R.string.mhz));
-
-                    mMSM_LimiterResumeMaxFreqCard = new PopupCardView.DPopupCard(freqs);
-                    mMSM_LimiterResumeMaxFreqCard.setTitle(getString(R.string.cpu_msm_limiter_resume_max));
-                    mMSM_LimiterResumeMaxFreqCard.setDescription(getString(R.string.cpu_msm_limiter_resume_max_summary));
-                    mMSM_LimiterResumeMaxFreqCard.setItem(CPU.getMSM_LimiterResumeMaxFreq() / 1000 + getString(R.string.mhz));
-                    mMSM_LimiterResumeMaxFreqCard.setOnDPopupCardListener(this);
-
-                    views.add(mMSM_LimiterResumeMaxFreqCard);
-                }
-
-                if (CPU.hasMSM_LimiterSuspendMaxFreq()) {
-                    List<String> freqs = new ArrayList<>();
-                    for (int freq : CPU.getFreqs())
-                        freqs.add(freq / 1000 + getString(R.string.mhz));
-
-                    mMSM_LimiterSuspendMaxFreqCard = new PopupCardView.DPopupCard(freqs);
-                    mMSM_LimiterSuspendMaxFreqCard.setTitle(getString(R.string.cpu_msm_limiter_suspend_max));
-                    mMSM_LimiterSuspendMaxFreqCard.setDescription(getString(R.string.cpu_msm_limiter_suspend_max_summary));
-                    mMSM_LimiterSuspendMaxFreqCard.setItem(CPU.getMSM_LimiterSuspendMaxFreq() / 1000 + getString(R.string.mhz));
-                    mMSM_LimiterSuspendMaxFreqCard.setOnDPopupCardListener(this);
-
-                    views.add(mMSM_LimiterSuspendMaxFreqCard);
-                }
-
-                if (CPU.hasMSM_LimiterSuspendMinFreq()) {
-                    List<String> freqs = new ArrayList<>();
-                    for (int freq : CPU.getFreqs())
-                        freqs.add(freq / 1000 + getString(R.string.mhz));
-
-                    mMSM_LimiterSuspendMinFreqCard = new PopupCardView.DPopupCard(freqs);
-                    mMSM_LimiterSuspendMinFreqCard.setTitle(getString(R.string.cpu_msm_limiter_suspend_min));
-                    mMSM_LimiterSuspendMinFreqCard.setDescription(getString(R.string.cpu_msm_limiter_suspend_min_summary));
-                    mMSM_LimiterSuspendMinFreqCard.setItem(CPU.getMSM_LimiterSuspendMinFreq() / 1000 + getString(R.string.mhz));
-                    mMSM_LimiterSuspendMinFreqCard.setOnDPopupCardListener(this);
-
-                    views.add(mMSM_LimiterSuspendMinFreqCard);
-                }
-            }
-            if (views.size() > 0) {
-                DDivider mMSM_LimitertDividerCard = new DDivider();
-                mMSM_LimitertDividerCard.setText("MSM Limiter");
-                addView(mMSM_LimitertDividerCard);
-
-                addAllViews(views);
-            }
-
-        }
-
 
         private void cfsSchedulerInit() {
             mCFSSchedulerCard = new PopupCardView.DPopupCard(CPU.getAvailableCFSSchedulers());
@@ -731,24 +718,24 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
         public void onItemSelected(PopupCardView.DPopupCard dPopupCard, int position) {
             if (dPopupCard == mMaxFreqCard)
                 CPU.setMaxFreq(CPU.getFreqs().get(position), getActivity());
-            else if (dPopupCard == mMaxFreqCardCore0)
-                CPU.setMaxFreqPerCore(CPU.getFreqs().get(position), 0, getActivity());
-            else if (dPopupCard == mMaxFreqCardCore1)
-                CPU.setMaxFreqPerCore(CPU.getFreqs().get(position), 1, getActivity());
-            else if (dPopupCard == mMaxFreqCardCore2)
-                CPU.setMaxFreqPerCore(CPU.getFreqs().get(position), 2, getActivity());
-            else if (dPopupCard == mMaxFreqCardCore3)
-                CPU.setMaxFreqPerCore(CPU.getFreqs().get(position), 3, getActivity());
+            else if (dPopupCard == mMSM_LimiterResumeMaxFreqCard0)
+                CPU.setMSM_LimiterResumeMaxFreqPerCore(CPU.getFreqs().get(position), 0, getActivity());
+            else if (dPopupCard == mMSM_LimiterResumeMaxFreqCard1)
+                CPU.setMSM_LimiterResumeMaxFreqPerCore(CPU.getFreqs().get(position), 1, getActivity());
+            else if (dPopupCard == mMSM_LimiterResumeMaxFreqCard2)
+                CPU.setMSM_LimiterResumeMaxFreqPerCore(CPU.getFreqs().get(position), 2, getActivity());
+            else if (dPopupCard == mMSM_LimiterResumeMaxFreqCard3)
+                CPU.setMSM_LimiterResumeMaxFreqPerCore(CPU.getFreqs().get(position), 3, getActivity());
             else if (dPopupCard == mMinFreqCard)
                 CPU.setMinFreq(CPU.getFreqs().get(position), getActivity());
-            else if (dPopupCard == mMinFreqCardCore0)
-                CPU.setMinFreqPerCore(CPU.getFreqs().get(position), 0, getActivity());
-            else if (dPopupCard == mMinFreqCardCore1)
-                CPU.setMinFreqPerCore(CPU.getFreqs().get(position), 1, getActivity());
-            else if (dPopupCard == mMinFreqCardCore2)
-                CPU.setMinFreqPerCore(CPU.getFreqs().get(position), 2, getActivity());
-            else if (dPopupCard == mMinFreqCardCore3)
-                CPU.setMinFreqPerCore(CPU.getFreqs().get(position), 3, getActivity());
+            else if (dPopupCard == mMSM_LimiterSuspendMinFreqCard0)
+                CPU.setMSM_LimiterSuspendMinFreqPerCore(CPU.getFreqs().get(position), 0, getActivity());
+            else if (dPopupCard == mMSM_LimiterSuspendMinFreqCard1)
+                CPU.setMSM_LimiterSuspendMinFreqPerCore(CPU.getFreqs().get(position), 1, getActivity());
+            else if (dPopupCard == mMSM_LimiterSuspendMinFreqCard2)
+                CPU.setMSM_LimiterSuspendMinFreqPerCore(CPU.getFreqs().get(position), 2, getActivity());
+            else if (dPopupCard == mMSM_LimiterSuspendMinFreqCard3)
+                CPU.setMSM_LimiterSuspendMinFreqPerCore(CPU.getFreqs().get(position), 3, getActivity());
             else if (dPopupCard == mMSM_LimiterResumeMaxFreqCard)
                 CPU.setMSM_LimiterResumeMaxFreq(CPU.getFreqs().get(position), getActivity());
             else if (dPopupCard == mMSM_LimiterSuspendMaxFreqCard)

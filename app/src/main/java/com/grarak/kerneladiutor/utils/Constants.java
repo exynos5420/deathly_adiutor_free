@@ -56,9 +56,6 @@ public interface Constants {
     String CPU_TIME_STATE_2 = "/sys/devices/system/cpu/cpu%d/cpufreq/stats/time_in_state";
     String CPU_SCALING_GOVERNOR = "/sys/devices/system/cpu/cpu%d/cpufreq/scaling_governor";
     String CPU_AVAILABLE_GOVERNORS = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors";
-    // dummy sysfs path to hold a per-core toggle. this will need to be implemented in the kernel
-    String CPU_PER_CORE_CONTROL = "/sys/module/cpufreq/parameters/per_core_control";
-
 
     String CPU_GOVERNOR_TUNABLES = "/sys/devices/system/cpu/cpufreq";
     String CPU_GOVERNOR_TUNABLES_CORE = "/sys/devices/system/cpu/cpu%d/cpufreq";
@@ -91,12 +88,16 @@ public interface Constants {
     String CPU_MSM_LIMITER_RESUME_MAX = "/sys/kernel/msm_limiter/resume_max_freq";
     String CPU_MSM_LIMITER_SUSPEND_MIN = "/sys/kernel/msm_limiter/suspend_min_freq";
     String CPU_MSM_LIMITER_SUSPEND_MAX = "/sys/kernel/msm_limiter/suspend_max_freq";
+    String CPU_MAX_FREQ_PER_CORE = "/sys/kernel/msm_limiter/resume_max_freq_%d";
+    String CPU_MIN_FREQ_PER_CORE = "/sys/kernel/msm_limiter/suspend_min_freq_%d";
+    // dummy sysfs path to hold a per-core toggle. this will need to be implemented in the kernel
+    String CPU_PER_CORE_CONTROL = "/sys/kernel/msm_limiter/per_core_control";
 
     String[] CPU_ARRAY = {CPU_CUR_FREQ, CPU_TEMP_ZONE0, CPU_TEMP_ZONE1, CPU_CORE_ONLINE, CPU_MAX_FREQ, CPU_MAX_FREQ_KT, CPU_ENABLE_OC,
             CPU_MIN_FREQ, CPU_MAX_SCREEN_OFF_FREQ, CPU_MSM_CPUFREQ_LIMIT, CPU_AVAILABLE_FREQS, CPU_TIME_STATE, CPU_SCALING_GOVERNOR,
             CPU_AVAILABLE_GOVERNORS, CPU_GOVERNOR_TUNABLES, CPU_GOVERNOR_TUNABLES_CORE, CPU_MC_POWER_SAVING, CPU_WQ_POWER_SAVING,
             CPU_AVAILABLE_CFS_SCHEDULERS, CPU_CURRENT_CFS_SCHEDULER, CPU_QUIET, CPU_BOOST, CPU_TOUCH_BOOST, CPU_MSM_LIMITER_ENABLE,
-            CPU_MSM_LIMITER_RESUME_MAX, CPU_MSM_LIMITER_SUSPEND_MIN, CPU_MSM_LIMITER_SUSPEND_MAX };
+            CPU_MSM_LIMITER_RESUME_MAX, CPU_MSM_LIMITER_SUSPEND_MIN, CPU_MSM_LIMITER_SUSPEND_MAX, CPU_PER_CORE_CONTROL };
 
     // CPU Voltage
     String CPU_VOLTAGE = "/sys/devices/system/cpu/cpu0/cpufreq/UV_mV_table";

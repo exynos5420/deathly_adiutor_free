@@ -353,7 +353,7 @@ public class CPU implements Constants {
 
     public static boolean isPerCoreControlActive () {
         if (Utils.existFile(CPU_PER_CORE_CONTROL)) {
-            return Utils.readFile(CPU_PER_CORE_CONTROL).equals("Y");
+            return Utils.readFile(CPU_PER_CORE_CONTROL).equals("1");
         }
         else {
             return false;
@@ -366,7 +366,7 @@ public class CPU implements Constants {
 
 
     public static void activatePerCoreControl(boolean active, Context context) {
-        Control.runCommand(active ? "Y" : "N", CPU_PER_CORE_CONTROL, Control.CommandType.GENERIC, context);
+        Control.runCommand(active ? "1" : "0", CPU_PER_CORE_CONTROL, Control.CommandType.GENERIC, context);
     }
 
     public static void setGovernor(String governor, Context context) {
@@ -473,9 +473,8 @@ public class CPU implements Constants {
         Control.runCommand(String.valueOf(freq), CPU_MIN_FREQ, command, context);
     }
 
-    public static void setMinFreqPerCore(int freq, int core, Context context) {
-        String path = String.format(CPU_MIN_FREQ, core);
-        Control.setPermission(path, 644, context);
+    public static void setMSM_LimiterSuspendMinFreqPerCore(int freq, int core, Context context) {
+        String path = String.format(CPU_MIN_FREQ_PER_CORE, core);
         if (Utils.existFile(path)) Control.runCommand(Integer.toString(freq), path, Control.CommandType.GENERIC, context);
     }
 
@@ -494,8 +493,8 @@ public class CPU implements Constants {
     }
 
     public static int getMinFreqPerCore (int core) {
-        if (Utils.existFile(String.format(CPU_MIN_FREQ, core))) {
-            String value = Utils.readFile(String.format(CPU_MIN_FREQ, core));
+        if (Utils.existFile(String.format(CPU_MIN_FREQ_PER_CORE, core))) {
+            String value = Utils.readFile(String.format(CPU_MIN_FREQ_PER_CORE, core));
             if (value != null) return Utils.stringToInt(value);
         }
         return 0;
@@ -505,9 +504,8 @@ public class CPU implements Constants {
         setMaxFreq(Control.CommandType.CPU, freq, context);
     }
 
-    public static void setMaxFreqPerCore(int freq, int core, Context context) {
-        String path = String.format(CPU_MAX_FREQ, core);
-        Control.setPermission(path, 644, context);
+    public static void setMSM_LimiterResumeMaxFreqPerCore(int freq, int core, Context context) {
+        String path = String.format(CPU_MAX_FREQ_PER_CORE, core);
         if (Utils.existFile(path)) Control.runCommand(Integer.toString(freq), path, Control.CommandType.GENERIC, context);
     }
 
@@ -546,9 +544,9 @@ public class CPU implements Constants {
         return 0;
     }
 
-    public static int getMaxFreqPerCore (int core) {
-        if (Utils.existFile(String.format(CPU_MAX_FREQ, core))) {
-            String value = Utils.readFile(String.format(CPU_MAX_FREQ, core));
+    public static int getMSM_LimiterResumeMaxFreqPerCore (int core) {
+        if (Utils.existFile(String.format(CPU_MAX_FREQ_PER_CORE, core))) {
+            String value = Utils.readFile(String.format(CPU_MAX_FREQ_PER_CORE, core));
             if (value != null) return Utils.stringToInt(value);
         }
         return 0;
