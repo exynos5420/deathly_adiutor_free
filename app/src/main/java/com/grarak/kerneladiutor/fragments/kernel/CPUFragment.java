@@ -114,8 +114,9 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
         private PopupCardView.DPopupCard mMSM_LimiterSuspendMinFreqCard0, mMSM_LimiterSuspendMinFreqCard1, mMSM_LimiterSuspendMinFreqCard2, mMSM_LimiterSuspendMinFreqCard3;
 
         private PopupCardView.DPopupCard mGovernorCard;
-        private PopupCardView.DPopupCard mMSM_LimiterGovernorCard;
+        private PopupCardView.DPopupCard mMSM_LimiterGovernorCard, mMSM_LimiterGovernorPerCore0Card, mMSM_LimiterGovernorPerCore1Card, mMSM_LimiterGovernorPerCore2Card, mMSM_LimiterGovernorPerCore3Card;
         private CardViewItem.DCardView mGovernorTunableCard;
+        private CardViewItem.DCardView mGovernorTunableCore0Card, mGovernorTunableCore1Card, mGovernorTunableCore2Card, mGovernorTunableCore3Card;
 
         private AppCompatCheckBox[] mCoreCheckBoxLITTLE;
         private ProgressBar[] mCoreProgressBarLITTLE;
@@ -330,65 +331,67 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                         freqs.add(freq / 1000 + getString(R.string.mhz));
 
                     DDivider mMaxFreqPerCoreCard = new DDivider();
-                    mMaxFreqPerCoreCard.setText("Max Freq per Core");
+                    mMaxFreqPerCoreCard.setText("Max Frequency per Core");
+                    mMaxFreqPerCoreCard.setDescription(getString(R.string.cpu_msm_limiter_resume_max_summary_per_core));
                     views.add(mMaxFreqPerCoreCard);
 
                     mMSM_LimiterResumeMaxFreqCard0 = new PopupCardView.DPopupCard(freqs);
                     mMSM_LimiterResumeMaxFreqCard0.setTitle(String.format(getString(R.string.cpu_msm_limiter_resume_max_per_core), 0));
-                    mMSM_LimiterResumeMaxFreqCard0.setDescription(getString(R.string.cpu_msm_limiter_resume_max_summary));
+                    mMSM_LimiterResumeMaxFreqCard0.setDescription("");
                     mMSM_LimiterResumeMaxFreqCard0.setItem(CPU.getMSM_LimiterResumeMaxFreqPerCore(0) / 1000 + getString(R.string.mhz));
                     mMSM_LimiterResumeMaxFreqCard0.setOnDPopupCardListener(this);
                     views.add(mMSM_LimiterResumeMaxFreqCard0);
 
                     mMSM_LimiterResumeMaxFreqCard1 = new PopupCardView.DPopupCard(freqs);
                     mMSM_LimiterResumeMaxFreqCard1.setTitle(String.format(getString(R.string.cpu_msm_limiter_resume_max_per_core), 1));
-                    mMSM_LimiterResumeMaxFreqCard1.setDescription(getString(R.string.cpu_msm_limiter_resume_max_summary));
+                    mMSM_LimiterResumeMaxFreqCard1.setDescription("");
                     mMSM_LimiterResumeMaxFreqCard1.setItem(CPU.getMSM_LimiterResumeMaxFreqPerCore(1) / 1000 + getString(R.string.mhz));
                     mMSM_LimiterResumeMaxFreqCard1.setOnDPopupCardListener(this);
                     views.add(mMSM_LimiterResumeMaxFreqCard1);
 
                     mMSM_LimiterResumeMaxFreqCard2 = new PopupCardView.DPopupCard(freqs);
                     mMSM_LimiterResumeMaxFreqCard2.setTitle(String.format(getString(R.string.cpu_msm_limiter_resume_max_per_core), 2));
-                    mMSM_LimiterResumeMaxFreqCard2.setDescription(getString(R.string.cpu_msm_limiter_resume_max_summary));
+                    mMSM_LimiterResumeMaxFreqCard2.setDescription("");
                     mMSM_LimiterResumeMaxFreqCard2.setItem(CPU.getMSM_LimiterResumeMaxFreqPerCore(2) / 1000 + getString(R.string.mhz));
                     mMSM_LimiterResumeMaxFreqCard2.setOnDPopupCardListener(this);
                     views.add(mMSM_LimiterResumeMaxFreqCard2);
 
                     mMSM_LimiterResumeMaxFreqCard3 = new PopupCardView.DPopupCard(freqs);
                     mMSM_LimiterResumeMaxFreqCard3.setTitle(String.format(getString(R.string.cpu_msm_limiter_resume_max_per_core), 3));
-                    mMSM_LimiterResumeMaxFreqCard3.setDescription(getString(R.string.cpu_msm_limiter_resume_max_summary));
+                    mMSM_LimiterResumeMaxFreqCard3.setDescription("");
                     mMSM_LimiterResumeMaxFreqCard3.setItem(CPU.getMSM_LimiterResumeMaxFreqPerCore(3) / 1000 + getString(R.string.mhz));
                     mMSM_LimiterResumeMaxFreqCard3.setOnDPopupCardListener(this);
                     views.add(mMSM_LimiterResumeMaxFreqCard3);
 
                     DDivider mMinFreqPerCoreCard = new DDivider();
-                    mMinFreqPerCoreCard.setText("Min Freq per Core");
+                    mMinFreqPerCoreCard.setText("Min Frequency per Core");
+                    mMinFreqPerCoreCard.setDescription(getString(R.string.cpu_msm_limiter_suspend_min_summary_per_core));
                     views.add(mMinFreqPerCoreCard);
 
                     mMSM_LimiterSuspendMinFreqCard0 = new PopupCardView.DPopupCard(freqs);
                     mMSM_LimiterSuspendMinFreqCard0.setTitle(String.format(getString(R.string.cpu_msm_limiter_suspend_min_per_core), 0));
-                    mMSM_LimiterSuspendMinFreqCard0.setDescription(getString(R.string.cpu_msm_limiter_suspend_min_summary));
+                    mMSM_LimiterSuspendMinFreqCard0.setDescription("");
                     mMSM_LimiterSuspendMinFreqCard0.setItem(CPU.getMinFreqPerCore(0) / 1000 + getString(R.string.mhz));
                     mMSM_LimiterSuspendMinFreqCard0.setOnDPopupCardListener(this);
                     views.add(mMSM_LimiterSuspendMinFreqCard0);
 
                     mMSM_LimiterSuspendMinFreqCard1 = new PopupCardView.DPopupCard(freqs);
                     mMSM_LimiterSuspendMinFreqCard1.setTitle(String.format(getString(R.string.cpu_msm_limiter_suspend_min_per_core), 1));
-                    mMSM_LimiterSuspendMinFreqCard1.setDescription(getString(R.string.cpu_msm_limiter_suspend_min_summary));
+                    mMSM_LimiterSuspendMinFreqCard1.setDescription("");
                     mMSM_LimiterSuspendMinFreqCard1.setItem(CPU.getMinFreqPerCore(1) / 1000 + getString(R.string.mhz));
                     mMSM_LimiterSuspendMinFreqCard1.setOnDPopupCardListener(this);
                     views.add(mMSM_LimiterSuspendMinFreqCard1);
 
                     mMSM_LimiterSuspendMinFreqCard2 = new PopupCardView.DPopupCard(freqs);
                     mMSM_LimiterSuspendMinFreqCard2.setTitle(String.format(getString(R.string.cpu_msm_limiter_suspend_min_per_core), 2));
-                    mMSM_LimiterSuspendMinFreqCard2.setDescription(getString(R.string.cpu_msm_limiter_suspend_min_summary));
+                    mMSM_LimiterSuspendMinFreqCard2.setDescription("");
                     mMSM_LimiterSuspendMinFreqCard2.setItem(CPU.getMinFreqPerCore(2) / 1000 + getString(R.string.mhz));
                     mMSM_LimiterSuspendMinFreqCard2.setOnDPopupCardListener(this);
                     views.add(mMSM_LimiterSuspendMinFreqCard2);
 
                     mMSM_LimiterSuspendMinFreqCard3 = new PopupCardView.DPopupCard(freqs);
                     mMSM_LimiterSuspendMinFreqCard3.setTitle(String.format(getString(R.string.cpu_msm_limiter_suspend_min_per_core), 3));
-                    mMSM_LimiterSuspendMinFreqCard3.setDescription(getString(R.string.cpu_msm_limiter_suspend_min_summary));
+                    mMSM_LimiterSuspendMinFreqCard3.setDescription("");
                     mMSM_LimiterSuspendMinFreqCard3.setItem(CPU.getMinFreqPerCore(3) / 1000 + getString(R.string.mhz));
                     mMSM_LimiterSuspendMinFreqCard3.setOnDPopupCardListener(this);
                     views.add(mMSM_LimiterSuspendMinFreqCard3);
@@ -436,21 +439,93 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 views.add(mGovernorCard);
 
             }
-            if (!CPU.isPerCoreControlActive() && CPU.isMSM_LimiterActive()) {
-                mMSM_LimiterGovernorCard = new PopupCardView.DPopupCard(CPU.getAvailableGovernors());
-                mMSM_LimiterGovernorCard.setTitle(getString(R.string.cpu_governor));
-                mMSM_LimiterGovernorCard.setDescription(getString(R.string.cpu_governor_summary));
-                mMSM_LimiterGovernorCard.setItem(CPU.getCurGovernor(true));
-                mMSM_LimiterGovernorCard.setOnDPopupCardListener(this);
-                views.add(mMSM_LimiterGovernorCard);
+            if (CPU.isMSM_LimiterActive()) {
+                if (!CPU.isPerCoreControlActive()) {
+                    mMSM_LimiterGovernorCard = new PopupCardView.DPopupCard(CPU.getAvailableGovernors());
+                    mMSM_LimiterGovernorCard.setTitle(getString(R.string.cpu_governor));
+                    mMSM_LimiterGovernorCard.setDescription(getString(R.string.cpu_governor_summary));
+                    mMSM_LimiterGovernorCard.setItem(CPU.getMSMLimiterGoveror());
+                    mMSM_LimiterGovernorCard.setOnDPopupCardListener(this);
+                    views.add(mMSM_LimiterGovernorCard);
 
+                }
+
+                if (CPU.isPerCoreControlActive()) {
+
+                    DDivider mMSM_LimiterGovernorPerCoreCard = new DDivider();
+                    mMSM_LimiterGovernorPerCoreCard.setText("Select Governor per Core");
+                    mMSM_LimiterGovernorPerCoreCard.setDescription(getString(R.string.cpu_governor_summary));
+                    views.add(mMSM_LimiterGovernorPerCoreCard);
+
+
+                    mMSM_LimiterGovernorPerCore0Card = new PopupCardView.DPopupCard(CPU.getAvailableGovernors());
+                    mMSM_LimiterGovernorPerCore0Card.setTitle(String.format(getString(R.string.cpu_msm_limiter_governor_per_core), 0));
+                    mMSM_LimiterGovernorPerCore0Card.setDescription("");
+                    mMSM_LimiterGovernorPerCore0Card.setItem(CPU.getMSMLimiterGoverorPerCore(0));
+                    mMSM_LimiterGovernorPerCore0Card.setOnDPopupCardListener(this);
+                    views.add(mMSM_LimiterGovernorPerCore0Card);
+
+                    mMSM_LimiterGovernorPerCore1Card = new PopupCardView.DPopupCard(CPU.getAvailableGovernors());
+                    mMSM_LimiterGovernorPerCore1Card.setTitle(String.format(getString(R.string.cpu_msm_limiter_governor_per_core), 1));
+                    mMSM_LimiterGovernorPerCore1Card.setDescription("");
+                    mMSM_LimiterGovernorPerCore1Card.setItem(CPU.getMSMLimiterGoverorPerCore(1));
+                    mMSM_LimiterGovernorPerCore1Card.setOnDPopupCardListener(this);
+                    views.add(mMSM_LimiterGovernorPerCore1Card);
+
+                    mMSM_LimiterGovernorPerCore2Card = new PopupCardView.DPopupCard(CPU.getAvailableGovernors());
+                    mMSM_LimiterGovernorPerCore2Card.setTitle(String.format(getString(R.string.cpu_msm_limiter_governor_per_core), 2));
+                    mMSM_LimiterGovernorPerCore2Card.setDescription("");
+                    mMSM_LimiterGovernorPerCore2Card.setItem(CPU.getMSMLimiterGoverorPerCore(2));
+                    mMSM_LimiterGovernorPerCore2Card.setOnDPopupCardListener(this);
+                    views.add(mMSM_LimiterGovernorPerCore2Card);
+
+                    mMSM_LimiterGovernorPerCore3Card = new PopupCardView.DPopupCard(CPU.getAvailableGovernors());
+                    mMSM_LimiterGovernorPerCore3Card.setTitle(String.format(getString(R.string.cpu_msm_limiter_governor_per_core), 3));
+                    mMSM_LimiterGovernorPerCore3Card.setDescription("");
+                    mMSM_LimiterGovernorPerCore3Card.setItem(CPU.getMSMLimiterGoverorPerCore(3));
+                    mMSM_LimiterGovernorPerCore3Card.setOnDPopupCardListener(this);
+                    views.add(mMSM_LimiterGovernorPerCore3Card);
+
+                }
             }
 
-            mGovernorTunableCard = new CardViewItem.DCardView();
-            mGovernorTunableCard.setTitle(getString(R.string.cpu_governor_tunables));
-            mGovernorTunableCard.setDescription(getString(R.string.cpu_governor_tunables_summary));
-            mGovernorTunableCard.setOnDCardListener(this);
-            views.add(mGovernorTunableCard);
+            if (!CPU.isPerCoreControlActive()) {
+
+                mGovernorTunableCard = new CardViewItem.DCardView();
+                mGovernorTunableCard.setTitle(getString(R.string.cpu_governor_tunables));
+                mGovernorTunableCard.setDescription(getString(R.string.cpu_governor_tunables_summary));
+                mGovernorTunableCard.setOnDCardListener(this);
+                views.add(mGovernorTunableCard);
+            }
+
+            if (CPU.isPerCoreControlActive()) {
+
+                DDivider mGovernorTunablePerCoreDivider = new DDivider();
+                mGovernorTunablePerCoreDivider.setText(getString(R.string.cpu_governor_tunables_per_core_header));
+                mGovernorTunablePerCoreDivider.setDescription(getString(R.string.cpu_governor_tunables_per_core_summary));
+                views.add(mGovernorTunablePerCoreDivider);
+
+                mGovernorTunableCore0Card = new CardViewItem.DCardView();
+                mGovernorTunableCore0Card.setTitle("Edit CPU 0: Governor tuneables");
+                mGovernorTunableCore0Card.setOnDCardListener(this);
+                views.add(mGovernorTunableCore0Card);
+
+                mGovernorTunableCore1Card = new CardViewItem.DCardView();
+                mGovernorTunableCore1Card.setTitle("Edit CPU 1: Governor tuneables");
+                mGovernorTunableCore1Card.setOnDCardListener(this);
+                views.add(mGovernorTunableCore1Card);
+
+                mGovernorTunableCore2Card = new CardViewItem.DCardView();
+                mGovernorTunableCore2Card.setTitle("Edit CPU 2: Governor tuneables");
+                mGovernorTunableCore2Card.setOnDCardListener(this);
+                views.add(mGovernorTunableCore2Card);
+
+                mGovernorTunableCore3Card = new CardViewItem.DCardView();
+                mGovernorTunableCore3Card.setTitle("Edit CPU 3: Governor tuneables");
+                mGovernorTunableCore3Card.setOnDCardListener(this);
+                views.add(mGovernorTunableCore3Card);
+
+            }
 
             addAllViews(views);
 
@@ -770,6 +845,14 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 CPU.setGovernor(CPU.getAvailableGovernors().get(position), getActivity());
             else if (dPopupCard == mMSM_LimiterGovernorCard)
                 CPU.setMSMLimiterGovernor(CPU.getAvailableGovernors().get(position), getActivity());
+            else if (dPopupCard == mMSM_LimiterGovernorPerCore0Card)
+                CPU.setMSMLimiterGovernorPerCore(CPU.getAvailableGovernors().get(position), getActivity(), 0);
+            else if (dPopupCard == mMSM_LimiterGovernorPerCore1Card)
+                CPU.setMSMLimiterGovernorPerCore(CPU.getAvailableGovernors().get(position), getActivity(), 1);
+            else if (dPopupCard == mMSM_LimiterGovernorPerCore2Card)
+                CPU.setMSMLimiterGovernorPerCore(CPU.getAvailableGovernors().get(position), getActivity(), 2);
+            else if (dPopupCard == mMSM_LimiterGovernorPerCore3Card)
+                CPU.setMSMLimiterGovernorPerCore(CPU.getAvailableGovernors().get(position), getActivity(), 3);
             if (dPopupCard == mMaxFreqLITTLECard)
                 CPU.setMaxFreq(Control.CommandType.CPU_LITTLE, CPU.getFreqs(CPU.getLITTLEcore()).get(position), getActivity());
             else if (dPopupCard == mMinFreqLITTLECard)
@@ -806,6 +889,26 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 cpuFragment.setCurrentItem(1);
             } else if (dCardView == mGovernorTunableLITTLECard) {
                 cpuFragment.core = CPU.getLITTLEcore();
+                cpuFragment.governorPart.reload();
+                cpuFragment.setCurrentItem(1);
+            }
+            if (dCardView == mGovernorTunableCore0Card) {
+                cpuFragment.core = 0;
+                cpuFragment.governorPart.reload();
+                cpuFragment.setCurrentItem(1);
+            }
+            if (dCardView == mGovernorTunableCore1Card) {
+                cpuFragment.core = 1;
+                cpuFragment.governorPart.reload();
+                cpuFragment.setCurrentItem(1);
+            }
+            if (dCardView == mGovernorTunableCore2Card) {
+                cpuFragment.core = 2;
+                cpuFragment.governorPart.reload();
+                cpuFragment.setCurrentItem(1);
+            }
+            if (dCardView == mGovernorTunableCore3Card) {
+                cpuFragment.core = 3;
                 cpuFragment.governorPart.reload();
                 cpuFragment.setCurrentItem(1);
             }
@@ -888,7 +991,22 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 String msm_limiter_governor = CPU.getMSMLimiterGoveror();
                 if (!msm_limiter_governor.isEmpty()) mMSM_LimiterGovernorCard.setItem(msm_limiter_governor);
             }
-
+            if (mMSM_LimiterGovernorPerCore0Card != null) {
+                String msm_limiter_governor0 = CPU.getMSMLimiterGoverorPerCore(0);
+                if (!msm_limiter_governor0.isEmpty()) mMSM_LimiterGovernorPerCore0Card.setItem(msm_limiter_governor0);
+            }
+            if (mMSM_LimiterGovernorPerCore1Card != null) {
+                String msm_limiter_governor1 = CPU.getMSMLimiterGoverorPerCore(1);
+                if (!msm_limiter_governor1.isEmpty()) mMSM_LimiterGovernorPerCore1Card.setItem(msm_limiter_governor1);
+            }
+            if (mMSM_LimiterGovernorPerCore2Card != null) {
+                String msm_limiter_governor2 = CPU.getMSMLimiterGoverorPerCore(2);
+                if (!msm_limiter_governor2.isEmpty()) mMSM_LimiterGovernorPerCore2Card.setItem(msm_limiter_governor2);
+            }
+            if (mMSM_LimiterGovernorPerCore3Card != null) {
+                String msm_limiter_governor3 = CPU.getMSMLimiterGoverorPerCore(3);
+                if (!msm_limiter_governor3.isEmpty()) mMSM_LimiterGovernorPerCore3Card.setItem(msm_limiter_governor3);
+            }
             if (mCoreCheckBoxLITTLE != null && mCoreProgressBarLITTLE != null && mCoreFreqTextLITTLE != null) {
                 List<Integer> range = CPU.getLITTLECoreRange();
                 for (int i = 0; i < mCoreCheckBoxLITTLE.length; i++) {
@@ -988,31 +1106,50 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
 
         @Override
         public String getName() {
-            return CPU.getCurGovernor(cpuFragment.core, true);
+            if (!CPU.isPerCoreControlActive()) {
+                return CPU.getCurGovernor(cpuFragment.core, true);
+            }
+            if (CPU.isPerCoreControlActive()) {
+                return CPU.getMSMLimiterGoverorPerCore(cpuFragment.core);
+            }
+            return(null);
         }
 
         @Override
         public String getPath() {
-            return getPath(CPU.isBigLITTLE() ? String.format(CPU_GOVERNOR_TUNABLES_CORE, cpuFragment.core) :
-                    CPU_GOVERNOR_TUNABLES, CPU.getCurGovernor(cpuFragment.core, true));
+            if (!CPU.isPerCoreControlActive()) {
+                return getPath(CPU.isBigLITTLE() ? String.format(CPU_GOVERNOR_TUNABLES_CORE, cpuFragment.core) :
+                        CPU_GOVERNOR_TUNABLES, CPU.getCurGovernor(cpuFragment.core, true));
+            }
+            if (CPU.isPerCoreControlActive()) {
+                return getPath(CPU_GOVERNOR_TUNABLES, CPU.getMSMLimiterGoverorPerCore(cpuFragment.core));
+            }
+            return(null);
         }
 
         private String getPath(String path, String governor) {
-            if (Utils.existFile(path + "/" + governor)) return path + "/" + governor;
-            else for (String file : new RootFile(path).list())
-                if (governor.contains(file))
-                    return path + "/" + file;
-            return null;
+                if (Utils.existFile(path + "/" + governor)) return path + "/" + governor;
+                else for (String file : new RootFile(path).list())
+                    if (governor.contains(file))
+                        return path + "/" + file;
+                return null;
         }
 
         @Override
         public PATH_TYPE getType() {
-            return PATH_TYPE.GOVERNOR;
+                return PATH_TYPE.GOVERNOR;
         }
 
         @Override
         public String getError(Context context) {
-            return context.getString(R.string.not_tunable, CPU.getCurGovernor(cpuFragment.core, true));
+            if (!CPU.isPerCoreControlActive()) {
+                return context.getString(R.string.not_tunable, CPU.getCurGovernor(cpuFragment.core, true));
+            }
+            if (CPU.isPerCoreControlActive()) {
+                return context.getString(R.string.not_tunable, CPU.getMSMLimiterGoverorPerCore(cpuFragment.core));
+            }
+
+            return(null);
         }
     }
 }

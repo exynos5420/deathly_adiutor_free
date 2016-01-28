@@ -151,12 +151,17 @@
     <string name="cpu_msm_limiter_summary">Enable MSM Limiter</string>
     <string name="cpu_msm_limiter_resume_max">Max Frequency</string>
     <string name="cpu_msm_limiter_resume_max_summary">Set the maximum frequency all CPUs scales up to.</string>
+    <string name="cpu_msm_limiter_resume_max_summary_per_core">Set the maximum frequency each CPU scales up to.</string>
     <string name="cpu_msm_limiter_suspend_min">Min Frequency</string>
     <string name="cpu_msm_limiter_suspend_min_summary">Set the minimum frequency all CPUs scales down to.</string>
+    <string name="cpu_msm_limiter_suspend_min_summary_per_core">Set the minimum frequency each CPU scales down to.</string>
     <string name="cpu_msm_limiter_suspend_max">Suspend Max Frequency</string>
     <string name="cpu_msm_limiter_suspend_max_summary">Set the maximum frequency all CPUs scales up to when device is suspended.</string>
     <string name="cpu_msm_limiter_resume_max_per_core">CPU %d: Maximum Frequency</string>
     <string name="cpu_msm_limiter_suspend_min_per_core">CPU %d: Minimum Frequency</string>
+    <string name="cpu_msm_limiter_governor_per_core">CPU %d: Governor</string>
+    <string name="cpu_governor_tunables_per_core_header">Edit Tunables for each core\'s Governor</string>
+    <string name="cpu_governor_tunables_per_core_summary">The various configuration items which are Governor-dependent. Note that if a Governor is selected for multiple cores, it\'s tunables are shared and are not customizable for each core. When they\'re changed for one core below the changes will reflect in the other cores that utilize it.</string>
 
     <!-- CPU Voltage -->
     <string name="global_offset">Global Offset</string>
