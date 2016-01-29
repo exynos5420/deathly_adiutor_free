@@ -1580,6 +1580,7 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
             CPUHotplug.activateAutoSmp(checked, getActivity());
         else if (dSwitchCard == mAutoSmpScroffSingleCoreCard)
             CPUHotplug.activateAutoSmpScroffSingleCoreActive(checked, getActivity());
+        // TODO make this redraw reset the view to the top
         view.invalidate();
         getActivity().getSupportFragmentManager().beginTransaction().detach(this).attach(this).commit();
 

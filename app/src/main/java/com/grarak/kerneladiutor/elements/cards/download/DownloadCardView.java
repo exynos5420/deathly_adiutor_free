@@ -56,6 +56,8 @@ import java.util.List;
  */
 public class DownloadCardView extends BaseCardView {
 
+    //TODO Fix hardcoded path for downloads
+
     private TextView nameText;
     private TextView descriptionText;
     private TextView changelogText;
