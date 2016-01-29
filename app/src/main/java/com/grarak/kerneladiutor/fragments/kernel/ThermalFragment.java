@@ -589,7 +589,7 @@ public class ThermalFragment extends RecyclerViewFragment implements SwitchCardV
         else if (dSeekBarCard == mThermalLimitHighCard)
             Thermal.setThermalLimitHigh(position + 1, getActivity());
         else if (dSeekBarCard == mTempLimitCard)
-            Thermal.setTempLimit(position + 50, getActivity());
+            Thermal.setTempLimit(position + 40, getActivity());
         else if (dSeekBarCard == mAllowedLowLowCard)
             Thermal.setAllowedLowLow(position + 40, getActivity());
         else if (dSeekBarCard == mAllowedLowHighCard)
