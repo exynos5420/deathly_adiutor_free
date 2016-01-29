@@ -34,8 +34,6 @@ import java.util.List;
 public class KSMFragment extends RecyclerViewFragment implements SwitchCardView.DSwitchCard.OnDSwitchCardListener,
         SeekBarCardView.DSeekBarCard.OnDSeekBarCardListener {
 
-    //TODO Add new UKMS Tunables pages_to_scan, cpu_scales and pages_volatile_show from sha: e174296cb95122907278f3bec98c041ec692fd4c
-
     private CardViewItem.DCardView[] mInfos;
 
     private SwitchCardView.DSwitchCard mEnableKsmCard, mDeferredTimerCard;
