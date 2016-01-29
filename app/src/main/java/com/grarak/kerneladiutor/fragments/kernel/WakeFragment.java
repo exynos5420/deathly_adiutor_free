@@ -35,8 +35,6 @@ public class WakeFragment extends RecyclerViewFragment implements PopupCardView.
         SeekBarCardView.DSeekBarCard.OnDSeekBarCardListener,
         SwitchCardView.DSwitchCard.OnDSwitchCardListener {
 
-    //TODO add feather X/Y and DT2W time tunables
-
     private PopupCardView.DPopupCard mDt2wCard;
     private PopupCardView.DPopupCard mS2wCard;
     private SwitchCardView.DSwitchCard mLenientCard;
