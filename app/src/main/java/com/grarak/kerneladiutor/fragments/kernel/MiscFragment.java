@@ -45,17 +45,9 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
 
     private SeekBarCardView.DSeekBarCard mVibrationCard;
 
-    private SwitchCardView.DSwitchCard mLoggerEnableCard;
-    
-    private SwitchCardView.DSwitchCard mBclCard;
+    private SwitchCardView.DSwitchCard mLoggerEnableCard, mBclCard , mCrcCard, mFsyncCard, mDynamicFsyncCard;
 
-    private SwitchCardView.DSwitchCard mCrcCard;
-
-    private SwitchCardView.DSwitchCard mFsyncCard;
-    private SwitchCardView.DSwitchCard mDynamicFsyncCard;
-
-    private SwitchCardView.DSwitchCard mGentleFairSleepersCard;
-    private SwitchCardView.DSwitchCard mArchPowerCard;
+    private SwitchCardView.DSwitchCard mGentleFairSleepersCard, mArchPowerCard;
 
     private PopupCardView.DPopupCard mPowerSuspendModeCard;
     private SwitchCardView.DSwitchCard mOldPowerSuspendStateCard;
@@ -64,16 +56,9 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
     private PopupCardView.DPopupCard mTcpCongestionCard;
     private EditTextCardView.DEditTextCard mHostnameCard;
 
-    private SwitchCardView.DSwitchCard mSmb135xWakeLockCard;
-    private SwitchCardView.DSwitchCard mBlueSleepWakeLockCard;
-    private SwitchCardView.DSwitchCard mSensorIndWakeLockCard;
-    private SwitchCardView.DSwitchCard mMsmHsicHostWakeLockCard;
-    private SwitchCardView.DSwitchCard mWlanrxWakelockCard;
-    private SwitchCardView.DSwitchCard mWlanctrlWakelockCard;
-    private SwitchCardView.DSwitchCard mWlanWakelockCard;
-    private SeekBarCardView.DSeekBarCard mWlanrxWakelockDividerCard;
-    private SeekBarCardView.DSeekBarCard mMsmHsicWakelockDividerCard;
-    private SeekBarCardView.DSeekBarCard mBCMDHDWakelockDividerCard;
+    private SwitchCardView.DSwitchCard mSmb135xWakeLockCard, mBlueSleepWakeLockCard, mSensorIndWakeLockCard, mMsmHsicHostWakeLockCard;
+    private SwitchCardView.DSwitchCard mWlanrxWakelockCard, mWlanctrlWakelockCard, mWlanWakelockCard;
+    private SeekBarCardView.DSeekBarCard mWlanrxWakelockDividerCard, mMsmHsicWakelockDividerCard, mBCMDHDWakelockDividerCard;
 
     private SwitchCardView.DSwitchCard mC0StateCard, mC1StateCard, mC2StateCard, mC3StateCard;
 
