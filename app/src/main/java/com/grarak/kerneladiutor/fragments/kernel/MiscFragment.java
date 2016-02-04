@@ -45,7 +45,7 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
 
     private SeekBarCardView.DSeekBarCard mVibrationCard;
 
-    private SwitchCardView.DSwitchCard mLoggerEnableCard, mBclCard , mCrcCard, mFsyncCard, mDynamicFsyncCard;
+    private SwitchCardView.DSwitchCard mSELinuxCard, mLoggerEnableCard, mBclCard , mCrcCard, mFsyncCard, mDynamicFsyncCard;
 
     private SwitchCardView.DSwitchCard mGentleFairSleepersCard, mArchPowerCard;
 
@@ -68,6 +68,7 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
 
+        selinuxInit();
         networkInit();
         if (Misc.hasVibration()) vibrationInit();
         if (Misc.hasLoggerEnable()) loggerInit();
@@ -79,6 +80,17 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
         if (Misc.hasPowerSuspend()) powersuspendInit();
         cstatesInit();
         wakelockInit();
+    }
+
+    private void selinuxInit() {
+        mSELinuxCard = new SwitchCardView.DSwitchCard();
+        mSELinuxCard.setTitle(getString(R.string.se_linux));
+        mSELinuxCard.setDescription(getString(R.string.se_linux_summary) + " " + Misc.getSELinuxStatus());
+        mSELinuxCard.setChecked(Misc.isSELinuxActive());
+        mSELinuxCard.setOnDSwitchCardListener(this);
+
+        addView(mSELinuxCard);
+
     }
 
     private void vibrationInit() {
@@ -474,7 +486,11 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
 
     @Override
     public void onChecked(SwitchCardView.DSwitchCard dSwitchCard, boolean checked) {
-        if (dSwitchCard == mLoggerEnableCard)
+        if (dSwitchCard == mSELinuxCard) {
+            Misc.activateSELinux(checked, getActivity());
+            getActivity().getSupportFragmentManager().beginTransaction().detach(this).attach(this).commit();
+        }
+        else if (dSwitchCard == mLoggerEnableCard)
             Misc.activateLogger(checked, getActivity());
         else if (dSwitchCard == mBclCard)
             Misc.activateBcl(checked, getActivity());
