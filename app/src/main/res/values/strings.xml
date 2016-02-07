@@ -78,6 +78,7 @@
     <string name="ksm">Kernel Samepage Merging</string>
     <string name="low_memory_killer">Low Memory Killer</string>
     <string name="virtual_memory">Virtual Memory</string>
+    <string name="wakelocks">Wake Locks</string>
     <string name="entropy">Entropy</string>
     <string name="misc_controls">Misc Controls</string>
     <string name="plugins">Plugins</string>
