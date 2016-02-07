@@ -628,5 +628,15 @@ public class ThermalFragment extends RecyclerViewFragment implements SwitchCardV
             Thermal.setFrancoThermalStageThree(CPU.getFreqs().get(position), getActivity());
         else if (dPopupCard == mFrancoThermalStageFourCard)
             Thermal.setFrancoThermalStageFour(CPU.getFreqs().get(position), getActivity());
+        getActivity().getSupportFragmentManager().beginTransaction().notifyAll();
+    }
+
+    @Override
+    public boolean onRefresh() {
+     if (mFrancoThermalStageOneCard != null) mFrancoThermalStageOneCard.setDescription(getString(R.string.thermal_franco_stage_one_summary) + " : " + Utils.formatCelsius(Thermal.calcFrancoTrigger(1)) + " " + Utils.celsiusToFahrenheit(Thermal.calcFrancoTrigger(1)));
+     if (mFrancoThermalStageTwoCard != null) mFrancoThermalStageTwoCard.setDescription(getString(R.string.thermal_franco_stage_two_summary) + " : " + Utils.formatCelsius(Thermal.calcFrancoTrigger(2)) + " " + Utils.celsiusToFahrenheit(Thermal.calcFrancoTrigger(2)));
+     if (mFrancoThermalStageThreeCard != null) mFrancoThermalStageThreeCard.setDescription(getString(R.string.thermal_franco_stage_three_summary) + " : " + Utils.formatCelsius(Thermal.calcFrancoTrigger(3)) + " " + Utils.celsiusToFahrenheit(Thermal.calcFrancoTrigger(3)));
+     if (mFrancoThermalStageFourCard != null) mFrancoThermalStageFourCard.setDescription(getString(R.string.thermal_franco_stage_four_summary) + " : " + Utils.formatCelsius(Thermal.calcFrancoTrigger(4)) + " " + Utils.celsiusToFahrenheit(Thermal.calcFrancoTrigger(4)));
+       return true;
     }
 }
