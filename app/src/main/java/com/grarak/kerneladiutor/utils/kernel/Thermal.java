@@ -554,11 +554,21 @@ public class Thermal implements Constants {
 
     public static int getFrancoThermalStep() {
         int value = Utils.stringToInt(Utils.readFile(THERMAL_FRANCO_STEP));
-        return value - 1;
+        return value;
     }
 
     public static boolean hasFrancoThermalStep() {
         return Utils.existFile(THERMAL_FRANCO_STEP);
+    }
+
+    public static int calcFrancoTrigger (int multiplier) {
+        int thresh = Utils.stringToInt(Utils.readFile(MSM_THERMAL_TEMP_THRESHOLD));
+        int step = Utils.stringToInt(Utils.readFile(THERMAL_FRANCO_STEP));
+        int increase = 0;
+        for (int i = 1; i < multiplier ; i++) {
+            increase = increase + step;
+        }
+        return thresh + increase;
     }
 
 }

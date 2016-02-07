@@ -341,13 +341,13 @@
     <string name="temp_limit">Temperature Limit</string>
     <string name="temp_limit_summary">If the temperature goes above, the thermal will throttle the CPU frequency to lower the temperature.</string>
     <string name="thermal_franco_stage_one">First stage limiting Frequency</string>
-    <string name="thermal_franco_stage_one_summary">This frequency is set as the max frequency once the throttle temperature is reached.</string>
+    <string name="thermal_franco_stage_one_summary">Triggered at:</string>
     <string name="thermal_franco_stage_two">Second stage limiting Frequency</string>
-    <string name="thermal_franco_stage_two_summary">This frequency is set as the max frequency for stage 2. (Trip Temp + Step)</string>
+    <string name="thermal_franco_stage_two_summary">Triggered at:</string>
     <string name="thermal_franco_stage_three">Third stage limiting Frequency</string>
-    <string name="thermal_franco_stage_three_summary">This frequency is set as the max frequency for stage 3. (Trip Temp + Step*2)</string>
+    <string name="thermal_franco_stage_three_summary">Triggered at:</string>
     <string name="thermal_franco_stage_four">Fourth stage limiting Frequency</string>
-    <string name="thermal_franco_stage_four_summary">This frequency is set as the max frequency for stage 3. (Trip Temp + Step*3)</string>
+    <string name="thermal_franco_stage_four_summary">Triggered at:</string>
     <string name="thermal_franco_thermal_poll">Polling Interval</string>
     <string name="thermal_franco_thermal_step">Thermal Step Value</string>
     <string name="thermal_franco_thermal_step_summary">This value is added on top of threshold to create trigger thresholds between each stage</string>

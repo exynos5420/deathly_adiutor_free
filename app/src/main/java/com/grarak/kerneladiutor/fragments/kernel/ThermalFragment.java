@@ -301,7 +301,7 @@ public class ThermalFragment extends RecyclerViewFragment implements SwitchCardV
 
             mFrancoThermalStageOneCard = new PopupCardView.DPopupCard(freqs);
             mFrancoThermalStageOneCard.setTitle(getString(R.string.thermal_franco_stage_one));
-            mFrancoThermalStageOneCard.setDescription(getString(R.string.thermal_franco_stage_one_summary));
+            mFrancoThermalStageOneCard.setDescription(getString(R.string.thermal_franco_stage_one_summary) + " : " + Utils.formatCelsius(Thermal.calcFrancoTrigger(1)) + " " + Utils.celsiusToFahrenheit(Thermal.calcFrancoTrigger(1)));
             mFrancoThermalStageOneCard.setItem(Thermal.getFrancoThermalStageOne() / 1000 + getString(R.string.mhz));
             mFrancoThermalStageOneCard.setOnDPopupCardListener(this);
 
@@ -315,7 +315,7 @@ public class ThermalFragment extends RecyclerViewFragment implements SwitchCardV
 
             mFrancoThermalStageTwoCard = new PopupCardView.DPopupCard(freqs);
             mFrancoThermalStageTwoCard.setTitle(getString(R.string.thermal_franco_stage_two));
-            mFrancoThermalStageTwoCard.setDescription(getString(R.string.thermal_franco_stage_two_summary));
+            mFrancoThermalStageTwoCard.setDescription(getString(R.string.thermal_franco_stage_two_summary) + " : " + Utils.formatCelsius(Thermal.calcFrancoTrigger(2)) + " " + Utils.celsiusToFahrenheit(Thermal.calcFrancoTrigger(2)));
             mFrancoThermalStageTwoCard.setItem(Thermal.getFrancoThermalStageTwo() / 1000 + getString(R.string.mhz));
             mFrancoThermalStageTwoCard.setOnDPopupCardListener(this);
 
@@ -329,7 +329,7 @@ public class ThermalFragment extends RecyclerViewFragment implements SwitchCardV
 
             mFrancoThermalStageThreeCard = new PopupCardView.DPopupCard(freqs);
             mFrancoThermalStageThreeCard.setTitle(getString(R.string.thermal_franco_stage_three));
-            mFrancoThermalStageThreeCard.setDescription(getString(R.string.thermal_franco_stage_three_summary));
+            mFrancoThermalStageThreeCard.setDescription(getString(R.string.thermal_franco_stage_three_summary) + " : " + Utils.formatCelsius(Thermal.calcFrancoTrigger(3)) + " " + Utils.celsiusToFahrenheit(Thermal.calcFrancoTrigger(3)));
             mFrancoThermalStageThreeCard.setItem(Thermal.getFrancoThermalStageThree() / 1000 + getString(R.string.mhz));
             mFrancoThermalStageThreeCard.setOnDPopupCardListener(this);
 
@@ -343,7 +343,7 @@ public class ThermalFragment extends RecyclerViewFragment implements SwitchCardV
 
             mFrancoThermalStageFourCard = new PopupCardView.DPopupCard(freqs);
             mFrancoThermalStageFourCard.setTitle(getString(R.string.thermal_franco_stage_four));
-            mFrancoThermalStageFourCard.setDescription(getString(R.string.thermal_franco_stage_four_summary));
+            mFrancoThermalStageFourCard.setDescription(getString(R.string.thermal_franco_stage_four_summary) + " : " + Utils.formatCelsius(Thermal.calcFrancoTrigger(4)) + " " + Utils.celsiusToFahrenheit(Thermal.calcFrancoTrigger(4)));
             mFrancoThermalStageFourCard.setItem(Thermal.getFrancoThermalStageFour() / 1000 + getString(R.string.mhz));
             mFrancoThermalStageFourCard.setOnDPopupCardListener(this);
 
@@ -369,7 +369,7 @@ public class ThermalFragment extends RecyclerViewFragment implements SwitchCardV
             mFrancoThermalStepCard = new SeekBarCardView.DSeekBarCard(list);
             mFrancoThermalStepCard.setTitle(getString(R.string.thermal_franco_thermal_step));
             mFrancoThermalStepCard.setDescription(getString(R.string.thermal_franco_thermal_step_summary));
-            mFrancoThermalStepCard.setProgress(Thermal.getFrancoThermalStep());
+            mFrancoThermalStepCard.setProgress(Thermal.getFrancoThermalStep() - 1);
             mFrancoThermalStepCard.setOnDSeekBarCardListener(this);
 
             addView(mFrancoThermalStepCard);
