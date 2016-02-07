@@ -99,52 +99,6 @@ public class Misc implements Constants {
         return false;
     }
 
-    public static void setNewPowerSuspend(int value, Context context) {
-        Control.runCommand(String.valueOf(value), POWER_SUSPEND_STATE, Control.CommandType.GENERIC, context);
-    }
-
-    public static int getNewPowerSuspendState() {
-        return Utils.stringToInt(Utils.readFile(POWER_SUSPEND_STATE));
-    }
-
-    public static boolean hasNewPowerSuspendState() {
-        if (Utils.existFile(POWER_SUSPEND_STATE) && Utils.existFile(POWER_SUSPEND_VERSION)) {
-            String version = Utils.readFile(POWER_SUSPEND_VERSION);
-            if (version.contains("1.3") || version.contains("1.5")) return true;
-        }
-        return false;
-    }
-
-    public static void activateOldPowerSuspend(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", POWER_SUSPEND_STATE, Control.CommandType.GENERIC, context);
-    }
-
-    public static boolean isOldPowerSuspendStateActive() {
-        return Utils.readFile(POWER_SUSPEND_STATE).equals("1");
-    }
-
-    public static boolean hasOldPowerSuspendState() {
-        if (Utils.existFile(POWER_SUSPEND_STATE) && Utils.existFile(POWER_SUSPEND_VERSION))
-            if (Utils.readFile(POWER_SUSPEND_VERSION).contains("1.2")) return true;
-        return false;
-    }
-
-    public static void setPowerSuspendMode(int value, Context context) {
-        Control.runCommand(String.valueOf(value), POWER_SUSPEND_MODE, Control.CommandType.GENERIC, context);
-    }
-
-    public static int getPowerSuspendMode() {
-        return Utils.stringToInt(Utils.readFile(POWER_SUSPEND_MODE));
-    }
-
-    public static boolean hasPowerSuspendMode() {
-        return Utils.existFile(POWER_SUSPEND_MODE);
-    }
-
-    public static boolean hasPowerSuspend() {
-        return Utils.existFile(POWER_SUSPEND);
-    }
-
     public static void activateGentleFairSleepers(boolean active, Context context) {
         Control.runCommand(active ? "1" : "0", GENTLE_FAIR_SLEEPERS, Control.CommandType.GENERIC, context);
     }
@@ -155,18 +109,6 @@ public class Misc implements Constants {
 
     public static boolean hasGentleFairSleepers() {
         return Utils.existFile(GENTLE_FAIR_SLEEPERS);
-    }
-
-    public static void activateArchPower(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", ARCH_POWER, Control.CommandType.GENERIC, context);
-    }
-
-    public static boolean isArchPowerActive() {
-        return Utils.readFile(ARCH_POWER).equals("1");
-    }
-
-    public static boolean hasArchPower() {
-        return Utils.existFile(ARCH_POWER);
     }
 
     public static void activateDynamicFsync(boolean active, Context context) {
