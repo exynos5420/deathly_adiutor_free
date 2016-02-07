@@ -65,6 +65,10 @@ public class CPU implements Constants {
         return Utils.existFile(CPU_TOUCH_BOOST);
     }
 
+    public static boolean hasCpuInputBoostEnable () {
+        return Utils.existFile(INPUT_BOOST_ENABLE);
+    }
+
     public static void activateCpuBoostWakeup(boolean active, Context context) {
         Control.runCommand(active ? "Y" : "N", CPU_BOOST_WAKEUP, Control.CommandType.GENERIC, context);
     }
@@ -73,8 +77,16 @@ public class CPU implements Constants {
         return Utils.readFile(CPU_BOOST_WAKEUP).equals("Y");
     }
 
+    public static boolean isInputBoostActive() {
+        return Utils.readFile(INPUT_BOOST_ENABLE).equals("1");
+    }
+
     public static boolean hasCpuBoostWakeup() {
         return Utils.existFile(CPU_BOOST_WAKEUP);
+    }
+
+    public static void activateCpuInputBoost(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", INPUT_BOOST_ENABLE, Control.CommandType.GENERIC, context);
     }
 
     public static void activateCpuBoostHotplug(boolean active, Context context) {
@@ -192,10 +204,6 @@ public class CPU implements Constants {
     }
     public static boolean hasMSM_Limiter() {
         return Utils.existFile(CPU_MSM_LIMITER);
-    }
-
-    public static boolean hasMSM_LimiterEnabled() {
-        return Utils.readFile(CPU_MSM_LIMITER_ENABLE).equals("1");
     }
 
     public static void activateMSM_Limiter(boolean active, Context context) {
