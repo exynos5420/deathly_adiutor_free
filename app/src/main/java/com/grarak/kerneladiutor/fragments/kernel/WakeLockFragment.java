@@ -161,6 +161,7 @@ public class WakeLockFragment extends RecyclerViewFragment implements SeekBarCar
         if (!views.isEmpty()) {
             DDivider mWakelockDividerCard = new DDivider();
             mWakelockDividerCard.setText(getString(R.string.wakelock));
+            mWakelockDividerCard.setDescription(getString(R.string.wakelocks_summary));
             addView(mWakelockDividerCard);
 
             addAllViews(views);

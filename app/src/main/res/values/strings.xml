@@ -647,6 +647,7 @@
     <string name="adb_over_wifi_summary">Enable ADB over WiFi</string>
     <string name="adb_over_wifi_connect_summary">Enable ADB over WiFi. Connect to: </string>
     <string name="wakelock">Wakelocks</string>
+    <string name="wakelocks_summary">Toggle on: Service can acquire a wakelock. Toggle off: Service cannot acquire a wakelock.</string>
     <string name="smb135x_wakelock">smb135x Wakelock</string>
     <string name="smb135x_wakelock_summary">Prevent wakelock when power disconnected.</string>
     <string name="bluesleep_wakelock">BlueSleep Wakelock</string>
