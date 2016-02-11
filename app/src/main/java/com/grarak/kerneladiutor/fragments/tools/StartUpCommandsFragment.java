@@ -41,7 +41,6 @@ public class StartUpCommandsFragment extends RecyclerViewFragment {
         CardViewItem.DCardView mStartupCommandsCard = new CardViewItem.DCardView();
         mStartupCommandsCard.setTitle(getString(R.string.startup_commands));
         mStartupCommandsCard.setDescription(Info.getstartupcommands(getActivity()));
-       // mStartupCommandsCard.setDescription("Test");
 
         addView(mStartupCommandsCard);
 
