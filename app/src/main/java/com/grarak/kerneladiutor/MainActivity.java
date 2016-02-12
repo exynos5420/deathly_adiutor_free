@@ -19,6 +19,7 @@ package com.grarak.kerneladiutor;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -78,6 +79,7 @@ import com.grarak.kerneladiutor.fragments.tools.StartUpCommandsFragment;
 import com.grarak.kerneladiutor.fragments.tools.ProfileFragment;
 import com.grarak.kerneladiutor.fragments.tools.RecoveryFragment;
 import com.grarak.kerneladiutor.fragments.tools.download.DownloadsFragment;
+import com.grarak.kerneladiutor.services.AutoHighBrightnessModeService;
 import com.grarak.kerneladiutor.services.ProfileTileReceiver;
 import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;
@@ -145,6 +147,10 @@ public class MainActivity extends BaseActivity implements Constants {
             askPassword(password);
         else // Use an AsyncTask to initialize everything
             new Task().execute();
+
+        if (!isMyServiceRunning(AutoHighBrightnessModeService.class)) {
+            startService(new Intent(this, AutoHighBrightnessModeService.class));
+        }
     }
 
     @Override
@@ -559,6 +565,16 @@ public class MainActivity extends BaseActivity implements Constants {
             return;
         }
         return;
+    }
+
+    private boolean isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
