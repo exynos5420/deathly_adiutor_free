@@ -16,7 +16,9 @@
 
 package com.grarak.kerneladiutor.fragments.tools;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import com.grarak.kerneladiutor.R;
@@ -57,7 +59,9 @@ public class StartUpCommandsFragment extends RecyclerViewFragment {
             mStartUpCommandsDelete.setOnDCardListener(new CardViewItem.DCardView.OnDCardListener() {
                 @Override
                 public void onClick(CardViewItem.DCardView dCardView) {
-                    deletecommands(getActivity());
+                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                    builder.setMessage("Are you sure you want to delete all Start-up Commands??").setPositiveButton("Yes", dialogClickListener)
+                            .setNegativeButton("No", dialogClickListener).show();
                 }
             });
             addView(mStartUpCommandsDelete);
@@ -95,4 +99,19 @@ public class StartUpCommandsFragment extends RecyclerViewFragment {
         view.invalidate();
         getActivity().getSupportFragmentManager().beginTransaction().detach(this).attach(this).commit();
     }
+    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            switch (which){
+                case DialogInterface.BUTTON_POSITIVE:
+                    //Yes button clicked
+                    deletecommands(getActivity());
+                    break;
+
+                case DialogInterface.BUTTON_NEGATIVE:
+                    //No button clicked
+                    break;
+            }
+        }
+    };
 }
