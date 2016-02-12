@@ -16,11 +16,8 @@
 
 package com.grarak.kerneladiutor.utils.kernel;
 
-import android.content.Context;
-
 import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;
-import com.grarak.kerneladiutor.utils.database.CommandDB;
 
 import java.util.List;
 
@@ -40,19 +37,4 @@ public class Info implements Constants {
     public static String getKernelVersion() {
         return Utils.readFile(PROC_VERSION);
     }
-
-    public static String getstartupcommands(Context context) {
-        String command_desc = "";
-        CommandDB commandDB = new CommandDB(context);
-
-        List<CommandDB.CommandItem> commandItems = commandDB.getAllCommands();
-        for (int i = 0; i < commandItems.size(); i++) {
-            String command = commandItems.get(i).getCommand();
-            if (command_desc != null) command_desc += (i + 1) + ": " + command + "\n";
-            else command_desc = (i + 1) + ": " + command;
-        }
-
-        return command_desc;
-    }
-
 }

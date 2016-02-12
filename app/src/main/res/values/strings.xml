@@ -88,6 +88,8 @@
     <string name="recovery" translatable="false">Recovery</string>
     <string name="initd">Init.d</string>
     <string name="startup_commands">Start-Up Commands</string>
+    <string name="startup_commands_list">Start-Up Commands List:</string>
+    <string name="startup_commands_delete">Tap this card to delete all saved startup settings</string>
     <string name="settings">Settings</string>
     <string name="faq">FAQ</string>
     <string name="about_us">About Us</string>

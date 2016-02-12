@@ -16,18 +16,25 @@
 
 package com.grarak.kerneladiutor.fragments.tools;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import com.grarak.kerneladiutor.R;
+import com.grarak.kerneladiutor.elements.DDivider;
 import com.grarak.kerneladiutor.elements.cards.CardViewItem;
 import com.grarak.kerneladiutor.fragments.RecyclerViewFragment;
-import com.grarak.kerneladiutor.utils.kernel.Info;
+import com.grarak.kerneladiutor.utils.database.CommandDB;
+
+import java.util.List;
 
 
 /**
  * Created by willi on 25.04.15.
  */
 public class StartUpCommandsFragment extends RecyclerViewFragment {
+
+    private CardViewItem.DCardView mStartUpCommandsDelete;
+    private CardViewItem.DCardView[] mStartUpCommands;
 
     @Override
     public boolean showApplyOnBoot() {
@@ -37,12 +44,55 @@ public class StartUpCommandsFragment extends RecyclerViewFragment {
     @Override
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
+        listcommands();
+    }
 
-        CardViewItem.DCardView mStartupCommandsCard = new CardViewItem.DCardView();
-        mStartupCommandsCard.setTitle(getString(R.string.startup_commands));
-        mStartupCommandsCard.setDescription(Info.getstartupcommands(getActivity()));
+    public void listcommands () {
+        CommandDB commandDB = new CommandDB(getActivity());
+        List<CommandDB.CommandItem> commandItems = commandDB.getAllCommands();
 
-        addView(mStartupCommandsCard);
+        if (commandItems.size() > 0) {
+            mStartUpCommandsDelete = new CardViewItem.DCardView();
+            mStartUpCommandsDelete.setTitle(getString(R.string.startup_commands_delete));
+            mStartUpCommandsDelete.setOnDCardListener(new CardViewItem.DCardView.OnDCardListener() {
+                @Override
+                public void onClick(CardViewItem.DCardView dCardView) {
+                    deletecommands(getActivity());
+                }
+            });
+            addView(mStartUpCommandsDelete);
 
+            DDivider mStartUpCommandsListDividerCard = new DDivider();
+            mStartUpCommandsListDividerCard.setText(getString(R.string.startup_commands_list));
+            addView(mStartUpCommandsListDividerCard);
+
+            mStartUpCommands = new CardViewItem.DCardView[commandItems.size()];
+            for (int i = 0; i < commandItems.size(); i++) {
+                String command = commandItems.get(i).getCommand();
+                mStartUpCommands[i] = new CardViewItem.DCardView();
+                mStartUpCommands[i].setDescription(command);
+
+                addView(mStartUpCommands[i]);
+            }
+        }
+        else {
+                mStartUpCommandsDelete = new CardViewItem.DCardView();
+                mStartUpCommandsDelete.setTitle("No startup Commands Found");
+
+                addView(mStartUpCommandsDelete);
+        }
+    }
+
+    public void deletecommands(Context context) {
+        CommandDB commandDB = new CommandDB(context);
+
+        List<CommandDB.CommandItem> commandItems = commandDB.getAllCommands();
+        for (int i = 0; i <= commandItems.size(); i++) {
+                commandDB.delete(0);
+        }
+
+        commandDB.commit();
+        view.invalidate();
+        getActivity().getSupportFragmentManager().beginTransaction().detach(this).attach(this).commit();
     }
 }
