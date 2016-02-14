@@ -172,6 +172,7 @@
     <string name="cpu_msm_limiter_governor_per_core">CPU %d: Governor</string>
     <string name="cpu_governor_tunables_per_core_header">Edit Tunables for each core\'s Governor</string>
     <string name="cpu_governor_tunables_per_core_summary">The various configuration items which are Governor-dependent. Note that if a Governor is selected for multiple cores, it\'s tunables are shared and are not customizable for each core. When they\'re changed for one core below the changes will reflect in the other cores that utilize it.</string>
+    <string name="cpu_governor_tunables_per_core_tunable">Core %d tuneables. Governor:</string>
     <string name="alu_t_boostms">Alu Touch Input Boost</string>
     <string name="alu_t_boostms_summary">Minimum interval a CPU is boosted when input is detected.</string>
     <string name="alu_t_boostfreq">Alu Touch Input Boost Frequency</string>
@@ -267,6 +268,7 @@
     <string name="max_load_counter">Max Load Counter</string>
     <string name="min_time_cpu_online">Min Time CPU Online</string>
     <string name="timer">Timer</string>
+    <string name="msm_mpdecision_hotplug">MSM MPDecision Hotplug</string>
     <string name="bricked_hotplug">Bricked Hotplug</string>
     <string name="mb_hotplug_summary">An in-kernel replacement for Qualcomm\'s MPDecision. Developed by show-p1984.</string>
     <string name="screen_off_single_core">Screen off Single Core</string>
