@@ -373,22 +373,17 @@ public class CPU implements Constants {
         return new ArrayList<>(Arrays.asList(mAvailableGovernors[core]));
     }
 
-    public static boolean isPerCoreControlActive () {
-        if (Utils.existFile(CPU_PER_CORE_CONTROL)) {
-            return Utils.readFile(CPU_PER_CORE_CONTROL).equals("1");
-        }
-        else {
-            return false;
-        }
+    public static boolean isPerCoreControlActive (Context context) {
+        return Utils.getBoolean("MSM_Limiter_Per_Core_Control", false, context);
     }
 
     public static boolean hasPerCoreControl () {
-        return Utils.existFile(CPU_PER_CORE_CONTROL);
+        return hasMSM_Limiter();
     }
 
 
     public static void activatePerCoreControl(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", CPU_PER_CORE_CONTROL, Control.CommandType.GENERIC, context);
+        Utils.saveBoolean("MSM_Limiter_Per_Core_Control", active, context);
     }
 
     public static void setGovernor(String governor, Context context) {

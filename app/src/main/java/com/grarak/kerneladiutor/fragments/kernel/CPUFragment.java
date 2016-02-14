@@ -266,14 +266,14 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
             if (CPU.hasPerCoreControl() && CPU.isMSM_LimiterActive()) {
                 mPerCoreControlCard = new SwitchCardView.DSwitchCard();
                 mPerCoreControlCard.setDescription(getString(R.string.cpu_per_core_control));
-                mPerCoreControlCard.setChecked(CPU.isPerCoreControlActive());
+                mPerCoreControlCard.setChecked(CPU.isPerCoreControlActive(getActivity()));
                 mPerCoreControlCard.setOnDSwitchCardListener(this);
 
                 views.add(mPerCoreControlCard);
 
             }
 
-            if (!CPU.isPerCoreControlActive() && !CPU.isMSM_LimiterActive()) {
+            if (!CPU.isPerCoreControlActive(getActivity()) && !CPU.isMSM_LimiterActive()) {
                 for (int freq : CPU.getFreqs())
                     freqs.add(freq / 1000 + getString(R.string.mhz));
 
@@ -295,7 +295,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
             }
             if (CPU.isMSM_LimiterActive()) {
 
-                if (!CPU.isPerCoreControlActive()){
+                if (!CPU.isPerCoreControlActive(getActivity())){
 
                     if (CPU.hasMSM_LimiterResumeMaxFreq()) {
                         List<String> freqs = new ArrayList<>();
@@ -326,7 +326,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                     }
                 }
 
-                else if (CPU.isPerCoreControlActive()) {
+                else if (CPU.isPerCoreControlActive(getActivity())) {
                     for (int freq : CPU.getFreqs())
                         freqs.add(freq / 1000 + getString(R.string.mhz));
 
@@ -429,7 +429,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
         private void governorInit() {
             views.clear();
 
-            if (!CPU.isPerCoreControlActive() && !CPU.isMSM_LimiterActive()) {
+            if (!CPU.isPerCoreControlActive(getActivity()) && !CPU.isMSM_LimiterActive()) {
 
                 mGovernorCard = new PopupCardView.DPopupCard(CPU.getAvailableGovernors());
                 mGovernorCard.setTitle(getString(R.string.cpu_governor));
@@ -440,7 +440,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
 
             }
             if (CPU.isMSM_LimiterActive()) {
-                if (!CPU.isPerCoreControlActive()) {
+                if (!CPU.isPerCoreControlActive(getActivity())) {
                     mMSM_LimiterGovernorCard = new PopupCardView.DPopupCard(CPU.getAvailableGovernors());
                     mMSM_LimiterGovernorCard.setTitle(getString(R.string.cpu_governor));
                     mMSM_LimiterGovernorCard.setDescription(getString(R.string.cpu_governor_summary));
@@ -450,7 +450,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
 
                 }
 
-                if (CPU.isPerCoreControlActive()) {
+                if (CPU.isPerCoreControlActive(getActivity())) {
 
                     DDivider mMSM_LimiterGovernorPerCoreCard = new DDivider();
                     mMSM_LimiterGovernorPerCoreCard.setText("Select Governor per Core");
@@ -489,7 +489,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 }
             }
 
-            if (!CPU.isPerCoreControlActive()) {
+            if (!CPU.isPerCoreControlActive(getActivity())) {
 
                 mGovernorTunableCard = new CardViewItem.DCardView();
                 mGovernorTunableCard.setTitle(getString(R.string.cpu_governor_tunables));
@@ -498,7 +498,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 views.add(mGovernorTunableCard);
             }
 
-            if (CPU.isPerCoreControlActive()) {
+            if (CPU.isPerCoreControlActive(getActivity())) {
 
                 DDivider mGovernorTunablePerCoreDivider = new DDivider();
                 mGovernorTunablePerCoreDivider.setText(getString(R.string.cpu_governor_tunables_per_core_header));
@@ -1122,10 +1122,10 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
 
         @Override
         public String getName() {
-            if (!CPU.isPerCoreControlActive()) {
+            if (!CPU.isPerCoreControlActive(getActivity())) {
                 return CPU.getCurGovernor(cpuFragment.core, true);
             }
-            if (CPU.isPerCoreControlActive()) {
+            if (CPU.isPerCoreControlActive(getActivity())) {
                 return CPU.getMSMLimiterGoverorPerCore(cpuFragment.core);
             }
             return(null);
@@ -1133,11 +1133,11 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
 
         @Override
         public String getPath() {
-            if (!CPU.isPerCoreControlActive()) {
+            if (!CPU.isPerCoreControlActive(getActivity())) {
                 return getPath(CPU.isBigLITTLE() ? String.format(CPU_GOVERNOR_TUNABLES_CORE, cpuFragment.core) :
                         CPU_GOVERNOR_TUNABLES, CPU.getCurGovernor(cpuFragment.core, true));
             }
-            if (CPU.isPerCoreControlActive()) {
+            if (CPU.isPerCoreControlActive(getActivity())) {
                 return getPath(CPU_GOVERNOR_TUNABLES, CPU.getMSMLimiterGoverorPerCore(cpuFragment.core));
             }
             return(null);
@@ -1158,10 +1158,10 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
 
         @Override
         public String getError(Context context) {
-            if (!CPU.isPerCoreControlActive()) {
+            if (!CPU.isPerCoreControlActive(getActivity())) {
                 return context.getString(R.string.not_tunable, CPU.getCurGovernor(cpuFragment.core, true));
             }
-            if (CPU.isPerCoreControlActive()) {
+            if (CPU.isPerCoreControlActive(getActivity())) {
                 return context.getString(R.string.not_tunable, CPU.getMSMLimiterGoverorPerCore(cpuFragment.core));
             }
 
