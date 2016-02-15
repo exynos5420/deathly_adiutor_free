@@ -425,7 +425,7 @@ public class CPU implements Constants {
         return "";
     }
 
-    public static String getMSMLimiterGoverorPerCore (int core) {
+    public static String getMSMLimiterGovernorPerCore (int core) {
         if (Utils.existFile(String.format(CPU_MSM_LIMITER_SCALING_GOVERNOR_PER_CORE,core))) {
             String value = Utils.readFile(String.format(CPU_MSM_LIMITER_SCALING_GOVERNOR_PER_CORE,core));
             if (value != null) return value;
