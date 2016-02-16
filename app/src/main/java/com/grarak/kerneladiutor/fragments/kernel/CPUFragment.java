@@ -448,7 +448,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 mGovernorTunableCoreCard = new CardViewItem.DCardView[CPU.getCoreCount()];
                 for (int i = 0; i < CPU.getCoreCount(); i++) {
                     mGovernorTunableCoreCard[i] = new CardViewItem.DCardView();
-                    mGovernorTunableCoreCard[i].setTitle(String.format(getString(R.string.cpu_governor_tunables_per_core_tunable), i) + " " + CPU.getMSMLimiterGovernorPerCore(i));
+                    mGovernorTunableCoreCard[i].setTitle(String.format(getString(R.string.cpu_governor_tunables_per_core_tunable), i));
                     mGovernorTunableCoreCard[i].setOnDCardListener(this);
 
                     views.add(mGovernorTunableCoreCard[i]);
