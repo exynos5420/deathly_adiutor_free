@@ -170,7 +170,6 @@
     <string name="cpu_msm_limiter_governor_per_core">CPU %d: Governor</string>
     <string name="cpu_governor_tunables_per_core_header">Edit Tunables for each core\'s Governor</string>
     <string name="cpu_governor_tunables_per_core_summary">The various configuration items which are Governor-dependent. Note that if a Governor is selected for multiple cores, it\'s tunables are shared and are not customizable for each core. When they\'re changed for one core below the changes will reflect in the other cores that utilize it.</string>
-    <string name="cpu_governor_tunables_per_core_tunable">Core %d tuneables</string>
 
     <!-- CPU Voltage -->
     <string name="global_offset">Global Offset</string>
