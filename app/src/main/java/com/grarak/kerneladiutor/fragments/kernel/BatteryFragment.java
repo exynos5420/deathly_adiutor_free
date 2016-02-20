@@ -61,6 +61,8 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
     private SwitchCardView.DSwitchCard mOldPowerSuspendStateCard;
     private SeekBarCardView.DSeekBarCard mNewPowerSuspendStateCard;
 
+    private SwitchCardView.DSwitchCard mStateNotifierStateCard;
+
     @Override
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
@@ -78,6 +80,7 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
         }
         if (Battery.hasArchPower()) archpowerInit();
         if (Battery.hasPowerSuspend()) powersuspendInit();
+        if (Battery.hasStateNotifier()) statenotifierInit();
         cstatesInit();
     }
 
@@ -200,8 +203,18 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
             mNewPowerSuspendStateCard.setOnDSeekBarCardListener(this);
 
             addView(mNewPowerSuspendStateCard);
+        }}
+
+    private void statenotifierInit() {
+            mStateNotifierStateCard = new SwitchCardView.DSwitchCard();
+            mStateNotifierStateCard.setTitle(getString(R.string.state_notifier_mode));
+            mStateNotifierStateCard.setDescription(getString(R.string.state_notifier_mode_summary));
+            mStateNotifierStateCard.setChecked(Battery.isStateNotifierStateActive());
+            mStateNotifierStateCard.setOnDSwitchCardListener(this);
+
+            addView(mStateNotifierStateCard);
         }
-    }
+
 
     private void cstatesInit() {
         List<DAdapter.DView> views = new ArrayList<>();
@@ -294,6 +307,8 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
             Battery.activateC3State(checked, getActivity());
         else if (dSwitchCard == mArchPowerCard)
             Battery.activateArchPower(checked, getActivity());
+        else if (dSwitchCard == mStateNotifierStateCard)
+            Battery.activateStateNotifier(checked, getActivity());
         else if (dSwitchCard == mOldPowerSuspendStateCard)
             if (Battery.getPowerSuspendMode() == 1) {
                 Battery.activateOldPowerSuspend(checked, getActivity());
