@@ -84,6 +84,13 @@ public interface Constants {
 
     String CPU_TOUCH_BOOST = "/sys/module/msm_performance/parameters/touchboost";
 
+    // Alu_Touch_Boost : Added By Eliminater74 //
+    String ALU_T_BOOST = "/sys/module/alu_t_boost/parameters";
+    String ALU_T_BOOST_FREQ = ALU_T_BOOST + "/input_boost_freq";
+    String ALU_T_BOOST_MS = ALU_T_BOOST + "/input_boost_ms";
+    String ALU_T_BOOST_INTERVAL = ALU_T_BOOST + "/min_input_interval";
+    String ALU_T_BOOST_CPUS = ALU_T_BOOST + "/nr_boost_cpus";
+
     String CPU_MSM_LIMITER = "/sys/kernel/msm_limiter";
     String CPU_MSM_LIMITER_ENABLE = "/sys/kernel/msm_limiter/limiter_enabled";
     String CPU_MSM_LIMITER_RESUME_MAX = "/sys/kernel/msm_limiter/resume_max_freq";

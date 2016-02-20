@@ -149,6 +149,11 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
 
         private SwitchCardView.DSwitchCard mCpuTouchBoostCard;
 
+        private SeekBarCardView.DSeekBarCard mAlu_T_BoostMsCard;
+        private SeekBarCardView.DSeekBarCard mAlu_T_BoostMiiCard;
+        private SeekBarCardView.DSeekBarCard mAlu_T_BoostCpusCard;
+        private PopupCardView.DPopupCard mAlu_T_BoostFreqCard;
+
         @Override
         public String getClassName() {
             return CPUFragment.class.getSimpleName();
@@ -190,6 +195,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
             if (CPU.hasMcPowerSaving()) mcPowerSavingInit();
             if (CPU.hasPowerSavingWq()) powerSavingWqInit();
             if (CPU.hasCFSScheduler()) cfsSchedulerInit();
+            if (CPU.hasAlu_T_Boost()) Alu_T_BoostInit();
             if (CPU.hasCpuQuiet()) cpuQuietInit();
             if (CPU.hasCpuBoost()) cpuBoostInit();
             if (CPU.hasCpuTouchBoost()) cpuTouchBoostInit();
@@ -657,6 +663,68 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
             }
         }
 
+        private void Alu_T_BoostInit() {
+
+            if (CPU.hasAlu_T_Boostfreq() && CPU.getFreqs() != null) {
+                List<String> list = new ArrayList<>();
+                list.add(getString(R.string.disabled));
+                for (int freq : CPU.getFreqs())
+                    list.add((freq / 1000) + getString(R.string.mhz));
+
+                mAlu_T_BoostFreqCard = new PopupCardView.DPopupCard(list);
+                mAlu_T_BoostFreqCard.setTitle(getString(R.string.alu_t_boostfreq));
+                mAlu_T_BoostFreqCard.setDescription(getString(R.string.alu_t_boostfreq_summary));
+                mAlu_T_BoostFreqCard.setItem(CPU.getAlutBoostFreq());
+                mAlu_T_BoostFreqCard.setOnDPopupCardListener(this);
+
+                addView(mAlu_T_BoostFreqCard);
+            }
+
+            if (CPU.hasAlu_T_Boostms()) {
+                List<String> list = new ArrayList<>();
+                for (int i = 0; i < 5001; i += 10)
+                    list.add(i + getString(R.string.ms));
+
+                mAlu_T_BoostMsCard = new SeekBarCardView.DSeekBarCard(list);
+                mAlu_T_BoostMsCard.setTitle(getString(R.string.alu_t_boostms));
+                mAlu_T_BoostMsCard.setDescription(getString(R.string.alu_t_boostms_summary));
+                mAlu_T_BoostMsCard.setProgress(CPU.getAlutBoostMs() / 10);
+                mAlu_T_BoostMsCard.setOnDSeekBarCardListener(this);
+
+                addView(mAlu_T_BoostMsCard);
+            }
+
+            if (CPU.hasAlu_T_Boostmii()) {
+                List<String> list = new ArrayList<>();
+                for (int i = 0; i < 1501; i += 10)
+                    list.add(i + getString(R.string.ms));
+
+                mAlu_T_BoostMiiCard = new SeekBarCardView.DSeekBarCard(list);
+                mAlu_T_BoostMiiCard.setTitle(getString(R.string.alu_t_boostmii));
+                mAlu_T_BoostMiiCard.setDescription(getString(R.string.alu_t_boostmii_summary));
+                mAlu_T_BoostMiiCard.setProgress(CPU.getAlutBoostMii() / 10);
+                mAlu_T_BoostMiiCard.setOnDSeekBarCardListener(this);
+
+                addView(mAlu_T_BoostMiiCard);
+            }
+
+            if (CPU.hasAlu_T_Boostcpus()) {
+                List<String> list = new ArrayList<>();
+                for (int i = 0; i < 5; i += 1)
+                    list.add(i + getString(R.string.cores));
+
+                mAlu_T_BoostCpusCard = new SeekBarCardView.DSeekBarCard(list);
+                mAlu_T_BoostCpusCard.setTitle(getString(R.string.alu_t_boostcpus));
+                mAlu_T_BoostCpusCard.setDescription(getString(R.string.alu_t_boostcpus_summary));
+                mAlu_T_BoostCpusCard.setProgress(CPU.getAlutBoostCpus() / 1);
+                mAlu_T_BoostCpusCard.setOnDSeekBarCardListener(this);
+
+                addView(mAlu_T_BoostCpusCard);
+            }
+
+
+        }
+
         private void cpuBoostInit() {
             views.clear();
             if (CPU.hasCpuBoostEnable()) {
@@ -875,6 +943,8 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
             else if (dPopupCard == mGovernorLITTLECard)
                 CPU.setGovernor(Control.CommandType.CPU_LITTLE, CPU.getAvailableGovernors(CPU.getLITTLEcore()).get(position),
                         getActivity());
+            else if (dPopupCard == mAlu_T_BoostFreqCard)
+                CPU.setAlutBoostFreq(CPU.getFreqs().get(position), getActivity());
             else if (dPopupCard == mMcPowerSavingCard)
                 CPU.setMcPowerSaving(position, getActivity());
             else if (dPopupCard == mCFSSchedulerCard)
@@ -936,6 +1006,12 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 CPU.setCpuBoostMs(position * 10, getActivity());
             else if (dSeekBarCard == mCpuBoostInputMsCard)
                 CPU.setCpuBoostInputMs(position * 10, getActivity());
+            else if (dSeekBarCard == mAlu_T_BoostMsCard)
+                CPU.setAlutBoostMs(position * 10, getActivity());
+            else if (dSeekBarCard == mAlu_T_BoostMiiCard)
+                CPU.setAlutBoostMii(position * 10, getActivity());
+            else if (dSeekBarCard == mAlu_T_BoostCpusCard)
+                CPU.setAlutBoostCpus(position, getActivity());
         }
 
         @Override

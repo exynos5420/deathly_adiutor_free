@@ -50,6 +50,8 @@
     <string name="microsec">μs</string>
     <string name="pixel">px</string>
 
+    <string name="cores">cores</string>
+
     <!-- Special signs -->
     <string name="minus" translatable="false">-</string>
     <string name="plus" translatable="false">+</string>
@@ -170,6 +172,15 @@
     <string name="cpu_msm_limiter_governor_per_core">CPU %d: Governor</string>
     <string name="cpu_governor_tunables_per_core_header">Edit Tunables for each core\'s Governor</string>
     <string name="cpu_governor_tunables_per_core_summary">The various configuration items which are Governor-dependent. Note that if a Governor is selected for multiple cores, it\'s tunables are shared and are not customizable for each core. When they\'re changed for one core below the changes will reflect in the other cores that utilize it.</string>
+    <string name="alu_t_boostms">Alu Touch Input Boost</string>
+    <string name="alu_t_boostms_summary">Minimum interval a CPU is boosted when input is detected.</string>
+    <string name="alu_t_boostfreq">Alu Touch Input Boost Frequency</string>
+    <string name="alu_t_boostfreq_summary">This will boost your minimum CPU speed to the selected frequency when you touch the screen or press a button.</string>
+    <string name="alu_t_boostmii">Alu Touch Min Input Interval</string>
+    <string name="alu_t_boostmii_summary">Minimum Input Interval between touches.</string>
+    <string name="alu_t_boostcpus">Alu Touch Maximum CPUs Boosted</string>
+    <string name="alu_t_boostcpus_summary">Try to group tasks into the least cores possible. The higher the value, the more aggressive the grouping.</string>
+
 
     <!-- CPU Voltage -->
     <string name="global_offset">Global Offset</string>
