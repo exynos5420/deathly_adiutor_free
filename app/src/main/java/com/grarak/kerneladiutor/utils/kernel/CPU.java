@@ -53,6 +53,44 @@ public class CPU implements Constants {
 
     private static String CPU_BOOST_ENABLE_FILE;
 
+    public static boolean hasAlu_T_Boost() {
+        return Utils.existFile(ALU_T_BOOST);
+    }
+    public static boolean hasAlu_T_Boostms() {return Utils.existFile(ALU_T_BOOST_MS);}
+    public static boolean hasAlu_T_Boostmii() {return Utils.existFile(ALU_T_BOOST_INTERVAL);}
+    public static boolean hasAlu_T_Boostcpus() {return Utils.existFile(ALU_T_BOOST_CPUS);}
+    public static boolean hasAlu_T_Boostfreq() {return Utils.existFile(ALU_T_BOOST_FREQ);}
+
+    public static int getAlutBoostMs() {
+        return Utils.stringToInt(Utils.readFile(ALU_T_BOOST_MS));
+    }
+    public static int getAlutBoostFreq() {
+        String value = Utils.readFile(ALU_T_BOOST_FREQ);
+        if (value.equals("0")) return 0;
+        return CPU.getFreqs().indexOf(Utils.stringToInt(value)) + 1;
+    }
+    public static int getAlutBoostMii() {
+        return Utils.stringToInt(Utils.readFile(ALU_T_BOOST_INTERVAL));
+    }
+    public static int getAlutBoostCpus() {
+        return Utils.stringToInt(Utils.readFile(ALU_T_BOOST_CPUS));
+    }
+    public static void setAlutBoostFreq(int freq, Context context) {
+        if (ALU_T_BOOST_FREQ != null)
+            Control.runCommand(String.valueOf(freq), ALU_T_BOOST_FREQ, Control.CommandType.GENERIC, context);
+    }
+    public static void setAlutBoostMs(int value, Context context) {
+        Control.runCommand(String.valueOf(value), ALU_T_BOOST_MS, Control.CommandType.GENERIC, context);
+    }
+    public static void setAlutBoostMii(int value, Context context) {
+        Control.runCommand(String.valueOf(value), ALU_T_BOOST_INTERVAL, Control.CommandType.GENERIC, context);
+    }
+    public static void setAlutBoostCpus(int value, Context context) {
+        Control.runCommand(String.valueOf(value), ALU_T_BOOST_CPUS, Control.CommandType.GENERIC, context);
+    }
+
+
+
     public static void activateCpuTouchBoost(boolean active, Context context) {
         Control.runCommand(active ? "1" : "0", CPU_TOUCH_BOOST, Control.CommandType.GENERIC, context);
     }

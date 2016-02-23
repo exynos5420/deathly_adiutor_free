@@ -138,6 +138,23 @@ public class Battery implements Constants {
         return Utils.existFile(POWER_SUSPEND);
     }
 
+
+    public static void activateStateNotifier(boolean active, Context context) {
+        Control.runCommand(active ? "Y" : "N", STATE_NOTIFIER_ENABLED, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean isStateNotifierStateActive() {
+        return Utils.readFile(STATE_NOTIFIER_ENABLED).equals("Y");
+    }
+
+    public static boolean hasStateNotifier()  {
+        return Utils.existFile(STATE_NOTIFIER);
+    }
+
+    public static int getStateNotifierMode() {
+        return Utils.stringToInt(Utils.readFile(STATE_NOTIFIER_ENABLED));
+    }
+
     public static void activateC0State (boolean active, Context context) {
         String path = C0STATE;
         for (int i = 0; i < CPU.getCoreCount(); i++ ) {
