@@ -151,10 +151,6 @@ public class Battery implements Constants {
         return Utils.existFile(STATE_NOTIFIER);
     }
 
-    public static int getStateNotifierMode() {
-        return Utils.stringToInt(Utils.readFile(STATE_NOTIFIER_ENABLED));
-    }
-
     public static void activateC0State (boolean active, Context context) {
         String path = C0STATE;
         for (int i = 0; i < CPU.getCoreCount(); i++ ) {
