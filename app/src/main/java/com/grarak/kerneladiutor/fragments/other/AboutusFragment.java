@@ -31,6 +31,7 @@ public class AboutusFragment extends RecyclerViewFragment {
 
     private final String APP_SOURCE = "https://github.com/Team-Singularity/KernelAdiutor";
     private final String ISSUE_LINK = "https://github.com/Team-Singularity/KernelAdiutor/issues";
+    private final String DONATION_LINK = "https://www.paypal.com/paypalme/JosephSchubert";
 
     @Override
     public boolean showApplyOnBoot() {
@@ -46,6 +47,7 @@ public class AboutusFragment extends RecyclerViewFragment {
         licenseInit();
         appSourceInit();
         featureRequestInit();
+        donateInit();
     }
 
     private void ModififactionInit() {
@@ -100,6 +102,20 @@ public class AboutusFragment extends RecyclerViewFragment {
         });
 
         addView(mFeatureRequestCard);
+    }
+
+    private void donateInit() {
+        CardViewItem.DCardView mDonationCard = new CardViewItem.DCardView();
+        mDonationCard.setTitle(getString(R.string.donate));
+        mDonationCard.setDescription(getString(R.string.donate_summary));
+        mDonationCard.setOnDCardListener(new CardViewItem.DCardView.OnDCardListener() {
+            @Override
+            public void onClick(CardViewItem.DCardView dCardView) {
+                Utils.launchUrl(getActivity(), DONATION_LINK);
+            }
+        });
+
+        addView(mDonationCard);
     }
 
 }

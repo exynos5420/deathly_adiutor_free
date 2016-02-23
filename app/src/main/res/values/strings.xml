@@ -868,6 +868,7 @@
     <string name="open_source_summary">This application is open source. Check it out on my GitHub!</string>
     <string name="feature_request">Feature request</string>
     <string name="feature_request_summary">Do you want more features? Open a new issue on GitHub and submit your idea.</string>
+    <string name="donate_summary">This is a donation link for Yoinx for the modifications. Not to Grarak the original author. This button is the only place for a donation to me, all other donation popups will still go to Grarak</string>
     <string name="google_plus_summary">Join our community.</string>
     <string name="translation">Translation</string>
     <string name="translation_summary">Help me translate this app!</string>
