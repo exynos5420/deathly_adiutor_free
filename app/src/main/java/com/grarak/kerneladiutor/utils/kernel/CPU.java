@@ -257,6 +257,14 @@ public class CPU implements Constants {
         }
     }
 
+    public static boolean hasMSM_Limiter_Version () {
+        return Utils.existFile(CPU_MSM_LIMITER_VERSION);
+    }
+
+    public static String getMSM_Limiter_Version () {
+        return Utils.readFile(CPU_MSM_LIMITER_VERSION).replace(":","");
+    }
+
     public static void setCpuQuietGovernor(String value, Context context) {
         Control.runCommand(value, CPU_QUIET_CURRENT_GOVERNOR, Control.CommandType.GENERIC, context);
     }

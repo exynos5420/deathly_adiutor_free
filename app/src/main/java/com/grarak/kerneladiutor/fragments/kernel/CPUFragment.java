@@ -255,7 +255,8 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
 
             if (CPU.isMSM_LimiterActive()) {
                 DDivider mMSM_LimiterHeaderCard = new DDivider();
-                mMSM_LimiterHeaderCard.setText("MSM_Limiter");
+                if (CPU.hasMSM_Limiter_Version()) mMSM_LimiterHeaderCard.setText("MSM_Limiter: " + CPU.getMSM_Limiter_Version());
+                else mMSM_LimiterHeaderCard.setText("MSM_Limiter");
                 addView(mMSM_LimiterHeaderCard);
             }
 
