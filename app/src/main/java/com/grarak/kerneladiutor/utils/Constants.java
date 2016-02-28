@@ -107,7 +107,7 @@ public interface Constants {
             CPU_AVAILABLE_GOVERNORS, CPU_GOVERNOR_TUNABLES, CPU_GOVERNOR_TUNABLES_CORE, CPU_MC_POWER_SAVING, CPU_WQ_POWER_SAVING,
             CPU_AVAILABLE_CFS_SCHEDULERS, CPU_CURRENT_CFS_SCHEDULER, CPU_QUIET, CPU_BOOST, CPU_TOUCH_BOOST, CPU_MSM_LIMITER_ENABLE,
             CPU_MSM_LIMITER_RESUME_MAX, CPU_MSM_LIMITER_SUSPEND_MIN, CPU_MSM_LIMITER_SUSPEND_MAX, CPU_MSM_LIMITER_SCALING_GOVERNOR,
-            CPU_MSM_LIMITER_SCALING_GOVERNOR_PER_CORE,CPU_MIN_FREQ_PER_CORE, CPU_MAX_FREQ_PER_CORE,  };
+            CPU_MSM_LIMITER_SCALING_GOVERNOR_PER_CORE,CPU_MIN_FREQ_PER_CORE, CPU_MAX_FREQ_PER_CORE, ALU_T_BOOST };
 
     // CPU Voltage
     String CPU_VOLTAGE = "/sys/devices/system/cpu/cpu0/cpufreq/UV_mV_table";
@@ -616,9 +616,9 @@ public interface Constants {
     String WAKE_DT2W_FEATHERY = "/sys/android_touch/dt2w_feather_y";
 
 
-    String[][] WAKE_ARRAY = {DT2W_ARRAY, S2W_ARRY, T2W_ARRAY, WAKE_MISC_ARRAY, SLEEP_MISC_ARRAY,  WAKE_TIMEOUT_ARRAY,
-            {LENIENT, GESTURE_CRTL, CAMERA_GESTURE, POCKET_MODE, POWER_KEY_SUSPEND, WAKE_DT2W_TIMEBETWEENTAPS, WAKE_DT2W_FEATHERX,
-                    WAKE_DT2W_FEATHERY, WAKE_VIB_STRENGTH }};
+    String[][] WAKE_ARRAY = {DT2W_ARRAY, S2W_ARRY, T2W_ARRAY, WAKE_MISC_ARRAY, SLEEP_MISC_ARRAY,  WAKE_TIMEOUT_ARRAY, DT2S_ARRAY,
+            SLEEP_MISC_ARRAY, WAKE_MISC_ARRAY, T2W_ARRAY, {LENIENT, GESTURE_CRTL, CAMERA_GESTURE, POCKET_MODE, POWER_KEY_SUSPEND,
+            WAKE_DT2W_TIMEBETWEENTAPS, WAKE_DT2W_FEATHERX, WAKE_DT2W_FEATHERY, WAKE_VIB_STRENGTH, WAKE_ST2W_TIME, LENIENT }};
 
     // Sound
     String SOUND_CONTROL_ENABLE = "/sys/module/snd_soc_wcd9320/parameters/enable_fs";
@@ -641,7 +641,7 @@ public interface Constants {
     String[] SPEAKER_GAIN_ARRAY = {SPEAKER_GAIN, SPEAKER_BOOST};
 
     String[][] SOUND_ARRAY = {SPEAKER_GAIN_ARRAY, {SOUND_CONTROL_ENABLE, HIGHPERF_MODE_ENABLE, HEADPHONE_GAIN, HANDSET_MICROPONE_GAIN,
-            CAM_MICROPHONE_GAIN, HEADPHONE_POWERAMP_GAIN, MIC_BOOST, VOLUME_BOOST}};
+            CAM_MICROPHONE_GAIN, HEADPHONE_POWERAMP_GAIN, MIC_BOOST, VOLUME_BOOST, WCD_HIGHPERF_MODE_ENABLE, WCD_SPKR_DRV_WRND}};
 
     // Battery
     String FORCE_FAST_CHARGE = "/sys/kernel/fast_charge/force_fast_charge";
@@ -672,7 +672,7 @@ public interface Constants {
     // Arch power
     String ARCH_POWER = "/sys/kernel/sched/arch_power";
 
-    String[] BATTERY_ARRAY = {POWER_SUSPEND_MODE, POWER_SUSPEND_STATE, C0STATE, C1STATE, C2STATE, C3STATE, FORCE_FAST_CHARGE, BLX, CHARGE_RATE, ARCH_POWER};
+    String[] BATTERY_ARRAY = {POWER_SUSPEND_MODE, POWER_SUSPEND_STATE, C0STATE, C1STATE, C2STATE, C3STATE, FORCE_FAST_CHARGE, BLX, CHARGE_RATE, ARCH_POWER, STATE_NOTIFIER};
 
     // I/O
     String IO_INTERNAL_SCHEDULER = "/sys/block/mmcblk0/queue/scheduler";
@@ -736,7 +736,8 @@ public interface Constants {
 
     String[] VM_ARRAY = {ZRAM_BLOCK, ZRAM_DISKSIZE, ZRAM_RESET, VM_DIRTY_RATIO, VM_DIRTY_BACKGROUND_RATIO,
             VM_DIRTY_EXPIRE_CENTISECS, VM_DIRTY_WRITEBACK_CENTISECS, VM_MIN_FREE_KBYTES, VM_OVERCOMMIT_RATIO,
-            VM_SWAPPINESS, VM_VFS_CACHE_PRESSURE, VM_LAPTOP_MODE, VM_EXTRA_FREE_KBYTES};
+            VM_SWAPPINESS, VM_VFS_CACHE_PRESSURE, VM_LAPTOP_MODE, VM_EXTRA_FREE_KBYTES, VM_DYNAMIC_DIRTY_WRITEBACK,
+            VM_DIRTY_WRITEBACK_SUSPEND_CENTISECS,VM_DIRTY_WRITEBACK_ACTIVE_CENTISECS, LMK_MINFREE, LMK_ADAPTIVE };
 
     // Entropy
     String PROC_RANDOM = "/proc/sys/kernel/random";
@@ -746,6 +747,41 @@ public interface Constants {
     String PROC_RANDOM_ENTROPY_WRITE = PROC_RANDOM + "/write_wakeup_threshold";
 
     String[] ENTROPY_ARRAY = {PROC_RANDOM};
+
+    // Wakelocks
+    String[] SMB135X_WAKELOCKS = {
+            "/sys/module/smb135x_charger/parameters/use_wlock",
+            "/sys/module/wakeup/parameters/enable_smb135x_wake_ws"
+    };
+
+    String BLUESLEEP_WAKELOCK = "/sys/module/wakeup/parameters/enable_bluesleep_ws";
+
+    String SENSOR_IND_WAKELOCK = "/sys/module/wakeup/parameters/enable_si_ws";
+    String MSM_HSIC_HOST_WAKELOCK = "/sys/module/wakeup/parameters/enable_msm_hsic_ws";
+
+    String[] WLAN_RX_WAKELOCKS = {
+            "/sys/module/wakeup/parameters/wlan_rx_wake",
+            "/sys/module/wakeup/parameters/enable_wlan_rx_wake_ws"
+    };
+
+    String[] WLAN_CTRL_WAKELOCKS = {
+            "/sys/module/wakeup/parameters/wlan_ctrl_wake",
+            "/sys/module/wakeup/parameters/enable_wlan_ctrl_wake_ws"
+    };
+
+    String[] WLAN_WAKELOCKS = {
+            "/sys/module/wakeup/parameters/wlan_wake",
+            "/sys/module/wakeup/parameters/enable_wlan_wake_ws"
+    };
+
+    String WLAN_RX_WAKELOCK_DIVIDER = "/sys/module/bcmdhd/parameters/wl_divide";
+    String MSM_HSIC_WAKELOCK_DIVIDER = "/sys/module/xhci_hcd/parameters/wl_divide";
+    String BCMDHD_WAKELOCK_DIVIDER = "/sys/module/bcmdhd/parameters/wl_divide";
+
+    String[][] WAKELOCK_ARRAY = {SMB135X_WAKELOCKS, WLAN_RX_WAKELOCKS, WLAN_CTRL_WAKELOCKS, WLAN_WAKELOCKS, {
+            SENSOR_IND_WAKELOCK, MSM_HSIC_HOST_WAKELOCK, WLAN_RX_WAKELOCK_DIVIDER,
+            MSM_HSIC_WAKELOCK_DIVIDER, BCMDHD_WAKELOCK_DIVIDER, BLUESLEEP_WAKELOCK}};
+
 
     // Misc
 
@@ -780,40 +816,6 @@ public interface Constants {
 
     String VIB_LIGHT = "/sys/devices/virtual/timed_output/vibrator/vmax_mv_light";
     String VIB_ENABLE = "/sys/devices/i2c-3/3-0033/vibrator/vib0/vib_enable";
-
-    // Wakelock
-    String[] SMB135X_WAKELOCKS = {
-            "/sys/module/smb135x_charger/parameters/use_wlock",
-            "/sys/module/wakeup/parameters/enable_smb135x_wake_ws"
-    };
-
-    String BLUESLEEP_WAKELOCK = "/sys/module/wakeup/parameters/enable_bluesleep_ws";
-
-    String SENSOR_IND_WAKELOCK = "/sys/module/wakeup/parameters/enable_si_ws";
-    String MSM_HSIC_HOST_WAKELOCK = "/sys/module/wakeup/parameters/enable_msm_hsic_ws";
-
-    String[] WLAN_RX_WAKELOCKS = {
-            "/sys/module/wakeup/parameters/wlan_rx_wake",
-            "/sys/module/wakeup/parameters/enable_wlan_rx_wake_ws"
-    };
-
-    String[] WLAN_CTRL_WAKELOCKS = {
-            "/sys/module/wakeup/parameters/wlan_ctrl_wake",
-            "/sys/module/wakeup/parameters/enable_wlan_ctrl_wake_ws"
-    };
-
-    String[] WLAN_WAKELOCKS = {
-            "/sys/module/wakeup/parameters/wlan_wake",
-            "/sys/module/wakeup/parameters/enable_wlan_wake_ws"
-    };
-
-    String WLAN_RX_WAKELOCK_DIVIDER = "/sys/module/bcmdhd/parameters/wl_divide";
-    String MSM_HSIC_WAKELOCK_DIVIDER = "/sys/module/xhci_hcd/parameters/wl_divide";
-    String BCMDHD_WAKELOCK_DIVIDER = "/sys/module/bcmdhd/parameters/wl_divide";
-
-    String[][] WAKELOCK_ARRAY = {SMB135X_WAKELOCKS, WLAN_RX_WAKELOCKS, WLAN_CTRL_WAKELOCKS, WLAN_WAKELOCKS, {
-            SENSOR_IND_WAKELOCK, MSM_HSIC_HOST_WAKELOCK, WLAN_RX_WAKELOCK_DIVIDER,
-            MSM_HSIC_WAKELOCK_DIVIDER, BCMDHD_WAKELOCK_DIVIDER, BLUESLEEP_WAKELOCK}};
 
     // Logging
     String LOGGER_MODE = "/sys/kernel/logger_mode/logger_mode";
@@ -853,7 +855,7 @@ public interface Constants {
 
     String[][] MISC_ARRAY = {{VIB_LIGHT, VIB_ENABLE, LOGGER_ENABLED, DYNAMIC_FSYNC, GENTLE_FAIR_SLEEPERS, BCL,
             BCL_HOTPLUG, TCP_AVAILABLE_CONGESTIONS, HOSTNAME_KEY, ADB_OVER_WIFI, GETENFORCE, SETENFORCE},
-            VIBRATION_ARRAY, CRC_ARRAY, FSYNC_ARRAY};
+            LOGGER_ARRAY, VIBRATION_ARRAY, CRC_ARRAY, FSYNC_ARRAY};
 
     // Build prop
     String BUILD_PROP = "/system/build.prop";
