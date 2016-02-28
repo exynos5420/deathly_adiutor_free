@@ -157,14 +157,22 @@ public class Control implements Constants {
         runCommand(value, file, command, null, context);
     }
 
-    public static void deletespecificcommand(final Context context, final String path) {
+    public static void deletespecificcommand(final Context context, final String path, final String command) {
         CommandDB commandDB = new CommandDB(context);
 
         List<CommandDB.CommandItem> commandItems = commandDB.getAllCommands();
-        for (int i = 0; i < commandItems.size(); i++) {
-            String p = commandItems.get(i).getPath();
-            if (p != null && p.equals(path)) {
-                commandDB.delete(i);
+        if (path == null && command == null) {
+            for (int i = 0; i < commandItems.size(); i++) {
+                   commandDB.delete(i);
+            }
+        }
+        else {
+            for (int i = 0; i < commandItems.size(); i++) {
+                String p = commandItems.get(i).getPath();
+                String c = commandItems.get(i).getCommand();
+                if (p != null && p.equals(path) || c.equals(command)) {
+                    commandDB.delete(i);
+                }
             }
         }
         commandDB.commit();

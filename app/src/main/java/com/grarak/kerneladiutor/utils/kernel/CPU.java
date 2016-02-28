@@ -248,14 +248,14 @@ public class CPU implements Constants {
         Control.runCommand(active ? "1" : "0", CPU_MSM_LIMITER_ENABLE, Control.CommandType.GENERIC, context);
         if (active) {
             for (int i = 0; i < CPU.getCoreCount(); i++) {
-                Control.deletespecificcommand(context, String.format(CPU_SCALING_GOVERNOR, i));
-                Control.deletespecificcommand(context, String.format(CPU_SCALING_GOVERNOR, i) + "permission644");
-                Control.deletespecificcommand(context, String.format(CPU_SCALING_GOVERNOR, i) + "permission444");
+                Control.deletespecificcommand(context, String.format(CPU_SCALING_GOVERNOR, i), null);
+                Control.deletespecificcommand(context, String.format(CPU_SCALING_GOVERNOR, i) + "permission644", null);
+                Control.deletespecificcommand(context, String.format(CPU_SCALING_GOVERNOR, i) + "permission444", null);
             }
             CPU.setMSMLimiterGovernor(CPU.getCurGovernor(true), context);
         }
         else {
-            Control.deletespecificcommand(context, CPU_MSM_LIMITER_SCALING_GOVERNOR);
+            Control.deletespecificcommand(context, CPU_MSM_LIMITER_SCALING_GOVERNOR, null);
             CPU.setGovernor(CPU.getMSMLimiterGovernor(), context);
         }
     }
@@ -443,14 +443,14 @@ public class CPU implements Constants {
     public static void activatePerCoreControl(boolean active, Context context) {
         Utils.saveBoolean("MSM_Limiter_Per_Core_Control", active, context);
         if (active) {
-            Control.deletespecificcommand(context, CPU_MSM_LIMITER_SCALING_GOVERNOR);
+            Control.deletespecificcommand(context, CPU_MSM_LIMITER_SCALING_GOVERNOR, null);
             for (int i = 0; i < CPU.getCoreCount(); i++) {
                 CPU.setMSMLimiterGovernorPerCore(CPU.getMSMLimiterGovernor(), context, i);
             }
         }
         else {
             for (int i = 0; i < CPU.getCoreCount(); i++) {
-                Control.deletespecificcommand(context, String.format(CPU_MSM_LIMITER_SCALING_GOVERNOR_PER_CORE, i));
+                Control.deletespecificcommand(context, String.format(CPU_MSM_LIMITER_SCALING_GOVERNOR_PER_CORE, i), null);
             }
             CPU.setMSMLimiterGovernor(CPU.getMSMLimiterGovernorPerCore(0), context);
         }
