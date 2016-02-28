@@ -824,6 +824,7 @@ public interface Constants {
 
     // BCL
     String BCL = "/sys//devices/qcom,bcl.39/mode";
+    String BCL_HOTPLUG = "/sys/module/battery_current_limit/parameters/bcl_hotplug_enable";
 
     // CRC
     String[] CRC_ARRAY = {

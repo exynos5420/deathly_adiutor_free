@@ -44,7 +44,7 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
 
     private SeekBarCardView.DSeekBarCard mVibrationCard;
 
-    private SwitchCardView.DSwitchCard mSELinuxCard, mLoggerEnableCard, mBclCard , mCrcCard, mFsyncCard, mDynamicFsyncCard;
+    private SwitchCardView.DSwitchCard mSELinuxCard, mLoggerEnableCard, mBclCard, mBclHotplugCard, mCrcCard, mFsyncCard, mDynamicFsyncCard;
 
     private SwitchCardView.DSwitchCard mGentleFairSleepersCard;
 
@@ -62,6 +62,7 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
         if (Misc.hasVibration()) vibrationInit();
         if (Misc.hasLoggerEnable()) loggerInit();
         if (Misc.hasBcl()) bclInit();
+        if (Misc.hasBclHotplug()) bclHotplugInit();
         if (Misc.hasCrc()) crcInit();
         fsyncInit();
         if (Misc.hasGentleFairSleepers()) gentlefairsleepersInit();
@@ -113,6 +114,16 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
  
          addView(mBclCard);
      }
+
+    private void bclHotplugInit() {
+        mBclHotplugCard = new SwitchCardView.DSwitchCard();
+        mBclHotplugCard.setTitle(getString(R.string.bcl_hotplug));
+        mBclHotplugCard.setDescription(getString(R.string.bcl_hotplug_summary));
+        mBclHotplugCard.setChecked(Misc.isBclHotplugActive());
+        mBclHotplugCard.setOnDSwitchCardListener(this);
+
+        addView(mBclHotplugCard);
+    }
 
     private void crcInit() {
         mCrcCard = new SwitchCardView.DSwitchCard();
@@ -244,6 +255,8 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
             Misc.activateLogger(checked, getActivity());
         else if (dSwitchCard == mBclCard)
             Misc.activateBcl(checked, getActivity());
+        else if (dSwitchCard == mBclHotplugCard)
+            Misc.activateBclHotplug(checked, getActivity());
         else if (dSwitchCard == mCrcCard)
             Misc.activateCrc(checked, getActivity());
         else if (dSwitchCard == mFsyncCard)
