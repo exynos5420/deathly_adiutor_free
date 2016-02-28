@@ -156,4 +156,17 @@ public class Control implements Constants {
         runCommand(value, file, command, null, context);
     }
 
+    public static void deletespecificcommand(final Context context, final String path) {
+        CommandDB commandDB = new CommandDB(context);
+
+        List<CommandDB.CommandItem> commandItems = commandDB.getAllCommands();
+        for (int i = 0; i < commandItems.size(); i++) {
+            String p = commandItems.get(i).getPath();
+            if (p != null && p.equals(path)) {
+                commandDB.delete(i);
+            }
+        }
+        commandDB.commit();
+    }
+
 }
