@@ -249,6 +249,8 @@ public class CPU implements Constants {
         if (active) {
             for (int i = 0; i < CPU.getCoreCount(); i++) {
                 Control.deletespecificcommand(context, String.format(CPU_SCALING_GOVERNOR, i));
+                Control.deletespecificcommand(context, String.format(CPU_SCALING_GOVERNOR, i) + "permission644");
+                Control.deletespecificcommand(context, String.format(CPU_SCALING_GOVERNOR, i) + "permission444");
             }
             CPU.setMSMLimiterGovernor(CPU.getCurGovernor(true), context);
         }
