@@ -245,7 +245,6 @@ public class CPU implements Constants {
     }
 
     public static void activateMSM_Limiter(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", CPU_MSM_LIMITER_ENABLE, Control.CommandType.GENERIC, context);
         if (active) {
             for (int i = 0; i < CPU.getCoreCount(); i++) {
                 Control.deletespecificcommand(context, String.format(CPU_SCALING_GOVERNOR, i), null);
@@ -258,6 +257,7 @@ public class CPU implements Constants {
             Control.deletespecificcommand(context, CPU_MSM_LIMITER_SCALING_GOVERNOR, null);
             CPU.setGovernor(CPU.getMSMLimiterGovernor(), context);
         }
+        Control.runCommand(active ? "1" : "0", CPU_MSM_LIMITER_ENABLE, Control.CommandType.GENERIC, context);
     }
 
     public static boolean isMSM_LimiterActive() {
