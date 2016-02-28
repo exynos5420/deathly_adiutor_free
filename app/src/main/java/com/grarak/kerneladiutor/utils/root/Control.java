@@ -44,8 +44,9 @@ public class Control implements Constants {
         List<CommandDB.CommandItem> commandItems = commandDB.getAllCommands();
         for (int i = 0; i < commandItems.size(); i++) {
             String p = commandItems.get(i).getPath();
-            if (p != null && p.equals(path))
+            if (p != null && p.equals(path)) {
                 commandDB.delete(i);
+            }
         }
 
         commandDB.putCommand(path, command);
