@@ -823,7 +823,7 @@ public interface Constants {
     String[] LOGGER_ARRAY = {LOGGER_MODE, LOGGER_ENABLED, LOGGER_LOG_ENABLED};
 
     // BCL
-    String BCL = "/sys/module/battery_current_limit/parameters/bcl_user_enable";
+    String BCL = "/sys//devices/qcom,bcl.39/mode";
 
     // CRC
     String[] CRC_ARRAY = {

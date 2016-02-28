@@ -140,11 +140,11 @@ public class Misc implements Constants {
         return false;
     }
     public static void activateBcl(boolean active, Context context) {
-        Control.runCommand(active ? "Y" : "N", BCL, Control.CommandType.GENERIC, context);
+        Control.runCommand(active ? "enabled" : "disabled", BCL, Control.CommandType.GENERIC, context);
     }
 
     public static boolean isBclActive() {
-        return Utils.readFile(BCL).equals("Y");
+        return Utils.readFile(BCL).equals("enabled");
     }
 
     public static boolean hasBcl() {
