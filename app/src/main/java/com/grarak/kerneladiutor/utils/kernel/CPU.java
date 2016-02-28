@@ -246,6 +246,16 @@ public class CPU implements Constants {
 
     public static void activateMSM_Limiter(boolean active, Context context) {
         Control.runCommand(active ? "1" : "0", CPU_MSM_LIMITER_ENABLE, Control.CommandType.GENERIC, context);
+        if (active) {
+            for (int i = 0; i < CPU.getCoreCount(); i++) {
+                Control.deletespecificcommand(context, String.format(CPU_SCALING_GOVERNOR, i));
+            }
+            CPU.setMSMLimiterGovernor(CPU.getCurGovernor(true), context);
+        }
+        else {
+            Control.deletespecificcommand(context, CPU_MSM_LIMITER_SCALING_GOVERNOR);
+            CPU.setGovernor(CPU.getMSMLimiterGovernor(), context);
+        }
     }
 
     public static boolean isMSM_LimiterActive() {
@@ -430,6 +440,18 @@ public class CPU implements Constants {
 
     public static void activatePerCoreControl(boolean active, Context context) {
         Utils.saveBoolean("MSM_Limiter_Per_Core_Control", active, context);
+        if (active) {
+            Control.deletespecificcommand(context, CPU_MSM_LIMITER_SCALING_GOVERNOR);
+            for (int i = 0; i < CPU.getCoreCount(); i++) {
+                CPU.setMSMLimiterGovernorPerCore(CPU.getMSMLimiterGovernor(), context, i);
+            }
+        }
+        else {
+            for (int i = 0; i < CPU.getCoreCount(); i++) {
+                Control.deletespecificcommand(context, String.format(CPU_MSM_LIMITER_SCALING_GOVERNOR_PER_CORE, i));
+            }
+            CPU.setMSMLimiterGovernor(CPU.getMSMLimiterGovernorPerCore(0), context);
+        }
     }
 
     public static void setGovernor(String governor, Context context) {
