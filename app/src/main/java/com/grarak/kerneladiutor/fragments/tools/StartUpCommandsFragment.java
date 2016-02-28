@@ -26,6 +26,7 @@ import com.grarak.kerneladiutor.elements.DDivider;
 import com.grarak.kerneladiutor.elements.cards.CardViewItem;
 import com.grarak.kerneladiutor.fragments.RecyclerViewFragment;
 import com.grarak.kerneladiutor.utils.database.CommandDB;
+import com.grarak.kerneladiutor.utils.root.Control;
 
 import java.util.List;
 
@@ -33,7 +34,7 @@ import java.util.List;
 /**
  * Created by willi on 25.04.15.
  */
-public class StartUpCommandsFragment extends RecyclerViewFragment {
+public class StartUpCommandsFragment extends RecyclerViewFragment implements CardViewItem.DCardView.OnDCardListener {
 
     private CardViewItem.DCardView mStartUpCommandsDelete;
     private CardViewItem.DCardView[] mStartUpCommands;
@@ -56,25 +57,22 @@ public class StartUpCommandsFragment extends RecyclerViewFragment {
         if (commandItems.size() > 0) {
             mStartUpCommandsDelete = new CardViewItem.DCardView();
             mStartUpCommandsDelete.setTitle(getString(R.string.startup_commands_delete));
-            mStartUpCommandsDelete.setOnDCardListener(new CardViewItem.DCardView.OnDCardListener() {
-                @Override
-                public void onClick(CardViewItem.DCardView dCardView) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                    builder.setMessage("Are you sure you want to delete all Start-up Commands??").setPositiveButton("Yes", dialogClickListener)
-                            .setNegativeButton("No", dialogClickListener).show();
-                }
-            });
+            mStartUpCommandsDelete.setOnDCardListener(this);
+
             addView(mStartUpCommandsDelete);
 
             DDivider mStartUpCommandsListDividerCard = new DDivider();
             mStartUpCommandsListDividerCard.setText(getString(R.string.startup_commands_list));
+            mStartUpCommandsListDividerCard.setDescription(getString(R.string.startup_commands_list_delete));
             addView(mStartUpCommandsListDividerCard);
 
             mStartUpCommands = new CardViewItem.DCardView[commandItems.size()];
             for (int i = 0; i < commandItems.size(); i++) {
                 String command = commandItems.get(i).getCommand();
+                final String path = commandItems.get(i).getPath();
                 mStartUpCommands[i] = new CardViewItem.DCardView();
                 mStartUpCommands[i].setDescription(command);
+                mStartUpCommands[i].setOnDCardListener(this);
 
                 addView(mStartUpCommands[i]);
             }
@@ -87,15 +85,7 @@ public class StartUpCommandsFragment extends RecyclerViewFragment {
         }
     }
 
-    public void deletecommands(Context context) {
-        CommandDB commandDB = new CommandDB(context);
-
-        List<CommandDB.CommandItem> commandItems = commandDB.getAllCommands();
-        for (int i = 0; i <= commandItems.size(); i++) {
-                commandDB.delete(0);
-        }
-
-        commandDB.commit();
+    public void forcerefresh(Context context) {
         view.invalidate();
         getActivity().getSupportFragmentManager().beginTransaction().detach(this).attach(this).commit();
     }
@@ -105,7 +95,8 @@ public class StartUpCommandsFragment extends RecyclerViewFragment {
             switch (which){
                 case DialogInterface.BUTTON_POSITIVE:
                     //Yes button clicked
-                    deletecommands(getActivity());
+                    Control.deletespecificcommand(getActivity(), null, null);
+                    forcerefresh(getActivity());
                     break;
 
                 case DialogInterface.BUTTON_NEGATIVE:
@@ -114,4 +105,20 @@ public class StartUpCommandsFragment extends RecyclerViewFragment {
             }
         }
     };
+
+    public void onClick(CardViewItem.DCardView dCardView) {
+
+        if (dCardView == mStartUpCommandsDelete) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+            builder.setMessage("Are you sure you want to delete all Start-up Commands??").setPositiveButton("Yes", dialogClickListener)
+                    .setNegativeButton("No", dialogClickListener).show();
+        }
+        for (int i = 0; i < mStartUpCommands.length; i++)
+        if (dCardView == mStartUpCommands[i]) {
+            final StringBuilder command = new StringBuilder(mStartUpCommands[i].getDescription().length());
+            command.append(mStartUpCommands[i].getDescription());
+            Control.deletespecificcommand(getActivity(), null, command.toString());
+            forcerefresh(getActivity());
+        }
+    }
 }

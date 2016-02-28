@@ -162,8 +162,8 @@ public class Control implements Constants {
 
         List<CommandDB.CommandItem> commandItems = commandDB.getAllCommands();
         if (path == null && command == null) {
-            for (int i = 0; i < commandItems.size(); i++) {
-                   commandDB.delete(i);
+           for (int i = 0; i <= commandItems.size(); i++) {
+              commandDB.delete(0);
             }
         }
         else {
