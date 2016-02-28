@@ -651,7 +651,28 @@ public interface Constants {
     String CHARGE_RATE_ENABLE = CHARGE_RATE + "/enabled";
     String CUSTOM_CHARGING_RATE = CHARGE_RATE + "/custom_current";
 
-    String[] BATTERY_ARRAY = {FORCE_FAST_CHARGE, BLX, CHARGE_RATE};
+    // C-States
+    String C0STATE = "/sys/module/msm_pm/modes/cpu0/wfi/idle_enabled";
+    String C1STATE = "/sys/module/msm_pm/modes/cpu0/retention/idle_enabled";
+    String C2STATE = "/sys/module/msm_pm/modes/cpu0/standalone_power_collapse/idle_enabled";
+    String C3STATE = "/sys/module/msm_pm/modes/cpu0/power_collapse/idle_enabled";
+
+    // State Notifier added By Eliminater74
+    String STATE_NOTIFIER = "/sys/module/state_notifier/parameters";
+    String STATE_NOTIFIER_ENABLED = STATE_NOTIFIER + "/enabled";
+    String STATE_NOTFIER_STATE_SUSPEND = STATE_NOTIFIER + "/state";
+    String STATE_NOTFIER_DIFER_TIME = STATE_NOTIFIER + "/suspend_defer_time";
+
+    // Power suspend
+    String POWER_SUSPEND = "/sys/kernel/power_suspend";
+    String POWER_SUSPEND_MODE = POWER_SUSPEND + "/power_suspend_mode";
+    String POWER_SUSPEND_STATE = POWER_SUSPEND + "/power_suspend_state";
+    String POWER_SUSPEND_VERSION = POWER_SUSPEND + "/power_suspend_version";
+
+    // Arch power
+    String ARCH_POWER = "/sys/kernel/sched/arch_power";
+
+    String[] BATTERY_ARRAY = {POWER_SUSPEND_MODE, POWER_SUSPEND_STATE, C0STATE, C1STATE, C2STATE, C3STATE, FORCE_FAST_CHARGE, BLX, CHARGE_RATE, ARCH_POWER};
 
     // I/O
     String IO_INTERNAL_SCHEDULER = "/sys/block/mmcblk0/queue/scheduler";
@@ -820,26 +841,6 @@ public interface Constants {
     // Sched Features
     // Gentle fair sleepers
     String GENTLE_FAIR_SLEEPERS = "/sys/kernel/sched/gentle_fair_sleepers";
-    // Arch power
-    String ARCH_POWER = "/sys/kernel/sched/arch_power";
-
-    // State Notifier added By Eliminater74
-    String STATE_NOTIFIER = "/sys/module/state_notifier/parameters";
-    String STATE_NOTIFIER_ENABLED = STATE_NOTIFIER + "/enabled";
-    String STATE_NOTFIER_STATE_SUSPEND = STATE_NOTIFIER + "/state";
-    String STATE_NOTFIER_DIFER_TIME = STATE_NOTIFIER + "/suspend_defer_time";
-
-    // Power suspend
-    String POWER_SUSPEND = "/sys/kernel/power_suspend";
-    String POWER_SUSPEND_MODE = POWER_SUSPEND + "/power_suspend_mode";
-    String POWER_SUSPEND_STATE = POWER_SUSPEND + "/power_suspend_state";
-    String POWER_SUSPEND_VERSION = POWER_SUSPEND + "/power_suspend_version";
-
-    // C-States
-    String C0STATE = "/sys/module/msm_pm/modes/cpu0/wfi/idle_enabled";
-    String C1STATE = "/sys/module/msm_pm/modes/cpu0/retention/idle_enabled";
-    String C2STATE = "/sys/module/msm_pm/modes/cpu0/standalone_power_collapse/idle_enabled";
-    String C3STATE = "/sys/module/msm_pm/modes/cpu0/power_collapse/idle_enabled";
 
     // Network
     String TCP_AVAILABLE_CONGESTIONS = "/proc/sys/net/ipv4/tcp_available_congestion_control";
@@ -849,8 +850,8 @@ public interface Constants {
     String GETENFORCE = "getenforce";
     String SETENFORCE = "setenforce";
 
-    String[][] MISC_ARRAY = {{VIB_LIGHT, VIB_ENABLE, LOGGER_ENABLED, DYNAMIC_FSYNC, GENTLE_FAIR_SLEEPERS, ARCH_POWER, BCL,
-			POWER_SUSPEND_MODE, POWER_SUSPEND_STATE, TCP_AVAILABLE_CONGESTIONS, HOSTNAME_KEY, ADB_OVER_WIFI, GETENFORCE, SETENFORCE},
+    String[][] MISC_ARRAY = {{VIB_LIGHT, VIB_ENABLE, LOGGER_ENABLED, DYNAMIC_FSYNC, GENTLE_FAIR_SLEEPERS, BCL,
+			TCP_AVAILABLE_CONGESTIONS, HOSTNAME_KEY, ADB_OVER_WIFI, GETENFORCE, SETENFORCE},
             VIBRATION_ARRAY, CRC_ARRAY, FSYNC_ARRAY};
 
     // Build prop
