@@ -821,8 +821,9 @@ public interface Constants {
     String LOGGER_MODE = "/sys/kernel/logger_mode/logger_mode";
     String LOGGER_ENABLED = "/sys/module/logger/parameters/enabled";
     String LOGGER_LOG_ENABLED = "/sys/module/logger/parameters/log_enabled";
+    String LOGD = "/system/bin/logd";
 
-    String[] LOGGER_ARRAY = {LOGGER_MODE, LOGGER_ENABLED, LOGGER_LOG_ENABLED};
+    String[] LOGGER_ARRAY = {LOGGER_MODE, LOGGER_ENABLED, LOGGER_LOG_ENABLED, LOGD};
 
     // BCL
     String BCL = "/sys//devices/qcom,bcl.39/mode";
