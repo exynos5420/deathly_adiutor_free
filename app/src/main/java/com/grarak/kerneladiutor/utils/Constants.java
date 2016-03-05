@@ -39,6 +39,8 @@ public interface Constants {
     String PROC_VERSION = "/proc/version";
     String PROC_CPUINFO = "/proc/cpuinfo";
     String PROC_MEMINFO = "/proc/meminfo";
+    String PVS_LEVEL = "/sys/module/clock_krait_8974/parameters/pvs_level";
+    String SPEED_LEVEL = "/sys/module/clock_krait_8974/parameters/speed_level";
 
     // CPU
     String CPU_CUR_FREQ = "/sys/devices/system/cpu/cpu%d/cpufreq/scaling_cur_freq";
