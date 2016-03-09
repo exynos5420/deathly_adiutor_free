@@ -36,6 +36,8 @@ public class Thermal implements Constants {
 
     private static String TEMP_LIMIT_FILE;
 
+    private static String TEMP_ENABLE_FORMAT;
+
     public static void setShutdownTemp(int value, Context context) {
         Control.runCommand(String.valueOf(value), CONF_SHUTDOWN_TEMP, Control.CommandType.GENERIC, context);
     }
@@ -242,11 +244,24 @@ public class Thermal implements Constants {
     }
 
     public static void activateTempThrottle(boolean active, Context context) {
-        Control.runCommand(active ? "Y" : "N", MSM_THERMAL_TEMP_THROTTLE, Control.CommandType.GENERIC, context);
+        if (TEMP_ENABLE_FORMAT.equals("string")) {
+            Control.runCommand(active ? "Y" : "N", MSM_THERMAL_TEMP_THROTTLE, Control.CommandType.GENERIC, context);
+        }
+        if (TEMP_ENABLE_FORMAT.equals("int")) {
+            Control.runCommand(active ? "1" : "0", MSM_THERMAL_TEMP_THROTTLE, Control.CommandType.GENERIC, context);
+        }
     }
 
     public static boolean isTempThrottleActive() {
-        return Utils.readFile(MSM_THERMAL_TEMP_THROTTLE).equals("Y");
+        if (Utils.readFile(MSM_THERMAL_TEMP_THROTTLE).equals("Y")) {
+            TEMP_ENABLE_FORMAT = "string";
+            return true;
+        }
+        if (Utils.readFile(MSM_THERMAL_TEMP_THROTTLE).equals("1")) {
+            TEMP_ENABLE_FORMAT = "int";
+            return true;
+        }
+        return false;
     }
 
     public static boolean hasTempThrottleEnable() {
