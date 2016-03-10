@@ -29,8 +29,8 @@ import com.grarak.kerneladiutor.utils.Utils;
  */
 public class AboutusFragment extends RecyclerViewFragment {
 
-    private final String APP_SOURCE = "https://github.com/Team-Singularity/KernelAdiutor";
-    private final String ISSUE_LINK = "https://github.com/Team-Singularity/KernelAdiutor/issues";
+    private final String APP_SOURCE = "https://github.com/yoinx/kernel_adiutor/";
+    private final String ISSUE_LINK = "https://github.com/yoinx/kernel_adiutor/issues";
     private final String DONATION_LINK = "https://www.paypal.com/paypalme/JosephSchubert";
 
     @Override
