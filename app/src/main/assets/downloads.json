@@ -185,16 +185,6 @@
       "Motorola",
       "MOTOROLA",
       "motorola"
-    ],
-    "device": [
-      "Nexus 6",
-      "NEXUS 6",
-      "Shamu",
-      "SHAMU",
-      "shamu",
-      "N6",
-      "n6"
-    ],
-    "link": "https://raw.githubusercontent.com/Team-Singularity/KernelAudiutor_Download_Json/master/shamu.json"
+    ]
   }  
 ]
