@@ -123,14 +123,14 @@
         <!-- CM SDK -->
         <receiver android:name=".services.ProfileTileReceiver">
             <intent-filter>
-                <action android:name="com.singularity.kerneladiutor.action.ACTION_TOGGLE_STATE" />
+                <action android:name="com.kerneladiutor.mod.action.ACTION_TOGGLE_STATE" />
             </intent-filter>
         </receiver>
 
         <receiver android:name=".services.HighBrightnessModeReceiver">
             <intent-filter>
-                <action android:name="com.singularity.kerneladiutor.action.HBM_ON" />
-                <action android:name="com.singularity.kerneladiutor.action.HBM_OFF" />
+                <action android:name="com.kerneladiutor.mod.action.HBM_ON" />
+                <action android:name="com.kerneladiutor.mod.action.HBM_OFF" />
             </intent-filter>
         </receiver>
 

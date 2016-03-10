@@ -4,7 +4,7 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
     defaultConfig {
-        applicationId 'com.singularity.kerneladiutor'
+        applicationId 'com.kerneladiutor.mod'
         minSdkVersion 19
         targetSdkVersion 23
         versionCode 120
