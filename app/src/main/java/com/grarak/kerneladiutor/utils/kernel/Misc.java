@@ -47,6 +47,8 @@ public class Misc implements Constants {
 
     private static String FSYNC_FILE;
 
+    private static String BCL_FILE;
+
     public static void setHostname(String value, Context context) {
         Control.setProp(HOSTNAME_KEY, value, context);
     }
@@ -147,15 +149,21 @@ public class Misc implements Constants {
         if (!active && Misc.hasBclHotplug() && Misc.isBclHotplugActive()) {
             Misc.activateBclHotplug(false, context);
         }
-        Control.runCommand(active ? "enabled" : "disabled", BCL, Control.CommandType.GENERIC, context);
+        Control.runCommand(active ? "enabled" : "disabled", BCL_FILE, Control.CommandType.GENERIC, context);
     }
 
     public static boolean isBclActive() {
-        return Utils.readFile(BCL).equals("enabled");
+        return Utils.readFile(BCL_FILE).equals("enabled");
     }
 
     public static boolean hasBcl() {
-        return Utils.existFile(BCL);
+        for (int i = 0; i < BCL_ARRAY.length;i++) {
+            if (Utils.existFile(BCL_ARRAY[i])) {
+                BCL_FILE = BCL_ARRAY[i];
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void activateBclHotplug(boolean active, Context context) {
