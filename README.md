@@ -1,6 +1,6 @@
 # KernelAdiutor
 
-[![Build Status](https://travis-ci.org/Team-Singularity/KernelAdiutor.svg?branch=master)](https://travis-ci.org/Team-Singularity/KernelAdiutor)
+[![Build Status](https://travis-ci.org/yoinx/kernel_adiutor.svg?branch=master)](https://travis-ci.org/yoinx/kernel_adiutor)
 
 ![Screenshot](https://raw.githubusercontent.com/Grarak/KernelAdiutor/master/screenshots/screenshot.png)
 
