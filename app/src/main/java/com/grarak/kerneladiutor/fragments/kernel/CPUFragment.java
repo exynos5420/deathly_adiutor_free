@@ -713,7 +713,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 views.add(mCpuInputBoostEnableCard);
             }
 
-            if (CPU.isInputBoostActive()) {
+            if (CPU.isInputBoostActive() || !CPU.hasCpuInputBoostEnable()) {
 
                 if (CPU.hasCpuBoostInputMs()) {
                     List<String> list = new ArrayList<>();
