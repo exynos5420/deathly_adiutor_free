@@ -37,9 +37,16 @@ public class Downloads {
 
     public Downloads(Context context) {
         try {
-            String json = Utils.existFile(context.getFilesDir() + "/downloads.json") ?
-                    Tools.readFile(context.getFilesDir() + "/downloads.json", false) :
-                    Utils.readAssetFile(context, "downloads.json");
+            String json;
+            if (Utils.existFile("/res/kernel_adiutor_mod/downloads.json")) {
+                json = Tools.readFile("/res/kernel_adiutor_mod/downloads.json", false);
+            }
+            else if (Utils.existFile(context.getFilesDir() + "/downloads.json")) {
+                json = Tools.readFile(context.getFilesDir() + "/downloads.json", false);
+            }
+            else {
+                json = Utils.readAssetFile(context, "downloads.json");
+            }
             JSONArray devices = new JSONArray(json);
             for (int i = 0; i < devices.length(); i++) {
                 JSONObject device = devices.getJSONObject(i);
