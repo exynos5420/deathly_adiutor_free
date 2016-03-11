@@ -247,24 +247,27 @@ public class Thermal implements Constants {
         if (TEMP_ENABLE_FORMAT.equals("string")) {
             Control.runCommand(active ? "Y" : "N", MSM_THERMAL_TEMP_THROTTLE, Control.CommandType.GENERIC, context);
         }
-        if (TEMP_ENABLE_FORMAT.equals("int")) {
+        else if (TEMP_ENABLE_FORMAT.equals("int")) {
             Control.runCommand(active ? "1" : "0", MSM_THERMAL_TEMP_THROTTLE, Control.CommandType.GENERIC, context);
         }
     }
 
     public static boolean isTempThrottleActive() {
-        if (Utils.readFile(MSM_THERMAL_TEMP_THROTTLE).equals("Y")) {
-            TEMP_ENABLE_FORMAT = "string";
-            return true;
-        }
-        if (Utils.readFile(MSM_THERMAL_TEMP_THROTTLE).equals("1")) {
-            TEMP_ENABLE_FORMAT = "int";
+        String temp = Utils.readFile(MSM_THERMAL_TEMP_THROTTLE);
+        if (temp.equals("Y") || temp.equals("1")) {
             return true;
         }
         return false;
     }
 
     public static boolean hasTempThrottleEnable() {
+        String temp = Utils.readFile(MSM_THERMAL_TEMP_THROTTLE);
+        if (temp.equals("Y") || temp.equals("N")) {
+            TEMP_ENABLE_FORMAT = "string";
+        }
+        else if (temp.equals("1") || temp.equals("0")) {
+            TEMP_ENABLE_FORMAT = "int";
+        }
         return Utils.existFile(MSM_THERMAL_TEMP_THROTTLE) && !Utils.existFile("/sys/module/msm_thermal/parameters/core_limit_temp_degC");
     }
 
