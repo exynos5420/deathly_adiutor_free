@@ -112,7 +112,16 @@ public interface Constants {
             CPU_MSM_LIMITER_RESUME_MAX, CPU_MSM_LIMITER_SUSPEND_MIN, CPU_MSM_LIMITER_SUSPEND_MAX, CPU_MSM_LIMITER_SCALING_GOVERNOR,
             CPU_MSM_LIMITER_SCALING_GOVERNOR_PER_CORE,CPU_MIN_FREQ_PER_CORE, CPU_MAX_FREQ_PER_CORE, ALU_T_BOOST };
 
-    // CPU Voltage
+  //Core Control
+    String MINBIG = "/sys/devices/system/cpu/cpu4/core_ctl/min_cpus";
+    String MINLITTLE = "/sys/devices/system/cpu/cpu0/core_ctl/min_cpus";
+
+    String MAXBIG = "/sys/devices/system/cpu/cpu4/core_ctl/max_cpus";
+    String MAXLITTLE = "/sys/devices/system/cpu/cpu0/core_ctl/max_cpus";
+
+    String[] CORECONTROL_ARRAY = {MINBIG, MINLITTLE, MAXBIG, MAXLITTLE};
+
+  // CPU Voltage
     String CPU_VOLTAGE = "/sys/devices/system/cpu/cpu0/cpufreq/UV_mV_table";
     String CPU_VDD_VOLTAGE = "/sys/devices/system/cpu/cpu0/cpufreq/vdd_levels";
     String CPU_FAUX_VOLTAGE = "/sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels";
