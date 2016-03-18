@@ -228,8 +228,13 @@ public class Screen implements Constants {
     }
 
     public static GammaProfiles.DsiPanelProfiles getDsiPanelProfiles(Context context) {
-        if (GAMMA_PROFILES == null)
-            GAMMA_PROFILES = new GammaProfiles(Utils.readAssetFile(context, "gamma_profiles.json"));
+        if (GAMMA_PROFILES == null) {
+            if (Utils.existFile(context.getFilesDir() + "/gamma_profiles.json")) {
+                GAMMA_PROFILES = new GammaProfiles(Utils.readFile(context.getFilesDir() + "/gamma_profiles.json"));
+            } else {
+                GAMMA_PROFILES = new GammaProfiles(Utils.readAssetFile(context, "gamma_profiles.json"));
+            }
+        }
         return GAMMA_PROFILES.getDsiPanelProfiles();
     }
 
@@ -347,8 +352,13 @@ public class Screen implements Constants {
     }
 
     public static GammaProfiles.GammaControlProfiles getGammaControlProfiles(Context context) {
-        if (GAMMA_PROFILES == null)
-            GAMMA_PROFILES = new GammaProfiles(Utils.readAssetFile(context, "gamma_profiles.json"));
+        if (GAMMA_PROFILES == null) {
+            if (Utils.existFile(context.getFilesDir() + "/gamma_profiles.json")) {
+                GAMMA_PROFILES = new GammaProfiles(Utils.readFile(context.getFilesDir() + "/gamma_profiles.json"));
+            } else {
+                GAMMA_PROFILES = new GammaProfiles(Utils.readAssetFile(context, "gamma_profiles.json"));
+            }
+        }
         return GAMMA_PROFILES.getGammaControl();
     }
 
@@ -413,8 +423,7 @@ public class Screen implements Constants {
     }
 
     public static boolean hasGammaControl() {
-        for (String file : GAMMACONTROL_ARRAY) if (Utils.existFile(file)) return true;
-        return false;
+        return Utils.existFile(GAMMACONTROL);
     }
 
     public static void setKGammaProfile(int profile, GammaProfiles.KGammaProfiles kGammaProfiles, Context context) {
@@ -447,8 +456,13 @@ public class Screen implements Constants {
     }
 
     public static GammaProfiles.KGammaProfiles getKGammaProfiles(Context context) {
-        if (GAMMA_PROFILES == null)
-            GAMMA_PROFILES = new GammaProfiles(Utils.readAssetFile(context, "gamma_profiles.json"));
+        if (GAMMA_PROFILES == null) {
+            if (Utils.existFile(context.getFilesDir() + "/gamma_profiles.json")) {
+                GAMMA_PROFILES = new GammaProfiles(Utils.readFile(context.getFilesDir() + "/gamma_profiles.json"));
+            } else {
+                GAMMA_PROFILES = new GammaProfiles(Utils.readAssetFile(context, "gamma_profiles.json"));
+            }
+        }
         return GAMMA_PROFILES.getKGamma();
     }
 
@@ -690,9 +704,26 @@ public class Screen implements Constants {
     }
 
     public static GammaProfiles.ScreenColorProfiles getScreenColorProfiles (Context context) {
-        if (GAMMA_PROFILES == null)
-            GAMMA_PROFILES = new GammaProfiles(Utils.readAssetFile(context, "gamma_profiles.json"));
+        if (GAMMA_PROFILES == null) {
+            if (Utils.existFile(context.getFilesDir() + "/gamma_profiles.json")) {
+                GAMMA_PROFILES = new GammaProfiles(Utils.readFile(context.getFilesDir() + "/gamma_profiles.json"));
+            } else {
+                GAMMA_PROFILES = new GammaProfiles(Utils.readAssetFile(context, "gamma_profiles.json"));
+            }
+        }
         return GAMMA_PROFILES.getScreenColorProfiles();
+    }
+
+    public static String getCurrentColorProfile (Context context) {
+        getScreenColorProfiles(context);
+        String current = Utils.readFile(SCREEN_KCAL_CTRL) + "," + Utils.readFile(SCREEN_KCAL_CTRL_SAT) + "," + Utils.readFile(SCREEN_KCAL_CTRL_VAL) + "," + Utils.readFile(SCREEN_KCAL_CTRL_CONT) + "," + Utils.readFile(SCREEN_KCAL_CTRL_HUE);
+        GammaProfiles.ScreenColorProfiles screenColorProfiles = Screen.getScreenColorProfiles(context);
+        for (int i = 0 ;i < screenColorProfiles.length(); i++) {
+            if (current.equals(screenColorProfiles.getValues(i))) {
+                return screenColorProfiles.getName(i);
+            }
+        }
+        return "Custom";
     }
 
     public static void setScreenColorProfile (int profile, GammaProfiles.ScreenColorProfiles screenColorProfiles, Context context) {
@@ -702,6 +733,7 @@ public class Screen implements Constants {
         setScreenValueKcal(screenColorProfiles.getValue(profile), context);
         setScreenContrastKcal(screenColorProfiles.getContrast(profile), context);
         setScreenHueKcal(screenColorProfiles.getHue(profile), context);
+        return;
     }
 
     public static void setColorCalibrationKcal(String value, Context context) {

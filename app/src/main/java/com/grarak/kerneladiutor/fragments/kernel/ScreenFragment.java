@@ -161,13 +161,14 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
         GammaProfiles.ScreenColorProfiles screenColorProfiles = Screen.getScreenColorProfiles(getActivity());
         if (screenColorProfiles != null) {
             List<String> list = new ArrayList<>();
+            list.add("Custom");
             for (int i = 0; i < screenColorProfiles.length(); i++)
                 list.add(screenColorProfiles.getName(i));
 
             mScreenColorProilesCard = new PopupCardView.DPopupCard(list);
             mScreenColorProilesCard.setTitle(getString(R.string.screen_color_profile));
             mScreenColorProilesCard.setDescription(getString(R.string.screen_color_profile_summary));
-            mScreenColorProilesCard.setItem("");
+            mScreenColorProilesCard.setItem(Screen.getCurrentColorProfile(getActivity()));
             mScreenColorProilesCard.setOnDPopupCardListener(this);
 
             addView(mScreenColorProilesCard);
@@ -923,8 +924,16 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
             Screen.setDsiPanelProfile(position, Screen.getDsiPanelProfiles(getActivity()), getActivity());
             refreshDsiPanel();
         } else if (dPopupCard == mScreenColorProilesCard) {
-            Screen.setScreenColorProfile(position, Screen.getScreenColorProfiles(getActivity()), getActivity());
-            getActivity().getSupportFragmentManager().beginTransaction().detach(this).attach(this).commit();
+            if (position != 0) {
+                Screen.setScreenColorProfile(position - 1, Screen.getScreenColorProfiles(getActivity()), getActivity());
+                // This sleep isn't great, but the update was happening while the values were being set.
+                try {
+                    Thread.sleep(100);
+                } catch(InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
+                getActivity().getSupportFragmentManager().beginTransaction().detach(this).attach(this).commit();
+            }
         }
     }
 
@@ -1033,6 +1042,8 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
         String blue = Screen.getKGammaBlue();
         mKGammaBlueCard.setDescription(blue);
         mKGammaBlueCard.setValue(blue);
+
+
     }
 
     private void refreshGammaControl() {
