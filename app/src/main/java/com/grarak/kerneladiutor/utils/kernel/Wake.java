@@ -333,14 +333,13 @@ public class Wake implements Constants {
     }
 
     public static void setS2w(int value, Context context) {
-        if (value == 0) Control.runCommand(String.valueOf(value), S2W_FILE, Control.CommandType.GENERIC, context);
-        if (value == 1) Control.runCommand(String.valueOf(15), S2W_FILE, Control.CommandType.GENERIC, context);
+        Control.runCommand(String.valueOf(value), S2W_FILE, Control.CommandType.GENERIC, context);
     }
 
     public static int getS2wValue() {
         int val = Utils.stringToInt(Utils.readFile(S2W_FILE));
         if (val == 0 ) return 0;
-        return 1;
+        return val;
     }
 
     public static List<String> getS2wMenu(Context context) {
@@ -349,7 +348,21 @@ public class Wake implements Constants {
         if (S2W_FILE != null) {
             switch (S2W_FILE) {
                 case SW2:
-                    list.add(context.getString(R.string.s2w));
+                    list.add(context.getString(R.string.right));
+                    list.add(context.getString(R.string.left));
+                    list.add(context.getString(R.string.right) + " or " + context.getString(R.string.left));
+                    list.add(context.getString(R.string.up));
+                    list.add(context.getString(R.string.right) + " or " + context.getString(R.string.up));
+                    list.add(context.getString(R.string.left) + " or " + context.getString(R.string.up));
+                    list.add(context.getString(R.string.right) + " or " + context.getString(R.string.left) + " or " + context.getString(R.string.up));
+                    list.add(context.getString(R.string.down));
+                    list.add(context.getString(R.string.right) + " or " + context.getString(R.string.down));
+                    list.add(context.getString(R.string.left) + " or " + context.getString(R.string.down));
+                    list.add(context.getString(R.string.right) + " or " + context.getString(R.string.left) + " or " + context.getString(R.string.down));
+                    list.add(context.getString(R.string.up) + " or " + context.getString(R.string.down));
+                    list.add(context.getString(R.string.right) + " or " + context.getString(R.string.up) + " or " + context.getString(R.string.down));
+                    list.add(context.getString(R.string.left) + " or " + context.getString(R.string.up) + " or " + context.getString(R.string.down));
+                    list.add(context.getString(R.string.right) + " or " + context.getString(R.string.left) + " or " + context.getString(R.string.up) + " or " + context.getString(R.string.down));
                     break;
                 case SW2_2:
                     list.add(context.getString(R.string.s2w_right));

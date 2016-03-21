@@ -539,7 +539,10 @@
     <string name="wake_dt2w_featherx_summary">Used to control the allowed distance between tap #1 and tap #2 along the X axis. This may help with unintentional wakes quite a bit. Default was traditionally 150.</string>
     <string name="wake_dt2w_feathery">DoubleTap2Wake Feather (Y axis)</string>
     <string name="wake_dt2w_feathery_summary">Used to control the allowed distance between tap #1 and tap #2 along the Y axis. This may help with unintentional wakes quite a bit. Default was traditionally 150.</string>
-
+    <string name="right">Right</string>
+    <string name="left">Left</string>
+    <string name="up">Up</string>
+    <string name="down">Down</string>
 
 
     <!-- Sound -->
