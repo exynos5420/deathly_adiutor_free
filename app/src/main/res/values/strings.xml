@@ -571,6 +571,13 @@
     <string name="battery_temperature">Battery Temperature</string>
     <string name="usb_fast_charge">USB Fast Charge</string>
     <string name="usb_fast_charge_summary">Device will charge faster when connected with USB. Replug your charger when changing this option.</string>
+    <string name="charge_levels">Charge Levels Interface</string>
+    <string name="charge_levels_summary">Setting levels higher than your device supports can damage your device and any device it is plugged into. USE CAUTION.</string>
+    <string name="charge_level_ac">AC Charge Level</string>
+    <string name="charge_level_ac_summary">Set MAX mA allowed while charging via AC (0 = stock charging logic)</string>
+    <string name="charge_level_usb">USB Charge Level</string>
+    <string name="charge_level_usb_summary">Set MAX mA allowed while charging via USB (0 = stock charging logic)</string>
+
     <string name="blx">Battery Life eXtender</string>
     <string name="blx_summary">Set a limit for the capacity to which the battery will be charged by passing a value between 0 and 100.</string>
     <string name="custom_charge_rate">Charge Rate</string>

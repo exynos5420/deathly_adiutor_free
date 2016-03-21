@@ -80,6 +80,35 @@ public class Battery implements Constants {
         return Utils.existFile(FORCE_FAST_CHARGE);
     }
 
+    public static boolean hasChargeLevelControl() {
+        return Utils.existFile(CHARGE_LEVEL);
+    }
+
+    public static boolean hasChargeLevelControlAC() {
+        return Utils.existFile(AC_CHARGE_LEVEL);
+    }
+
+    public static int getChargeLevelControlAC() {
+        return Utils.stringToInt(Utils.readFile(AC_CHARGE_LEVEL));
+    }
+
+    public static void setChargeLevelControlAC (int value, Context context) {
+        Control.runCommand(String.valueOf(value), AC_CHARGE_LEVEL, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean hasChargeLevelControlUSB() {
+        return Utils.existFile(USB_CHARGE_LEVEL);
+    }
+
+    public static int getChargeLevelControlUSB() {
+        return Utils.stringToInt(Utils.readFile(USB_CHARGE_LEVEL));
+    }
+
+    public static void setChargeLevelControlUSB (int value, Context context) {
+        Control.runCommand(String.valueOf(value), USB_CHARGE_LEVEL, Control.CommandType.GENERIC, context);
+    }
+
+
     public static void activateArchPower(boolean active, Context context) {
         Control.runCommand(active ? "1" : "0", ARCH_POWER, Control.CommandType.GENERIC, context);
     }
