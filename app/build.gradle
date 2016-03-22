@@ -9,6 +9,7 @@ android {
         targetSdkVersion 23
         versionCode 120
         versionName "0.9.9.3"
+        resValue "string", "APP_UPDATE_URL", "https://github.com/shmuelr/kernel_adiutor/blob/master/download/app-debug.json"
     }
 
     signingConfigs {
@@ -50,4 +51,6 @@ dependencies {
     compile 'io.karim:materialtabs:2.0.3'
     compile 'net.i2p.android.ext:floatingactionbutton:1.10.1'
     compile 'org.cyanogenmod:platform.sdk:1.0'
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
 }
