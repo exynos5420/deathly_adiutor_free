@@ -7,8 +7,8 @@ android {
         applicationId 'com.kerneladiutor.mod'
         minSdkVersion 19
         targetSdkVersion 23
-        versionCode 120
-        versionName "0.9.9.3"
+        versionCode commitCount
+        versionName "0.9.9.3 build " + getDate()
     }
 
     signingConfigs {
@@ -38,6 +38,12 @@ android {
     }
     productFlavors {
     }
+}
+
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('MM-dd-yyyy')
+    return formattedDate
 }
 
 dependencies {
