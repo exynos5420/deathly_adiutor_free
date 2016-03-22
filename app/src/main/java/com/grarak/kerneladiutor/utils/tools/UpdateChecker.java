@@ -58,7 +58,7 @@ public class UpdateChecker {
                     Response response =  client.newCall(request).execute();
                     if(response.isSuccessful()){
                         String responseBody = response.body().string();
-                        Log.d(TAG, "Response String is "+response);
+                        Log.d(TAG, "Response String is "+responseBody);
                         appUpdateData = new Gson().fromJson(responseBody, AppUpdateData.class);
                     } else {
                         Log.e(TAG, "Response was not successful. | "+response.code());

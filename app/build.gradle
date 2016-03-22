@@ -9,7 +9,7 @@ android {
         targetSdkVersion 23
         versionCode 120
         versionName "0.9.9.3"
-        resValue "string", "APP_UPDATE_URL", "https://github.com/shmuelr/kernel_adiutor/blob/master/download/app-debug.json"
+        resValue "string", "APP_UPDATE_URL", "https://raw.githubusercontent.com/shmuelr/kernel_adiutor/master/download/app-debug.json"
     }
 
     signingConfigs {
