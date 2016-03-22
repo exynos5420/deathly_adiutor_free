@@ -19,6 +19,3 @@ allprojects {
         jcenter()
     }
 }
-
-
-apply from: 'versioning.gradle'
