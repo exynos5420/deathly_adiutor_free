@@ -31,6 +31,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -480,17 +481,12 @@ public class MainActivity extends BaseActivity implements Constants {
                     if (pressAgain) {
                         Utils.toast(getString(R.string.press_back_again), this);
                         pressAgain = false;
-                        new Thread(new Runnable() {
+                        new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                try {
-                                    Thread.sleep(2000);
-                                    pressAgain = true;
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
+                                pressAgain = true;
                             }
-                        }).start();
+                        }, 2000);
                     } else super.onBackPressed();
                 } else mDrawerLayout.closeDrawer(mScrimInsetsFrameLayout);
         } catch (Exception e) {
