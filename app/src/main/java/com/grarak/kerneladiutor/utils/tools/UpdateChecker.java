@@ -1,5 +1,4 @@
 package com.grarak.kerneladiutor.utils.tools;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 import android.util.Log;
@@ -7,11 +6,9 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.grarak.kerneladiutor.BuildConfig;
-import com.grarak.kerneladiutor.R;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.lang.ref.WeakReference;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -23,14 +20,8 @@ import okhttp3.Response;
 public class UpdateChecker {
 
     private static final String TAG = UpdateChecker.class.getSimpleName();
-    private static WeakReference<Context> contextWeakReference;
-    private static WeakReference<Callback> callbackWeakReference;
-    private static WeakReference<DownloadCallback> downloadWeakReference;
 
-    public static void checkForUpdate(Callback callback, final Context context){
-
-        contextWeakReference = new WeakReference<>(context);
-        callbackWeakReference = new WeakReference<>(callback);
+    public static void checkForUpdate(final Callback callback, final String updateURL){
 
         new AsyncTask<Void, Void, AppUpdateData>(){
 
@@ -38,13 +29,6 @@ public class UpdateChecker {
             protected AppUpdateData doInBackground(Void... params) {
 
                 AppUpdateData appUpdateData = null;
-                String updateURL;
-                if(contextWeakReference.get() == null){
-                    Log.w(TAG, "Context is empty");
-                    return null;
-                } else {
-                    updateURL = context.getString(R.string.APP_UPDATE_URL);
-                }
 
                 if(TextUtils.isEmpty(updateURL)){
                     Log.w(TAG, "App update Url is empty");
@@ -73,14 +57,13 @@ public class UpdateChecker {
 
             @Override
             protected void onPostExecute(AppUpdateData appUpdateData) {
-                Callback localCallback = callbackWeakReference.get();
-                if(localCallback != null){
-                    if(appUpdateData == null){
-                        localCallback.onError();
-                    } else {
-                        localCallback.onSuccess(appUpdateData);
-                    }
+
+                if(appUpdateData == null){
+                    callback.onError();
+                } else {
+                    callback.onSuccess(appUpdateData);
                 }
+
             }
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
@@ -90,13 +73,14 @@ public class UpdateChecker {
         return BuildConfig.VERSION_CODE < appUpdateData.currentBuildNumber;
     }
 
-    public static void downloadNewVersion(AppUpdateData appUpdateData,final File cacheDir, DownloadCallback callback){
-        downloadWeakReference = new WeakReference<>(callback);
+    public static void downloadNewVersion(AppUpdateData appUpdateData,final File cacheDir, final DownloadCallback callback){
 
         new AsyncTask<String, Void, File>(){
 
             @Override
             protected File doInBackground(String... params) {
+                Log.d(TAG, "Downloading new app update from "+params[0]);
+
                 File file = null;
 
                 try {
@@ -119,14 +103,12 @@ public class UpdateChecker {
 
             @Override
             protected void onPostExecute(File file) {
+                Log.d(TAG, "Downloading finished");
 
-                DownloadCallback localCallback = downloadWeakReference.get();
-                if(localCallback != null) {
-                    if (file != null) {
-                        localCallback.onSuccess(file);
-                    } else {
-                        localCallback.onError();
-                    }
+                if (file != null) {
+                    callback.onSuccess(file);
+                } else {
+                    callback.onError();
                 }
             }
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, appUpdateData.fileUrl);
