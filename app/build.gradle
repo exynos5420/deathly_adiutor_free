@@ -10,7 +10,22 @@ android {
         versionCode 120
         versionName "0.9.9.3"
     }
+
+    signingConfigs {
+        debug {
+            storeFile file("debugKey.jks")
+            storePassword "debug123"
+            keyAlias "debug"
+            keyPassword "debug123"
+        }
+    }
+
     buildTypes {
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
