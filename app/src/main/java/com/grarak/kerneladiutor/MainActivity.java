@@ -422,7 +422,9 @@ public class MainActivity extends BaseActivity implements Constants {
                 finish();
                 return;
             }
-            checkForAppUpdate();
+            if (Utils.getBoolean("updatecheck", true, MainActivity.context)) {
+                checkForAppUpdate();
+            }
             mSplashView.finish();
             setInterface();
 

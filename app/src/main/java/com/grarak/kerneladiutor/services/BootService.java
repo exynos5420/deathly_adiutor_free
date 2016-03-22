@@ -195,7 +195,9 @@ public class BootService extends Service {
 
         su.close();
         toast(getString(R.string.apply_on_boot_finished));
-        bootCheckForAppUpdate();
+        if (Utils.getBoolean("updatecheck", true, MainActivity.context)) {
+            bootCheckForAppUpdate();
+        }
     }
 
     private void log(String log) {
