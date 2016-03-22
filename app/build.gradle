@@ -9,7 +9,6 @@ android {
         targetSdkVersion 23
         versionCode 120
         versionName "0.9.9.3"
-        resValue "string", "APP_UPDATE_URL", "https://raw.githubusercontent.com/shmuelr/kernel_adiutor/master/download/app-debug.json"
     }
 
     signingConfigs {
@@ -25,11 +24,13 @@ android {
         debug {
             minifyEnabled false
             signingConfig signingConfigs.debug
+            resValue "string", "APP_UPDATE_URL", "https://raw.githubusercontent.com/shmuelr/kernel_adiutor/master/download/app-debug.json"
         }
 
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue "string", "APP_UPDATE_URL", "https://raw.githubusercontent.com/shmuelr/kernel_adiutor/master/download/app-release.json"
         }
     }
     lintOptions {
