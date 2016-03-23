@@ -111,7 +111,12 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
             mMaxFreqCard = new PopupCardView.DPopupCard(freqs);
             mMaxFreqCard.setTitle(getString(R.string.gpu_max_freq));
             mMaxFreqCard.setDescription(getString(R.string.gpu_max_freq_summary));
-            mMaxFreqCard.setItem(GPU.getGpuMaxFreq() / 1000000 + getString(R.string.mhz));
+            if ((GPU.getGpuMaxFreq() / 1000000) == 0) {
+                mMaxFreqCard.setItem(GPU.getGpuMaxFreq() / 1000 + getString(R.string.mhz));
+            }
+            else {
+                mMaxFreqCard.setItem(GPU.getGpuMaxFreq() / 1000000 + getString(R.string.mhz));
+            }
             mMaxFreqCard.setOnDPopupCardListener(this);
 
             addView(mMaxFreqCard);
@@ -133,7 +138,12 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
             mMinFreqCard = new PopupCardView.DPopupCard(freqs);
             mMinFreqCard.setTitle(getString(R.string.gpu_min_freq));
             mMinFreqCard.setDescription(getString(R.string.gpu_min_freq_summary));
-            mMinFreqCard.setItem(GPU.getGpuMinFreq() / 1000000 + getString(R.string.mhz));
+            if ((GPU.getGpuMinFreq() / 1000000) == 0) {
+                mMinFreqCard.setItem(GPU.getGpuMinFreq() / 1000 + getString(R.string.mhz));
+            }
+            else {
+                mMinFreqCard.setItem(GPU.getGpuMinFreq() / 1000000 + getString(R.string.mhz));
+            }
             mMinFreqCard.setOnDPopupCardListener(this);
 
             addView(mMinFreqCard);
@@ -305,7 +315,12 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
             mCur2dFreqCard.setDescription((GPU.getGpu2dCurFreq() / 1000000) + getString(R.string.mhz));
 
         if (mCurFreqCard != null)
-            mCurFreqCard.setDescription((GPU.getGpuCurFreq() / 1000000) + getString(R.string.mhz));
+           if ((GPU.getGpuCurFreq() / 1000000) == 0) {
+               mCurFreqCard.setDescription((GPU.getGpuCurFreq() / 1000) + getString(R.string.mhz));
+           }
+           else {
+               mCurFreqCard.setDescription((GPU.getGpuCurFreq() / 1000000) + getString(R.string.mhz));
+           }
         return true;
     }
 }
