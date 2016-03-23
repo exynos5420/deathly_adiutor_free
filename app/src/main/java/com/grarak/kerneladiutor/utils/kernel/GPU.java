@@ -262,8 +262,9 @@ public class GPU implements Constants {
                     if (value != null) {
                         String[] freqs = value.split(" ");
                         mGpuFreqs = new Integer[freqs.length];
-                        for (int i = 0; i < mGpuFreqs.length; i++)
+                        for (int i = 0; i < mGpuFreqs.length; i++) {
                             mGpuFreqs[i] = Utils.stringToInt(freqs[i]);
+                        }
                     }
                 }
         return new ArrayList<>(Arrays.asList(mGpuFreqs));
