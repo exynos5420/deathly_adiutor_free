@@ -422,7 +422,9 @@ public class MainActivity extends BaseActivity implements Constants {
                 finish();
                 return;
             }
-            checkForAppUpdate();
+            if (Utils.getBoolean("updatecheck", true, MainActivity.context)) {
+                checkForAppUpdate();
+            }
             mSplashView.finish();
             setInterface();
 
@@ -568,7 +570,7 @@ public class MainActivity extends BaseActivity implements Constants {
                 if (UpdateChecker.isOldVersion(appUpdateData)) {
                     new AlertDialog.Builder(MainActivity.this)
                             .setTitle("New Version Available")
-                            .setMessage("Please download the new app version (" + appUpdateData.currentBuild + ")")
+                            .setMessage("Please download the new app version (Build "+ appUpdateData.currentBuildNumber + ")")
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {

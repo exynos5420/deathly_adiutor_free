@@ -17,6 +17,7 @@
 package com.grarak.kerneladiutor.fragments.kernel;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.grarak.kerneladiutor.R;
 import com.grarak.kerneladiutor.elements.DDivider;
@@ -99,8 +100,13 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
 
         if (GPU.hasGpuMaxFreq() && GPU.hasGpuFreqs()) {
             List<String> freqs = new ArrayList<>();
-            for (int freq : GPU.getGpuFreqs())
-                freqs.add(freq / 1000000 + getString(R.string.mhz));
+            for (int freq : GPU.getGpuFreqs()) {
+                if ((freq / 1000000) == 0) {
+                    freqs.add(freq / 1000 + getString(R.string.mhz));
+                } else {
+                    freqs.add(freq / 1000000 + getString(R.string.mhz));
+                }
+            }
 
             mMaxFreqCard = new PopupCardView.DPopupCard(freqs);
             mMaxFreqCard.setTitle(getString(R.string.gpu_max_freq));
@@ -115,8 +121,14 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
     private void minFreqInit() {
         if (GPU.hasGpuMinFreq() && GPU.hasGpuFreqs()) {
             List<String> freqs = new ArrayList<>();
-            for (int freq : GPU.getGpuFreqs())
-                freqs.add(freq / 1000000 + getString(R.string.mhz));
+            for (int freq : GPU.getGpuFreqs()) {
+                if ((freq/1000000) == 0) {
+                    freqs.add(freq / 1000 + getString(R.string.mhz));
+                }
+                else {
+                    freqs.add(freq / 1000000 + getString(R.string.mhz));
+                }
+            }
 
             mMinFreqCard = new PopupCardView.DPopupCard(freqs);
             mMinFreqCard.setTitle(getString(R.string.gpu_min_freq));

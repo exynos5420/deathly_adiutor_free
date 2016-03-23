@@ -741,6 +741,7 @@
     <string name="no_plugins">No plugins found</string>
     <string name="installed">Installed</string>
     <string name="update_available">Update available</string>
+    <string name="update_available_open_app">Open Kernek Adiutor-Mod to download</string>
     <string name="not_installed">Not installed</string>
 
     <!-- Downloads -->
@@ -865,7 +866,8 @@
     <string name="per_app">Per App Profiles</string>
     <string name="per_app_toast">Per App Toast</string>
     <string name="per_app_toast_summary">Show a toast when applying a profile for Per App detection</string>
-
+    <string name="update_check">Update Checking</string>
+    <string name="update_check_summary">Allow app to check for updates on-boot and on-open.</string>
     <!-- FAQ -->
     <string name="misspelled">Why did you misspell \"Auditor\"?</string>
     <string name="misspelled_summary">Adiutor is Latin and means helper.</string>
@@ -908,7 +910,7 @@
     <string name="modification_summary">This application is being modified for various custom features that are not included in the original Kernel Adiutor.</string>
 
     <string name="modification_version">Modification Version</string>
-    <string name="modification_version_number">Build 3</string>
+    <string name="modification_version_number">Build 4</string>
 
     <string name="accessibility_service_label">KA Per App Monitor</string>
     <string name="accessibility_service_desc">Service to monitor when foreground app changes for per-app profile loading</string>
