@@ -162,7 +162,7 @@
   <string name="wakeup_boost">Wakeup-Boost</string>
   <string name="wakeup_boost_summary">Wakeup-Boost ist vergleichbar mit dem Eingabe-Boost, jedoch wird er angewendet, wenn der Bildschirm eingeschaltet wird.</string>
   <string name="hotplug_boost">Hotplug-Boost</string>
-  <string name="hotplug_boost_summary">Hotplug-Boost ist vergleichbar mit dem Eingabe-Boost, jedoch wird er angewendet, wenn CPUs online gehen.</stri
+  <string name="hotplug_boost_summary">Hotplug-Boost ist vergleichbar mit dem Eingabe-Boost, jedoch wird er angewendet, wenn CPUs online gehen.</string>
   <string name="cpu_msm_limiter">MSM-Limiter</string>
   <string name="cpu_msm_limiter_summary">MSM-Limiter aktivieren</string>
   <string name="cpu_msm_limiter_resume_max">Maximale Frequenz</string>
@@ -491,7 +491,7 @@
   <string name="top_half">Obere Hälfte</string>
   <string name="halfscreen">Halber Bildschirm</string>
   <string name="fullscreen">Vollbild</string>
-  <tring name="s2w">Sweep2Wake</string>
+  <string name="s2w">Sweep2Wake</string>
   <string name="s2w_summary">Gerät aufwecken durch Wischen über den Bildschirm.</string>
   <string name="lenient">Sweep2Wake-Nachsicht</string>
   <string name="lenient_summary">Nur 1. und 4. Button werden zum Auslösen gebraucht.</string>
@@ -633,11 +633,11 @@
 
   <!-- Virtual Memory -->
   <string name="zram">Z-RAM</string>
-  <string name="disksize">Disksize</string>
+  <string name="disksize">Disk-Größe</string>
   <string name="disksize_summary">Attempts to increase performance by avoiding paging on physical storage, instead using a compressed virtual device in RAM. Paging takes place in RAM until it is necessary to use the swap space on physical storage.</string>
   <string name="dirty_ratio">Dirty Ratio</string>
   <string name="dirty_ratio_summary">Contains, as a percentage of total system memory, the number of pages at which a process which is generating disk writes will itself start writing out dirty data. Lower the amount of unwritten write cache to reduce lags when a huge write is required.</string>
-  <string name="dirty_background_ratio">Dirty Background Ratio</string>
+  <string name="dirty_background_ratio">Dirty Hintergrund-Ratio</string>
   <string name="dirty_background_ratio_summary">Contains, as a percentage of total system memory, the number of pages at which the pdflush background writeback daemon will start writing out dirty data.</string>
   <string name="dirty_expire_centisecs">Dirty Expire Centisecs</string>
   <string name="dirty_expire_centisecs_summary">This tunable is used to define when dirty data is old enough to be eligible for writeout by the kernel flusher threads.  It is expressed in 100\'ths of a second.  Data which has been dirty in-memory for longer than this interval will be written out next time a flusher thread wakes up.</string>
@@ -655,7 +655,7 @@
   <string name="swappiness_summary">Controls the tendency of the kernel to move processes out of physical memory and onto the swap disk. Because disks are much slower than RAM, this can lead to slower response times for system and applications if processes are too aggressively moved out of memory.</string>
   <string name="vfs_cache_pressure">VFS Cache Pressure</string>
   <string name="vfs_cache_pressure_summary">Controls the tendency of the kernel to reclaim the memory which is used for caching of directory and inode objects.</string>
-  <string name="laptop_mode">Laptop Mode</string>
+  <string name="laptop_mode">Laptop-Modus</string>
   <string name="laptop_mode_summary">This option will delay the writebacks of file system bits cached in RAM while screen is ON (Enable for better performance at a slight risk of possible data loss if crashed or sudden loss of power).</string>
 
   <string name="min_free_kbytes">Min free Kilobytes</string>
@@ -664,18 +664,18 @@
   <string name="extra_free_kbytes_summary">This parameter tells the VM to keep extra free memory between the threshold where background reclaim (kswapd) kicks in, and the threshold where direct reclaim (by allocating processes) kicks in.</string>
 
   <!-- Entropy -->
-  <string name="available">Available</string>
+  <string name="available">Verfügbar</string>
   <string name="poolsize">Poolsize</string>
-  <string name="read">Read</string>
-  <string name="write">Write</string>
+  <string name="read">Lesen</string>
+  <string name="write">Schreiben</string>
 
   <!-- Misc Controls -->
-  <string name="se_linux">Toggle SE Linux</string>
-  <string name="se_linux_summary">Current SELinux Status:</string>
-  <string name="vibration_strength">Vibration Strength</string>
-  <string name="android_logger">Android logging</string>
+  <string name="se_linux">SE-Linux Schalter</string>
+  <string name="se_linux_summary">Aktueller SELinux-Status:</string>
+  <string name="vibration_strength">Vibrationsstärke</string>
+  <string name="android_logger">Android-Logger</string>
   <string name="bcl">BCL</string>
-  <string name="bcl_summary">Enable or Disable BCL completely</string>
+  <string name="bcl_summary">BCL komplett deaktivieren oder aktivieren</string>
   <string name="bcl_hotplug">BCL Hotplugging</string>
   <string name="bcl_hotplug_summary">Enable or Disable BCL Hotplugging</string>
   <string name="crc">Software CRC control</string>
@@ -906,13 +906,12 @@
   <string name="translation">Translation</string>
   <string name="translation_summary">Help me translate this app!</string>
 
-  <string name="modification">Modified build of Kernel Adiutor</string>
-  <string name="modification_summary">This application is being modified for various custom features that are not included in the original Kernel Adiutor.</string>
+  <string name="modification">Modifizierte Version von Kernel Adiutor</string>
+  <string name="modification_summary">Diese Applikation wurde um verschiedene Features erweitert, die nicht in der Originalversion von Kernel Adiutor enthalten sind.</string>
 
-  <string name="modification_version">Modification Version</string>
-  <string name="modification_version_number" translatable="false">Build 6</string>
+  <string name="modification_version">Modifizierte Version</string>
 
-  <string name="accessibility_service_label">KA Per App Monitor</string>
-  <string name="accessibility_service_desc">Service to monitor when foreground app changes for per-app profile loading</string>
+  <string name="accessibility_service_label">KA Per-App-Monitor</string>
+  <string name="accessibility_service_desc">Dienst zur Überwachung, ob sich eine Vordergrund-App durch das Laden eines Per-App-Profils ändert.</string>
 
 </resources>
