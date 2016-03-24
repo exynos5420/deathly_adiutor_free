@@ -658,144 +658,261 @@
   <string name="laptop_mode">Laptop Mode</string>
   <string name="laptop_mode_summary">This option will delay the writebacks of file system bits cached in RAM while screen is ON (Enable for better performance at a slight risk of possible data loss if crashed or sudden loss of power).</string>
 
-    <string name="min_free_kbytes">Min free Kilobytes</string>
-    <string name="min_free_kbytes_summary">This is used to force the Linux VM to keep a minimum number of kilobytes free. The VM uses this number to compute a pages_min value for each lowmem zone in the system. Each lowmem zone gets a number of reserved free pages based proportionally on its size.</string>
-    <string name="extra_free_kbytes">Extra Free Kilobytes</string>
-    <string name="extra_free_kbytes_summary">This parameter tells the VM to keep extra free memory between the threshold where background reclaim (kswapd) kicks in, and the threshold where direct reclaim (by allocating processes) kicks in.</string>
+  <string name="min_free_kbytes">Min free Kilobytes</string>
+  <string name="min_free_kbytes_summary">This is used to force the Linux VM to keep a minimum number of kilobytes free. The VM uses this number to compute a pages_min value for each lowmem zone in the system. Each lowmem zone gets a number of reserved free pages based proportionally on its size.</string>
+  <string name="extra_free_kbytes">Extra Free Kilobytes</string>
+  <string name="extra_free_kbytes_summary">This parameter tells the VM to keep extra free memory between the threshold where background reclaim (kswapd) kicks in, and the threshold where direct reclaim (by allocating processes) kicks in.</string>
 
-  <string name="installed">Installiert</string>
-  <string name="update_available">Aktualisierungen verfügbar</string>
-  <string name="not_installed">Nicht installiert</string>
-  <string name="no_kernels">Keine Kernels gefunden</string>
+  <!-- Entropy -->
+  <string name="available">Available</string>
+  <string name="poolsize">Poolsize</string>
+  <string name="read">Read</string>
+  <string name="write">Write</string>
+
+  <!-- Misc Controls -->
+  <string name="se_linux">Toggle SE Linux</string>
+  <string name="se_linux_summary">Current SELinux Status:</string>
+  <string name="vibration_strength">Vibration Strength</string>
+  <string name="android_logger">Android logging</string>
+  <string name="bcl">BCL</string>
+  <string name="bcl_summary">Enable or Disable BCL completely</string>
+  <string name="bcl_hotplug">BCL Hotplugging</string>
+  <string name="bcl_hotplug_summary">Enable or Disable BCL Hotplugging</string>
+  <string name="crc">Software CRC control</string>
+  <string name="crc_summary">CRC is a mechanism aiming to prevent data corruption when enabled. Data blocks can lose up to 30% of their performance.</string>
+  <string name="fsync">Fsync</string>
+  <string name="fsync_summary">Disable for better file system performance at the risk of data loss in case of a system crash.</string>
+  <string name="dynamic_fsync">Dynamic Fsync</string>
+  <string name="dynamic_fsync_summary">When enabled and screen is on, fsync operation is asynchronous. When screen is off, this operation is done synchronously.</string>
+  <string name="gentlefairsleepers">Gentle Fair Sleepers</string>
+  <string name="gentlefairsleepers_summary">Only give sleepers 50% of their service deficit. Disabling this can save a little battery power.</string>
+  <string name="archpower">Arch Power</string>
+  <string name="archpower_summary">Enable Arch Specific Power Function/Savings</string>
+  <string name="power_suspend_mode">Power Suspend Mode</string>
+  <string name="power_suspend_mode_summary">Kernel Mode, LCD Hooks and Highest Level Hook are automatically managed by the kernel. To manually enable or disable the Power Suspend State choose User Mode.</string>
+  <string name="state_notifier_mode">State Notifier Mode</string>
+  <string name="state_notifier_mode_summary">Toggle between State and FB Notifiers.</string>
+  <string name="autosleep">Autosleep</string>
+  <string name="userspace">Userspace</string>
+  <string name="lcd_panel">LCD Panel</string>
+  <string name="hybrid">Hybrid</string>
+  <string name="power_suspend_state">Power Suspend State</string>
+  <string name="power_suspend_state_summary">Kernel power management driver when screen is off. Better battery savings if enabled. Note: You can only change this setting if Power Suspend Mode is in User Mode.</string>
+  <string name="network">Network</string>
+  <string name="tcp">TCP Congestion Algorithm</string>
+  <string name="tcp_summary">The Transmission Control Protocol is one of the core protocols of the Internet protocol suite (IP), and is so common that the entire suite is often called TCP/IP.</string>
+  <string name="hostname">Hostname</string>
+  <string name="adb_over_wifi">ADB Over WiFi</string>
+  <string name="adb_over_wifi_summary">Enable ADB over WiFi</string>
+  <string name="adb_over_wifi_connect_summary">Enable ADB over WiFi. Connect to: </string>
+  <string name="wakelock">Wakelocks</string>
+  <string name="wakelocks_summary">Toggle on: Service can acquire a wakelock. Toggle off: Service cannot acquire a wakelock.</string>
+  <string name="smb135x_wakelock">smb135x Wakelock</string>
+  <string name="smb135x_wakelock_summary">Prevent wakelock when power disconnected.</string>
+  <string name="bluesleep_wakelock">BlueSleep Wakelock</string>
+  <string name="bluesleep_wakelock_summary">Prevent BlueSleep Wakelock</string>
+  <string name="sensor_ind_wakelock">sensor_ind Wakelock</string>
+  <string name="sensor_ind_wakelock_summary">Prevent wakelock when Ambient Display disabled.</string>
+  <string name="msm_hsic_host_wakelock">msm_hsic_host Wakelock</string>
+  <string name="msm_hsic_host_wakelock_summary">Prevent msm_hsic_host wakelock.</string>
+  <string name="wlan_rx_wakelock">wlan_rx Wakelock</string>
+  <string name="wlan_rx_wakelock_summary">Prevent wlan_rx wakelock.</string>
+  <string name="wlan_ctrl_wakelock">wlan_ctrl Wakelock</string>
+  <string name="wlan_ctrl_wakelock_summary">Prevent wlan_ctrl wakelock.</string>
+  <string name="wlan_wakelock">wlan Wakelock</string>
+  <string name="wlan_wakelock_summary">Prevent wlan wakelock.</string>
+  <string name="wlan_rx_wakelock_divider">wlan_rx Wakelock Divider</string>
+  <string name="msm_hsic_wakelock_divider">msm_hsic Wakelock Divider</string>
+  <string name="bcmdhd_wakelock_divider">BCMDHD Wakelock Divider</string>
+  <string name="cstates">Krait C-States Settings</string>
+  <string name="c0state">C0 (WFI)</string>
+  <string name="c0state_summary">Shallowest Sleep with instant wake up.</string>
+  <string name="c1state">C1 (Retention)</string>
+  <string name="c1state_summary">Slightly deeper sleep with slight latency when waking up. (Disable this if you encounter screen flickering)</string>
+  <string name="c2state">C2 (Stand Alone Power Collapse)</string>
+  <string name="c2state_summary">Deeper sleep with longer latency when waking up.</string>
+  <string name="c3state">C3 (Power Collapse)</string>
+  <string name="c3state_summary">Really deep sleep with longest latency when waking up.</string>
+
+  <!-- Plugins -->
+  <string name="plugin_warning">I, the creator of this application, am not responsible for any damages that third party apps produce! I also can\'t guarantee for the functionality of them. Please be careful which applications you download!</string>
+  <string name="download_plugins">Download Plugins</string>
+  <string name="looking_plugins">Looking for plugins</string>
+  <string name="no_plugins">No plugins found</string>
+  <string name="installed">Installed</string>
+  <string name="update_available">Update available</string>
+  <string name="update_available_open_app">Open Kernek Adiutor-Mod to download</string>
+  <string name="not_installed">Not installed</string>
+
+  <!-- Downloads -->
+  <string name="no_kernels">No kernels found</string>
   <string name="logo">Logo</string>
   <string name="features">Features</string>
-  <string name="loading_counting">Lade %1$d/%2$d</string>
-  <string name="downloading_db">Lade Datenbank herunter</string>
+  <string name="loading_counting">Loading %1$d/%2$d</string>
+  <string name="downloading_db">Downloading Database</string>
   <string name="xda">XDA</string>
   <string name="github">GitHub</string>
   <string name="google_plus">Google Plus</string>
   <string name="paypal">PayPal</string>
-  <string name="download">Herunterladen</string>
-  <string name="downloading_counting">%1$s/%2$s</string>
-  <string name="resume">Zurück</string>
-  <string name="checking_md5">Überprüfen der MD5 Summe</string>
-  <string name="md5_mismatch">MD5-Prüfsumme stimmt nicht überein</string>
-  <string name="md5_mismatch_summary">Die heruntergeladene Datei hat eine andere MD5-Prüfsumme. Dies hat folgende Gründe: \n\n\u2022 die heruntergeladene Datei ist beschädigt\n\u2022 Der Entwickler hat eine falsche Prüfsumme angegeben\n\nVersuchen Sie diese Datei erneut herunterzuladen. Wenn Sie immer noch diese Fehlermeldung erhalten, kontaktieren Sie den Entwickler dieses Kernels.</string>
-  <string name="download_success">%s wurde erfolgreich heruntergeladen. Möchten Sie es jetzt installieren?</string>
-  <string name="manual_flashing">Ich werde meine Hände benutzen</string>
-  <string name="file_location">Die heruntergeladene Datei ist in %s</string>
-  <string name="no_backups">Keine Backups</string>
-  <string name="flash_img">IMG flashen</string>
-  <string name="flashing">Flashen</string>
-  <string name="backing_up">Sicherung erstellen</string>
-  <string name="empty_name">Leerer Name!</string>
-  <string name="backup_already_exists">Ein Backup mit dem selben Namen existiert bereits. Lösche es zuerst!</string>
-  <string name="restore">Wiederherstellen</string>
-  <string name="delete">Löschen</string>
-  <string name="overwrite_question">Soll %s überschrieben werden?</string>
-  <string name="restoring">Wird wiederhergestellt</string>
-  <string name="delete_question">Soll %s gelöscht werden?</string>
-  <string name="items_found">%d Objekt/e gefunden</string>
-  <string name="add">Hinzufügen</string>
-  <string name="edit">Bearbeiten</string>
-  <string name="key">Taste</string>
-  <string name="value">Wert</string>
-  <string name="backup_created">Backup wurde in %s erstellt.</string>
-  <string name="search">Suchen</string>
-  <string name="no_profiles">Keine Profile</string>
-  <string name="profile_description">Durch das Hinzufügen eines Profils werden die Einstellungen gespeichert. Du kannst sie später anwenden.</string>
+  <string name="download">Download</string>
+   <string name="downloading_counting">%1$s/%2$s</string>
+   <string name="resume">Resume</string>
+  <string name="checking_md5">Checking MD5sum</string>
+  <string name="md5_mismatch">MD5 Mismatch</string>
+  <string name="md5_mismatch_summary">The downloaded file has a different MD5. This has following reasons:\n\n\u2022 The downloaded file is corrupted\n\u2022 The developer has declared a wrong MD5\n\nTry to download the file again. If you still get this error, please contact the developer of this kernel.</string>
+  <string name="download_success">Successfully downloaded %s. Do you want to install it now?</string>
+  <string name="manual_flashing">I will use my hands</string>
+  <string name="file_location">Downloaded file is in %s</string>
+
+  <!-- Backup -->
+  <string name="no_backups">No backups</string>
+  <string name="flash_img">Flash IMG</string>
+  <string name="flashing">Flashing</string>
+  <string name="boot" translatable="false">Boot</string>
+  <string name="fota" translatable="false">Fota</string>
+  <string name="backing_up">Backing up</string>
+  <string name="empty_name">Name is empty!</string>
+  <string name="backup_already_exists">A backup with the same name already exists. Delete it first!</string>
+  <string name="restore">Restore</string>
+  <string name="delete">Delete</string>
+  <string name="overwrite_question">Overwrite %s?</string>
+  <string name="restoring">Restoring</string>
+  <string name="delete_question">Delete %s?</string>
+
+  <!-- Build prop Editor -->
+  <string name="items_found">%d item/s found</string>
+  <string name="add">Add</string>
+  <string name="edit">Edit</string>
+  <string name="key">Key</string>
+  <string name="value">Value</string>
+  <string name="backup_created">Backup has been created in %s.</string>
+  <string name="search">Search</string>
+
+  <!-- Profile -->
+  <string name="no_profiles">No profiles</string>
+  <string name="profile_description">Adding a profile will save your current settings. You can apply them later.</string>
   <string name="name">Name</string>
-  <string name="select_all">Alle auswählen</string>
-  <string name="apply">Anwenden</string>
-  <string name="removed_all_sections">Sie haben alle Abschnitte entfernt! Keine Profile für Sie.</string>
-  <string name="no_settings">Keine Einstellungen gefunden!</string>
-  <string name="press_again_to_apply">Zum Anwenden erneut drücken.</string>
-  <string name="applied">Übernommen</string>
-  <string name="applying_profile">%s anwenden</string>
-  <string name="replace_profile">Möchten Sie %s ersetzen?</string>
-  <string name="reboot">Neustart</string>
-  <string name="reboot_soft">Schneller Neustart</string>
-  <string name="reboot_recovery">Recovery</string>
-  <string name="reboot_bootloader">Bootloader</string>
-  <string name="reboot_download">Download-Modus</string>
-  <string name="confirm">Sind Sie sicher?</string>
-  <string name="cwm_recovery">CWM-Recovery</string>
+  <string name="select_all">Select all</string>
+  <string name="apply">Apply</string>
+  <string name="removed_all_sections">You removed all sections! No profiles for you.</string>
+  <string name="no_settings">No settings found!</string>
+  <string name="press_again_to_apply">Press again to apply.</string>
+  <string name="applied">Applied</string>
+  <string name="applying_profile">Applying %s</string>
+  <string name="replace_profile">Do you want to replace %s?</string>
+  <string name="set_per_app">Set Per App Settings</string>
+  <string name="per_app_title">Select Apps that will activate this profile</string>
+
+  <!-- Recovery -->
+  <string name="reboot">Reboot</string>
+  <string name="reboot_soft">Soft Reboot</string>
+  <string name="reboot_recovery">Reboot Recovery</string>
+  <string name="reboot_bootloader">Reboot Bootloader</string>
+  <string name="reboot_download">Reboot Download</string>
+  <string name="confirm">Are you sure?</string>
+  <string name="cwm_recovery">CWM Recovery</string>
   <string name="twrp">TWRP</string>
-  <string name="wipe_data">Daten löschen</string>
-  <string name="wipe_cache">Cache löschen</string>
-  <string name="flash_zip">Zip flashen</string>
-  <string name="flash_now">Jetzt flashen</string>
-  <string name="flash_now_confirm">Möchten Sie Ihre Aktionen ausführen? Das Gerät wird ins Recovery-System starten und die Aktionen werden in der Reihenfolge ausgeführt, wie sie hinzugefügt wurden.</string>
-  <string name="add_action_first">Sie müssen zunächst eine Aktion hinzufügen.</string>
-  <string name="emulate_initd">Init.d emulieren</string>
-  <string name="emulate_initd_summary">Wenn Ihr Gerät kein Init.d unterstützt können Sie hier die Emulierung aktivieren. Durch die Aktivierung wird die Anwendung nach dem Systemstart die Skripte ausführen, dies geschieht jedoch vor \"Beim Systemstart anwenden\".</string>
-  <string name="executing">Ausführung</string>
-  <string name="execute">Ausführen</string>
-  <string name="no_scripts_found">Keine Skripte gefunden!</string>
-  <string name="starting_initd">Starte Init.d-Emulation</string>
-  <string name="finishing_initd">Init.d-Emulation wird beendet</string>
-  <string name="file_name">Name der Datei</string>
-  <string name="dark_theme">Dunkles Design</string>
-  <string name="force_english_language">Englische Sprache erzwingen</string>
-  <string name="beta_info">Beta-Informationen</string>
-  <string name="beta_info_summary">Zeige ein Dialogfeld beim Start, wenn Sie eine Beta-Version verwenden.</string>
-  <string name="show_profile_tile">Zeige Profil-Kachel (Benachrichtigungsanzeige)</string>
-  <string name="notification">Benachrichtigung</string>
-  <string name="notification_summary">Zeige eine Benachrichtigung wenn \"Beim Systemstart anwenden\" gestartet wird. Bei Problemen bitte deaktivieren.</string>
-  <string name="show_toast">Toast-Benachrichtigungen anzeigen</string>
+  <string name="wipe_data">Wipe Data</string>
+  <string name="wipe_cache">Wipe Cache</string>
+  <string name="flash_zip">Flash Zip</string>
+  <string name="flash_now">Flash Now</string>
+  <string name="flash_now_confirm">Do you want to run your actions? Your device will reboot into recovery and the actions will run in the order as you added them.</string>
+  <string name="add_action_first">You have to add an action first.</string>
+
+  <!-- Init.d -->
+  <string name="emulate_initd">Emulate Init.d</string>
+  <string name="emulate_initd_summary">If your device does not support Init.d you can enable Emulate Init.d. By enabling the Init.d Emulation the application will run the scripts after your device boots up, but before apply on boot.</string>
+  <string name="executing">Executing</string>
+  <string name="execute">Execute</string>
+  <string name="no_scripts_found">No scripts found!</string>
+  <string name="starting_initd">Starting Init.d emulation</string>
+  <string name="finishing_initd">Finishing Init.d emulation</string>
+  <string name="file_name">Name of file</string>
+
+  <!-- Settings -->
+  <string name="dark_theme">Dark theme</string>
+  <string name="force_english_language">Force English Language</string>
+  <string name="beta_info">Beta Information</string>
+  <string name="beta_info_summary">Show a dialog on start if you are using a beta version.</string>
+  <string name="show_profile_tile">Show Profile Tile</string>
+  <string name="notification">Notification</string>
+  <string name="notification_summary">Show a notification when apply on boot service starts. Please disable this if you get any problems.</string>
+  <string name="show_toast">Show toast</string>
   <string name="test">Test</string>
-  <string name="test_summary">Teste \"Anwenden beim Boot\" mit Verzögerung. Wenn nichts geschieht, existieren keine gespeicherten Einstellungen.</string>
-  <string name="hide_apply_on_boot">\"Beim Systemstart anwenden\" ausblenden</string>
-  <string name="hide_apply_on_boot_summary">Ansicht beim Herunterscrollen ausblenden.</string>
-  <string name="enable_apply_on_boot_first">Sie müssen zuerst für einen Abschnitt \"Anwenden beim Boot\" aktivieren.</string>
+  <string name="test_summary">Test apply on boot (with delay). If nothing happens then there are no saved settings.</string>
+  <string name="hide_apply_on_boot">Hide Apply On Boot</string>
+  <string name="hide_apply_on_boot_summary">Hide its view when scrolling down.</string>
+  <string name="enable_apply_on_boot_first">You have to enable apply on boot at least for one section first.</string>
   <string name="debugging">Debugging</string>
   <string name="logcat">Logcat</string>
-  <string name="logcat_summary">Kopiere Logcat nach /sdcard/logcat.txt</string>
-  <string name="last_kmsg">Letzte Kernel-Nachricht</string>
-  <string name="last_kmsg_summary">Kopiere /proc/last_kmsg nach /sdcard/last_kmsg.txt</string>
-  <string name="driver_message">Treiber-Nachricht</string>
-  <string name="driver_message_summary">Treiber-Nachricht (Dmesg) auf /sdcard/dmesg.txt speichern</string>
-  <string name="security">Sicherheit</string>
-  <string name="set_password">Passwort festlegen</string>
-  <string name="set_password_summary">Sie können Kernel Adiutor durch das Festlegen eines Passworts schützen. Jedes Mal wenn Sie diese Anwendung öffnen, müssen Sie Ihr Passwort eingeben. Falls Sie es vergessen sollten, einfach die Daten dieser Anwendung in den Einstellungen Ihres Gerätes löschen. Machen Sie sich keine Sorgen, ich werde Ihr Passwort nicht missbrauchen.</string>
-  <string name="delete_password">Passwort löschen</string>
-  <string name="new_password">Neues Passwort</string>
-  <string name="confirm_new_password">Bestätige neues Passwort</string>
-  <string name="old_password">Altes Password</string>
-  <string name="old_password_wrong">Altes Password ist falsch</string>
-  <string name="password_empty">Das Passwort ist leer</string>
-  <string name="password_not_match">Passwort stimmt mit der Bestätigung nicht überein</string>
-  <string name="password_too_long">Das Passwort ist zu lang</string>
-  <string name="set_password_first">Lege zuerst ein Passwort fest</string>
-  <string name="show_sections">Abschnitte anzeigen</string>
-  <string name="per_app">Per App Profile</string>
+  <string name="logcat_summary">Copy logcat to /sdcard/logcat.txt</string>
+  <string name="last_kmsg">Last Kernel Message</string>
+  <string name="last_kmsg_summary">Copy /proc/last_kmsg to /sdcard/last_kmsg.txt</string>
+  <string name="driver_message">Driver Message</string>
+  <string name="driver_message_summary">Copy driver message (dmesg) to /sdcard/dmesg.txt</string>
+  <string name="security">Security</string>
+  <string name="set_password">Set Password</string>
+  <string name="set_password_summary">You can protect Kernel Adiutor by setting up a password. Every time you open this application, you have to enter it. If you forget it, simply wipe the data of this application in settings of your device. Don\'t worry I won\'t share your password.</string>
+  <string name="delete_password">Delete Password</string>
+  <string name="new_password">New password</string>
+  <string name="confirm_new_password">Confirm new password</string>
+  <string name="old_password">Old password</string>
+  <string name="old_password_wrong">Old password is wrong</string>
+  <string name="password_empty">Password is empty</string>
+  <string name="password_not_match">Password doesn\'t match confirmation</string>
+  <string name="password_too_long">Password is too long</string>
+  <string name="set_password_first">Set a password first</string>
+  <string name="show_sections">Show sections</string>
+  <string name="per_app">Per App Profiles</string>
   <string name="per_app_toast">Per App Toast</string>
-  <string name="per_app_toast_summary">Zeige eine Toast-Benachrichtigung an sobald bei einer Per App Erkennung ein Profil angewendet wird.</string>
-  <string name="misspelled">Wieso hast du \"Auditor\" falsch geschrieben?</string>
-  <string name="misspelled_summary">Adiutor ist lateinisch und bedeutet Helfer.</string>
-  <string name="cpu_freq_not_sticking">Warum bleibt meine eingestellte CPU-Frequenz nicht bestehen?</string>
-  <string name="cpu_freq_not_sticking_summary">Dies kann mehrere Gründe haben. Viele Kernel haben heutzutage ihre eigenen Hotplug-Systeme, die die CPU-Frequenz steuern und CyanogenMod hat eigene CPU-Boost Implementierungen, die die Frequenz steuern. Ich empfehle, dass Sie die CPU-Frequenzen nicht verändern und diese Aufgabe dem Kernel überlassen.</string>
-  <string name="feature_not_appearing">Warum werden einige Funktionen nicht angezeigt?</string>
-  <string name="feature_not_appearing_summary">Die Einstellmöglichkeiten sind vom Kernel abhängig.</string>
-  <string name="feature_function">Was macht die Einstellung \"X\"?</string>
-  <string name="feature_function_summary">Wenn Sie nicht wissen, was diese Einstellung tut, verändern Sie diese auch nicht. Informieren Sie sich vorher gut, bevor Sie mit Ihrer teuren Hardware experimentieren.</string>
-  <string name="add_new_features">Kannst du Funktion x und y hinzufügen?</string>
-  <string name="add_new_features_summary">Das ist schwer zu sagen. Ich versuche, alle Features hinzuzufügen, aber es ist schwer, alle Geräte mit dieser App zu unterstützen. Ich habe nur ein Samsung Galaxy S4 (i9500), ein HTC Desire 816 und bekam vor kurzem ein OnePlus 2, also nicht mir die Schuld geben, wenn neue Funktionen nicht sofort für alle Geräte zur Verfügung stehen.</string>
-  <string name="license">Lizenz</string>
-  <string name="app_license">Kernel Adiutor ist unter der Apache License, Version 2.0, lizenziert und verwendet folgende Programmbibliotheken</string>
-  <string name="open_source">Open Source</string>
-  <string name="open_source_summary">Der Quellcode dieser App ist offen und kann auf meinem GitHub Account eingesehen werden!</string>
-  <string name="feature_request">Funktionsanfrage</string>
-  <string name="feature_request_summary">Wollen Sie mehr Funktionen? Öffnen Sie ein neues Problem auf GitHub und übermitteln Sie Ihre Idee.</string>
-  <string name="google_plus_summary">Werde Teil unserer Community.</string>
-  <string name="translation">Übersetzung</string>
-  <string name="translation_summary">Helfen Sie mir, diese App zu übersetzen!</string>
+  <string name="per_app_toast_summary">Show a toast when applying a profile for Per App detection</string>
+  <string name="update_check">Update Checking</string>
+  <string name="update_check_summary">Allow app to check for updates on-boot and on-open.</string>
+  <!-- FAQ -->
+  <string name="misspelled">Why did you misspell \"Auditor\"?</string>
+  <string name="misspelled_summary">Adiutor is Latin and means helper.</string>
+  <string name="cpu_freq_not_sticking">Why doesn\'t my determined CPU freq stick?</string>
+  <string name="cpu_freq_not_sticking_summary">This could be due to many reasons. Many kernels nowadays have their own hotplugging system which controls the CPU frequency and CyanogenMod has their own CPU Boost implementation which regulate the frequency. I would suggest you don\'t touch the CPU frequencies and let the kernel do its job.</string>
+  <string name="feature_not_appearing">Why don\'t features x and y show up?</string>
+  <string name="feature_not_appearing_summary">Features depend on the kernel.</string>
+  <string name="feature_function">What does feature x do?</string>
+  <string name="feature_function_summary">If you don\'t know what this control does, then simply don\'t touch it. Please do a proper research before playing with your expensive hardware.</string>
+  <string name="add_new_features">Could you add feature x and y?</string>
+  <string name="add_new_features_summary">That\'s hard to say. I try to add all features, but it\'s hard to make this app universal for all devices. I only have a Samsung Galaxy S4 (I9500), an HTC Desire 816 and recently got a OnePlus 2, so don\'t blame me if features don\'t get merged immediately.</string>
 
-  <string name="modification">Modifizierte Version von Kernel Adiutor</string>
-  <string name="modification_summary">Diese Applikation wurde um verschiedene Features erweitert, die nicht in der Originalversion von Kernel Adiutor enthalten sind.</string>
+  <!-- About us -->
+  <string name="license">License</string>
+  <string name="app_license">Kernel Adiutor is licensed under the Apache License, Version 2.0, and uses following libraries</string>
+  <string name="appcompat_v7" translatable="false">v7 Appcompat Library</string>
+  <string name="cardview_v7" translatable="false">v7 Cardview Library</string>
+  <string name="recyclerview_v7" translatable="false">v7 Recyclerview Library</string>
+  <string name="google" translatable="false">Google</string>
+  <string name="fab" translatable="false">FloatingActionButton</string>
+  <string name="jerzy" translatable="false">Jerzy Chałupski</string>
+  <string name="dashclock" translatable="false">Dashclock</string>
+  <string name="nurik" translatable="false">Roman Nurik</string>
+  <string name="nineoldandroids" translatable="false">NineOldAndroids</string>
+  <string name="wharton" translatable="false">Jake Wharton</string>
+  <string name="picasso" translatable="false">Picasso</string>
+  <string name="square" translatable="false">Square Inc.</string>
+  <string name="materialtabs" translatable="false">MaterialTabs</string>
+  <string name="frenn" translatable="false">Karim Frenn</string>
+  <string name="open_source">Open source</string>
+  <string name="open_source_summary">This application is open source. Check it out on my GitHub!</string>
+  <string name="feature_request">Feature request</string>
+  <string name="feature_request_summary">Do you want more features? Open a new issue on GitHub and submit your idea.</string>
+  <string name="donate_summary">This is a donation link for Yoinx for the modifications. Not to Grarak the original author. This button is the only place for a donation to me, all other donation popups will still go to Grarak</string>
+  <string name="google_plus_summary">Join our community.</string>
+  <string name="translation">Translation</string>
+  <string name="translation_summary">Help me translate this app!</string>
 
-  <string name="modification_version">Modifizierte Version</string>
+  <string name="modification">Modified build of Kernel Adiutor</string>
+  <string name="modification_summary">This application is being modified for various custom features that are not included in the original Kernel Adiutor.</string>
+
+  <string name="modification_version">Modification Version</string>
+  <string name="modification_version_number" translatable="false">Build 6</string>
 
   <string name="accessibility_service_label">KA Per App Monitor</string>
-  <string name="accessibility_service_desc">Dienst zur Überwachung, ob sich eine Vordergrund App durch das Laden eines Per App Profils ändert.</string>
+  <string name="accessibility_service_desc">Service to monitor when foreground app changes for per-app profile loading</string>
+
 </resources>
