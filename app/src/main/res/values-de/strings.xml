@@ -675,10 +675,10 @@
   <string name="vibration_strength">Vibrationsstärke</string>
   <string name="android_logger">Android-Logger</string>
   <string name="bcl">BCL</string>
-  <string name="bcl_summary">BCL komplett deaktivieren oder aktivieren</string>
-  <string name="bcl_hotplug">BCL Hotplugging</string>
-  <string name="bcl_hotplug_summary">Enable or Disable BCL Hotplugging</string>
-  <string name="crc">Software CRC control</string>
+  <string name="bcl_summary">BCL komplett aktivieren oder deaktivieren</string>
+  <string name="bcl_hotplug">BCL-Hotplugging</string>
+  <string name="bcl_hotplug_summary">BCL-Hotplugging aktivieren oder deaktivieren</string>
+  <string name="crc">Software CRC-Kontrolle</string>
   <string name="crc_summary">CRC is a mechanism aiming to prevent data corruption when enabled. Data blocks can lose up to 30% of their performance.</string>
   <string name="fsync">Fsync</string>
   <string name="fsync_summary">Disable for better file system performance at the risk of data loss in case of a system crash.</string>
@@ -755,8 +755,8 @@
   <string name="google_plus">Google Plus</string>
   <string name="paypal">PayPal</string>
   <string name="download">Download</string>
-   <string name="downloading_counting">%1$s/%2$s</string>
-   <string name="resume">Resume</string>
+  <string name="downloading_counting">%1$s/%2$s</string>
+  <string name="resume">Resume</string>
   <string name="checking_md5">Checking MD5sum</string>
   <string name="md5_mismatch">MD5 Mismatch</string>
   <string name="md5_mismatch_summary">The downloaded file has a different MD5. This has following reasons:\n\n\u2022 The downloaded file is corrupted\n\u2022 The developer has declared a wrong MD5\n\nTry to download the file again. If you still get this error, please contact the developer of this kernel.</string>
@@ -902,9 +902,9 @@
   <string name="feature_request">Feature request</string>
   <string name="feature_request_summary">Do you want more features? Open a new issue on GitHub and submit your idea.</string>
   <string name="donate_summary">This is a donation link for Yoinx for the modifications. Not to Grarak the original author. This button is the only place for a donation to me, all other donation popups will still go to Grarak</string>
-  <string name="google_plus_summary">Join our community.</string>
-  <string name="translation">Translation</string>
-  <string name="translation_summary">Help me translate this app!</string>
+  <string name="google_plus_summary">Treten Sie unserer Community bei.</string>
+  <string name="translation">Übersetzung</string>
+  <string name="translation_summary">Helfen Sie mir diese App zu übersetzen!</string>
 
   <string name="modification">Modifizierte Version von Kernel Adiutor</string>
   <string name="modification_summary">Diese Applikation wurde um verschiedene Features erweitert, die nicht in der Originalversion von Kernel Adiutor enthalten sind.</string>
