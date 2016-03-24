@@ -566,33 +566,43 @@
   <string name="headset_mspkr_drv_mode_summary">Software-Workaround starten, um den Verlust der Lautsprecher zu verhindern</string>
   
   <!-- Battery -->
-  <string name="battery_voltage">Battery Voltage</string>
-  <string name="battery_level">Battery Level</string>
-  <string name="battery_temperature">Battery Temperature</string>
+  <string name="battery_voltage">Akku-Spannung</string>
+  <string name="battery_level">Akku-Level</string>
+  <string name="battery_temperature">Akku-Temperatur</string>
   <string name="usb_fast_charge">USB Fast Charge</string>
-  <string name="usb_fast_charge_summary">Device will charge faster when connected with USB. Replug your charger when changing this option.</string>
-  <string name="charge_levels">Charge Levels Interface</string>
-  <string name="charge_levels_summary">Setting levels higher than your device supports can damage your device and any device it is plugged into. USE CAUTION.</string>
-  <string name="charge_level_ac">AC Charge Level</string>
-  <string name="charge_level_ac_summary">Set MAX mA allowed while charging via AC (0 = stock charging logic)</string>
-  <string name="charge_level_usb">USB Charge Level</string>
-  <string name="charge_level_usb_summary">Set MAX mA allowed while charging via USB (0 = stock charging logic)</string>
+  <string name="usb_fast_charge_summary">Gerät lädt schneller auf, wenn mit USB verbunden. Ladegerät neu anschließen, nachdem Optionen geändert wurden.</string>
+  <string name="charge_levels">Ladungs-Level Interface</string>
+  <string name="charge_levels_summary">Zu hohe Werte, die Ihr Gerät nicht unterstützen, können dieses und eingesteckte Geräte beschädigen. MIT VORSICHT BENUTZEN.</string>
+  <string name="charge_level_ac">Strom-Ladungs-Level</string>
+  <string name="charge_level_ac_summary">MAXIMAL erlaubte mA während des Ladevorgangs über Stecker (0 = Standardwert)</string>
+  <string name="charge_level_usb">USB-Ladungs-Level</string>
+  <string name="charge_level_usb_summary">MAXIMAL erlaubte mA während des Ladevorgangs über USB (0 = Standardwert)</string>
 
-  <string name="blx">Battery Life eXtender</string>
-  <string name="blx_summary">Set a limit for the capacity to which the battery will be charged by passing a value between 0 and 100.</string>
-  <string name="custom_charge_rate">Charge Rate</string>
-  <string name="charge_rate">Battery Charging Rate</string>
-  <string name="charge_rate_summary">Set Custom Battery Charge Rate. Caution: Exceeding 1250mA may damage your charging driver.</string>
+  <string name="blx">Battery Life-eXtender</string>
+  <string name="blx_summary">Setzen Sie einen Wert bis zu welcher Kapazität Ihr Gerät geladen wird (0-100).</string>
+  <string name="custom_charge_rate">Ladestrom</string>
+  <string name="charge_rate">Akku-Ladestrom</string>
+  <string name="charge_rate_summary">Eigenen Ladestrom setzen. Vorsicht: Eine Überschreitung von 1250mA kann Ihren Lade-Treiber zerstören..</string>
   
-  
+  <!-- I/O Scheduler -->
   <string name="internal_storage">Interner Speicher</string>
   <string name="external_storage">Externer Speicher</string>
   <string name="scheduler">Scheduler</string>
-  <string name="scheduler_summary">Lege einen aktiven I/O Scheduler Algorithmus fest. Der Scheduler entscheidet wie mit I/O Anfragen umgegangen wird.</string>
-  <string name="scheduler_tunable">Scheduler Tunable</string>
-  <string name="scheduler_tunable_summary">Verschiedene Optionen die vom Scheduler abhängig sind.</string>
+  <string name="scheduler_summary">Lege einen aktiven I/O-Scheduler Algorithmus fest. Der Scheduler entscheidet wie mit I/O-Anfragen umgegangen wird.</string>
+  <string name="scheduler_tunable">Scheduler Einstellungen</string>
+  <string name="scheduler_tunable_summary">Verschiedene Optionen, die vom Scheduler abhängig sind.</string>
   <string name="read_ahead">Read-Ahead</string>
   <string name="read_ahead_summary">Der Read-Ahead Wert für den Telefonspeicher.</string>
+  <string name="rotational">Rotierender Speicher</string>
+  <string name="rotational_summary">Gerät als rotierenden Speicher behandeln.</string>
+  <string name="iostats">I/O-Statistiken</string>
+  <string name="iostats_summary">I/O-Statistiken für diesen Gerätespeicher verwalten. Deaktivierung wird I/O-Überwachungs-Apps unterbrechen .</string>
+  <string name="iorandom">Zufall hinzufügen</string>
+  <string name="iorandom_summary">Entropie von rotierendem Speicher zeichnen.</string>
+  <string name="ioaffitiny">RQ-Affinität</string>
+  <string name="ioraffinity_summary">Scheduler-Anfragen mit der CPU beeenden, mit der sie gestartet wurden. Höhere Werte sind aggressiver.</string>
+
+  <!-- Kernel Samepage Merging -->
   <string name="ksm_full_scans">Vollständige Scans</string>
   <string name="ksm_pages_shared">Geteilte Seiten</string>
   <string name="ksm_pages_sharing">Teilende Seiten</string>
@@ -603,46 +613,56 @@
   <string name="ksm_pages_to_scan">Zu scannende Seiten</string>
   <string name="ksm_sleep_milliseconds">Schlafen zwischen den Scans</string>
   <string name="ksm_deferred_timer">Auszusetzende Timer</string>
+  <string name="ksm_deferred_timer_summary">Reduziert im Gegenzug etwas CPU-Nutzung, für weniger Speichereinsparungen.</string>
+  <string name="uksm_cpu_use">Maximale CPU-Nutzung</string>
+  <string name="uksm_cpu_use_summary">Maximale CPU-Nutzung für UKSM nutzen, wenn Seiten zusammengeführt werden</string>
+  
+  <!-- Low Memory Killer -->
   <string name="foreground_app">Vordergrund-Anwendungen</string>
   <string name="visible_app">Sichtbare Anwendungen</string>
   <string name="secondary_server">Hintergrund Anwendungen</string>
   <string name="hidden_app">Versteckte Anwendungen</string>
   <string name="content_providers">Inhaltsversorger</string>
   <string name="empty_app">Leere Anwendungen</string>
-  <string name="very_light">Sehr leicht</string>
+  <string name="very_light">Sehr sanft</string>
   <string name="light">Sanft</string>
   <string name="medium">Mittel</string>
   <string name="very_aggressive">Sehr aggressiv</string>
+  <string name="adaptive">Adaptiver Low Memory Killer</string>
+  <string name="adaptive_summary">LMK dynamisch,aggressiver ausführen, wenn ein Thrashing-Szenario entdeckt wird.</string>
+
+  <!-- Virtual Memory -->
   <string name="zram">Z-RAM</string>
-  <string name="disksize">Speichergröße</string>
-  <string name="disksize_summary">Versucht, die Leistung zu erhöhen, indem die Auslagerungsaktivitäten nicht mehr auf physischen Speicher gelagert werden, stattdessen wird ein virtuelles Blockgerät erstellt. Paging erfolgt im RAM, bis es erforderlich ist, den virtuellen Swap-Speicher zu verwenden.</string>
-  <string name="available">Verfügbar</string>
-  <string name="read">Lesen</string>
-  <string name="write">Schreiben</string>
-  <string name="vibration_strength">Vibrationsstärke</string>
-  <string name="android_logger">Android-Protokollierung</string>
-  <string name="fsync">FSync</string>
-  <string name="dynamic_fsync">Dynamischer FSync</string>
-  <string name="lcd_panel">LCD-Anzeige</string>
-  <string name="hybrid">Hybrid</string>
-  <string name="power_suspend_state_summary">Powermanagement-Treiber des Kernels wenn der Bildschirm deaktiviert ist. Besseres Stromsparen, wenn aktiviert. Hinweis: Sie können diese Einstellung nur ändern, wenn sich der Power-Suspend-Modus im Benutzermodus befindet.</string>
-  <string name="network">Netzwerk</string>
-  <string name="tcp">TCP Congestion-Algorithmus</string>
-  <string name="tcp_summary">Das \"Transmission Control Protocol\" ist eines der Hauptprotokolle der Internetprotokollfamilie (IP), die wegen dessen starker Verbreitung oft TCP/IP genannt wird.</string>
-  <string name="hostname">Hostname</string>
-  <string name="wakelock">Wakelock</string>
-  <string name="smb135x_wakelock">smb135x Wakelock</string>
-  <string name="smb135x_wakelock_summary">Verhindert Wakelocks wenn die Stromversorgung getrennt ist.</string>
-  <string name="sensor_ind_wakelock">Sensor_ind Wakelock</string>
-  <string name="sensor_ind_wakelock_summary">Verhindert Wakelocks wenn der Inaktivitätsbildschirm deaktiviert ist.</string>
-  <string name="msm_hsic_host_wakelock">Msm_hsic_host Wakelock</string>
-  <string name="msm_hsic_host_wakelock_summary">Verhindert msm_hsic_host Wakelocks.</string>
-  <string name="wlan_wakelock">WLAN Wakelock</string>
-  <string name="wlan_wakelock_summary">Verhindere WLAN Wakelocks.</string>
-  <string name="plugin_warning">Ich, der Autor dieser Anwendung, bin nicht verantwortlich für Schäden, die Dritt-Anwendungen verursachen! Ich kann auch nicht für die Funktionalität von ihnen garantieren. Seien Sie bitte vorsichtig, welche Anwendungen Sie herunterladen!</string>
-  <string name="download_plugins">Erweiterungen herunterladen</string>
-  <string name="looking_plugins">Suche nach Erweiterungen</string>
-  <string name="no_plugins">Keine Erweiterungen gefunden</string>
+  <string name="disksize">Disksize</string>
+  <string name="disksize_summary">Attempts to increase performance by avoiding paging on physical storage, instead using a compressed virtual device in RAM. Paging takes place in RAM until it is necessary to use the swap space on physical storage.</string>
+  <string name="dirty_ratio">Dirty Ratio</string>
+  <string name="dirty_ratio_summary">Contains, as a percentage of total system memory, the number of pages at which a process which is generating disk writes will itself start writing out dirty data. Lower the amount of unwritten write cache to reduce lags when a huge write is required.</string>
+  <string name="dirty_background_ratio">Dirty Background Ratio</string>
+  <string name="dirty_background_ratio_summary">Contains, as a percentage of total system memory, the number of pages at which the pdflush background writeback daemon will start writing out dirty data.</string>
+  <string name="dirty_expire_centisecs">Dirty Expire Centisecs</string>
+  <string name="dirty_expire_centisecs_summary">This tunable is used to define when dirty data is old enough to be eligible for writeout by the kernel flusher threads.  It is expressed in 100\'ths of a second.  Data which has been dirty in-memory for longer than this interval will be written out next time a flusher thread wakes up.</string>
+  <string name="dirty_writeback_centisecs">Dirty Writeback Centisecs</string>
+  <string name="dirty_writeback_centisecs_summary">The kernel flusher threads will periodically wake up and write old data out to disk.  This tunable expresses the interval between those wakeups, in 100\'ths of a second.  Setting this to zero disables periodic writeback altogether.</string>
+  <string name="dynamic_dirty_writeback_centisecs">Dynamic Dirty Writeback</string>
+  <string name="dynamic_dirty_writeback_centisecs_summary">This feature allows to have two different intervals for dirty page writebacks and to dynamically manage them when the system has been resumed (it\'s active) or when has been suspended.</string>
+  <string name="dirty_writeback_suspend_centisecs">Suspend Dirty Writeback Centisecs</string>
+  <string name="dirty_writeback_suspend_centisecs_summary">The kernel flusher threads will periodically wake up and write old data out to disk.  This tunable expresses the interval between those wakeups during suspend, in 100\'ths of a second.  Setting this to zero disables periodic writeback altogether.</string>
+  <string name="dirty_writeback_active_centisecs">Active Writeback Centisecs</string>
+  <string name="dirty_writeback_active_centisecs_summary">The kernel flusher threads will periodically wake up and write old data out to disk.  This tunable expresses the interval between those wakeups while active, in 100\'ths of a second.  Setting this to zero disables periodic writeback altogether.</string>
+  <string name="overcommit_ratio">Overcommit Ratio</string>
+  <string name="overcommit_ratio_summary">Percentage of physical memory size to include in overcommit calculations.</string>
+  <string name="swappiness">Swappiness</string>
+  <string name="swappiness_summary">Controls the tendency of the kernel to move processes out of physical memory and onto the swap disk. Because disks are much slower than RAM, this can lead to slower response times for system and applications if processes are too aggressively moved out of memory.</string>
+  <string name="vfs_cache_pressure">VFS Cache Pressure</string>
+  <string name="vfs_cache_pressure_summary">Controls the tendency of the kernel to reclaim the memory which is used for caching of directory and inode objects.</string>
+  <string name="laptop_mode">Laptop Mode</string>
+  <string name="laptop_mode_summary">This option will delay the writebacks of file system bits cached in RAM while screen is ON (Enable for better performance at a slight risk of possible data loss if crashed or sudden loss of power).</string>
+
+    <string name="min_free_kbytes">Min free Kilobytes</string>
+    <string name="min_free_kbytes_summary">This is used to force the Linux VM to keep a minimum number of kilobytes free. The VM uses this number to compute a pages_min value for each lowmem zone in the system. Each lowmem zone gets a number of reserved free pages based proportionally on its size.</string>
+    <string name="extra_free_kbytes">Extra Free Kilobytes</string>
+    <string name="extra_free_kbytes_summary">This parameter tells the VM to keep extra free memory between the threshold where background reclaim (kswapd) kicks in, and the threshold where direct reclaim (by allocating processes) kicks in.</string>
+
   <string name="installed">Installiert</string>
   <string name="update_available">Aktualisierungen verfügbar</string>
   <string name="not_installed">Nicht installiert</string>
