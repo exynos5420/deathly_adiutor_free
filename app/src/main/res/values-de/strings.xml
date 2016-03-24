@@ -470,13 +470,17 @@
   <string name="max_brightness_summary">Erlaubt es die maximale Helligkeit höher einzustellen als der Standardwert.</string>
   <string name="backlight_dimmer">Hintergrundbeleuchtungs-Dimmer</string>
   <string name="offset">Offset</string>
-  <string name="negative_toggle">Negative Toggle</string>
-  <string name="negative_toggle_summary">Enable inverting the screen colors by quickly pressing MENU button 4 times.</string>
-  <string name="mdnie_global_controls">mDNIe global controls</string>
-  <string name="register_hook">Register Hook</string>
-  <string name="register_hook_summary">Register intercept acts like a hook and will enable catching scenario settings and modifying them through delta controls. If a scenario does not have a setting (register) in its base sequence, then it cannot be modified by the hook.</string>
+  <string name="negative_toggle">Negativer Schalter</string>
+  <string name="negative_toggle_summary">Um die Bildschirmfarben schnell umzukehren, Menü-Button 4 mal schnell drücken.</string>
+  <string name="mdnie_global_controls">mDNIe Globale Kontrollen</string>
+  <string name="register_hook">Registrier-Haken</string>
+  <string name="register_hook_summary">Registrier-Intercept agiert wie ein Haken und wird es ermöglichen Szenario-Einstellungen zu kontrollieren und über Delta-Kontrollen zu modifizieren. Wenn ein Szenario keine Einstellungen (Registrierung) in seiner Basis-Sequenz hat, kann es nicht mit dem Haken modofiziert werden.</string>
   <string name="master_sequence">Haupt-Sequenz</string>
+  <string name="master_sequence_summary"> Durch Aktivierung der Haupt-Sequenz werden Samsungs Profile und Szenarien deaktiviert und ignoriert, die ROM-Einstellungen werden deaktiviert.</string>
   <string name="glove_mode">Handschuh-Modus</string>
+  <string name="glove_mode_summary">Dadurch läßt sich Ihr Gerät auch mit Handschuhen verwenden.</string>
+  
+  <!-- Wake Controls -->
   <string name="dt2w">DoubleTap2Wake</string>
   <string name="dt2w_summary">Wecken Sie Ihr Gerät durch doppeltes Antippen des Bildschirms auf.</string>
   <string name="center">Mittig</string>
