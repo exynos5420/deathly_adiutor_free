@@ -858,7 +858,7 @@
   <string name="confirm_new_password">Neues Passwort bestätigen</string>
   <string name="old_password">Altes Passwort</string>
   <string name="old_password_wrong">Altes Passwort ist falsch</string>
-  <string name="password_empty">Passwort ist leer</string></string>
+  <string name="password_empty">Passwort ist leer</string>
   <string name="password_not_match">Passwort stimmt nicht überein</string>
   <string name="password_too_long">Passwort ist zu lang</string>
   <string name="set_password_first">Zuerst ein Passwort setzen</string>
@@ -900,4 +900,4 @@
   <string name="accessibility_service_label">KA Per-App-Monitor</string>
   <string name="accessibility_service_desc">Dienst zur Überwachung, ob sich eine Vordergrund-App durch das Laden eines Per-App-Profils ändert.</string>
 
-</resources>
+</recources>
