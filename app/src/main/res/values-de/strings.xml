@@ -19,7 +19,7 @@
   <string name="thank_you">Vielen Dank!</string>
   <string name="heavy_user_message">Anscheinend genießen Sie diese Anwendung sehr! Vielen Dank für die Verwendung!</string>
   <string name="rate_app">Bewerten Sie die App</string>
-  <string name="donate">Spenden Sie an mich</string>
+  <string name="donate">Spenden Sie an mich.</string>
   
   <!-- FileBrowser -->
   <string name="no_permission">Keine Erlaubnis</string>
