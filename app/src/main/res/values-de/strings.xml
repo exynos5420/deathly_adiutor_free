@@ -14,7 +14,7 @@
   <string name="went_wrong">Etwas ist schief gelaufen!</string>
   <string name="password">Passwort</string>
   <string name="password_wrong">Falsches Passwort</string>
-  <string name="press_back_again">Drücken Sie noch einmal "Zurück", um die App zu verlassen</string>
+  <string name="press_back_again">Drücken Sie noch einmal \"Zurück\", um die App zu verlassen</string>
   <string name="more">Mehr</string>
   <string name="thank_you">Vielen Dank!</string>
   <string name="heavy_user_message">Anscheinend genießen Sie diese Anwendung sehr! Vielen Dank für die Verwendung!</string>
@@ -811,7 +811,7 @@
 
   <!-- Init.d -->
   <string name="emulate_initd">Init.d emulieren</string>
-  <string name="emulate_initd_summary">Wenn Ihr Gerät Init.d nicht unterstützt, können Sie "Init.d emulieren" aktivieren. Durch Aktivierung wird die Anwendung die Skripte nach dem hochfahren ausführen.</string>
+  <string name="emulate_initd_summary">Wenn Ihr Gerät Init.d nicht unterstützt, können Sie \"Init.d emulieren\" aktivieren. Durch Aktivierung wird die Anwendung die Skripte nach dem hochfahren ausführen.</string>
   <string name="executing">Wird ausgeführt</string>
   <string name="execute">Ausführen</string>
   <string name="no_scripts_found">Keine Skripte gefunden!</string>
@@ -826,13 +826,13 @@
   <string name="beta_info_summary">Einen Hinweis nach dem Start anzeigen, wenn Sie eine Beta Version benutzen.</string>
   <string name="show_profile_tile">Profil-Kachel anzeigen</string>
   <string name="notification">Benachrichtigung</string>
-  <string name="notification_summary">Eine Benachrichtigung anzeigen, wenn "Beim Systemstart anzeigen" gestartet wird. Bitte deaktivieren, wenn Probleme auftreten.</string>
+  <string name="notification_summary">Eine Benachrichtigung anzeigen, wenn \"Beim Systemstart anzeigen\" gestartet wird. Bitte deaktivieren, wenn Probleme auftreten.</string>
   <string name="show_toast">Toast-Benachrichtigungen anzeigen</string>
   <string name="test">Test</string>
-  <string name="test_summary">"Beim Systemstart anwenden" testen (mit Verzögerung). Wenn nichts passiert, sind keine Einstellungen gespeichert.</string>
-  <string name="hide_apply_on_boot">"Beim Systemstart anwenden" ausblenden.</string>
+  <string name="test_summary">\"Beim Systemstart anwenden\" testen (mit Verzögerung). Wenn nichts passiert, sind keine Einstellungen gespeichert.</string>
+  <string name="hide_apply_on_boot">\"Beim Systemstart anwenden\" ausblenden.</string>
   <string name="hide_apply_on_boot_summary">Ansicht beim Herunterscrollen ausblenden.</string>
-  <string name="enable_apply_on_boot_first">Sie müssen bei mindestens einem Bereich "Beim Systemstart anwenden" gewählt haben.</string>
+  <string name="enable_apply_on_boot_first">Sie müssen bei mindestens einem Bereich \"Beim Systemstart anwenden\" gewählt haben.</string>
   <string name="debugging">Debugging</string>
   <string name="logcat">Logcat</string>
   <string name="logcat_summary">Logcat nach /sdcard/logcat.txt kopieren</string>
@@ -859,13 +859,13 @@
   <string name="update_check">Suche nach Updates</string>
   <string name="update_check_summary">Der Anwendung erlauben beim Start und Öffnen nach Updateszu suchen.</string>
   <!-- FAQ -->
-  <string name="misspelled">Warum hast du "Auditor" falsch geschrieben?</string>
-  <string name="misspelled_summary">Adiutor ist lateinisch und bedeutet "Helfer".</string>
+  <string name="misspelled">Warum hast du \"Auditor\" falsch geschrieben?</string>
+  <string name="misspelled_summary">Adiutor ist lateinisch und bedeutet \"Helfer\".</string>
   <string name="cpu_freq_not_sticking">Warum bleibt meine eingestellte CPU-Frequenz nicht bestehen?</string>
   <string name="cpu_freq_not_sticking_summary">Dies kann mehrere Gründe haben. Viele Kernel haben heutzutage ihre eigenen Hotplug-Systeme, die die CPU-Frequenz steuern. CyanogenMod hat eigene CPU-Boost Implementierungen, die die Frequenz steuern. Ich empfehle, dass Sie die CPU-Frequenzen nicht verändern und diese Aufgabe dem Kernel überlassen.</string>
   <string name="feature_not_appearing">Warum werden einige Funktionen nicht angezeigt?</string>
   <string name="feature_not_appearing_summary">Die Einstellmöglichkeiten sind vom Kernel abhängig.</string>
-  <string name="feature_function">Was macht die Einstellung "X"?</string>
+  <string name="feature_function">Was macht die Einstellung \"X\"?</string>
   <string name="feature_function_summary">Wenn Sie nicht wissen was diese Einstellung tut, verändern Sie diese auch nicht. Informieren Sie sich vorher gut, bevor Sie mit Ihrer teuren Hardware experimentieren.</string>
   <string name="add_new_features">Kannst du Funktion x und y hinzufügen?</string>
   <string name="add_new_features_summary">Das ist schwer zu sagen. Ich versuche alle Features hinzuzufügen, aber es ist schwer alle Geräte mit dieser App zu unterstützen. Ich habe nur ein Samsung Galaxy S4 (i9500), ein HTC Desire 816 und bekam vor kurzem ein OnePlus 2, also nicht mir die Schuld geben, wenn neue Funktionen nicht sofort für alle Geräte zur Verfügung stehen.</string>
