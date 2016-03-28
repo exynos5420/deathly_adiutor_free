@@ -52,11 +52,6 @@
   
   <string name="cores">Kerne</string>
   
-  <!-- Special signs -->
-  <string name="minus" translatable="false">-</string>
-  <string name="plus" translatable="false">+</string>
-  <string name="percent" translatable="false">%</string>
-  
   <!-- Headers -->
   <string name="information">Informationen</string>
   <string name="kernel">Kernel</string>
@@ -87,7 +82,6 @@
   <string name="backup">Sicherung</string>
   <string name="build_prop_editor">Build prop-Bearbeiter</string>
   <string name="profile">Profil</string>
-  <string name="recovery" translatable="false">Recovery</string>
   <string name="initd">Init.d</string>
   <string name="startup_commands">Startbefehle</string>
   <string name="startup_commands_list">Liste der Startbefehlen:</string>
@@ -102,8 +96,6 @@
   <string name="about_us">Über uns</string>
   
   <!-- Frequency Table -->
-  <string name="big" translatable="false">Big</string>
-  <string name="little" translatable="false">Little</string>
   <string name="unused_cpu_states">Ungenutzte CPU-Stadien</string>
   <string name="uptime">Laufzeit</string>
   <string name="deep_sleep">Tiefschlaf</string>
@@ -768,8 +760,6 @@
   <string name="no_backups">Keine Sicherungen</string>
   <string name="flash_img">IMG flashen</string>
   <string name="flashing">Flashe</string>
-  <string name="boot" translatable="false">Boot</string>
-  <string name="fota" translatable="false">Fota</string>
   <string name="backing_up">Am sichern</string>
   <string name="empty_name">Name ist leer!</string>
   <string name="backup_already_exists">Eine Sicherung mit dem gleichen Namen existiert bereits. Löschen Sie diese zuerst!</string>
