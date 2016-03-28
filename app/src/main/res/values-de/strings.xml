@@ -659,7 +659,7 @@
   <string name="laptop_mode_summary">This option will delay the writebacks of file system bits cached in RAM while screen is ON (Enable for better performance at a slight risk of possible data loss if crashed or sudden loss of power).</string>
 
   <string name="min_free_kbytes">Min freie Kilobytes</string>
-  <string name="min_free_kbytes_summary">This is used to force the Linux VM to keep a minimum number of kilobytes free. The VM uses this number to compute a pages_min value for each lowmem zone in the system. Each lowmem zone gets a number of reserved free pages based proportionally on its size.</string>
+  <string name="min_free_kbytes_summary">Wird angewendet  to keep a minimum number of kilobytes free. The VM uses this number to compute a pages_min value for each lowmem zone in the system. Each lowmem zone gets a number of reserved free pages based proportionally on its size.</string>
   <string name="extra_free_kbytes">Extra freie Kilobytes</string>
   <string name="extra_free_kbytes_summary">This parameter tells the VM to keep extra free memory between the threshold where background reclaim (kswapd) kicks in, and the threshold where direct reclaim (by allocating processes) kicks in.</string>
 
@@ -685,7 +685,7 @@
   <string name="dynamic_fsync">Dynamic-Fsync</string>
   <string name="dynamic_fsync_summary">Bei aktiviertem Bildschirm werden Fsync-Operationen asynchron ausgeführt. Bei inaktivem Bildschirm werden Operationen synchron ausgeführt.</string>
   <string name="gentlefairsleepers">Gentle Fair Sleepers</string>
-  <string name="gentlefairsleepers_summary">Sleepers nur 50% ihres Service-Defizites geben. Deaktivierung kann ein bißchen Akkuleistung einsparen.</string>
+  <string name="gentlefairsleepers_summary">Sleeper nur 50% ihres Service-Defizites geben. Deaktivierung kann ein bißchen Akkuleistung einsparen.</string>
   <string name="archpower">Arch-Power</string>
   <string name="archpower_summary">Arch-Power spezifische Funktionen/Einsparungen aktivieren</string>
   <string name="power_suspend_mode">Power Suspend-Modus</string>
