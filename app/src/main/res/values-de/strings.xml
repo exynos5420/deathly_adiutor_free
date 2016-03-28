@@ -541,7 +541,7 @@
   <string name="wake_dt2w_feathery_summary">Wird verwendet, um die erlaubte Distanz zwischen Tippen #1 und #2 entlang der Y-Achse festzulegen. Soll ungewolltes Aufwecken verhindern Standardwert 150.</string>
   <string name="right">Rechts</string>
   <string name="left">Links</string>
-   <string name="up">Hoch</string>
+  <string name="up">Hoch</string>
   <string name="down">Runter</string>
   
   
