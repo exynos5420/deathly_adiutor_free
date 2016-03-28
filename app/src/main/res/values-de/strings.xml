@@ -630,7 +630,7 @@
   <string name="dirty_ratio">Dirty-Ratio</string>
   <string name="dirty_ratio_summary">Umfasst die Anzahl der Seiten, ausgedrückt als Prozentsatz des gesamten Systemspeichers, ab welchen ein Prozess, der Schreibzugriffe generiert, sich selbst aus den Dirty-Daten schreibt. Verringere die Anzahl, um Lags bei großer Schreibmenge zu reduzieren.</string>
   <string name="dirty_background_ratio">Dirty Ratio Background</string>
-  <string name="dirty_background_ratio_summary">Umfasst die Anzahl der Seiten, ausgedrückt als Prozentsatz des gesamten Systemspeichers, ab welchen "pdflush background writeback daemon" beginnt, Dirty-Daten auszuschreiben.</string>
+  <string name="dirty_background_ratio_summary">Umfasst die Anzahl der Seiten, ausgedrückt als Prozentsatz des gesamten Systemspeichers, ab welchen \"pdflush background writeback daemon\" beginnt, Dirty-Daten auszuschreiben.</string>
   <string name="dirty_expire_centisecs">Dirty Expire Centisecs</string>
   <string name="dirty_expire_centisecs_summary">Diese Einstellung definiert, wann Daten alt genug sind, um für den Kernel-Flusher in Frage zu kommen.  Wird in hundertstel einer Sekunde angegeben.  Daten, welche länger als dieses Intervall im Speicher sind, werden vom Kernel-Flusher zurückgeschrieben.</string>
   <string name="dirty_writeback_centisecs">Dirty Writeback Centisecs</string>
