@@ -19,7 +19,7 @@
   <string name="thank_you">Vielen Dank!</string>
   <string name="heavy_user_message">Anscheinend genießen Sie diese Anwendung sehr! Vielen Dank für die Verwendung!</string>
   <string name="rate_app">Bewerten Sie die App</string>
-  <string name="donate">Spenden Sie an mich.</string>
+  <string name="donate">Spenden Sie an mich</string>
   
   <!-- FileBrowser -->
   <string name="no_permission">Keine Erlaubnis</string>
@@ -84,7 +84,7 @@
   <string name="profile">Profil</string>
   <string name="initd">Init.d</string>
   <string name="startup_commands">Startbefehle</string>
-  <string name="startup_commands_list">Liste der Startbefehlen:</string>
+  <string name="startup_commands_list">Liste der Startbefehle:</string>
   <string name="startup_commands_list_delete">Durch Antippen eines Befehls, wird dieser aus der Datenbank gelöscht.</string>
   <string name="startup_commands_delete">Durch das Antippen dieser Karte, lassen sich alle gespeicherten Startbefehle löschen.</string>
   <string name="startup_commands_delete_all">Sollen wirklich alle Startbefehle gelöscht werden?</string>
@@ -120,7 +120,7 @@
   <string name="cpu_min_freq">Minimale CPU-Frequenz</string>
   <string name="cpu_min_freq_summary">Minimale Taktfrequenz der CPU ändern.</string>
   <string name="cpu_max_screen_off_freq">Maximale CPU-Taktfrequenz bei ausgeschaltetem Bildschirm</string>
-  <string name="cpu_max_screen_off_freq_summary">Minimale Taktfrequenz der CPU ändern, wenn der Bildschirm aus ist.</string>
+  <string name="cpu_max_screen_off_freq_summary">Minimale Taktfrequenz der CPU ändern, wenn der Bildschirm inaktiv ist.</string>
   <string name="cpu_governor">CPU-Governor</string>
   <string name="cpu_governor_summary">Der CPU-Governor bestimmt, wie sich die CPU bei Änderungen in der Auslastung verhält. Das Wechseln des Governors hat Auswirkung darauf, wie die CPU die ihr zur Verfügung stehenden Frequenzschritte nutzt.</string>
   <string name="cpu_governor_tunables">CPU-Governor Einstellungen</string>
@@ -172,7 +172,7 @@
   <string name="cpu_governor_tunables_per_core_summary">Unterschiedliche Konfigurationen, die vom Governor abhängig sind. Beachte, dass Einstellungen geteilt werden und nicht für jeden einzelnen Kern einstellbar sind, wenn der Governor für mehrere Kerne ausgewählt wird. Wenn eine Einstellung gewählt wird, wird sie auch auf die anderen Kerne übertragen.</string>
   <string name="cpu_governor_tunables_per_core_tunable">Einstellungen Kern %d. Governor:</string>
   <string name="alu_t_boostms">Alu-Touch-Eingabe-Boost</string>
-  <string name="alu_t_boostms_summary">Minimales Intervall für das eine CPU beschleunigt wird, wenn eine Eingabe regsistriert wird.</string>
+  <string name="alu_t_boostms_summary">Minimales Intervall für das eine CPU beschleunigt wird, wenn eine Eingabe registriert wird.</string>
   <string name="alu_t_boostfreq">Alu-Touch-Eingabe-Boost-Frequenz</string>
   <string name="alu_t_boostfreq_summary">Erhöht die minimale CPU-Geschwindigkeit auf die ausgewählte Frequenz, wenn eine Berührung registriert wird.</string>
   <string name="alu_t_boostmii">Alu-Touch Minimales Eingabe-Intervall</string>
@@ -182,7 +182,7 @@
   
   
   <!-- CPU Voltage -->
-  <string name="global_offset">Globaler Offset</string>
+  <string name="global_offset">Global</string>
   <string name="override_vmin">Mindestspannung überschreiben</string>
   <string name="override_vmin_summary">Deaktivieren, um Hersteller-Limits zu entfernen.</string>
   
@@ -196,7 +196,7 @@
   <string name="balanced">Ausgeglichen</string>
   <string name="performance">Leistung</string>
   <string name="conservative">Konservativ</string>
-  <string name="eco_insanity">Eco-Wahnsinnigy</string>
+  <string name="eco_insanity">Eco-Wahnsinnig</string>
   <string name="eco_performance">Eco-Leistung</string>
   <string name="eco_conservative">Eco-Konservativ</string>
   <string name="tri">Tri</string>
@@ -218,7 +218,7 @@
   <string name="min_cpu_online">Minimale CPU Online</string>
   <string name="min_cpu_online_summary">Minimale Anzahl der immer laufenden CPUs.</string>
   <string name="max_cpu_online">Maximale CPU Online</string>
-  <string name="max_cpu_online_summary">Maximale Anzah, der immer laufenden CPUs.</string>
+  <string name="max_cpu_online_summary">Maximale Anzahl, der immer laufenden CPUs.</string>
   <string name="max_cores_screen_off">Maximale CPU Online bei ausgeschaltetem Bildschirm</string>
   <string name="max_cores_screen_off_summary">Maximale Anzahl der laufenden CPUs, wenn der Bildschirm ausgeschaltet ist.</string>
   <string name="suspend_defer_time">Suspend-Zeitverzögerung</string>
@@ -260,9 +260,9 @@
   <string name="cpu_freq_unplug_limit">CPU-Frequenz Unplug-Limit</string>
   <string name="first_level">Erste Ebene</string>
   <string name="first_level_summary">Der Schwellenwert, ab dem alle CPUs aktiviert werden.</string>
-  <string name="high_load_counter">Hohe Last Zähler</string>
+  <string name="high_load_counter">High Load Counter</string>
   <string name="load_threshold">Last-Schwellenwert</string>
-  <string name="load_threshold_summary">Der Schwellenwert, ab dem alle CPUs zu aktiviert werden.</string>
+  <string name="load_threshold_summary">Der Schwellenwert, ab dem alle CPUs aktiviert werden.</string>
   <string name="max_load_counter">Maximale Last Zähler</string>
   <string name="min_time_cpu_online">Minimale Zeit, die eine CPU online ist.</string>
   <string name="timer">Timer</string>
@@ -398,7 +398,7 @@
   <string name="ramp_thresold">Schwellenwert-Rampe</string>
   <string name="ramp_thresold_summary">Erhöht die Anzahl der Anfragen des GPU-Governor bei Frequenzminderung. Die Leistung wird gesteigert, he höher der Schwellenwert ist.</string>
   <string name="adreno_idler">Adreno-Idler</string>
-  <string name="adreno_idler_summary">Eine effiziente Abhilfe für MSM-Adreno-tz's Overheads.</string>
+  <string name="adreno_idler_summary">Eine effiziente Abhilfe für MSM-Adreno-tz\'s Overheads.</string>
   <string name="down_differential">Down-Differential</string>
   <string name="down_differential_summary">Schwellenwert, um zu ermitteln, ob der gegebene Workload tätig ist</string>
   <string name="idle_wait">Idle-Wait</string>
@@ -473,8 +473,8 @@
   <string name="glove_mode_summary">Dadurch läßt sich Ihr Gerät auch mit Handschuhen verwenden.</string>
   
   <!-- Wake Controls -->
-  <string name="vib_strength">Aufweck-Gesten Vibrations-Stärke</string>
-  <string name="vib_strength_summary">Dieser Wert ist speziell für Aufweck-Gesten und unabhängig von der normalen Vibrations-Stärke. Sie ist ausschließlich für die Kernel-Treiber. Gesten durch Third-Party-Apps werden ignoriert.</string>
+  <string name="vib_strength">Aufweck-Gesten Vibrationsstärke</string>
+  <string name="vib_strength_summary">Dieser Wert ist speziell für Aufweck-Gesten und unabhängig von der normalen Vibrationsstärke. Sie ist ausschließlich für die Kernel-Treiber. Gesten durch Third-Party-Apps werden ignoriert.</string>
   <string name="dt2w">DoubleTap2Wake</string>
   <string name="dt2w_summary">Gerät aufwecken durch doppeltes Tippen des Bildschirms.</string>
   <string name="center">Zentrum</string>
@@ -663,7 +663,7 @@
 
   <!-- Misc Controls -->
   <string name="se_linux">SE-Linux Schalter</string>
-  <string name="se_linux_summary">Aktueller SELinux-Status:</string>
+  <string name="se_linux_summary">Aktueller SELinux-Status: </string>
   <string name="vibration_strength">Vibrationsstärke</string>
   <string name="android_logger">Android-Logger</string>
   <string name="bcl">BCL</string>
@@ -760,7 +760,7 @@
   <string name="no_backups">Keine Sicherungen</string>
   <string name="flash_img">IMG flashen</string>
   <string name="flashing">Flashe</string>
-  <string name="backing_up">Am sichern</string>
+  <string name="backing_up">Am Sichern</string>
   <string name="empty_name">Name ist leer!</string>
   <string name="backup_already_exists">Eine Sicherung mit dem gleichen Namen existiert bereits. Löschen Sie diese zuerst!</string>
   <string name="restore">Wiederherstellen</string>
@@ -786,8 +786,8 @@
   <string name="apply">Anwenden</string>
   <string name="removed_all_sections">Sie haben alle Bereiche entfernt! Kein Profil möglich.</string>
   <string name="no_settings">Keine Einstellungen gefunden!</string>
-  <string name="press_again_to_apply">Zum anwenden erneut drücken.</string>
-  <string name="applied">Angwendet</string>
+  <string name="press_again_to_apply">Zum Anwenden erneut drücken.</string>
+  <string name="applied">Angewendet</string>
   <string name="applying_profile">Wende %s an</string>
   <string name="replace_profile">Möchten Sie %s ersetzen?</string>
   <string name="set_per_app">Pro-App Einstellungen festlegen</string>
@@ -811,7 +811,7 @@
 
   <!-- Init.d -->
   <string name="emulate_initd">Init.d emulieren</string>
-  <string name="emulate_initd_summary">Wenn Ihr Gerät Init.d nicht unterstützt, können Sie \"Init.d emulieren\" aktivieren. Durch Aktivierung wird die Anwendung die Skripte nach dem hochfahren ausführen.</string>
+  <string name="emulate_initd_summary">Wenn Ihr Gerät Init.d nicht unterstützt, können Sie \"Init.d emulieren\" aktivieren. Durch Aktivierung wird die Anwendung die Skripte nach dem Hochfahren ausführen.</string>
   <string name="executing">Wird ausgeführt</string>
   <string name="execute">Ausführen</string>
   <string name="no_scripts_found">Keine Skripte gefunden!</string>
