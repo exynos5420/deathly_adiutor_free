@@ -832,7 +832,7 @@
   <!-- Settings -->
   <string name="dark_theme">Dunkles Design</string>
   <string name="force_english_language">Englische Sprache erzwingen</string>
-  <string name="beta_info">Beta Information</string>
+  <string name="beta_info">Beta-Information</string>
   <string name="beta_info_summary">Einen Hinweis nach dem Start anzeigen, wenn Sie eine Beta Version benutzen.</string>
   <string name="show_profile_tile">Profil-Kachel anzeigen</string>
   <string name="notification">Benachrichtigung</string>
