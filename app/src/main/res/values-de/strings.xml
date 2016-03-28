@@ -701,7 +701,7 @@
   <string name="network">Netzwerk</string>
   <string name="tcp">TCP-Congestion Algorithmus</string>
   <string name="tcp_summary">Das Transmission Control Protocol ist eines der Kern-Protokolle der Internet-Protokoll-Suite (IP).Die gesamte Suite wird oft TCP/IP genannt.</string>
-  <string name="hostname">Host-Name</stringK
+  <string name="hostname">Host-Name</string>
   <string name="adb_over_wifi">ADB Over WiFi</string>
   <string name="adb_over_wifi_summary">ADB over WiFi aktivieren</string>
   <string name="adb_over_wifi_connect_summary">Aktiviere ADB over WiFi. Verbinden mit: </string>
