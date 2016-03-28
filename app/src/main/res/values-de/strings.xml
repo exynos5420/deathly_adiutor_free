@@ -820,88 +820,74 @@
   <string name="add_action_first">Sie müssen zuerst eine Aktion hinzufügen.</string>
 
   <!-- Init.d -->
-  <string name="emulate_initd">Emulate Init.d</string>
-  <string name="emulate_initd_summary">If your device does not support Init.d you can enable Emulate Init.d. By enabling the Init.d Emulation the application will run the scripts after your device boots up, but before apply on boot.</string>
-  <string name="executing">Executing</string>
-  <string name="execute">Execute</string>
-  <string name="no_scripts_found">No scripts found!</string>
-  <string name="starting_initd">Starting Init.d emulation</string>
-  <string name="finishing_initd">Finishing Init.d emulation</string>
-  <string name="file_name">Name of file</string>
+  <string name="emulate_initd">Init.d emulieren</string>
+  <string name="emulate_initd_summary">Wenn Ihr Gerät Init.d nicht unterstützt, können Sie "Init.d emulieren" aktivieren. Durch Aktivierung wird die Anwendung die Skripte nach dem hochfahren ausführen.</string>
+  <string name="executing">Wird ausgeführt</string>
+  <string name="execute">Ausführen</string>
+  <string name="no_scripts_found">Keine Skripte gefunden!</string>
+  <string name="starting_initd">Starte Init.d Emulation</string>
+  <string name="finishing_initd">Beende Init.d Emulation</string>
+  <string name="file_name">Dateiname</string>
 
   <!-- Settings -->
-  <string name="dark_theme">Dark theme</string>
-  <string name="force_english_language">Force English Language</string>
+  <string name="dark_theme">Dunkles Design</string>
+  <string name="force_english_language">Englische Sprache erzwingen</string>
   <string name="beta_info">Beta Information</string>
-  <string name="beta_info_summary">Show a dialog on start if you are using a beta version.</string>
-  <string name="show_profile_tile">Show Profile Tile</string>
-  <string name="notification">Notification</string>
-  <string name="notification_summary">Show a notification when apply on boot service starts. Please disable this if you get any problems.</string>
-  <string name="show_toast">Show toast</string>
+  <string name="beta_info_summary">Einen Hinweis nach dem Start anzeigen, wenn Sie eine Beta Version benutzen.</string>
+  <string name="show_profile_tile">Profil-Kachel anzeigen</string>
+  <string name="notification">Benachrichtigung</string>
+  <string name="notification_summary">Eine Benachrichtigung anzeigen, wenn "Beim Systemstart anzeigen" gestartet wird. Bitte deaktivieren, wenn Probleme auftreten.</string>
+  <string name="show_toast">Toast-Benachrichtigungen anzeigen</string>
   <string name="test">Test</string>
-  <string name="test_summary">Test apply on boot (with delay). If nothing happens then there are no saved settings.</string>
-  <string name="hide_apply_on_boot">Hide Apply On Boot</string>
-  <string name="hide_apply_on_boot_summary">Hide its view when scrolling down.</string>
-  <string name="enable_apply_on_boot_first">You have to enable apply on boot at least for one section first.</string>
+  <string name="test_summary">"Beim Systemstart anwenden" testen (mit Verzögerung). Wenn nichts passiert, sind keine Einstellungen gespeichert.</string>
+  <string name="hide_apply_on_boot">"Beim Systemstart anwenden" ausblenden.</string>
+  <string name="hide_apply_on_boot_summary">Ansicht beim Herunterscrollen ausblenden.</string>
+  <string name="enable_apply_on_boot_first">Sie müssen bei mindestens einem Bereich "Beim Systemstart anwenden" gewählt haben.</string>
   <string name="debugging">Debugging</string>
   <string name="logcat">Logcat</string>
-  <string name="logcat_summary">Copy logcat to /sdcard/logcat.txt</string>
+  <string name="logcat_summary">Logcat nach /sdcard/logcat.txt kopieren</string>
   <string name="last_kmsg">Last Kernel Message</string>
-  <string name="last_kmsg_summary">Copy /proc/last_kmsg to /sdcard/last_kmsg.txt</string>
+  <string name="last_kmsg_summary">/proc/last_kmsg nach /sdcard/last_kmsg.txt kopieren</string>
   <string name="driver_message">Driver Message</string>
-  <string name="driver_message_summary">Copy driver message (dmesg) to /sdcard/dmesg.txt</string>
-  <string name="security">Security</string>
-  <string name="set_password">Set Password</string>
-  <string name="set_password_summary">You can protect Kernel Adiutor by setting up a password. Every time you open this application, you have to enter it. If you forget it, simply wipe the data of this application in settings of your device. Don\'t worry I won\'t share your password.</string>
-  <string name="delete_password">Delete Password</string>
-  <string name="new_password">New password</string>
-  <string name="confirm_new_password">Confirm new password</string>
-  <string name="old_password">Old password</string>
-  <string name="old_password_wrong">Old password is wrong</string>
-  <string name="password_empty">Password is empty</string>
-  <string name="password_not_match">Password doesn\'t match confirmation</string>
-  <string name="password_too_long">Password is too long</string>
-  <string name="set_password_first">Set a password first</string>
-  <string name="show_sections">Show sections</string>
-  <string name="per_app">Per App Profiles</string>
-  <string name="per_app_toast">Per App Toast</string>
-  <string name="per_app_toast_summary">Show a toast when applying a profile for Per App detection</string>
-  <string name="update_check">Update Checking</string>
-  <string name="update_check_summary">Allow app to check for updates on-boot and on-open.</string>
+  <string name="driver_message_summary">Driver message (dmesg) nach /sdcard/dmesg.txt kopieren</string>
+  <string name="security">Sicherheit</string>
+  <string name="set_password">Passwort setzen</string>
+  <string name="set_password_summary">Sie können Kernel Adiutor schützen, indem Sie ein Passwort setzen. Jedesmal, wenn Sie die Anwendung öffnen, müssen Sie es eingeben. Falls Sie es vergessen haben, löschen Sie die Daten der Anwendung. Keine Angst, ich werde Ihr Passwort nicht teilen.</string>
+  <string name="delete_password">Passwort löschen</string>
+  <string name="new_password">Neues Passwort</string>
+  <string name="confirm_new_password">Neues Passwort bestätigen</string>
+  <string name="old_password">Altes Passwort</string>
+  <string name="old_password_wrong">Altes Passwort ist falsch</string>
+  <string name="password_empty">Passwort ist leer</string></string>
+  <string name="password_not_match">Passwort stimmt nicht überein</string>
+  <string name="password_too_long">Passwort ist zu lang</string>
+  <string name="set_password_first">Zuerst ein Passwort setzen</string>
+  <string name="show_sections">Bereiche anzeigen</string>
+  <string name="per_app">Pro-App Profile</string>
+  <string name="per_app_toast">Pro-App Toast-Benachrichtigung</string>
+  <string name="per_app_toast_summary">Zeige eine Toast-Benachrichtigung, wenn ein Pro-App Profil ausgeführt wird.</string>
+  <string name="update_check">Suche nach Updates</string>
+  <string name="update_check_summary">Der Anwendung erlauben beim Start und Öffnen nach Updateszu suchen.</string>
   <!-- FAQ -->
-  <string name="misspelled">Why did you misspell \"Auditor\"?</string>
-  <string name="misspelled_summary">Adiutor is Latin and means helper.</string>
-  <string name="cpu_freq_not_sticking">Why doesn\'t my determined CPU freq stick?</string>
-  <string name="cpu_freq_not_sticking_summary">This could be due to many reasons. Many kernels nowadays have their own hotplugging system which controls the CPU frequency and CyanogenMod has their own CPU Boost implementation which regulate the frequency. I would suggest you don\'t touch the CPU frequencies and let the kernel do its job.</string>
-  <string name="feature_not_appearing">Why don\'t features x and y show up?</string>
-  <string name="feature_not_appearing_summary">Features depend on the kernel.</string>
-  <string name="feature_function">What does feature x do?</string>
-  <string name="feature_function_summary">If you don\'t know what this control does, then simply don\'t touch it. Please do a proper research before playing with your expensive hardware.</string>
-  <string name="add_new_features">Could you add feature x and y?</string>
-  <string name="add_new_features_summary">That\'s hard to say. I try to add all features, but it\'s hard to make this app universal for all devices. I only have a Samsung Galaxy S4 (I9500), an HTC Desire 816 and recently got a OnePlus 2, so don\'t blame me if features don\'t get merged immediately.</string>
+  <string name="misspelled">Warum hast du "Auditor" falsch geschrieben?</string>
+  <string name="misspelled_summary">Adiutor ist lateinisch und bedeutet "Helfer".</string>
+  <string name="cpu_freq_not_sticking">Warum bleibt meine eingestellte CPU-Frequenz nicht bestehen?</string>
+  <string name="cpu_freq_not_sticking_summary">Dies kann mehrere Gründe haben. Viele Kernel haben heutzutage ihre eigenen Hotplug-Systeme, die die CPU-Frequenz steuern. CyanogenMod hat eigene CPU-Boost Implementierungen, die die Frequenz steuern. Ich empfehle, dass Sie die CPU-Frequenzen nicht verändern und diese Aufgabe dem Kernel überlassen.</string>
+  <string name="feature_not_appearing">Warum werden einige Funktionen nicht angezeigt?</string>
+  <string name="feature_not_appearing_summary">Die Einstellmöglichkeiten sind vom Kernel abhängig.</string>
+  <string name="feature_function">Was macht die Einstellung "X"?</string>
+  <string name="feature_function_summary">Wenn Sie nicht wissen was diese Einstellung tut, verändern Sie diese auch nicht. Informieren Sie sich vorher gut, bevor Sie mit Ihrer teuren Hardware experimentieren.</string>
+  <string name="add_new_features">Kannst du Funktion x und y hinzufügen?</string>
+  <string name="add_new_features_summary">Das ist schwer zu sagen. Ich versuche alle Features hinzuzufügen, aber es ist schwer alle Geräte mit dieser App zu unterstützen. Ich habe nur ein Samsung Galaxy S4 (i9500), ein HTC Desire 816 und bekam vor kurzem ein OnePlus 2, also nicht mir die Schuld geben, wenn neue Funktionen nicht sofort für alle Geräte zur Verfügung stehen.</string>
 
   <!-- About us -->
-  <string name="license">License</string>
-  <string name="app_license">Kernel Adiutor is licensed under the Apache License, Version 2.0, and uses following libraries</string>
-  <string name="appcompat_v7" translatable="false">v7 Appcompat Library</string>
-  <string name="cardview_v7" translatable="false">v7 Cardview Library</string>
-  <string name="recyclerview_v7" translatable="false">v7 Recyclerview Library</string>
-  <string name="google" translatable="false">Google</string>
-  <string name="fab" translatable="false">FloatingActionButton</string>
-  <string name="jerzy" translatable="false">Jerzy Chałupski</string>
-  <string name="dashclock" translatable="false">Dashclock</string>
-  <string name="nurik" translatable="false">Roman Nurik</string>
-  <string name="nineoldandroids" translatable="false">NineOldAndroids</string>
-  <string name="wharton" translatable="false">Jake Wharton</string>
-  <string name="picasso" translatable="false">Picasso</string>
-  <string name="square" translatable="false">Square Inc.</string>
-  <string name="materialtabs" translatable="false">MaterialTabs</string>
-  <string name="frenn" translatable="false">Karim Frenn</string>
-  <string name="open_source">Open source</string>
-  <string name="open_source_summary">This application is open source. Check it out on my GitHub!</string>
-  <string name="feature_request">Feature request</string>
-  <string name="feature_request_summary">Do you want more features? Open a new issue on GitHub and submit your idea.</string>
-  <string name="donate_summary">This is a donation link for Yoinx for the modifications. Not to Grarak the original author. This button is the only place for a donation to me, all other donation popups will still go to Grarak</string>
+  <string name="license">Lizenz</string>
+  <string name="app_license">Kernel Adiutor ist lizenziert unter der Apache License, Version 2.0, und benutzt folgende Librarys</string>
+  <string name="open_source">Open Source</string>
+  <string name="open_source_summary">Der Quellcode dieser Anwendung ist offen und kann auf meinem Github eingesehen werden!</string>
+  <string name="feature_request">Funktionsanfrage</string>
+  <string name="feature_request_summary">Wollen Sie mehr Funktionen? Öffnen Sie ein neues Problem auf GitHub und übermitteln Sie Ihre Idee.</string>
+  <string name="donate_summary">Dies ist ein Spenden-Link für Yoinx. Nicht für Grarak, dem Original-Autor. Diese Taste ist der einzige Weg an mich zu spenden, alle anderen Spenden-Popups führen zu Garak.</string>
   <string name="google_plus_summary">Treten Sie unserer Community bei.</string>
   <string name="translation">Übersetzung</string>
   <string name="translation_summary">Helfen Sie mir diese App zu übersetzen!</string>
