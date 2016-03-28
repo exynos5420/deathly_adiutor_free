@@ -741,7 +741,7 @@
   <string name="no_plugins">Keine Plugins gefunden</string>
   <string name="installed">Installiert</string>
   <string name="update_available">Update verfügbar</string>
-  <string name="update_available_open_app">Zum Herunterladen Kernel Adiutor-Mod öffnen</string>
+  <string name="update_available_open_app">Zum Herunterladen Kernel Adiutor-Mod öffnen.</string>
   <string name="not_installed">Nicht installiert</string>
 
   <!-- Downloads -->
