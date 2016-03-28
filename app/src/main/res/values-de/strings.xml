@@ -14,7 +14,7 @@
   <string name="went_wrong">Etwas ist schief gelaufen!</string>
   <string name="password">Passwort</string>
   <string name="password_wrong">Falsches Passwort</string>
-  <string name="press_back_again">Drücken Sie noch einmal \"Zurück\", um die App zu verlassen</string>
+  <string name="press_back_again">Drücken Sie noch einmal "Zurück", um die App zu verlassen</string>
   <string name="more">Mehr</string>
   <string name="thank_you">Vielen Dank!</string>
   <string name="heavy_user_message">Anscheinend genießen Sie diese Anwendung sehr! Vielen Dank für die Verwendung!</string>
@@ -637,7 +637,7 @@
   <string name="disksize_summary">Attempts to increase performance by avoiding paging on physical storage, instead using a compressed virtual device in RAM. Paging takes place in RAM until it is necessary to use the swap space on physical storage.</string>
   <string name="dirty_ratio">Dirty Ratio</string>
   <string name="dirty_ratio_summary">Contains, as a percentage of total system memory, the number of pages at which a process which is generating disk writes will itself start writing out dirty data. Lower the amount of unwritten write cache to reduce lags when a huge write is required.</string>
-  <string name="dirty_background_ratio">Dirty Hintergrund-Ratio</string>
+  <string name="dirty_background_ratio">Dirty Ratio Hintergrund</string>
   <string name="dirty_background_ratio_summary">Contains, as a percentage of total system memory, the number of pages at which the pdflush background writeback daemon will start writing out dirty data.</string>
   <string name="dirty_expire_centisecs">Dirty Expire Centisecs</string>
   <string name="dirty_expire_centisecs_summary">This tunable is used to define when dirty data is old enough to be eligible for writeout by the kernel flusher threads.  It is expressed in 100\'ths of a second.  Data which has been dirty in-memory for longer than this interval will be written out next time a flusher thread wakes up.</string>
@@ -735,89 +735,89 @@
   <string name="c3state_summary">Really deep sleep with longest latency when waking up.</string>
 
   <!-- Plugins -->
-  <string name="plugin_warning">I, the creator of this application, am not responsible for any damages that third party apps produce! I also can\'t guarantee for the functionality of them. Please be careful which applications you download!</string>
-  <string name="download_plugins">Download Plugins</string>
-  <string name="looking_plugins">Looking for plugins</string>
-  <string name="no_plugins">No plugins found</string>
-  <string name="installed">Installed</string>
-  <string name="update_available">Update available</string>
-  <string name="update_available_open_app">Open Kernek Adiutor-Mod to download</string>
-  <string name="not_installed">Not installed</string>
+  <string name="plugin_warning">Ich, der Schöpfer dieser Anwendung, bin nicht verantwortlich für Schäden verursacht durch Third-Party-Apps! Außerdem kann ich nicht für deren Funktionalität garantieren. Seien Sie vorsichtig welche Anwendungen Sie herunterladen!</string>
+  <string name="download_plugins">Download-Plugins</string>
+  <string name="looking_plugins">Suche nach Plugins</string>
+  <string name="no_plugins">Keine Plugins gefunden</string>
+  <string name="installed">Installiert</string>
+  <string name="update_available">Update verfügbar</string>
+  <string name="update_available_open_app">Zum Herunterladen Kernel Adiutor-Mod öffnen</string>
+  <string name="not_installed">Nicht installiert</string>
 
   <!-- Downloads -->
-  <string name="no_kernels">No kernels found</string>
+  <string name="no_kernels">Keine Kernel gefunden</string>
   <string name="logo">Logo</string>
   <string name="features">Features</string>
-  <string name="loading_counting">Loading %1$d/%2$d</string>
-  <string name="downloading_db">Downloading Database</string>
+  <string name="loading_counting">Lade %1$d/%2$d</string>
+  <string name="downloading_db">Datenbank wird heruntergeladen</string>
   <string name="xda">XDA</string>
   <string name="github">GitHub</string>
   <string name="google_plus">Google Plus</string>
   <string name="paypal">PayPal</string>
   <string name="download">Download</string>
   <string name="downloading_counting">%1$s/%2$s</string>
-  <string name="resume">Resume</string>
-  <string name="checking_md5">Checking MD5sum</string>
-  <string name="md5_mismatch">MD5 Mismatch</string>
-  <string name="md5_mismatch_summary">The downloaded file has a different MD5. This has following reasons:\n\n\u2022 The downloaded file is corrupted\n\u2022 The developer has declared a wrong MD5\n\nTry to download the file again. If you still get this error, please contact the developer of this kernel.</string>
-  <string name="download_success">Successfully downloaded %s. Do you want to install it now?</string>
-  <string name="manual_flashing">I will use my hands</string>
-  <string name="file_location">Downloaded file is in %s</string>
+  <string name="resume">Fortsetzen</string>
+  <string name="checking_md5">MD5sum wird überprüft</string>
+  <string name="md5_mismatch">MD5sum stimmt nicht überein</string>
+  <string name="md5_mismatch_summary">Die heruntergeladene Datei hat eine andere MD5sum. Das hat folgende Gründe:\n\n\u2022 Die heruntergeladene Datei ist korrupt\n\u2022 Der Entwickler hat eine falsche MD5sum angegeben\n\nVersuchen Sie die Datei erneut herunterzuladen. Wenn Sie immer noch diesen Fehler bekommen, kontaktieren Sie bitte den Entwickler des Kernel.</string>
+  <string name="download_success">%s erfolgreich heruntergeladen. Möchten Sie jetzt installieren?</string>
+  <string name="manual_flashing">Ich werde es selbst tun</string>
+  <string name="file_location">Heruntergeladene Datei ist in %s</string>
 
   <!-- Backup -->
-  <string name="no_backups">No backups</string>
-  <string name="flash_img">Flash IMG</string>
-  <string name="flashing">Flashing</string>
+  <string name="no_backups">Keine Sicherungen</string>
+  <string name="flash_img">IMG flashen</string>
+  <string name="flashing">Flashe</string>
   <string name="boot" translatable="false">Boot</string>
   <string name="fota" translatable="false">Fota</string>
-  <string name="backing_up">Backing up</string>
-  <string name="empty_name">Name is empty!</string>
-  <string name="backup_already_exists">A backup with the same name already exists. Delete it first!</string>
-  <string name="restore">Restore</string>
-  <string name="delete">Delete</string>
-  <string name="overwrite_question">Overwrite %s?</string>
-  <string name="restoring">Restoring</string>
-  <string name="delete_question">Delete %s?</string>
+  <string name="backing_up">Am sichern</string>
+  <string name="empty_name">Name ist leer!</string>
+  <string name="backup_already_exists">Eine Sicherung mit dem gleichen Namen existiert bereits. Löschen Sie diese zuerst!</string>
+  <string name="restore">Wiederherstellen</string>
+  <string name="delete">Löschen</string>
+  <string name="overwrite_question">%s überschreiben?</string>
+  <string name="restoring">Wiederherstellung</string>
+  <string name="delete_question">%s löschen?</string>
 
   <!-- Build prop Editor -->
-  <string name="items_found">%d item/s found</string>
-  <string name="add">Add</string>
-  <string name="edit">Edit</string>
-  <string name="key">Key</string>
-  <string name="value">Value</string>
-  <string name="backup_created">Backup has been created in %s.</string>
-  <string name="search">Search</string>
+  <string name="items_found">%d Item/s gefunden</string>
+  <string name="add">Hinzufügen</string>
+  <string name="edit">Ändern</string>
+  <string name="key">Schlüssel</string>
+  <string name="value">Wert</string>
+  <string name="backup_created">Sicherung wurde in %s erstellt.</string>
+  <string name="search">Suche</string>
 
   <!-- Profile -->
-  <string name="no_profiles">No profiles</string>
-  <string name="profile_description">Adding a profile will save your current settings. You can apply them later.</string>
+  <string name="no_profiles">Keine Profile</string>
+  <string name="profile_description">Durch Hinzufügen eines Profils werden Ihre aktuellen Einstellungen gesichert. Sie können diese später hinzufügen.</string>
   <string name="name">Name</string>
-  <string name="select_all">Select all</string>
-  <string name="apply">Apply</string>
-  <string name="removed_all_sections">You removed all sections! No profiles for you.</string>
-  <string name="no_settings">No settings found!</string>
-  <string name="press_again_to_apply">Press again to apply.</string>
-  <string name="applied">Applied</string>
-  <string name="applying_profile">Applying %s</string>
-  <string name="replace_profile">Do you want to replace %s?</string>
-  <string name="set_per_app">Set Per App Settings</string>
-  <string name="per_app_title">Select Apps that will activate this profile</string>
+  <string name="select_all">Alle auswählen</string>
+  <string name="apply">Anwenden</string>
+  <string name="removed_all_sections">Sie haben alle Bereiche entfernt! Kein Profil möglich.</string>
+  <string name="no_settings">Keine Einstellungen gefunden!</string>
+  <string name="press_again_to_apply">Zum anwenden erneut drücken.</string>
+  <string name="applied">Angwendet</string>
+  <string name="applying_profile">Wende %s an</string>
+  <string name="replace_profile">Möchten Sie %s ersetzen?</string>
+  <string name="set_per_app">Pro-App Einstellungen festlegen</string>
+  <string name="per_app_title">Anwendungen festlegen, die dieses Profil aktivieren.</string>
 
   <!-- Recovery -->
-  <string name="reboot">Reboot</string>
+  <string name="reboot">Neustart</string>
   <string name="reboot_soft">Soft Reboot</string>
-  <string name="reboot_recovery">Reboot Recovery</string>
-  <string name="reboot_bootloader">Reboot Bootloader</string>
+  <string name="reboot_recovery">In Recovery booten</string>
+  <string name="reboot_bootloader">In Bootloader booten</string>
   <string name="reboot_download">Reboot Download</string>
-  <string name="confirm">Are you sure?</string>
-  <string name="cwm_recovery">CWM Recovery</string>
+  <string name="confirm">Sind Sie sicher?</string>
+  <string name="cwm_recovery">CWM-Recovery</string>
   <string name="twrp">TWRP</string>
-  <string name="wipe_data">Wipe Data</string>
-  <string name="wipe_cache">Wipe Cache</string>
-  <string name="flash_zip">Flash Zip</string>
-  <string name="flash_now">Flash Now</string>
-  <string name="flash_now_confirm">Do you want to run your actions? Your device will reboot into recovery and the actions will run in the order as you added them.</string>
-  <string name="add_action_first">You have to add an action first.</string>
+  <string name="wipe_data">Data löschen</string>
+  <string name="wipe_cache">Cache löschen</string>
+  <string name="flash_zip">Zip flashen</string>
+  <string name="flash_now">Jetzt flashen</string>
+  <string name="flash_now_confirm">Möchten Sie die Aktionen durchführen? Ihr Gerät wird in die Recovery booten, und die Aktionen werden in ihrer festgelegten Reihenfolge ausgeführt.</string>
+  <string name="add_action_first">Sie müssen zuerst eine Aktion hinzufügen.</string>
 
   <!-- Init.d -->
   <string name="emulate_initd">Emulate Init.d</string>
