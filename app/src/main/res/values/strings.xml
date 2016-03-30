@@ -217,6 +217,8 @@
     <string name="eco_mode_summary">Battery saving mode for IntelliPlug.</string>
     <string name="touch_boost">Touch Boost</string>
     <string name="touch_boost_summary">This will boost your minimum CPU speed if you touch the screen or press a button.</string>
+    <string name="sched_boost">Sched Boost</string>
+    <string name="sched_boost_summary">Enables aggressive thread migration to big cores for high preformance, consumes more power.</string>
     <string name="hysteresis">Hysteresis Value</string>
     <string name="hysteresis_summary">The lower it is, the faster response.</string>
     <string name="threshold">Threshold Value</string>
@@ -301,6 +303,9 @@
     <string name="thunderplug_summary">An in-kernel replacement for Qualcomm\'s MPDecision. Developed by varunchitre15.</string>
     <string name="min_cores_screen_off">Min Cores Screen Off</string>
     <string name="min_cores_screen_off_summary">Minimum number of cores online when screen is off.</string>
+    <string name="hp_style">Hotplug Style</string>
+    <string name="per_core_hp">Per-Core-Hotplug</string>
+    <string name="load_balancer">Load Balancer</string>
     <string name="endurance_level">Endurance Level</string>
     <string name="endurance_level_summary">A power saving profile.</string>
     <string name="quad_core_mode">Quad-Core mode</string>

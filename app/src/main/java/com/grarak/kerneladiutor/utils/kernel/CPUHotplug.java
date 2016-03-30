@@ -307,6 +307,18 @@ public class CPUHotplug implements Constants {
         return Utils.existFile(HOTPLUG_THUNDER_PLUG_TOUCH_BOOST);
     }
 
+    public static void activateThunderPlugSchedBoost(boolean active, Context context) {
+        Control.runCommand(active ? "2" : "1", HOTPLUG_THUNDER_PLUG_SCHED_BOOST, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean isThunderPlugSchedBoostActive() {
+        return Utils.readFile(HOTPLUG_THUNDER_PLUG_SCHED_BOOST).equals("2");
+    }
+
+    public static boolean hasThunderPlugSchedBoost() {
+        return Utils.existFile(HOTPLUG_THUNDER_PLUG_SCHED_BOOST);
+    }
+
     public static void setThunderPlugLoadThreshold(int value, Context context) {
         Control.runCommand(String.valueOf(value), HOTPLUG_THUNDER_PLUG_LOAD_THRESHOLD, Control.CommandType.GENERIC, context);
     }
@@ -341,6 +353,18 @@ public class CPUHotplug implements Constants {
 
     public static boolean hasThunderPlugEnduranceLevel() {
         return Utils.existFile(HOTPLUG_THUNDER_PLUG_ENDURANCE_LEVEL);
+    }
+
+    public static void setThunderPlughpstyle(int value, Context context) {
+    Control.runCommand(String.valueOf(value), HOTPLUG_THUNDER_HP_STYLE, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getThunderPlughpstyle() {
+        return Utils.stringToInt(Utils.readFile(HOTPLUG_THUNDER_HP_STYLE));
+    }
+
+    public static boolean hasThunderPlughpstyle() {
+        return Utils.existFile(HOTPLUG_THUNDER_HP_STYLE);
     }
 
     public static void setThunderPlugSuspendCpus(int value, Context context) {
