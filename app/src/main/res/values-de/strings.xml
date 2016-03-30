@@ -51,6 +51,11 @@
   <string name="pixel">px</string>
   
   <string name="cores">Kerne</string>
+
+  <!-- Special signs -->
+  <string name="minus" translatable="false">-</string>
+  <string name="plus" translatable="false">+</string>
+  <string name="percent" translatable="false">%</string>
   
   <!-- Headers -->
   <string name="information">Informationen</string>
@@ -83,6 +88,7 @@
   <string name="build_prop_editor">Build prop-Bearbeiter</string>
   <string name="profile">Profil</string>
   <string name="initd">Init.d</string>
+  <string name="recovery" translatable="false">Recovery</string>
   <string name="startup_commands">Startbefehle</string>
   <string name="startup_commands_list">Liste der Startbefehle:</string>
   <string name="startup_commands_list_delete">Durch Antippen eines Befehls, wird dieser aus der Datenbank gelöscht.</string>
@@ -96,6 +102,8 @@
   <string name="about_us">Über uns</string>
   
   <!-- Frequency Table -->
+  <string name="big" translatable="false">Big</string>
+  <string name="little" translatable="false">Little</string>
   <string name="unused_cpu_states">Ungenutzte CPU-Stadien</string>
   <string name="uptime">Laufzeit</string>
   <string name="deep_sleep">Tiefschlaf</string>
@@ -760,6 +768,8 @@
   <string name="no_backups">Keine Sicherungen</string>
   <string name="flash_img">IMG flashen</string>
   <string name="flashing">Flashe</string>
+  <string name="boot" translatable="false">Boot</string>
+  <string name="fota" translatable="false">Fota</string>
   <string name="backing_up">Am Sichern</string>
   <string name="empty_name">Name ist leer!</string>
   <string name="backup_already_exists">Eine Sicherung mit dem gleichen Namen existiert bereits. Löschen Sie diese zuerst!</string>
@@ -873,6 +883,20 @@
   <!-- About us -->
   <string name="license">Lizenz</string>
   <string name="app_license">Kernel Adiutor ist lizenziert unter der Apache License, Version 2.0, und benutzt folgende Librarys</string>
+  <string name="appcompat_v7" translatable="false">v7 Appcompat Library</string>
+  <string name="cardview_v7" translatable="false">v7 Cardview Library</string>
+  <string name="recyclerview_v7" translatable="false">v7 Recyclerview Library</string>
+  <string name="google" translatable="false">Google</string>
+  <string name="fab" translatable="false">FloatingActionButton</string>
+  <string name="jerzy" translatable="false">Jerzy Chałupski</string>
+  <string name="dashclock" translatable="false">Dashclock</string>
+  <string name="nurik" translatable="false">Roman Nurik</string>
+  <string name="nineoldandroids" translatable="false">NineOldAndroids</string>
+  <string name="wharton" translatable="false">Jake Wharton</string>
+  <string name="picasso" translatable="false">Picasso</string>
+  <string name="square" translatable="false">Square Inc.</string>
+  <string name="materialtabs" translatable="false">MaterialTabs</string>
+  <string name="frenn" translatable="false">Karim Frenn</string>
   <string name="open_source">Open Source</string>
   <string name="open_source_summary">Der Quellcode dieser Anwendung ist offen und kann auf meinem Github eingesehen werden!</string>
   <string name="feature_request">Funktionsanfrage</string>
@@ -886,6 +910,7 @@
   <string name="modification_summary">Diese Applikation wurde um verschiedene Features erweitert, die nicht in der Originalversion von Kernel Adiutor enthalten sind.</string>
 
   <string name="modification_version">Modifizierte Version</string>
+  <string name="modification_version_number" translatable="false">Build 6</string>
 
   <string name="accessibility_service_label">KA Per-App-Monitor</string>
   <string name="accessibility_service_desc">Dienst zur Überwachung, ob sich eine Vordergrund-App durch das Laden eines Per-App-Profils ändert.</string>
