@@ -84,7 +84,7 @@
   <string name="profile">Profil</string>
   <string name="initd">Init.d</string>
   <string name="startup_commands">Startbefehle</string>
-  <string name="startup_commands_list">Liste der Startbefehle\:</string>
+  <string name="startup_commands_list">Liste der Startbefehle:</string>
   <string name="startup_commands_list_delete">Durch Antippen eines Befehls, wird dieser aus der Datenbank gelöscht.</string>
   <string name="startup_commands_delete">Durch das Antippen dieser Karte, lassen sich alle gespeicherten Startbefehle löschen.</string>
   <string name="startup_commands_delete_all">Sollen wirklich alle Startbefehle gelöscht werden?</string>
@@ -165,12 +165,12 @@
   <string name="cpu_msm_limiter_suspend_min_summary_per_core">Minimale Frequenz für einzelne CPUs festlegen.</string>
   <string name="cpu_msm_limiter_suspend_max">Maximale Suspend-Frequenz</string>
   <string name="cpu_msm_limiter_suspend_max_summary">Maximale Frequenz für alle CPUs festlegen, wenn das Gerät ausgesetzt wird.</string>
-  <string name="cpu_msm_limiter_resume_max_per_core">CPU %d\: Maximale Frequenz</string>
-  <string name="cpu_msm_limiter_suspend_min_per_core">CPU %d\: Minimale Frequenz</string>
-  <string name="cpu_msm_limiter_governor_per_core">CPU %d\: Governor</string>
+  <string name="cpu_msm_limiter_resume_max_per_core">CPU %d: Maximale Frequenz</string>
+  <string name="cpu_msm_limiter_suspend_min_per_core">CPU %d: Minimale Frequenz</string>
+  <string name="cpu_msm_limiter_governor_per_core">CPU %d: Governor</string>
   <string name="cpu_governor_tunables_per_core_header">Govenor-Einstellungen für einzelne Kerne ändern.</string>
   <string name="cpu_governor_tunables_per_core_summary">Unterschiedliche Konfigurationen, die vom Governor abhängig sind. Beachte, dass Einstellungen geteilt werden und nicht für jeden einzelnen Kern einstellbar sind, wenn der Governor für mehrere Kerne ausgewählt wird. Wenn eine Einstellung gewählt wird, wird sie auch auf die anderen Kerne übertragen.</string>
-  <string name="cpu_governor_tunables_per_core_tunable">Einstellungen Kern %d. Governor\:</string>
+  <string name="cpu_governor_tunables_per_core_tunable">Einstellungen Kern %d. Governor:</string>
   <string name="alu_t_boostms">Alu-Touch-Eingabe-Boost</string>
   <string name="alu_t_boostms_summary">Minimales Intervall für das eine CPU beschleunigt wird, wenn eine Eingabe registriert wird.</string>
   <string name="alu_t_boostfreq">Alu-Touch-Eingabe-Boost-Frequenz</string>
@@ -347,15 +347,15 @@
   <string name="temp_safety">Temperatur-Sicherheit</string>
   <string name="msm_thermal">MSM-Thermal</string>
   <string name="msm_thermal_summary">Ein Kernel-Ersatz für Qualcomms Thermald. Entwickelt von show-p1984.</string>
-  <string name="allowed_low_low">Phase 1\: Erlaubte Low Low</string>
-  <string name="allowed_low_high">Phase 1\: Erlaubte Low High</string>
-  <string name="allowed_low_freq">Phase 1\: Erlaubte niedrigste Frequenz</string>
-  <string name="allowed_mid_low">Phase 2\: Erlaubte Mid Low</string>
-  <string name="allowed_mid_high">Phase 2\: Erlaubte Mid High</string>
-  <string name="allowed_mid_freq">Phase 2\: Erlaubte mittlere Frequenz</string>
-  <string name="allowed_max_low">Phase 3\: Erlaubte Max Low</string>
-  <string name="allowed_max_high">Phase 3\: Erlaubte Max High</string>
-  <string name="allowed_max_freq">Phase 3\: Erlaubte maximale Frequenz</string>
+  <string name="allowed_low_low">Phase 1: Erlaubte Low Low</string>
+  <string name="allowed_low_high">Phase 1: Erlaubte Low High</string>
+  <string name="allowed_low_freq">Phase 1: Erlaubte niedrigste Frequenz</string>
+  <string name="allowed_mid_low">Phase 2: Erlaubte Mid Low</string>
+  <string name="allowed_mid_high">Phase 2: Erlaubte Mid High</string>
+  <string name="allowed_mid_freq">Phase 2: Erlaubte mittlere Frequenz</string>
+  <string name="allowed_max_low">Phase 3: Erlaubte Max Low</string>
+  <string name="allowed_max_high">Phase 3: Erlaubte Max High</string>
+  <string name="allowed_max_freq">Phase 3: Erlaubte maximale Frequenz</string>
   <string name="check_interval">Prüfintervall</string>
   <string name="shutdown_temp">Ausschalt-Temperatur</string>
   <string name="temp_throttle">Temperatur-Drossel</string>
@@ -367,13 +367,13 @@
   <string name="temp_limit">Temperatur-Limit</string>
   <string name="temp_limit_summary">Wenn die Temperatur höher ist, wird die CPU-Frequenz gedrosselt, um die Temperatur zu senken.</string>
   <string name="thermal_franco_stage_one">Erste Stufe Frequenz-Limitierung</string>
-  <string name="thermal_franco_stage_one_summary">Ausgelöst bei\:</string>
+  <string name="thermal_franco_stage_one_summary">Ausgelöst bei:</string>
   <string name="thermal_franco_stage_two">Zweite Stufe Frequenz-Limitierung</string>
-  <string name="thermal_franco_stage_two_summary">Ausgelöst bei\:</string>
+  <string name="thermal_franco_stage_two_summary">Ausgelöst bei:</string>
   <string name="thermal_franco_stage_three">Dritte Stufe Frequenz-Limitierung</string>
-  <string name="thermal_franco_stage_three_summary">Ausgelöst bei\:</string>
+  <string name="thermal_franco_stage_three_summary">Ausgelöst bei:</string>
   <string name="thermal_franco_stage_four">Vierte Stufe Frequenz-Limitierung</string>
-  <string name="thermal_franco_stage_four_summary">Ausgelöst bei\:</string>
+  <string name="thermal_franco_stage_four_summary">Ausgelöst bei:</string>
   <string name="thermal_franco_thermal_poll">Abfrage-Intervall</string>
   <string name="thermal_franco_thermal_step">Thermaler Schrittwert</string>
   <string name="thermal_franco_thermal_step_summary">Dieser Wert wird zum Schwellenwert hinzugefügt, um Auslöse-Schwellenwerte zwischen jeder Stufe zu erstellen.</string>
@@ -574,7 +574,7 @@
   <string name="blx_summary">Setzen Sie einen Wert bis zu welcher Kapazität Ihr Gerät geladen wird (0-100).</string>
   <string name="custom_charge_rate">Ladestrom</string>
   <string name="charge_rate">Akku-Ladestrom</string>
-  <string name="charge_rate_summary">Eigenen Ladestrom setzen. Vorsicht\: Eine Überschreitung von 1250mA kann Ihren Lade-Treiber zerstören..</string>
+  <string name="charge_rate_summary">Eigenen Ladestrom setzen. Vorsicht: Eine Überschreitung von 1250mA kann Ihren Lade-Treiber zerstören..</string>
   
   <!-- I/O Scheduler -->
   <string name="internal_storage">Interner Speicher</string>
@@ -663,7 +663,7 @@
 
   <!-- Misc Controls -->
   <string name="se_linux">SE-Linux Schalter</string>
-  <string name="se_linux_summary">Aktueller SELinux-Status\: </string>
+  <string name="se_linux_summary">Aktueller SELinux-Status: </string>
   <string name="vibration_strength">Vibrationsstärke</string>
   <string name="android_logger">Android-Logger</string>
   <string name="bcl">BCL</string>
@@ -689,16 +689,16 @@
   <string name="lcd_panel">LCD-Panel</string>
   <string name="hybrid">Hybrid</string>
   <string name="power_suspend_state">Power Suspend-Zustand</string>
-  <string name="power_suspend_state_summary">Power-Management Treiber bei inaktivem Bildschirm. Kann Akku einsparen. Hinweis\: Sie können diese Einstellung nur ändern, wenn der Power Suspend-Modus im Benutzer-Modus läuft.</string>
+  <string name="power_suspend_state_summary">Power-Management Treiber bei inaktivem Bildschirm. Kann Akku einsparen. Hinweis: Sie können diese Einstellung nur ändern, wenn der Power Suspend-Modus im Benutzer-Modus läuft.</string>
   <string name="network">Netzwerk</string>
   <string name="tcp">TCP-Congestion Algorithmus</string>
   <string name="tcp_summary">Das Transmission Control Protocol ist eines der Kern-Protokolle der Internet-Protokoll-Suite (IP).Die gesamte Suite wird oft TCP/IP genannt.</string>
   <string name="hostname">Host-Name</string>
   <string name="adb_over_wifi">ADB Over WiFi</string>
   <string name="adb_over_wifi_summary">ADB over WiFi aktivieren</string>
-  <string name="adb_over_wifi_connect_summary">Aktiviere ADB over WiFi. Verbinden mit\: </string>
+  <string name="adb_over_wifi_connect_summary">Aktiviere ADB over WiFi. Verbinden mit:</string>
   <string name="wakelock">Wakelocks</string>
-  <string name="wakelocks_summary">Schalter ein\: Der Service kann Wakelocks aufspüren. Schalter aus\: Der Service kann keine Wakelocks aufspüren.</string>
+  <string name="wakelocks_summary">Schalter ein: Der Service kann Wakelocks aufspüren. Schalter aus: Der Service kann keine Wakelocks aufspüren.</string>
   <string name="smb135x_wakelock">smb135x-Wakelock</string>
   <string name="smb135x_wakelock_summary">Wakelock verhindern, wenn getrennt.</string>
   <string name="bluesleep_wakelock">BlueSleep-Wakelock</string>
@@ -751,7 +751,7 @@
   <string name="resume">Fortsetzen</string>
   <string name="checking_md5">MD5sum wird überprüft</string>
   <string name="md5_mismatch">MD5sum stimmt nicht überein</string>
-  <string name="md5_mismatch_summary">Die heruntergeladene Datei hat eine andere MD5sum. Das hat folgende Gründe\:\n\n\u2022 Die heruntergeladene Datei ist korrupt\n\u2022 Der Entwickler hat eine falsche MD5sum angegeben\n\nVersuchen Sie die Datei erneut herunterzuladen. Wenn Sie immer noch diesen Fehler bekommen, kontaktieren Sie bitte den Entwickler des Kernel.</string>
+  <string name="md5_mismatch_summary">Die heruntergeladene Datei hat eine andere MD5sum. Das hat folgende Gründe: \n\n\u2022 Die heruntergeladene Datei ist korrupt \n\u2022 Der Entwickler hat eine falsche MD5sum angegeben \n\nVersuchen Sie die Datei erneut herunterzuladen. Wenn Sie immer noch diesen Fehler bekommen, kontaktieren Sie bitte den Entwickler des Kernel.</string>
   <string name="download_success">%s erfolgreich heruntergeladen. Möchten Sie jetzt installieren?</string>
   <string name="manual_flashing">Ich werde es selbst tun</string>
   <string name="file_location">Heruntergeladene Datei ist in %s</string>
