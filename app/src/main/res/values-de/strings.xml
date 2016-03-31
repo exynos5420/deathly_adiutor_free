@@ -14,7 +14,7 @@
   <string name="went_wrong">Etwas ist schief gelaufen!</string>
   <string name="password">Passwort</string>
   <string name="password_wrong">Falsches Passwort</string>
-  <string name="press_back_again">Drücken Sie noch einmal \u0022Zurück\u0022, um die App zu verlassen</string>
+  <string name="press_back_again">Drücken Sie noch einmal \"Zurück\", um die App zu verlassen</string>
   <string name="more">Mehr</string>
   <string name="thank_you">Vielen Dank!</string>
   <string name="heavy_user_message">Anscheinend genießen Sie diese Anwendung sehr! Vielen Dank für die Verwendung!</string>
@@ -342,7 +342,7 @@
   <string name="immediately_limit_stop">Unmittelbar Stopp limitieren</string>
   <string name="poll">Umfrage</string>
   <string name="temp_hysteresis">Temperatur-Hysterese</string>
-  <string name="thermal_limit_low">Niedriges Thermal-Limit</string></string>
+  <string name="thermal_limit_low">Niedriges Thermal-Limit</string>
   <string name="thermal_limit_high">Hohes Thermal-Limit</string>
   <string name="temp_safety">Temperatur-Sicherheit</string>
   <string name="msm_thermal">MSM-Thermal</string>
@@ -398,7 +398,7 @@
   <string name="ramp_thresold">Schwellenwert-Rampe</string>
   <string name="ramp_thresold_summary">Erhöht die Anzahl der Anfragen des GPU-Governor bei Frequenzminderung. Die Leistung wird gesteigert, he höher der Schwellenwert ist.</string>
   <string name="adreno_idler">Adreno-Idler</string>
-  <string name="adreno_idler_summary">Eine effiziente Abhilfe für MSM-Adreno-tz\u0027s Overheads.</string>
+  <string name="adreno_idler_summary">Eine effiziente Abhilfe für MSM-Adreno-tz\'s Overheads.</string>
   <string name="down_differential">Down-Differential</string>
   <string name="down_differential_summary">Schwellenwert, um zu ermitteln, ob der gegebene Workload tätig ist</string>
   <string name="idle_wait">Idle-Wait</string>
@@ -630,7 +630,7 @@
   <string name="dirty_ratio">Dirty-Ratio</string>
   <string name="dirty_ratio_summary">Umfasst die Anzahl der Seiten, ausgedrückt als Prozentsatz des gesamten Systemspeichers, ab welchen ein Prozess, der Schreibzugriffe generiert, sich selbst aus den Dirty-Daten schreibt. Verringere die Anzahl, um Lags bei großer Schreibmenge zu reduzieren.</string>
   <string name="dirty_background_ratio">Dirty Ratio Background</string>
-  <string name="dirty_background_ratio_summary">Umfasst die Anzahl der Seiten, ausgedrückt als Prozentsatz des gesamten Systemspeichers, ab welchen \u0022pdflush background writeback daemon\u0022 beginnt, Dirty-Daten auszuschreiben.</string>
+  <string name="dirty_background_ratio_summary">Umfasst die Anzahl der Seiten, ausgedrückt als Prozentsatz des gesamten Systemspeichers, ab welchen \"pdflush background writeback daemon\" beginnt, Dirty-Daten auszuschreiben.</string>
   <string name="dirty_expire_centisecs">Dirty Expire Centisecs</string>
   <string name="dirty_expire_centisecs_summary">Diese Einstellung definiert, wann Daten alt genug sind, um für den Kernel-Flusher in Frage zu kommen.  Wird in hundertstel einer Sekunde angegeben.  Daten, welche länger als dieses Intervall im Speicher sind, werden vom Kernel-Flusher zurückgeschrieben.</string>
   <string name="dirty_writeback_centisecs">Dirty Writeback Centisecs</string>
@@ -811,7 +811,7 @@
 
   <!-- Init.d -->
   <string name="emulate_initd">Init.d emulieren</string>
-  <string name="emulate_initd_summary">Wenn Ihr Gerät Init.d nicht unterstützt, können Sie \u0022Init.d emulieren\u0022 aktivieren. Durch Aktivierung wird die Anwendung die Skripte nach dem Hochfahren ausführen.</string>
+  <string name="emulate_initd_summary">Wenn Ihr Gerät Init.d nicht unterstützt, können Sie \"Init.d emulieren\" aktivieren. Durch Aktivierung wird die Anwendung die Skripte nach dem Hochfahren ausführen.</string>
   <string name="executing">Wird ausgeführt</string>
   <string name="execute">Ausführen</string>
   <string name="no_scripts_found">Keine Skripte gefunden!</string>
@@ -826,13 +826,13 @@
   <string name="beta_info_summary">Einen Hinweis nach dem Start anzeigen, wenn Sie eine Beta Version benutzen.</string>
   <string name="show_profile_tile">Profil-Kachel anzeigen</string>
   <string name="notification">Benachrichtigung</string>
-  <string name="notification_summary">Eine Benachrichtigung anzeigen, wenn \u0022Beim Systemstart anzeigen\u0022 gestartet wird. Bitte deaktivieren, wenn Probleme auftreten.</string>
+  <string name="notification_summary">Eine Benachrichtigung anzeigen, wenn \"Beim Systemstart anzeigen\" gestartet wird. Bitte deaktivieren, wenn Probleme auftreten.</string>
   <string name="show_toast">Toast-Benachrichtigungen anzeigen</string>
   <string name="test">Test</string>
-  <string name="test_summary">\u0022Beim Systemstart anwenden\u0022 testen (mit Verzögerung). Wenn nichts passiert, sind keine Einstellungen gespeichert.</string>
-  <string name="hide_apply_on_boot">\u0022Beim Systemstart anwenden\u0022 ausblenden.</string>
+  <string name="test_summary">\"Beim Systemstart anwenden\" testen (mit Verzögerung). Wenn nichts passiert, sind keine Einstellungen gespeichert.</string>
+  <string name="hide_apply_on_boot">\"Beim Systemstart anwenden\" ausblenden.</string>
   <string name="hide_apply_on_boot_summary">Ansicht beim Herunterscrollen ausblenden.</string>
-  <string name="enable_apply_on_boot_first">Sie müssen bei mindestens einem Bereich \u0022Beim Systemstart anwenden\u0022 gewählt haben.</string>
+  <string name="enable_apply_on_boot_first">Sie müssen bei mindestens einem Bereich \"Beim Systemstart anwenden\" gewählt haben.</string>
   <string name="debugging">Debugging</string>
   <string name="logcat">Logcat</string>
   <string name="logcat_summary">Logcat nach /sdcard/logcat.txt kopieren</string>
@@ -859,13 +859,13 @@
   <string name="update_check">Suche nach Updates</string>
   <string name="update_check_summary">Der Anwendung erlauben beim Start und Öffnen nach Updateszu suchen.</string>
   <!-- FAQ -->
-  <string name="misspelled">Warum hast du \u0022Auditor\u0022 falsch geschrieben?</string>
-  <string name="misspelled_summary">Adiutor ist lateinisch und bedeutet \u0022Helfer\u0022.</string>
+  <string name="misspelled">Warum hast du \"Auditor\" falsch geschrieben?</string>
+  <string name="misspelled_summary">Adiutor ist lateinisch und bedeutet \"Helfer\".</string>
   <string name="cpu_freq_not_sticking">Warum bleibt meine eingestellte CPU-Frequenz nicht bestehen?</string>
   <string name="cpu_freq_not_sticking_summary">Dies kann mehrere Gründe haben. Viele Kernel haben heutzutage ihre eigenen Hotplug-Systeme, die die CPU-Frequenz steuern. CyanogenMod hat eigene CPU-Boost Implementierungen, die die Frequenz steuern. Ich empfehle, dass Sie die CPU-Frequenzen nicht verändern und diese Aufgabe dem Kernel überlassen.</string>
   <string name="feature_not_appearing">Warum werden einige Funktionen nicht angezeigt?</string>
   <string name="feature_not_appearing_summary">Die Einstellmöglichkeiten sind vom Kernel abhängig.</string>
-  <string name="feature_function">Was macht die Einstellung \u0022X\u0022?</string>
+  <string name="feature_function">Was macht die Einstellung \"X\"?</string>
   <string name="feature_function_summary">Wenn Sie nicht wissen was diese Einstellung tut, verändern Sie diese auch nicht. Informieren Sie sich vorher gut, bevor Sie mit Ihrer teuren Hardware experimentieren.</string>
   <string name="add_new_features">Kannst du Funktion x und y hinzufügen?</string>
   <string name="add_new_features_summary">Das ist schwer zu sagen. Ich versuche alle Features hinzuzufügen, aber es ist schwer alle Geräte mit dieser App zu unterstützen. Ich habe nur ein Samsung Galaxy S4 (i9500), ein HTC Desire 816 und bekam vor kurzem ein OnePlus 2, also nicht mir die Schuld geben, wenn neue Funktionen nicht sofort für alle Geräte zur Verfügung stehen.</string>
