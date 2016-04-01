@@ -68,6 +68,7 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
         super.init(savedInstanceState);
 
         batteryLevelInit();
+        lowpowervalueInit();
         batteryVoltageInit();
         batteryTemperatureInit();
         if (Battery.hasForceFastCharge()) forceFastChargeInit();
@@ -97,6 +98,20 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
 
         addView(mBatteryLevelCard);
     }
+
+    private void lowpowervalueInit() {
+         if (Battery.haslowpowervalue()) {
+            List<String> list = new ArrayList<>();
+            for (int i = 0; i < 101; i++) list.add(String.valueOf(i));
+
+            mlowpowervalueCard = new SeekBarCardView.DSeekBarCard(list);
+            mlowpowervalueCard.setTitle(getString(R.string.lowpowervalue));
+            mlowpowervalueCard.setDescription(getString(R.string.lowpowervalue_summary));
+            mlowpowervalueCard.setProgress(Battery.getlowpowervalue());
+            mlowpowervalueCard.setOnDSeekBarCardListener(this);
+
+            addView(mlowpowervalueCard);
+        }}
 
     private void batteryVoltageInit() {
         mBatteryVoltageCard = new CardViewItem.DCardView();
@@ -369,6 +384,9 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
             if (Battery.getPowerSuspendMode() == 1) {
                 Battery.setNewPowerSuspend(position, getActivity());
             } else dSeekBarCard.setProgress(Battery.getNewPowerSuspendState());
+        else if (dSeekBarCard == mlowpowervalueCard) {
+            Battery.setlowpowervalue((position) ,getActivity());
+	}
     }
 
     @Override

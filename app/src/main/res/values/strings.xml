@@ -608,6 +608,8 @@
     <string name="custom_charge_rate">Charge Rate</string>
     <string name="charge_rate">Battery Charging Rate</string>
     <string name="charge_rate_summary">Set Custom Battery Charge Rate. Caution: Exceeding 1250mA may damage your charging driver.</string>
+    <string name="lowpowervalue">Low Power Value</string>
+    <string name="lowpowervalue_summary">Set the Battery Level in % where big cores will shutdown.</string>
 
     <!-- I/O Scheduler -->
     <string name="internal_storage">Internal Storage</string>

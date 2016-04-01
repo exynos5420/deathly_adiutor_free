@@ -715,7 +715,7 @@ public interface Constants {
     String ARCH_POWER = "/sys/kernel/sched/arch_power";
 
     String[] BATTERY_ARRAY = {POWER_SUSPEND_MODE, POWER_SUSPEND_STATE, C0STATE, C1STATE, C2STATE, C3STATE, FORCE_FAST_CHARGE,
-                                CHARGE_RATE, BLX, CHARGE_RATE, ARCH_POWER, STATE_NOTIFIER, CHARGE_LEVEL};
+                                CHARGE_RATE, BLX, CHARGE_RATE, ARCH_POWER, STATE_NOTIFIER, CHARGE_LEVEL, LOW_POWER_VALUE};
 
     // I/O
     String IO_INTERNAL_SCHEDULER = "/sys/block/mmcblk0/queue/scheduler";
