@@ -670,6 +670,7 @@
     <string name="write">Write</string>
 
     <!-- Misc Controls -->
+    <string name="misc_settings">Misc Settings</string>
     <string name="se_linux">Toggle SE Linux</string>
     <string name="se_linux_summary">Current SELinux Status:</string>
     <string name="vibration_strength">Vibration Strength</string>
