@@ -145,7 +145,7 @@
   <string name="sync_threshold">Sync-Schwellenwert</string>
   <string name="sync_threshold_summary">Wenn die CPU-Belastung den voreingestellten Schwellenwert überschreitet, wird die aktuelle CPU auf diese Frequenz angehoben.</string>
   <string name="input_boost">Eingabe-Boost</string>
-  <string name="input_boost_summary">CPU wird beschleunigt, wenn eine Berührung registiert wird</string>
+  <string name="input_boost_summary">CPU wird beschleunigt, wenn eine Berührung registriert wird</string>
   <string name="input_interval">Eingabe-Intervall</string>
   <string name="input_interval_summary">Minimales Intervall des CPU-Boost, wenn eine Eingabe erfolgt.</string>
   <string name="input_boost_freq">Eingabe-Boost-Frequenz</string>
@@ -260,7 +260,7 @@
   <string name="cpu_freq_unplug_limit">CPU-Frequenz Unplug-Limit</string>
   <string name="first_level">Erste Ebene</string>
   <string name="first_level_summary">Der Schwellenwert, ab dem alle CPUs aktiviert werden.</string>
-  <string name="high_load_counter">High Load Counter</string>
+  <string name="high_load_counter">Hohe Last Zähler</string>
   <string name="load_threshold">Last-Schwellenwert</string>
   <string name="load_threshold_summary">Der Schwellenwert, ab dem alle CPUs aktiviert werden.</string>
   <string name="max_load_counter">Maximale Last Zähler</string>
@@ -698,7 +698,7 @@
   <string name="adb_over_wifi_summary">ADB over WiFi aktivieren</string>
   <string name="adb_over_wifi_connect_summary">Aktiviere ADB over WiFi. Verbinden mit:</string>
   <string name="wakelock">Wakelocks</string>
-  <string name="wakelocks_summary">Schalter ein: Der Service kann Wakelocks aufspüren. Schalter aus: Der Service kann keine Wakelocks aufspüren.</string>
+  <string name="wakelocks_summary">Schalter ein: Der Service kann ein Wakelock einrichten. Schalter aus: Der Service kann kein Wakelock einrichten.</string>
   <string name="smb135x_wakelock">smb135x-Wakelock</string>
   <string name="smb135x_wakelock_summary">Wakelock verhindern, wenn getrennt.</string>
   <string name="bluesleep_wakelock">BlueSleep-Wakelock</string>
