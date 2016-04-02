@@ -120,7 +120,7 @@
   <string name="cpu_min_freq">Minimale CPU-Frequenz</string>
   <string name="cpu_min_freq_summary">Minimale Taktfrequenz der CPU ändern.</string>
   <string name="cpu_max_screen_off_freq">Maximale CPU-Taktfrequenz bei ausgeschaltetem Bildschirm</string>
-  <string name="cpu_max_screen_off_freq_summary">Minimale Taktfrequenz der CPU ändern, wenn der Bildschirm inaktiv ist.</string>
+  <string name="cpu_max_screen_off_freq_summary">Maximale Taktfrequenz der CPU ändern, wenn der Bildschirm inaktiv ist.</string>
   <string name="cpu_governor">CPU-Governor</string>
   <string name="cpu_governor_summary">Der CPU-Governor bestimmt, wie sich die CPU bei Änderungen in der Auslastung verhält. Das Wechseln des Governors hat Auswirkung darauf, wie die CPU die ihr zur Verfügung stehenden Frequenzschritte nutzt.</string>
   <string name="cpu_governor_tunables">CPU-Governor Einstellungen</string>
