@@ -662,6 +662,7 @@
   <string name="write">Schreiben</string>
 
   <!-- Misc Controls -->
+  <string name="misc_settings">Sonstige Einstellungen</string>
   <string name="se_linux">SE-Linux Schalter</string>
   <string name="se_linux_summary">Aktueller SELinux-Status: </string>
   <string name="vibration_strength">Vibrationsstärke</string>

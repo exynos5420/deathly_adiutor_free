@@ -208,7 +208,7 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
         addView(mEnableADBOverWifiCard);
 
         DDivider mMiscCard = new DDivider();
-        mMiscCard.setText("Misc Settings");
+        mMiscCard.setText(getString(R.string.misc_settings));
         addView(mMiscCard);
     }
 
