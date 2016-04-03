@@ -120,7 +120,7 @@
   <string name="cpu_min_freq">Minimale CPU-Frequenz</string>
   <string name="cpu_min_freq_summary">Minimale Taktfrequenz der CPU ändern.</string>
   <string name="cpu_max_screen_off_freq">Maximale CPU-Taktfrequenz bei ausgeschaltetem Bildschirm</string>
-  <string name="cpu_max_screen_off_freq_summary">Minimale Taktfrequenz der CPU ändern, wenn der Bildschirm inaktiv ist.</string>
+  <string name="cpu_max_screen_off_freq_summary">Maximale Taktfrequenz der CPU ändern, wenn der Bildschirm inaktiv ist.</string>
   <string name="cpu_governor">CPU-Governor</string>
   <string name="cpu_governor_summary">Der CPU-Governor bestimmt, wie sich die CPU bei Änderungen in der Auslastung verhält. Das Wechseln des Governors hat Auswirkung darauf, wie die CPU die ihr zur Verfügung stehenden Frequenzschritte nutzt.</string>
   <string name="cpu_governor_tunables">CPU-Governor Einstellungen</string>
@@ -145,7 +145,7 @@
   <string name="sync_threshold">Sync-Schwellenwert</string>
   <string name="sync_threshold_summary">Wenn die CPU-Belastung den voreingestellten Schwellenwert überschreitet, wird die aktuelle CPU auf diese Frequenz angehoben.</string>
   <string name="input_boost">Eingabe-Boost</string>
-  <string name="input_boost_summary">CPU wird beschleunigt, wenn eine Berührung registiert wird</string>
+  <string name="input_boost_summary">CPU wird beschleunigt, wenn eine Berührung registriert wird</string>
   <string name="input_interval">Eingabe-Intervall</string>
   <string name="input_interval_summary">Minimales Intervall des CPU-Boost, wenn eine Eingabe erfolgt.</string>
   <string name="input_boost_freq">Eingabe-Boost-Frequenz</string>
@@ -260,7 +260,7 @@
   <string name="cpu_freq_unplug_limit">CPU-Frequenz Unplug-Limit</string>
   <string name="first_level">Erste Ebene</string>
   <string name="first_level_summary">Der Schwellenwert, ab dem alle CPUs aktiviert werden.</string>
-  <string name="high_load_counter">High Load Counter</string>
+  <string name="high_load_counter">Hohe Last Zähler</string>
   <string name="load_threshold">Last-Schwellenwert</string>
   <string name="load_threshold_summary">Der Schwellenwert, ab dem alle CPUs aktiviert werden.</string>
   <string name="max_load_counter">Maximale Last Zähler</string>
@@ -662,6 +662,7 @@
   <string name="write">Schreiben</string>
 
   <!-- Misc Controls -->
+  <string name="misc_settings">Sonstige Einstellungen</string>
   <string name="se_linux">SE-Linux Schalter</string>
   <string name="se_linux_summary">Aktueller SELinux-Status: </string>
   <string name="vibration_strength">Vibrationsstärke</string>
@@ -698,7 +699,7 @@
   <string name="adb_over_wifi_summary">ADB over WiFi aktivieren</string>
   <string name="adb_over_wifi_connect_summary">Aktiviere ADB over WiFi. Verbinden mit:</string>
   <string name="wakelock">Wakelocks</string>
-  <string name="wakelocks_summary">Schalter ein: Der Service kann Wakelocks aufspüren. Schalter aus: Der Service kann keine Wakelocks aufspüren.</string>
+  <string name="wakelocks_summary">Schalter ein: Der Service kann ein Wakelock einrichten. Schalter aus: Der Service kann kein Wakelock einrichten.</string>
   <string name="smb135x_wakelock">smb135x-Wakelock</string>
   <string name="smb135x_wakelock_summary">Wakelock verhindern, wenn getrennt.</string>
   <string name="bluesleep_wakelock">BlueSleep-Wakelock</string>
@@ -706,7 +707,7 @@
   <string name="sensor_ind_wakelock">sensor_ind-Wakelock</string>
   <string name="sensor_ind_wakelock_summary">Wakelock verhindern, wenn Inaktivitätsbildschirm deaktiviert ist.</string>
   <string name="msm_hsic_host_wakelock">msm_hsic_host-Wakelock</string>
-  <string name="msm_hsic_host_wakelock_summary">msm_hsic_host-Wakelock verhindern.</string>
+  <string name="msm_hsic_host_wakelock_summary">Erlaubt msm_hsic_host-Wakelock. Ausschalten, um dieses Wakelock zu verhindern.</string>
   <string name="wlan_rx_wakelock">wlan_rx-Wakelock</string>
   <string name="wlan_rx_wakelock_summary">wlan_rx-Wakelock verhindern.</string>
   <string name="wlan_ctrl_wakelock">wlan_ctrl-Wakelock</string>
