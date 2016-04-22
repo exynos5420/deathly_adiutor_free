@@ -161,6 +161,98 @@ public class CPUHotplug implements Constants {
         return false;
     }
 
+    public static void activateLazyPlugTouchBoost(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", HOTPLUG_LAZYPLUG_TOUCH_BOOST_ACTIVE, Control.CommandType.GENERIC, context);
+      }
+
+    public static boolean isLazyPlugTouchBoostActive() {
+        return Utils.readFile(HOTPLUG_LAZYPLUG_TOUCH_BOOST_ACTIVE).equals("1");
+    }
+
+    public static boolean hasLazyPlugTouchBoostActive() {
+        return Utils.existFile(HOTPLUG_LAZYPLUG_TOUCH_BOOST_ACTIVE);
+    }
+
+    public static void setLazyPlugProfile(int value, Context context) {
+        String file = HOTPLUG_LAZYPLUG_NR_RUN_PROFILE_SET;
+        Control.runCommand(String.valueOf(value), file, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getLazyPlugProfile() {
+        String file = HOTPLUG_LAZYPLUG_NR_RUN_PROFILE_SET;
+        return Utils.stringToInt(Utils.readFile(file));
+    }
+
+    public static List<String> getLazyPlugProfileMenu(Context context) {
+        List<String> list = new ArrayList<>();
+        list.add(context.getString(R.string.balanced));
+        list.add(context.getString(R.string.performance));
+        list.add(context.getString(R.string.conservative));
+        list.add(context.getString(R.string.eco));
+        list.add(context.getString(R.string.eco_extreme));
+        list.add(context.getString(R.string.disabled));
+        return list;
+    }
+
+    public static boolean hasLazyPlugProfile() {
+        String file = HOTPLUG_LAZYPLUG_NR_RUN_PROFILE_SET;
+        return Utils.existFile(file);
+    }
+
+    public static void setLazyPlugNrRunHysteresis(int value, Context context) {
+        Control.runCommand(String.valueOf(value), HOTPLUG_LAZYPLUG_NR_RUN_HYSTERESIS, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getLazyPlugNrRunHysteresis() {
+        return Utils.stringToInt(Utils.readFile(HOTPLUG_LAZYPLUG_NR_RUN_HYSTERESIS));
+    }
+
+    public static boolean hasLazyPlugNrRunHysteresis() {
+        return Utils.existFile(HOTPLUG_LAZYPLUG_NR_RUN_HYSTERESIS);
+    }
+
+    public static void setLazyPlugNrPossibleCores(int value, Context context) {
+        Control.runCommand(String.valueOf(value), HOTPLUG_LAZYPLUG_NR_POSSIBLE_CORES, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getLazyPlugNrPossibleCores() {
+        return Utils.stringToInt(Utils.readFile(HOTPLUG_LAZYPLUG_NR_POSSIBLE_CORES));
+    }
+
+    public static boolean hasLazyPlugNrPossibleCores() {
+        return Utils.existFile(HOTPLUG_LAZYPLUG_NR_POSSIBLE_CORES);
+    }
+
+    public static void setLazyPlugCpuNrRunTreshold(int value, Context context) {
+        Control.runCommand(String.valueOf(value), HOTPLUG_LAZYPLUG_CPU_NR_RUN_TRESHOLD, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getLazyPlugCpuNrRunTreshold() {
+        return Utils.stringToInt(Utils.readFile(HOTPLUG_LAZYPLUG_CPU_NR_RUN_TRESHOLD));
+    }
+
+    public static boolean hasLazyPlugCpuNrRunTreshold() {
+        return Utils.existFile(HOTPLUG_LAZYPLUG_CPU_NR_RUN_TRESHOLD);
+    }
+
+    public static void activateLazyPlug(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", HOTPLUG_LAZYPLUG_ACTIVE, Control.CommandType.GENERIC, context);
+        if (active) togglehotplugs("Lazyplug", context);
+    }
+
+    public static boolean isLazyPlugActive() {
+        return Utils.readFile(HOTPLUG_LAZYPLUG_ACTIVE).equals("1");
+    }
+
+    public static boolean hasLazyPlugEnable() {
+        return Utils.existFile(HOTPLUG_LAZYPLUG_ACTIVE);
+    }
+
+    public static boolean hasLazyPlug() {
+        for (String file : HOTPLUG_LAZYPLUG_ARRAY) if (Utils.existFile(file)) return true;
+        return false;
+    }
+
     public static void setZenDecisionBatThresholdIgnore(int value, Context context) {
         Control.runCommand(String.valueOf(value), HOTPLUG_ZEN_DECISION_BAT_THRESHOLD_IGNORE, Control.CommandType.GENERIC, context);
     }
