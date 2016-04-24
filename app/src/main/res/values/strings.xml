@@ -329,6 +329,16 @@
     <string name="bricked_twts">Time Threshold Hotplug CPU%d</string>
     <string name="bricked_twts_hotplug">This amount of time must have passed for CPU%d to be hotplugged.</string>
     <string name="bricked_twts_unplug">This amount of time must have passed for CPU%d to be unplugged.</string>
+    <string name="state_helper">State Helper</string>
+    <string name="state_helper_summary">A new hotplug by Neobuddy89</string>
+    <string name="state_helper_max_cpus_online">Maximum number of CPUs onlined while screen on.</string>
+    <string name="state_helper_max_cpus_suspend">Maximum number of CPUs onlined while screen off.</string>
+    <string name="state_helper_batt_level_eco">Battery Level Economical</string>
+    <string name="state_helper_batt_level_eco_summary">Economical level core limiting. Limits max cpus online at this battery percentage.</string>
+    <string name="state_helper_batt_level_cri">Battery Level Critical</string>
+    <string name="state_helper_batt_level_cri_summary">Critical level core limiting. Limits max cpus online at this battery percentage.</string>
+    <string name="state_helper_max_cpus_eco">Max CPUs online after reaching Economical Battery level</string>
+    <string name="state_helper_max_cpus_cri">Max CPUs online after reaching Critical Battery level</string>
 
     <!-- Thermal -->
     <string name="thermal_info">Use only one thermal driver from the following options, using more at the same time may cause unexpected behavior.</string>
