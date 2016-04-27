@@ -163,6 +163,7 @@ public class CPUHotplug implements Constants {
 
     public static void activateLazyPlugTouchBoost(boolean active, Context context) {
         Control.runCommand(active ? "1" : "0", HOTPLUG_LAZYPLUG_TOUCH_BOOST_ACTIVE, Control.CommandType.GENERIC, context);
+        if (active) togglehotplugs("LazyPlug", context);
       }
 
     public static boolean isLazyPlugTouchBoostActive() {
@@ -1533,6 +1534,7 @@ public class CPUHotplug implements Constants {
         if (CPUHotplug.isMBHotplugActive() && !activehotplug.equals("MBHotplug")) Control.runCommand("0", MB_HOTPLUG_FILE + "/" + MB_ENABLED, Control.CommandType.GENERIC, context);
         if (CPUHotplug.isMsmHotplugActive() && !activehotplug.equals("MSMHotPlug")) Control.runCommand("0", MSM_HOTPLUG_ENABLE_FILE, Control.CommandType.GENERIC, context);
         if (CPUHotplug.isStateHelperActive() && !activehotplug.equals("State_Helper")) Control.runCommand("0", STATE_HELPER_ENABLE, Control.CommandType.GENERIC, context);
+        if (CPUHotplug.isLazyPlugTouchBoostActive() && !activehotplug.equals("LazyPlug")) Control.runCommand("0", HOTPLUG_LAZYPLUG_TOUCH_BOOST_ACTIVE, Control.CommandType.GENERIC, context);
     }
 
     public static boolean hasMSMSleeper () {
