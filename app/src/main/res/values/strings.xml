@@ -164,7 +164,6 @@
     <string name="hotplug_boost">Hotplug Boost</string>
     <string name="hotplug_boost_summary">Hotplug Boost is similar to input boost but it occurs when CPUs go online.</string>
     <string name="cpu_msm_limiter">MSM Limiter</string>
-    <string name="cpu_msm_limiter_52_note">Note that as of version 5.2 frequency controls now only affect suspend min and max.</string>
     <string name="cpu_msm_limiter_summary">Enable MSM Limiter</string>
     <string name="cpu_msm_limiter_resume_max">Max Frequency</string>
     <string name="cpu_msm_limiter_resume_max_summary">Set the maximum frequency all CPUs scales up to.</string>
