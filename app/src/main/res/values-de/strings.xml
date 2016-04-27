@@ -80,7 +80,7 @@
   <string name="misc_controls">Verschiedene Einstellungen</string>
   <string name="plugins">Erweiterungen</string>
   <string name="backup">Sicherung</string>
-  <string name="build_prop_editor">Build prop-Bearbeiter</string>
+  <string name="build_prop_editor">Build.prop-Bearbeiter</string>
   <string name="profile">Profil</string>
   <string name="initd">Init.d</string>
   <string name="startup_commands">Startbefehle</string>
@@ -190,7 +190,7 @@
   <string name="mpdecision">MPDecision</string>
   <string name="mpdecision_summary">QCOMs Hotplugging Lösung. Sie werden wahrscheinlich Schwierigkeiten mit der Änderung der Frequenzen feststellen, wenn diese Funktion aktiv ist.</string>
   <string name="intelliplug">IntelliPlug</string>
-  <string name="intelliplug_summary">Ein interner Kernel-Ersatz für Qualcomms MPDecision, entwickelt von faux123.</string>
+  <string name="intelliplug_summary">Ein Kernel-Ersatz für Qualcomms MPDecision, entwickelt von faux123.</string>
   <string name="profile_summary">Die eingeklammerte Zahl zeigt jene Kerne, die immer online sind.</string>
   <string name="insanity">Wahnsinnig</string>
   <string name="balanced">Ausgeglichen</string>
@@ -215,11 +215,11 @@
   <string name="suspend_summary">Ruhezustand verhindern.</string>
   <string name="cpus_boosted">CPUs erhöht</string>
   <string name="cpus_boosted_summary">Maximale Anzahl der CPUs, die sich zur gleichen Zeit erhöhen.</string>
-  <string name="min_cpu_online">Minimale CPU Online</string>
+  <string name="min_cpu_online">CPUs online (Minimum)</string>
   <string name="min_cpu_online_summary">Minimale Anzahl der immer laufenden CPUs.</string>
-  <string name="max_cpu_online">Maximale CPU Online</string>
-  <string name="max_cpu_online_summary">Maximale Anzahl, der immer laufenden CPUs.</string>
-  <string name="max_cores_screen_off">Maximale CPU Online bei ausgeschaltetem Bildschirm</string>
+  <string name="max_cpu_online">CPUs online (Maximum)</string>
+  <string name="max_cpu_online_summary">Maximale Anzahl der immer laufenden CPUs.</string>
+  <string name="max_cores_screen_off">CPUs online bei ausgeschaltetem Bildschirm</string>
   <string name="max_cores_screen_off_summary">Maximale Anzahl der laufenden CPUs, wenn der Bildschirm ausgeschaltet ist.</string>
   <string name="suspend_defer_time">Suspend-Zeitverzögerung</string>
   <string name="defer_sampling">Verzögerungssampling</string>
@@ -229,7 +229,7 @@
   <string name="down_lock_duration_summary">Minimales Intervall, in der eine CPU aktiv bleibt.</string>
   <string name="fshift">FShift</string>
   <string name="blu_plug">Blu_Plug</string>
-  <string name="blu_plug_summary">Ein Kernel-interner Ersatz für Qualcomms MPDecision. Von Code_Blue Team entwickelt.</string>
+  <string name="blu_plug_summary">Ein Kernel-Ersatz für Qualcomms MPDecision. Von Code_Blue Team entwickelt.</string>
   <string name="powersaver_mode">Energiesparmodus</string>
   <string name="powersaver_mode_summary">Maximal 1 CPU online mit einer Frequenz @1728MHz.</string>
   <string name="up_threshold">Oberer Schwellenwert</string>
@@ -332,9 +332,9 @@
   <string name="thermald">Thermald</string>
   <string name="thermald_summary">Standard Qualcomm Thermal-Treiber, der vor Überhitzung schützt. Dieser sollte deaktiviert werden, wenn der aktuelle Kernel eine Alternative hat.</string>
   <string name="intellithermal">Intellithermal</string>
-  <string name="intellithermal_summary">Ein interner Kernel-Ersatz für Qualcomms Thermald. Entwickelt von faux123.</string>
+  <string name="intellithermal_summary">Ein Kernel-Ersatz für Qualcomms Thermald. Entwickelt von faux123.</string>
   <string name="intellithermal_optimized">Intellithermal optimiert</string>
-  <string name="intellithermal_optimized_summary">Ein interner Kernel-Ersatz für Qualcomms Thermald. Entwickelt von faux123 und alucard_24.</string>
+  <string name="intellithermal_optimized_summary">Ein Kernel-Ersatz für Qualcomms Thermald. Entwickelt von faux123 und alucard_24.</string>
   <string name="debug_mask_thermal">Erlaubt ihnen die Debug-Maske für Temperaturabhängige Operationen anzuschalten.</string>
   <string name="core_control">Kern-Steuerung</string>
   <string name="vdd_restriction">VDD-Beschränkung</string>
@@ -410,11 +410,11 @@
   <string name="idle_wait_summary">Anzahl der Ereignisse bis die Frequenz gesenkt wird. Diese Implementierung soll Micro-Lags beim Scrollen oder Gaming verhindern. Adreno-Idler wird aktiver versuchen die Frequenz zu senken, wenn ein niedrigerer Wert gesetzt ist.</string>
   <string name="workload">Workload</string>
   <string name="workload_summary">Adreno-Idler wird aktiver versuchen die Frequenz zu senken, wenn ein höherer Wert gesetzt ist.</string>
-  <string name="gpu_gaming_mode">Spiel-Modus</string>
-  <string name="gpu_gaming_mode_summary">Bei aktiviertem Spiel-Modus wird die GPU auf höchster Leistung laufen.</string>
+  <string name="gpu_gaming_mode">Spielmodus</string>
+  <string name="gpu_gaming_mode_summary">Bei aktiviertem Spielmodus wird die GPU auf höchster Leistung laufen.</string>
   
   <!-- Screen -->
-  <string name="screen_color_profile">Farb-Profile</string>
+  <string name="screen_color_profile">Farbprofile</string>
   <string name="screen_color_profile_summary">Voreingestelltes Profil wählen</string>
   <string name="red">Rot</string>
   <string name="green">Grün</string>
@@ -559,7 +559,7 @@
   <string name="headphone_poweramp_gain">Kopfhörer PowerAmp-Verstärkung</string>
   <string name="microphone_gain">Mikrofon-Verstärkung</string>
   <string name="volume_gain">Lautstärke-Verstärkung</string>
-  <string name="headset_mspkr_drv_mode">Lautsprecher-Treiber Verlust</string>
+  <string name="headset_mspkr_drv_mode">Lautsprecher-Treiber</string>
   <string name="headset_mspkr_drv_mode_summary">Software-Workaround starten, um den Verlust der Lautsprecher zu verhindern</string>
   
   <!-- Battery -->
@@ -568,11 +568,11 @@
   <string name="battery_temperature">Akku-Temperatur</string>
   <string name="usb_fast_charge">USB Fast Charge</string>
   <string name="usb_fast_charge_summary">Gerät lädt schneller auf, wenn mit USB verbunden. Ladegerät neu anschließen, nachdem Optionen geändert wurden.</string>
-  <string name="charge_levels">Ladungs-Level Interface</string>
+  <string name="charge_levels">Ladestrom Interface</string>
   <string name="charge_levels_summary">Zu hohe Werte, die Ihr Gerät nicht unterstützen, können dieses und eingesteckte Geräte beschädigen. MIT VORSICHT BENUTZEN.</string>
-  <string name="charge_level_ac">Strom-Ladungs-Level</string>
+  <string name="charge_level_ac">Ladestrom (Stecker)</string>
   <string name="charge_level_ac_summary">MAXIMAL erlaubte mA während des Ladevorgangs über Stecker (0 = Standardwert)</string>
-  <string name="charge_level_usb">USB-Ladungs-Level</string>
+  <string name="charge_level_usb">Ladestrom (USB)</string>
   <string name="charge_level_usb_summary">MAXIMAL erlaubte mA während des Ladevorgangs über USB (0 = Standardwert)</string>
 
   <string name="blx">Battery Life-eXtender</string>
@@ -615,7 +615,7 @@
   <string name="uksm_cpu_use_summary">Maximale CPU-Nutzung für UKSM nutzen, wenn Seiten zusammengeführt werden</string>
   
   <!-- Low Memory Killer -->
-  <string name="foreground_app">Vordergrund-Anwendungen</string>
+  <string name="foreground_app">Vordergrund Anwendungen</string>
   <string name="visible_app">Sichtbare Anwendungen</string>
   <string name="secondary_server">Hintergrund Anwendungen</string>
   <string name="hidden_app">Versteckte Anwendungen</string>
@@ -626,7 +626,7 @@
   <string name="medium">Mittel</string>
   <string name="very_aggressive">Sehr aggressiv</string>
   <string name="adaptive">Adaptiver Low Memory Killer</string>
-  <string name="adaptive_summary">LMK dynamisch,aggressiver ausführen, wenn ein Thrashing-Szenario entdeckt wird.</string>
+  <string name="adaptive_summary">LMK dynamisch, aggressiver ausführen, wenn ein Thrashing-Szenario entdeckt wird.</string>
 
   <!-- Virtual Memory -->
   <string name="zram">Z-RAM</string>
@@ -668,7 +668,7 @@
 
   <!-- Misc Controls -->
   <string name="misc_settings">Sonstige Einstellungen</string>
-  <string name="se_linux">SE-Linux Schalter</string>
+  <string name="se_linux">SELinux-Schalter</string>
   <string name="se_linux_summary">Aktueller SELinux-Status: </string>
   <string name="vibration_strength">Vibrationsstärke</string>
   <string name="android_logger">Android-Logger</string>
@@ -688,8 +688,8 @@
   <string name="archpower_summary">Arch-Power spezifische Funktionen/Einsparungen aktivieren</string>
   <string name="power_suspend_mode">Power Suspend-Modus</string>
   <string name="power_suspend_mode_summary">Kernel-Modus, LCD-Hooks und Highest Level Hook werden automatisch durch den Kernel verwaltet. Benutzer-Modus wählen, um den Power Suspend-Status manuell zu ändern.</string>
-  <string name="state_notifier_mode">Benachrichtigungs-Modus Zustand</string>
-  <string name="state_notifier_mode_summary">Umschalten zwischen Zustand und FB-Notifiers.</string>
+  <string name="state_notifier_mode">Benachrichtigungs-Modus</string>
+  <string name="state_notifier_mode_summary">FB-Notifiers verwenden.</string>
   <string name="autosleep">Auto-sleep</string>
   <string name="userspace">User-space</string>
   <string name="lcd_panel">LCD-Panel</string>
