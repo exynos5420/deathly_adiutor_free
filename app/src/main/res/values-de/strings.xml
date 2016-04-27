@@ -308,6 +308,11 @@
   <string name="cycle_down_summary">Anzahl der Wartezyklen nach dem letzten Hotplug-Vorgang bis eine weitere CPU deaktiviert wird.</string>
   <string name="cycle_up">Zyklus nach oben</string>
   <string name="cycle_up_summary">Anzahl der Wartezyklen nach dem letzten Hotplug-Vorgang bis eine weitere CPU aktiviert wird.</string>
+  <string name="lazyplug">Lazy-Plug</string>
+  <string name="lazyplug_summary">Ein Kernel-Ersatz für Qualcomms MPDecision, basiert auf IntelliPlug von faux123. Entwickelt von arter97.</string>
+  <string name="lazyplugprofile_summary">Voreingestelltes Profil wählen</string>
+  <string name="eco_extreme">Extremer Energiesparmodus</string>
+  <string name="nrpossiblecores_limits">Limitiert die Anzahl der möglichen CPU-Kerne</string>
   <string name="msm_sleeper">MSM-Sleeper</string>
   <string name="msm_sleeper_summary">Ein anpassbarer Hotplug</string>
   <string name="msm_sleeper_up_thresh">Schwellenwert ehe eine andere CPU aktiviert wird.</string>
