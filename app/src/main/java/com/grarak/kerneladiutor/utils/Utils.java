@@ -512,4 +512,12 @@ public class Utils implements Constants {
         return Tools.readFile(file, true);
     }
 
+    public static double stringtodouble (String text) {
+        try {
+            return Double.parseDouble(text);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+    }
+
 }
