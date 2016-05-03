@@ -73,7 +73,7 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
         fsyncInit();
         if (Misc.hasGentleFairSleepers()) gentlefairsleepersInit();
         if (Misc.hasUsbOtg()) usbOtgInit();
-		LedControlInit();
+		if (Misc.hasLedSpeed()) LedControlInit();
     }
 
     private void selinuxInit() {
