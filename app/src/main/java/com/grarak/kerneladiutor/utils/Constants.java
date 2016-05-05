@@ -690,8 +690,6 @@ public interface Constants {
     // State Notifier added By Eliminater74
     String STATE_NOTIFIER = "/sys/module/state_notifier/parameters";
     String STATE_NOTIFIER_ENABLED = STATE_NOTIFIER + "/enabled";
-    String STATE_NOTFIER_STATE_SUSPEND = STATE_NOTIFIER + "/state";
-    String STATE_NOTFIER_DIFER_TIME = STATE_NOTIFIER + "/suspend_defer_time";
 
     // Power suspend
     String POWER_SUSPEND = "/sys/kernel/power_suspend";
