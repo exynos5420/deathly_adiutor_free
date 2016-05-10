@@ -2,5 +2,6 @@
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:minWidth="72dp"
     android:minHeight="72dp"
-    android:initialLayout="@layout/hbm_widget_layout">
+    android:initialLayout="@layout/hbm_widget_layout"
+    android:previewImage="@drawable/hbm_enable_ic">
 </appwidget-provider>
