@@ -16,9 +16,14 @@
 
 package com.grarak.kerneladiutor.utils.kernel;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
+import android.widget.RemoteViews;
 
+import com.grarak.kerneladiutor.R;
 import com.grarak.kerneladiutor.services.AutoHighBrightnessModeService;
+import com.grarak.kerneladiutor.services.HBMWidget;
 import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;
 import com.grarak.kerneladiutor.utils.json.GammaProfiles;
@@ -488,6 +493,17 @@ public class Screen implements Constants {
 
     public static void activateScreenHBM(boolean active, Context context) {
         Control.runCommand(active ? "1" : "0", SCREEN_HBM, Control.CommandType.GENERIC, context);
+        if (Utils.getBoolean("Widget_Active", false, context)) {
+            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+            RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.hbm_widget_layout);
+            ComponentName thisWidget = new ComponentName(context, HBMWidget.class);
+            if (active) {
+                remoteViews.setImageViewResource(R.id.imageView, R.drawable.hbm_enable_ic);
+            } else {
+                remoteViews.setImageViewResource(R.id.imageView, R.drawable.hbm_disable_ic);
+            }
+            appWidgetManager.updateAppWidget(thisWidget, remoteViews);
+        }
     }
 
     public static boolean isScreenHBMActive() {

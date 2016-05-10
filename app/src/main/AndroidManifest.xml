@@ -88,6 +88,17 @@
             android:name=".services.ProfileWidget$WidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
+        <!-- HBM Widget -->
+        <receiver android:name=".services.HBMWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.kerneladiutor.mod.action.TOGGLE_HBM" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/hbm_widget" />
+        </receiver>
+
         <!-- DashClock -->
         <service
             android:name=".services.DashClockService"
