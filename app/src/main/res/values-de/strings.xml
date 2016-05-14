@@ -684,6 +684,8 @@
   <string name="dynamic_fsync_summary">Bei aktiviertem Bildschirm werden Fsync-Operationen asynchron ausgeführt. Bei inaktivem Bildschirm werden Operationen synchron ausgeführt.</string>
   <string name="gentlefairsleepers">Gentle Fair Sleepers</string>
   <string name="gentlefairsleepers_summary">Sleeper nur 50% ihres Service-Defizites geben. Deaktivierung kann ein bißchen Akkuleistung einsparen.</string>
+  <string name="msm_usb_otg">MSM USB OTG</string>
+  <string name="msm_usb_otg_summary">Dieser Hack aktiviert den USB Host Modus mit externer Stromversorgung. Entwickelt von ziddey und faux123.</string>
   <string name="archpower">Arch-Power</string>
   <string name="archpower_summary">Arch-Power spezifische Funktionen/Einsparungen aktivieren</string>
   <string name="power_suspend_mode">Power Suspend-Modus</string>

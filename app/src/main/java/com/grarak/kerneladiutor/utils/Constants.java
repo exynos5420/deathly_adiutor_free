@@ -876,6 +876,9 @@ public interface Constants {
     // Gentle fair sleepers
     String GENTLE_FAIR_SLEEPERS = "/sys/kernel/sched/gentle_fair_sleepers";
 
+    // MSM USB OTG
+    String MSM_USB_OTG = "/sys/module/msm_otg/parameters/otg_hack_enable";
+
     // Network
     String TCP_AVAILABLE_CONGESTIONS = "/proc/sys/net/ipv4/tcp_available_congestion_control";
     String HOSTNAME_KEY = "net.hostname";
