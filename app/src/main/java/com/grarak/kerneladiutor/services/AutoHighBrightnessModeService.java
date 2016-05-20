@@ -31,6 +31,7 @@ import android.util.Log;
 
 import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;
+import com.grarak.kerneladiutor.utils.kernel.Screen;
 import com.grarak.kerneladiutor.utils.root.Control;
 
 /**
@@ -84,15 +85,13 @@ public class AutoHighBrightnessModeService extends Service {
             if (AutoHBMSensorEnabled) {
                 lux = event.values[0];
 
-                HBMActive = Utils.readFile(Constants.SCREEN_HBM).equals("1");
-
-                if (lux >= LuxThresh && !HBMActive) {
+                if (lux >= LuxThresh && !Screen.isScreenHBMActive()) {
                     Log.i("Kernel Adiutor: ", "AutoHBMService Activating HBM: received LUX value: " + lux + " Threshold: " + LuxThresh);
-                    Control.runCommand("1", Constants.SCREEN_HBM, Control.CommandType.GENERIC, getApplicationContext());
+                    Screen.activateScreenHBM(true, getApplicationContext());
                 }
-                if (lux < LuxThresh && HBMActive) {
+                if (lux < LuxThresh && Screen.isScreenHBMActive()) {
                     Log.i("Kernel Adiutor: ", "De-Activation: AutoHBMService: received LUX value: " + lux + " Threshold: " + LuxThresh);
-                    Control.runCommand("0", Constants.SCREEN_HBM, Control.CommandType.GENERIC, getApplicationContext());
+                    Screen.activateScreenHBM(false, getApplicationContext());
                 }
             }
         }

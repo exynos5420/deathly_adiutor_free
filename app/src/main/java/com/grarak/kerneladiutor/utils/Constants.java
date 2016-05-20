@@ -95,6 +95,7 @@ public interface Constants {
 
     String CPU_MSM_LIMITER = "/sys/kernel/msm_limiter";
     String CPU_MSM_LIMITER_ENABLE = "/sys/kernel/msm_limiter/limiter_enabled";
+    String CPU_MSM_LIMITER_ENABLE_NEW = "/sys/kernel/msm_limiter/freq_control";
     String CPU_MSM_LIMITER_RESUME_MAX = "/sys/kernel/msm_limiter/resume_max_freq";
     String CPU_MSM_LIMITER_SUSPEND_MIN = "/sys/kernel/msm_limiter/suspend_min_freq";
     String CPU_MSM_LIMITER_SUSPEND_MAX = "/sys/kernel/msm_limiter/suspend_max_freq";
@@ -107,7 +108,7 @@ public interface Constants {
     String[] CPU_ARRAY = {CPU_CUR_FREQ, CPU_TEMP_ZONE0, CPU_TEMP_ZONE1, CPU_CORE_ONLINE, CPU_MAX_FREQ, CPU_MAX_FREQ_KT, CPU_ENABLE_OC,
             CPU_MIN_FREQ, CPU_MAX_SCREEN_OFF_FREQ, CPU_MSM_CPUFREQ_LIMIT, CPU_AVAILABLE_FREQS, CPU_TIME_STATE, CPU_SCALING_GOVERNOR,
             CPU_AVAILABLE_GOVERNORS, CPU_GOVERNOR_TUNABLES, CPU_GOVERNOR_TUNABLES_CORE, CPU_MC_POWER_SAVING, CPU_WQ_POWER_SAVING,
-            CPU_AVAILABLE_CFS_SCHEDULERS, CPU_CURRENT_CFS_SCHEDULER, CPU_QUIET, CPU_BOOST, CPU_TOUCH_BOOST, CPU_MSM_LIMITER_ENABLE,
+            CPU_AVAILABLE_CFS_SCHEDULERS, CPU_CURRENT_CFS_SCHEDULER, CPU_QUIET, CPU_BOOST, CPU_TOUCH_BOOST, CPU_MSM_LIMITER_ENABLE, CPU_MSM_LIMITER_ENABLE_NEW,
             CPU_MSM_LIMITER_RESUME_MAX, CPU_MSM_LIMITER_SUSPEND_MIN, CPU_MSM_LIMITER_SUSPEND_MAX, CPU_MSM_LIMITER_SCALING_GOVERNOR,
             CPU_MSM_LIMITER_SCALING_GOVERNOR_PER_CORE,CPU_MIN_FREQ_PER_CORE, CPU_MAX_FREQ_PER_CORE, ALU_T_BOOST };
 
@@ -273,6 +274,16 @@ public interface Constants {
 
     String[] HOTPLUG_AUTOSMP_ARRAY = {HOTPLUG_AUTOSMP_PARAMETERS, HOTPLUG_AUTOSMP_CONF};
 
+    String HOTPLUG_LAZYPLUG_PARAMETERS = "/sys/module/lazyplug/parameters/";
+    String HOTPLUG_LAZYPLUG_ACTIVE = HOTPLUG_LAZYPLUG_PARAMETERS + "/lazyplug_active";
+    String HOTPLUG_LAZYPLUG_CPU_NR_RUN_TRESHOLD = HOTPLUG_LAZYPLUG_PARAMETERS + "/cpu_nr_run_threshold";
+    String HOTPLUG_LAZYPLUG_NR_POSSIBLE_CORES = HOTPLUG_LAZYPLUG_PARAMETERS + "/nr_possible_cores";
+    String HOTPLUG_LAZYPLUG_NR_RUN_HYSTERESIS = HOTPLUG_LAZYPLUG_PARAMETERS + "/nr_run_hysteresis";
+    String HOTPLUG_LAZYPLUG_NR_RUN_PROFILE_SET = HOTPLUG_LAZYPLUG_PARAMETERS + "/nr_run_profile_sel";
+    String HOTPLUG_LAZYPLUG_TOUCH_BOOST_ACTIVE = HOTPLUG_LAZYPLUG_PARAMETERS + "/touch_boost_active";
+
+    String[] HOTPLUG_LAZYPLUG_ARRAY = {HOTPLUG_LAZYPLUG_PARAMETERS};
+
     String MSM_SLEEPER = "/sys/devices/platform/msm_sleeper";
     String MSM_SLEEPER_ENABLE = MSM_SLEEPER + "/enabled";
     String MSM_SLEEPER_UP_THRESHOLD = MSM_SLEEPER + "/up_threshold";
@@ -281,9 +292,17 @@ public interface Constants {
     String MSM_SLEEPER_UP_COUNT_MAX = MSM_SLEEPER + "/up_count_max";
     String MSM_SLEEPER_DOWN_COUNT_MAX = MSM_SLEEPER + "/down_count_max";
 
+    String STATE_HELPER = "/sys/kernel/state_helper";
+    String STATE_HELPER_ENABLE = STATE_HELPER + "/enabled";
+    String STATE_HELPER_MAX_CPUS_ONLINE = STATE_HELPER + "/max_cpus_online";
+    String STATE_HELPER_MAX_CPUS_SUSPEND = STATE_HELPER + "/max_cpus_susp";
+    String STATE_HELPER_BATT_LEVEL_ECO = STATE_HELPER + "/batt_level_eco";
+    String STATE_HELPER_BATT_LEVEL_CRI = STATE_HELPER + "/batt_level_cri";
+    String STATE_HELPER_MAX_CPU_ECO = STATE_HELPER + "/max_cpus_eco";
+    String STATE_HELPER_MAX_CPU_CRI = STATE_HELPER + "/max_cpus_cri";
 
-    String[][] CPU_HOTPLUG_ARRAY = {{HOTPLUG_MPDEC, MSM_SLEEPER}, INTELLIPLUG_ARRAY, BLU_PLUG_ARRAY, HOTPLUG_MSM_ARRAY, MAKO_HOTPLUG_ARRAY,
-            MB_HOTPLUG_ARRAY, ALUCARD_HOTPLUG_ARRAY, HOTPLUG_THUNDER_PLUG_ARRAY, HOTPLUG_ZEN_DECISION_ARRAY, HOTPLUG_AUTOSMP_ARRAY};
+    String[][] CPU_HOTPLUG_ARRAY = {{HOTPLUG_MPDEC, MSM_SLEEPER, STATE_HELPER}, INTELLIPLUG_ARRAY, BLU_PLUG_ARRAY, HOTPLUG_MSM_ARRAY, MAKO_HOTPLUG_ARRAY,
+            MB_HOTPLUG_ARRAY, ALUCARD_HOTPLUG_ARRAY, HOTPLUG_THUNDER_PLUG_ARRAY, HOTPLUG_ZEN_DECISION_ARRAY, HOTPLUG_AUTOSMP_ARRAY, HOTPLUG_LAZYPLUG_ARRAY};
 
     // Thermal
     String THERMALD = "thermald";
@@ -480,7 +499,7 @@ public interface Constants {
     String[] SCREEN_RGB_CTRL_ARRAY = {SCREEN_KCAL_CTRL_ENABLE, SCREEN_KCAL_CTRL_CTRL,
             SCREEN_DIAG0_POWER_CTRL, SCREEN_COLOR_CONTROL_CTRL};
 
-    String SCREEN_HBM = "/sys/devices/virtual/graphics/fb0/hbm";
+    String SCREEN_HBM[] = {"/sys/devices/virtual/graphics/fb0/hbm", "/sys/class/graphics/fb0/sre"};
 
     // Gamma
     String K_GAMMA_R = "/sys/devices/platform/mipi_lgit.1537/kgamma_r";
@@ -541,8 +560,8 @@ public interface Constants {
     String GLOVE_MODE = "/sys/devices/virtual/touchscreen/touchscreen_dev/mode";
 
     String[][] SCREEN_ARRAY = {SCREEN_RGB_ARRAY, SCREEN_RGB_CTRL_ARRAY, SCREEN_KCAL_CTRL_NEW_ARRAY, K_GAMMA_ARRAY,
-             DSI_PANEL_ARRAY, MIN_BRIGHTNESS_ARRAY,
-            {GAMMACONTROL, SCREEN_KCAL_CTRL_MIN, SCREEN_HBM, LM3530_BRIGTHNESS_MODE, LM3530_MIN_BRIGHTNESS, LM3530_MAX_BRIGHTNESS,
+             DSI_PANEL_ARRAY, MIN_BRIGHTNESS_ARRAY,SCREEN_HBM,
+            {GAMMACONTROL, SCREEN_KCAL_CTRL_MIN, LM3530_BRIGTHNESS_MODE, LM3530_MIN_BRIGHTNESS, LM3530_MAX_BRIGHTNESS,
                     LM3630_BACKLIGHT_DIMMER, LM3630_BACKLIGHT_DIMMER_THRESHOLD, LM3630_BACKLIGHT_DIMMER_OFFSET,
                     NEGATIVE_TOGGLE, REGISTER_HOOK, MASTER_SEQUENCE, GLOVE_MODE}};
 
@@ -671,8 +690,6 @@ public interface Constants {
     // State Notifier added By Eliminater74
     String STATE_NOTIFIER = "/sys/module/state_notifier/parameters";
     String STATE_NOTIFIER_ENABLED = STATE_NOTIFIER + "/enabled";
-    String STATE_NOTFIER_STATE_SUSPEND = STATE_NOTIFIER + "/state";
-    String STATE_NOTFIER_DIFER_TIME = STATE_NOTIFIER + "/suspend_defer_time";
 
     // Power suspend
     String POWER_SUSPEND = "/sys/kernel/power_suspend";
@@ -684,7 +701,7 @@ public interface Constants {
     String ARCH_POWER = "/sys/kernel/sched/arch_power";
 
     String[] BATTERY_ARRAY = {POWER_SUSPEND_MODE, POWER_SUSPEND_STATE, C0STATE, C1STATE, C2STATE, C3STATE, FORCE_FAST_CHARGE,
-                                CHARGE_RATE, BLX, CHARGE_RATE, ARCH_POWER, STATE_NOTIFIER};
+                                CHARGE_RATE, BLX, CHARGE_RATE, ARCH_POWER, STATE_NOTIFIER, CHARGE_LEVEL};
 
     // I/O
     String IO_INTERNAL_SCHEDULER = "/sys/block/mmcblk0/queue/scheduler";
@@ -858,6 +875,9 @@ public interface Constants {
     // Sched Features
     // Gentle fair sleepers
     String GENTLE_FAIR_SLEEPERS = "/sys/kernel/sched/gentle_fair_sleepers";
+
+    // MSM USB OTG
+    String MSM_USB_OTG = "/sys/module/msm_otg/parameters/otg_hack_enable";
 
     // Network
     String TCP_AVAILABLE_CONGESTIONS = "/proc/sys/net/ipv4/tcp_available_congestion_control";

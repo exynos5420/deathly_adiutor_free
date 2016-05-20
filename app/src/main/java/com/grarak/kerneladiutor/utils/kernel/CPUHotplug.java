@@ -161,6 +161,99 @@ public class CPUHotplug implements Constants {
         return false;
     }
 
+    public static void activateLazyPlugTouchBoost(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", HOTPLUG_LAZYPLUG_TOUCH_BOOST_ACTIVE, Control.CommandType.GENERIC, context);
+        if (active) togglehotplugs("LazyPlug", context);
+      }
+
+    public static boolean isLazyPlugTouchBoostActive() {
+        return Utils.readFile(HOTPLUG_LAZYPLUG_TOUCH_BOOST_ACTIVE).equals("1");
+    }
+
+    public static boolean hasLazyPlugTouchBoostActive() {
+        return Utils.existFile(HOTPLUG_LAZYPLUG_TOUCH_BOOST_ACTIVE);
+    }
+
+    public static void setLazyPlugProfile(int value, Context context) {
+        String file = HOTPLUG_LAZYPLUG_NR_RUN_PROFILE_SET;
+        Control.runCommand(String.valueOf(value), file, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getLazyPlugProfile() {
+        String file = HOTPLUG_LAZYPLUG_NR_RUN_PROFILE_SET;
+        return Utils.stringToInt(Utils.readFile(file));
+    }
+
+    public static List<String> getLazyPlugProfileMenu(Context context) {
+        List<String> list = new ArrayList<>();
+        list.add(context.getString(R.string.balanced));
+        list.add(context.getString(R.string.performance));
+        list.add(context.getString(R.string.conservative));
+        list.add(context.getString(R.string.eco));
+        list.add(context.getString(R.string.eco_extreme));
+        list.add(context.getString(R.string.disabled));
+        return list;
+    }
+
+    public static boolean hasLazyPlugProfile() {
+        String file = HOTPLUG_LAZYPLUG_NR_RUN_PROFILE_SET;
+        return Utils.existFile(file);
+    }
+
+    public static void setLazyPlugNrRunHysteresis(int value, Context context) {
+        Control.runCommand(String.valueOf(value), HOTPLUG_LAZYPLUG_NR_RUN_HYSTERESIS, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getLazyPlugNrRunHysteresis() {
+        return Utils.stringToInt(Utils.readFile(HOTPLUG_LAZYPLUG_NR_RUN_HYSTERESIS));
+    }
+
+    public static boolean hasLazyPlugNrRunHysteresis() {
+        return Utils.existFile(HOTPLUG_LAZYPLUG_NR_RUN_HYSTERESIS);
+    }
+
+    public static void setLazyPlugNrPossibleCores(int value, Context context) {
+        Control.runCommand(String.valueOf(value), HOTPLUG_LAZYPLUG_NR_POSSIBLE_CORES, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getLazyPlugNrPossibleCores() {
+        return Utils.stringToInt(Utils.readFile(HOTPLUG_LAZYPLUG_NR_POSSIBLE_CORES));
+    }
+
+    public static boolean hasLazyPlugNrPossibleCores() {
+        return Utils.existFile(HOTPLUG_LAZYPLUG_NR_POSSIBLE_CORES);
+    }
+
+    public static void setLazyPlugCpuNrRunTreshold(int value, Context context) {
+        Control.runCommand(String.valueOf(value), HOTPLUG_LAZYPLUG_CPU_NR_RUN_TRESHOLD, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getLazyPlugCpuNrRunTreshold() {
+        return Utils.stringToInt(Utils.readFile(HOTPLUG_LAZYPLUG_CPU_NR_RUN_TRESHOLD));
+    }
+
+    public static boolean hasLazyPlugCpuNrRunTreshold() {
+        return Utils.existFile(HOTPLUG_LAZYPLUG_CPU_NR_RUN_TRESHOLD);
+    }
+
+    public static void activateLazyPlug(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", HOTPLUG_LAZYPLUG_ACTIVE, Control.CommandType.GENERIC, context);
+        if (active) togglehotplugs("Lazyplug", context);
+    }
+
+    public static boolean isLazyPlugActive() {
+        return Utils.readFile(HOTPLUG_LAZYPLUG_ACTIVE).equals("1");
+    }
+
+    public static boolean hasLazyPlugEnable() {
+        return Utils.existFile(HOTPLUG_LAZYPLUG_ACTIVE);
+    }
+
+    public static boolean hasLazyPlug() {
+        for (String file : HOTPLUG_LAZYPLUG_ARRAY) if (Utils.existFile(file)) return true;
+        return false;
+    }
+
     public static void setZenDecisionBatThresholdIgnore(int value, Context context) {
         Control.runCommand(String.valueOf(value), HOTPLUG_ZEN_DECISION_BAT_THRESHOLD_IGNORE, Control.CommandType.GENERIC, context);
     }
@@ -1440,6 +1533,8 @@ public class CPUHotplug implements Constants {
         if (CPUHotplug.isMSMSleeperActive() && !activehotplug.equals("MSM_Sleeper")) Control.runCommand("0", MSM_SLEEPER_ENABLE, Control.CommandType.GENERIC, context);
         if (CPUHotplug.isMBHotplugActive() && !activehotplug.equals("MBHotplug")) Control.runCommand("0", MB_HOTPLUG_FILE + "/" + MB_ENABLED, Control.CommandType.GENERIC, context);
         if (CPUHotplug.isMsmHotplugActive() && !activehotplug.equals("MSMHotPlug")) Control.runCommand("0", MSM_HOTPLUG_ENABLE_FILE, Control.CommandType.GENERIC, context);
+        if (CPUHotplug.isStateHelperActive() && !activehotplug.equals("State_Helper")) Control.runCommand("0", STATE_HELPER_ENABLE, Control.CommandType.GENERIC, context);
+        if (CPUHotplug.isLazyPlugTouchBoostActive() && !activehotplug.equals("LazyPlug")) Control.runCommand("0", HOTPLUG_LAZYPLUG_TOUCH_BOOST_ACTIVE, Control.CommandType.GENERIC, context);
     }
 
     public static boolean hasMSMSleeper () {
@@ -1514,4 +1609,94 @@ public class CPUHotplug implements Constants {
     public static boolean hasMSMSleeperDownCountMax() {
         return Utils.existFile(MSM_SLEEPER_DOWN_COUNT_MAX);
     }
+
+    public static boolean hasStateHelper () {
+        return Utils.existFile(STATE_HELPER);
+    }
+
+    public static boolean hasStateHelperEnable () {
+        return Utils.existFile(STATE_HELPER_ENABLE);
+    }
+
+    public static boolean isStateHelperActive () {
+        return Utils.readFile(STATE_HELPER_ENABLE).equals("1");
+    }
+
+    public static void activateStateHelper (boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", STATE_HELPER_ENABLE, Control.CommandType.GENERIC, context);
+        if (active) togglehotplugs("State_Helper", context);
+    }
+
+    public static void setStateHelperMaxCpusOnline(int value, Context context) {
+        Control.runCommand(String.valueOf(value), STATE_HELPER_MAX_CPUS_ONLINE, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getStateHelperMaxCpusOnline() {
+        return Utils.stringToInt(Utils.readFile(STATE_HELPER_MAX_CPUS_ONLINE));
+    }
+
+    public static boolean hasStateHelperMaxCpusOnline() {
+        return Utils.existFile(STATE_HELPER_MAX_CPUS_ONLINE);
+    }
+
+    public static void setStateHelperMaxCpusSuspend(int value, Context context) {
+        Control.runCommand(String.valueOf(value), STATE_HELPER_MAX_CPUS_SUSPEND, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getStateHelperMaxCpusSuspend() {
+        return Utils.stringToInt(Utils.readFile(STATE_HELPER_MAX_CPUS_SUSPEND));
+    }
+
+    public static boolean hasStateHelperMaxCpusSuspend() {
+        return Utils.existFile(STATE_HELPER_MAX_CPUS_SUSPEND);
+    }
+
+    public static boolean hasStateHelperBattLevelEco () {
+        return Utils.existFile(STATE_HELPER_BATT_LEVEL_ECO);
+    }
+
+    public static int getStateHelperBattLevelEco() {
+        return Utils.stringToInt(Utils.readFile(STATE_HELPER_BATT_LEVEL_ECO));
+    }
+
+    public static void setStateHelperBattLevelEco(int value, Context context) {
+        Control.runCommand(String.valueOf(value), STATE_HELPER_BATT_LEVEL_ECO, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean hasStateHelperBattLevelCri () {
+        return Utils.existFile(STATE_HELPER_BATT_LEVEL_CRI);
+    }
+
+    public static int getStateHelperBattLevelCri() {
+        return Utils.stringToInt(Utils.readFile(STATE_HELPER_BATT_LEVEL_CRI));
+    }
+
+    public static void setStateHelperBattLevelCri(int value, Context context) {
+        Control.runCommand(String.valueOf(value), STATE_HELPER_BATT_LEVEL_CRI, Control.CommandType.GENERIC, context);
+    }
+
+    public static void setStateHelperMaxCpusEco(int value, Context context) {
+        Control.runCommand(String.valueOf(value), STATE_HELPER_MAX_CPU_ECO, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getStateHelperMaxCpusEco() {
+        return Utils.stringToInt(Utils.readFile(STATE_HELPER_MAX_CPU_ECO));
+    }
+
+    public static boolean hasStateHelperMaxCpusEco() {
+        return Utils.existFile(STATE_HELPER_MAX_CPU_ECO);
+    }
+
+    public static void setStateHelperMaxCpusCri(int value, Context context) {
+        Control.runCommand(String.valueOf(value), STATE_HELPER_MAX_CPU_CRI, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getStateHelperMaxCpusCri() {
+        return Utils.stringToInt(Utils.readFile(STATE_HELPER_MAX_CPU_CRI));
+    }
+
+    public static boolean hasStateHelperMaxCpusCri() {
+        return Utils.existFile(STATE_HELPER_MAX_CPU_CRI);
+    }
+
 }

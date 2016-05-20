@@ -282,13 +282,13 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
 
             if (Screen.isScreenAutoHBMActive(view.getContext())) {
                 List<String> list = new ArrayList<>();
-                for (int i = 0; i <= 2000; i++)
+                for (int i = 0; i <= 10000; i+=5)
                     list.add(String.valueOf(i));
 
                 mScreenAutoHBMValueCard = new SeekBarCardView.DSeekBarCard(list);
                 mScreenAutoHBMValueCard.setTitle(getString(R.string.auto_high_brightness_mode_threshold));
                 mScreenAutoHBMValueCard.setDescription("Current Lux Value: " + lux);
-                mScreenAutoHBMValueCard.setProgress(Screen.getAutoHBMThresh(view.getContext()));
+                mScreenAutoHBMValueCard.setProgress(Screen.getAutoHBMThresh(view.getContext()) / 5);
                 mScreenAutoHBMValueCard.setOnDSeekBarCardListener(this);
 
                 addView(mScreenAutoHBMValueCard);
@@ -796,7 +796,7 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
         else if (dSeekBarCard == mScreenContrastCard)
             Screen.setScreenContrast(position + 128, getActivity());
         else if (dSeekBarCard == mScreenAutoHBMValueCard)
-            Screen.setAutoHBMThresh(position, getActivity());
+            Screen.setAutoHBMThresh(position * 5, getActivity());
         else if (dSeekBarCard == mLcdMinBrightnessCard)
             Screen.setLcdMinBrightness(position + 2, getActivity());
         else if (dSeekBarCard == mLcdMaxBrightnessCard)
@@ -841,6 +841,9 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
             if (!checked) mSaturationIntensityCard.setProgress(30);
         } else if (dSwitchCard == mScreenAutoHBMCard) {
             Screen.activateScreenAutoHBM(checked, getActivity());
+            if (checked) {
+                Utils.toast("Turn the screen off and back on for this service to take effect!", getActivity());
+            }
             view.invalidate();
             getActivity().getSupportFragmentManager().beginTransaction().detach(this).attach(this).commit();
         } else if (dSwitchCard == mScreenHBMCard)

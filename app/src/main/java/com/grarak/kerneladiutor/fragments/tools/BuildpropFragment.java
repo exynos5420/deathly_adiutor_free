@@ -115,7 +115,7 @@ public class BuildpropFragment extends RecyclerViewFragment implements View.OnCl
     @Override
     public void postInit(Bundle savedInstanceState) {
         super.postInit(savedInstanceState);
-        title.setText(getString(R.string.items_found, buildpropItem.size()));
+            title.setText(getString(R.string.items_found, buildpropItem.size()));
     }
 
     @Override
@@ -214,7 +214,7 @@ public class BuildpropFragment extends RecyclerViewFragment implements View.OnCl
         Utils.confirmDialog(null, getString(R.string.delete_question, key), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                overwrite(key.trim(), value.trim(), "#" + key.trim(), value.trim());
+                delete(key.trim());
             }
         }, getActivity());
     }
@@ -232,6 +232,12 @@ public class BuildpropFragment extends RecyclerViewFragment implements View.OnCl
 
     private void overwrite(String oldKey, String oldValue, String newKey, String newValue) {
         Buildprop.overwrite(oldKey, oldValue, newKey, newValue);
+        hand.postDelayed(refresh, 500);
+    }
+
+
+    private void delete(String Key) {
+        Buildprop.delete(Key);
         hand.postDelayed(refresh, 500);
     }
 

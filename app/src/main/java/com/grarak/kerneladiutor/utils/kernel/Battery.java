@@ -177,7 +177,7 @@ public class Battery implements Constants {
     }
 
     public static boolean hasStateNotifier()  {
-        return Utils.existFile(STATE_NOTIFIER);
+        return Utils.existFile(STATE_NOTIFIER_ENABLED);
     }
 
     public static void activateC0State (boolean active, Context context) {

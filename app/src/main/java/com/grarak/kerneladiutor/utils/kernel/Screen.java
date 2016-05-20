@@ -16,9 +16,14 @@
 
 package com.grarak.kerneladiutor.utils.kernel;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
+import android.widget.RemoteViews;
 
+import com.grarak.kerneladiutor.R;
 import com.grarak.kerneladiutor.services.AutoHighBrightnessModeService;
+import com.grarak.kerneladiutor.services.HBMWidget;
 import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;
 import com.grarak.kerneladiutor.utils.json.GammaProfiles;
@@ -32,12 +37,11 @@ import java.util.List;
  */
 public class Screen implements Constants {
 
-    private static String SCREEN_CALIBRATION;
-    private static String SCREEN_CALIBRATION_CTRL;
+    private static String SCREEN_CALIBRATION, SCREEN_CALIBRATION_CTRL, MIN_BRIGHTNESS;
+
+    public static String HBM_PATH;
 
     private static GammaProfiles GAMMA_PROFILES;
-
-    private static String MIN_BRIGHTNESS;
 
     public static void activateGloveMode(boolean active, Context context) {
         Control.runCommand(active ? "glove" : "normal", GLOVE_MODE, Control.CommandType.GENERIC, context);
@@ -487,15 +491,32 @@ public class Screen implements Constants {
     }
 
     public static void activateScreenHBM(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", SCREEN_HBM, Control.CommandType.GENERIC, context);
+        Control.runCommand(active ? "1" : "0", HBM_PATH, Control.CommandType.GENERIC, context);
+        if (Utils.getBoolean("Widget_Active", false, context)) {
+            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+            RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.hbm_widget_layout);
+            ComponentName thisWidget = new ComponentName(context, HBMWidget.class);
+            if (active) {
+                remoteViews.setImageViewResource(R.id.imageView, R.drawable.hbm_enable_ic);
+            } else {
+                remoteViews.setImageViewResource(R.id.imageView, R.drawable.hbm_disable_ic);
+            }
+            appWidgetManager.updateAppWidget(thisWidget, remoteViews);
+        }
     }
 
     public static boolean isScreenHBMActive() {
-        return Utils.readFile(SCREEN_HBM).equals("1");
+        return Utils.readFile(HBM_PATH).equals("1");
     }
 
     public static boolean hasScreenHBM() {
-        return Utils.existFile(SCREEN_HBM);
+        for(int i = 0;i < SCREEN_HBM.length;i++) {
+            if (Utils.existFile(SCREEN_HBM[i])) {
+                HBM_PATH = SCREEN_HBM[i];
+                return true;
+            }
+        }
+        return false;
     }
 
     public static boolean isScreenAutoHBMActive(Context context) {

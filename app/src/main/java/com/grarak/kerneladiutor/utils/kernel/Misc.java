@@ -113,6 +113,18 @@ public class Misc implements Constants {
         return Utils.existFile(GENTLE_FAIR_SLEEPERS);
     }
 
+    public static void activateUsbOtg(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", MSM_USB_OTG, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean isUsbOtgActive() {
+        return Utils.readFile(MSM_USB_OTG).equals("1");
+    }
+
+    public static boolean hasUsbOtg() {
+        return Utils.existFile(MSM_USB_OTG);
+    }
+
     public static void activateDynamicFsync(boolean active, Context context) {
         Control.runCommand(active ? "1" : "0", DYNAMIC_FSYNC, Control.CommandType.GENERIC, context);
     }
