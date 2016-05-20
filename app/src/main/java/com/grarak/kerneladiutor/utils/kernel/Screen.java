@@ -37,12 +37,9 @@ import java.util.List;
  */
 public class Screen implements Constants {
 
-    private static String SCREEN_CALIBRATION;
-    private static String SCREEN_CALIBRATION_CTRL;
+    private static String SCREEN_CALIBRATION, SCREEN_CALIBRATION_CTRL, MIN_BRIGHTNESS;
 
     private static GammaProfiles GAMMA_PROFILES;
-
-    private static String MIN_BRIGHTNESS;
 
     public static void activateGloveMode(boolean active, Context context) {
         Control.runCommand(active ? "glove" : "normal", GLOVE_MODE, Control.CommandType.GENERIC, context);
