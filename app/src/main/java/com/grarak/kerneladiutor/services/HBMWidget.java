@@ -33,8 +33,7 @@ public class HBMWidget extends AppWidgetProvider {
     }
 
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        final int N = appWidgetIds.length;
-
+        int N = appWidgetIds.length;
         for (int i = 0; i < N; i++) {
             int appWidgetId = appWidgetIds[i];
 
@@ -61,10 +60,12 @@ public class HBMWidget extends AppWidgetProvider {
         super.onReceive(context, intent);
         if (intent.getAction().equals("com.kerneladiutor.mod.action.TOGGLE_HBM")) {
             Log.i(Constants.TAG + ": " + getClass().getSimpleName(), "Toggling High Brightness Mode via Widget");
-            if (Screen.isScreenHBMActive()) {
-                Screen.activateScreenHBM(false, context);
-            } else {
-                Screen.activateScreenHBM(true, context);
+            if (Screen.hasScreenHBM()) {
+                if (Screen.isScreenHBMActive()) {
+                    Screen.activateScreenHBM(false, context);
+                } else {
+                    Screen.activateScreenHBM(true, context);
+                }
             }
         }
     }
