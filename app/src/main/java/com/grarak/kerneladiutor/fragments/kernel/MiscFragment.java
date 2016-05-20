@@ -53,6 +53,8 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
 
     private SwitchCardView.DSwitchCard mEnableADBOverWifiCard;
 
+    private SwitchCardView.DSwitchCard mEnableUsbOtgCard;
+
     @Override
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
@@ -66,6 +68,7 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
         if (Misc.hasCrc()) crcInit();
         fsyncInit();
         if (Misc.hasGentleFairSleepers()) gentlefairsleepersInit();
+        if (Misc.hasUsbOtg()) usbOtgInit();
     }
 
     private void selinuxInit() {
@@ -167,6 +170,16 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
         addView(mGentleFairSleepersCard);
     }
 
+    private void usbOtgInit() {
+        mEnableUsbOtgCard = new SwitchCardView.DSwitchCard();
+        mEnableUsbOtgCard.setTitle(getString(R.string.msm_usb_otg));
+        mEnableUsbOtgCard.setDescription(getString(R.string.msm_usb_otg_summary));
+        mEnableUsbOtgCard.setChecked(Misc.isUsbOtgActive());
+        mEnableUsbOtgCard.setOnDSwitchCardListener(this);
+
+        addView(mEnableUsbOtgCard);
+    }
+
     private void networkInit() {
         DDivider mNetworkDividerCard = new DDivider();
         mNetworkDividerCard.setText(getString(R.string.network));
@@ -265,6 +278,8 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
             Misc.activateDynamicFsync(checked, getActivity());
         else if (dSwitchCard == mGentleFairSleepersCard)
             Misc.activateGentleFairSleepers(checked, getActivity());
+        else if (dSwitchCard == mEnableUsbOtgCard)
+            Misc.activateUsbOtg(checked, getActivity());
         else if (dSwitchCard == mEnableADBOverWifiCard) {
             Misc.activateADBOverWifi(checked, getActivity());
             getActivity().getSupportFragmentManager().beginTransaction().detach(this).attach(this).commit();

@@ -704,6 +704,8 @@
     <string name="dynamic_fsync_summary">When enabled and screen is on, fsync operation is asynchronous. When screen is off, this operation is done synchronously.</string>
     <string name="gentlefairsleepers">Gentle Fair Sleepers</string>
     <string name="gentlefairsleepers_summary">Only give sleepers 50% of their service deficit. Disabling this can save a little battery power.</string>
+    <string name="msm_usb_otg">MSM USB OTG</string>
+    <string name="msm_usb_otg_summary">Enable this hack to allow externally powered usb host mode. Developed by ziddey and faux123.</string>
     <string name="archpower">Arch Power</string>
     <string name="archpower_summary">Enable Arch Specific Power Function/Savings</string>
     <string name="power_suspend_mode">Power Suspend Mode</string>
