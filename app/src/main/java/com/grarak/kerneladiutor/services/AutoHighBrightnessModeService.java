@@ -85,13 +85,11 @@ public class AutoHighBrightnessModeService extends Service {
             if (AutoHBMSensorEnabled) {
                 lux = event.values[0];
 
-                HBMActive = Utils.readFile(Screen.HBM_PATH).equals("1");
-
-                if (lux >= LuxThresh && !HBMActive) {
+                if (lux >= LuxThresh && !Screen.isScreenHBMActive()) {
                     Log.i("Kernel Adiutor: ", "AutoHBMService Activating HBM: received LUX value: " + lux + " Threshold: " + LuxThresh);
                     Screen.activateScreenHBM(true, getApplicationContext());
                 }
-                if (lux < LuxThresh && HBMActive) {
+                if (lux < LuxThresh && Screen.isScreenHBMActive()) {
                     Log.i("Kernel Adiutor: ", "De-Activation: AutoHBMService: received LUX value: " + lux + " Threshold: " + LuxThresh);
                     Screen.activateScreenHBM(false, getApplicationContext());
                 }
