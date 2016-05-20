@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.grarak.kerneladiutor.R;
+import com.grarak.kerneladiutor.elements.DAdapter;
 import com.grarak.kerneladiutor.elements.DDivider;
 import com.grarak.kerneladiutor.elements.cards.EditTextCardView;
 import com.grarak.kerneladiutor.elements.cards.PopupCardView;
@@ -290,7 +291,7 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
                 }
             }).start();
         }
-		else if (dSeekBarCard == mLedSetSpeedCard)
+		else if (dSeekBarCard == mLedSetSpeedCard) {
             Misc.setLedSpeed(position, getActivity());
 		}
     }

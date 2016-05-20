@@ -797,15 +797,8 @@ public interface Constants {
 
     //LED
     String LED_SPEED_GREEN = "/sys/class/leds/green/rate";
-    
-    String[] LED_ARRAY = {LED_SPEED_GREEN};
-	
+
     String LED_ACTIVE = "/sys/class/leds/green/blink";
-
-    String[] LED_ACT = {LED_ACTIVE};
-
-    String VIB_LIGHT = "/sys/devices/virtual/timed_output/vibrator/vmax_mv_light";
-    String VIB_ENABLE = "/sys/devices/i2c-3/3-0033/vibrator/vib0/vib_enable";
 
     // Wakelocks
     String[] SMB135X_WAKELOCKS = {
@@ -906,10 +899,10 @@ public interface Constants {
     String SETENFORCE = "setenforce";
 
     Object[][] MISC_ARRAY = {
-            VIBRATION_ARRAY, LED_ARRAY, LED_ACT,
+            VIBRATION_ARRAY,
             {VIB_LIGHT, VIB_ENABLE, SENSOR_IND_WAKELOCK, MSM_HSIC_HOST_WAKELOCK, WLAN_RX_WAKELOCK_DIVIDER,
                     MSM_HSIC_WAKELOCK_DIVIDER, LOGGER_ENABLED, DYNAMIC_FSYNC, GENTLE_FAIR_SLEEPERS, BCL_HOTPLUG, POWER_SUSPEND_MODE,
-                    POWER_SUSPEND_STATE, TCP_AVAILABLE_CONGESTIONS, HOSTNAME_KEY, ADB_OVER_WIFI, GETENFORCE, SETENFORCE},
+                    POWER_SUSPEND_STATE, TCP_AVAILABLE_CONGESTIONS, HOSTNAME_KEY, ADB_OVER_WIFI, GETENFORCE, SETENFORCE, LED_SPEED_GREEN, LED_ACTIVE },
             LOGGER_ARRAY, SMB135X_WAKELOCKS, WLAN_RX_WAKELOCKS, WLAN_CTRL_WAKELOCKS, WLAN_WAKELOCKS, CRC_ARRAY, FSYNC_ARRAY, BCL_ARRAY};
 
 

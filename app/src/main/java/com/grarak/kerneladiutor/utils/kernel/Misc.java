@@ -41,10 +41,6 @@ public class Misc implements Constants {
     private static Integer VIBRATION_MAX;
     private static Integer VIBRATION_MIN;
 
-    private static String LED_SPEED;
-
-    private static String LED_BLINK;
-
     private static String LOGGER_FILE;
 
     private static String CRC_FILE;
@@ -76,49 +72,34 @@ public class Misc implements Constants {
     }
 
     public static boolean hasLedSpeed() {
-        if (LED_SPEED == null)
-            for (String file : LED_ARRAY)
-                if (Utils.existFile(file)) {
-                    LED_SPEED = file;
-                    return true;
-                }
-        return LED_SPEED != null;
+        return Utils.existFile(LED_SPEED_GREEN);
     }
 
     public static int getMaxMinLedSpeed() {
-        if (LED_SPEED != null) {
+        if (Utils.existFile(LED_SPEED_GREEN)) {
             return 3;
         }
         return 0;
     }
 
     public static int getCurLedSpeed() {
-        return Utils.stringToInt(Utils.readFile(LED_SPEED));
+        return Utils.stringToInt(Utils.readFile(LED_SPEED_GREEN));
     }
 
     public static void setLedSpeed(int value, Context context) {
-		for (String file : LED_ARRAY)
-                if (Utils.existFile(file)) {
-                    LED_SPEED = file; }
-                Control.runCommand(String.valueOf(value), LED_SPEED, Control.CommandType.GENERIC, context); 
+            Control.runCommand(String.valueOf(value), LED_SPEED_GREEN, Control.CommandType.GENERIC, context);
     }
 
     public static boolean isLedActive() {
- 		return Utils.readFile(LED_BLINK).equals("1");
+ 		return Utils.readFile(LED_ACTIVE).equals("1");
     }
 
     public static void activateLedMode(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", LED_BLINK, Control.CommandType.GENERIC, context);
+        Control.runCommand(active ? "1" : "0", LED_ACTIVE, Control.CommandType.GENERIC, context);
     }
 
     public static boolean hasLedMode() {
-        if (LED_BLINK == null)
-            for (String file : LED_ACT)
-                if (Utils.existFile(file)) {
-                    LED_BLINK = file;
-                    return true;
-                }
-        return LED_BLINK != null;
+        return Utils.existFile(LED_ACTIVE);
     }
 
     public static String getIpAddr(Context context) {
