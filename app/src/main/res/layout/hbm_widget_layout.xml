@@ -6,10 +6,13 @@
     android:weightSum="1">
 
     <ImageButton
-        android:layout_width="72dp"
-        android:layout_height="72dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:cropToPadding="false"
+        android:adjustViewBounds="true"
         android:id="@+id/imageView"
         android:layout_weight="0.17"
-        android:background="@android:color/transparent" />
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY" />
 
 </LinearLayout>
