@@ -154,7 +154,7 @@ public class MainActivity extends BaseActivity implements Constants {
         else // Use an AsyncTask to initialize everything
             new Task().execute();
 
-        if (!isMyServiceRunning(AutoHighBrightnessModeService.class)) {
+        if (Screen.hasScreenHBM() && !isMyServiceRunning(AutoHighBrightnessModeService.class)) {
             startService(new Intent(this, AutoHighBrightnessModeService.class));
         }
     }
