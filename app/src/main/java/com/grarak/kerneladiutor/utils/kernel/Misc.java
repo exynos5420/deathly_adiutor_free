@@ -46,6 +46,7 @@ public class Misc implements Constants {
     private static String CRC_FILE;
 
     private static String FSYNC_FILE;
+    private static boolean FSYNC_USE_INTEGER;
 
     private static String BCL_FILE;
 
@@ -138,20 +139,29 @@ public class Misc implements Constants {
     }
 
     public static void activateFsync(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", FSYNC_FILE, Control.CommandType.GENERIC, context);
+        if (FSYNC_USE_INTEGER)
+            Control.runCommand(active ? "1" : "0", FSYNC_FILE, Control.CommandType.GENERIC, context);
+        else
+            Control.runCommand(active ? "Y" : "N", FSYNC_FILE, Control.CommandType.GENERIC, context);
     }
 
     public static boolean isFsyncActive() {
-        if (Utils.readFile(FSYNC_FILE).equals("1") || Utils.readFile(FSYNC_FILE).equals("Y")) {
-            return true;
-        }
-        return false;
+        if (FSYNC_USE_INTEGER)
+            return Utils.readFile(FSYNC_FILE).equals("1");
+        else
+            return Utils.readFile(FSYNC_FILE).equals("Y");
     }
 
     public static boolean hasFsync() {
         for (String file : FSYNC_ARRAY)
             if (Utils.existFile(file)) {
                 FSYNC_FILE = file;
+                try {
+                    Integer.parseInt(Utils.readFile(FSYNC_FILE));
+                    FSYNC_USE_INTEGER = true;
+                } catch (NumberFormatException ignored) {
+                    FSYNC_USE_INTEGER = false;
+                }
                 return true;
             }
         return false;
@@ -247,7 +257,7 @@ public class Misc implements Constants {
         if (enable) Control.runCommand("1", enablePath, Control.CommandType.GENERIC, context);
         Control.runCommand(String.valueOf(value), VIBRATION_PATH, Control.CommandType.GENERIC, context);
         if (Utils.existFile(VIB_LIGHT))
-            Control.runCommand(String.valueOf(value - 300 < 416 ? 116 : value - 300), VIB_LIGHT,
+            Control.runCommand(String.valueOf(value - 300 < 116 ? 116 : value - 300), VIB_LIGHT,
                     Control.CommandType.GENERIC, context);
         if (enable) Control.runCommand("0", enablePath, Control.CommandType.GENERIC, context);
     }
@@ -266,9 +276,9 @@ public class Misc implements Constants {
                 return VIBRATION_MIN;
             }
 
-            for (int i = 0; i < VIBRATION_ARRAY.length; i++)
-                if (VIBRATION_PATH.equals(VIBRATION_ARRAY[i]))
-                    VIBRATION_MIN = VIBRATION_MAX_MIN_ARRAY[i][1];
+            for (Object[] vibs : VIBRATION_ARRAY)
+                if (VIBRATION_PATH.equals(vibs[0]))
+                    VIBRATION_MIN = (int) vibs[2];
         }
         return VIBRATION_MIN != null ? VIBRATION_MIN : 0;
     }
@@ -287,9 +297,9 @@ public class Misc implements Constants {
                 return VIBRATION_MAX;
             }
 
-            for (int i = 0; i < VIBRATION_ARRAY.length; i++)
-                if (VIBRATION_PATH.equals(VIBRATION_ARRAY[i]))
-                    VIBRATION_MAX = VIBRATION_MAX_MIN_ARRAY[i][0];
+            for (Object[] vibs : VIBRATION_ARRAY)
+                if (VIBRATION_PATH.equals(vibs[0]))
+                    VIBRATION_MAX = (int) vibs[1];
         }
         return VIBRATION_MAX != null ? VIBRATION_MAX : 0;
     }
@@ -299,9 +309,9 @@ public class Misc implements Constants {
     }
 
     public static boolean hasVibration() {
-        for (String vibration : VIBRATION_ARRAY)
-            if (Utils.existFile(vibration)) {
-                VIBRATION_PATH = vibration;
+        for (Object[] vibs : VIBRATION_ARRAY)
+            if (Utils.existFile(vibs[0].toString())) {
+                VIBRATION_PATH = vibs[0].toString();
                 break;
             }
         return VIBRATION_PATH != null;
