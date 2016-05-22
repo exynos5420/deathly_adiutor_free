@@ -23,7 +23,11 @@ public class HBMWidget extends AppWidgetProvider {
     @Override
     public void onEnabled(Context context) {
         super.onEnabled(context);
-        setWidgetActive(true, context.getApplicationContext());
+        if (Screen.hasScreenHBM()) {
+            setWidgetActive(true, context.getApplicationContext());
+        } else {
+            Utils.toast("Your device does not have HBM/SRE, this widget will not work. Please remove it.", context);
+        }
     }
 
     @Override
