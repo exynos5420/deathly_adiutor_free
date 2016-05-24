@@ -32,6 +32,18 @@ public class WakeLock implements Constants {
     private static String WLAN_CTRL_WAKELOCK_FILE;
     private static String WLAN_WAKELOCK_FILE;
 
+    public static boolean hasAnyWakelocks () {
+        for (int i = 0; i < WAKELOCK_ARRAY.length; i++) {
+            for (int x = 0; x  < WAKELOCK_ARRAY[i].length; x++) {
+                if (Utils.existFile(WAKELOCK_ARRAY[i][x])) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
     public static void setMsmHsicWakelockDivider(int value, Context context) {
         String command = String.valueOf(value + 1);
         if (value == 15) command = "0";
