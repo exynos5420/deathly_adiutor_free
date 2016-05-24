@@ -82,7 +82,7 @@ public class BootService extends Service {
         final List<String> applys = new ArrayList<>();
         final List<String> plugins = new ArrayList<>();
 
-        if (Screen.hasScreenHBM()) {
+        if (Screen.hasScreenHBM() && Utils.getBoolean("AutoHBM", false, getApplicationContext())) {
             getApplicationContext().startService(new Intent(getApplicationContext(), AutoHighBrightnessModeService.class));
         }
 
