@@ -27,6 +27,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.IBinder;
+import android.os.PowerManager;
 import android.util.Log;
 
 import com.grarak.kerneladiutor.utils.Constants;
@@ -60,10 +61,18 @@ public class AutoHighBrightnessModeService extends Service {
     public void onDestroy() {
         super.onDestroy();
         unregisterAutoHBMReceiver(getApplicationContext());
+        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        if (pm.isInteractive()) {
+            deactivateLightSensorRead();
+        }
     }
 
     private void init() {
         registerAutoHBMReceiver(getApplicationContext());
+        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        if (pm.isInteractive()) {
+            activateLightSensorRead();
+        }
     }
 
     public void activateLightSensorRead() {
