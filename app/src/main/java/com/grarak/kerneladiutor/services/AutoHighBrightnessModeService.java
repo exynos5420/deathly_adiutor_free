@@ -114,19 +114,19 @@ public class AutoHighBrightnessModeService extends Service {
             public void onReceive(Context context, android.content.Intent intent) {
                 String strAction = intent.getAction();
                 if (strAction.equals(android.content.Intent.ACTION_SCREEN_OFF)) {
-                    if (!Utils.getBoolean("AutoHBM", false, getApplicationContext())) {
+                    if (Utils.getBoolean("AutoHBM", false, getApplicationContext())) {
                         AutoHBMSensorEnabled = false;
                         LuxThresh = Utils.getInt("AutoHBM_Threshold", 1500, getApplicationContext());
+                        deactivateLightSensorRead();
                     }
-                    deactivateLightSensorRead();
                 }
 
                 if (strAction.equals(android.content.Intent.ACTION_SCREEN_ON)) {
                     if (Utils.getBoolean("AutoHBM", false, getApplicationContext())) {
                         AutoHBMSensorEnabled = true;
                         LuxThresh = Utils.getInt("AutoHBM_Threshold", 1500, getApplicationContext());
+                        activateLightSensorRead();
                     }
-                    activateLightSensorRead();
                 }
             }
         };
