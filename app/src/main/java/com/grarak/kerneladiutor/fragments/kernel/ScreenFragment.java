@@ -841,9 +841,6 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
             if (!checked) mSaturationIntensityCard.setProgress(30);
         } else if (dSwitchCard == mScreenAutoHBMCard) {
             Screen.activateScreenAutoHBM(checked, getActivity());
-            if (checked) {
-                Utils.toast("Turn the screen off and back on for this service to take effect!", getActivity());
-            }
             view.invalidate();
             getActivity().getSupportFragmentManager().beginTransaction().detach(this).attach(this).commit();
         } else if (dSwitchCard == mScreenHBMCard)
