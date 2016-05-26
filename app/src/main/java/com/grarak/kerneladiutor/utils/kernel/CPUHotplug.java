@@ -1186,7 +1186,13 @@ public class CPUHotplug implements Constants {
     }
 
     public static boolean isBluPlugActive() {
-        return Utils.readFile(HOTPLUG_BLU_PLUG_ENABLE).equals("1");
+        if (CPUHotplug.hasBluPlug()) {
+            if (CPUHotplug.hasBluPlugEnable()) {
+                return Utils.readFile(HOTPLUG_BLU_PLUG_ENABLE).equals("1");
+            }
+            else return true;
+        }
+        return false;
     }
 
     public static boolean hasBluPlugEnable() {
@@ -1524,7 +1530,7 @@ public class CPUHotplug implements Constants {
         if (CPUHotplug.isThunderPlugActive() && !activehotplug.equals("ThunderPlug")) Control.runCommand("0", HOTPLUG_THUNDER_PLUG_ENABLE, Control.CommandType.GENERIC, context);
         if (CPUHotplug.isAlucardHotplugActive() && !activehotplug.equals("AlucardHotplug")) Control.runCommand("0", ALUCARD_HOTPLUG_ENABLE, Control.CommandType.GENERIC, context);
         if (CPUHotplug.isMakoHotplugActive() && !activehotplug.equals("MakoHotPlug")) Control.runCommand("0", MAKO_HOTPLUG_ENABLED, Control.CommandType.GENERIC, context);
-        if (CPUHotplug.isBluPlugActive() && !activehotplug.equals("BluPlug")) Control.runCommand("0", HOTPLUG_BLU_PLUG_ENABLE, Control.CommandType.GENERIC, context);
+        if (CPUHotplug.isBluPlugActive() && CPUHotplug.hasBluPlugEnable() && !activehotplug.equals("BluPlug")) Control.runCommand("0", HOTPLUG_BLU_PLUG_ENABLE, Control.CommandType.GENERIC, context);
         if (CPUHotplug.isIntelliPlugActive() && !activehotplug.equals("IntelliPlug")) {
             if (Utils.existFile(HOTPLUG_INTELLI_PLUG_ENABLE)) Control.runCommand("0", HOTPLUG_INTELLI_PLUG_ENABLE, Control.CommandType.GENERIC, context);
             if (Utils.existFile(HOTPLUG_INTELLI_PLUG_5_ENABLE)) Control.runCommand("0", HOTPLUG_INTELLI_PLUG_5_ENABLE, Control.CommandType.GENERIC, context);
