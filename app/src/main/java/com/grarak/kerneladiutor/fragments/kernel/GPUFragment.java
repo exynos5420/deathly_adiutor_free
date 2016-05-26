@@ -17,7 +17,6 @@
 package com.grarak.kerneladiutor.fragments.kernel;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.grarak.kerneladiutor.R;
 import com.grarak.kerneladiutor.elements.DDivider;

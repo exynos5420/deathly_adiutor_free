@@ -19,8 +19,6 @@ package com.grarak.kerneladiutor.utils.kernel;
 import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;
 
-import java.util.List;
-
 /**
  * Created by willi on 22.12.14.
  */

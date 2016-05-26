@@ -13,8 +13,6 @@ import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;
 import com.grarak.kerneladiutor.utils.kernel.Screen;
 
-import java.util.Arrays;
-
 /**
  * Created by joe on 5/10/16.
  */

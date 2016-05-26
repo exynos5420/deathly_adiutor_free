@@ -30,10 +30,8 @@ import android.os.IBinder;
 import android.os.PowerManager;
 import android.util.Log;
 
-import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;
 import com.grarak.kerneladiutor.utils.kernel.Screen;
-import com.grarak.kerneladiutor.utils.root.Control;
 
 /**
  * Created by willi on 08.03.15.
