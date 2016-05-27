@@ -538,6 +538,14 @@ public class Screen implements Constants {
         }
     }
 
+    public static boolean isScreenAutoHBMSmoothingActive(Context context) {
+        return Utils.getBoolean("AutoHBM_Smoothing", false, context);
+    }
+
+    public static void activateScreenHBMSmoothing(boolean active, Context context) {
+        Utils.saveBoolean("AutoHBM_Smoothing", active, context);
+    }
+
     public static int getAutoHBMThresh(Context context) {
         return Utils.getInt("AutoHBM_Threshold", 1500, context);
     }

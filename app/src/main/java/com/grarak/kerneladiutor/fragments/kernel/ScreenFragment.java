@@ -70,7 +70,7 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
     private SeekBarCardView.DSeekBarCard mScreenValueCard;
     private SeekBarCardView.DSeekBarCard mScreenContrastCard;
     private SeekBarCardView.DSeekBarCard mScreenAutoHBMValueCard;
-    private SwitchCardView.DSwitchCard mScreenAutoHBMCard, mScreenHBMCard;
+    private SwitchCardView.DSwitchCard mScreenAutoHBMCard, mScreenHBMCard, mScreenAutoHBMSmoothingCard;
 
     private EditTextCardView.DEditTextCard mKGammaBlueCard;
     private EditTextCardView.DEditTextCard mKGammaGreenCard;
@@ -281,6 +281,14 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
             addView(mScreenAutoHBMCard);
 
             if (Screen.isScreenAutoHBMActive(view.getContext())) {
+
+                mScreenAutoHBMSmoothingCard = new SwitchCardView.DSwitchCard();
+                mScreenAutoHBMSmoothingCard.setDescription(getString(R.string.auto_high_brightness_smoothing));
+                mScreenAutoHBMSmoothingCard.setChecked(Screen.isScreenAutoHBMSmoothingActive(view.getContext()));
+                mScreenAutoHBMSmoothingCard.setOnDSwitchCardListener(this);
+
+                addView(mScreenAutoHBMSmoothingCard);
+
                 List<String> list = new ArrayList<>();
                 for (int i = 0; i <= 10000; i+=5)
                     list.add(String.valueOf(i));
@@ -843,6 +851,9 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
             Screen.activateScreenAutoHBM(checked, getActivity());
             view.invalidate();
             getActivity().getSupportFragmentManager().beginTransaction().detach(this).attach(this).commit();
+        } else if (dSwitchCard == mScreenAutoHBMSmoothingCard) {
+            Screen.activateScreenHBMSmoothing(checked, getActivity());
+            Utils.toast(getString(R.string.auto_high_brightness_smoothing_warning), getContext());
         } else if (dSwitchCard == mScreenHBMCard)
             Screen.activateScreenHBM(checked, getActivity());
         else if (dSwitchCard == mBackLightDimmerEnableCard)

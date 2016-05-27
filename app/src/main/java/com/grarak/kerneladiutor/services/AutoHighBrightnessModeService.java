@@ -30,6 +30,7 @@ import android.os.IBinder;
 import android.os.PowerManager;
 import android.util.Log;
 
+import com.grarak.kerneladiutor.MainActivity;
 import com.grarak.kerneladiutor.utils.Utils;
 import com.grarak.kerneladiutor.utils.kernel.Screen;
 
@@ -37,7 +38,7 @@ import com.grarak.kerneladiutor.utils.kernel.Screen;
  * Created by willi on 08.03.15.
  */
 public class AutoHighBrightnessModeService extends Service {
-    float lux = 0;
+    float lux = 0, curlux = 0, lux1 = 0, lux2 = 0;
     public static int LuxThresh = 50000;
     public static boolean AutoHBMSensorEnabled = false, HBMActive = false;
 
@@ -90,8 +91,16 @@ public class AutoHighBrightnessModeService extends Service {
         @Override
         public void onSensorChanged(SensorEvent event) {
             if (AutoHBMSensorEnabled) {
-                lux = event.values[0];
-
+                if (Screen.isScreenAutoHBMSmoothingActive(MainActivity.context)) {
+                    // This should average the last 3 lux values
+                    // This will cause some delay in autohbm actually working as the values initialize at 0
+                    lux2 = lux1;
+                    lux1 = curlux;
+                    curlux = event.values[0];
+                    lux = (curlux + lux1 + lux2) / 3;
+                } else {
+                    lux = event.values[0];
+                }
                 if (lux >= LuxThresh && !Screen.isScreenHBMActive()) {
                     Log.i("Kernel Adiutor: ", "AutoHBMService Activating HBM: received LUX value: " + lux + " Threshold: " + LuxThresh);
                     Screen.activateScreenHBM(true, getApplicationContext());
