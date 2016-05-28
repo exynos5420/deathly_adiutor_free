@@ -263,6 +263,9 @@ public class Misc implements Constants {
             Control.runCommand(active ? "1" : "0", LOGGER_FILE, Control.CommandType.GENERIC, context);
         }
         if (LOGGER_FILE.equals(LOGD)) {
+            // This is needed because the path changes from "start" to "stop" so it breaks the commandsaver function
+            Control.deletespecificcommand(context, active ? "stop" : "start", null);
+
             Control.runCommand("logd", active ? "start" : "stop", Control.CommandType.SHELL, context);
         }
     }
