@@ -25,9 +25,27 @@ import com.grarak.kerneladiutor.R;
 import com.grarak.kerneladiutor.elements.DDivider;
 import com.grarak.kerneladiutor.elements.cards.CardViewItem;
 import com.grarak.kerneladiutor.fragments.RecyclerViewFragment;
+import com.grarak.kerneladiutor.fragments.kernel.BatteryFragment;
+import com.grarak.kerneladiutor.fragments.kernel.CPUFragment;
+import com.grarak.kerneladiutor.fragments.kernel.CPUHotplugFragment;
+import com.grarak.kerneladiutor.fragments.kernel.CPUVoltageFragment;
+import com.grarak.kerneladiutor.fragments.kernel.EntropyFragment;
+import com.grarak.kerneladiutor.fragments.kernel.GPUFragment;
+import com.grarak.kerneladiutor.fragments.kernel.IOFragment;
+import com.grarak.kerneladiutor.fragments.kernel.KSMFragment;
+import com.grarak.kerneladiutor.fragments.kernel.LMKFragment;
+import com.grarak.kerneladiutor.fragments.kernel.MiscFragment;
+import com.grarak.kerneladiutor.fragments.kernel.ScreenFragment;
+import com.grarak.kerneladiutor.fragments.kernel.SoundFragment;
+import com.grarak.kerneladiutor.fragments.kernel.ThermalFragment;
+import com.grarak.kerneladiutor.fragments.kernel.VMFragment;
+import com.grarak.kerneladiutor.fragments.kernel.WakeFragment;
+import com.grarak.kerneladiutor.fragments.kernel.WakeLockFragment;
+import com.grarak.kerneladiutor.utils.Utils;
 import com.grarak.kerneladiutor.utils.database.CommandDB;
 import com.grarak.kerneladiutor.utils.root.Control;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -53,8 +71,33 @@ public class StartUpCommandsFragment extends RecyclerViewFragment implements Car
     public void listcommands () {
         CommandDB commandDB = new CommandDB(getActivity());
         List<CommandDB.CommandItem> commandItems = commandDB.getAllCommands();
+        final List<String> applys = new ArrayList<>();
+        List<String> commands = new ArrayList<>();
 
-        if (commandItems.size() > 0) {
+        Class[] classes = {BatteryFragment.class, CPUFragment.class, CPUHotplugFragment.class,
+                CPUVoltageFragment.class, EntropyFragment.class, GPUFragment.class, IOFragment.class,
+                KSMFragment.class, LMKFragment.class, MiscFragment.class,
+                ScreenFragment.class, SoundFragment.class, ThermalFragment.class, WakeLockFragment.class,
+                VMFragment.class, WakeFragment.class
+        };
+
+        for (Class mClass : classes)
+            if (Utils.getBoolean(mClass.getSimpleName() + "onboot", false, getContext())) {
+                applys.addAll(Utils.getApplys(mClass));
+            }
+
+        if (applys.size() > 0)
+            for (CommandDB.CommandItem commandItem : commandItems)
+                for (String sys : applys) {
+                    String path = commandItem.getPath();
+                    if ((sys.contains(path) || path.contains(sys))) {
+                        String command = commandItem.getCommand();
+                        if (commands.indexOf(command) < 0)
+                            commands.add(command);
+                    }
+                }
+
+        if (commands.size() > 0) {
             mStartUpCommandsDelete = new CardViewItem.DCardView();
             mStartUpCommandsDelete.setTitle(getString(R.string.startup_commands_delete));
             mStartUpCommandsDelete.setOnDCardListener(this);
@@ -67,11 +110,10 @@ public class StartUpCommandsFragment extends RecyclerViewFragment implements Car
             addView(mStartUpCommandsListDividerCard);
 
             mStartUpCommands = new CardViewItem.DCardView[commandItems.size()];
-            for (int i = 0; i < commandItems.size(); i++) {
-                String command = commandItems.get(i).getCommand();
-                final String path = commandItems.get(i).getPath();
+            for (int i = 0; i < commands.size(); i++) {
+                String command = commands.get(i);
                 mStartUpCommands[i] = new CardViewItem.DCardView();
-                mStartUpCommands[i].setDescription(command);
+                mStartUpCommands[i].setDescription(commands.get(i));
                 mStartUpCommands[i].setOnDCardListener(this);
 
                 addView(mStartUpCommands[i]);
