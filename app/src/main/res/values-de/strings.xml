@@ -427,9 +427,11 @@
   <string name="screen_hue_summary">Führt möglicherweise zu Problemen mit dem MSM8x26 SoC, wenn ein hoher Wert gesetzt wird.</string>
   <string name="screen_value">Rasterwert</string>
   <string name="screen_contrast">Bildschirm-Kontrast</string>
-  <string name="auto_high_brightness_mode">Automatischer Hohe-Helligkeit-Modus</string>
-  <string name="auto_high_brightness_mode_threshold">Automatischer Hohe-Helligkeit-Modus Schwellenwert</string>
-  <string name="high_brightness_mode">Hoher Helligkeitsmodus</string>
+  <string name="auto_high_brightness_mode">Autom. Hohe-Helligkeit-Modus (HBM)</string>
+  <string name="auto_high_brightness_mode_threshold">Autom. Hohe-Helligkeit-Modus (HBM) Schwellenwert</string>
+  <string name="auto_high_brightness_smoothing">Gleichmäßige Lux-Werte für Auto. HBM</string>
+  <string name="auto_high_brightness_smoothing_warning">Einstellung führt zu einer gewissen Verzögerung bei signifikanten Lux-Änderungen.</string>
+  <string name="high_brightness_mode">Hohe-Helligkeit-Modus (HBM)</string>
   <string name="gamma">Gamma</string>
   <string name="gamma_profile">Gamma-Profile</string>
   <string name="red_greys">Rot-Grau</string>
