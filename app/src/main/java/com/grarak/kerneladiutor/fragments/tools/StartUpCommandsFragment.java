@@ -111,7 +111,6 @@ public class StartUpCommandsFragment extends RecyclerViewFragment implements Car
 
             mStartUpCommands = new CardViewItem.DCardView[commandItems.size()];
             for (int i = 0; i < commands.size(); i++) {
-                String command = commands.get(i);
                 mStartUpCommands[i] = new CardViewItem.DCardView();
                 mStartUpCommands[i].setDescription(commands.get(i));
                 mStartUpCommands[i].setOnDCardListener(this);

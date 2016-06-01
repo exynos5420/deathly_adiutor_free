@@ -671,7 +671,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 mAlu_T_BoostCpusCard = new SeekBarCardView.DSeekBarCard(list);
                 mAlu_T_BoostCpusCard.setTitle(getString(R.string.alu_t_boostcpus));
                 mAlu_T_BoostCpusCard.setDescription(getString(R.string.alu_t_boostcpus_summary));
-                mAlu_T_BoostCpusCard.setProgress(CPU.getAlutBoostCpus() / 1);
+                mAlu_T_BoostCpusCard.setProgress(CPU.getAlutBoostCpus());
                 mAlu_T_BoostCpusCard.setOnDSeekBarCardListener(this);
 
                 addView(mAlu_T_BoostCpusCard);
@@ -980,7 +980,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
         private void ForceRefresh() {
             try {
                 Thread.sleep(250);
-            } catch (InterruptedException ex) {
+            } catch (InterruptedException ignored) {
             }
             CPUFragment.cpuFragment.cpuPart.view.invalidate();
             getActivity().getSupportFragmentManager().beginTransaction().detach(this).attach(this).commit();
