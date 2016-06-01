@@ -51,7 +51,8 @@ public class SoundFragment extends RecyclerViewFragment implements
         if (Sound.hasDriverTunables()) drivertunablesInit();
 
         if (Sound.hasWcdSpkr_Drv_WrndEnable()) wcdspkr_drv_wrnd_Init();
-        if (Sound.hasWcdHighPerfMode()) wcdhighPerfModeEnableInit();
+        //Only show the SOC built-in highperf mode if there isn't a third party one present.
+        if (Sound.hasWcdHighPerfMode() && !Sound.hasHighPerfModeEnable()) wcdhighPerfModeEnableInit();
 
         if (Sound.hasThirdPartyTunables()) thirdpartytunablesInit();
 
