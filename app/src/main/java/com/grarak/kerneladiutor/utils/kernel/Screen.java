@@ -528,7 +528,6 @@ public class Screen implements Constants {
 
     public static void activateScreenAutoHBM(boolean active, Context context) {
         Utils.saveBoolean("AutoHBM", active, context);
-        AutoHighBrightnessModeService.AutoHBMSensorEnabled = active;
         Intent intent = new Intent(context, AutoHighBrightnessModeService.class);
         if (active) {
             context.startService(intent);

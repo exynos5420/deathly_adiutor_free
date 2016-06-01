@@ -40,7 +40,6 @@ import com.grarak.kerneladiutor.utils.kernel.Screen;
 public class AutoHighBrightnessModeService extends Service {
     float lux = 0, curlux = 0, lux1 = 0, lux2 = 0;
     public static int LuxThresh = 50000;
-    public static boolean AutoHBMSensorEnabled = false, HBMActive = false;
 
     private SensorManager sMgr;
     Sensor light;
@@ -88,31 +87,28 @@ public class AutoHighBrightnessModeService extends Service {
 
     public void deactivateLightSensorRead() {
         sMgr.unregisterListener(_SensorEventListener);
-        AutoHBMSensorEnabled = false;
     }
 
     SensorEventListener _SensorEventListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
-            if (AutoHBMSensorEnabled) {
-                if (Screen.isScreenAutoHBMSmoothingActive(MainActivity.context)) {
-                    // This should average the last 3 lux values
-                    // This will cause some delay in autohbm actually working as the values initialize at 0
-                    lux2 = lux1;
-                    lux1 = curlux;
-                    curlux = event.values[0];
-                    lux = (curlux + lux1 + lux2) / 3;
-                } else {
-                    lux = event.values[0];
-                }
-                if (lux >= LuxThresh && !Screen.isScreenHBMActive()) {
-                    Log.i("Kernel Adiutor: ", "AutoHBMService Activating HBM: received LUX value: " + lux + " Threshold: " + LuxThresh);
-                    Screen.activateScreenHBM(true, getApplicationContext());
-                }
-                if (lux < LuxThresh && Screen.isScreenHBMActive()) {
-                    Log.i("Kernel Adiutor: ", "De-Activation: AutoHBMService: received LUX value: " + lux + " Threshold: " + LuxThresh);
-                    Screen.activateScreenHBM(false, getApplicationContext());
-                }
+            if (Screen.isScreenAutoHBMSmoothingActive(MainActivity.context)) {
+                // This should average the last 3 lux values
+                // This will cause some delay in autohbm actually working as the values initialize at 0
+                lux2 = lux1;
+                lux1 = curlux;
+                curlux = event.values[0];
+                lux = (curlux + lux1 + lux2) / 3;
+            } else {
+                lux = event.values[0];
+            }
+            if (lux >= LuxThresh && !Screen.isScreenHBMActive()) {
+                Log.i("Kernel Adiutor: ", "AutoHBMService Activating HBM: received LUX value: " + lux + " Threshold: " + LuxThresh);
+                Screen.activateScreenHBM(true, getApplicationContext());
+            }
+            if (lux < LuxThresh && Screen.isScreenHBMActive()) {
+                Log.i("Kernel Adiutor: ", "De-Activation: AutoHBMService: received LUX value: " + lux + " Threshold: " + LuxThresh);
+                Screen.activateScreenHBM(false, getApplicationContext());
             }
         }
 
@@ -135,7 +131,6 @@ public class AutoHighBrightnessModeService extends Service {
                 String strAction = intent.getAction();
                 if (strAction.equals(android.content.Intent.ACTION_SCREEN_OFF)) {
                     if (Utils.getBoolean("AutoHBM", false, getApplicationContext())) {
-                        AutoHBMSensorEnabled = false;
                         LuxThresh = Utils.getInt("AutoHBM_Threshold", 1500, getApplicationContext());
                         deactivateLightSensorRead();
                     }
@@ -143,7 +138,6 @@ public class AutoHighBrightnessModeService extends Service {
 
                 if (strAction.equals(android.content.Intent.ACTION_SCREEN_ON)) {
                     if (Utils.getBoolean("AutoHBM", false, getApplicationContext())) {
-                        AutoHBMSensorEnabled = true;
                         LuxThresh = Utils.getInt("AutoHBM_Threshold", 1500, getApplicationContext());
                         activateLightSensorRead();
                     }
