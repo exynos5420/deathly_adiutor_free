@@ -414,6 +414,7 @@ public interface Constants {
     String GPU_POWERVR_AVAILABLE_GOVERNORS = "/sys/class/devfreq/dfrgx/available_governors";
 
     String GPU_MIN_POWER_LEVEL = "/sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/min_pwrlevel";
+    String GPU_NUM_POWER_LEVELS = "/sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/num_pwrlevels";
 
     String GPU_CUR_TEGRA_FREQ = "/sys/kernel/tegra_gpu/gpu_rate";
     String GPU_MAX_TEGRA_FREQ = "/sys/kernel/tegra_gpu/gpu_cap_rate";
