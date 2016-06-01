@@ -521,10 +521,12 @@ public class Utils implements Constants {
     }
 
     public static boolean is64bit() {
-        if (Build.SUPPORTED_64_BIT_ABIS.length >= 1) {
-            return true;
+        if (Build.VERSION.SDK_INT < 21) {
+            return false;
+        }
+        else if (Build.SUPPORTED_64_BIT_ABIS.length >= 1) {
+                return true;
         }
         return false;
     }
-
 }

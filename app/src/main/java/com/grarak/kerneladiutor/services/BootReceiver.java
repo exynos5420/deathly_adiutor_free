@@ -30,10 +30,11 @@ public class BootReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (Utils.getBoolean("emulateinit.d", false, context))
-            context.startService(new Intent(context, InitdService.class));
-        context.startService(new Intent(context, BootService.class));
-        ProfileTileReceiver.publishProfileTile(new ProfileDB(context).getAllProfiles(), context);
+        if ("BOOT_COMPLETED".equals(intent.getAction())) {
+            if (Utils.getBoolean("emulateinit.d", false, context))
+                context.startService(new Intent(context, InitdService.class));
+            context.startService(new Intent(context, BootService.class));
+            ProfileTileReceiver.publishProfileTile(new ProfileDB(context).getAllProfiles(), context);
+        }
     }
-
 }
