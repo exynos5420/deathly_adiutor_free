@@ -57,7 +57,12 @@ public class HBMWidget extends AppWidgetProvider {
         if (intent.getAction().equals("com.kerneladiutor.mod.action.TOGGLE_HBM")) {
             if (Screen.hasScreenHBM()) {
                 Log.i(Constants.TAG + ": " + getClass().getSimpleName(), "Toggling High Brightness Mode");
-                AutoHighBrightnessModeService.HBM_Widget_Toggled = true;
+                if (AutoHighBrightnessModeService.HBM_Widget_Toggled) {
+                    AutoHighBrightnessModeService.HBM_Widget_Toggled = false;
+                }
+                else {
+                    AutoHighBrightnessModeService.HBM_Widget_Toggled = true;
+                }
                 if (Screen.isScreenHBMActive()) {
                     Screen.activateScreenHBM(false, context);
                 } else {
