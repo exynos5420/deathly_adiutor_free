@@ -157,9 +157,7 @@ public class StartUpCommandsFragment extends RecyclerViewFragment implements Car
         }
         for (int i = 0; i < mStartUpCommands.length; i++)
         if (dCardView == mStartUpCommands[i]) {
-            final StringBuilder command = new StringBuilder(mStartUpCommands[i].getDescription().length());
-            command.append(mStartUpCommands[i].getDescription());
-            Control.deletespecificcommand(getActivity(), null, command.toString());
+            Control.deletespecificcommand(getActivity(), null, String.valueOf(mStartUpCommands[i].getDescription()));
             forcerefresh(getActivity());
         }
     }
