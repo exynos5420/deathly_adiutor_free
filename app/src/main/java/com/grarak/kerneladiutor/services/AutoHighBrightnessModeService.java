@@ -61,7 +61,9 @@ public class AutoHighBrightnessModeService extends Service {
         super.onDestroy();
         unregisterAutoHBMReceiver(getApplicationContext());
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        if (pm.isInteractive()) {
+        if (Build.VERSION.SDK_INT > 19 && pm.isInteractive()) {
+            deactivateLightSensorRead();
+        } else if (Build.VERSION.SDK_INT < 20 ) {
             deactivateLightSensorRead();
         }
     }
@@ -69,7 +71,9 @@ public class AutoHighBrightnessModeService extends Service {
     private void init() {
         registerAutoHBMReceiver(getApplicationContext());
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        if (pm.isInteractive()) {
+        if (Build.VERSION.SDK_INT > 19 && pm.isInteractive()) {
+            activateLightSensorRead();
+        } else if (Build.VERSION.SDK_INT < 20 ) {
             activateLightSensorRead();
         }
     }
