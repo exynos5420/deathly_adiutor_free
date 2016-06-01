@@ -93,7 +93,8 @@ public class AutoHighBrightnessModeService extends Service {
     SensorEventListener _SensorEventListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
-            if (Screen.isScreenAutoHBMSmoothingActive(MainActivity.context)) {
+            // Call Screen.hasScreenHBM() here in the if block to ensure that the appropriate variables are set when calling Screen.activateScreenHBM
+            if (Screen.isScreenAutoHBMSmoothingActive(MainActivity.context) && Screen.hasScreenHBM()) {
                 // This should average the last 3 lux values
                 // This will cause some delay in autohbm actually working as the values initialize at 0
                 lux2 = lux1;
