@@ -429,7 +429,8 @@ public class Wake implements Constants {
                     list.add(context.getString(R.string.top_half));
                     break;
                 case DT2W:
-                    list.add(context.getString(R.string.enabled));
+                    list.add(context.getString(R.string.halfscreen));
+                    list.add(context.getString(R.string.fullscreen));
                     break;
                 default:
                     list.add(context.getString(R.string.enabled));
