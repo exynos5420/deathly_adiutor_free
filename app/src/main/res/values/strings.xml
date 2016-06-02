@@ -197,6 +197,7 @@
     <string name="override_vmin_summary">Disable to remove manufacturer limits on undervolting</string>
 
     <!-- CPU Hotplug -->
+    <string name="no_enable_toggle">Warning: This Hotplug has no enable or disable toggle. Be aware that having more than one hotplug enabled can cause erratic behavior.</string>
     <string name="mpdecision">MPDecision</string>
     <string name="mpdecision_summary">Qualcomm\'s hotplugging solution. You might get problems with changing frequencies when this is enabled.</string>
     <string name="intelliplug">IntelliPlug</string>

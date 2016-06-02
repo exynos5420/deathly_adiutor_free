@@ -167,19 +167,19 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
 
-        if (CPUHotplug.hasZenDecision()) zenDecisionInit();
+        if (CPUHotplug.hasZenDecisionEnable()) zenDecisionInit();
         if (CPUHotplug.hasMpdecision()) mpdecisionInit();
-        if (CPUHotplug.hasIntelliPlug()) intelliPlugInit();
-        if (CPUHotplug.hasBluPlug()) bluPlugInit();
-        if (CPUHotplug.hasMsmHotplug()) msmHotplugInit();
-        if (CPUHotplug.hasMakoHotplug()) makoHotplugInit();
-        if (CPUHotplug.hasMBHotplug()) mbHotplugInit();
-        if (CPUHotplug.hasAlucardHotplug()) alucardHotplugInit();
-        if (CPUHotplug.hasThunderPlug()) thunderPlugInit();
-        if (CPUHotplug.hasAutoSmp()) autoSmpInit();
-        if (CPUHotplug.hasLazyPlug()) lazyPlugInit();
-        if (CPUHotplug.hasMSMSleeper()) msmSleeperInit();
-        if (CPUHotplug.hasStateHelper()) msmState_Helper_Init();
+        if (CPUHotplug.hasIntelliPlugEnable()) intelliPlugInit();
+        if (CPUHotplug.hasBluPlugEnable()) bluPlugInit();
+        if (CPUHotplug.hasMsmHotplugEnable()) msmHotplugInit();
+        if (CPUHotplug.hasMakoHotplugEnable()) makoHotplugInit();
+        if (CPUHotplug.hasMBHotplugEnable()) mbHotplugInit();
+        if (CPUHotplug.hasAlucardHotplugEnable()) alucardHotplugInit();
+        if (CPUHotplug.hasThunderPlugEnable()) thunderPlugInit();
+        if (CPUHotplug.hasAutoSmpEnable()) autoSmpInit();
+        if (CPUHotplug.hasLazyPlugEnable()) lazyPlugInit();
+        if (CPUHotplug.hasMSMSleeperEnable()) msmSleeperInit();
+        if (CPUHotplug.hasStateHelperEnable()) msmState_Helper_Init();
         tunablesInit();
     }
 
@@ -243,7 +243,7 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
     }
 
     private void mbHotplugInit() {
-        if (CPUHotplug.hasMBGHotplugEnable()) {
+        if (CPUHotplug.hasMBHotplugEnable()) {
             mMBHotplugEnableCard = new SwitchCardView.DSwitchCard();
             mMBHotplugEnableCard.setTitle(getString(R.string.bricked_hotplug));
             mMBHotplugEnableCard.setDescription(getString(R.string.mb_hotplug_summary));
@@ -344,10 +344,13 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
         List<DAdapter.DView> views = new ArrayList<>();
         views.clear();
 
-        if (CPUHotplug.hasIntelliPlugEnable()) {
+        if (CPUHotplug.isIntelliPlugActive() || (!CPUHotplug.hasIntelliPlugEnable() && CPUHotplug.hasIntelliPlug())) {
 
             DDivider mIntelliPlugDividerCard = new DDivider();
             mIntelliPlugDividerCard.setText(getString(R.string.intelliplug));
+            if (!CPUHotplug.hasIntelliPlugEnable() && CPUHotplug.hasIntelliPlug()) {
+                mIntelliPlugDividerCard.setDescription(getString(R.string.no_enable_toggle));
+            }
             views.add(mIntelliPlugDividerCard);
 
             if (CPUHotplug.hasIntelliPlugProfile()) {
@@ -568,9 +571,12 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
             }
         }
 
-        if (CPUHotplug.isBluPlugActive()) {
+        if (CPUHotplug.isBluPlugActive() || (!CPUHotplug.hasBluPlugEnable() && CPUHotplug.hasBluPlug())) {
             DDivider mBluPlugDividerCard = new DDivider();
             mBluPlugDividerCard.setText(getString(R.string.blu_plug));
+            if (!CPUHotplug.hasBluPlugEnable() && CPUHotplug.hasBluPlug()) {
+                mBluPlugDividerCard.setDescription(getString(R.string.no_enable_toggle));
+            }
             views.add(mBluPlugDividerCard);
 
             if (CPUHotplug.hasBluPlugPowersaverMode()) {
@@ -683,9 +689,12 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
             }
         }
 
-        if (CPUHotplug.isMsmHotplugActive()) {
+        if (CPUHotplug.isMsmHotplugActive() || (!CPUHotplug.hasMsmHotplugEnable() && CPUHotplug.hasMsmHotplug())) {
             DDivider mMsmHotplugDividerCard = new DDivider();
             mMsmHotplugDividerCard.setText(getString(R.string.msm_hotplug));
+            if (!CPUHotplug.hasMsmHotplugEnable() && CPUHotplug.hasMsmHotplug()) {
+                mMsmHotplugDividerCard.setDescription(getString(R.string.no_enable_toggle));
+            }
             views.add(mMsmHotplugDividerCard);
 
             if (CPUHotplug.hasMsmHotplugDebugMask()) {
@@ -906,9 +915,12 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
             }
         }
 
-        if (CPUHotplug.isMakoHotplugActive()) {
+        if (CPUHotplug.isMakoHotplugActive() || (!CPUHotplug.hasMakoHotplugEnable() && CPUHotplug.hasMakoHotplug())) {
             DDivider mMakoHotplugDividerCard = new DDivider();
             mMakoHotplugDividerCard.setText(getString(R.string.mako_hotplug));
+            if (!CPUHotplug.hasMakoHotplugEnable() && CPUHotplug.hasMakoHotplug()) {
+                mMakoHotplugDividerCard.setDescription(getString(R.string.no_enable_toggle));
+            }
             views.add(mMakoHotplugDividerCard);
 
             if (CPUHotplug.hasMakoHotplugCoresOnTouch()) {
@@ -1048,9 +1060,12 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
             }
         }
 
-        if (CPUHotplug.isMBHotplugActive()) {
+        if (CPUHotplug.isMBHotplugActive() || (!CPUHotplug.hasMBHotplugEnable() && CPUHotplug.hasMBHotplug())) {
             DDivider mMBHotplugDividerCard = new DDivider();
             mMBHotplugDividerCard.setText(getString(R.string.bricked_hotplug));
+            if (!CPUHotplug.hasMBHotplugEnable() && CPUHotplug.hasMBHotplug()) {
+                mMBHotplugDividerCard.setDescription(getString(R.string.no_enable_toggle));
+            }
             views.add(mMBHotplugDividerCard);
 
             if (CPUHotplug.hasMBHotplugScroffSingleCore()) {
@@ -1275,9 +1290,12 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
             }
         }
 
-        if (CPUHotplug.isAlucardHotplugActive()) {
+        if (CPUHotplug.isAlucardHotplugActive() || (!CPUHotplug.hasAlucardHotplugEnable() && CPUHotplug.hasAlucardHotplug())) {
             DDivider mAlucardDivider = new DDivider();
             mAlucardDivider.setText(getString(R.string.alucard_hotplug));
+            if (!CPUHotplug.hasAlucardHotplugEnable() && CPUHotplug.hasAlucardHotplug()) {
+                mAlucardDivider.setDescription(getString(R.string.no_enable_toggle));
+            }
             views.add(mAlucardDivider);
 
             if (CPUHotplug.hasAlucardHotplugHpIoIsBusy()) {
@@ -1382,9 +1400,12 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
             }
         }
 
-        if (CPUHotplug.isThunderPlugActive()) {
+        if (CPUHotplug.isThunderPlugActive() || (!CPUHotplug.hasThunderPlugEnable() && CPUHotplug.hasThunderPlug())) {
             DDivider mThunderPlugDividerCard = new DDivider();
             mThunderPlugDividerCard.setText(getString(R.string.thunderplug));
+            if (!CPUHotplug.hasThunderPlugEnable() && CPUHotplug.hasThunderPlug()) {
+                mThunderPlugDividerCard.setDescription(getString(R.string.no_enable_toggle));
+            }
             views.add(mThunderPlugDividerCard);
 
             if (CPUHotplug.hasThunderPlugSuspendCpus()) {
@@ -1448,9 +1469,12 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
         }
 
 
-        if (CPUHotplug.isZenDecisionActive()) {
+        if (CPUHotplug.isZenDecisionActive() || (!CPUHotplug.hasZenDecisionEnable() && CPUHotplug.hasZenDecision())) {
             DDivider mZenDecisionDividerCard = new DDivider();
             mZenDecisionDividerCard.setText(getString(R.string.zen_decision));
+            if (!CPUHotplug.hasZenDecisionEnable() && CPUHotplug.hasZenDecision()) {
+                mZenDecisionDividerCard.setDescription(getString(R.string.no_enable_toggle));
+            }
             views.add(mZenDecisionDividerCard);
 
             if (CPUHotplug.hasZenDecisionWakeWaitTime()) {
@@ -1481,9 +1505,12 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
             }
         }
 
-        if (CPUHotplug.isAutoSmpActive()) {
+        if (CPUHotplug.isAutoSmpActive() || (CPUHotplug.hasAutoSmpEnable() && CPUHotplug.hasAutoSmp())) {
             DDivider mAutoSmpDividerCard = new DDivider();
             mAutoSmpDividerCard.setText(getString(R.string.autosmp));
+            if (CPUHotplug.hasAutoSmpEnable() && CPUHotplug.hasAutoSmp()) {
+                mAutoSmpDividerCard.setDescription(getString(R.string.no_enable_toggle));
+            }
             views.add(mAutoSmpDividerCard);
 
             if (CPUHotplug.hasAutoSmpCpufreqDown()) {
@@ -1586,9 +1613,12 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
             }
         }
 
-        if (CPUHotplug.isLazyPlugActive()) {
+        if (CPUHotplug.isLazyPlugActive() || (!CPUHotplug.hasLazyPlugEnable() && CPUHotplug.hasLazyPlug())) {
             DDivider mLazyPlugDividerCard = new DDivider();
             mLazyPlugDividerCard.setText(getString(R.string.lazyplug));
+            if (!CPUHotplug.hasLazyPlugEnable() && CPUHotplug.hasLazyPlug()) {
+                mLazyPlugDividerCard.setDescription(getString(R.string.no_enable_toggle));
+            }
             views.add(mLazyPlugDividerCard);
 
             if (CPUHotplug.hasLazyPlugCpuNrRunTreshold()) {
@@ -1651,9 +1681,12 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
             }
         }
 
-        if (CPUHotplug.isMSMSleeperActive()) {
+        if (CPUHotplug.isMSMSleeperActive() || (!CPUHotplug.hasMSMSleeperEnable() && CPUHotplug.hasMSMSleeper())) {
             DDivider mMSMSleeperDividerCard = new DDivider();
             mMSMSleeperDividerCard.setText(getString(R.string.msm_sleeper));
+            if (!CPUHotplug.hasMSMSleeperEnable() && CPUHotplug.hasMSMSleeper()) {
+                mMSMSleeperDividerCard.setDescription(getString(R.string.no_enable_toggle));
+            }
             views.add(mMSMSleeperDividerCard);
 
             if (CPUHotplug.hasMSMSleeperMaxOnline()) {
@@ -1720,9 +1753,12 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
         }
 
         // StateHelper Tunables
-        if (CPUHotplug.isStateHelperActive()) {
+        if (CPUHotplug.isStateHelperActive() || (!CPUHotplug.hasStateHelperEnable() && CPUHotplug.hasStateHelper())) {
             DDivider mStateHelperDividerCard = new DDivider();
             mStateHelperDividerCard.setText(getString(R.string.state_helper));
+            if (!CPUHotplug.hasStateHelperEnable() && CPUHotplug.hasStateHelper()) {
+                mStateHelperDividerCard.setDescription(getString(R.string.no_enable_toggle));
+            }
             views.add(mStateHelperDividerCard);
 
             if (CPUHotplug.hasStateHelperMaxCpusOnline()) {
