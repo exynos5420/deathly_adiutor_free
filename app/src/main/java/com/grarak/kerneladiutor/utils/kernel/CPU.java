@@ -39,8 +39,8 @@ import java.util.List;
 public class CPU implements Constants {
 
     private static int cores;
-    private static int bigCore = -1;
-    private static int LITTLEcore = -1;
+    public static int bigCore = -1;
+    public static int LITTLEcore = -1;
     private static Integer[][] mFreqs;
     private static String[][] mAvailableGovernors;
     private static String[] mMcPowerSavingItems;
