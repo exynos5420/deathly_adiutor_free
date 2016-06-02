@@ -31,6 +31,7 @@ import com.grarak.kerneladiutor.utils.json.GammaProfiles;
 import com.grarak.kerneladiutor.utils.root.Control;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -543,6 +544,16 @@ public class Screen implements Constants {
 
     public static void activateScreenHBMSmoothing(boolean active, Context context) {
         Utils.saveBoolean("AutoHBM_Smoothing", active, context);
+    }
+
+    public static int getAutoHBMSmoothingSamples(Context context) {
+        return Utils.getInt("AutoHBM_Samples", 3, context);
+    }
+
+    public static void setAutoHBMSmoothingSamples(int value, Context context) {
+        Utils.saveInt("AutoHBM_Samples", value, context);
+        //Reinitialize the array with the new size
+        AutoHighBrightnessModeService.luxvalues = new float[value];
     }
 
     public static int getAutoHBMThresh(Context context) {

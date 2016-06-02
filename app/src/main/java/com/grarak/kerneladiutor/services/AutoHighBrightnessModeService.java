@@ -31,6 +31,7 @@ import android.os.PowerManager;
 import android.util.Log;
 
 import com.grarak.kerneladiutor.MainActivity;
+import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;
 import com.grarak.kerneladiutor.utils.kernel.Screen;
 
@@ -38,9 +39,11 @@ import com.grarak.kerneladiutor.utils.kernel.Screen;
  * Created by willi on 08.03.15.
  */
 public class AutoHighBrightnessModeService extends Service {
-    float lux = 0, curlux = 0, lux1 = 0, lux2 = 0;
+    public static float lux = 0, avglux = 0;
     public static int LuxThresh = 50000;
     public static boolean HBM_Widget_Toggled = false;
+    public static float[] luxvalues = new float [Utils.getInt("AutoHBM_Samples", 3, MainActivity.context)];
+
 
     private SensorManager sMgr;
     Sensor light;
@@ -97,12 +100,16 @@ public class AutoHighBrightnessModeService extends Service {
             if (Screen.isScreenAutoHBMSmoothingActive(MainActivity.context) && Screen.hasScreenHBM()) {
                 // This should average the last 3 lux values
                 // This will cause some delay in autohbm actually working as the values initialize at 0
-                lux2 = lux1;
-                lux1 = curlux;
-                curlux = event.values[0];
-                lux = (curlux + lux1 + lux2) / 3;
+                avglux = 0;
+                for(int i = 1; i <= luxvalues.length-1; i++) {
+                    luxvalues[i] = luxvalues[i - 1];
+                    avglux += luxvalues[i - 1];
+                }
+                luxvalues[0] = event.values[0];
+                avglux += luxvalues[0];
+                lux = Math.round(avglux / luxvalues.length);
             } else {
-                lux = event.values[0];
+                lux = Math.round(event.values[0]);
             }
             if (!HBM_Widget_Toggled) {
                 if (lux >= LuxThresh && !Screen.isScreenHBMActive()) {
