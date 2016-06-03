@@ -520,6 +520,13 @@ public class Utils implements Constants {
         }
     }
 
+    public static boolean isLetter (String testchar) {
+        if (Character.isLetter(testchar.charAt(0))) {
+            return true;
+        }
+        return false;
+    }
+
     public static boolean is64bit() {
         if (Build.VERSION.SDK_INT < 21) {
             return false;
