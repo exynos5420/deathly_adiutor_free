@@ -34,40 +34,21 @@ import java.util.List;
 
 
 public class CoreControlFragment extends RecyclerViewFragment implements
-        SwitchCardView.DSwitchCard.OnDSwitchCardListener, SeekBarCardView.DSeekBarCard.OnDSeekBarCardListener {
-    private SwitchCardView.DSwitchCard mbchCard;
+        SeekBarCardView.DSeekBarCard.OnDSeekBarCardListener {
     private SeekBarCardView.DSeekBarCard mMinLittleCard;
     private SeekBarCardView.DSeekBarCard mMaxLittleCard;
     private SeekBarCardView.DSeekBarCard mMinBigCard;
     private SeekBarCardView.DSeekBarCard mMaxBigCard;
 
-
-
     @Override
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
 
-
-        if (CoreControl.hasbch()) bchInit();
         if (CoreControl.hasMinLittle()) MinLittleInit();
         if (CoreControl.hasMaxLittle()) MaxLittleInit();
         if (CoreControl.hasMinBig()) MinBigInit();
         if (CoreControl.hasMaxBig()) MaxBigInit();
     }
-
-
-
-
-    private void bchInit() {
-        if (CoreControl.hasbch()) {
-            mbchCard = new SwitchCardView.DSwitchCard();
-             mbchCard.setTitle(getString(R.string.bch));
-             mbchCard.setDescription(getString(R.string.bch_summary));
-             mbchCard.setChecked(CoreControl.isbchActive());
-             mbchCard.setOnDSwitchCardListener(this);
-
-            addView(mbchCard);
-        }}
    
     private void MinLittleInit() {
      if (CoreControl.hasMinLittle()) {
@@ -82,7 +63,7 @@ public class CoreControlFragment extends RecyclerViewFragment implements
 
             addView(mMinLittleCard);
         }
-}
+    }
 
     private void MaxLittleInit() {
      if (CoreControl.hasMaxLittle()) {
@@ -98,7 +79,7 @@ public class CoreControlFragment extends RecyclerViewFragment implements
             addView(mMaxLittleCard);
         }
 
- }   
+    }
 
     private void MinBigInit() {
      if (CoreControl.hasMinBig()) {
@@ -113,7 +94,7 @@ public class CoreControlFragment extends RecyclerViewFragment implements
 
             addView(mMinBigCard);
         }
-}
+    }
 
     private void MaxBigInit() {
      if (CoreControl.hasMaxBig()) {
@@ -129,14 +110,8 @@ public class CoreControlFragment extends RecyclerViewFragment implements
             addView(mMaxBigCard);
         }
 
- }   
-
-
-    @Override
-    public void onChecked(SwitchCardView.DSwitchCard dSwitchCard, boolean checked) {
-        if (dSwitchCard == mbchCard)
-            CoreControl.activatebch(checked, getActivity());
     }
+
     @Override
     public void onChanged(SeekBarCardView.DSeekBarCard dSeekBarCard, int position) {
     }

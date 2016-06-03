@@ -40,7 +40,6 @@ public class CoreControl implements Constants {
         return Utils.existFile(MINLITTLE);
     }
 
-
     public static void setMaxLittle(int value, Context context) {
         Control.runCommand(String.valueOf(value), MAXLITTLE, Control.CommandType.GENERIC, context);
     }
@@ -51,8 +50,6 @@ public class CoreControl implements Constants {
     public static boolean hasMaxLittle() {
         return Utils.existFile(MAXLITTLE);
     }
-
-
 
     public static void setMinBig(int value, Context context) {
         Control.runCommand(String.valueOf(value), MINBIG, Control.CommandType.GENERIC, context);
@@ -75,19 +72,6 @@ public class CoreControl implements Constants {
 
     public static boolean hasMaxBig() {
         return Utils.existFile(MAXBIG);
-    }
-
-
-
-    public static void activatebch(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", BCH, Control.CommandType.GENERIC, context);
-    }
-
-    public static boolean isbchActive() {
-        return Utils.readFile(BCH).equals("1");
-    }
-    public static boolean hasbch() {
-        return Utils.existFile(BCH);
     }
 
 }
