@@ -536,4 +536,13 @@ public class Utils implements Constants {
         }
         return false;
     }
+
+    public static String getsysfspath(String[] paths) {
+        for (int i = 0; i < paths.length; i++) {
+            if (Utils.existFile(paths[i])) {
+                return paths[i];
+            }
+        }
+        return "";
+    }
 }
