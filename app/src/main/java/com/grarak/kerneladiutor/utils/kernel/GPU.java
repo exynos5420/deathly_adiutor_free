@@ -79,7 +79,7 @@ public class GPU implements Constants {
     }
 
     public static boolean isAdrenoIdlerActive() {
-        return Utils.readFile(ADRENO_IDLER_ACTIVATE).equals("Y");
+        return Utils.readFile(ADRENO_IDLER_ACTIVATE).equals(Utils.isLetter(Utils.readFile(ADRENO_IDLER_ACTIVATE)) ? "Y" :"N");
     }
 
     public static boolean hasAdrenoIdler() {
