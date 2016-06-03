@@ -606,9 +606,10 @@ public interface Constants {
     // S2W
     String S2W_ONLY = "/sys/android_touch/s2w_s2sonly";
     String SW2 = "/sys/android_touch/sweep2wake";
+    String SW3 = "/proc/touchpanel/sweep_wake_enable";
     String SW2_2 = "/sys/android_touch2/sweep2wake";
 
-    String[] S2W_ARRY = {S2W_ONLY, SW2, SW2_2};
+    String[] S2W_ARRY = {S2W_ONLY, SW2, SW3, SW2_2};
 
     // S2W Leniency
     String LENIENT = "/sys/android_touch/sweep2wake_sensitive";
@@ -637,7 +638,8 @@ public interface Constants {
     String[] DT2S_ARRAY = {DT2S};
 
     // Gesture
-    String GESTURE_CRTL = "/sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl";
+    String GESTURE_CRTL[] = {"/sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl",
+            "/proc/touchpanel/gesture_enable/sdf"};
 
     Integer[] GESTURE_HEX_VALUES = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512};
     String[] GESTURE_STRING_VALUES = {"up", "down", "left", "right", "e", "o", "w", "c", "m", "double_click"};
@@ -649,7 +651,8 @@ public interface Constants {
     String MW = "/proc/touchpanel/music_enable";
 
     // Camera Gesture
-    String CAMERA_GESTURE = "/sys/android_touch/camera_gesture";
+    String CAMERA_GESTURE[] = {"/sys/android_touch/camera_gesture",
+            "/proc/touchpanel/camera_enable"};
 
     // Pocket mode for Gesture
     String POCKET_MODE = "/sys/android_touch/pocket_mode";
@@ -676,16 +679,19 @@ public interface Constants {
 
 
     String[][] WAKE_ARRAY = {DT2W_ARRAY, S2W_ARRY, T2W_ARRAY, WAKE_MISC_ARRAY, SLEEP_MISC_ARRAY,  WAKE_TIMEOUT_ARRAY, DT2S_ARRAY,
-            SLEEP_MISC_ARRAY, WAKE_MISC_ARRAY, T2W_ARRAY, POCKET_MODE_ARRAY, {LENIENT, GESTURE_CRTL, CAMERA_GESTURE, POCKET_MODE, POWER_KEY_SUSPEND,
+            SLEEP_MISC_ARRAY, WAKE_MISC_ARRAY, T2W_ARRAY, POCKET_MODE_ARRAY, GESTURE_CRTL, CAMERA_GESTURE, {LENIENT, POCKET_MODE, POWER_KEY_SUSPEND,
             WAKE_DT2W_TIMEBETWEENTAPS, WAKE_DT2W_FEATHERX, WAKE_DT2W_FEATHERY, WAKE_VIB_STRENGTH, WAKE_ST2W_TIME, LENIENT }};
 
     // Sound
-    String SOUND_CONTROL_ENABLE = "/sys/module/snd_soc_wcd9320/parameters/enable_fs";
-    String WCD_HIGHPERF_MODE_ENABLE = "/sys/module/snd_soc_wcd9320/parameters/high_perf_mode";
+    String SOUND_CONTROL_ENABLE[] = {"/sys/module/snd_soc_wcd9320/parameters/enable_fs",
+            "/sys/kernel/sound_control_3/gpl_sound_control_locked"};
+    String WCD_HIGHPERF_MODE_ENABLE[] = {"/sys/module/snd_soc_wcd9320/parameters/high_perf_mode",
+            "/sys/module/snd_soc_wcd9330/parameters/high_perf_mode"};
     String WCD_SPKR_DRV_WRND = "/sys/module/snd_soc_wcd9320/parameters/spkr_drv_wrnd";
 
     String FAUX_SOUND = "/sys/kernel/sound_control_3";
-    String HEADPHONE_GAIN = "/sys/kernel/sound_control_3/gpl_headphone_gain";
+    String HEADPHONE_GAIN[] = {"/sys/kernel/sound_control_3/gpl_headphone_gain",
+            "/sys/kernel/sound_control_3/gpl_headphone_l_gain"};
     String HANDSET_MICROPONE_GAIN = "/sys/kernel/sound_control_3/gpl_mic_gain";
     String CAM_MICROPHONE_GAIN = "/sys/kernel/sound_control_3/gpl_cam_mic_gain";
     String SPEAKER_GAIN = "/sys/kernel/sound_control_3/gpl_speaker_gain";
@@ -699,8 +705,8 @@ public interface Constants {
 
     String[] SPEAKER_GAIN_ARRAY = {SPEAKER_GAIN, SPEAKER_BOOST};
 
-    String[][] SOUND_ARRAY = {SPEAKER_GAIN_ARRAY, {SOUND_CONTROL_ENABLE, HIGHPERF_MODE_ENABLE, HEADPHONE_GAIN, HANDSET_MICROPONE_GAIN,
-            CAM_MICROPHONE_GAIN, HEADPHONE_POWERAMP_GAIN, MIC_BOOST, VOLUME_BOOST, WCD_HIGHPERF_MODE_ENABLE, WCD_SPKR_DRV_WRND}};
+    String[][] SOUND_ARRAY = {SPEAKER_GAIN_ARRAY, SOUND_CONTROL_ENABLE, WCD_HIGHPERF_MODE_ENABLE, HEADPHONE_GAIN, {HIGHPERF_MODE_ENABLE, HANDSET_MICROPONE_GAIN,
+            CAM_MICROPHONE_GAIN, HEADPHONE_POWERAMP_GAIN, MIC_BOOST, VOLUME_BOOST, WCD_SPKR_DRV_WRND}};
 
     // Battery
     String FORCE_FAST_CHARGE = "/sys/kernel/fast_charge/force_fast_charge";

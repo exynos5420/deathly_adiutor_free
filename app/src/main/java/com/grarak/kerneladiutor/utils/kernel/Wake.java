@@ -181,25 +181,25 @@ public class Wake implements Constants {
     }
 
     public static void activateCameraGesture(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", CAMERA_GESTURE, Control.CommandType.GENERIC, context);
+        Control.runCommand(active ? "1" : "0", Utils.getsysfspath(CAMERA_GESTURE), Control.CommandType.GENERIC, context);
     }
 
     public static boolean isCameraGestureActive() {
-        return Utils.readFile(CAMERA_GESTURE).equals("1");
+        return Utils.readFile(Utils.getsysfspath(CAMERA_GESTURE)).equals("1");
     }
 
     public static boolean hasCameraGesture() {
-        return Utils.existFile(CAMERA_GESTURE);
+        return Utils.existFile(Utils.getsysfspath(CAMERA_GESTURE));
     }
 
     public static void activateGesture(boolean active, int gesture, Context context) {
-        Control.runCommand(GESTURE_STRING_VALUES[gesture] + "=" + active, GESTURE_CRTL, Control.CommandType.GENERIC,
+        Control.runCommand(GESTURE_STRING_VALUES[gesture] + "=" + active, Utils.getsysfspath(GESTURE_CRTL), Control.CommandType.GENERIC,
                 GESTURE_STRING_VALUES[gesture], context);
     }
 
     public static boolean isGestureActive(int gesture) {
         try {
-            return (Long.decode(Utils.readFile(GESTURE_CRTL)) & GESTURE_HEX_VALUES[gesture]) > 0;
+            return (Long.decode(Utils.readFile(Utils.getsysfspath(GESTURE_CRTL))) & GESTURE_HEX_VALUES[gesture]) > 0;
         } catch (NumberFormatException e) {
             e.printStackTrace();
             return false;
@@ -222,7 +222,7 @@ public class Wake implements Constants {
     }
 
     public static boolean hasGesture() {
-        return Utils.existFile(GESTURE_CRTL);
+        return Utils.existFile(Utils.getsysfspath(GESTURE_CRTL));
     }
 
     public static void setDt2s(int value, Context context) {
