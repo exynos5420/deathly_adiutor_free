@@ -768,6 +768,8 @@
     <string name="c2state_summary">Deeper sleep with longer latency when waking up.</string>
     <string name="c3state">C3 (Power Collapse)</string>
     <string name="c3state_summary">Really deep sleep with longest latency when waking up.</string>
+    <string name="switchbuttons">Switch Buttons</string>
+    <string name="switchbuttons_summary">Switch back and recents buttons.</string>
 
     <!-- Plugins -->
     <string name="plugin_warning">I, the creator of this application, am not responsible for any damages that third party apps produce! I also can\'t guarantee for the functionality of them. Please be careful which applications you download!</string>

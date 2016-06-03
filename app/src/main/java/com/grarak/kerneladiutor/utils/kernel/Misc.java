@@ -375,4 +375,16 @@ public class Misc implements Constants {
         return "Unknown Status";
     }
 
+    public static void activateswitchbuttons(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", SWITCH_BUTTONS, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean isswitchbuttonsActive() {
+        return Utils.readFile(SWITCH_BUTTONS).equals("1");
+    }
+
+    public static boolean hasswitchbuttons() {
+        return Utils.existFile(SWITCH_BUTTONS);
+    }
+
 }
