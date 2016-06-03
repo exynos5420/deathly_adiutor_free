@@ -166,6 +166,9 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
     private SeekBarCardView.DSeekBarCard mStateHelper_batt_level_eco_Card, mStateHelper_max_cpus_eco_Card,mStateHelper_batt_level_cri_Card,
             mStateHelper_max_cpus_cri_Card, mStateHelper_max_cpus_online_Card, mStateHelper_max_cpus_susp_Card;
 
+    private SeekBarCardView.DSeekBarCard mmsmperformancelittleCard;
+    private SeekBarCardView.DSeekBarCard mmsmperformancebigCard;
+
     @Override
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
@@ -184,6 +187,7 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
         if (CPUHotplug.hasMSMSleeperEnable()) msmSleeperInit();
         if (CPUHotplug.hasStateHelperEnable()) msmState_Helper_Init();
         if (CPUHotplug.hasbch()) bchInit();
+        if (CPUHotplug.hasmsmperformance()) msmperformanceInit();
         tunablesInit();
     }
 
@@ -340,6 +344,27 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
         addView(mbchCard);
     }
 
+    private void msmperformanceInit() {
+        List<String> list = new ArrayList<>();
+        for (int i = -1; i < 5; i++)
+            list.add(String.valueOf(i));
+        DDivider mmsmperformanceDivider = new DDivider();
+        mmsmperformanceDivider.setText(getString(R.string.msmperformance));
+        addView(mmsmperformanceDivider);
+
+        mmsmperformancelittleCard = new SeekBarCardView.DSeekBarCard(list);
+        mmsmperformancelittleCard.setTitle(getString(R.string.msm_max_cores_little));
+        mmsmperformancelittleCard.setProgress(CPUHotplug.getmsmperformancelittle() + 1);
+        mmsmperformancelittleCard.setOnDSeekBarCardListener(this);
+
+        mmsmperformancebigCard = new SeekBarCardView.DSeekBarCard(list);
+        mmsmperformancebigCard.setTitle(getString(R.string.msm_max_cores_big));
+        mmsmperformancebigCard.setProgress(CPUHotplug.getmsmperformancebig() + 1);
+        mmsmperformancebigCard.setOnDSeekBarCardListener(this);
+
+        addView(mmsmperformancelittleCard);
+        addView(mmsmperformancebigCard);
+    }
 
     private void msmState_Helper_Init() {
         if (CPUHotplug.hasStateHelperEnable()) {
@@ -1874,15 +1899,12 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
 
                 views.add(mStateHelper_max_cpus_cri_Card);
             }
-
-
         }
+
         if (views.size() > 0) {
             addAllViews(views);
         }
-
     }
-
 
     @Override
     public void onChecked(SwitchCardView.DSwitchCard dSwitchCard, boolean checked) {
@@ -2152,6 +2174,9 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
             CPUHotplug.setStateHelperMaxCpusOnline(position + 1, getActivity());
         else if (dSeekBarCard == mStateHelper_max_cpus_susp_Card)
             CPUHotplug.setStateHelperMaxCpusSuspend(position + 1, getActivity());
-
+        else if (dSeekBarCard == mmsmperformancelittleCard)
+            CPUHotplug.setmsmperformancelittle(position - 1, getActivity());
+        else if (dSeekBarCard == mmsmperformancebigCard)
+            CPUHotplug.setmsmperformancebig(position - 1, getActivity());
     }
 }
