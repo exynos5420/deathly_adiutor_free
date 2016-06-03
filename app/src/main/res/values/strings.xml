@@ -352,7 +352,8 @@
     <string name="state_helper_batt_level_cri_summary">Critical level core limiting. Limits max cpus online at this battery percentage.</string>
     <string name="state_helper_max_cpus_eco">Max CPUs online after reaching Economical Battery level</string>
     <string name="state_helper_max_cpus_cri">Max CPUs online after reaching Critical Battery level</string>
-
+    <string name="bch">Boeffla Config Helper</string>
+    <string name="bch_summary">Lord Boefflas solution for keeping big cores alive</string>
     <!-- Thermal -->
     <string name="thermal_info">Use only one thermal driver from the following options, using more at the same time may cause unexpected behavior.</string>
     <string name="thermald">Thermald</string>

@@ -1727,4 +1727,17 @@ public class CPUHotplug implements Constants {
         return Utils.existFile(STATE_HELPER_MAX_CPU_CRI);
     }
 
+    public static void activatebch(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", BCH, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean isbchActive() {
+        return Utils.readFile(BCH).equals("1");
+    }
+    public static boolean hasbch() {
+        return Utils.existFile(BCH);
+    }
+
+
+
 }

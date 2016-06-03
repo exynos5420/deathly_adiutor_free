@@ -42,6 +42,7 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
 
     private SwitchCardView.DSwitchCard mMpdecisionCard;
 
+    private SwitchCardView.DSwitchCard mbchCard;
     private SwitchCardView.DSwitchCard mIntelliPlugCard;
     private PopupCardView.DPopupCard mIntelliPlugProfileCard;
     private SwitchCardView.DSwitchCard mIntelliPlugEcoCard;
@@ -182,6 +183,7 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
         if (CPUHotplug.hasLazyPlugEnable()) lazyPlugInit();
         if (CPUHotplug.hasMSMSleeperEnable()) msmSleeperInit();
         if (CPUHotplug.hasStateHelperEnable()) msmState_Helper_Init();
+        if (CPUHotplug.hasbch()) bchInit();
         tunablesInit();
     }
 
@@ -326,6 +328,16 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
 
             addView(mMSMSleeperEnableCard);
         }
+    }
+
+    private void bchInit() {
+        mbchCard = new SwitchCardView.DSwitchCard();
+        mbchCard.setTitle(getString(R.string.bch));
+        mbchCard.setDescription(getString(R.string.bch_summary));
+        mbchCard.setChecked(CPUHotplug.isbchActive());
+        mbchCard.setOnDSwitchCardListener(this);
+
+        addView(mbchCard);
     }
 
 
@@ -1926,10 +1938,12 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
             CPUHotplug.activateMSMSleeper(checked, getActivity());
         else if (dSwitchCard == mStateHelperEnableCard)
             CPUHotplug.activateStateHelper(checked, getActivity());
-else if (dSwitchCard == mLazyPlugEnableCard)
+        else if (dSwitchCard == mLazyPlugEnableCard)
             CPUHotplug.activateLazyPlug(checked, getActivity());
         else if (dSwitchCard == mLazyPlugTouchBoostActiveCard)
             CPUHotplug.activateLazyPlugTouchBoost(checked, getActivity());
+        else if (dSwitchCard == mbchCard)
+            CPUHotplug.activatebch(checked, getActivity());
         view.invalidate();
         getActivity().getSupportFragmentManager().beginTransaction().detach(this).attach(this).commit();
 
