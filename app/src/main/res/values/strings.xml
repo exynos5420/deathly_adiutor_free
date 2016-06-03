@@ -544,6 +544,10 @@
     <string name="s2s_right">Sweep Right</string>
     <string name="s2s_left">Sweep Left</string>
     <string name="s2s_any">Sweep Left or Right</string>
+    <string name="TW">Torch Wake</string>
+    <string name="TW_summary">Turn on flashlight by making a V.</string>
+    <string name="MW">Music Control</string>
+    <string name="MW_summary">Music control gestures.</string>
     <string name="t2w">Tap2Wake</string>
     <string name="t2w_summary">Wake up your device by tapping the screen.</string>
     <string name="wake">Wake</string>

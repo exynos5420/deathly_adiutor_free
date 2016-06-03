@@ -642,6 +642,12 @@ public interface Constants {
     Integer[] GESTURE_HEX_VALUES = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512};
     String[] GESTURE_STRING_VALUES = {"up", "down", "left", "right", "e", "o", "w", "c", "m", "double_click"};
 
+    //TorchWake
+    String TW = "/proc/touchpanel/flashlight_enable";
+
+    //Musicwake
+    String MW = "/proc/touchpanel/music_enable";
+
     // Camera Gesture
     String CAMERA_GESTURE = "/sys/android_touch/camera_gesture";
 
