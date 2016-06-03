@@ -1914,10 +1914,8 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
             CPUHotplug.activateThunderPlug(checked, getActivity());
         else if (dSwitchCard == mThunderPlugTouchBoostCard)
             CPUHotplug.activateThunderPlugTouchBoost(checked, getActivity());
-	else if (dSwitchCard == mThunderPlugSchedBoostCard)
-		CPUHotplug.activateThunderPlugSchedBoost(checked, getActivity());
-	else if (dPopupCard == mThunderPlugHPStyleCard)
-		CPUHotplug.setThunderPlughpstyle(position + 1, getActivity());
+        else if (dSwitchCard == mThunderPlugSchedBoostCard)
+            CPUHotplug.activateThunderPlugSchedBoost(checked, getActivity());
         else if (dSwitchCard == mZenDecisionEnableCard)
             CPUHotplug.activateZenDecision(checked, getActivity());
         else if (dSwitchCard == mAutoSmpEnableCard)
@@ -1957,6 +1955,8 @@ else if (dSwitchCard == mLazyPlugEnableCard)
             CPUHotplug.setMBHotplugIdleFreq(CPU.getFreqs().get(position), getActivity());
         else if (dPopupCard == mThunderPlugEnduranceLevelCard)
             CPUHotplug.setThunderPlugEnduranceLevel(position, getActivity());
+        else if (dPopupCard == mThunderPlugHPStyleCard)
+            CPUHotplug.setThunderPlughpstyle(position + 1, getActivity());
         else if (mMBHotplugBoostFreqsCard != null ){
             for (int i = 0; i < mMBHotplugBoostFreqsCard.length; i++)
                 if (dPopupCard == mMBHotplugBoostFreqsCard[i]) {

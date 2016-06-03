@@ -54,6 +54,7 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
 
     private SwitchCardView.DSwitchCard mCustomChargeRateEnableCard;
     private SeekBarCardView.DSeekBarCard mChargingRateCard;
+    private SeekBarCardView.DSeekBarCard mlowpowervalueCard;
 
     private SwitchCardView.DSwitchCard mC0StateCard, mC1StateCard, mC2StateCard, mC3StateCard;
 

@@ -696,6 +696,7 @@ public interface Constants {
     String CHARGE_RATE = "sys/kernel/thundercharge_control";
     String CHARGE_RATE_ENABLE = CHARGE_RATE + "/enabled";
     String CUSTOM_CHARGING_RATE = CHARGE_RATE + "/custom_current";
+    String LOW_POWER_VALUE= "sys/module/battery_current_limit/parameters/low_battery_value";
 
     // C-States
     String C0STATE = "/sys/module/msm_pm/modes/cpu0/wfi/idle_enabled";
