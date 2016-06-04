@@ -477,13 +477,13 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
 
             if (CPUHotplug.hasIntelliPlugCpusBoosted()) {
                 List<String> list = new ArrayList<>();
-                for (int i = 0; i < CPU.getCoreCount(); i++)
-                    list.add(String.valueOf(i + 1));
+                for (int i = 0; i <= CPU.getCoreCount(); i++)
+                    list.add(String.valueOf(i));
 
                 mIntelliPlugCpusBoostedCard = new SeekBarCardView.DSeekBarCard(list);
                 mIntelliPlugCpusBoostedCard.setTitle(getString(R.string.cpus_boosted));
                 mIntelliPlugCpusBoostedCard.setDescription(getString(R.string.cpus_boosted_summary));
-                mIntelliPlugCpusBoostedCard.setProgress(CPUHotplug.getIntelliPlugCpusBoosted() - 1);
+                mIntelliPlugCpusBoostedCard.setProgress(CPUHotplug.getIntelliPlugCpusBoosted());
                 mIntelliPlugCpusBoostedCard.setOnDSeekBarCardListener(this);
 
                 views.add(mIntelliPlugCpusBoostedCard);
@@ -539,8 +539,7 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
 
                 mIntelliPlugSuspendDeferTimeCard = new SeekBarCardView.DSeekBarCard(list);
                 mIntelliPlugSuspendDeferTimeCard.setTitle(getString(R.string.suspend_defer_time));
-                mIntelliPlugSuspendDeferTimeCard.setProgress(list.indexOf(String.valueOf(
-                        CPUHotplug.getIntelliPlugSuspendDeferTime())));
+                mIntelliPlugSuspendDeferTimeCard.setProgress(CPUHotplug.getIntelliPlugSuspendDeferTime() / 10);
                 mIntelliPlugSuspendDeferTimeCard.setOnDSeekBarCardListener(this);
 
                 views.add(mIntelliPlugSuspendDeferTimeCard);
@@ -2014,7 +2013,7 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
         else if (dSeekBarCard == mIntelliPlugThresholdCard)
             CPUHotplug.setIntelliPlugThresold(position, getActivity());
         else if (dSeekBarCard == mIntelliPlugCpusBoostedCard)
-            CPUHotplug.setIntelliPlugCpusBoosted(position + 1, getActivity());
+            CPUHotplug.setIntelliPlugCpusBoosted(position, getActivity());
         else if (dSeekBarCard == mIntelliPlugMinCpusOnlineCard)
             CPUHotplug.setIntelliPlugMinCpusOnline(position + 1, getActivity());
         else if (dSeekBarCard == mIntelliPlugMaxCpusOnlineCard)
