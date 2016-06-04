@@ -693,7 +693,6 @@
   <string name="power_suspend_mode">Power Suspend-Modus</string>
   <string name="power_suspend_mode_summary">Kernel-Modus, LCD-Hooks und Highest Level Hook werden automatisch durch den Kernel verwaltet. Benutzer-Modus wählen, um den Power Suspend-Status manuell zu ändern.</string>
   <string name="state_notifier_mode">Benachrichtigungs-Modus</string>
-  <string name="state_notifier_mode_summary">FB-Notifiers verwenden.</string>
   <string name="autosleep">Auto-sleep</string>
   <string name="userspace">User-space</string>
   <string name="lcd_panel">LCD-Panel</string>

@@ -260,7 +260,7 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
     private void statenotifierInit() {
             mStateNotifierStateCard = new SwitchCardView.DSwitchCard();
             mStateNotifierStateCard.setTitle(getString(R.string.state_notifier_mode));
-            mStateNotifierStateCard.setDescription(getString(R.string.state_notifier_mode_summary));
+            mStateNotifierStateCard.setDescription(getString(Battery.isStateNotifierStateActive() ? R.string.state_notifier_mode_summary_enabled : R.string.state_notifier_mode_summary_disabled));
             mStateNotifierStateCard.setChecked(Battery.isStateNotifierStateActive());
             mStateNotifierStateCard.setOnDSwitchCardListener(this);
 
@@ -359,8 +359,10 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
             Battery.activateC3State(checked, getActivity());
         else if (dSwitchCard == mArchPowerCard)
             Battery.activateArchPower(checked, getActivity());
-        else if (dSwitchCard == mStateNotifierStateCard)
+        else if (dSwitchCard == mStateNotifierStateCard) {
             Battery.activateStateNotifier(checked, getActivity());
+            mStateNotifierStateCard.setDescription(getString(checked ? R.string.state_notifier_mode_summary_enabled : R.string.state_notifier_mode_summary_disabled));
+        }
         else if (dSwitchCard == mOldPowerSuspendStateCard)
             if (Battery.getPowerSuspendMode() == 1) {
                 Battery.activateOldPowerSuspend(checked, getActivity());
