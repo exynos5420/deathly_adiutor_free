@@ -166,7 +166,7 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
     private SeekBarCardView.DSeekBarCard mStateHelper_batt_level_eco_Card, mStateHelper_max_cpus_eco_Card,mStateHelper_batt_level_cri_Card,
             mStateHelper_max_cpus_cri_Card, mStateHelper_max_cpus_online_Card, mStateHelper_max_cpus_susp_Card;
 
-    private SeekBarCardView.DSeekBarCard mmsmperformancelittleCard, mmsmperformancebigCard, msmperformanceCard;
+    private SeekBarCardView.DSeekBarCard msmperformanceCard;
 
     @Override
     public void init(Bundle savedInstanceState) {
@@ -349,29 +349,12 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
         mmsmperformanceDivider.setText(getString(R.string.msmperformance));
         addView(mmsmperformanceDivider);
 
-        if (CPU.isBigLITTLE()) {
+        msmperformanceCard = new SeekBarCardView.DSeekBarCard(list);
+        msmperformanceCard.setTitle(getString(R.string.msm_max_cores));
+        msmperformanceCard.setProgress(CPUHotplug.getmsmperformance() + 1);
+        msmperformanceCard.setOnDSeekBarCardListener(this);
 
-            mmsmperformancelittleCard = new SeekBarCardView.DSeekBarCard(list);
-            mmsmperformancelittleCard.setTitle(getString(R.string.msm_max_cores_little));
-            mmsmperformancelittleCard.setProgress(CPUHotplug.getmsmperformancelittle() + 1);
-            mmsmperformancelittleCard.setOnDSeekBarCardListener(this);
-
-            mmsmperformancebigCard = new SeekBarCardView.DSeekBarCard(list);
-            mmsmperformancebigCard.setTitle(getString(R.string.msm_max_cores_big));
-            mmsmperformancebigCard.setProgress(CPUHotplug.getmsmperformancebig() + 1);
-            mmsmperformancebigCard.setOnDSeekBarCardListener(this);
-
-            addView(mmsmperformancelittleCard);
-            addView(mmsmperformancebigCard);
-        } else {
-
-            msmperformanceCard = new SeekBarCardView.DSeekBarCard(list);
-            msmperformanceCard.setTitle(getString(R.string.msm_max_cores));
-            msmperformanceCard.setProgress(CPUHotplug.getmsmperformance() + 1);
-            msmperformanceCard.setOnDSeekBarCardListener(this);
-
-            addView(msmperformanceCard);
-        }
+        addView(msmperformanceCard);
     }
 
     private void msmState_Helper_Init() {
@@ -2182,10 +2165,6 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
             CPUHotplug.setStateHelperMaxCpusOnline(position + 1, getActivity());
         else if (dSeekBarCard == mStateHelper_max_cpus_susp_Card)
             CPUHotplug.setStateHelperMaxCpusSuspend(position + 1, getActivity());
-        else if (dSeekBarCard == mmsmperformancelittleCard)
-            CPUHotplug.setmsmperformancelittle(position - 1, getActivity());
-        else if (dSeekBarCard == mmsmperformancebigCard)
-            CPUHotplug.setmsmperformancebig(position - 1, getActivity());
         else if (dSeekBarCard == msmperformanceCard)
             CPUHotplug.setmsmperformance(position - 1, getActivity());
     }

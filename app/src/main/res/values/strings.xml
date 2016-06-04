@@ -364,8 +364,6 @@
     <string name="bch">Boeffla Config Helper</string>
     <string name="bch_summary">Lord Boefflas solution for keeping big cores alive</string>
     <string name="msm_max_cores">Maximum cores to be allowed online.</string>
-    <string name="msm_max_cores_little">Maximum cores to be allowed online for little cluster.</string>
-    <string name="msm_max_cores_big">Maximum cores to be allowed online for big cluster.</string>
     <string name="msmperformance">MSM Performance Hotplug</string>
 
     <!-- Thermal -->
