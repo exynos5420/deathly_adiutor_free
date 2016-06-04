@@ -137,7 +137,8 @@ public interface Constants {
     String MSMPERFORMANCE= "/sys/module/msm_performance/parameters/max_cpus";
 
     String HOTPLUG_INTELLI_PLUG = "/sys/module/intelli_plug/parameters";
-    String HOTPLUG_INTELLI_PLUG_ENABLE = HOTPLUG_INTELLI_PLUG + "/intelli_plug_active";
+    String HOTPLUG_INTELLI_PLUG_ENABLE = "/intelli_plug_active";
+
     String HOTPLUG_INTELLI_PLUG_PROFILE = HOTPLUG_INTELLI_PLUG + "/nr_run_profile_sel";
     String HOTPLUG_INTELLI_PLUG_ECO = HOTPLUG_INTELLI_PLUG + "/eco_mode_active";
     String HOTPLUG_INTELLI_PLUG_TOUCH_BOOST = HOTPLUG_INTELLI_PLUG + "/touch_boost_active";

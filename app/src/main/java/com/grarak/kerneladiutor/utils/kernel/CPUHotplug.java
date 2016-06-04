@@ -17,6 +17,7 @@
 package com.grarak.kerneladiutor.utils.kernel;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.grarak.kerneladiutor.R;
 import com.grarak.kerneladiutor.utils.Constants;
@@ -1478,22 +1479,16 @@ public class CPUHotplug implements Constants {
     }
 
     public static void activateIntelliPlug(boolean active, Context context) {
-        String file = HOTPLUG_INTELLI_PLUG_ENABLE;
-        if (TYPE == INTELLIPLUG_TYPE.INTELLIPLUG_5) file = HOTPLUG_INTELLI_PLUG_5_ENABLE;
-        Control.runCommand(active ? "1" : "0", file, Control.CommandType.GENERIC, context);
+        Control.runCommand(active ? "1" : "0", Utils.getsysfspath(INTELLIPLUG_ARRAY) + HOTPLUG_INTELLI_PLUG_ENABLE, Control.CommandType.GENERIC, context);
         if (active) togglehotplugs("IntelliPlug", context);
     }
 
     public static boolean isIntelliPlugActive() {
-        String file = HOTPLUG_INTELLI_PLUG_ENABLE;
-        if (TYPE == INTELLIPLUG_TYPE.INTELLIPLUG_5) file = HOTPLUG_INTELLI_PLUG_5_ENABLE;
-        return Utils.readFile(file).equals("1");
+        return Utils.readFile(Utils.getsysfspath(INTELLIPLUG_ARRAY) + HOTPLUG_INTELLI_PLUG_ENABLE).equals("1");
     }
 
     public static boolean hasIntelliPlugEnable() {
-        String file = HOTPLUG_INTELLI_PLUG_ENABLE;
-        if (TYPE == INTELLIPLUG_TYPE.INTELLIPLUG_5) file = HOTPLUG_INTELLI_PLUG_5_ENABLE;
-        return Utils.readFile(file).equals("1");
+        return Utils.existFile(Utils.getsysfspath(INTELLIPLUG_ARRAY) + HOTPLUG_INTELLI_PLUG_ENABLE);
     }
 
     public static boolean hasIntelliPlug() {

@@ -201,7 +201,6 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
     }
 
     private void intelliPlugInit() {
-        if (CPUHotplug.hasIntelliPlugEnable()) {
             mIntelliPlugCard = new SwitchCardView.DSwitchCard();
             mIntelliPlugCard.setTitle(getString(R.string.intelliplug));
             mIntelliPlugCard.setDescription(getString(R.string.intelliplug_summary));
@@ -209,8 +208,6 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
             mIntelliPlugCard.setOnDSwitchCardListener(this);
 
             addView(mIntelliPlugCard);
-        }
-
     }
 
     private void bluPlugInit() {
@@ -394,7 +391,7 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
         List<DAdapter.DView> views = new ArrayList<>();
         views.clear();
 
-        if ((!CPUHotplug.hasIntelliPlugEnable() && CPUHotplug.hasIntelliPlug())) {
+        if (CPUHotplug.isIntelliPlugActive() || (!CPUHotplug.hasIntelliPlugEnable() && CPUHotplug.hasIntelliPlug())) {
 
             DDivider mIntelliPlugDividerCard = new DDivider();
             mIntelliPlugDividerCard.setText(getString(R.string.intelliplug));
@@ -1577,7 +1574,7 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
             }
         }
 
-        if (CPUHotplug.isAutoSmpActive() || (CPUHotplug.hasAutoSmpEnable() && CPUHotplug.hasAutoSmp())) {
+        if (CPUHotplug.isAutoSmpActive() || (!CPUHotplug.hasAutoSmpEnable() && CPUHotplug.hasAutoSmp())) {
             DDivider mAutoSmpDividerCard = new DDivider();
             mAutoSmpDividerCard.setText(getString(R.string.autosmp));
             if (CPUHotplug.hasAutoSmpEnable() && CPUHotplug.hasAutoSmp()) {
