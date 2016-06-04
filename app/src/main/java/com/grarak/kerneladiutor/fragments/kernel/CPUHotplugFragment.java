@@ -1559,7 +1559,7 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
         if (CPUHotplug.isAutoSmpActive() || (!CPUHotplug.hasAutoSmpEnable() && CPUHotplug.hasAutoSmp())) {
             DDivider mAutoSmpDividerCard = new DDivider();
             mAutoSmpDividerCard.setText(getString(R.string.autosmp));
-            if (CPUHotplug.hasAutoSmpEnable() && CPUHotplug.hasAutoSmp()) {
+            if (!CPUHotplug.hasAutoSmpEnable() && CPUHotplug.hasAutoSmp()) {
                 mAutoSmpDividerCard.setDescription(getString(R.string.no_enable_toggle));
             }
             views.add(mAutoSmpDividerCard);
