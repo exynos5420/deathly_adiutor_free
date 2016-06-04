@@ -44,7 +44,6 @@ public class CPUHotplug implements Constants {
     private static String MSM_HOTPLUG_IO_IS_BUSY_FILE;
     private static String MSM_HOTPLUG_SUSPEND_FREQ_FILE;
 
-    private static String MB_HOTPLUG_FILE;
     private static String MB_HOTPLUG_MIN_CPUS_FILE;
     private static String MB_HOTPLUG_MAX_CPUS_FILE;
 
@@ -511,126 +510,126 @@ public class CPUHotplug implements Constants {
     }
 
     public static void setMBHotplugPause(int value, Context context) {
-        Control.runCommand(String.valueOf(value), MB_HOTPLUG_FILE + "/" + MB_PAUSE, Control.CommandType.GENERIC, context);
+        Control.runCommand(String.valueOf(value), Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_PAUSE, Control.CommandType.GENERIC, context);
     }
 
     public static int getMBHotplugPause() {
-        return Utils.stringToInt(Utils.readFile(MB_HOTPLUG_FILE + "/" + MB_PAUSE));
+        return Utils.stringToInt(Utils.readFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_PAUSE));
     }
 
     public static boolean hasMBHotplugPause() {
-        return Utils.existFile(MB_HOTPLUG_FILE + "/" + MB_PAUSE);
+        return Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_PAUSE);
     }
 
     public static void setMBHotplugDelay(int value, Context context) {
-        Control.runCommand(String.valueOf(value), MB_HOTPLUG_FILE + "/" + MB_DELAY, Control.CommandType.GENERIC, context);
+        Control.runCommand(String.valueOf(value), Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_DELAY, Control.CommandType.GENERIC, context);
     }
 
     public static int getMBHotplugDelay() {
-        return Utils.stringToInt(Utils.readFile(MB_HOTPLUG_FILE + "/" + MB_DELAY));
+        return Utils.stringToInt(Utils.readFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_DELAY));
     }
 
     public static boolean hasMBHotplugDelay() {
-        return Utils.existFile(MB_HOTPLUG_FILE + "/" + MB_DELAY);
+        return Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_DELAY);
     }
 
     public static void setMBHotplugStartDelay(int value, Context context) {
-        Control.runCommand(String.valueOf(value), MB_HOTPLUG_FILE + "/" + MB_STARTDELAY, Control.CommandType.GENERIC, context);
+        Control.runCommand(String.valueOf(value), Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_STARTDELAY, Control.CommandType.GENERIC, context);
     }
 
     public static int getMBHotplugStartDelay() {
-        return Utils.stringToInt(Utils.readFile(MB_HOTPLUG_FILE + "/" + MB_STARTDELAY));
+        return Utils.stringToInt(Utils.readFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_STARTDELAY));
     }
 
     public static boolean hasMBHotplugStartDelay() {
-        return Utils.existFile(MB_HOTPLUG_FILE + "/" + MB_STARTDELAY);
+        return Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_STARTDELAY);
     }
 
     public static void setBrickedDownLockDuration(int value, Context context) {
-        Control.runCommand(String.valueOf(value), MB_HOTPLUG_FILE + "/" + BRICKED_DOWN_LOCK_DURATION, Control.CommandType.GENERIC, context);
+        Control.runCommand(String.valueOf(value), Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_DOWN_LOCK_DURATION, Control.CommandType.GENERIC, context);
     }
 
     public static int getBrickedDownLockDuration() {
-        return Utils.stringToInt(Utils.readFile(MB_HOTPLUG_FILE + "/" + BRICKED_DOWN_LOCK_DURATION));
+        return Utils.stringToInt(Utils.readFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_DOWN_LOCK_DURATION));
     }
 
     public static boolean hasBrickedDownLockDuration() {
-        return Utils.existFile(MB_HOTPLUG_FILE + "/" + BRICKED_DOWN_LOCK_DURATION);
+        return Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_DOWN_LOCK_DURATION);
     }
 
     public static void setMBHotplugBoostFreqs(int core, int value, Context context) {
-        Control.runCommand(core + " " + value, MB_HOTPLUG_FILE + "/" + MB_BOOST_FREQS, Control.CommandType.GENERIC, context);
+        Control.runCommand(core + " " + value, Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_BOOST_FREQS, Control.CommandType.GENERIC, context);
     }
 
     public static List<Integer> getMBHotplugBoostFreqs() {
         List<Integer> list = new ArrayList<>();
-        for (String freq : Utils.readFile(MB_HOTPLUG_FILE + "/" + MB_BOOST_FREQS).split(" "))
+        for (String freq : Utils.readFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_BOOST_FREQS).split(" "))
             list.add(Utils.stringToInt(freq));
         return list;
     }
 
     public static boolean hasMBHotplugBoostFreqs() {
-        return Utils.existFile(MB_HOTPLUG_FILE + "/" + MB_BOOST_FREQS);
+        return Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_BOOST_FREQS);
     }
 
     public static void setMBHotplugCpusBoosted(int value, Context context) {
-        Control.runCommand(String.valueOf(value), MB_HOTPLUG_FILE + "/" + MB_CPUS_BOOSTED, Control.CommandType.GENERIC, context);
+        Control.runCommand(String.valueOf(value), Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_CPUS_BOOSTED, Control.CommandType.GENERIC, context);
     }
 
     public static int getMBHotplugCpusBoosted() {
-        return Utils.stringToInt(Utils.readFile(MB_HOTPLUG_FILE + "/" + MB_CPUS_BOOSTED));
+        return Utils.stringToInt(Utils.readFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_CPUS_BOOSTED));
     }
 
     public static boolean hasMBHotplugCpusBoosted() {
-        return Utils.existFile(MB_HOTPLUG_FILE + "/" + MB_CPUS_BOOSTED);
+        return Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_CPUS_BOOSTED);
     }
 
     public static void setMBHotplugBoostTime(int value, Context context) {
-        Control.runCommand(String.valueOf(value), MB_HOTPLUG_FILE + "/" + MB_BOOST_TIME, Control.CommandType.GENERIC, context);
+        Control.runCommand(String.valueOf(value), Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_BOOST_TIME, Control.CommandType.GENERIC, context);
     }
 
     public static int getMBHotplugBoostTime() {
-        return Utils.stringToInt(Utils.readFile(MB_HOTPLUG_FILE + "/" + MB_BOOST_TIME));
+        return Utils.stringToInt(Utils.readFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_BOOST_TIME));
     }
 
     public static boolean hasMBHotplugBoostTime() {
-        return Utils.existFile(MB_HOTPLUG_FILE + "/" + MB_BOOST_TIME);
+        return Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_BOOST_TIME);
     }
 
     public static void activateMBHotplugBoost(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", MB_HOTPLUG_FILE + "/" + MB_BOOST_ENABLED, Control.CommandType.GENERIC, context);
+        Control.runCommand(active ? "1" : "0", Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_BOOST_ENABLED, Control.CommandType.GENERIC, context);
     }
 
     public static boolean isMBHotplugBoostActive() {
-        return Utils.readFile(MB_HOTPLUG_FILE + "/" + MB_BOOST_ENABLED).equals("1");
+        return Utils.readFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_BOOST_ENABLED).equals("1");
     }
 
     public static boolean hasMBHotplugBoostEnable() {
-        return Utils.existFile(MB_HOTPLUG_FILE + "/" + MB_BOOST_ENABLED);
+        return Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_BOOST_ENABLED);
     }
 
     public static void setMBHotplugIdleFreq(int value, Context context) {
-        Control.runCommand(String.valueOf(value), MB_HOTPLUG_FILE + "/" + MB_IDLE_FREQ, Control.CommandType.GENERIC, context);
+        Control.runCommand(String.valueOf(value), Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_IDLE_FREQ, Control.CommandType.GENERIC, context);
     }
 
     public static int getMBHotplugIdleFreq() {
-        return Utils.stringToInt(Utils.readFile(MB_HOTPLUG_FILE + "/" + MB_IDLE_FREQ));
+        return Utils.stringToInt(Utils.readFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_IDLE_FREQ));
     }
 
     public static boolean hasMBHotplugIdleFreq() {
-        return Utils.existFile(MB_HOTPLUG_FILE + "/" + MB_IDLE_FREQ);
+        return Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_IDLE_FREQ);
     }
 
     public static void setMBHotplugMaxCpusOnlineSusp(int value, Context context) {
-        Control.runCommand(String.valueOf(value), MB_HOTPLUG_FILE + "/" + MB_CPUS_ONLINE_SUSP, Control.CommandType.GENERIC, context);
+        Control.runCommand(String.valueOf(value), Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_CPUS_ONLINE_SUSP, Control.CommandType.GENERIC, context);
     }
 
     public static int getMBHotplugMaxCpusOnlineSusp() {
-        return Utils.stringToInt(Utils.readFile(MB_HOTPLUG_FILE + "/" + MB_CPUS_ONLINE_SUSP));
+        return Utils.stringToInt(Utils.readFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_CPUS_ONLINE_SUSP));
     }
 
     public static boolean hasMBHotplugMaxCpusOnlineSusp() {
-        return Utils.existFile(MB_HOTPLUG_FILE + "/" + MB_CPUS_ONLINE_SUSP);
+        return Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_CPUS_ONLINE_SUSP);
     }
 
     public static void setMBHotplugMaxCpus(int value, Context context) {
@@ -642,10 +641,10 @@ public class CPUHotplug implements Constants {
     }
 
     public static boolean hasMBHotplugMaxCpus() {
-        if (Utils.existFile(MB_HOTPLUG_FILE + "/" + MB_MAX_CPUS))
-            MB_HOTPLUG_MAX_CPUS_FILE = MB_HOTPLUG_FILE + "/" + MB_MAX_CPUS;
-        else if (Utils.existFile(MB_HOTPLUG_FILE + "/" + MB_MAX_CPUS_ONLINE))
-            MB_HOTPLUG_MAX_CPUS_FILE = MB_HOTPLUG_FILE + "/" + MB_MAX_CPUS_ONLINE;
+        if (Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_MAX_CPUS))
+            MB_HOTPLUG_MAX_CPUS_FILE = Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_MAX_CPUS;
+        else if (Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_MAX_CPUS_ONLINE))
+            MB_HOTPLUG_MAX_CPUS_FILE = Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_MAX_CPUS_ONLINE;
         return MB_HOTPLUG_MAX_CPUS_FILE != null;
     }
 
@@ -658,89 +657,87 @@ public class CPUHotplug implements Constants {
     }
 
     public static boolean hasMBHotplugMinCpus() {
-        if (Utils.existFile(MB_HOTPLUG_FILE + "/" + MB_MIN_CPUS))
-            MB_HOTPLUG_MIN_CPUS_FILE = MB_HOTPLUG_FILE + "/" + MB_MIN_CPUS;
-        else if (Utils.existFile(MB_HOTPLUG_FILE + "/" + MB_MIN_CPUS_ONLINE))
-            MB_HOTPLUG_MIN_CPUS_FILE = MB_HOTPLUG_FILE + "/" + MB_MIN_CPUS_ONLINE;
+        if (Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_MIN_CPUS))
+            MB_HOTPLUG_MIN_CPUS_FILE = Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_MIN_CPUS;
+        else if (Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_MIN_CPUS_ONLINE))
+            MB_HOTPLUG_MIN_CPUS_FILE = Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_MIN_CPUS_ONLINE;
         return MB_HOTPLUG_MIN_CPUS_FILE != null;
     }
 
     public static void activateMBHotplugScroffSingleCore(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", MB_HOTPLUG_FILE + "/" + MB_SCROFF_SINGLE_CORE, Control.CommandType.GENERIC, context);
+        Control.runCommand(active ? "1" : "0", Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_SCROFF_SINGLE_CORE, Control.CommandType.GENERIC, context);
     }
 
     public static boolean isMBHotplugScroffSingleCoreActive() {
-        return Utils.readFile(MB_HOTPLUG_FILE + "/" + MB_SCROFF_SINGLE_CORE).equals("1");
+        return Utils.readFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_SCROFF_SINGLE_CORE).equals("1");
     }
 
     public static boolean hasMBHotplugScroffSingleCore() {
-        return Utils.existFile(MB_HOTPLUG_FILE + "/" + MB_SCROFF_SINGLE_CORE);
+        return Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_SCROFF_SINGLE_CORE);
     }
 
     public static void activateMBHotplug(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", MB_HOTPLUG_FILE + "/" + MB_ENABLED, Control.CommandType.GENERIC, context);
+        Control.runCommand(active ? "1" : "0", Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_ENABLED, Control.CommandType.GENERIC, context);
         if (active) togglehotplugs("MBHotplug", context);
     }
 
     public static boolean isMBHotplugActive() {
-        return Utils.readFile(MB_HOTPLUG_FILE + "/" + MB_ENABLED).equals("1");
+        return Utils.readFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_ENABLED).equals("1");
     }
 
     public static boolean hasMBHotplugEnable() {
-        return Utils.existFile(MB_HOTPLUG_FILE + "/" + MB_ENABLED);
+        return Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_ENABLED);
     }
 
     public static boolean hasMBHotplug() {
-        if (Utils.existFile(MSM_MPDECISION_HOTPLUG)) MB_HOTPLUG_FILE = MSM_MPDECISION_HOTPLUG;
-        else if (Utils.existFile(BRICKED_HOTPLUG)) MB_HOTPLUG_FILE = BRICKED_HOTPLUG;
-        return MB_HOTPLUG_FILE != null;
+        return Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY));
     }
 
     public static boolean hasBrickedNWNS() {
-        return Utils.existFile(MB_HOTPLUG_FILE + "/" + BRICKED_NWNS + "_0");
+        return Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_NWNS + "_0");
     }
 
     public static String getBrickedNWNS(int num, String item, Context context) {
            if ( ( num & 1 ) == 0 ) {
                 if (item.equals("title")) return String.format(context.getString(R.string.bricked_nwns), num / 2);
                 if (item.equals("description")) return String.format(context.getString(R.string.bricked_nwns_hotplug), num / 2);
-                if (item.equals("value") && Utils.existFile(MB_HOTPLUG_FILE + "/" + BRICKED_NWNS + "_" + num)) return Utils.readFile(MB_HOTPLUG_FILE + "/" + BRICKED_NWNS + "_" + num);
+                if (item.equals("value") && Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_NWNS + "_" + num)) return Utils.readFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_NWNS + "_" + num);
             }
             else {
                 if (item.equals("title")) return String.format(context.getString(R.string.bricked_nwns), (num - 1) / 2);
                 if (item.equals("description")) return String.format(context.getString(R.string.bricked_nwns_unplug), (num - 1) / 2);
-                if (item.equals("value") && Utils.existFile(MB_HOTPLUG_FILE + "/" + BRICKED_NWNS + "_" + num)) return Utils.readFile(MB_HOTPLUG_FILE + "/" + BRICKED_NWNS + "_" + num);
+                if (item.equals("value") && Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_NWNS + "_" + num)) return Utils.readFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_NWNS + "_" + num);
             }
             return "error";
     }
 
     public static void setBrickedNWNS(int num, int value, Context context) {
-        if (Utils.existFile(MB_HOTPLUG_FILE + "/" + BRICKED_NWNS + "_" + num)) {
-            Control.runCommand(String.valueOf(value), MB_HOTPLUG_FILE + "/" + BRICKED_NWNS + "_" + num, Control.CommandType.GENERIC, context);
+        if (Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_NWNS + "_" + num)) {
+            Control.runCommand(String.valueOf(value), Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_NWNS + "_" + num, Control.CommandType.GENERIC, context);
         }
     }
 
     public static boolean hasBrickedTWTS() {
-        return Utils.existFile(MB_HOTPLUG_FILE + "/" + BRICKED_TWTS + "_0");
+        return Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_TWTS + "_0");
     }
 
     public static String getBrickedTWTS(int num, String item, Context context) {
           if ( ( num & 1 ) == 0 ) {
                 if (item.equals("title")) return String.format(context.getString(R.string.bricked_twts), num / 2);
                 if (item.equals("description")) return String.format(context.getString(R.string.bricked_twts_hotplug), num / 2);
-                if (item.equals("value") && Utils.existFile(MB_HOTPLUG_FILE + "/" + BRICKED_TWTS + "_" + num)) return Utils.readFile(MB_HOTPLUG_FILE + "/" + BRICKED_TWTS + "_" + num);
+                if (item.equals("value") && Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_TWTS + "_" + num)) return Utils.readFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_TWTS + "_" + num);
             }
             else {
                 if (item.equals("title")) return String.format(context.getString(R.string.bricked_twts), (num - 1) / 2);
                 if (item.equals("description")) return String.format(context.getString(R.string.bricked_twts_unplug), (num - 1) / 2);
-                if (item.equals("value") && Utils.existFile(MB_HOTPLUG_FILE + "/" + BRICKED_TWTS + "_" + num)) return Utils.readFile(MB_HOTPLUG_FILE + "/" + BRICKED_TWTS + "_" + num);
+                if (item.equals("value") && Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_TWTS + "_" + num)) return Utils.readFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_TWTS + "_" + num);
             }
             return "error";
     }
 
     public static void setBrickedTWTS(int num, int value, Context context) {
-        if (Utils.existFile(MB_HOTPLUG_FILE + "/" + BRICKED_TWTS + "_" + num)) {
-            Control.runCommand(String.valueOf(value), MB_HOTPLUG_FILE + "/" + BRICKED_TWTS + "_" + num, Control.CommandType.GENERIC, context);
+        if (Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_TWTS + "_" + num)) {
+            Control.runCommand(String.valueOf(value), Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_TWTS + "_" + num, Control.CommandType.GENERIC, context);
         }
     }
 
@@ -1096,9 +1093,9 @@ public class CPUHotplug implements Constants {
     }
 
     public static boolean hasMsmHotplugEnable() {
-        if (Utils.existFile(HOTPLUG_MSM_ENABLE)) MSM_HOTPLUG_ENABLE_FILE = HOTPLUG_MSM_ENABLE;
-        else if (Utils.existFile(HOTPLUG_MSM_ENABLE_2))
-            MSM_HOTPLUG_ENABLE_FILE = HOTPLUG_MSM_ENABLE_2;
+        if (Utils.existFile(Utils.getsysfspath(HOTPLUG_MSM_ENABLE_ARRAY))) {
+            MSM_HOTPLUG_ENABLE_FILE = Utils.getsysfspath(HOTPLUG_MSM_ENABLE_ARRAY);
+        }
         return MSM_HOTPLUG_ENABLE_FILE != null;
     }
 
@@ -1550,7 +1547,7 @@ public class CPUHotplug implements Constants {
         }
         if (CPUHotplug.isZenDecisionActive() && hasZenDecisionEnable() && !activehotplug.equals("ZenDecision")) Control.runCommand("0", HOTPLUG_ZEN_DECISION_ENABLE, Control.CommandType.GENERIC, context);
         if (CPUHotplug.isMSMSleeperActive() && hasMSMSleeperEnable() && !activehotplug.equals("MSM_Sleeper")) Control.runCommand("0", MSM_SLEEPER_ENABLE, Control.CommandType.GENERIC, context);
-        if (CPUHotplug.isMBHotplugActive() && hasMBHotplugEnable() && !activehotplug.equals("MBHotplug")) Control.runCommand("0", MB_HOTPLUG_FILE + "/" + MB_ENABLED, Control.CommandType.GENERIC, context);
+        if (CPUHotplug.isMBHotplugActive() && hasMBHotplugEnable() && !activehotplug.equals("MBHotplug")) Control.runCommand("0", Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_ENABLED, Control.CommandType.GENERIC, context);
         if (CPUHotplug.isMsmHotplugActive() && hasMsmHotplugEnable() && !activehotplug.equals("MSMHotPlug")) Control.runCommand("0", MSM_HOTPLUG_ENABLE_FILE, Control.CommandType.GENERIC, context);
         if (CPUHotplug.isStateHelperActive() && hasStateHelperEnable() && !activehotplug.equals("State_Helper")) Control.runCommand("0", STATE_HELPER_ENABLE, Control.CommandType.GENERIC, context);
         if (CPUHotplug.isLazyPlugTouchBoostActive() && hasLazyPlugEnable() && !activehotplug.equals("LazyPlug")) Control.runCommand("0", HOTPLUG_LAZYPLUG_TOUCH_BOOST_ACTIVE, Control.CommandType.GENERIC, context);
