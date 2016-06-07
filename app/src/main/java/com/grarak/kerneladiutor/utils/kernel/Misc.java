@@ -27,6 +27,7 @@ import com.kerneladiutor.library.root.RootUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -72,7 +73,8 @@ public class Misc implements Constants {
         if (value != null) {
             mAvailableTCPCongestions = value.split(" ");
             if (sort) {
-                Arrays.sort(mAvailableTCPCongestions);
+                Collections.sort(Arrays.asList(mAvailableTCPCongestions), String.CASE_INSENSITIVE_ORDER);
+
             }
         }
         return new ArrayList<>(Arrays.asList(mAvailableTCPCongestions));
