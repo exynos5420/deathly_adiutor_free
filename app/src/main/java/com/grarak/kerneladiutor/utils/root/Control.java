@@ -42,7 +42,7 @@ public class Control implements Constants {
         CommandDB commandDB = new CommandDB(context);
         // Something keeps trying to save commands wtih a null path... This makes the bootservice Force Close.
         // Ensure that this isn't a possibility by not saving null paths or commands.
-        if (path.equals(null) && command.equals(null)) {
+        if (!path.equals(null) && !command.equals(null)) {
             List<CommandDB.CommandItem> commandItems = commandDB.getAllCommands();
             for (int i = 0; i < commandItems.size(); i++) {
                 String p = commandItems.get(i).getPath();
@@ -52,6 +52,8 @@ public class Control implements Constants {
             }
             commandDB.putCommand(path, command);
             commandDB.commit();
+        } else {
+            Log.i(TAG, "Unable to save command due to null values.");
         }
     }
 
