@@ -439,17 +439,10 @@ Está a usar a versão %s.</string>
   <string name="hostname">Hostname</string>
   <string name="wakelock">Wakelock</string>
   <string name="smb135x_wakelock">smb135x Wakelock</string>
-  <string name="smb135x_wakelock_summary">Evitar wakelock quando a energia desligada.</string>
   <string name="sensor_ind_wakelock">sensor_ind Wakelock</string>
-  <string name="sensor_ind_wakelock_summary">Evitar wakelock quando Ambiente Display está desativado.</string>
-  <string name="msm_hsic_host_wakelock">msm_hsic_host Wakelock</string>
-  <string name="msm_hsic_host_wakelock_summary">Evitar msm_hsic_host wakelock.</string>
   <string name="wlan_rx_wakelock">wlan_rx Wakelock</string>
-  <string name="wlan_rx_wakelock_summary">Evite wlan_rx wakelock.</string>
   <string name="wlan_ctrl_wakelock">wlan_ctrl Wakelock</string>
-  <string name="wlan_ctrl_wakelock_summary">Evite wlan_ctrl wakelock.</string>
   <string name="wlan_wakelock">WLAN Wakelock</string>
-  <string name="wlan_wakelock_summary">Evite wakelock wlan.</string>
   <string name="wlan_rx_wakelock_divider">wlan_rx Wakelock divisor</string>
   <string name="msm_hsic_wakelock_divider">msm_hsic Wakelock divisor</string>
   <string name="plugin_warning">Eu, o criador desta aplicação, não sou responsável por quaisquer danos que aplicações de terceiros produzem! Também não posso garantir para a funcionalidade deles. Por favor tenha com as aplicações que instalar!</string>

@@ -496,17 +496,10 @@
   <string name="hostname">Hostname</string>
   <string name="wakelock">Wakelock</string>
   <string name="smb135x_wakelock">Gerenciador de energia smb135x</string>
-  <string name="smb135x_wakelock_summary">Evitar gerenciamento de energia quando a tomada for desconectada.</string>
   <string name="sensor_ind_wakelock">Gerenciador de energia sensor_ind</string>
-  <string name="sensor_ind_wakelock_summary">Evitar gerenciamento de energia quando o Ambient Display estiver desativado.</string>
-  <string name="msm_hsic_host_wakelock">Gerenciador de energia msm_hsic_host</string>
-  <string name="msm_hsic_host_wakelock_summary">Evitar o gerenciamento de energia msm_hsic_host.</string>
   <string name="wlan_rx_wakelock">wlan_rx Wakelock</string>
-  <string name="wlan_rx_wakelock_summary">Prevenir wlan_rx wakelock.</string>
   <string name="wlan_ctrl_wakelock">wlan_ctrl Wakelock</string>
-  <string name="wlan_ctrl_wakelock_summary">Prevenir wlan_ctrl wakelock.</string>
   <string name="wlan_wakelock">wlan Wakelock</string>
-  <string name="wlan_wakelock_summary">Prevenir wakelock wlan.</string>
   <string name="wlan_rx_wakelock_divider">Divisor wlan_rx Wakelock</string>
   <string name="msm_hsic_wakelock_divider">Divisor msm_hsic Wakelock</string>
   <string name="plugin_warning">Eu, o criador desta aplicação, não sou responsável por quaisquer danos que produzem aplicativos de terceiros! Também não posso garantir para a funcionalidade deles. Por favor tenha cuidado como os aplicativos que você baixar!</string>
@@ -637,4 +630,5 @@
   <string name="google_plus_summary">Junte-se à nossa comunidade.</string>
   <string name="translation">Tradução</string>
   <string name="translation_summary">Ajude-me traduzir este aplicativo!</string>
+  <string name="smb135x_wakelock_summary"></string>
 </resources>

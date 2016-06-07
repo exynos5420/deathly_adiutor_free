@@ -336,11 +336,7 @@
   <string name="tcp">Algoritam TCP zagušenja</string>
   <string name="tcp_summary">Transmission Control Protocol je jedan od sržnih protokola internetskog protokola (IP), te tako se često cijeli paket zove TCP/IP.</string>
   <string name="smb135x_wakelock">smb135x Wakelock</string>
-  <string name="smb135x_wakelock_summary">Spriječiti buđenje uređaja pri otpajanju od napajača.</string>
   <string name="sensor_ind_wakelock">sensor_ind Wakelock</string>
-  <string name="sensor_ind_wakelock_summary">Spriječiti buđenje uređaja pri deaktiviranoj automatskoj svjetlini zaslona.</string>
-  <string name="msm_hsic_host_wakelock">msm_hsic_host Wakelock</string>
-  <string name="msm_hsic_host_wakelock_summary">Spriječiti msm_hsic_host buđenje uređaja.</string>
   <string name="download_plugins">Preuzimanje pluginova</string>
   <string name="looking_plugins">Traženje pluginova</string>
   <string name="no_plugins">Nema pronađenih pluginova</string>
