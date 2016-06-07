@@ -41,15 +41,15 @@ public class Wake implements Constants {
     private static String POCKET_MODE_FILE;
 
     public static void activatePowerKeySuspend(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", POWER_KEY_SUSPEND, Control.CommandType.GENERIC, context);
+        Control.runCommand(active ? "1" : "0", Utils.getsysfspath(POWER_KEY_SUSPEND), Control.CommandType.GENERIC, context);
     }
 
     public static boolean isPowerKeySuspendActive() {
-        return Utils.readFile(POWER_KEY_SUSPEND).equals("1");
+        return Utils.readFile(Utils.getsysfspath(POWER_KEY_SUSPEND)).equals("1");
     }
 
     public static boolean hasPowerKeySuspend() {
-        return Utils.existFile(POWER_KEY_SUSPEND);
+        return Utils.existFile(Utils.getsysfspath(POWER_KEY_SUSPEND));
     }
 
     public static boolean hasVibStrength() {
