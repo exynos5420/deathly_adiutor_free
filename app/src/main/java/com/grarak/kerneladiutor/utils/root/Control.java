@@ -40,17 +40,19 @@ public class Control implements Constants {
 
     public static void commandSaver(final Context context, final String path, final String command) {
         CommandDB commandDB = new CommandDB(context);
-
-        List<CommandDB.CommandItem> commandItems = commandDB.getAllCommands();
-        for (int i = 0; i < commandItems.size(); i++) {
-            String p = commandItems.get(i).getPath();
-            if (p != null && p.equals(path)) {
-                commandDB.delete(i);
+        // Something keeps trying to save commands wtih a null path... This makes the bootservice Force Close.
+        // Ensure that this isn't a possibility by not saving null paths or commands.
+        if (path.equals(null) && command.equals(null)) {
+            List<CommandDB.CommandItem> commandItems = commandDB.getAllCommands();
+            for (int i = 0; i < commandItems.size(); i++) {
+                String p = commandItems.get(i).getPath();
+                if (p != null && p.equals(path)) {
+                    commandDB.delete(i);
+                }
             }
+            commandDB.putCommand(path, command);
+            commandDB.commit();
         }
-
-        commandDB.putCommand(path, command);
-        commandDB.commit();
     }
 
     private static void run(String command, String path, Context context) {
