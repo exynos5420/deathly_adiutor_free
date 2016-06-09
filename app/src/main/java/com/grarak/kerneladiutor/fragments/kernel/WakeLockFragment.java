@@ -52,7 +52,7 @@ public class WakeLockFragment extends RecyclerViewFragment implements SeekBarCar
         if (WakeLock.hasSmb135xWakeLock()) {
             mSmb135xWakeLockCard = new SwitchCardView.DSwitchCard();
             mSmb135xWakeLockCard.setTitle(getString(R.string.smb135x_wakelock));
-            mSmb135xWakeLockCard.setDescription(getString(R.string.smb135x_wakelock_summary));
+            mSmb135xWakeLockCard.setDescription(String.format(getString(R.string.smb135x_wakelock_summary), WakeLock.isSmb135xWakeLockActive() ? getString(R.string.enabled) : getString(R.string.disabled)));
             mSmb135xWakeLockCard.setChecked(WakeLock.isSmb135xWakeLockActive());
             mSmb135xWakeLockCard.setOnDSwitchCardListener(this);
 
@@ -62,7 +62,7 @@ public class WakeLockFragment extends RecyclerViewFragment implements SeekBarCar
         if (WakeLock.hasBlueSleepWakeLock()) {
             mBlueSleepWakeLockCard = new SwitchCardView.DSwitchCard();
             mBlueSleepWakeLockCard.setTitle(getString(R.string.bluesleep_wakelock));
-            mBlueSleepWakeLockCard.setDescription(getString(R.string.bluesleep_wakelock_summary));
+            mBlueSleepWakeLockCard.setDescription(String.format(getString(R.string.bluesleep_wakelock_summary), WakeLock.isBlueSleepWakeLockActive() ? getString(R.string.enabled) : getString(R.string.disabled)));
             mBlueSleepWakeLockCard.setChecked(WakeLock.isBlueSleepWakeLockActive());
             mBlueSleepWakeLockCard.setOnDSwitchCardListener(this);
 
@@ -72,7 +72,7 @@ public class WakeLockFragment extends RecyclerViewFragment implements SeekBarCar
         if (WakeLock.hasSensorIndWakeLock()) {
             mSensorIndWakeLockCard = new SwitchCardView.DSwitchCard();
             mSensorIndWakeLockCard.setTitle(getString(R.string.sensor_ind_wakelock));
-            mSensorIndWakeLockCard.setDescription(getString(R.string.sensor_ind_wakelock_summary));
+            mSensorIndWakeLockCard.setDescription(String.format(getString(R.string.sensor_ind_wakelock_summary), WakeLock.isSensorIndWakeLockActive() ? getString(R.string.enabled) : getString(R.string.disabled)));
             mSensorIndWakeLockCard.setChecked(WakeLock.isSensorIndWakeLockActive());
             mSensorIndWakeLockCard.setOnDSwitchCardListener(this);
 
@@ -82,7 +82,7 @@ public class WakeLockFragment extends RecyclerViewFragment implements SeekBarCar
         if (WakeLock.hasMsmHsicHostWakeLock()) {
             mMsmHsicHostWakeLockCard = new SwitchCardView.DSwitchCard();
             mMsmHsicHostWakeLockCard.setTitle(getString(R.string.msm_hsic_host_wakelock));
-            mMsmHsicHostWakeLockCard.setDescription(getString(R.string.msm_hsic_host_wakelock_summary));
+            mMsmHsicHostWakeLockCard.setDescription(String.format(getString(R.string.msm_hsic_host_wakelock_summary), WakeLock.isMsmHsicHostWakeLockActive() ? getString(R.string.enabled) : getString(R.string.disabled)));
             mMsmHsicHostWakeLockCard.setChecked(WakeLock.isMsmHsicHostWakeLockActive());
             mMsmHsicHostWakeLockCard.setOnDSwitchCardListener(this);
 
@@ -105,7 +105,7 @@ public class WakeLockFragment extends RecyclerViewFragment implements SeekBarCar
         if (WakeLock.hasWlanrxWakeLock()) {
             mWlanrxWakelockCard = new SwitchCardView.DSwitchCard();
             mWlanrxWakelockCard.setTitle(getString(R.string.wlan_rx_wakelock));
-            mWlanrxWakelockCard.setDescription(getString(R.string.wlan_rx_wakelock_summary));
+            mWlanrxWakelockCard.setDescription(String.format(getString(R.string.wlan_rx_wakelock_summary), WakeLock.isWlanrxWakeLockActive() ? getString(R.string.enabled) : getString(R.string.disabled)));
             mWlanrxWakelockCard.setChecked(WakeLock.isWlanrxWakeLockActive());
             mWlanrxWakelockCard.setOnDSwitchCardListener(this);
 
@@ -115,7 +115,7 @@ public class WakeLockFragment extends RecyclerViewFragment implements SeekBarCar
         if (WakeLock.hasWlanctrlWakeLock()) {
             mWlanctrlWakelockCard = new SwitchCardView.DSwitchCard();
             mWlanctrlWakelockCard.setTitle(getString(R.string.wlan_ctrl_wakelock));
-            mWlanctrlWakelockCard.setDescription(getString(R.string.wlan_ctrl_wakelock_summary));
+            mWlanctrlWakelockCard.setDescription(String.format(getString(R.string.wlan_ctrl_wakelock_summary), WakeLock.isWlanctrlWakeLockActive() ? getString(R.string.enabled) : getString(R.string.disabled)));
             mWlanctrlWakelockCard.setChecked(WakeLock.isWlanctrlWakeLockActive());
             mWlanctrlWakelockCard.setOnDSwitchCardListener(this);
 
@@ -125,7 +125,7 @@ public class WakeLockFragment extends RecyclerViewFragment implements SeekBarCar
         if (WakeLock.hasWlanWakeLock()) {
             mWlanWakelockCard = new SwitchCardView.DSwitchCard();
             mWlanWakelockCard.setTitle(getString(R.string.wlan_wakelock));
-            mWlanWakelockCard.setDescription(getString(R.string.wlan_wakelock_summary));
+            mWlanWakelockCard.setDescription(String.format(getString(R.string.wlan_wakelock_summary), WakeLock.isWlanWakeLockActive() ? getString(R.string.enabled) : getString(R.string.disabled)));
             mWlanWakelockCard.setChecked(WakeLock.isWlanWakeLockActive());
             mWlanWakelockCard.setOnDSwitchCardListener(this);
 
@@ -186,19 +186,33 @@ public class WakeLockFragment extends RecyclerViewFragment implements SeekBarCar
 
     @Override
     public void onChecked(SwitchCardView.DSwitchCard dSwitchCard, boolean checked) {
-        if (dSwitchCard == mSmb135xWakeLockCard)
+        if (dSwitchCard == mSmb135xWakeLockCard) {
+            mSmb135xWakeLockCard.setDescription(String.format(getString(R.string.smb135x_wakelock_summary), checked ? getString(R.string.enabled) : getString(R.string.disabled)));
             WakeLock.activateSmb135xWakeLock(checked, getActivity());
-        else if (dSwitchCard == mBlueSleepWakeLockCard)
+        }
+        else if (dSwitchCard == mBlueSleepWakeLockCard) {
+            mBlueSleepWakeLockCard.setDescription(String.format(getString(R.string.bluesleep_wakelock_summary), checked ? getString(R.string.enabled) : getString(R.string.disabled)));
             WakeLock.activateBlueSleepWakeLock(checked, getActivity());
-        else if (dSwitchCard == mSensorIndWakeLockCard)
+        }
+        else if (dSwitchCard == mSensorIndWakeLockCard) {
+            mSensorIndWakeLockCard.setDescription(String.format(getString(R.string.sensor_ind_wakelock_summary), checked ? getString(R.string.enabled) : getString(R.string.disabled)));
             WakeLock.activateSensorIndWakeLock(checked, getActivity());
-        else if (dSwitchCard == mMsmHsicHostWakeLockCard)
+        }
+        else if (dSwitchCard == mMsmHsicHostWakeLockCard) {
+            mMsmHsicHostWakeLockCard.setDescription(String.format(getString(R.string.msm_hsic_host_wakelock_summary), checked ? getString(R.string.enabled) : getString(R.string.disabled)));
             WakeLock.activateMsmHsicHostWakeLock(checked, getActivity());
-        else if (dSwitchCard == mWlanrxWakelockCard)
+        }
+        else if (dSwitchCard == mWlanrxWakelockCard) {
+            mWlanrxWakelockCard.setDescription(String.format(getString(R.string.wlan_rx_wakelock_summary), checked ? getString(R.string.enabled) : getString(R.string.disabled)));
             WakeLock.activateWlanrxWakeLock(checked, getActivity());
-        else if (dSwitchCard == mWlanctrlWakelockCard)
+        }
+        else if (dSwitchCard == mWlanctrlWakelockCard) {
+            mWlanctrlWakelockCard.setDescription(String.format(getString(R.string.wlan_ctrl_wakelock_summary), checked ? getString(R.string.enabled) : getString(R.string.disabled)));
             WakeLock.activateWlanctrlWakeLock(checked, getActivity());
-        else if (dSwitchCard == mWlanWakelockCard)
+        }
+        else if (dSwitchCard == mWlanWakelockCard) {
+            mWlanWakelockCard.setDescription(String.format(getString(R.string.wlan_wakelock_summary), checked ? getString(R.string.enabled) : getString(R.string.disabled)));
             WakeLock.activateWlanWakeLock(checked, getActivity());
+        }
     }
 }

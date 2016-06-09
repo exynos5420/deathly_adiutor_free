@@ -98,7 +98,8 @@
     <string name="startup_commands_delete_all_no">No</string>
     <string name="startup_commands_none">No startup Commands Found</string>
     <string name="settings">Settings</string>
-    <string name="faq">FAQ</string>
+    <string name="faq">FAQ</string> 
+    <string name="corecontrol">Core Control</string>
     <string name="about_us">About Us</string>
 
     <!-- Frequency Table -->
@@ -197,6 +198,7 @@
     <string name="override_vmin_summary">Disable to remove manufacturer limits on undervolting</string>
 
     <!-- CPU Hotplug -->
+    <string name="no_enable_toggle">Warning: This Hotplug has no enable or disable toggle. Be aware that having more than one hotplug enabled can cause erratic behavior.</string>
     <string name="mpdecision">MPDecision</string>
     <string name="mpdecision_summary">Qualcomm\'s hotplugging solution. You might get problems with changing frequencies when this is enabled.</string>
     <string name="intelliplug">IntelliPlug</string>
@@ -216,6 +218,8 @@
     <string name="eco_mode_summary">Battery saving mode for IntelliPlug.</string>
     <string name="touch_boost">Touch Boost</string>
     <string name="touch_boost_summary">This will boost your minimum CPU speed if you touch the screen or press a button.</string>
+    <string name="sched_boost">Sched Boost</string>
+    <string name="sched_boost_summary">Enables aggressive thread migration to big cores for high preformance, consumes more power.</string>
     <string name="hysteresis">Hysteresis Value</string>
     <string name="hysteresis_summary">The lower it is, the faster response.</string>
     <string name="threshold">Threshold Value</string>
@@ -227,6 +231,14 @@
     <string name="cpus_boosted_summary">Maximum number of CPUs boosted at the same time.</string>
     <string name="min_cpu_online">Minimum CPU Online</string>
     <string name="min_cpu_online_summary">Minimum number of CPUs that will be always online.</string>
+    <string name="minlittle">Minimum Little CPUs Online</string>
+    <string name="minlittle_summary">Minimum number of Little CPUs that will be always online.</string>
+    <string name="maxlittle">Maximum Little CPUs Online</string>
+    <string name="maxlittle_summary">Maximum number of Little CPUs that will be always online.</string>
+    <string name="minbig">Minimum Big CPUs Online</string>
+    <string name="minbig_summary">Minimum number of Big CPUs that will be always online.</string>
+    <string name="maxbig">Maximum Big CPUs Online</string>
+    <string name="maxbig_summary">Maximum number of Big CPUs that will be always online.</string>
     <string name="max_cpu_online">Maximum CPU Online</string>
     <string name="max_cpu_online_summary">Maximum number of CPUs that will be always online.</string>
     <string name="max_cores_screen_off">Max Cores Screen Off</string>
@@ -300,6 +312,9 @@
     <string name="thunderplug_summary">An in-kernel replacement for Qualcomm\'s MPDecision. Developed by varunchitre15.</string>
     <string name="min_cores_screen_off">Min Cores Screen Off</string>
     <string name="min_cores_screen_off_summary">Minimum number of cores online when screen is off.</string>
+    <string name="hp_style">Hotplug Style</string>
+    <string name="per_core_hp">Per-Core-Hotplug</string>
+    <string name="load_balancer">Load Balancer</string>
     <string name="endurance_level">Endurance Level</string>
     <string name="endurance_level_summary">A power saving profile.</string>
     <string name="quad_core_mode">Quad-Core mode</string>
@@ -346,6 +361,10 @@
     <string name="state_helper_batt_level_cri_summary">Critical level core limiting. Limits max cpus online at this battery percentage.</string>
     <string name="state_helper_max_cpus_eco">Max CPUs online after reaching Economical Battery level</string>
     <string name="state_helper_max_cpus_cri">Max CPUs online after reaching Critical Battery level</string>
+    <string name="bch">Boeffla Config Helper</string>
+    <string name="bch_summary">Lord Boefflas solution for keeping big cores alive</string>
+    <string name="msm_max_cores">Maximum cores to be allowed online.</string>
+    <string name="msmperformance">MSM Performance Hotplug</string>
 
     <!-- Thermal -->
     <string name="thermal_info">Use only one thermal driver from the following options, using more at the same time may cause unexpected behavior.</string>
@@ -448,7 +467,10 @@
     <string name="screen_value">Screen Value</string>
     <string name="screen_contrast">Screen Contrast</string>
     <string name="auto_high_brightness_mode">Automatic High Brightness Mode</string>
+    <string name="auto_high_brightness_smoothing">Smooth Lux Values for AutoHBM</string>
+    <string name="auto_high_brightness_smoothing_warning">Smoothing will cause some delay in significant lux changes causing HBM to toggle.</string>
     <string name="auto_high_brightness_mode_threshold">Automatic High Brightness Mode Threshold</string>
+    <string name="auto_high_brightness_smoothing_samples">Smoothing Sample Count</string>
     <string name="high_brightness_mode">High Brightness Mode</string>
     <string name="gamma">Gamma</string>
     <string name="gamma_profile">Gamma Profile</string>
@@ -483,10 +505,14 @@
     <string name="brightness_mode">Use exponential backlight mode instead of linear mode.</string>
     <string name="min_brightness">Minimum Brightness</string>
     <string name="min_brightness_summary">Allows you to decrease the LCD screen brightness lower than it\'s possible on stock.</string>
+    <string name="led_speed">LED SPEED</string>
+    <string name="led_speed_summary">Allows you to toggle the LED speed lower than it\'s possible on stock.</string>    
     <string name="max_brightness">Maximum Brightness</string>
     <string name="max_brightness_summary">Allows you to increase the LCD screen brightness higher than it\'s possible on stock.</string>
     <string name="backlight_dimmer">Backlight Dimmer</string>
     <string name="offset">Offset</string>
+    <string name="Led_toggle">Led Toggle</string>
+    <string name="Led_toggle_summary">Test Led blink.</string>
     <string name="negative_toggle">Negative Toggle</string>
     <string name="negative_toggle_summary">Enable inverting the screen colors by quickly pressing MENU button 4 times.</string>
     <string name="mdnie_global_controls">mDNIe global controls</string>
@@ -521,6 +547,10 @@
     <string name="s2s_right">Sweep Right</string>
     <string name="s2s_left">Sweep Left</string>
     <string name="s2s_any">Sweep Left or Right</string>
+    <string name="TW">Torch Wake</string>
+    <string name="TW_summary">Turn on flashlight by making a V.</string>
+    <string name="MW">Music Control</string>
+    <string name="MW_summary">Music control gestures.</string>
     <string name="t2w">Tap2Wake</string>
     <string name="t2w_summary">Wake up your device by tapping the screen.</string>
     <string name="wake">Wake</string>
@@ -600,6 +630,8 @@
     <string name="custom_charge_rate">Charge Rate</string>
     <string name="charge_rate">Battery Charging Rate</string>
     <string name="charge_rate_summary">Set Custom Battery Charge Rate. Caution: Exceeding 1250mA may damage your charging driver.</string>
+    <string name="lowpowervalue">Low Power Value</string>
+    <string name="lowpowervalue_summary">Set the Battery Level in % where big cores will shutdown.</string>
 
     <!-- I/O Scheduler -->
     <string name="internal_storage">Internal Storage</string>
@@ -711,7 +743,8 @@
     <string name="power_suspend_mode">Power Suspend Mode</string>
     <string name="power_suspend_mode_summary">Kernel Mode, LCD Hooks and Highest Level Hook are automatically managed by the kernel. To manually enable or disable the Power Suspend State choose User Mode.</string>
     <string name="state_notifier_mode">State Notifier Mode</string>
-    <string name="state_notifier_mode_summary">Toggle between State and FB Notifiers.</string>
+    <string name="state_notifier_mode_summary_enabled">Toggle between State and FB Notifiers. \nCurrently: State Notifier</string>
+    <string name="state_notifier_mode_summary_disabled">Toggle between State and FB Notifiers. \nCurrently: FB Notifier</string>
     <string name="autosleep">Autosleep</string>
     <string name="userspace">Userspace</string>
     <string name="lcd_panel">LCD Panel</string>
@@ -728,19 +761,19 @@
     <string name="wakelock">Wakelocks</string>
     <string name="wakelocks_summary">Toggle on: Service can acquire a wakelock. Toggle off: Service cannot acquire a wakelock.</string>
     <string name="smb135x_wakelock">smb135x Wakelock</string>
-    <string name="smb135x_wakelock_summary">Prevent wakelock when power disconnected.</string>
+    <string name="smb135x_wakelock_summary">Allow wakelock when power disconnected.\n Currently: %s</string>
     <string name="bluesleep_wakelock">BlueSleep Wakelock</string>
-    <string name="bluesleep_wakelock_summary">Prevent BlueSleep Wakelock</string>
+    <string name="bluesleep_wakelock_summary">Allow BlueSleep Wakelock.\n Currently: %s</string>
     <string name="sensor_ind_wakelock">sensor_ind Wakelock</string>
-    <string name="sensor_ind_wakelock_summary">Prevent wakelock when Ambient Display disabled.</string>
+    <string name="sensor_ind_wakelock_summary">Allow wakelock when Ambient Display disabled.\n Currently: %s</string>
     <string name="msm_hsic_host_wakelock">msm_hsic_host Wakelock</string>
-    <string name="msm_hsic_host_wakelock_summary">Allow msm_hsic_host wakelock. Turn off to prevent this wakelock.</string>
+    <string name="msm_hsic_host_wakelock_summary">Allow msm_hsic_host wakelock.\n Currently: %s</string>
     <string name="wlan_rx_wakelock">wlan_rx Wakelock</string>
-    <string name="wlan_rx_wakelock_summary">Prevent wlan_rx wakelock.</string>
+    <string name="wlan_rx_wakelock_summary">Allow wlan_rx wakelock.\n Currently: %s</string>
     <string name="wlan_ctrl_wakelock">wlan_ctrl Wakelock</string>
-    <string name="wlan_ctrl_wakelock_summary">Prevent wlan_ctrl wakelock.</string>
+    <string name="wlan_ctrl_wakelock_summary">Allow wlan_ctrl wakelock.\n Currently: %s</string>
     <string name="wlan_wakelock">wlan Wakelock</string>
-    <string name="wlan_wakelock_summary">Prevent wlan wakelock.</string>
+    <string name="wlan_wakelock_summary">Allow wlan wakelock.\n Currently: %s</string>
     <string name="wlan_rx_wakelock_divider">wlan_rx Wakelock Divider</string>
     <string name="msm_hsic_wakelock_divider">msm_hsic Wakelock Divider</string>
     <string name="bcmdhd_wakelock_divider">BCMDHD Wakelock Divider</string>
@@ -753,6 +786,8 @@
     <string name="c2state_summary">Deeper sleep with longer latency when waking up.</string>
     <string name="c3state">C3 (Power Collapse)</string>
     <string name="c3state_summary">Really deep sleep with longest latency when waking up.</string>
+    <string name="switchbuttons">Switch Buttons</string>
+    <string name="switchbuttons_summary">Switch back and recents buttons.</string>
 
     <!-- Plugins -->
     <string name="plugin_warning">I, the creator of this application, am not responsible for any damages that third party apps produce! I also can\'t guarantee for the functionality of them. Please be careful which applications you download!</string>
@@ -870,6 +905,11 @@
     <string name="last_kmsg_summary">Copy /proc/last_kmsg to /sdcard/last_kmsg.txt</string>
     <string name="driver_message">Driver Message</string>
     <string name="driver_message_summary">Copy driver message (dmesg) to /sdcard/dmesg.txt</string>
+    <string name="dump_sysfs">Dump SysFS</string>
+    <string name="dump_sysfs_summary">Dumps the values for all SysFS entries that this app is looking for</string>
+    <string name="dump_sysfs_dialog_title">Dumping SysFS entries</string>
+    <string name="dump_sysfs_dialog_summary">This will take a second. Please wait...</string>
+    <string name="dump_sysfs_share_title">Share via</string>
     <string name="security">Security</string>
     <string name="set_password">Set Password</string>
     <string name="set_password_summary">You can protect Kernel Adiutor by setting up a password. Every time you open this application, you have to enter it. If you forget it, simply wipe the data of this application in settings of your device. Don\'t worry I won\'t share your password.</string>
@@ -930,7 +970,7 @@
     <string name="modification_summary">This application is being modified for various custom features that are not included in the original Kernel Adiutor.</string>
 
     <string name="modification_version">Modification Version</string>
-    <string name="modification_version_number" translatable="false">Build 9</string>
+    <string name="modification_version_number" translatable="false">Build 12</string>
 
     <string name="accessibility_service_label">KA Per App Monitor</string>
     <string name="accessibility_service_desc">Service to monitor when foreground app changes for per-app profile loading</string>

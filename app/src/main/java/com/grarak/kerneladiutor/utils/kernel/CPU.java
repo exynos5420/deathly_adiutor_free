@@ -20,7 +20,6 @@ import android.content.Context;
 import android.util.Log;
 
 import com.grarak.kerneladiutor.R;
-import com.grarak.kerneladiutor.fragments.kernel.CPUFragment;
 import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;
 import com.grarak.kerneladiutor.utils.root.Control;
@@ -40,8 +39,8 @@ import java.util.List;
 public class CPU implements Constants {
 
     private static int cores;
-    private static int bigCore = -1;
-    private static int LITTLEcore = -1;
+    public static int bigCore = -1;
+    public static int LITTLEcore = -1;
     private static Integer[][] mFreqs;
     private static String[][] mAvailableGovernors;
     private static String[] mMcPowerSavingItems;
@@ -564,7 +563,10 @@ public class CPU implements Constants {
         if (mAvailableGovernors == null) mAvailableGovernors = new String[getCoreCount()][];
         if (mAvailableGovernors[core] == null) {
             String value = Utils.readFile(CPU_AVAILABLE_GOVERNORS);
-            if (value != null) mAvailableGovernors[core] = value.split(" ");
+            if (value != null) {
+                mAvailableGovernors[core] = value.split(" ");
+                Collections.sort(Arrays.asList(mAvailableGovernors[core]), String.CASE_INSENSITIVE_ORDER);
+            }
         }
         if (mAvailableGovernors[core] == null) return null;
         return new ArrayList<>(Arrays.asList(mAvailableGovernors[core]));

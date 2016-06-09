@@ -476,17 +476,10 @@
   <string name="hostname">主机名</string>
   <string name="wakelock">唤醒锁</string>
   <string name="smb135x_wakelock">smb135x 唤醒锁</string>
-  <string name="smb135x_wakelock_summary">当充电器未连接时阻止唤醒锁。</string>
   <string name="sensor_ind_wakelock">sensor_ind 唤醒锁</string>
-  <string name="sensor_ind_wakelock_summary">当主动显示被禁用时阻止唤醒锁。</string>
-  <string name="msm_hsic_host_wakelock">msm_hsic_host 唤醒锁</string>
-  <string name="msm_hsic_host_wakelock_summary">阻止 msm_hsic_host 唤醒锁。</string>
   <string name="wlan_rx_wakelock">wlan_rx 唤醒锁</string>
-  <string name="wlan_rx_wakelock_summary">阻止 wlan_rx 取得唤醒锁</string>
   <string name="wlan_ctrl_wakelock">wlan_ctrl 唤醒锁</string>
-  <string name="wlan_ctrl_wakelock_summary">阻止 wlan_ctrl 取得唤醒锁</string>
   <string name="wlan_wakelock">wlan 唤醒锁</string>
-  <string name="wlan_wakelock_summary">阻止 wlan 取得唤醒锁</string>
   <string name="wlan_rx_wakelock_divider">wlan_rx Wakelock 分频器</string>
   <string name="msm_hsic_wakelock_divider">msm_hsic Wakelock 分频器</string>
   <string name="plugin_warning">我，作为这个应用的开发者，对第三方应用产生的损坏不负任何责任！我同样无法保证它们能否工作。请谨慎对待任何你下载的应用程序！</string>
@@ -617,4 +610,6 @@
   <string name="google_plus_summary">加入我们的社群。</string>
   <string name="translation">翻译</string>
   <string name="translation_summary">帮忙翻译此应用！</string>
+  <string name="wlan_wakelock_summary"></string>
+  <string name="msm_hsic_host_wakelock_summary"></string>
 </resources>

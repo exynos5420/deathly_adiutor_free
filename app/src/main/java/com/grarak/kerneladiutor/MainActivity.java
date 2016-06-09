@@ -32,7 +32,6 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.DocumentsContract;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -70,18 +69,19 @@ import com.grarak.kerneladiutor.fragments.kernel.MiscFragment;
 import com.grarak.kerneladiutor.fragments.kernel.ScreenFragment;
 import com.grarak.kerneladiutor.fragments.kernel.SoundFragment;
 import com.grarak.kerneladiutor.fragments.kernel.ThermalFragment;
+import com.grarak.kerneladiutor.fragments.kernel.CoreControlFragment;
 import com.grarak.kerneladiutor.fragments.kernel.VMFragment;
-import com.grarak.kerneladiutor.fragments.kernel.WakeLockFragment;
 import com.grarak.kerneladiutor.fragments.kernel.WakeFragment;
+import com.grarak.kerneladiutor.fragments.kernel.WakeLockFragment;
 import com.grarak.kerneladiutor.fragments.other.AboutusFragment;
 import com.grarak.kerneladiutor.fragments.other.FAQFragment;
 import com.grarak.kerneladiutor.fragments.other.SettingsFragment;
 import com.grarak.kerneladiutor.fragments.tools.BackupFragment;
 import com.grarak.kerneladiutor.fragments.tools.BuildpropFragment;
 import com.grarak.kerneladiutor.fragments.tools.InitdFragment;
-import com.grarak.kerneladiutor.fragments.tools.StartUpCommandsFragment;
 import com.grarak.kerneladiutor.fragments.tools.ProfileFragment;
 import com.grarak.kerneladiutor.fragments.tools.RecoveryFragment;
+import com.grarak.kerneladiutor.fragments.tools.StartUpCommandsFragment;
 import com.grarak.kerneladiutor.fragments.tools.download.DownloadsFragment;
 import com.grarak.kerneladiutor.services.AutoHighBrightnessModeService;
 import com.grarak.kerneladiutor.services.ProfileTileReceiver;
@@ -99,9 +99,11 @@ import com.grarak.kerneladiutor.utils.kernel.Screen;
 import com.grarak.kerneladiutor.utils.kernel.Sound;
 import com.grarak.kerneladiutor.utils.kernel.Thermal;
 import com.grarak.kerneladiutor.utils.kernel.Wake;
+import com.grarak.kerneladiutor.utils.kernel.WakeLock;
 import com.grarak.kerneladiutor.utils.tools.Backup;
 import com.grarak.kerneladiutor.utils.tools.Buildprop;
 import com.grarak.kerneladiutor.utils.tools.UpdateChecker;
+import com.grarak.kerneladiutor.utils.kernel.CoreControl;
 import com.kerneladiutor.library.root.RootUtils;
 
 import java.io.File;
@@ -154,7 +156,7 @@ public class MainActivity extends BaseActivity implements Constants {
         else // Use an AsyncTask to initialize everything
             new Task().execute();
 
-        if (!isMyServiceRunning(AutoHighBrightnessModeService.class)) {
+        if (Screen.hasScreenHBM() && !isMyServiceRunning(AutoHighBrightnessModeService.class)) {
             startService(new Intent(this, AutoHighBrightnessModeService.class));
         }
     }
@@ -247,6 +249,8 @@ public class MainActivity extends BaseActivity implements Constants {
             ITEMS.add(new DAdapter.Item(getString(R.string.cpu_voltage), new CPUVoltageFragment()));
         if (CPUHotplug.hasCpuHotplug())
             ITEMS.add(new DAdapter.Item(getString(R.string.cpu_hotplug), new CPUHotplugFragment()));
+        if (CoreControl.hasMinLittle())
+            ITEMS.add(new DAdapter.Item(getString(R.string.corecontrol), new CoreControlFragment()));
         if (Thermal.hasThermal())
             ITEMS.add(new DAdapter.Item(getString(R.string.thermal), new ThermalFragment()));
         if (GPU.hasGpuControl())
@@ -265,7 +269,9 @@ public class MainActivity extends BaseActivity implements Constants {
         if (LMK.getMinFrees() != null)
             ITEMS.add(new DAdapter.Item(getString(R.string.low_memory_killer), new LMKFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.virtual_memory), new VMFragment()));
-        ITEMS.add(new DAdapter.Item(getString(R.string.wakelocks), new WakeLockFragment()));
+        if (WakeLock.hasAnyWakelocks()) {
+            ITEMS.add(new DAdapter.Item(getString(R.string.wakelocks), new WakeLockFragment()));
+        }
         if (Entropy.hasEntropy())
             ITEMS.add(new DAdapter.Item(getString(R.string.entropy), new EntropyFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.misc_controls), new MiscFragment()));

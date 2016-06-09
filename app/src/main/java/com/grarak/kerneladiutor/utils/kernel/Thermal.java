@@ -17,7 +17,6 @@
 package com.grarak.kerneladiutor.utils.kernel;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;

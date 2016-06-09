@@ -17,7 +17,6 @@
 package com.grarak.kerneladiutor.utils.kernel;
 
 import android.content.Context;
-import android.view.ViewDebug;
 
 import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;
@@ -38,6 +37,18 @@ public class Battery implements Constants {
 
     public static boolean hasChargingRate() {
         return Utils.existFile(CUSTOM_CHARGING_RATE);
+    }
+
+    public static void setlowpowervalue(int value, Context context) {
+        Control.runCommand(String.valueOf(value), LOW_POWER_VALUE, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getlowpowervalue() {
+        return Utils.stringToInt(Utils.readFile(LOW_POWER_VALUE));
+    }
+
+    public static boolean haslowpowervalue() {
+        return Utils.existFile(LOW_POWER_VALUE);
     }
 
     public static void activateCustomChargeRate(boolean active, Context context) {

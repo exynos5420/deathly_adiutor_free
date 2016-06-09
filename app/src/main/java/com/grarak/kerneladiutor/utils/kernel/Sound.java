@@ -170,25 +170,25 @@ public class Sound implements Constants {
 
     public static void setHeadphoneGain(String value, Context context, String side) {
         if (side.equals("B")) {
-            Control.runCommand(value + " " + value, HEADPHONE_GAIN, Control.CommandType.FAUX_GENERIC, context);
+            Control.runCommand(value + " " + value, Utils.getsysfspath(HEADPHONE_GAIN), Control.CommandType.FAUX_GENERIC, context);
         }
         if (side.equals("L")) {
-            Control.runCommand(value + " " + getCurHeadphoneGain("R"), HEADPHONE_GAIN, Control.CommandType.FAUX_GENERIC, context);
+            Control.runCommand(value + " " + getCurHeadphoneGain("R"), Utils.getsysfspath(HEADPHONE_GAIN), Control.CommandType.FAUX_GENERIC, context);
         }
         if (side.equals("R")) {
-            Control.runCommand(getCurHeadphoneGain("L") + " " + value, HEADPHONE_GAIN, Control.CommandType.FAUX_GENERIC, context);
+            Control.runCommand(getCurHeadphoneGain("L") + " " + value, Utils.getsysfspath(HEADPHONE_GAIN), Control.CommandType.FAUX_GENERIC, context);
         }
     }
 
     public static String getCurHeadphoneGain(String side) {
         if (side.equals("B")) {
-            return Utils.readFile(HEADPHONE_GAIN).split(" ")[0];
+            return Utils.readFile(Utils.getsysfspath(HEADPHONE_GAIN)).split(" ")[0];
         }
         if (side.equals("L")) {
-            return Utils.readFile(HEADPHONE_GAIN).split(" ")[0];
+            return Utils.readFile(Utils.getsysfspath(HEADPHONE_GAIN)).split(" ")[0];
         }
         if (side.equals("R")) {
-            return Utils.readFile(HEADPHONE_GAIN).split(" ")[1];
+            return Utils.readFile(Utils.getsysfspath(HEADPHONE_GAIN)).split(" ")[1];
         }
         return "0";
     }
@@ -201,7 +201,7 @@ public class Sound implements Constants {
     }
 
     public static boolean hasHeadphoneGain() {
-        return Utils.existFile(HEADPHONE_GAIN);
+        return Utils.existFile(Utils.getsysfspath(HEADPHONE_GAIN));
     }
 
     public static void activateHighPerfMode(boolean active, Context context) {
@@ -217,15 +217,15 @@ public class Sound implements Constants {
     }
 
     public static void activateSoundControl(boolean active, Context context) {
-        Control.runCommand(active ? "Y" : "N", SOUND_CONTROL_ENABLE, Control.CommandType.GENERIC, context);
+        Control.runCommand(active ? "Y" : "N", Utils.getsysfspath(SOUND_CONTROL_ENABLE), Control.CommandType.GENERIC, context);
     }
 
     public static boolean isSoundControlActive() {
-        return Utils.readFile(SOUND_CONTROL_ENABLE).equals("Y");
+        return Utils.readFile(Utils.getsysfspath(SOUND_CONTROL_ENABLE)).equals("Y");
     }
 
     public static boolean hasSoundControlEnable() {
-        return Utils.existFile(SOUND_CONTROL_ENABLE);
+        return Utils.existFile(Utils.getsysfspath(SOUND_CONTROL_ENABLE));
     }
 
     public static boolean hasSound() {
@@ -248,19 +248,19 @@ public class Sound implements Constants {
     }
 
     public static void activateWcdHighPerfMode(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", WCD_HIGHPERF_MODE_ENABLE, Control.CommandType.GENERIC, context);
+        Control.runCommand(active ? "1" : "0", Utils.getsysfspath(WCD_HIGHPERF_MODE_ENABLE), Control.CommandType.GENERIC, context);
     }
 
     public static boolean isWcdHighPerfModeActive() {
-        return Utils.readFile(WCD_HIGHPERF_MODE_ENABLE).equals("1");
+        return Utils.readFile(Utils.getsysfspath(WCD_HIGHPERF_MODE_ENABLE)).equals("1");
     }
 
     public static boolean hasWcdHighPerfMode() {
-        return Utils.existFile(WCD_HIGHPERF_MODE_ENABLE);
+        return Utils.existFile(Utils.getsysfspath(WCD_HIGHPERF_MODE_ENABLE));
     }
 
     public static boolean hasDriverTunables() {
-        if (Utils.existFile(WCD_SPKR_DRV_WRND) || Utils.existFile(WCD_HIGHPERF_MODE_ENABLE)) return true;
+        if (Utils.existFile(WCD_SPKR_DRV_WRND) || Utils.existFile(Utils.getsysfspath(WCD_HIGHPERF_MODE_ENABLE))) return true;
         else return false;
     }
 

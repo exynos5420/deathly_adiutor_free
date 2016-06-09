@@ -19,23 +19,23 @@ package com.grarak.kerneladiutor.utils.kernel;
 import android.content.Context;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import android.util.Log;
 
 import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;
 import com.grarak.kerneladiutor.utils.root.Control;
 import com.kerneladiutor.library.root.RootUtils;
 
-import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.net.InetAddress;
 
 /**
  * Created by willi on 02.01.15.
  */
 public class Misc implements Constants {
+
+    private static String[] mAvailableTCPCongestions;
 
     private static String VIBRATION_PATH;
     private static Integer VIBRATION_MAX;
@@ -44,9 +44,6 @@ public class Misc implements Constants {
     private static String LOGGER_FILE;
 
     private static String CRC_FILE;
-
-    private static String FSYNC_FILE;
-    private static boolean FSYNC_USE_INTEGER;
 
     private static String BCL_FILE;
 
@@ -64,11 +61,51 @@ public class Misc implements Constants {
     }
 
     public static String getCurTcpCongestion() {
-        return getTcpAvailableCongestions().get(0);
+        return getTcpAvailableCongestions(false).get(0);
     }
 
-    public static List<String> getTcpAvailableCongestions() {
-        return new ArrayList<>(Arrays.asList(Utils.readFile(TCP_AVAILABLE_CONGESTIONS).split(" ")));
+    public static List<String> getTcpAvailableCongestions(boolean sort) {
+        if (mAvailableTCPCongestions == null) mAvailableTCPCongestions = new String[0];
+        String value = Utils.readFile(TCP_AVAILABLE_CONGESTIONS);
+        if (value != null) {
+            mAvailableTCPCongestions = value.split(" ");
+            if (sort) {
+                Collections.sort(Arrays.asList(mAvailableTCPCongestions), String.CASE_INSENSITIVE_ORDER);
+
+            }
+        }
+        return new ArrayList<>(Arrays.asList(mAvailableTCPCongestions));
+    }
+
+    public static boolean hasLedSpeed() {
+        return Utils.existFile(LED_SPEED_GREEN);
+    }
+
+    public static int getMaxMinLedSpeed() {
+        if (Utils.existFile(LED_SPEED_GREEN)) {
+            return 3;
+        }
+        return 0;
+    }
+
+    public static int getCurLedSpeed() {
+        return Utils.stringToInt(Utils.readFile(LED_SPEED_GREEN));
+    }
+
+    public static void setLedSpeed(int value, Context context) {
+            Control.runCommand(String.valueOf(value), LED_SPEED_GREEN, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean isLedActive() {
+ 		return Utils.readFile(LED_ACTIVE).equals("1");
+    }
+
+    public static void activateLedMode(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", LED_ACTIVE, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean hasLedMode() {
+        return Utils.existFile(LED_ACTIVE);
     }
 
     public static String getIpAddr(Context context) {
@@ -139,32 +176,20 @@ public class Misc implements Constants {
     }
 
     public static void activateFsync(boolean active, Context context) {
-        if (FSYNC_USE_INTEGER)
-            Control.runCommand(active ? "1" : "0", FSYNC_FILE, Control.CommandType.GENERIC, context);
-        else
-            Control.runCommand(active ? "Y" : "N", FSYNC_FILE, Control.CommandType.GENERIC, context);
+        if (Utils.isLetter(Utils.readFile(Utils.getsysfspath(FSYNC_ARRAY)))) {
+            Control.runCommand(active ? "Y" : "N", Utils.getsysfspath(FSYNC_ARRAY), Control.CommandType.GENERIC, context);
+        } else {
+            Control.runCommand(active ? "1" : "0", Utils.getsysfspath(FSYNC_ARRAY), Control.CommandType.GENERIC, context);
+        }
     }
 
     public static boolean isFsyncActive() {
-        if (FSYNC_USE_INTEGER)
-            return Utils.readFile(FSYNC_FILE).equals("1");
-        else
-            return Utils.readFile(FSYNC_FILE).equals("Y");
+        String path = Utils.getsysfspath(FSYNC_ARRAY);
+        return Utils.readFile(path).equals(Utils.isLetter(Utils.readFile(path)) ? " Y" : "1");
     }
 
     public static boolean hasFsync() {
-        for (String file : FSYNC_ARRAY)
-            if (Utils.existFile(file)) {
-                FSYNC_FILE = file;
-                try {
-                    Integer.parseInt(Utils.readFile(FSYNC_FILE));
-                    FSYNC_USE_INTEGER = true;
-                } catch (NumberFormatException ignored) {
-                    FSYNC_USE_INTEGER = false;
-                }
-                return true;
-            }
-        return false;
+        return Utils.existFile(Utils.getsysfspath(FSYNC_ARRAY));
     }
 
     public static void activateBcl(boolean active, Context context) {
@@ -225,6 +250,9 @@ public class Misc implements Constants {
             Control.runCommand(active ? "1" : "0", LOGGER_FILE, Control.CommandType.GENERIC, context);
         }
         if (LOGGER_FILE.equals(LOGD)) {
+            // This is needed because the path changes from "start" to "stop" so it breaks the commandsaver function
+            Control.deletespecificcommand(context, active ? "stop" : "start", null);
+
             Control.runCommand("logd", active ? "start" : "stop", Control.CommandType.SHELL, context);
         }
     }
@@ -276,9 +304,9 @@ public class Misc implements Constants {
                 return VIBRATION_MIN;
             }
 
-            for (Object[] vibs : VIBRATION_ARRAY)
-                if (VIBRATION_PATH.equals(vibs[0]))
-                    VIBRATION_MIN = (int) vibs[2];
+            for (int i = 0; i < VIBRATION_ARRAY.length; i++)
+                if (VIBRATION_PATH.equals(VIBRATION_ARRAY[i]))
+                    VIBRATION_MIN = VIBRATION_MAX_MIN_ARRAY[i][1];
         }
         return VIBRATION_MIN != null ? VIBRATION_MIN : 0;
     }
@@ -297,9 +325,9 @@ public class Misc implements Constants {
                 return VIBRATION_MAX;
             }
 
-            for (Object[] vibs : VIBRATION_ARRAY)
-                if (VIBRATION_PATH.equals(vibs[0]))
-                    VIBRATION_MAX = (int) vibs[1];
+            for (int i = 0; i < VIBRATION_ARRAY.length; i++)
+                if (VIBRATION_PATH.equals(VIBRATION_ARRAY[i]))
+                    VIBRATION_MAX = VIBRATION_MAX_MIN_ARRAY[i][0];
         }
         return VIBRATION_MAX != null ? VIBRATION_MAX : 0;
     }
@@ -309,9 +337,9 @@ public class Misc implements Constants {
     }
 
     public static boolean hasVibration() {
-        for (Object[] vibs : VIBRATION_ARRAY)
-            if (Utils.existFile(vibs[0].toString())) {
-                VIBRATION_PATH = vibs[0].toString();
+        for (String vibration : VIBRATION_ARRAY)
+            if (Utils.existFile(vibration)) {
+                VIBRATION_PATH = vibration;
                 break;
             }
         return VIBRATION_PATH != null;
@@ -332,6 +360,18 @@ public class Misc implements Constants {
         if (result.equals("Enforcing")) return "Enforcing";
         else if (result.equals("Permissive")) return "Permissive";
         return "Unknown Status";
+    }
+
+    public static void activateswitchbuttons(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", SWITCH_BUTTONS, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean isswitchbuttonsActive() {
+        return Utils.readFile(SWITCH_BUTTONS).equals("1");
+    }
+
+    public static boolean hasswitchbuttons() {
+        return Utils.existFile(SWITCH_BUTTONS);
     }
 
 }

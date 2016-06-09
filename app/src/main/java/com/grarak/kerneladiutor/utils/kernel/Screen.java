@@ -19,6 +19,7 @@ package com.grarak.kerneladiutor.utils.kernel;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.widget.RemoteViews;
 
 import com.grarak.kerneladiutor.R;
@@ -30,6 +31,7 @@ import com.grarak.kerneladiutor.utils.json.GammaProfiles;
 import com.grarak.kerneladiutor.utils.root.Control;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -126,6 +128,8 @@ public class Screen implements Constants {
                     return 50;
                 case MSM_BACKLIGHT_DIMMER:
                     return 100;
+                case ZE551ML_MIN_BRIGHTNESS:
+                    return 13;
             }
         }
         return 0;
@@ -525,7 +529,31 @@ public class Screen implements Constants {
 
     public static void activateScreenAutoHBM(boolean active, Context context) {
         Utils.saveBoolean("AutoHBM", active, context);
-        AutoHighBrightnessModeService.AutoHBMSensorEnabled = active;
+        Intent intent = new Intent(context, AutoHighBrightnessModeService.class);
+        if (active) {
+            context.startService(intent);
+        }
+        else {
+            context.stopService(intent);
+        }
+    }
+
+    public static boolean isScreenAutoHBMSmoothingActive(Context context) {
+        return Utils.getBoolean("AutoHBM_Smoothing", false, context);
+    }
+
+    public static void activateScreenHBMSmoothing(boolean active, Context context) {
+        Utils.saveBoolean("AutoHBM_Smoothing", active, context);
+    }
+
+    public static int getAutoHBMSmoothingSamples(Context context) {
+        return Utils.getInt("AutoHBM_Samples", 3, context);
+    }
+
+    public static void setAutoHBMSmoothingSamples(int value, Context context) {
+        Utils.saveInt("AutoHBM_Samples", value, context);
+        //Reinitialize the array with the new size
+        AutoHighBrightnessModeService.luxvalues = new float[value];
     }
 
     public static int getAutoHBMThresh(Context context) {

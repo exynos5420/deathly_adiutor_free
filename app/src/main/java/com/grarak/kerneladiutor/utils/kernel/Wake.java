@@ -41,15 +41,15 @@ public class Wake implements Constants {
     private static String POCKET_MODE_FILE;
 
     public static void activatePowerKeySuspend(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", POWER_KEY_SUSPEND, Control.CommandType.GENERIC, context);
+        Control.runCommand(active ? "1" : "0", Utils.getsysfspath(POWER_KEY_SUSPEND), Control.CommandType.GENERIC, context);
     }
 
     public static boolean isPowerKeySuspendActive() {
-        return Utils.readFile(POWER_KEY_SUSPEND).equals("1");
+        return Utils.readFile(Utils.getsysfspath(POWER_KEY_SUSPEND)).equals("1");
     }
 
     public static boolean hasPowerKeySuspend() {
-        return Utils.existFile(POWER_KEY_SUSPEND);
+        return Utils.existFile(Utils.getsysfspath(POWER_KEY_SUSPEND));
     }
 
     public static boolean hasVibStrength() {
@@ -156,26 +156,50 @@ public class Wake implements Constants {
         return false;
     }
 
+    public static void activateTW(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", TW, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean isTWActive() {
+        return Utils.readFile(TW).equals("1");
+    }
+
+    public static boolean hasTW() {
+        return Utils.existFile(TW);
+    }
+
+    public static void activateMW(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", MW, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean isMWActive() {
+        return Utils.readFile(TW).equals("1");
+    }
+
+    public static boolean hasMW() {
+        return Utils.existFile(MW);
+    }
+
     public static void activateCameraGesture(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", CAMERA_GESTURE, Control.CommandType.GENERIC, context);
+        Control.runCommand(active ? "1" : "0", Utils.getsysfspath(CAMERA_GESTURE), Control.CommandType.GENERIC, context);
     }
 
     public static boolean isCameraGestureActive() {
-        return Utils.readFile(CAMERA_GESTURE).equals("1");
+        return Utils.readFile(Utils.getsysfspath(CAMERA_GESTURE)).equals("1");
     }
 
     public static boolean hasCameraGesture() {
-        return Utils.existFile(CAMERA_GESTURE);
+        return Utils.existFile(Utils.getsysfspath(CAMERA_GESTURE));
     }
 
     public static void activateGesture(boolean active, int gesture, Context context) {
-        Control.runCommand(GESTURE_STRING_VALUES[gesture] + "=" + active, GESTURE_CRTL, Control.CommandType.GENERIC,
+        Control.runCommand(GESTURE_STRING_VALUES[gesture] + "=" + active, Utils.getsysfspath(GESTURE_CRTL), Control.CommandType.GENERIC,
                 GESTURE_STRING_VALUES[gesture], context);
     }
 
     public static boolean isGestureActive(int gesture) {
         try {
-            return (Long.decode(Utils.readFile(GESTURE_CRTL)) & GESTURE_HEX_VALUES[gesture]) > 0;
+            return (Long.decode(Utils.readFile(Utils.getsysfspath(GESTURE_CRTL))) & GESTURE_HEX_VALUES[gesture]) > 0;
         } catch (NumberFormatException e) {
             e.printStackTrace();
             return false;
@@ -198,7 +222,7 @@ public class Wake implements Constants {
     }
 
     public static boolean hasGesture() {
-        return Utils.existFile(GESTURE_CRTL);
+        return Utils.existFile(Utils.getsysfspath(GESTURE_CRTL));
     }
 
     public static void setDt2s(int value, Context context) {
@@ -429,7 +453,8 @@ public class Wake implements Constants {
                     list.add(context.getString(R.string.top_half));
                     break;
                 case DT2W:
-                    list.add(context.getString(R.string.enabled));
+                    list.add(context.getString(R.string.halfscreen));
+                    list.add(context.getString(R.string.fullscreen));
                     break;
                 default:
                     list.add(context.getString(R.string.enabled));

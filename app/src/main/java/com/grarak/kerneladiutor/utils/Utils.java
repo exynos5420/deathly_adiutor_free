@@ -362,12 +362,9 @@ public class Utils implements Constants {
         else if (mClass == KSMFragment.class)
             applys.addAll(new ArrayList<>(Arrays.asList(KSM_ARRAY)));
         else if (mClass == LMKFragment.class) applys.add(LMK_MINFREE);
-        else if (mClass == MiscFragment.class) {
-            for (Object[] arrays : MISC_ARRAY)
-                for (Object path : arrays)
-                    if (path instanceof String)
-                        applys.add((String) path);
-        } else if (mClass == ScreenFragment.class) for (String[] arrays : SCREEN_ARRAY)
+        else if (mClass == MiscFragment.class) for (String[] arrays : MISC_ARRAY)
+             applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
+        else if (mClass == ScreenFragment.class) for (String[] arrays : SCREEN_ARRAY)
             applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
         else if (mClass == SoundFragment.class) for (String[] arrays : SOUND_ARRAY)
             applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
@@ -523,4 +520,29 @@ public class Utils implements Constants {
         }
     }
 
+    public static boolean isLetter (String testchar) {
+        if (Character.isLetter(testchar.charAt(0))) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean is64bit() {
+        if (Build.VERSION.SDK_INT < 21) {
+            return false;
+        }
+        else if (Build.SUPPORTED_64_BIT_ABIS.length >= 1) {
+                return true;
+        }
+        return false;
+    }
+
+    public static String getsysfspath(String[] paths) {
+        for (int i = 0; i < paths.length; i++) {
+            if (Utils.existFile(paths[i])) {
+                return paths[i];
+            }
+        }
+        return null;
+    }
 }

@@ -57,6 +57,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
     private CPUPart cpuPart;
     private GovernorPart governorPart;
     private int core;
+    private String cluster = "";
 
     @Override
     public void preInit(Bundle savedInstanceState) {
@@ -671,7 +672,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 mAlu_T_BoostCpusCard = new SeekBarCardView.DSeekBarCard(list);
                 mAlu_T_BoostCpusCard.setTitle(getString(R.string.alu_t_boostcpus));
                 mAlu_T_BoostCpusCard.setDescription(getString(R.string.alu_t_boostcpus_summary));
-                mAlu_T_BoostCpusCard.setProgress(CPU.getAlutBoostCpus() / 1);
+                mAlu_T_BoostCpusCard.setProgress(CPU.getAlutBoostCpus());
                 mAlu_T_BoostCpusCard.setOnDSeekBarCardListener(this);
 
                 addView(mAlu_T_BoostCpusCard);
@@ -919,10 +920,12 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 }
             }
             if (dCardView == mGovernorTunableNoPerCoreCard) {
+                cpuFragment.cluster = "big";
                 cpuFragment.core = CPU.getBigCore();
                 cpuFragment.governorPart.reload();
                 cpuFragment.setCurrentItem(1);
             } else if (dCardView == mGovernorTunableLITTLECard) {
+                cpuFragment.cluster = "little";
                 cpuFragment.core = CPU.getLITTLEcore();
                 cpuFragment.governorPart.reload();
                 cpuFragment.setCurrentItem(1);
@@ -980,7 +983,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
         private void ForceRefresh() {
             try {
                 Thread.sleep(250);
-            } catch (InterruptedException ex) {
+            } catch (InterruptedException ignored) {
             }
             CPUFragment.cpuFragment.cpuPart.view.invalidate();
             getActivity().getSupportFragmentManager().beginTransaction().detach(this).attach(this).commit();
@@ -1139,8 +1142,12 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
         @Override
         public String getPath() {
             if (!CPU.isPerCoreControlActive(getActivity())) {
-                return getPath(CPU.isBigLITTLE() ? String.format(CPU_GOVERNOR_TUNABLES_CORE, cpuFragment.core) :
-                        CPU_GOVERNOR_TUNABLES, CPU.getCurGovernor(cpuFragment.core, true));
+                if ( CPU.isBigLITTLE() && cpuFragment.cluster.equals("little") && Utils.existFile(String.format(CPU_GOVERNOR_TUNABLES_CORE, CPU.LITTLEcore) + "/" + CPU.getCurGovernor(CPU.getLITTLEcore(), true))) {
+                    return getPath(String.format(CPU_GOVERNOR_TUNABLES_CORE, CPU.LITTLEcore), CPU.getCurGovernor(cpuFragment.core, true));
+                } else if ( CPU.isBigLITTLE() && cpuFragment.cluster.equals("big") && Utils.existFile(String.format(CPU_GOVERNOR_TUNABLES_CORE, CPU.bigCore) + "/" + CPU.getCurGovernor(CPU.getBigCore(), true))) {
+                    return getPath(String.format(CPU_GOVERNOR_TUNABLES_CORE, CPU.bigCore), CPU.getCurGovernor(cpuFragment.core, true));
+                }
+                return getPath(CPU_GOVERNOR_TUNABLES, CPU.getCurGovernor(cpuFragment.core, true));
             }
             if (CPU.isPerCoreControlActive(getActivity())) {
                 return getPath(CPU_GOVERNOR_TUNABLES, CPU.getMSMLimiterGovernor(cpuFragment.core));

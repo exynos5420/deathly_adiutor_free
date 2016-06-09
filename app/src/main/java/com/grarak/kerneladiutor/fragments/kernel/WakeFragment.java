@@ -17,7 +17,6 @@
 package com.grarak.kerneladiutor.fragments.kernel;
 
 import android.os.Bundle;
-import android.view.ViewDebug;
 
 import com.grarak.kerneladiutor.R;
 import com.grarak.kerneladiutor.elements.cards.PopupCardView;
@@ -45,6 +44,8 @@ public class WakeFragment extends RecyclerViewFragment implements PopupCardView.
     private PopupCardView.DPopupCard mDt2sCard;
     private SwitchCardView.DSwitchCard[] mGestureCards;
     private SwitchCardView.DSwitchCard mCameraGestureCard;
+    private SwitchCardView.DSwitchCard mTWCard;
+    private SwitchCardView.DSwitchCard mMWCard;
     private SwitchCardView.DSwitchCard mPocketModeCard;
 
     private SeekBarCardView.DSeekBarCard mWakeTimeoutCard, mS2WTimeCard, mDT2WTimeBetweenTapsCard, mDT2WFeatherXCard, mDT2WFeatherYCard, mWakeGesturesVibStrengthCard;
@@ -64,6 +65,8 @@ public class WakeFragment extends RecyclerViewFragment implements PopupCardView.
         if (Wake.hasDt2s()) dt2sInit();
         if (Wake.hasGesture()) gestureInit();
         if (Wake.hasCameraGesture()) cameraGestureInit();
+        if (Wake.hasTW()) TWInit();
+        if (Wake.hasTW()) MWInit();
         if (Wake.hasPocketMode()) pocketModeInit();
         if (Wake.hasWakeTimeout()) wakeTimeoutInit();
         if (Wake.hasPowerKeySuspend()) powerKeySuspendInit();
@@ -177,6 +180,25 @@ public class WakeFragment extends RecyclerViewFragment implements PopupCardView.
         mCameraGestureCard.setOnDSwitchCardListener(this);
 
         addView(mCameraGestureCard);
+    }
+
+    private void TWInit() {
+        mTWCard = new SwitchCardView.DSwitchCard();
+        mTWCard.setTitle(getString(R.string.TW));
+        mTWCard.setDescription(getString(R.string.TW_summary));
+        mTWCard.setChecked(Wake.isTWActive());
+        mTWCard.setOnDSwitchCardListener(this);
+
+        addView(mTWCard);
+    }
+    private void MWInit() {
+        mMWCard = new SwitchCardView.DSwitchCard();
+        mMWCard.setTitle(getString(R.string.MW));
+        mMWCard.setDescription(getString(R.string.MW_summary));
+        mMWCard.setChecked(Wake.isMWActive());
+        mMWCard.setOnDSwitchCardListener(this);
+
+        addView(mMWCard);
     }
 
     private void pocketModeInit() {
@@ -300,6 +322,10 @@ public class WakeFragment extends RecyclerViewFragment implements PopupCardView.
             Wake.activateLenient(checked, getActivity());
         else if (dSwitchCard == mCameraGestureCard)
             Wake.activateCameraGesture(checked, getActivity());
+        else if (dSwitchCard == mTWCard)
+            Wake.activateTW(checked, getActivity());
+        else if (dSwitchCard == mMWCard)
+            Wake.activateMW(checked, getActivity());
         else if (dSwitchCard == mPocketModeCard)
             Wake.activatePocketMode(checked, getActivity());
         else if (dSwitchCard == mPowerKeySuspendCard)

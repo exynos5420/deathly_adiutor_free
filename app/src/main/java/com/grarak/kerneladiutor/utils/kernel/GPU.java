@@ -24,6 +24,7 @@ import com.grarak.kerneladiutor.utils.root.Control;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -36,7 +37,10 @@ public class GPU implements Constants {
     private static String GPU_2D_AVAILABLE_FREQS;
     private static String GPU_2D_SCALING_GOVERNOR;
 
+    private static String[] mAvail_2D_Govs;
+
     private static Integer[] mGpu2dFreqs;
+    private static int mGPU_Min_Pwr = 20;
 
     private static String GPU_CUR_FREQ;
     private static String GPU_MAX_FREQ;
@@ -76,7 +80,7 @@ public class GPU implements Constants {
     }
 
     public static boolean isAdrenoIdlerActive() {
-        return Utils.readFile(ADRENO_IDLER_ACTIVATE).equals("Y");
+        return Utils.readFile(ADRENO_IDLER_ACTIVATE).equals(Utils.isLetter(Utils.readFile(ADRENO_IDLER_ACTIVATE)) ? "Y" :"N");
     }
 
     public static boolean hasAdrenoIdler() {
@@ -112,7 +116,7 @@ public class GPU implements Constants {
     }
 
     public static void activateGamingMode(boolean active, Context context) {
-         Control.runCommand(active ? "0" : "8", GPU_MIN_POWER_LEVEL, Control.CommandType.GENERIC, context);
+         Control.runCommand(active ? "0" : Integer.toString(mGPU_Min_Pwr) , GPU_MIN_POWER_LEVEL, Control.CommandType.GENERIC, context);
     }
 
     public static boolean isGamingModeActive() {
@@ -120,6 +124,9 @@ public class GPU implements Constants {
     }
 
     public static boolean hasGPUMinPowerLevel() {
+        if (Utils.existFile(GPU_NUM_POWER_LEVELS)) {
+            mGPU_Min_Pwr = Utils.stringToInt(Utils.readFile(GPU_NUM_POWER_LEVELS)) - 1;
+        }
             return Utils.existFile(GPU_MIN_POWER_LEVEL);
     }
 
@@ -129,7 +136,13 @@ public class GPU implements Constants {
     }
 
     public static List<String> getGpu2dGovernors() {
-        return new ArrayList<>(Arrays.asList(GPU_GENERIC_GOVERNORS.split(" ")));
+        if (mAvail_2D_Govs == null) mAvail_2D_Govs = new String[0];
+        String value = Utils.readFile(GPU_GENERIC_GOVERNORS);
+        if (value != null) {
+            mAvail_2D_Govs = value.split(" ");
+            Collections.sort(Arrays.asList(mAvail_2D_Govs), String.CASE_INSENSITIVE_ORDER);
+        }
+        return new ArrayList<>(Arrays.asList(mAvail_2D_Govs));
     }
 
     public static String getGpu2dGovernor() {
@@ -223,6 +236,7 @@ public class GPU implements Constants {
                         String value = Utils.readFile(file);
                         if (value != null)
                             GPU_AVAILABLE_GOVERNORS = value.split(" ");
+                            Collections.sort(Arrays.asList(GPU_AVAILABLE_GOVERNORS), String.CASE_INSENSITIVE_ORDER);
                     }
         return new ArrayList<>(Arrays.asList(GPU_AVAILABLE_GOVERNORS == null ? GPU_GENERIC_GOVERNORS
                 .split(" ") : GPU_AVAILABLE_GOVERNORS));

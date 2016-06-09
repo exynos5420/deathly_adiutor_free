@@ -21,7 +21,6 @@ import android.os.Bundle;
 import com.grarak.kerneladiutor.R;
 import com.grarak.kerneladiutor.elements.DAdapter;
 import com.grarak.kerneladiutor.elements.DDivider;
-import com.grarak.kerneladiutor.elements.cards.InformationCardView;
 import com.grarak.kerneladiutor.elements.cards.PopupCardView;
 import com.grarak.kerneladiutor.elements.cards.SeekBarCardView;
 import com.grarak.kerneladiutor.elements.cards.SwitchCardView;
@@ -628,7 +627,6 @@ public class ThermalFragment extends RecyclerViewFragment implements SwitchCardV
             Thermal.setFrancoThermalStageThree(CPU.getFreqs().get(position), getActivity());
         else if (dPopupCard == mFrancoThermalStageFourCard)
             Thermal.setFrancoThermalStageFour(CPU.getFreqs().get(position), getActivity());
-        getActivity().getSupportFragmentManager().beginTransaction().notifyAll();
     }
 
     @Override
