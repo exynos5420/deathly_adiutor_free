@@ -58,9 +58,14 @@ public class Control implements Constants {
     }
 
     private static void run(String command, String path, Context context) {
-        RootUtils.runCommand(command);
-        commandSaver(context, path, command);
-        Log.i(TAG, "Run command: " + command);
+        if (path != null && command != null && !path.equals("null") && !command.equals("null")) {
+            RootUtils.runCommand(command);
+            commandSaver(context, path, command);
+            Log.i(TAG, "Run command: " + command);
+        }
+        else {
+            Log.i(TAG, "Unable to run command due to null values.");
+        }
     }
 
     private static int getChecksum(int arg1, int arg2) {
