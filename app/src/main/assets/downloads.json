@@ -190,12 +190,5 @@
       "YUNIQUE"
     ],
     "link": "https://raw.githubusercontent.com/Grarak/KernelAdiutor/master/download/jalebi.json"
-  },
-  {
-    "vendor": [
-      "Motorola",
-      "MOTOROLA",
-      "motorola"
-    ]
-  }  
+  }
 ]
