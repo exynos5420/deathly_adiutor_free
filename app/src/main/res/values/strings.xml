@@ -25,6 +25,7 @@
     <string name="no_permission">No permission</string>
     <string name="select_file">Select %s?</string>
     <string name="no_files">No files in this path.</string>
+    <string name="copy">Copy</string>
 
     <!-- EditText -->
     <string name="save">Save</string>
@@ -91,7 +92,7 @@
     <string name="initd">Init.d</string>
     <string name="startup_commands">Start-Up Commands</string>
     <string name="startup_commands_list">Start-Up Commands List:</string>
-    <string name="startup_commands_list_delete">Tapping on an individual command will delete it from the database.</string>
+    <string name="startup_commands_list_info">Tap on an individual command to choose between copying it or deleteing it from the database.</string>
     <string name="startup_commands_delete">Tap this card to delete all saved startup settings</string>
     <string name="startup_commands_delete_all">Are you sure you want to delete all Start-up Commands?</string>
     <string name="startup_commands_delete_all_yes">Yes</string>
