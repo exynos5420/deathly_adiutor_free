@@ -57,7 +57,7 @@ import java.util.List;
  */
 public class StartUpCommandsFragment extends RecyclerViewFragment implements CardViewItem.DCardView.OnDCardListener {
 
-    private CardViewItem.DCardView mStartUpCommandsDelete;
+    private CardViewItem.DCardView mAllStartUpCommandsCard;
     private CardViewItem.DCardView[] mStartUpCommands;
 
     @Override
@@ -101,11 +101,42 @@ public class StartUpCommandsFragment extends RecyclerViewFragment implements Car
                 }
 
         if (commands.size() > 0) {
-            mStartUpCommandsDelete = new CardViewItem.DCardView();
-            mStartUpCommandsDelete.setTitle(getString(R.string.startup_commands_delete));
-            mStartUpCommandsDelete.setOnDCardListener(this);
+            mAllStartUpCommandsCard = new CardViewItem.DCardView();
+            mAllStartUpCommandsCard.setTitle(getString(R.string.all_startup_commands));
+            final String allcommands = android.text.TextUtils.join("\n", commands);
 
-            addView(mStartUpCommandsDelete);
+            mAllStartUpCommandsCard.setOnDCardListener(new CardViewItem.DCardView.OnDCardListener() {
+                @Override
+                public void onClick(CardViewItem.DCardView dCardView) {
+                    getHandler().post(new Runnable() {
+                        @Override
+                        public void run() {
+                            new AlertDialog.Builder(getActivity()).setItems(getResources().getStringArray(R.array.startup_commands_menu),
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            switch (which) {
+                                                case 0: {
+                                                    ClipboardManager clipboard = (ClipboardManager) MainActivity.context.getSystemService(Context.CLIPBOARD_SERVICE);
+                                                    ClipData clip = ClipData.newPlainText("Startup Comnmand", allcommands);
+                                                    clipboard.setPrimaryClip(clip);
+                                                    break;
+                                                }
+                                                case 1: {
+                                                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                                                    builder.setMessage(getString(R.string.startup_commands_delete_all)).setPositiveButton(getString(R.string.startup_commands_delete_all_yes), dialogClickListener)
+                                                            .setNegativeButton(getString(R.string.startup_commands_delete_all_no), dialogClickListener).show();
+                                                    break;
+                                                }
+
+                                            }
+                                        }
+                                    }).show();
+                        }
+                    });
+                }
+            });
+            addView(mAllStartUpCommandsCard);
 
             DDivider mStartUpCommandsListDividerCard = new DDivider();
             mStartUpCommandsListDividerCard.setText(getString(R.string.startup_commands_list));
@@ -151,10 +182,10 @@ public class StartUpCommandsFragment extends RecyclerViewFragment implements Car
             }
         }
         else {
-                mStartUpCommandsDelete = new CardViewItem.DCardView();
-                mStartUpCommandsDelete.setTitle(getString(R.string.startup_commands_none));
+            mAllStartUpCommandsCard = new CardViewItem.DCardView();
+            mAllStartUpCommandsCard.setTitle(getString(R.string.startup_commands_none));
 
-                addView(mStartUpCommandsDelete);
+            addView(mAllStartUpCommandsCard);
         }
     }
 
@@ -181,12 +212,12 @@ public class StartUpCommandsFragment extends RecyclerViewFragment implements Car
 
     public void onClick(CardViewItem.DCardView dCardView) {
 
-        if (dCardView == mStartUpCommandsDelete) {
+        /*if (dCardView == mStartUpCommandsDelete) {
             AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
             builder.setMessage(getString(R.string.startup_commands_delete_all)).setPositiveButton(getString(R.string.startup_commands_delete_all_yes), dialogClickListener)
                     .setNegativeButton(getString(R.string.startup_commands_delete_all_no), dialogClickListener).show();
         }
-        /*for (int i = 0; i < mStartUpCommands.length; i++)
+        for (int i = 0; i < mStartUpCommands.length; i++)
         if (dCardView == mStartUpCommands[i]) {
             Control.deletespecificcommand(getActivity(), null, String.valueOf(mStartUpCommands[i].getDescription()));
             forcerefresh(getActivity());
