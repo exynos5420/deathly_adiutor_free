@@ -41,8 +41,6 @@ public class Screen implements Constants {
 
     private static String SCREEN_CALIBRATION, SCREEN_CALIBRATION_CTRL, MIN_BRIGHTNESS;
 
-    public static String HBM_PATH;
-
     private static GammaProfiles GAMMA_PROFILES;
 
     public static void activateGloveMode(boolean active, Context context) {
@@ -495,24 +493,18 @@ public class Screen implements Constants {
     }
 
     public static void activateScreenHBM(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", HBM_PATH, Control.CommandType.GENERIC, context);
+        Control.runCommand(active ? "1" : "0", Utils.getsysfspath(SCREEN_HBM), Control.CommandType.GENERIC, context);
         if (Utils.getBoolean("Widget_Active", false, context)) {
             HBMWidget.doupdate(context, active);
         }
     }
 
     public static boolean isScreenHBMActive() {
-        return Utils.readFile(HBM_PATH).equals("1");
+        return Utils.readFile(Utils.getsysfspath(SCREEN_HBM)).equals("1");
     }
 
     public static boolean hasScreenHBM() {
-        for(int i = 0;i < SCREEN_HBM.length;i++) {
-            if (Utils.existFile(SCREEN_HBM[i])) {
-                HBM_PATH = SCREEN_HBM[i];
-                return true;
-            }
-        }
-        return false;
+        return Utils.existFile(Utils.getsysfspath(SCREEN_HBM));
     }
 
     public static boolean isScreenAutoHBMActive(Context context) {
