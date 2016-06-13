@@ -1627,7 +1627,7 @@ public class CPUHotplug implements Constants {
         if (CPUHotplug.isMBHotplugActive() && hasMBHotplugEnable() && !activehotplug.equals("MBHotplug")) Control.runCommand("0", Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + MB_ENABLED, Control.CommandType.GENERIC, context);
         if (CPUHotplug.isMsmHotplugActive() && hasMsmHotplugEnable() && !activehotplug.equals("MSMHotPlug")) Control.runCommand("0", MSM_HOTPLUG_ENABLE_FILE, Control.CommandType.GENERIC, context);
         if (CPUHotplug.isStateHelperActive() && hasStateHelperEnable() && !activehotplug.equals("State_Helper")) Control.runCommand("0", STATE_HELPER_ENABLE, Control.CommandType.GENERIC, context);
-        if (CPUHotplug.isLazyPlugTouchBoostActive() && hasLazyPlugEnable() && !activehotplug.equals("LazyPlug")) Control.runCommand("0", HOTPLUG_LAZYPLUG_TOUCH_BOOST_ACTIVE, Control.CommandType.GENERIC, context);
+        if (CPUHotplug.isLazyPlugActive() && hasLazyPlugEnable() && !activehotplug.equals("LazyPlug")) Control.runCommand("0", HOTPLUG_LAZYPLUG_TOUCH_BOOST_ACTIVE, Control.CommandType.GENERIC, context);
         if (CPUHotplug.isDynPlugActive() && hasDynPlugEnable() && !activehotplug.equals("DynPlug")) Control.runCommand("N", HOTPLUG_DYN_PLUG_ENABLE, Control.CommandType.GENERIC, context);
     }
 
