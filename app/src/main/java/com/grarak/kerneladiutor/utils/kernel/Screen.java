@@ -497,15 +497,7 @@ public class Screen implements Constants {
     public static void activateScreenHBM(boolean active, Context context) {
         Control.runCommand(active ? "1" : "0", HBM_PATH, Control.CommandType.GENERIC, context);
         if (Utils.getBoolean("Widget_Active", false, context)) {
-            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-            RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.hbm_widget_layout);
-            ComponentName thisWidget = new ComponentName(context, HBMWidget.class);
-            if (active) {
-                remoteViews.setImageViewResource(R.id.imageView, R.drawable.hbm_enable_ic);
-            } else {
-                remoteViews.setImageViewResource(R.id.imageView, R.drawable.hbm_disable_ic);
-            }
-            appWidgetManager.updateAppWidget(thisWidget, remoteViews);
+            HBMWidget.doupdate(context, active);
         }
     }
 
