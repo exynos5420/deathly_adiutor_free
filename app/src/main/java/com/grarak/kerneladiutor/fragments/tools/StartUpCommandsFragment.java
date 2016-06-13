@@ -55,7 +55,7 @@ import java.util.List;
 /**
  * Created by willi on 25.04.15.
  */
-public class StartUpCommandsFragment extends RecyclerViewFragment implements CardViewItem.DCardView.OnDCardListener {
+public class StartUpCommandsFragment extends RecyclerViewFragment {
 
     private CardViewItem.DCardView mAllStartUpCommandsCard;
     private CardViewItem.DCardView[] mStartUpCommands;
@@ -210,17 +210,4 @@ public class StartUpCommandsFragment extends RecyclerViewFragment implements Car
         }
     };
 
-    public void onClick(CardViewItem.DCardView dCardView) {
-
-        /*if (dCardView == mStartUpCommandsDelete) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-            builder.setMessage(getString(R.string.startup_commands_delete_all)).setPositiveButton(getString(R.string.startup_commands_delete_all_yes), dialogClickListener)
-                    .setNegativeButton(getString(R.string.startup_commands_delete_all_no), dialogClickListener).show();
-        }
-        for (int i = 0; i < mStartUpCommands.length; i++)
-        if (dCardView == mStartUpCommands[i]) {
-            Control.deletespecificcommand(getActivity(), null, String.valueOf(mStartUpCommands[i].getDescription()));
-            forcerefresh(getActivity());
-        }*/
-    }
 }
