@@ -150,31 +150,28 @@ public class StartUpCommandsFragment extends RecyclerViewFragment {
                 mStartUpCommands[i].setOnDCardListener(new CardViewItem.DCardView.OnDCardListener() {
                                                     @Override
                                                     public void onClick(CardViewItem.DCardView dCardView) {
-                                                        getHandler().post(new Runnable() {
-                                                            @Override
-                                                            public void run() {
-                                                                new AlertDialog.Builder(getActivity()).setItems(getResources().getStringArray(R.array.startup_commands_menu),
-                                                                        new DialogInterface.OnClickListener() {
-                                                                            @Override
-                                                                            public void onClick(DialogInterface dialog, int which) {
-                                                                                switch (which) {
-                                                                                    case 0: {
-                                                                                        ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-                                                                                        ClipData clip = ClipData.newPlainText("Startup Comnmand", command);
-                                                                                        clipboard.setPrimaryClip(clip);
-                                                                                        break;
-                                                                                    }
-                                                                                    case 1: {
-                                                                                        Control.deletespecificcommand(getActivity(), null, command);
-                                                                                        forcerefresh(getActivity());
-                                                                                        break;
-                                                                                    }
 
-                                                                                }
+                                                        new AlertDialog.Builder(getActivity()).setItems(getResources().getStringArray(R.array.startup_commands_menu),
+                                                                new DialogInterface.OnClickListener() {
+                                                                    @Override
+                                                                    public void onClick(DialogInterface dialog, int which) {
+                                                                        switch (which) {
+                                                                            case 0: {
+                                                                                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                                                                                ClipData clip = ClipData.newPlainText("Startup Comnmand", command);
+                                                                                clipboard.setPrimaryClip(clip);
+                                                                                break;
                                                                             }
-                                                                        }).show();
-                                                            }
-                                                        });
+                                                                            case 1: {
+                                                                                Control.deletespecificcommand(getActivity(), null, command);
+                                                                                forcerefresh(getActivity());
+                                                                                break;
+                                                                            }
+
+                                                                        }
+                                                                    }
+                                                                }).show();
+
                                                     }
                                                 });
                 addView(mStartUpCommands[i]);
