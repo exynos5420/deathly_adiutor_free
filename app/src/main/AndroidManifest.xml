@@ -93,6 +93,7 @@
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="com.kerneladiutor.mod.action.TOGGLE_HBM" />
+                <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
@@ -168,6 +169,9 @@
                 android:resource="@xml/file_provider_paths" />
         </provider>
 
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="61872925e4455ae058115a382c80d6c48a381d6a" />
     </application>
 
 </manifest>

@@ -25,6 +25,7 @@
     <string name="no_permission">No permission</string>
     <string name="select_file">Select %s?</string>
     <string name="no_files">No files in this path.</string>
+    <string name="copy">Copy</string>
 
     <!-- EditText -->
     <string name="save">Save</string>
@@ -91,8 +92,8 @@
     <string name="initd">Init.d</string>
     <string name="startup_commands">Start-Up Commands</string>
     <string name="startup_commands_list">Start-Up Commands List:</string>
-    <string name="startup_commands_list_delete">Tapping on an individual command will delete it from the database.</string>
-    <string name="startup_commands_delete">Tap this card to delete all saved startup settings</string>
+    <string name="startup_commands_list_info">Tap on an individual command to choose between copying it or deleteing it from the database.</string>
+    <string name="all_startup_commands">Tap this card to copy or delete all saved startup settings</string>
     <string name="startup_commands_delete_all">Are you sure you want to delete all Start-up Commands?</string>
     <string name="startup_commands_delete_all_yes">Yes</string>
     <string name="startup_commands_delete_all_no">No</string>
@@ -250,6 +251,8 @@
     <string name="down_lock_duration">Down Lock Duration</string>
     <string name="down_lock_duration_summary">Minimum interval a CPU is kept online.</string>
     <string name="fshift">FShift</string>
+    <string name="dyn_plug">Dyn_Plug</string>
+    <string name="dyn_plug_summary">An in-kernel replacement for Qualcomm\'s MPDecision. Developed by Stratos Karafotis.</string>
     <string name="blu_plug">Blu_Plug</string>
     <string name="blu_plug_summary">An in-kernel replacement for Qualcomm\'s MPDecision. Developed by Code_Blue team.</string>
     <string name="powersaver_mode">Powersaver Mode</string>
@@ -970,7 +973,7 @@
     <string name="modification_summary">This application is being modified for various custom features that are not included in the original Kernel Adiutor.</string>
 
     <string name="modification_version">Modification Version</string>
-    <string name="modification_version_number" translatable="false">Build 12</string>
+    <string name="modification_version_number" translatable="false">Build 13</string>
 
     <string name="accessibility_service_label">KA Per App Monitor</string>
     <string name="accessibility_service_desc">Service to monitor when foreground app changes for per-app profile loading</string>

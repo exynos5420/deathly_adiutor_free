@@ -21,6 +21,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
@@ -48,13 +49,19 @@ import com.grarak.kerneladiutor.fragments.kernel.WakeLockFragment;
 import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;
 import com.grarak.kerneladiutor.utils.database.CommandDB;
+import com.grarak.kerneladiutor.utils.kernel.CPUVoltage;
 import com.grarak.kerneladiutor.utils.kernel.CoreControl;
 import com.grarak.kerneladiutor.utils.kernel.Screen;
 import com.grarak.kerneladiutor.utils.tools.UpdateChecker;
 import com.kerneladiutor.library.root.RootUtils;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by willi on 08.03.15.
@@ -82,6 +89,20 @@ public class BootService extends Service {
     private void init() {
         final List<String> applys = new ArrayList<>();
         final List<String> plugins = new ArrayList<>();
+
+        List<String> freqs = CPUVoltage.getFreqs();
+        List<String> voltages = CPUVoltage.getVoltages();
+        Map<String, String> freqtable = new HashMap<String, String>();
+
+        // Store Kernel's Stock Freq/Voltage table
+        SharedPreferences.Editor preferences = getSharedPreferences("voltage_table", 0).edit();
+        for (int i = 0; i < freqs.size(); i++) {
+            freqtable.put(freqs.get(i), voltages.get(i));
+            preferences.putString(freqs.get(i), voltages.get(i));
+        }
+        preferences.commit();
+        Log.i(Constants.TAG, "FreqTable: " + freqtable);
+
 
         if (Screen.hasScreenHBM() && Utils.getBoolean("AutoHBM", false, getApplicationContext())) {
             getApplicationContext().startService(new Intent(getApplicationContext(), AutoHighBrightnessModeService.class));

@@ -3,6 +3,7 @@ package com.grarak.kerneladiutor.services;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -38,6 +39,7 @@ public class HBMWidget extends AppWidgetProvider {
         int N = appWidgetIds.length;
         for (int i = 0; i < N; i++) {
             int appWidgetId = appWidgetIds[i];
+            doupdate(context, Screen.isScreenHBMActive());
 
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.hbm_widget_layout);
             Intent intent = new Intent(context, HBMWidget.class);
@@ -45,7 +47,6 @@ public class HBMWidget extends AppWidgetProvider {
             int flag = PendingIntent.FLAG_UPDATE_CURRENT;
             PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, flag);
             views.setOnClickPendingIntent(R.id.imageView, pi);
-            views.setImageViewResource(R.id.imageView, R.drawable.hbm_disable_ic);
 
             appWidgetManager.updateAppWidget(appWidgetId, views);
         }
@@ -65,15 +66,33 @@ public class HBMWidget extends AppWidgetProvider {
                 }
                 if (Screen.isScreenHBMActive()) {
                     Screen.activateScreenHBM(false, context);
+                    doupdate(context, false);
                 } else {
                     Screen.activateScreenHBM(true, context);
+                    doupdate(context, true);
                 }
             }
+        }
+        // Make sure that the widghet is in the correct state when the phone is unlocked.
+        if (intent.getAction().equals("android.intent.action.USER_PRESENT")) {
+            doupdate(context, Screen.isScreenHBMActive());
         }
     }
 
     private void setWidgetActive(boolean active, Context context){
         Utils.saveBoolean("Widget_Active", active, context);
+    }
+
+    public static void doupdate (Context context, boolean active) {
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.hbm_widget_layout);
+        ComponentName thisWidget = new ComponentName(context, HBMWidget.class);
+        if (active) {
+            remoteViews.setImageViewResource(R.id.imageView, R.drawable.hbm_enable_ic);
+        } else {
+            remoteViews.setImageViewResource(R.id.imageView, R.drawable.hbm_disable_ic);
+        }
+        appWidgetManager.updateAppWidget(thisWidget, remoteViews);
     }
 
 }
