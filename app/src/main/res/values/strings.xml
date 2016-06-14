@@ -973,7 +973,7 @@
     <string name="modification_summary">This application is being modified for various custom features that are not included in the original Kernel Adiutor.</string>
 
     <string name="modification_version">Modification Version</string>
-    <string name="modification_version_number" translatable="false">Build 12</string>
+    <string name="modification_version_number" translatable="false">Build 13</string>
 
     <string name="accessibility_service_label">KA Per App Monitor</string>
     <string name="accessibility_service_desc">Service to monitor when foreground app changes for per-app profile loading</string>
