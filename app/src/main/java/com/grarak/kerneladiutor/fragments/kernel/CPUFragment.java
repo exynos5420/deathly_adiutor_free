@@ -1081,10 +1081,14 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                                             List<Integer> cores = CPU.getBigCoreRange();
                                             for (int i = 0; i < mCoreUsageText.length; i++) {
                                                 String message = Math.round(usage[cores.get(i) + 1]) + "%";
-                                                if (mCoreUsageText[i] != null)
-                                                    mCoreUsageText[i].setText(message);
-                                                if (mCoreProgressBar != null && mCoreProgressBar[i].getProgress() == 0)
-                                                    mCoreUsageText[i].setText("");
+                                                if (mCoreUsageText[i] != null){
+                                                    if (mCoreProgressBar != null && mCoreProgressBar[i] != null && mCoreProgressBar[i].getProgress() == 0){
+                                                        mCoreUsageText[i].setText("");
+                                                    } else {
+                                                        mCoreUsageText[i].setText(message);
+                                                    }
+                                                }
+
                                             }
                                         }
 
