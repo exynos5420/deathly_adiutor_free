@@ -35,7 +35,6 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.grarak.kerneladiutor.MainActivity;
 import com.grarak.kerneladiutor.R;
 import com.grarak.kerneladiutor.elements.DAdapter;
 import com.grarak.kerneladiutor.elements.cards.CardViewItem;
@@ -416,11 +415,13 @@ public class ProfileFragment extends RecyclerViewFragment {
             mPerAppDialog.show();
         }
     }
-}
 
-class PreLoadAppList extends AsyncTask<Void, Void, String> {
-    protected String doInBackground(Void...arg0) {
-        Map apps = Per_App.getInstalledApps(MainActivity.context);
-        return "Done";
+
+    class PreLoadAppList extends AsyncTask<Void, Void, String> {
+        protected String doInBackground(Void...arg0) {
+            Map apps = Per_App.getInstalledApps(ProfileFragment.this.getActivity());
+            return "Done";
+        }
     }
+
 }

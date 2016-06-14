@@ -23,7 +23,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
-import com.grarak.kerneladiutor.MainActivity;
 import com.grarak.kerneladiutor.R;
 import com.grarak.kerneladiutor.elements.DDivider;
 import com.grarak.kerneladiutor.elements.cards.CardViewItem;
@@ -117,7 +116,7 @@ public class StartUpCommandsFragment extends RecyclerViewFragment {
                                         public void onClick(DialogInterface dialog, int which) {
                                             switch (which) {
                                                 case 0: {
-                                                    ClipboardManager clipboard = (ClipboardManager) MainActivity.context.getSystemService(Context.CLIPBOARD_SERVICE);
+                                                    ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
                                                     ClipData clip = ClipData.newPlainText("Startup Comnmand", allcommands);
                                                     clipboard.setPrimaryClip(clip);
                                                     break;
@@ -160,7 +159,7 @@ public class StartUpCommandsFragment extends RecyclerViewFragment {
                                                                             public void onClick(DialogInterface dialog, int which) {
                                                                                 switch (which) {
                                                                                     case 0: {
-                                                                                        ClipboardManager clipboard = (ClipboardManager) MainActivity.context.getSystemService(Context.CLIPBOARD_SERVICE);
+                                                                                        ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
                                                                                         ClipData clip = ClipData.newPlainText("Startup Comnmand", command);
                                                                                         clipboard.setPrimaryClip(clip);
                                                                                         break;

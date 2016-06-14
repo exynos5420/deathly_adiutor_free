@@ -18,7 +18,6 @@ package com.grarak.kerneladiutor;
 
 import android.Manifest;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
@@ -119,11 +118,6 @@ import io.fabric.sdk.android.Fabric;
 public class MainActivity extends BaseActivity implements Constants {
 
     /**
-     * Cache the context of this activity
-     */
-    public static Context context;
-
-    /**
      * Views
      */
     private Toolbar toolbar;
@@ -151,9 +145,6 @@ public class MainActivity extends BaseActivity implements Constants {
         if(!BuildConfig.DEBUG){
             Fabric.with(this, new Crashlytics());
         }
-        // If there is a previous activity running, kill it
-        if (context != null) ((Activity) context).finish();
-        context = this;
 
         setView();
         String password;
@@ -435,7 +426,7 @@ public class MainActivity extends BaseActivity implements Constants {
                 finish();
                 return;
             }
-            if (Utils.getBoolean("updatecheck", true, MainActivity.context)) {
+            if (Utils.getBoolean("updatecheck", true, getApplicationContext())) {
                 checkForAppUpdate();
             }
             mSplashView.finish();

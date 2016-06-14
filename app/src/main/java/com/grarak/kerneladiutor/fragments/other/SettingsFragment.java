@@ -46,12 +46,9 @@ import com.grarak.kerneladiutor.utils.Utils;
 import com.grarak.kerneladiutor.utils.database.ProfileDB;
 import com.kerneladiutor.library.root.RootUtils;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -313,7 +310,7 @@ public class SettingsFragment extends RecyclerViewFragment {
         mDumpSysFs.setOnDCardListener(new CardViewItem.DCardView.OnDCardListener() {
             @Override
             public void onClick(CardViewItem.DCardView dCardView) {
-                sysfsDialog = ProgressDialog.show(MainActivity.context, getString(R.string.dump_sysfs_dialog_title),
+                sysfsDialog = ProgressDialog.show(getActivity(), getString(R.string.dump_sysfs_dialog_title),
                         getString(R.string.dump_sysfs_dialog_summary), true);
                 Thread t = new Thread(new Runnable()
                 {
@@ -336,7 +333,7 @@ public class SettingsFragment extends RecyclerViewFragment {
         // loop through each array in the constants file. These contain all the other arrays.
         // have to do this once for the 1d arrays and again for the 2 arrays
         try {
-            File sysfsdump = new File(MainActivity.context.getFilesDir(), "sysfsdump.txt");
+            File sysfsdump = new File(getActivity().getFilesDir(), "sysfsdump.txt");
             if (sysfsdump.exists()) {
                 sysfsdump.delete();
             }
@@ -367,7 +364,7 @@ public class SettingsFragment extends RecyclerViewFragment {
             shareIntent.setAction(Intent.ACTION_SEND);
             shareIntent.setType("application/text");
 
-            Uri uri = FileProvider.getUriForFile(MainActivity.context, "com.grarak.kerneladiutor.fileprovider", sysfsdump);
+            Uri uri = FileProvider.getUriForFile(getActivity(), "com.grarak.kerneladiutor.fileprovider", sysfsdump);
             shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
             shareIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
