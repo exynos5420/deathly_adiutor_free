@@ -55,9 +55,6 @@ import com.grarak.kerneladiutor.utils.kernel.Screen;
 import com.grarak.kerneladiutor.utils.tools.UpdateChecker;
 import com.kerneladiutor.library.root.RootUtils;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -220,7 +217,7 @@ public class BootService extends Service {
 
         su.close();
         toast(getString(R.string.apply_on_boot_finished));
-        if (Utils.getBoolean("updatecheck", true, MainActivity.context)) {
+        if (Utils.getBoolean("updatecheck", true, getApplicationContext())) {
             bootCheckForAppUpdate();
         }
     }
@@ -230,7 +227,7 @@ public class BootService extends Service {
     }
 
     private void toast(final String message) {
-        if (Utils.getBoolean("applyonbootshowtoast", true, getApplicationContext()))
+        if (Utils.getBoolean("applyonbootshowtoast", true, this))
             hand.post(new Runnable() {
                 @Override
                 public void run() {
@@ -249,14 +246,14 @@ public class BootService extends Service {
 
                 if (UpdateChecker.isOldVersion(appUpdateData)) {
                     mNotifyManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                    mUpdate = new NotificationCompat.Builder(MainActivity.context);
+                    mUpdate = new NotificationCompat.Builder(BootService.this);
                     mUpdate.setContentTitle(getString(R.string.update_available))
                             .setContentText(getString(R.string.update_available_open_app))
                             .setSmallIcon(R.drawable.ic_launcher_preview);
 
-                    TaskStackBuilder updatestackBuilder = TaskStackBuilder.create(MainActivity.context);
+                    TaskStackBuilder updatestackBuilder = TaskStackBuilder.create(BootService.this);
                     updatestackBuilder.addParentStack(MainActivity.class);
-                    updatestackBuilder.addNextIntent(new Intent(MainActivity.context, MainActivity.class));
+                    updatestackBuilder.addNextIntent(new Intent(BootService.this, MainActivity.class));
                     PendingIntent updatependingIntent = updatestackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
                     mUpdate.setContentIntent(updatependingIntent);
 

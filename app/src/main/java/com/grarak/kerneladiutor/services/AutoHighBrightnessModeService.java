@@ -30,8 +30,6 @@ import android.os.IBinder;
 import android.os.PowerManager;
 import android.util.Log;
 
-import com.grarak.kerneladiutor.MainActivity;
-import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.kernel.Screen;
 
 /**
@@ -98,7 +96,7 @@ public class AutoHighBrightnessModeService extends Service {
         @Override
         public void onSensorChanged(SensorEvent event) {
             // Call Screen.hasScreenHBM() here in the if block to ensure that the appropriate variables are set when calling Screen.activateScreenHBM
-            if (Screen.isScreenAutoHBMSmoothingActive(MainActivity.context) && Screen.hasScreenHBM()) {
+            if (Screen.isScreenAutoHBMSmoothingActive(getApplicationContext()) && Screen.hasScreenHBM()) {
                 // This should average the last X lux values. X being user set or defaulting to 3.
                 // This will cause some delay in autohbm actually working as the values initialize at 0
                 avglux = 0;
