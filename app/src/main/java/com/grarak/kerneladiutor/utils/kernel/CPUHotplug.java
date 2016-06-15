@@ -17,7 +17,6 @@
 package com.grarak.kerneladiutor.utils.kernel;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.grarak.kerneladiutor.R;
 import com.grarak.kerneladiutor.utils.Constants;
@@ -775,17 +774,24 @@ public class CPUHotplug implements Constants {
     }
 
     public static String getBrickedNWNS(int num, String item, Context context) {
-           if ( ( num & 1 ) == 0 ) {
-                if (item.equals("title")) return String.format(context.getString(R.string.bricked_nwns), num / 2);
-                if (item.equals("description")) return String.format(context.getString(R.string.bricked_nwns_hotplug), num / 2);
-                if (item.equals("value") && Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_NWNS + "_" + num)) return Utils.readFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_NWNS + "_" + num);
+        if (item != null) {
+            if ((num & 1) == 0) {
+                if (item.equals("title"))
+                    return String.format(context.getString(R.string.bricked_nwns), num / 2);
+                if (item.equals("description"))
+                    return String.format(context.getString(R.string.bricked_nwns_hotplug), num / 2);
+                if (item.equals("value") && Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_NWNS + "_" + num))
+                    return Utils.readFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_NWNS + "_" + num);
+            } else {
+                if (item.equals("title"))
+                    return String.format(context.getString(R.string.bricked_nwns), (num - 1) / 2);
+                if (item.equals("description"))
+                    return String.format(context.getString(R.string.bricked_nwns_unplug), (num - 1) / 2);
+                if (item.equals("value") && Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_NWNS + "_" + num))
+                    return Utils.readFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_NWNS + "_" + num);
             }
-            else {
-                if (item.equals("title")) return String.format(context.getString(R.string.bricked_nwns), (num - 1) / 2);
-                if (item.equals("description")) return String.format(context.getString(R.string.bricked_nwns_unplug), (num - 1) / 2);
-                if (item.equals("value") && Utils.existFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_NWNS + "_" + num)) return Utils.readFile(Utils.getsysfspath(MB_HOTPLUG_ARRAY) + "/" + BRICKED_NWNS + "_" + num);
-            }
-            return "error";
+        }
+        return "error";
     }
 
     public static void setBrickedNWNS(int num, int value, Context context) {
