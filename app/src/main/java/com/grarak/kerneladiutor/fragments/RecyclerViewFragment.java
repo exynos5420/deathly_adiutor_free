@@ -23,6 +23,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.annotation.MainThread;
+import android.support.annotation.WorkerThread;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -235,12 +237,15 @@ public class RecyclerViewFragment extends BaseFragment {
         }
     }
 
+    @MainThread
     public void preInit(Bundle savedInstanceState) {
     }
 
+    @WorkerThread
     public void init(Bundle savedInstanceState) {
     }
 
+    @MainThread
     public void postInit(Bundle savedInstanceState) {
     }
 
