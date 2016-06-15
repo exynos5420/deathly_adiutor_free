@@ -20,6 +20,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatButton;
 import android.text.InputType;
@@ -29,6 +30,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.grarak.kerneladiutor.R;
 import com.grarak.kerneladiutor.elements.cards.EditTextCardView;
@@ -61,9 +63,22 @@ public class CPUVoltageFragment extends RecyclerViewFragment implements
     }
 
     @Override
+    public void preInit(Bundle savedInstanceState) {
+        super.preInit(savedInstanceState);
+        SharedPreferences storedvoltagetable = getContext().getSharedPreferences("voltage_table", 0);
+        // Save the current Voltage table if it doesn't exist. This will prevent issues in the table if they open it before a reboot.
+        // On reboot, the default table will overwrite this as it will have any adjustments done since boot as the reference. This is imperfect, but no better way to do it.
+        String toasttext = "";
+        if (storedvoltagetable.getString(CPUVoltage.getFreqs().get(0), "-1").equals("-1")) {
+            toasttext = getString(R.string.non_default_reference) + " -- ";
+            CPUVoltage.storeVoltageTable(getContext());
+        }
+        Utils.toast(toasttext + getString(R.string.voltages_toast_notification), getActivity(), Toast.LENGTH_LONG);
+    }
+
+    @Override
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
-
         SharedPreferences storedvoltagetable = getContext().getSharedPreferences("voltage_table", 0);
         for( Map.Entry entry : storedvoltagetable.getAll().entrySet() )
             voltagetable.put( entry.getKey().toString(), entry.getValue().toString() );
@@ -242,5 +257,4 @@ public class CPUVoltageFragment extends RecyclerViewFragment implements
         if (dSwitchCard == mOverrideVminCard)
             CPUVoltage.activateOverrideVmin(checked, getActivity());
     }
-
 }
