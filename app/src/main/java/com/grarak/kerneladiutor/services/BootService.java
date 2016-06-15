@@ -90,7 +90,7 @@ public class BootService extends Service {
         CPUVoltage.storeVoltageTable(getApplicationContext());
 
 
-        if (Screen.hasScreenHBM() && Utils.getBoolean("AutoHBM", false, getApplicationContext())) {
+        if (Screen.isScreenAutoHBMActive(getApplicationContext()) && Screen.hasScreenHBM()) {
             getApplicationContext().startService(new Intent(getApplicationContext(), AutoHighBrightnessModeService.class));
         }
 
