@@ -74,7 +74,7 @@ public class HBMWidget extends AppWidgetProvider {
             }
         }
         // Make sure that the widghet is in the correct state when the phone is unlocked.
-        if (intent.getAction().equals("android.intent.action.USER_PRESENT")) {
+        if (intent.getAction().equals("android.intent.action.USER_PRESENT") && Screen.hasScreenHBM()) {
             doupdate(context, Screen.isScreenHBMActive());
         }
     }

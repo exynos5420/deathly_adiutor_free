@@ -16,13 +16,9 @@
 
 package com.grarak.kerneladiutor.utils.kernel;
 
-import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.widget.RemoteViews;
 
-import com.grarak.kerneladiutor.R;
 import com.grarak.kerneladiutor.services.AutoHighBrightnessModeService;
 import com.grarak.kerneladiutor.services.HBMWidget;
 import com.grarak.kerneladiutor.utils.Constants;
@@ -31,7 +27,6 @@ import com.grarak.kerneladiutor.utils.json.GammaProfiles;
 import com.grarak.kerneladiutor.utils.root.Control;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
