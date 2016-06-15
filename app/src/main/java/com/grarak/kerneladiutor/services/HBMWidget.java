@@ -55,27 +55,28 @@ public class HBMWidget extends AppWidgetProvider {
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
-        if (intent.getAction().equals("com.kerneladiutor.mod.action.TOGGLE_HBM")) {
-            if (Screen.hasScreenHBM()) {
-                Log.i(Constants.TAG + ": " + getClass().getSimpleName(), "Toggling High Brightness Mode");
-                if (AutoHighBrightnessModeService.HBM_Widget_Toggled) {
-                    AutoHighBrightnessModeService.HBM_Widget_Toggled = false;
-                }
-                else {
-                    AutoHighBrightnessModeService.HBM_Widget_Toggled = true;
-                }
-                if (Screen.isScreenHBMActive()) {
-                    Screen.activateScreenHBM(false, context);
-                    doupdate(context, false);
-                } else {
-                    Screen.activateScreenHBM(true, context);
-                    doupdate(context, true);
+        if (Utils.getBoolean("Widget_Active", false, context) && Screen.hasScreenHBM()) {
+            if (intent.getAction().equals("com.kerneladiutor.mod.action.TOGGLE_HBM")) {
+                if (Screen.hasScreenHBM()) {
+                    Log.i(Constants.TAG + ": " + getClass().getSimpleName(), "Toggling High Brightness Mode");
+                    if (AutoHighBrightnessModeService.HBM_Widget_Toggled) {
+                        AutoHighBrightnessModeService.HBM_Widget_Toggled = false;
+                    } else {
+                        AutoHighBrightnessModeService.HBM_Widget_Toggled = true;
+                    }
+                    if (Screen.isScreenHBMActive()) {
+                        Screen.activateScreenHBM(false, context);
+                        doupdate(context, false);
+                    } else {
+                        Screen.activateScreenHBM(true, context);
+                        doupdate(context, true);
+                    }
                 }
             }
-        }
-        // Make sure that the widghet is in the correct state when the phone is unlocked.
-        if (intent.getAction().equals("android.intent.action.USER_PRESENT") && Screen.hasScreenHBM()) {
-            doupdate(context, Screen.isScreenHBMActive());
+            // Make sure that the widghet is in the correct state when the phone is unlocked.
+            if (intent.getAction().equals("android.intent.action.USER_PRESENT") && Screen.hasScreenHBM()) {
+                doupdate(context, Screen.isScreenHBMActive());
+            }
         }
     }
 
