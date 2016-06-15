@@ -357,8 +357,10 @@ public class Misc implements Constants {
 
     public static String getSELinuxStatus () {
         String result = RootUtils.runCommand(GETENFORCE);
-        if (result.equals("Enforcing")) return "Enforcing";
-        else if (result.equals("Permissive")) return "Permissive";
+        if (result != null) {
+            if (result.equals("Enforcing")) return "Enforcing";
+            else if (result.equals("Permissive")) return "Permissive";
+        }
         return "Unknown Status";
     }
 
