@@ -185,7 +185,7 @@ public class Misc implements Constants {
 
     public static boolean isFsyncActive() {
         String path = Utils.getsysfspath(FSYNC_ARRAY);
-        return Utils.readFile(path).equals(Utils.isLetter(Utils.readFile(path)) ? " Y" : "1");
+        return Utils.readFile(path).equals(Utils.isLetter(Utils.readFile(path)) ? "Y" : "1");
     }
 
     public static boolean hasFsync() {
