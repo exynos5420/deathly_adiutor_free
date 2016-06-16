@@ -16,13 +16,9 @@
 
 package com.grarak.kerneladiutor.utils.kernel;
 
-import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.widget.RemoteViews;
 
-import com.grarak.kerneladiutor.R;
 import com.grarak.kerneladiutor.services.AutoHighBrightnessModeService;
 import com.grarak.kerneladiutor.services.HBMWidget;
 import com.grarak.kerneladiutor.utils.Constants;
@@ -31,7 +27,6 @@ import com.grarak.kerneladiutor.utils.json.GammaProfiles;
 import com.grarak.kerneladiutor.utils.root.Control;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -492,7 +487,14 @@ public class Screen implements Constants {
         return false;
     }
 
-    public static void activateScreenHBM(boolean active, Context context) {
+    public static void activateScreenHBM(boolean active, Context context, String source) {
+        if (source.equals("Manual")) {
+            if (Screen.isScreenAutoHBMActive(context) && AutoHighBrightnessModeService.HBM_Manually_Toggled) {
+                AutoHighBrightnessModeService.HBM_Manually_Toggled = false;
+            } else {
+                AutoHighBrightnessModeService.HBM_Manually_Toggled = true;
+            }
+        }
         Control.runCommand(active ? "1" : "0", Utils.getsysfspath(SCREEN_HBM), Control.CommandType.GENERIC, context);
         if (Utils.getBoolean("Widget_Active", false, context)) {
             HBMWidget.doupdate(context, active);

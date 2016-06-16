@@ -185,7 +185,7 @@ public class Misc implements Constants {
 
     public static boolean isFsyncActive() {
         String path = Utils.getsysfspath(FSYNC_ARRAY);
-        return Utils.readFile(path).equals(Utils.isLetter(Utils.readFile(path)) ? " Y" : "1");
+        return Utils.readFile(path).equals(Utils.isLetter(Utils.readFile(path)) ? "Y" : "1");
     }
 
     public static boolean hasFsync() {
@@ -357,8 +357,10 @@ public class Misc implements Constants {
 
     public static String getSELinuxStatus () {
         String result = RootUtils.runCommand(GETENFORCE);
-        if (result.equals("Enforcing")) return "Enforcing";
-        else if (result.equals("Permissive")) return "Permissive";
+        if (result != null) {
+            if (result.equals("Enforcing")) return "Enforcing";
+            else if (result.equals("Permissive")) return "Permissive";
+        }
         return "Unknown Status";
     }
 

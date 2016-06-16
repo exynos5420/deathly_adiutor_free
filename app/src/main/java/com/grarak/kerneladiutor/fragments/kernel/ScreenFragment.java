@@ -872,7 +872,7 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
             }
             forcerefresh();
         } else if (dSwitchCard == mScreenHBMCard)
-            Screen.activateScreenHBM(checked, getActivity());
+            Screen.activateScreenHBM(checked, getActivity(), "Manual");
         else if (dSwitchCard == mBackLightDimmerEnableCard)
             Screen.activateBackLightDimmer(checked, getActivity());
         else if (dSwitchCard == mBrightnessModeCard)

@@ -115,7 +115,7 @@ public class Per_App {
         List<AccessibilityServiceInfo> runningServices = am
                 .getEnabledAccessibilityServiceList(AccessibilityEvent.TYPES_ALL_MASK);
         for (AccessibilityServiceInfo service : runningServices) {
-            if (id.equals(service.getId())) {
+            if (id != null && id.equals(service.getId())) {
                 return true;
             }
         }

@@ -48,14 +48,14 @@ public class HighBrightnessModeReceiver extends BroadcastReceiver {
             }
 
             if (HBM_ON.equals(intent.getAction()) && Screen.hasScreenHBM() && !Screen.isScreenHBMActive()) {
-                Screen.activateScreenHBM(true, context);
+                Screen.activateScreenHBM(true, context, "Manual");
                 if (Utils.getBoolean("Widget_Active", false, context)) {
                     HBMWidget.doupdate(context, true);
                 }
                 Log.i(Constants.TAG + ": " + getClass().getSimpleName(), "Activating High Brightness Mode via Intent");
             }
             if (HBM_OFF.equals(intent.getAction()) && Screen.hasScreenHBM() && Screen.isScreenHBMActive()) {
-                Screen.activateScreenHBM(false, context);
+                Screen.activateScreenHBM(false, context, "Manual");
                 if (Utils.getBoolean("Widget_Active", false, context)) {
                     HBMWidget.doupdate(context, false);
                 }
