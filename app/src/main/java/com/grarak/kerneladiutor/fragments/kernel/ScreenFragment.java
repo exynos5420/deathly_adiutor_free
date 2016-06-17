@@ -300,7 +300,8 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
                 }
 
                 mScreenHBMLockCard = new SwitchCardView.DSwitchCard();
-                mScreenHBMLockCard.setDescription(getString(R.string.hbm_lock));
+                mScreenHBMLockCard.setTitle(getString(R.string.hbm_lock));
+                mScreenHBMLockCard.setDescription(getString(R.string.hbm_lock_summary));
                 mScreenHBMLockCard.setChecked(Screen.isScreenHBMLockActive(view.getContext()));
                 mScreenHBMLockCard.setOnDSwitchCardListener(this);
 

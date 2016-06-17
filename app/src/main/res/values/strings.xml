@@ -472,7 +472,8 @@
     <string name="screen_contrast">Screen Contrast</string>
     <string name="auto_high_brightness_mode">Automatic High Brightness Mode</string>
     <string name="auto_high_brightness_smoothing">Smooth Lux Values for AutoHBM</string>
-    <string name="hbm_lock">HBM toggling by AutoHBM will be locked on manual toggle. Enable to persist lock through screen on/off events.</string>
+    <string name="hbm_lock">Persist Disable AutoHBM on Manual Toggle</string>
+    <string name="hbm_lock_summary">Enable to persist lock through screen on/off events.</string>
     <string name="auto_high_brightness_smoothing_warning">Smoothing will cause some delay in significant lux changes causing HBM to toggle.</string>
     <string name="auto_high_brightness_mode_threshold">Automatic High Brightness Mode Threshold</string>
     <string name="auto_high_brightness_smoothing_samples">Smoothing Sample Count</string>
