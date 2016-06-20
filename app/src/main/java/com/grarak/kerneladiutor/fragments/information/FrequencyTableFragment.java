@@ -1,14 +1,8 @@
-//-----------------------------------------------------------------------------
-//
-// (C) Brandon Valosek, 2011 <bvalosek@gmail.com>
-//
-//-----------------------------------------------------------------------------
-// Modified by Willi Ye to work as Fragment and with with big.LITTLE
-
 package com.grarak.kerneladiutor.fragments.information;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.grarak.kerneladiutor.elements.DDivider;
 import com.grarak.kerneladiutor.elements.cards.UsageCardView;
@@ -16,21 +10,18 @@ import com.grarak.kerneladiutor.fragments.RecyclerViewFragment;
 import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;
 import com.grarak.kerneladiutor.utils.kernel.CPU;
-import com.bvalosek.cpuspy.CpuSpyApp;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
  * main activity class
  */
 public class FrequencyTableFragment extends RecyclerViewFragment implements Constants {
-
-
 
     private UsageCardView.DUsageCard[][] mUsageCard;
 
@@ -45,76 +36,53 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
     }
 
     @Override
-    public void preInit(Bundle savedInstanceState) {
-        super.preInit(savedInstanceState);
-    }
-
-    @Override
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
         generateview();
     }
 
-    @Override
-    public void postInit(Bundle savedInstanceState) {
-        super.postInit(savedInstanceState);
-    }
-
     private void generateview() {
         mUsageCard = new UsageCardView.DUsageCard[CPU.getCoreCount()][CPU.getFreqs().size()] ;
-        final String time_in_state_path = Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY);
-        int total_time = 0;
+        double total_time = 0;
 
         DDivider[] freqUtilization = new DDivider[CPU.getCoreCount()];
         for (int i = 0; i < CPU.getCoreCount(); i++) {
+            // <Freq, time>
             Map<String, String> freq_use_list = new HashMap<>();
-            // Fill a hashmap with the info
             try {
-            // Code to readlines borrowed from StackOverflow: http://stackoverflow.com/questions/7175161/how-to-get-file-read-line-by-line
-                InputStream instream = new FileInputStream(String.format(time_in_state_path, i));
+                BufferedReader buffreader = new BufferedReader(new InputStreamReader(new FileInputStream(Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, i))));
+                if (buffreader != null) {
 
-                if (instream != null) {
-                    freqUtilization[i].setText("Core: " + i);
-                    addView(freqUtilization[i]);
-                    InputStreamReader inputreader = new InputStreamReader(instream);
-                    BufferedReader buffreader = new BufferedReader(inputreader);
                     String line;
                     do {
                         line = buffreader.readLine();
                         total_time = total_time + Integer.parseInt(line.split(" ")[1]);
-                        freq_use_list.put(line.split(" ")[0], String.valueOf(line.split(" ")[1]));
+                        freq_use_list.put(line.split(" ")[0], line.split(" ")[1]);
                     } while (line != null);
+                    buffreader.close();
                 }
             } catch (Exception ex) {
-                // I don't care about this exception...
+                // I don't really care about this exception...
             }
-            // All States/Times should be loaded for this core at this point
-            String[] freq_use_array = freq_use_list.values().toArray(new String[freq_use_list.size()]);
+            List<Integer> allfreqs = CPU.getFreqs();
 
-            for (int x = 0; x < freq_use_array.length; x++) {
-                mUsageCard[i][x].setText("" + Utils.stringToInt(freq_use_array[x])/1000);
-                mUsageCard[i][x].setProgress(total_time / Utils.stringToInt(freq_use_array[x]));
+            freqUtilization[i] = new DDivider();
+            freqUtilization[i].setText("Core: " + i);
+            addView(freqUtilization[i]);
+            for (int x = 0; x < freq_use_list.size(); x++) {
+                double freq_time = (double)Utils.stringToInt(freq_use_list.get(Integer.toString(allfreqs.get(x))));
+                mUsageCard[i][x] = new UsageCardView.DUsageCard();
+                mUsageCard[i][x].setText(allfreqs.get(x) / 1000 + "Mhz");
+                double pct = Math.round(freq_time / total_time * 100);
+                Log.i(TAG, "Core: " + i + " Freq: " + allfreqs.get(x) + " Freq_Time: " + freq_time + " Total Time: " + total_time + " PCT: " + pct);
+                if (freq_time != 0) {
+                    mUsageCard[i][x].setProgress((int)pct);
+                }
                 addView(mUsageCard[i][x]);
+
             }
         }
 
-    }
-
-    /**
-     * @return A nicely formatted String representing tSec seconds
-     */
-    private static String sToString(long tSec) {
-        long h = (long) Math.floor(tSec / (60 * 60));
-        long m = (long) Math.floor((tSec - h * 60 * 60) / 60);
-        long s = tSec % 60;
-        String sDur;
-        sDur = h + ":";
-        if (m < 10) sDur += "0";
-        sDur += m + ":";
-        if (s < 10) sDur += "0";
-        sDur += s;
-
-        return sDur;
     }
 
 }
