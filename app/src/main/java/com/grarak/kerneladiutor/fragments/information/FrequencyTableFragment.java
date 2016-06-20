@@ -2,6 +2,7 @@ package com.grarak.kerneladiutor.fragments.information;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 
 import com.grarak.kerneladiutor.elements.DDivider;
@@ -17,6 +18,7 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * main activity class
@@ -44,6 +46,18 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
     private void generateview() {
         mUsageCard = new UsageCardView.DUsageCard[CPU.getCoreCount()][CPU.getFreqs().size()] ;
         double total_time = 0;
+
+        DDivider muptimeCard = new DDivider();
+        muptimeCard.setText("Uptime: " + getDurationBreakdown(SystemClock.elapsedRealtime()));
+        addView(muptimeCard);
+
+        DDivider mAwakeTime = new DDivider();
+        mAwakeTime.setText("Awake Time: " + getDurationBreakdown(SystemClock.uptimeMillis()));
+        addView(mAwakeTime);
+
+        DDivider mDeepSleepCard = new DDivider();
+        mDeepSleepCard.setText("Deep Sleep: " + getDurationBreakdown(SystemClock.elapsedRealtime() - SystemClock.uptimeMillis()));
+        addView(mDeepSleepCard);
 
         DDivider[] freqUtilization = new DDivider[CPU.getCoreCount()];
         for (int i = 0; i < CPU.getCoreCount(); i++) {
@@ -83,6 +97,50 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
             }
         }
 
+    }
+
+    /**
+     * Convert a millisecond duration to a string format
+     *
+     * @param millis A duration to convert to a string form
+     * @return A string of the form "X Days Y Hours Z Minutes A Seconds".
+     *
+     * Function modified from answer here: http://stackoverflow.com/questions/625433/how-to-convert-milliseconds-to-x-mins-x-seconds-in-java
+     */
+    public static String getDurationBreakdown(long millis)
+    {
+        if(millis < 0)
+        {
+            throw new IllegalArgumentException("Duration must be greater than zero!");
+        }
+
+        long days = TimeUnit.MILLISECONDS.toDays(millis);
+        millis -= TimeUnit.DAYS.toMillis(days);
+        long hours = TimeUnit.MILLISECONDS.toHours(millis);
+        millis -= TimeUnit.HOURS.toMillis(hours);
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(millis);
+        millis -= TimeUnit.MINUTES.toMillis(minutes);
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(millis);
+
+        StringBuilder sb = new StringBuilder(64);
+        if (days > 0 ) {
+            sb.append(days);
+            sb.append("D ");
+        }
+        if (hours > 0) {
+            sb.append(hours);
+            sb.append("H ");
+        }
+        if (minutes > 0 ) {
+            sb.append(minutes);
+            sb.append("M ");
+        }
+        if (seconds > 0) {
+            sb.append(seconds);
+            sb.append("S ");
+        }
+
+        return(sb.toString());
     }
 
 }
