@@ -6,6 +6,7 @@ import android.os.SystemClock;
 import android.util.Log;
 
 import com.grarak.kerneladiutor.elements.DDivider;
+import com.grarak.kerneladiutor.elements.cards.CardViewItem;
 import com.grarak.kerneladiutor.elements.cards.UsageCardView;
 import com.grarak.kerneladiutor.fragments.RecyclerViewFragment;
 import com.grarak.kerneladiutor.utils.Constants;
@@ -47,19 +48,17 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
         mUsageCard = new UsageCardView.DUsageCard[CPU.getCoreCount()][CPU.getFreqs().size()] ;
         double total_time = 0;
 
-        DDivider muptimeCard = new DDivider();
-        muptimeCard.setText("Uptime: " + getDurationBreakdown(SystemClock.elapsedRealtime()));
+        CardViewItem.DCardView muptimeCard = new CardViewItem.DCardView();
+        muptimeCard.setTitle("System Times:");
+        muptimeCard.setDescription(
+        "Uptime: " + getDurationBreakdown(SystemClock.elapsedRealtime()) +
+        "\nAwake Time: " + getDurationBreakdown(SystemClock.uptimeMillis()) +
+        "\nDeep Sleep: " + getDurationBreakdown(SystemClock.elapsedRealtime() - SystemClock.uptimeMillis())
+        );
         addView(muptimeCard);
 
-        DDivider mAwakeTime = new DDivider();
-        mAwakeTime.setText("Awake Time: " + getDurationBreakdown(SystemClock.uptimeMillis()));
-        addView(mAwakeTime);
-
-        DDivider mDeepSleepCard = new DDivider();
-        mDeepSleepCard.setText("Deep Sleep: " + getDurationBreakdown(SystemClock.elapsedRealtime() - SystemClock.uptimeMillis()));
-        addView(mDeepSleepCard);
-
         DDivider[] freqUtilization = new DDivider[CPU.getCoreCount()];
+        CardViewItem.DCardView[] mUnUsedStatesCard = new CardViewItem.DCardView[CPU.getCoreCount()];
         for (int i = 0; i < CPU.getCoreCount(); i++) {
             // <Freq, time>
             Map<String, String> freq_use_list = new HashMap<>();
@@ -83,17 +82,28 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
             freqUtilization[i] = new DDivider();
             freqUtilization[i].setText("Core: " + i);
             addView(freqUtilization[i]);
+            String unused_states = "";
             for (int x = 0; x < freq_use_list.size(); x++) {
                 double freq_time = (double)Utils.stringToInt(freq_use_list.get(Integer.toString(allfreqs.get(x))));
-                mUsageCard[i][x] = new UsageCardView.DUsageCard();
-                mUsageCard[i][x].setText(allfreqs.get(x) / 1000 + "Mhz");
                 double pct = Math.round(freq_time / total_time * 100);
-                Log.i(TAG, "Core: " + i + " Freq: " + allfreqs.get(x) + " Freq_Time: " + freq_time + " Total Time: " + total_time + " PCT: " + pct);
-                if (freq_time != 0) {
-                    mUsageCard[i][x].setProgress((int)pct);
-                }
-                addView(mUsageCard[i][x]);
+                if (pct >= 1) {
+                    mUsageCard[i][x] = new UsageCardView.DUsageCard();
+                    mUsageCard[i][x].setText(allfreqs.get(x) / 1000 + "Mhz");
 
+                    Log.i(TAG, "Core: " + i + " Freq: " + allfreqs.get(x) + " Freq_Time: " + freq_time + " Total Time: " + total_time + " PCT: " + pct);
+                    if (freq_time != 0) {
+                        mUsageCard[i][x].setProgress((int) pct);
+                    }
+                    addView(mUsageCard[i][x]);
+                } else {
+                    unused_states = unused_states + (allfreqs.get(x)/ 1000 + "MHZ,");
+                }
+            }
+            if (!unused_states.isEmpty()) {
+                mUnUsedStatesCard[i] = new CardViewItem.DCardView();
+                mUnUsedStatesCard[i].setTitle("Core: " + i + " Unused States:");
+                mUnUsedStatesCard[i].setDescription(unused_states.substring(0, unused_states.length()-1));
+                addView(mUnUsedStatesCard[i]);
             }
         }
 
