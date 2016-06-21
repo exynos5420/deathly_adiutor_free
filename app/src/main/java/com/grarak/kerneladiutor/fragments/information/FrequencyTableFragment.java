@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.grarak.kerneladiutor.R;
 import com.grarak.kerneladiutor.elements.cards.CardViewItem;
-import com.grarak.kerneladiutor.elements.cards.UsageCardView;
 import com.grarak.kerneladiutor.fragments.RecyclerViewFragment;
 import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;
@@ -26,7 +25,6 @@ import java.util.concurrent.TimeUnit;
 
 public class FrequencyTableFragment extends RecyclerViewFragment implements Constants {
 
-    private UsageCardView.DUsageCard[][] mUsageCard;
     private CardViewItem.DCardView frequencyCard[];
     private LinearLayout uiStatesView[];
 
@@ -50,9 +48,6 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
         uiStatesView = new LinearLayout[CPU.getCoreCount()];
         frequencyCard = new CardViewItem.DCardView[CPU.getCoreCount()];
 
-
-
-        mUsageCard = new UsageCardView.DUsageCard[CPU.getCoreCount()][CPU.getFreqs().size()] ;
         double total_time = 0;
 
         CardViewItem.DCardView muptimeCard = new CardViewItem.DCardView();
