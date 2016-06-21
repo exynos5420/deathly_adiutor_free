@@ -62,6 +62,7 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
         CardViewItem.DCardView[] mUnUsedStatesCard = new CardViewItem.DCardView[CPU.getCoreCount()];
         for (int i = 0; i < CPU.getCoreCount(); i++) {
             // <Freq, time>
+            total_time = 0;
             Map<String, String> freq_use_list = new HashMap<>();
             try {
                 BufferedReader buffreader = new BufferedReader(new InputStreamReader(new FileInputStream(Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, i))));
@@ -85,12 +86,13 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
             uiStatesView[i] = new LinearLayout(getActivity());
             uiStatesView[i].setOrientation(LinearLayout.VERTICAL);
             frequencyCard[i] = new CardViewItem.DCardView();
-            frequencyCard[i].setTitle("Core: " + i + " Time in States");
+            frequencyCard[i].setTitle("Core: " + i + " - Time in States.  (Online: " + getDurationBreakdown((long)total_time * 10) + ")");
             frequencyCard[i].setView(uiStatesView[i]);
             frequencyCard[i].setFullSpan(true);
             for (int x = 0; x < freq_use_list.size(); x++) {
                 double freq_time = (double)Utils.stringToInt(freq_use_list.get(Integer.toString(allfreqs.get(x))));
                 double pct = Math.round(freq_time / total_time * 100);
+                //Limit the freqs shown to only anything with at least 1% use
                 if (pct >= 1) {
                     LinearLayout layout = (LinearLayout) LayoutInflater.from(getActivity())
                             .inflate(R.layout.state_row, uiStatesView[i], false);
@@ -104,7 +106,8 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
                     // modify the row
                     freqText.setText(allfreqs.get(x) / 1000 + "Mhz");
                     perText.setText(pct + "%");
-                    durText.setText(getDurationBreakdown(Utils.stringToLong(freq_use_list.get(Integer.toString(allfreqs.get(x))))));
+                    // Multiple the time_in_state time value by 10 as it is stored in UserTime Units (10ms)
+                    durText.setText(getDurationBreakdown((Utils.stringToLong(freq_use_list.get(Integer.toString(allfreqs.get(x)))) * 10)));
                     bar.setProgress((int)pct);
 
                     uiStatesView[i].addView(layout);
@@ -114,7 +117,7 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
             }
             if (!unused_states.isEmpty()) {
                 mUnUsedStatesCard[i] = new CardViewItem.DCardView();
-                mUnUsedStatesCard[i].setTitle("Core: " + i + " Unused States:");
+                mUnUsedStatesCard[i].setTitle("Core: " + i + " Unused States: (<1%)");
                 mUnUsedStatesCard[i].setDescription(unused_states.substring(0, unused_states.length()-2));
             }
             addView(frequencyCard[i]);
