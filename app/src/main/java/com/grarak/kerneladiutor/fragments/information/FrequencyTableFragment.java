@@ -4,7 +4,13 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.grarak.kerneladiutor.R;
 import com.grarak.kerneladiutor.elements.DDivider;
 import com.grarak.kerneladiutor.elements.cards.CardViewItem;
 import com.grarak.kerneladiutor.elements.cards.UsageCardView;
@@ -27,6 +33,8 @@ import java.util.concurrent.TimeUnit;
 public class FrequencyTableFragment extends RecyclerViewFragment implements Constants {
 
     private UsageCardView.DUsageCard[][] mUsageCard;
+    private CardViewItem.DCardView frequencyCard[];
+    private LinearLayout uiStatesView[];
 
     @Override
     public int getSpan() {
@@ -45,6 +53,11 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
     }
 
     private void generateview() {
+        uiStatesView = new LinearLayout[CPU.getCoreCount()];
+        frequencyCard = new CardViewItem.DCardView[CPU.getCoreCount()];
+
+
+
         mUsageCard = new UsageCardView.DUsageCard[CPU.getCoreCount()][CPU.getFreqs().size()] ;
         double total_time = 0;
 
@@ -57,7 +70,6 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
         );
         addView(muptimeCard);
 
-        DDivider[] freqUtilization = new DDivider[CPU.getCoreCount()];
         CardViewItem.DCardView[] mUnUsedStatesCard = new CardViewItem.DCardView[CPU.getCoreCount()];
         for (int i = 0; i < CPU.getCoreCount(); i++) {
             // <Freq, time>
@@ -79,32 +91,45 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
             }
             List<Integer> allfreqs = CPU.getFreqs();
 
-            freqUtilization[i] = new DDivider();
-            freqUtilization[i].setText("Core: " + i);
-            addView(freqUtilization[i]);
             String unused_states = "";
+
+            uiStatesView[i] = new LinearLayout(getActivity());
+            uiStatesView[i].setOrientation(LinearLayout.VERTICAL);
+            frequencyCard[i] = new CardViewItem.DCardView();
+            frequencyCard[i].setTitle("Core: " + i + " Time in States");
+            frequencyCard[i].setView(uiStatesView[i]);
+            frequencyCard[i].setFullSpan(true);
             for (int x = 0; x < freq_use_list.size(); x++) {
                 double freq_time = (double)Utils.stringToInt(freq_use_list.get(Integer.toString(allfreqs.get(x))));
                 double pct = Math.round(freq_time / total_time * 100);
                 if (pct >= 1) {
-                    mUsageCard[i][x] = new UsageCardView.DUsageCard();
-                    mUsageCard[i][x].setText(allfreqs.get(x) / 1000 + "Mhz");
+                    LinearLayout layout = (LinearLayout) LayoutInflater.from(getActivity())
+                            .inflate(R.layout.state_row, uiStatesView[i], false);
 
-                    Log.i(TAG, "Core: " + i + " Freq: " + allfreqs.get(x) + " Freq_Time: " + freq_time + " Total Time: " + total_time + " PCT: " + pct);
-                    if (freq_time != 0) {
-                        mUsageCard[i][x].setProgress((int) pct);
-                    }
-                    addView(mUsageCard[i][x]);
+                    // map UI elements to objects
+                    TextView freqText = (TextView) layout.findViewById(R.id.ui_freq_text);
+                    TextView durText = (TextView) layout.findViewById(R.id.ui_duration_text);
+                    TextView perText = (TextView) layout.findViewById(R.id.ui_percentage_text);
+                    ProgressBar bar = (ProgressBar) layout.findViewById(R.id.ui_bar);
+
+                    // modify the row
+                    freqText.setText(allfreqs.get(x) / 1000 + "Mhz");
+                    perText.setText(pct + "%");
+                    durText.setText(getDurationBreakdown(Utils.stringToLong(freq_use_list.get(Integer.toString(allfreqs.get(x))))));
+                    bar.setProgress((int)pct);
+
+                    uiStatesView[i].addView(layout);
                 } else {
-                    unused_states = unused_states + (allfreqs.get(x)/ 1000 + "MHZ,");
+                    unused_states = unused_states + (allfreqs.get(x)/ 1000 + "MHZ, ");
                 }
             }
             if (!unused_states.isEmpty()) {
                 mUnUsedStatesCard[i] = new CardViewItem.DCardView();
                 mUnUsedStatesCard[i].setTitle("Core: " + i + " Unused States:");
-                mUnUsedStatesCard[i].setDescription(unused_states.substring(0, unused_states.length()-1));
-                addView(mUnUsedStatesCard[i]);
+                mUnUsedStatesCard[i].setDescription(unused_states.substring(0, unused_states.length()-2));
             }
+            addView(frequencyCard[i]);
+            addView(mUnUsedStatesCard[i]);
         }
 
     }
