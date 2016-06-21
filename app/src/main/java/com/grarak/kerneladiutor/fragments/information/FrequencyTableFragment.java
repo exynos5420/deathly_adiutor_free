@@ -24,9 +24,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-/**
- * main activity class
- */
 public class FrequencyTableFragment extends RecyclerViewFragment implements Constants {
 
     private UsageCardView.DUsageCard[][] mUsageCard;
