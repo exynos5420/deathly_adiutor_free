@@ -26,9 +26,6 @@ import java.util.concurrent.TimeUnit;
 
 public class FrequencyTableFragment extends RecyclerViewFragment implements Constants {
 
-    private CardViewItem.DCardView frequencyCard[];
-    private LinearLayout uiStatesView[];
-
     @Override
     public int getSpan() {
         return Utils.getScreenOrientation(getActivity()) == Configuration.ORIENTATION_PORTRAIT ? 1 : 2;
@@ -46,10 +43,6 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
     }
 
     private void generateview() {
-        uiStatesView = new LinearLayout[CPU.getCoreCount()];
-        frequencyCard = new CardViewItem.DCardView[CPU.getCoreCount()];
-
-        double total_time = 0;
 
         CardViewItem.DCardView muptimeCard = new CardViewItem.DCardView();
         muptimeCard.setTitle("System Times:");
@@ -60,43 +53,50 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
         );
         addView(muptimeCard);
 
-        CardViewItem.DCardView[] mUnUsedStatesCard = new CardViewItem.DCardView[CPU.getCoreCount()];
         for (int i = 0; i < CPU.getCoreCount(); i++) {
+            Log.d(TAG, "Reading core "+i);
             // <Freq, time>
-            total_time = 0;
+            double total_time = 0;
             Map<String, String> freq_use_list = new HashMap<>();
             try {
-                BufferedReader buffreader = new BufferedReader(new InputStreamReader(new FileInputStream(Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, i))));
+                FileInputStream fileInputStream = new FileInputStream(Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, i));
+                InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+                BufferedReader buffreader = new BufferedReader(inputStreamReader);
                 if (buffreader != null ) {
                     String line;
+                    String[] linePieces;
                     while ((line = buffreader.readLine()) != null) {
                         Log.d(TAG, "Line = "+line);
-                        total_time = total_time + Integer.parseInt(line.split(" ")[1]);
-                        freq_use_list.put(line.split(" ")[0], line.split(" ")[1]);
+                        linePieces = line.split(" ");
+                        total_time = total_time + Integer.parseInt(linePieces[1]);
+                        freq_use_list.put(linePieces[0], linePieces[1]);
                     }
+                    fileInputStream.close();
+                    inputStreamReader.close();
                     buffreader.close();
                 }
             } catch (Exception ex) {
                 // I don't really care about this exception...
-                Log.w(TAG, "Yes you do! "+ex.getMessage());
+                Log.w(TAG, "Yes you do! ");
+                ex.printStackTrace();
             }
             List<Integer> allfreqs = CPU.getFreqs();
 
             String unused_states = "";
 
-            uiStatesView[i] = new LinearLayout(getActivity());
-            uiStatesView[i].setOrientation(LinearLayout.VERTICAL);
-            frequencyCard[i] = new CardViewItem.DCardView();
-            frequencyCard[i].setTitle("Core: " + i + " - Time in States.  (Online: " + getDurationBreakdown((long)total_time * 10) + ")");
-            frequencyCard[i].setView(uiStatesView[i]);
-            frequencyCard[i].setFullSpan(true);
+            LinearLayout uiStatesView = new LinearLayout(getActivity());
+            uiStatesView.setOrientation(LinearLayout.VERTICAL);
+            CardViewItem.DCardView frequencyCard = new CardViewItem.DCardView();
+            frequencyCard.setTitle("Core: " + i + " - Time in States.  (Online: " + getDurationBreakdown((long)total_time * 10) + ")");
+            frequencyCard.setView(uiStatesView);
+            frequencyCard.setFullSpan(true);
             for (int x = 0; x < freq_use_list.size(); x++) {
                 double freq_time = (double)Utils.stringToInt(freq_use_list.get(Integer.toString(allfreqs.get(x))));
                 double pct = Math.round(freq_time / total_time * 100);
                 //Limit the freqs shown to only anything with at least 1% use
                 if (pct >= 1) {
                     LinearLayout layout = (LinearLayout) LayoutInflater.from(getActivity())
-                            .inflate(R.layout.state_row, uiStatesView[i], false);
+                            .inflate(R.layout.state_row, uiStatesView, false);
 
                     // map UI elements to objects
                     TextView freqText = (TextView) layout.findViewById(R.id.ui_freq_text);
@@ -111,18 +111,18 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
                     durText.setText(getDurationBreakdown((Utils.stringToLong(freq_use_list.get(Integer.toString(allfreqs.get(x)))) * 10)));
                     bar.setProgress((int)pct);
 
-                    uiStatesView[i].addView(layout);
+                    uiStatesView.addView(layout);
                 } else {
                     unused_states = unused_states + (allfreqs.get(x)/ 1000 + "MHZ, ");
                 }
             }
+            addView(frequencyCard);
             if (!unused_states.isEmpty()) {
-                mUnUsedStatesCard[i] = new CardViewItem.DCardView();
-                mUnUsedStatesCard[i].setTitle("Core: " + i + " Unused States: (<1%)");
-                mUnUsedStatesCard[i].setDescription(unused_states.substring(0, unused_states.length()-2));
+                CardViewItem.DCardView mUnUsedStatesCard = new CardViewItem.DCardView();
+                mUnUsedStatesCard.setTitle("Core: " + i + " Unused States: (<1%)");
+                mUnUsedStatesCard.setDescription(unused_states.substring(0, unused_states.length()-2));
+                addView(mUnUsedStatesCard);
             }
-            addView(frequencyCard[i]);
-            addView(mUnUsedStatesCard[i]);
         }
 
     }
