@@ -1,6 +1,7 @@
 package com.grarak.kerneladiutor.fragments.information;
 
 import android.content.res.Configuration;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
@@ -27,6 +28,34 @@ import java.util.concurrent.TimeUnit;
 public class FrequencyTableFragment extends RecyclerViewFragment implements Constants {
 
     @Override
+    protected boolean allowPullToRefresh() {
+        return true;
+    }
+
+    @Override
+    public void refreshView() {
+        new AsyncTask<Void, Void, Void>(){
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                removeAllViews();
+            }
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                generateView();
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                refreshLayout.setRefreshing(false);
+            }
+        }.execute();
+    }
+
+    @Override
     public int getSpan() {
         return Utils.getScreenOrientation(getActivity()) == Configuration.ORIENTATION_PORTRAIT ? 1 : 2;
     }
@@ -39,10 +68,10 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
     @Override
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
-        generateview();
+        generateView();
     }
 
-    private void generateview() {
+    private void generateView() {
 
         CardViewItem.DCardView muptimeCard = new CardViewItem.DCardView();
         muptimeCard.setTitle("System Times:");
