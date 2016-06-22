@@ -3,6 +3,7 @@ package com.grarak.kerneladiutor.fragments.information;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -66,18 +67,18 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
             Map<String, String> freq_use_list = new HashMap<>();
             try {
                 BufferedReader buffreader = new BufferedReader(new InputStreamReader(new FileInputStream(Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, i))));
-                if (buffreader != null) {
-
+                if (buffreader != null ) {
                     String line;
-                    do {
-                        line = buffreader.readLine();
+                    while ((line = buffreader.readLine()) != null) {
+                        Log.d(TAG, "Line = "+line);
                         total_time = total_time + Integer.parseInt(line.split(" ")[1]);
                         freq_use_list.put(line.split(" ")[0], line.split(" ")[1]);
-                    } while (line != null);
+                    }
                     buffreader.close();
                 }
             } catch (Exception ex) {
                 // I don't really care about this exception...
+                Log.w(TAG, "Yes you do! "+ex.getMessage());
             }
             List<Integer> allfreqs = CPU.getFreqs();
 
