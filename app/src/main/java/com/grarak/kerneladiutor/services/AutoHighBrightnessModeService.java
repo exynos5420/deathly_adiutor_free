@@ -144,7 +144,9 @@ public class AutoHighBrightnessModeService extends Service {
                 public void onReceive(Context context, android.content.Intent intent) {
                     String strAction = intent.getAction();
                     if (strAction.equals(android.content.Intent.ACTION_SCREEN_OFF)) {
-                        HBM_Manually_Toggled = false;
+                        if (!Screen.isScreenHBMLockActive(context)) {
+                            HBM_Manually_Toggled = false;
+                        }
                         if (Screen.isScreenAutoHBMActive(getApplicationContext())) {
                             LuxThresh = Screen.getAutoHBMThresh(getApplicationContext());
                             deactivateLightSensorRead();
@@ -152,7 +154,9 @@ public class AutoHighBrightnessModeService extends Service {
                     }
 
                     if (strAction.equals(android.content.Intent.ACTION_SCREEN_ON)) {
-                        HBM_Manually_Toggled = false;
+                        if (!Screen.isScreenHBMLockActive(context)) {
+                            HBM_Manually_Toggled = false;
+                        }
                         if (Screen.isScreenAutoHBMActive(getApplicationContext())) {
                             LuxThresh = Screen.getAutoHBMThresh(getApplicationContext());
                             // Delay 250ms to allow sensor to reactivate after doze.

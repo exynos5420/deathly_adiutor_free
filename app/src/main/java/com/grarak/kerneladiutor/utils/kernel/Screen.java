@@ -524,6 +524,14 @@ public class Screen implements Constants {
         }
     }
 
+    public static boolean isScreenHBMLockActive(Context context) {
+        return Utils.getBoolean("HBM_Lock", false, context);
+    }
+
+    public static void activateScreenHBMLock(boolean active, Context context) {
+        Utils.saveBoolean("HBM_Lock", active, context);
+    }
+
     public static boolean isScreenAutoHBMSmoothingActive(Context context) {
         return Utils.getBoolean("AutoHBM_Smoothing", false, context);
     }
