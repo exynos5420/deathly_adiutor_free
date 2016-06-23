@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -124,7 +125,7 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
                 double pct = Math.round(freq_time / total_time * 100);
                 //Limit the freqs shown to only anything with at least 1% use
                 if (pct >= 1) {
-                    LinearLayout layout = (LinearLayout) LayoutInflater.from(getActivity())
+                    FrameLayout layout = (FrameLayout) LayoutInflater.from(getActivity())
                             .inflate(R.layout.state_row, uiStatesView, false);
 
                     // map UI elements to objects
