@@ -29,7 +29,7 @@ import java.util.concurrent.TimeUnit;
 public class FrequencyTableFragment extends RecyclerViewFragment implements Constants {
 
     @Override
-    protected boolean allowPullToRefresh() {
+    protected boolean pullToRefreshIsEnabled() {
         return true;
     }
 

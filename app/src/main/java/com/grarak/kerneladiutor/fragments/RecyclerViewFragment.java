@@ -154,19 +154,22 @@ public class RecyclerViewFragment extends BaseFragment {
         if (!showApplyOnBoot()) showApplyOnBoot(false);
 
         refreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.refresh_layout);
-        if(allowPullToRefresh()){
-            refreshLayout.setEnabled(true);
+        if(refreshLayout != null){
+            if(pullToRefreshIsEnabled()){
+                refreshLayout.setEnabled(true);
 
-            refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                @Override
-                public void onRefresh() {
-                    refreshView();
-                }
-            });
+                refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        refreshView();
+                    }
+                });
 
-        } else {
-            refreshLayout.setEnabled(false);
+            } else {
+                refreshLayout.setEnabled(false);
+            }
         }
+
 
         new AsyncTask<Void, Void, Void>() {
             @Override
@@ -427,7 +430,7 @@ public class RecyclerViewFragment extends BaseFragment {
         if (onScrollListener != null) onScrollListener.reset();
     }
 
-    protected boolean allowPullToRefresh(){
+    protected boolean pullToRefreshIsEnabled(){
         return false;
     }
 
