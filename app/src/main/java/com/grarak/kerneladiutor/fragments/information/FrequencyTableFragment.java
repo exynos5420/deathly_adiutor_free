@@ -106,9 +106,10 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
                     buffreader.close();
                 }
             } catch (Exception ex) {
-                // I don't really care about this exception...
-                Log.w(TAG, "Yes you do! ");
+                Log.w(TAG, "No Time In State Stats found for core: " + i);
                 ex.printStackTrace();
+                // No reason to continue to card generation if there weren't any stats. Let's check the next core.
+                continue;
             }
             List<Integer> allfreqs = CPU.getFreqs();
 
@@ -139,7 +140,7 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
                     perText.setText(pct + "%");
                     // Multiple the time_in_state time value by 10 as it is stored in UserTime Units (10ms)
                     durText.setText(getDurationBreakdown((Utils.stringToLong(freq_use_list.get(Integer.toString(allfreqs.get(x)))) * 10)));
-                    bar.setProgress((int)pct);
+                    bar.setProgress(pct);
 
                     uiStatesView.addView(layout);
                 } else {
