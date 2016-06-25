@@ -181,23 +181,18 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
         long seconds = TimeUnit.MILLISECONDS.toSeconds(millis);
 
         StringBuilder sb = new StringBuilder(64);
-        if (days > 0 ) {
+        if (days > 0) {
             sb.append(days);
-            sb.append("D ");
+            sb.append("d");
         }
         if (hours > 0) {
             sb.append(hours);
-            sb.append("H ");
+            sb.append("h");
         }
-        if (minutes > 0 ) {
-            sb.append(minutes);
-            sb.append("M ");
-        }
-        if (seconds > 0) {
-            sb.append(seconds);
-            sb.append("S ");
-        }
-
+        sb.append(String.format("%02d", minutes));
+        sb.append("m");
+        sb.append(String.format("%02d", seconds));
+        sb.append("s");
         return(sb.toString());
     }
 
