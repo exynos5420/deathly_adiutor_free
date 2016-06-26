@@ -11,48 +11,84 @@ import com.grarak.kerneladiutor.utils.database.PerAppDB;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by joe on 2/29/16.
  */
 public class Per_App {
-    public static Map<String, String> getInstalledApps (Context context) {
+
+    public static final class App implements Comparable<App>{
+        final String name;
+        final String packageId;
+
+        private App(String name, String packageId) {
+            this.name = name;
+            this.packageId = packageId;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            App app = (App) o;
+            return packageId.equals(app.packageId);
+        }
+
+        @Override
+        public int hashCode() {
+            return packageId.hashCode();
+        }
+
+        @Override
+        public int compareTo(App another) {
+            return name.compareToIgnoreCase(another.name);
+        }
+    }
+
+    public static List<App> getInstalledApps (Context context) {
         // Get a list of installed apps. Currently this is only the package name
         final PackageManager pm = context.getPackageManager();
-
-        final Map<String, String> applist = new HashMap<>();
-
+        final List<App> applist = new ArrayList<>();
         final List<ApplicationInfo> packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
 
         for (ApplicationInfo packageInfo : packages) {
-            applist.put(String.valueOf(packageInfo.loadLabel(pm)), packageInfo.packageName);
+            App app = new App (String.valueOf(packageInfo.loadLabel(pm)), packageInfo.packageName);
+            applist.add(app);
         }
+
+        Collections.sort(applist);
 
         return applist;
     }
 
-    public static String[] getPackageNames (Map<String, String> apps) {
-        String[] array = apps.values().toArray(new String[apps.size()]);
-        Arrays.sort(array, String.CASE_INSENSITIVE_ORDER);
-        array = insertDefaultListing(array);
+    public static String[] getPackageNames (List<App> apps) {
+        String[] array = new String[apps.size()+1];
+
+        for (int i = 0; i < apps.size()+1; i++) {
+            if(i == 0){
+                array[i] = "Default";
+            } else {
+                array[i] = apps.get(i-1).packageId;
+            }
+        }
+
         return  array;
     }
 
-    public static String[] getAppNames (Map<String, String> apps) {
-        String[] array = apps.keySet().toArray(new String[apps.size()]);
-        Arrays.sort(array, String.CASE_INSENSITIVE_ORDER);
-        array = insertDefaultListing(array);
-        return  array;
-    }
+    public static String[] getAppNames (List<App> apps) {
+        String[] array = new String[apps.size()+1];
 
-    private static String[] insertDefaultListing(String[] array){
-        String[] newArray = new String[array.length+1];
-        newArray[0] = "Default";
-        System.arraycopy(array,0,newArray,1,array.length);
-        return newArray;
+        for (int i = 0; i < apps.size()+1; i++) {
+            if(i == 0){
+                array[i] = "Default";
+            } else {
+                array[i] = apps.get(i-1).name;
+            }
+        }
+
+        return  array;
     }
 
     public static void save_app (String app, String id, Context context) {

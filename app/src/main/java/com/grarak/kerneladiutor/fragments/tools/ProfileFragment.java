@@ -28,6 +28,7 @@ import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -53,12 +54,13 @@ import com.kerneladiutor.library.root.RootUtils;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by willi on 31.01.15.
  */
 public class ProfileFragment extends RecyclerViewFragment {
+
+    private static final String TAG = ProfileFragment.class.getSimpleName();
 
     public static ProfileFragment newInstance() {
         Bundle args = new Bundle();
@@ -345,9 +347,7 @@ public class ProfileFragment extends RecyclerViewFragment {
             mPerAppDialog.setTitle(R.string.per_app_title);
             mPerAppDialog.setCancelable(true);
 
-            //final String[] mapplist = Per_App.getInstalledApps(getActivity());
-            // Key is Packagename and value is App name
-            final Map apps = Per_App.getInstalledApps(getActivity());
+            final List<Per_App.App> apps = Per_App.getInstalledApps(getActivity());
 
             final String[] packagelist = Per_App.getPackageNames(apps);
             final String[] mapplist = Per_App.getAppNames(apps);
@@ -388,7 +388,11 @@ public class ProfileFragment extends RecyclerViewFragment {
                     if (mSelectedApps != null) {
                         for (int i = 0; i < mSelectedApps.size(); i++) {
                             int y = mSelectedApps.get(i);
-                            Per_App.save_app(packagelist[y], profile_id, getActivity());
+
+                            String packageName = packagelist[y];
+
+                            Log.d(TAG, "Saving "+packageName+" to "+profile_id);
+                            Per_App.save_app(packageName, profile_id, getActivity());
                         }
                     }
                     if (mDeSelectedApps != null) {
