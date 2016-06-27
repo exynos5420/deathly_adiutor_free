@@ -170,9 +170,11 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
      */
     public static String getDurationBreakdown(long millis)
     {
-        if(millis < 0)
+        StringBuilder sb = new StringBuilder(64);
+        if(millis <= 0)
         {
-            throw new IllegalArgumentException("Duration must be greater than zero!");
+            sb.append("00m00s");
+            return sb.toString();
         }
 
         long days = TimeUnit.MILLISECONDS.toDays(millis);
@@ -183,7 +185,6 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
         millis -= TimeUnit.MINUTES.toMillis(minutes);
         long seconds = TimeUnit.MILLISECONDS.toSeconds(millis);
 
-        StringBuilder sb = new StringBuilder(64);
         if (days > 0) {
             sb.append(days);
             sb.append("d");
@@ -196,7 +197,7 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
         sb.append("m");
         sb.append(String.format("%02d", seconds));
         sb.append("s");
-        return(sb.toString());
+        return sb.toString();
     }
 
 }
