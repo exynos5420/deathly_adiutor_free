@@ -32,6 +32,7 @@ public class AboutusFragment extends RecyclerViewFragment {
     private final String APP_SOURCE = "https://github.com/yoinx/kernel_adiutor/";
     private final String ISSUE_LINK = "https://github.com/yoinx/kernel_adiutor/issues";
     private final String DONATION_LINK = "https://www.paypal.com/paypalme/JosephSchubert";
+    private final String GOOGLE_PLUS_LINK = "https://plus.google.com/communities/103764146519204710337";
 
     @Override
     public boolean showApplyOnBoot() {
@@ -44,6 +45,7 @@ public class AboutusFragment extends RecyclerViewFragment {
 
         ModififactionInit();
         ModififactionVersionInit();
+        googlePlusInit();
         licenseInit();
         appSourceInit();
         featureRequestInit();
@@ -64,6 +66,20 @@ public class AboutusFragment extends RecyclerViewFragment {
         mModificationVersionCard.setDescription(getString(R.string.modification_version_number));
 
         addView(mModificationVersionCard);
+    }
+
+    private void googlePlusInit() {
+        CardViewItem.DCardView mGooglePlusCard = new CardViewItem.DCardView();
+        mGooglePlusCard.setTitle(getString(R.string.google_plus_community));
+        mGooglePlusCard.setDescription(getString(R.string.google_plus_community_summary));
+        mGooglePlusCard.setOnDCardListener(new CardViewItem.DCardView.OnDCardListener() {
+            @Override
+            public void onClick(CardViewItem.DCardView dCardView) {
+                Utils.launchUrl(getActivity(), GOOGLE_PLUS_LINK);
+            }
+        });
+
+        addView(mGooglePlusCard);
     }
 
     private void licenseInit() {
