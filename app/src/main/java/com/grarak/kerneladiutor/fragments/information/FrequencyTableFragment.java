@@ -88,10 +88,9 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
         addView(muptimeCard);
 
         for (int i = 0; i < CPU.getCoreCount(); i++) {
-            Log.d(TAG, "Reading core "+i);
             // <Freq, time>
-            double total_time = 0;
-            Map<String, String> freq_use_list = new HashMap<>();
+            int total_time = 0;
+            Map<Integer, Integer> freq_use_list = new HashMap<>();
             try {
                 FileInputStream fileInputStream = new FileInputStream(Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, i));
                 InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
@@ -100,10 +99,9 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
                     String line;
                     String[] linePieces;
                     while ((line = buffreader.readLine()) != null) {
-                        Log.d(TAG, "Line = "+line);
                         linePieces = line.split(" ");
                         total_time = total_time + Integer.parseInt(linePieces[1]);
-                        freq_use_list.put(linePieces[0], linePieces[1]);
+                        freq_use_list.put(Integer.parseInt(linePieces[0]), Integer.parseInt(linePieces[1]));
                     }
                     fileInputStream.close();
                     inputStreamReader.close();
@@ -122,12 +120,12 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
             LinearLayout uiStatesView = new LinearLayout(getActivity());
             uiStatesView.setOrientation(LinearLayout.VERTICAL);
             CardViewItem.DCardView frequencyCard = new CardViewItem.DCardView();
-            frequencyCard.setTitle("Core: " + i + " - Time in States.  (Online: " + getDurationBreakdown((long)total_time * 10) + ")");
+            frequencyCard.setTitle("Core: " + i + " - Time in States.  (Online: " + getDurationBreakdown(total_time * 10) + ")");
             frequencyCard.setView(uiStatesView);
             frequencyCard.setFullSpan(true);
             for (int x = 0; x < freq_use_list.size(); x++) {
-                double freq_time = (double)Utils.stringToInt(freq_use_list.get(Integer.toString(allfreqs.get(x))));
-                int pct = (int)Math.round(freq_time / total_time * 100);
+                int freq_time = freq_use_list.get(allfreqs.get(x));
+                int pct = (freq_time * 100) / total_time;
                 //Limit the freqs shown to only anything with at least 1% use
                 if (pct >= 1) {
                     FrameLayout layout = (FrameLayout) LayoutInflater.from(getActivity())
@@ -143,7 +141,7 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
                     freqText.setText(allfreqs.get(x) / 1000 + "Mhz");
                     perText.setText(pct + "%");
                     // Multiple the time_in_state time value by 10 as it is stored in UserTime Units (10ms)
-                    durText.setText(getDurationBreakdown((Utils.stringToLong(freq_use_list.get(Integer.toString(allfreqs.get(x)))) * 10)));
+                    durText.setText(getDurationBreakdown((freq_use_list.get(allfreqs.get(x))) * 10));
                     bar.setProgress(pct);
 
                     uiStatesView.addView(layout);
