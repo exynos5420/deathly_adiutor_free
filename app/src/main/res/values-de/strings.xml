@@ -231,6 +231,16 @@
   <string name="fshift">FShift</string>
   <string name="dyn_plug">Dyn_Plug</string>
   <string name="dyn_plug_summary">Ein Kernel-Ersatz für Qualcomms MPDecision. Von Stratos Karafotis entwickelt.</string>
+  <string name="auto_hotplug">ARM Auto_hotplug</string>
+  <string name="auto_hotplug_summary">Ein Kernel-Ersatz für Qualcomms MPDecision. Von Will Tisdale (Thalamus).</string>
+  <string name="enable_load_treshold">Lastabhängiger oberer Schwellenwert</string>
+  <string name="enable_load_treshold_summary">Last ab der ein extra CPU-Kern aktiviert wird.</string>
+  <string name="enable_all_load_treshold">CPU-Boost-Schwellenwert</string>
+  <string name="enable_all_load_treshold_summary">Last ab der alle CPU-Kerne aktiviert werden.</string>
+  <string name="disable_load_treshold">Lastabhängiger unterer Schwellenwert</string>
+  <string name="disable_load_treshold_summary">Last ab der ein CPU-Kern deaktiviert wird.</string>
+  <string name="sampling_periods">Minimale Abtastdauer</string>
+  <string name="sampling_periods_summary">Abtastrate in Millisekunden.</string>
   <string name="blu_plug">Blu_Plug</string>
   <string name="blu_plug_summary">Ein Kernel-Ersatz für Qualcomms MPDecision. Von Code_Blue Team entwickelt.</string>
   <string name="powersaver_mode">Energiesparmodus</string>
