@@ -330,6 +330,95 @@ public class CPUHotplug implements Constants {
         return Utils.existFile(HOTPLUG_DYN_PLUG);
     }
 
+    public static void setAutoHotplugDisableLoadTreshold(int value, Context context) {
+        Control.runCommand(String.valueOf(value), HOTPLUG_AUTO_HOTPLUG_DISABLE_LOAD_THRESHOLD, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getAutoHotplugDisableLoadTreshold() {
+        return Utils.stringToInt(Utils.readFile(HOTPLUG_AUTO_HOTPLUG_DISABLE_LOAD_THRESHOLD));
+    }
+
+    public static boolean hasAutoHotplugDisableLoadTreshold() {
+        return Utils.existFile(HOTPLUG_AUTO_HOTPLUG_DISABLE_LOAD_THRESHOLD);
+    }
+
+    public static void setAutoHotplugEnableLoadTreshold(int value, Context context) {
+        Control.runCommand(String.valueOf(value), HOTPLUG_AUTO_HOTPLUG_ENABLE_LOAD_THRESHOLD, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getAutoHotplugEnableLoadTreshold() {
+        return Utils.stringToInt(Utils.readFile(HOTPLUG_AUTO_HOTPLUG_ENABLE_LOAD_THRESHOLD));
+    }
+
+    public static boolean hasAutoHotplugEnableLoadTreshold() {
+        return Utils.existFile(HOTPLUG_AUTO_HOTPLUG_ENABLE_LOAD_THRESHOLD);
+    }
+
+    public static void setAutoHotplugEnableAllLoadTreshold(int value, Context context) {
+        Control.runCommand(String.valueOf(value), HOTPLUG_AUTO_HOTPLUG_ENABLE_ALL_LOAD_THRESHOLD, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getAutoHotplugEnableAllLoadTreshold() {
+        return Utils.stringToInt(Utils.readFile(HOTPLUG_AUTO_HOTPLUG_ENABLE_ALL_LOAD_THRESHOLD));
+    }
+
+    public static boolean hasAutoHotplugEnableAllLoadTreshold() {
+        return Utils.existFile(HOTPLUG_AUTO_HOTPLUG_ENABLE_ALL_LOAD_THRESHOLD);
+    }
+
+    public static void setAutoHotplugMaxOnline(int value, Context context) {
+        Control.runCommand(String.valueOf(value), HOTPLUG_AUTO_HOTPLUG_MAX_ONLINE, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getAutoHotplugMaxOnline() {
+        return Utils.stringToInt(Utils.readFile(HOTPLUG_AUTO_HOTPLUG_MAX_ONLINE));
+    }
+
+    public static boolean hasAutoHotplugMaxOnline() {
+        return Utils.existFile(HOTPLUG_AUTO_HOTPLUG_MAX_ONLINE);
+    }
+
+    public static void setAutoHotplugMinOnline(int value, Context context) {
+        Control.runCommand(String.valueOf(value), HOTPLUG_AUTO_HOTPLUG_MIN_ONLINE, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getAutoHotplugMinOnline() {
+        return Utils.stringToInt(Utils.readFile(HOTPLUG_AUTO_HOTPLUG_MIN_ONLINE));
+    }
+
+    public static boolean hasAutoHotplugMinOnline() {
+        return Utils.existFile(HOTPLUG_AUTO_HOTPLUG_MIN_ONLINE);
+    }
+
+    public static void setAutoHotplugSamplingPeriods(int value, Context context) {
+        Control.runCommand(String.valueOf(value), HOTPLUG_AUTO_HOTPLUG_SAMPLING_PERIODS, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getAutoHotplugSamplingPeriods() {
+        return Utils.stringToInt(Utils.readFile(HOTPLUG_AUTO_HOTPLUG_SAMPLING_PERIODS));
+    }
+
+    public static boolean hasAutoHotplugSamplingPeriods() {
+        return Utils.existFile(HOTPLUG_AUTO_HOTPLUG_SAMPLING_PERIODS);
+    }
+
+    public static void activateAutoHotplug(boolean active, Context context) {
+        Control.runCommand(active ? "Y" : "N", HOTPLUG_AUTO_HOTPLUG_ENABLE, Control.CommandType.GENERIC, context);
+        if (active) togglehotplugs("AutoHotplug", context);
+    }
+
+    public static boolean isAutoHotplugActive() {
+        return Utils.readFile(HOTPLUG_AUTO_HOTPLUG_ENABLE).equals("Y");
+    }
+
+    public static boolean hasAutoHotplugEnable() {
+        return Utils.existFile(HOTPLUG_AUTO_HOTPLUG_ENABLE);
+    }
+
+    public static boolean hasAutoHotplug() {
+        return Utils.existFile(HOTPLUG_AUTO_HOTPLUG);
+    }
+
     public static void setZenDecisionBatThresholdIgnore(int value, Context context) {
         Control.runCommand(String.valueOf(value), HOTPLUG_ZEN_DECISION_BAT_THRESHOLD_IGNORE, Control.CommandType.GENERIC, context);
     }
@@ -1635,6 +1724,7 @@ public class CPUHotplug implements Constants {
         if (CPUHotplug.isStateHelperActive() && hasStateHelperEnable() && !activehotplug.equals("State_Helper")) Control.runCommand("0", STATE_HELPER_ENABLE, Control.CommandType.GENERIC, context);
         if (CPUHotplug.isLazyPlugActive() && hasLazyPlugEnable() && !activehotplug.equals("LazyPlug")) Control.runCommand("0", HOTPLUG_LAZYPLUG_TOUCH_BOOST_ACTIVE, Control.CommandType.GENERIC, context);
         if (CPUHotplug.isDynPlugActive() && hasDynPlugEnable() && !activehotplug.equals("DynPlug")) Control.runCommand("N", HOTPLUG_DYN_PLUG_ENABLE, Control.CommandType.GENERIC, context);
+        if (CPUHotplug.isAutoHotplugActive() && hasAutoHotplugEnable() && !activehotplug.equals("AutoHotplug")) Control.runCommand("N", HOTPLUG_AUTO_HOTPLUG_ENABLE, Control.CommandType.GENERIC, context);
     }
 
     public static boolean hasMSMSleeper () {
