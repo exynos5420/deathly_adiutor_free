@@ -25,12 +25,15 @@ import com.grarak.kerneladiutor.utils.Utils;
 import com.grarak.kerneladiutor.utils.root.Control;
 import com.kerneladiutor.library.root.RootUtils;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -39,6 +42,8 @@ import java.util.List;
 public class CPU implements Constants {
 
     private static int cores;
+    // <core_number, type> Where types are:  0 = legacy, 1 = little, 2 = big
+    public static HashMap<Integer, Integer> coretypes = new HashMap<>();
     public static int bigCore = -1;
     public static int LITTLEcore = -1;
     private static Integer[][] mFreqs;
@@ -965,7 +970,41 @@ public class CPU implements Constants {
                 return -1L;
             }
         }
+    }
 
+    /* Function to parse /proc/cpuinfo to get CPU Part Nums.
+    I intend to use this to compare to a pre-set list of PartNumbers
+    in order to determine whether a core is big/little/legacy
+    */
+    public static void checkCPUPartnum() {
+        try {
+            FileReader filereader = new FileReader("/proc/cpuinfo");
+            BufferedReader buffreader = new BufferedReader(filereader);
+            if (buffreader != null) {
+                String line;
+                String[] linePieces;
+                int core = 0;
+                while ((line = buffreader.readLine()) != null) {
+                    line = line.replace("\t", "").replace(":", "");
+                    linePieces = line.split(" ");
+                    if (linePieces.length == 3 && linePieces[1].equals("part")) {
+                        if (Arrays.asList(CPU_BIG_PARTS).contains(linePieces[2])) {
+                            coretypes.put(core, 2);
+                        } else if (Arrays.asList(CPU_LITTLE_PARTS).contains(linePieces[2])) {
+                            coretypes.put(core, 1);
+                        } else {
+                            coretypes.put(core, 0);
+                        }
+                        core++;
+                    }
+                }
+                filereader.close();
+                buffreader.close();
+            }
+        } catch (Exception ex) {
+            Log.w(TAG, "Error Parsing: /proc/cpuinfo");
+            ex.printStackTrace();
+        }
     }
 
 }

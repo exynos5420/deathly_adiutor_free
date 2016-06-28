@@ -254,6 +254,16 @@
     <string name="fshift">FShift</string>
     <string name="dyn_plug">Dyn_Plug</string>
     <string name="dyn_plug_summary">An in-kernel replacement for Qualcomm\'s MPDecision. Developed by Stratos Karafotis.</string>
+    <string name="auto_hotplug">ARM Auto_hotplug</string>
+    <string name="auto_hotplug_summary">An in-kernel replacement for Qualcomm\'s MPDecision. Developed by Will Tisdale (Thalamus).</string>
+    <string name="enable_load_treshold">Enable Load Threshold</string>
+    <string name="enable_load_treshold_summary">Load at which an extra CPU is put online.</string>
+    <string name="enable_all_load_treshold">Enable All Load Threshold</string>
+    <string name="enable_all_load_treshold_summary">Load at which all CPUs are enabled.</string>
+    <string name="disable_load_treshold">Disable Load Threshold</string>
+    <string name="disable_load_treshold_summary">Load at which a CPU is taken offline.</string>
+    <string name="sampling_periods">Minimum Sampling Period</string>
+    <string name="sampling_periods_summary">Sampling rate in milliseconds, converted to jiffies at runtime.</string>
     <string name="blu_plug">Blu_Plug</string>
     <string name="blu_plug_summary">An in-kernel replacement for Qualcomm\'s MPDecision. Developed by Code_Blue team.</string>
     <string name="powersaver_mode">Powersaver Mode</string>
@@ -472,6 +482,8 @@
     <string name="screen_contrast">Screen Contrast</string>
     <string name="auto_high_brightness_mode">Automatic High Brightness Mode</string>
     <string name="auto_high_brightness_smoothing">Smooth Lux Values for AutoHBM</string>
+    <string name="hbm_lock">Persist Disable AutoHBM on Manual Toggle</string>
+    <string name="hbm_lock_summary">Enable to persist lock through screen on/off events.</string>
     <string name="auto_high_brightness_smoothing_warning">Smoothing will cause some delay in significant lux changes causing HBM to toggle.</string>
     <string name="auto_high_brightness_mode_threshold">Automatic High Brightness Mode Threshold</string>
     <string name="auto_high_brightness_smoothing_samples">Smoothing Sample Count</string>
@@ -963,6 +975,8 @@
     <string name="frenn" translatable="false">Karim Frenn</string>
     <string name="open_source">Open source</string>
     <string name="open_source_summary">This application is open source. Check it out on my GitHub!</string>
+    <string name="google_plus_community">Google Plus Community</string>
+    <string name="google_plus_community_summary">This project is now also on Google+. Click here to visit the community.</string>
     <string name="feature_request">Feature request</string>
     <string name="feature_request_summary">Do you want more features? Open a new issue on GitHub and submit your idea.</string>
     <string name="donate_summary">This is a donation link for Yoinx for the modifications. Not to Grarak the original author. This button is the only place for a donation to me, all other donation popups will still go to Grarak</string>
@@ -974,7 +988,7 @@
     <string name="modification_summary">This application is being modified for various custom features that are not included in the original Kernel Adiutor.</string>
 
     <string name="modification_version">Modification Version</string>
-    <string name="modification_version_number" translatable="false">Build 13</string>
+    <string name="modification_version_number" translatable="false">Build 14</string>
 
     <string name="accessibility_service_label">KA Per App Monitor</string>
     <string name="accessibility_service_desc">Service to monitor when foreground app changes for per-app profile loading</string>

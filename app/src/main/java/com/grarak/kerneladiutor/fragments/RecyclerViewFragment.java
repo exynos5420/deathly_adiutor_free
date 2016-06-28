@@ -25,6 +25,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.MainThread;
 import android.support.annotation.WorkerThread;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -59,6 +60,7 @@ public class RecyclerViewFragment extends BaseFragment {
 
     private ProgressBar progressBar;
     protected RecyclerView recyclerView;
+    protected SwipeRefreshLayout refreshLayout;
     private CustomScrollListener onScrollListener;
     protected View applyOnBootLayout;
     protected TextView applyOnBootText;
@@ -151,6 +153,24 @@ public class RecyclerViewFragment extends BaseFragment {
 
         if (!showApplyOnBoot()) showApplyOnBoot(false);
 
+        refreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.refresh_layout);
+        if(refreshLayout != null){
+            if(pullToRefreshIsEnabled()){
+                refreshLayout.setEnabled(true);
+
+                refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        refreshView();
+                    }
+                });
+
+            } else {
+                refreshLayout.setEnabled(false);
+            }
+        }
+
+
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected void onPreExecute() {
@@ -203,6 +223,13 @@ public class RecyclerViewFragment extends BaseFragment {
         return view;
     }
 
+    /**
+     * Do work to refresh view here. Make sure to call  refreshLayout.setRefreshing(false) when finished
+     */
+    public void refreshView() {
+
+    }
+
     protected View getParentView(int layout) {
         return view != null ? view : (view = inflater.inflate(layout, container, false));
     }
@@ -252,7 +279,18 @@ public class RecyclerViewFragment extends BaseFragment {
     public void addView(DAdapter.DView view) {
         if (adapter.DViews.indexOf(view) < 0) {
             adapter.DViews.add(view);
-            adapter.notifyDataSetChanged();
+
+            // Ensure we always call notifyDataSetChanged() on the main thread
+            if(Looper.myLooper() == Looper.getMainLooper()){
+                adapter.notifyDataSetChanged();
+            } else {
+                new Handler(Looper.getMainLooper()).post(new Runnable(){
+                    @Override
+                    public void run() {
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+            }
         }
     }
 
@@ -392,7 +430,11 @@ public class RecyclerViewFragment extends BaseFragment {
         if (onScrollListener != null) onScrollListener.reset();
     }
 
-    public boolean showApplyOnBoot() {
+    protected boolean pullToRefreshIsEnabled(){
+        return false;
+    }
+
+    protected boolean showApplyOnBoot() {
         return true;
     }
 

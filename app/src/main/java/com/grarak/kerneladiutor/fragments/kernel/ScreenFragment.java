@@ -69,7 +69,7 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
     private SeekBarCardView.DSeekBarCard mScreenValueCard;
     private SeekBarCardView.DSeekBarCard mScreenContrastCard;
     private SeekBarCardView.DSeekBarCard mScreenAutoHBMValueCard, mScreenAutoHBMSmoothingSamplesCard;
-    private SwitchCardView.DSwitchCard mScreenAutoHBMCard, mScreenHBMCard, mScreenAutoHBMSmoothingCard;
+    private SwitchCardView.DSwitchCard mScreenAutoHBMCard, mScreenHBMCard, mScreenAutoHBMSmoothingCard, mScreenHBMLockCard;
 
     private EditTextCardView.DEditTextCard mKGammaBlueCard;
     private EditTextCardView.DEditTextCard mKGammaGreenCard;
@@ -298,6 +298,14 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
 
                     addView(mScreenAutoHBMSmoothingSamplesCard);
                 }
+
+                mScreenHBMLockCard = new SwitchCardView.DSwitchCard();
+                mScreenHBMLockCard.setTitle(getString(R.string.hbm_lock));
+                mScreenHBMLockCard.setDescription(getString(R.string.hbm_lock_summary));
+                mScreenHBMLockCard.setChecked(Screen.isScreenHBMLockActive(view.getContext()));
+                mScreenHBMLockCard.setOnDSwitchCardListener(this);
+
+                addView(mScreenHBMLockCard);
 
                 List<String> list = new ArrayList<>();
                 for (int i = 0; i <= 10000; i+=5)
@@ -871,6 +879,8 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
                 Utils.toast(getString(R.string.auto_high_brightness_smoothing_warning), getContext());
             }
             forcerefresh();
+        } else if (dSwitchCard == mScreenHBMLockCard) {
+            Screen.activateScreenHBMLock(checked, getActivity());
         } else if (dSwitchCard == mScreenHBMCard)
             Screen.activateScreenHBM(checked, getActivity(), "Manual");
         else if (dSwitchCard == mBackLightDimmerEnableCard)
