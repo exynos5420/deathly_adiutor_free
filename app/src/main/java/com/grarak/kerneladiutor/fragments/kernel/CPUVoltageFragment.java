@@ -71,7 +71,7 @@ public class CPUVoltageFragment extends RecyclerViewFragment implements
         List<String> voltages = CPUVoltage.getVoltages();
         if (voltages.isEmpty()) return;
 
-        if (storedvoltagetable.getString(CPUVoltage.getFreqs().get(0), "-1").equals("-1")) {
+        if (storedvoltagetable.getString(voltages.get(0), "-1").equals("-1")) {
             toasttext = getString(R.string.non_default_reference) + " -- ";
             CPUVoltage.storeVoltageTable(getContext());
         }
