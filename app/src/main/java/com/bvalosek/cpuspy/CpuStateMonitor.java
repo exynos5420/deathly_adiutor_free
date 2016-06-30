@@ -28,7 +28,7 @@ import java.util.Map;
  * the time-in-state information, as well as allowing the user to set/reset
  * offsets to "restart" the state timers
  */
-public class CpuStateMonitor {
+public class CpuStateMonitor implements Constants {
 
     private final int core;
 
@@ -161,14 +161,16 @@ public class CpuStateMonitor {
     public void updateStates() throws CpuStateMonitorException {
         _states.clear();
         try {
-            String file;
-            if (Utils.existFile(String.format(Constants.CPU_TIME_STATE, core))) {
-                file = String.format(Constants.CPU_TIME_STATE, core);
-            } else {
+            String file = null;
+            if (Utils.existFile(Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, core)) || Utils.existFile(Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, 0))) {
                 if (core > 0) {
                     CPU.activateCore(core, true, null);
-                    file = String.format(Constants.CPU_TIME_STATE_2, core);
-                } else file = String.format(Constants.CPU_TIME_STATE_2, 0);
+                }
+                if (Utils.existFile(Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, core))) {
+                    file = Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, core);
+                } else {
+                    file = Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, 0);
+                }
             }
             if (file == null)
                 throw new CpuStateMonitorException("Problem opening time-in-states file");
