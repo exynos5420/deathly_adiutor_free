@@ -675,17 +675,16 @@ public class CPU implements Constants {
 
     public static List<Integer> getFreqs(int core) {
         if (mFreqs == null) mFreqs = new Integer[getCoreCount()][];
-        if (mFreqs[core] == null)
-            if (Utils.existFile(String.format(CPU_TIME_STATE, core))
-                    || Utils.existFile(String.format(CPU_TIME_STATE_2, 0))) {
+        if (mFreqs[core] == null) {
+            if (Utils.existFile(Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, core)) || Utils.existFile(String.format(CPU_TIME_STATE_2, 0))) {
+                if (core > 0) {
+                    activateCore(core, true, null);
+                }
                 String file;
-                if (Utils.existFile(String.format(CPU_TIME_STATE, core))) {
-                    file = String.format(CPU_TIME_STATE, core);
+                if (Utils.existFile(Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, core))) {
+                    file = Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, core);
                 } else {
-                    if (core > 0) {
-                        activateCore(core, true, null);
-                        file = String.format(CPU_TIME_STATE_2, core);
-                    } else file = String.format(CPU_TIME_STATE_2, 0);
+                    file = Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, 0);
                 }
                 String values;
                 if ((values = Utils.readFile(file)) != null) {
@@ -707,6 +706,7 @@ public class CPU implements Constants {
                         mFreqs[core][i] = Utils.stringToInt(valueArray[i]);
                 }
             }
+        }
         if (mFreqs[core] == null) return null;
         List<Integer> freqs = Arrays.asList(mFreqs[core]);
         Collections.sort(freqs);
