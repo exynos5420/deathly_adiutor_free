@@ -86,8 +86,12 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
         "\nDeep Sleep: " + getDurationBreakdown(SystemClock.elapsedRealtime() - SystemClock.uptimeMillis())
         );
         addView(muptimeCard);
-
+        int wasoffline = 0;
         for (int i = 0; i < CPU.getCoreCount(); i++) {
+            if (!CPU.isCoreOnline(i)) {
+                wasoffline = 1;
+                CPU.activateCore(i, true, getContext());
+            }
             // <Freq, time>
             int total_time = 0;
             Map<Integer, Integer> freq_use_list = new HashMap<>();
@@ -155,6 +159,11 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
                 mUnUsedStatesCard.setTitle("Core: " + i + " Unused States: (<1%)");
                 mUnUsedStatesCard.setDescription(unused_states.substring(0, unused_states.length()-2));
                 addView(mUnUsedStatesCard);
+            }
+
+            if (wasoffline == 1) {
+                CPU.activateCore(i, false, getContext());
+                wasoffline = 0;
             }
         }
 
