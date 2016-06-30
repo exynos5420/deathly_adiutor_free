@@ -972,6 +972,10 @@ public class CPU implements Constants {
         }
     }
 
+    public static boolean isCoreOnline (int core) {
+        return Utils.readFile(String.format(CPU_CORE_ONLINE, core)).equals("1");
+    }
+
     /* Function to parse /proc/cpuinfo to get CPU Part Nums.
     I intend to use this to compare to a pre-set list of PartNumbers
     in order to determine whether a core is big/little/legacy
