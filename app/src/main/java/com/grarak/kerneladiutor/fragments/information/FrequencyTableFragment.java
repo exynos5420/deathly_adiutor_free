@@ -125,7 +125,7 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
             frequencyCard.setFullSpan(true);
             for (int x = 0; x < freq_use_list.size(); x++) {
                 int freq_time = freq_use_list.get(allfreqs.get(x));
-                int pct = (freq_time * 100) / total_time;
+                int pct = total_time > 0 ? (freq_time * 100) / total_time : 0;
                 //Limit the freqs shown to only anything with at least 1% use
                 if (pct >= 1) {
                     FrameLayout layout = (FrameLayout) LayoutInflater.from(getActivity())
