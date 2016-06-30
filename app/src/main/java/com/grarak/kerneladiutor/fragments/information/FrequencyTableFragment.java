@@ -95,6 +95,8 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
             // <Freq, time>
             int total_time = 0;
             Map<Integer, Integer> freq_use_list = new HashMap<>();
+            StringBuilder unusedStates = new StringBuilder();
+
             try {
                 FileInputStream fileInputStream = new FileInputStream(Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, i));
                 InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
@@ -107,7 +109,6 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
                         total_time = total_time + Integer.parseInt(linePieces[1]);
                         freq_use_list.put(Integer.parseInt(linePieces[0]), Integer.parseInt(linePieces[1]));
                     }
-                    fileInputStream.close();
                     inputStreamReader.close();
                     buffreader.close();
                 }
@@ -117,10 +118,8 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
                 // No reason to continue to card generation if there weren't any stats. Let's check the next core.
                 continue;
             }
-            List<Integer> allfreqs = CPU.getFreqs();
 
-            String unused_states = "";
-
+            List<Integer> allfreqs = CPU.getFreqs(i);
             LinearLayout uiStatesView = new LinearLayout(getActivity());
             uiStatesView.setOrientation(LinearLayout.VERTICAL);
             CardViewItem.DCardView frequencyCard = new CardViewItem.DCardView();
@@ -128,7 +127,11 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
             frequencyCard.setView(uiStatesView);
             frequencyCard.setFullSpan(true);
             for (int x = 0; x < freq_use_list.size(); x++) {
-                int freq_time = freq_use_list.get(allfreqs.get(x));
+                Integer time = freq_use_list.get(allfreqs.get(x));
+                if(time == null){
+                    continue;
+                }
+                int freq_time = time;
                 int pct = total_time > 0 ? (freq_time * 100) / total_time : 0;
                 //Limit the freqs shown to only anything with at least 1% use
                 if (pct >= 1) {
@@ -150,14 +153,17 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
 
                     uiStatesView.addView(layout);
                 } else {
-                    unused_states = unused_states + (allfreqs.get(x)/ 1000 + "MHZ, ");
+                    if(unusedStates.length() > 0){
+                        unusedStates.append(", ");
+                    }
+                    unusedStates.append(allfreqs.get(x)/ 1000).append("MHZ");
                 }
             }
             addView(frequencyCard);
-            if (!unused_states.isEmpty()) {
+            if (unusedStates.length() > 0) {
                 CardViewItem.DCardView mUnUsedStatesCard = new CardViewItem.DCardView();
                 mUnUsedStatesCard.setTitle("Core: " + i + " Unused States: (<1%)");
-                mUnUsedStatesCard.setDescription(unused_states.substring(0, unused_states.length()-2));
+                mUnUsedStatesCard.setDescription(unusedStates.toString());
                 addView(mUnUsedStatesCard);
             }
 
