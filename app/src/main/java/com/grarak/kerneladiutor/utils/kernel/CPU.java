@@ -676,7 +676,7 @@ public class CPU implements Constants {
     public static List<Integer> getFreqs(int core) {
         if (mFreqs == null) mFreqs = new Integer[getCoreCount()][];
         if (mFreqs[core] == null) {
-            if (Utils.existFile(Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, core)) || Utils.existFile(String.format(CPU_TIME_STATE_2, 0))) {
+            if (Utils.existFile(Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, core)) || Utils.existFile(Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, 0))) {
                 if (core > 0) {
                     activateCore(core, true, null);
                 }
