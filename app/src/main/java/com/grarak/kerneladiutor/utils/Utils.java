@@ -546,7 +546,7 @@ public class Utils implements Constants {
                 return paths[i];
             }
         }
-        return "No_File";
+        return "";
     }
 
     //Helper function to get paths with integer format substitutions
@@ -556,6 +556,6 @@ public class Utils implements Constants {
                 return String.format(paths[i], sub);
             }
         }
-        return "No_File";
+        return "";
     }
 }
