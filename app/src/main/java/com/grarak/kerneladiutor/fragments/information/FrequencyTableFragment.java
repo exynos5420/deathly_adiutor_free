@@ -127,6 +127,10 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
             frequencyCard.setView(uiStatesView);
             frequencyCard.setFullSpan(true);
             for (int x = 0; x < freq_use_list.size(); x++) {
+                if(allfreqs.size() < x || allfreqs.get(x) == null){
+                    continue;
+                }
+
                 Integer time = freq_use_list.get(allfreqs.get(x));
                 if(time == null){
                     continue;
