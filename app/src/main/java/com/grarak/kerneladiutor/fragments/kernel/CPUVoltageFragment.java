@@ -68,10 +68,10 @@ public class CPUVoltageFragment extends RecyclerViewFragment implements
         // Save the current Voltage table if it doesn't exist. This will prevent issues in the table if they open it before a reboot.
         // On reboot, the default table will overwrite this as it will have any adjustments done since boot as the reference. This is imperfect, but no better way to do it.
         String toasttext = "";
-        List<String> voltages = CPUVoltage.getVoltages();
-        if (voltages.isEmpty()) return;
+        List<String> frequencies = CPUVoltage.getFreqs();
+        if (frequencies.isEmpty()) return;
 
-        if (storedvoltagetable.getString(voltages.get(0), "-1").equals("-1")) {
+        if (storedvoltagetable.getString(frequencies.get(0), "-1").equals("-1")) {
             toasttext = getString(R.string.non_default_reference) + " -- ";
             CPUVoltage.storeVoltageTable(getContext());
         }
