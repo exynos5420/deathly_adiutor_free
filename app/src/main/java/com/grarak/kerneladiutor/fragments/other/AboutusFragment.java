@@ -19,6 +19,7 @@ package com.grarak.kerneladiutor.fragments.other;
 import android.os.Bundle;
 import android.view.View;
 
+import com.grarak.kerneladiutor.BuildConfig;
 import com.grarak.kerneladiutor.R;
 import com.grarak.kerneladiutor.elements.cards.CardViewItem;
 import com.grarak.kerneladiutor.fragments.RecyclerViewFragment;
@@ -63,7 +64,7 @@ public class AboutusFragment extends RecyclerViewFragment {
     private void ModificationVersionInit() {
         CardViewItem.DCardView mModificationVersionCard = new CardViewItem.DCardView();
         mModificationVersionCard.setTitle(getString(R.string.modification_version));
-        mModificationVersionCard.setDescription(getString(R.string.modification_version_number));
+        mModificationVersionCard.setDescription(getString(R.string.modification_version_number, BuildConfig.VERSION_CODE));
 
         addView(mModificationVersionCard);
     }
