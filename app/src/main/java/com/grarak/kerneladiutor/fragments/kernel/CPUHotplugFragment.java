@@ -183,6 +183,10 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
 
     private SeekBarCardView.DSeekBarCard msmperformanceCard;
 
+    private SwitchCardView.DSwitchCard mHimaEnableCard;
+    private SeekBarCardView.DSeekBarCard mHimaMinCpusCard, mHimaMaxCpusCard, mHimaSamplingRateCard;
+    private PopupCardView.DPopupCard mHimaProfileCard;
+
     @Override
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
@@ -204,6 +208,7 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
         if (CPUHotplug.hasStateHelperEnable()) msmState_Helper_Init();
         if (CPUHotplug.hasbch()) bchInit();
         if (CPUHotplug.hasmsmperformance()) msmperformanceInit();
+        if (CPUHotplug.hasHima()) himaInit();
         tunablesInit();
     }
 
@@ -410,6 +415,17 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
         }
     }
 
+    private void himaInit() {
+        if (CPUHotplug.hasHimaEnable()) {
+            mHimaEnableCard = new SwitchCardView.DSwitchCard();
+            mHimaEnableCard.setTitle(getString(R.string.hima));
+            mHimaEnableCard.setDescription(getString(R.string.hima_summary));
+            mHimaEnableCard.setChecked(CPUHotplug.isHimaActive());
+            mHimaEnableCard.setOnDSwitchCardListener(this);
+
+            addView(mHimaEnableCard);
+        }
+    }
 
     private void tunablesInit() {
         List<DAdapter.DView> views = new ArrayList<>();
@@ -2102,6 +2118,66 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
             }
         }
 
+        // Hima Tunables
+        if (CPUHotplug.isHimaActive() || (!CPUHotplug.hasHimaEnable() && CPUHotplug.hasHima())) {
+            DDivider mHimaDividerCard = new DDivider();
+            mHimaDividerCard.setText(getString(R.string.hima));
+            if (!CPUHotplug.hasHimaEnable() && CPUHotplug.hasHima()) {
+                mHimaDividerCard.setDescription(getString(R.string.no_enable_toggle));
+            }
+            views.add(mHimaDividerCard);
+
+            if (CPUHotplug.hasHimaProfile()) {
+                mHimaProfileCard = new PopupCardView.DPopupCard(CPUHotplug.getHimaProfileMenu(getActivity()));
+                mHimaProfileCard.setTitle(getString(R.string.profile));
+                mHimaProfileCard.setDescription(getString(R.string.hima_profile_summary));
+                mHimaProfileCard.setItem(CPUHotplug.getHimaProfile());
+                mHimaProfileCard.setOnDPopupCardListener(this);
+
+                views.add(mHimaProfileCard);
+            }
+
+            if (CPUHotplug.hasHimaMinOnline()) {
+                List<String> list = new ArrayList<>();
+                for (int i = 0; i < CPU.getCoreCount(); i++)
+                    list.add(String.valueOf(i + 1));
+
+                mHimaMinCpusCard = new SeekBarCardView.DSeekBarCard(list);
+                mHimaMinCpusCard.setTitle(getString(R.string.hima_min_cpu_online));
+                mHimaMinCpusCard.setProgress(CPUHotplug.getHimaMinOnline() - 1);
+                mHimaMinCpusCard.setOnDSeekBarCardListener(this);
+
+                views.add(mHimaMinCpusCard);
+            }
+
+            if (CPUHotplug.hasHimaMaxOnline()) {
+                List<String> list = new ArrayList<>();
+                for (int i = 0; i < CPU.getCoreCount(); i++)
+                    list.add(String.valueOf(i + 1));
+
+                mHimaMaxCpusCard = new SeekBarCardView.DSeekBarCard(list);
+                mHimaMaxCpusCard.setTitle(getString(R.string.hima_max_cpu_online));
+                mHimaMaxCpusCard.setProgress(CPUHotplug.getHimaMaxOnline() - 1);
+                mHimaMaxCpusCard.setOnDSeekBarCardListener(this);
+
+                views.add(mHimaMaxCpusCard);
+            }
+
+            if (CPUHotplug.hasHimaSamplingRate()) {
+                List<String> list = new ArrayList<>();
+                for (int i = 0; i < 100; i++)
+                    list.add(String.valueOf(i + 1));
+
+                mHimaSamplingRateCard = new SeekBarCardView.DSeekBarCard(list);
+                mHimaSamplingRateCard.setTitle(getString(R.string.hima_sampling_rate));
+                mHimaSamplingRateCard.setProgress(CPUHotplug.getHimaSamplingRate());
+                mHimaSamplingRateCard.setOnDSeekBarCardListener(this);
+
+                views.add(mHimaSamplingRateCard);
+            }
+
+        }
+
         if (views.size() > 0) {
             addAllViews(views);
         }
@@ -2171,6 +2247,8 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
             CPUHotplug.activateAutoHotplug(checked, getActivity());
         else if (dSwitchCard == mbchCard)
             CPUHotplug.activatebch(checked, getActivity());
+        else if (dSwitchCard == mHimaEnableCard)
+            CPUHotplug.activateHima(checked, getActivity());
         view.invalidate();
         getActivity().getSupportFragmentManager().beginTransaction().detach(this).attach(this).commit();
 
@@ -2207,6 +2285,8 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
         else if (dPopupCard == mLazyPlugProfileCard)
             CPUHotplug.setLazyPlugProfile(position, getActivity());
         }
+        else if (dPopupCard == mHimaProfileCard)
+            CPUHotplug.setHimaProfile(position, getActivity());
     }
 
     @Override
@@ -2403,5 +2483,11 @@ public class CPUHotplugFragment extends RecyclerViewFragment implements
             CPUHotplug.setStateHelperMaxCpusSuspend(position + 1, getActivity());
         else if (dSeekBarCard == msmperformanceCard)
             CPUHotplug.setmsmperformance(position - 1, getActivity());
+        else if (dSeekBarCard == mHimaMinCpusCard)
+            CPUHotplug.setHimaMinOnline(position + 1, getActivity());
+        else if (dSeekBarCard == mHimaMaxCpusCard)
+            CPUHotplug.setHimaMaxOnline(position + 1, getActivity());
+        else if (dSeekBarCard == mHimaSamplingRateCard)
+            CPUHotplug.setHimaSamplingRate(position, getActivity());
     }
 }

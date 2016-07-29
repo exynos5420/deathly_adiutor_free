@@ -208,6 +208,7 @@
     <string name="profile_summary">The number in the parentheses indicates the amount of cores online at any time.</string>
     <string name="insanity">InSaNiTy</string>
     <string name="balanced">Balanced</string>
+    <string name="powersave">Power Save</string>
     <string name="performance">Performance</string>
     <string name="conservative">Conservative</string>
     <string name="eco_insanity">Eco InSaNiTy</string>
@@ -379,6 +380,13 @@
     <string name="bch_summary">Lord Boefflas solution for keeping big cores alive</string>
     <string name="msm_max_cores">Maximum cores to be allowed online.</string>
     <string name="msmperformance">MSM Performance Hotplug</string>
+
+    <string name="hima">Hima Hotplug</string>
+    <string name="hima_summary">Hotplug Driver ported from HTC m9</string>
+    <string name="hima_min_cpu_online">Minimum CPUs online at anytime.</string>
+    <string name="hima_max_cpu_online">Maximum CPUs online at anytime</string>
+    <string name="hima_sampling_rate">Defer Sampling</string>
+    <string name="hima_profile_summary">Hotplug Style</string>
 
     <!-- Thermal -->
     <string name="thermal_info">Use only one thermal driver from the following options, using more at the same time may cause unexpected behavior.</string>
