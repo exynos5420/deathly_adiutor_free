@@ -812,7 +812,7 @@
     <string name="no_plugins">No plugins found</string>
     <string name="installed">Installed</string>
     <string name="update_available">Update available</string>
-    <string name="update_available_open_app">Open Kernek Adiutor-Mod to download</string>
+    <string name="update_available_open_app">Open Kernel Adiutor-Mod to download</string>
     <string name="not_installed">Not installed</string>
 
     <!-- Downloads -->
