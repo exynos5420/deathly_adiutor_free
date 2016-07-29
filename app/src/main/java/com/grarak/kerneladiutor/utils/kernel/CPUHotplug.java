@@ -1725,6 +1725,7 @@ public class CPUHotplug implements Constants {
         if (CPUHotplug.isLazyPlugActive() && hasLazyPlugEnable() && !activehotplug.equals("LazyPlug")) Control.runCommand("0", HOTPLUG_LAZYPLUG_TOUCH_BOOST_ACTIVE, Control.CommandType.GENERIC, context);
         if (CPUHotplug.isDynPlugActive() && hasDynPlugEnable() && !activehotplug.equals("DynPlug")) Control.runCommand("N", HOTPLUG_DYN_PLUG_ENABLE, Control.CommandType.GENERIC, context);
         if (CPUHotplug.isAutoHotplugActive() && hasAutoHotplugEnable() && !activehotplug.equals("AutoHotplug")) Control.runCommand("N", HOTPLUG_AUTO_HOTPLUG_ENABLE, Control.CommandType.GENERIC, context);
+        if (CPUHotplug.isHimaActive() && hasHimaEnable() && !activehotplug.equals("Hima")) Control.runCommand("N", HIMA_HOTPLUG_ENABLE, Control.CommandType.GENERIC, context);
     }
 
     public static boolean hasMSMSleeper () {
@@ -1914,6 +1915,79 @@ public class CPUHotplug implements Constants {
 
     public static void setmsmperformance(int value, Context context) {
         Control.runCommand(Integer.toString(value), MSMPERFORMANCE, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean hasHima() {
+        return Utils.existFile(HIMA_HOTPLUG);
+    }
+
+    public static boolean hasHimaEnable() {
+        return Utils.existFile(HIMA_HOTPLUG_ENABLE);
+    }
+
+    public static boolean isHimaActive() {
+        return Utils.readFile(HIMA_HOTPLUG_ENABLE).equals("1");
+    }
+
+    public static void activateHima(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", HIMA_HOTPLUG_ENABLE, Control.CommandType.GENERIC, context);
+        if (active) togglehotplugs("Hima", context);
+    }
+
+    public static boolean hasHimaProfile() {
+        return Utils.existFile(HIMA_HOTPLUG_PROFILE);
+    }
+
+    public static void setHimaProfile(int value, Context context) {
+        Control.runCommand(String.valueOf(value), HIMA_HOTPLUG_PROFILE, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getHimaProfile() {
+        return Utils.stringToInt(Utils.readFile(HIMA_HOTPLUG_PROFILE));
+    }
+
+    public static List<String> getHimaProfileMenu(Context context) {
+        List<String> list = new ArrayList<>();
+        list.add(context.getString(R.string.balanced));
+        list.add(context.getString(R.string.powersave));
+        list.add(context.getString(R.string.performance));
+        return list;
+    }
+
+    public static boolean hasHimaMinOnline() {
+        return Utils.existFile(HIMA_HOTPLUG_MIN_CPUS_ONLINE);
+    }
+
+    public static int getHimaMinOnline() {
+        return Utils.stringToInt(Utils.readFile(HIMA_HOTPLUG_MIN_CPUS_ONLINE));
+    }
+
+    public static void setHimaMinOnline(int value, Context context) {
+        Control.runCommand(String.valueOf(value), HIMA_HOTPLUG_MIN_CPUS_ONLINE, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean hasHimaMaxOnline() {
+        return Utils.existFile(HIMA_HOTPLUG_MAX_CPUS_ONLINE);
+    }
+
+    public static int getHimaMaxOnline() {
+        return Utils.stringToInt(Utils.readFile(HIMA_HOTPLUG_MAX_CPUS_ONLINE));
+    }
+
+    public static void setHimaMaxOnline(int value, Context context) {
+        Control.runCommand(String.valueOf(value), HIMA_HOTPLUG_MAX_CPUS_ONLINE, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean hasHimaSamplingRate() {
+        return Utils.existFile(HIMA_HOTPLUG_DEF_SAMPLING_MS);
+    }
+
+    public static int getHimaSamplingRate() {
+        return Utils.stringToInt(Utils.readFile(HIMA_HOTPLUG_DEF_SAMPLING_MS));
+    }
+
+    public static void setHimaSamplingRate(int value, Context context) {
+        Control.runCommand(String.valueOf(value), HIMA_HOTPLUG_DEF_SAMPLING_MS, Control.CommandType.GENERIC, context);
     }
 
 }
