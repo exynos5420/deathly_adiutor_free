@@ -44,7 +44,7 @@ public class AboutusFragment extends RecyclerViewFragment {
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
 
-        ModififactionInit();
+        ModificationInit();
         googlePlusInit();
         licenseInit();
         appSourceInit();
@@ -52,7 +52,7 @@ public class AboutusFragment extends RecyclerViewFragment {
         donateInit();
     }
 
-    private void ModififactionInit() {
+    private void ModificationInit() {
             CardViewItem.DCardView mModificationCard = new CardViewItem.DCardView();
             mModificationCard.setTitle(getString(R.string.modification));
             mModificationCard.setDescription(getString(R.string.modification_summary));
