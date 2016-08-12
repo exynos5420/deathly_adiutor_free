@@ -413,7 +413,7 @@ public interface Constants {
     String[][] THERMAL_ARRAYS = {THERMAL_ARRAY, TEMP_LIMIT_ARRAY, {MSM_THERMAL_CONF}};
 
     // GPU
-    String GPU_GENERIC_GOVERNORS = "performance powersave ondemand simple conservative";
+    String GPU_GENERIC_GOVERNORS = "performance powersave ondemand interactive simple conservative";
 
     String GPU_CUR_KGSL2D0_QCOM_FREQ = "/sys/devices/platform/kgsl-2d0.0/kgsl/kgsl-2d0/gpuclk";
     String GPU_MAX_KGSL2D0_QCOM_FREQ = "/sys/devices/platform/kgsl-2d0.0/kgsl/kgsl-2d0/max_gpuclk";
