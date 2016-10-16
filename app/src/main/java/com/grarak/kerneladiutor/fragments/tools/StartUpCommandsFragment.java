@@ -239,7 +239,7 @@ public class StartUpCommandsFragment extends RecyclerViewFragment {
                             sb.append(tar[2]);
                             sb.append("\n");
                             break;
-                        case "start": case "stop": 
+                        case "start": case "stop":
                             sb.append(tar[0]);
                             sb.append(" ");
                             sb.append(tar[1]);
