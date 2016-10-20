@@ -219,32 +219,15 @@ public class StartUpCommandsFragment extends RecyclerViewFragment {
         StringBuilder sb = new StringBuilder();
         BufferedReader bufReader = new BufferedReader(new StringReader(text));
         try {
-            String line=null;
+            String line = null;
             while ((line = bufReader.readLine()) != null) {
-                String[] tar=null;
-                tar = line.split(" ");
-                    switch (tar[0]) {
-                        case "echo":
-                            sb.append("write ");
-                            sb.append(tar[3]);
-                            sb.append(" ");
-                            sb.append(tar[1]);
-                            sb.append("\n");
-                            break;
-                        case "chmod":
-                            sb.append(tar[0]);
-                            sb.append(" ");
-                            sb.append(tar[1]);
-                            sb.append(" ");
-                            sb.append(tar[2]);
-                            sb.append("\n");
-                            break;
-                        case "start": case "stop":
-                            sb.append(tar[0]);
-                            sb.append(" ");
-                            sb.append(tar[1]);
-                            sb.append("\n");
-                            break;
+                String[] tar = line.split(" ");
+                if(tar[0].equals("echo")) {
+                   String fparse[] = line.split(">");
+                   String fcmd = fparse[0].replaceFirst("^echo", "");
+                   sb.append("write" + fparse[1] + fcmd + "\n");
+                } else {
+                   sb.append(line + "\n");
                 }
             }
         } catch (IOException x) {
