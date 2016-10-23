@@ -11,3 +11,5 @@ local.properties
 
 # Misc
 .DS_Store
+
+app/*.apk
