@@ -217,11 +217,11 @@ public class Sound implements Constants {
     }
 
     public static void activateSoundControl(boolean active, Context context) {
-        Control.runCommand(active ? "Y" : "N", Utils.getsysfspath(SOUND_CONTROL_ENABLE), Control.CommandType.GENERIC, context);
+        Control.runCommand(active ? "1" : "0", Utils.getsysfspath(SOUND_CONTROL_ENABLE), Control.CommandType.GENERIC, context);
     }
 
     public static boolean isSoundControlActive() {
-        return Utils.readFile(Utils.getsysfspath(SOUND_CONTROL_ENABLE)).equals("Y");
+        return Utils.readFile(Utils.getsysfspath(SOUND_CONTROL_ENABLE)).equals("1");
     }
 
     public static boolean hasSoundControlEnable() {
