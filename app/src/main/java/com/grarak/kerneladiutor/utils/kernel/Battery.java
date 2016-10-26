@@ -83,12 +83,24 @@ public class Battery implements Constants {
         Control.runCommand(active ? "1" : "0", FORCE_FAST_CHARGE, Control.CommandType.GENERIC, context);
     }
 
+    public static void setFastChargeCurrent(int value, Context context) {
+        Control.runCommand(String.valueOf(value), FORCE_FAST_CHARGE_CURRENT, Control.CommandType.GENERIC, context);
+    }
+
+    public static int getFastChargeCurrent() {
+        return Utils.stringToInt(Utils.readFile(FORCE_FAST_CHARGE_CURRENT));
+    }
+
     public static boolean isForceFastChargeActive() {
         return Utils.readFile(FORCE_FAST_CHARGE).equals("1");
     }
 
     public static boolean hasForceFastCharge() {
         return Utils.existFile(FORCE_FAST_CHARGE);
+    }
+
+    public static boolean hasForceFastChargeCurrent() {
+        return Utils.existFile(FORCE_FAST_CHARGE_CURRENT);
     }
 
     public static boolean hasChargeLevelControl() {
