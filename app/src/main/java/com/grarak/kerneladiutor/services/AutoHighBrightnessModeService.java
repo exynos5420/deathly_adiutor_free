@@ -33,6 +33,8 @@ import android.util.Log;
 import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.kernel.Screen;
 
+import static android.os.SystemClock.elapsedRealtime;
+
 /**
  * Created by willi on 08.03.15.
  */
@@ -42,7 +44,7 @@ public class AutoHighBrightnessModeService extends Service {
     public static boolean HBM_Manually_Toggled = false;
     public static float[] luxvalues = new float [3];
 
-
+    private static long prevuptime = 0;
     private SensorManager sMgr;
     Sensor light;
 
@@ -98,29 +100,32 @@ public class AutoHighBrightnessModeService extends Service {
     SensorEventListener _SensorEventListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
-            // Call Screen.hasScreenHBM() here in the if block to ensure that the appropriate variables are set when calling Screen.activateScreenHBM
-            if (Screen.isScreenAutoHBMActive(getApplicationContext()) && Screen.isScreenAutoHBMSmoothingActive(getApplicationContext()) && Screen.hasScreenHBM()) {
-                // This should average the last X lux values. X being user set or defaulting to 3.
-                // This will cause some delay in autohbm actually working as the values initialize at 0
-                avglux = 0;
-                for(int i = luxvalues.length - 1; i > 0;  i--) {
-                    luxvalues[i] = luxvalues[i - 1];
-                    avglux += luxvalues[i];
+            if (elapsedRealtime() - prevuptime >= 100) {
+                prevuptime = elapsedRealtime();
+                // Call Screen.hasScreenHBM() here in the if block to ensure that the appropriate variables are set when calling Screen.activateScreenHBM
+                if (Screen.isScreenAutoHBMActive(getApplicationContext()) && Screen.isScreenAutoHBMSmoothingActive(getApplicationContext()) && Screen.hasScreenHBM()) {
+                    // This should average the last X lux values. X being user set or defaulting to 3.
+                    // This will cause some delay in autohbm actually working as the values initialize at 0
+                    avglux = 0;
+                    for (int i = luxvalues.length - 1; i > 0; i--) {
+                        luxvalues[i] = luxvalues[i - 1];
+                        avglux += luxvalues[i];
+                    }
+                    luxvalues[0] = event.values[0];
+                    avglux += luxvalues[0];
+                    lux = Math.round(avglux / luxvalues.length);
+                } else {
+                    lux = Math.round(event.values[0]);
                 }
-                luxvalues[0] = event.values[0];
-                avglux += luxvalues[0];
-                lux = Math.round(avglux / luxvalues.length);
-            } else {
-                lux = Math.round(event.values[0]);
-            }
-            if (Screen.isScreenAutoHBMActive(getApplicationContext()) && !HBM_Manually_Toggled) {
-                if (lux >= LuxThresh && !Screen.isScreenHBMActive()) {
-                    Log.i("Kernel Adiutor: ", "AutoHBMService Activating HBM: received LUX value: " + lux + " Threshold: " + LuxThresh);
-                    Screen.activateScreenHBM(true, getApplicationContext(), "Auto");
-                }
-                if (lux < LuxThresh && Screen.isScreenHBMActive()) {
-                    Log.i("Kernel Adiutor: ", "De-Activation: AutoHBMService: received LUX value: " + lux + " Threshold: " + LuxThresh);
-                    Screen.activateScreenHBM(false, getApplicationContext(), "Auto");
+                if (Screen.isScreenAutoHBMActive(getApplicationContext()) && !HBM_Manually_Toggled) {
+                    if (lux >= LuxThresh && !Screen.isScreenHBMActive()) {
+                        Log.i("Kernel Adiutor: ", "AutoHBMService Activating HBM: received LUX value: " + lux + " Threshold: " + LuxThresh);
+                        Screen.activateScreenHBM(true, getApplicationContext(), "Auto");
+                    }
+                    if (lux < LuxThresh && Screen.isScreenHBMActive()) {
+                        Log.i("Kernel Adiutor: ", "De-Activation: AutoHBMService: received LUX value: " + lux + " Threshold: " + LuxThresh);
+                        Screen.activateScreenHBM(false, getApplicationContext(), "Auto");
+                    }
                 }
             }
         }
