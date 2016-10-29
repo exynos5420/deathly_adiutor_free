@@ -39,11 +39,13 @@ public class HBMWidget extends AppWidgetProvider {
         int N = appWidgetIds.length;
         for (int i = 0; i < N; i++) {
             int appWidgetId = appWidgetIds[i];
+            // Make sure that the widget is in the correct state when widgets are updating.
             doupdate(context, Screen.isScreenHBMActive());
 
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.hbm_widget_layout);
             Intent intent = new Intent(context, HBMWidget.class);
             intent.setAction("com.kerneladiutor.mod.action.TOGGLE_HBM");
+            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
             int flag = PendingIntent.FLAG_UPDATE_CURRENT;
             PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, flag);
             views.setOnClickPendingIntent(R.id.imageView, pi);
