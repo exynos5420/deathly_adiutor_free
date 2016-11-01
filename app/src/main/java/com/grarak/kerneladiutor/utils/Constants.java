@@ -756,6 +756,7 @@ public interface Constants {
 
     // Battery
     String FORCE_FAST_CHARGE = "/sys/kernel/fast_charge/force_fast_charge";
+    String FORCE_FAST_CHARGE_CURRENT = "/sys/kernel/fast_charge_current/force_fast_charge_current";
     String BLX = "/sys/devices/virtual/misc/batterylifeextender/charging_limit";
     String CHARGE_LEVEL = "/sys/kernel/charge_levels";
     String AC_CHARGE_LEVEL = CHARGE_LEVEL + "/charge_level_ac";
