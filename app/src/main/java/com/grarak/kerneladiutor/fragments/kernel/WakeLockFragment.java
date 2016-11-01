@@ -91,8 +91,8 @@ public class WakeLockFragment extends RecyclerViewFragment implements SeekBarCar
 
         if (WakeLock.hasMsmHsicWakelockDivider()) {
             List<String> list = new ArrayList<>();
+            list.add(getString(R.string.disabled));
             for (int i = 1; i < 17; i++) list.add((100 / i) + "%");
-            list.add("0%");
 
             mMsmHsicWakelockDividerCard = new SeekBarCardView.DSeekBarCard(list);
             mMsmHsicWakelockDividerCard.setTitle(getString(R.string.msm_hsic_wakelock_divider));

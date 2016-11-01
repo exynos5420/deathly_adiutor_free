@@ -17,6 +17,7 @@
 package com.grarak.kerneladiutor.utils.kernel;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;
@@ -45,15 +46,23 @@ public class WakeLock implements Constants {
 
 
     public static void setMsmHsicWakelockDivider(int value, Context context) {
-        String command = String.valueOf(value + 1);
-        if (value == 15) command = "0";
+        String command = String.valueOf(value);
         Control.runCommand(command, MSM_HSIC_WAKELOCK_DIVIDER, Control.CommandType.GENERIC, context);
+        // Delay 100ms to allow Control.runCommand chain to run
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+        if (value != (getMsmHsicWakelockDivider()) ) {
+            Log.i(TAG, "Divider: " + (getMsmHsicWakelockDivider()));
+            Utils.toast("Sorry, your kernel does not support this value. Please choose another.", context);
+        }
     }
 
     public static int getMsmHsicWakelockDivider() {
         int value = Utils.stringToInt(Utils.readFile(MSM_HSIC_WAKELOCK_DIVIDER));
-        if (value == 0) value = 16;
-        return value - 1;
+        return value;
     }
 
     public static boolean hasMsmHsicWakelockDivider() {
