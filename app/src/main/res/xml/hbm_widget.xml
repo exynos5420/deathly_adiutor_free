@@ -5,5 +5,5 @@
     android:initialLayout="@layout/hbm_widget_layout"
     android:previewImage="@drawable/hbm_widget_preview"
     android:resizeMode="horizontal|vertical"
-    android:updatePeriodMillis="43200000" >
+    android:updatePeriodMillis="0" >
 </appwidget-provider>
