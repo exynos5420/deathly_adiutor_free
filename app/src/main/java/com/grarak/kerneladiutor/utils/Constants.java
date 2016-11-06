@@ -421,6 +421,11 @@ public interface Constants {
   String GPU_AVALIBLE_EXYNOS5_FREQS = "/sys/devices/platform/mali.0/dvfs_table";
   String GPU_AVALIBLE_EXYNOS5_GOVS = "/sys/devices/platform/mali.0/dvfs_governor";
   String GPU_AVALIBLE_EXYNOS5_POWERP = "/sys/devices/platform/mali.0/power_policy";
+  String GPU_THERMAL_EXYNOS5_TRIPPING = "/sys/devices/platform/mali.0/tripping";
+  String GPU_THERMAL_EXYNOS5_THROTTLING4 = "/sys/devices/platform/mali.0/throttling4";
+  String GPU_THERMAL_EXYNOS5_THROTTLING3 = "/sys/devices/platform/mali.0/throttling3";
+  String GPU_THERMAL_EXYNOS5_THROTTLING2 = "/sys/devices/platform/mali.0/throttling2";
+  String GPU_THERMAL_EXYNOS5_THROTTLING1 = "/sys/devices/platform/mali.0/throttling1";
 
   String[] GPU_CUR_FREQ_ARRAY = {GPU_CUR_EXYNOS5_FREQ};
 
@@ -433,6 +438,9 @@ public interface Constants {
   String[] GPU_SCALING_GOVERNOR_ARRAY = {};
 
   String[] GPU_AVAILABLE_GOVERNORS_ARRAY = {};
+
+  String[] GPU_THERMAL_THRORRLING_ARRAY = {GPU_THERMAL_EXYNOS5_TRIPPING, GPU_THERMAL_EXYNOS5_THROTTLING4,
+          GPU_THERMAL_EXYNOS5_THROTTLING3, GPU_THERMAL_EXYNOS5_THROTTLING2, GPU_THERMAL_EXYNOS5_THROTTLING1};
 
   String[][] GPU_ARRAY = {GPU_CUR_FREQ_ARRAY,
           GPU_MAX_FREQ_ARRAY, GPU_MIN_FREQ_ARRAY, GPU_AVAILABLE_FREQS_ARRAY,

@@ -163,10 +163,29 @@ public class GPU implements Constants {
         return GPU_CUR_FREQ != null;
     }
 
+
     public static boolean hasGpuControl() {
         for (String[] files : GPU_ARRAY)
             for (String file : files) if (Utils.existFile(file)) return true;
         return false;
     }
+
+    public static int getGpuThrottling(int step) {
+        if (step <= 4 && step >= 0){
+            String value;
+            value = Utils.readFile(GPU_THERMAL_THRORRLING_ARRAY[step]);
+            if (value != null){
+                return Utils.stringToInt(value);
+            }
+            return 0;
+        }
+        return 0;
+    }
+
+    public static void setGpuThrottling(int freq, int step, Context context) {
+        if (GPU_THERMAL_THRORRLING_ARRAY != null)
+            Control.runCommand(String.valueOf(freq), GPU_THERMAL_THRORRLING_ARRAY[step], Control.CommandType.GENERIC, context);
+    }
+
 
 }

@@ -40,6 +40,8 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
 
     private PopupCardView.DPopupCard mMaxFreqCard;
 
+    private PopupCardView.DPopupCard mThrottling5card, mThrottling4card, mThrottling3card, mThrottling2card, mThrottling1card;
+
     private PopupCardView.DPopupCard mMinFreqCard;
 
     private PopupCardView.DPopupCard mGovernorCard;
@@ -52,6 +54,7 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
         maxFreqInit();
         minFreqInit();
         governorInit();
+        throttlingInit();
 
     }
 
@@ -62,6 +65,56 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
             mCurFreqCard.setTitle(getString(R.string.gpu_cur_freq));
 
             addView(mCurFreqCard);
+        }
+    }
+
+    private void throttlingInit() {
+
+        if (GPU.hasGpuMaxFreq() && GPU.hasGpuFreqs()) {
+            List<String> freqs = new ArrayList<>();
+              for (int i = 0; i< GPU.getGpuFreqs().size() - 1; i++ ) {
+                freqs.add(GPU.getGpuFreqs().get(i) + getString(R.string.mhz));
+            }
+            mThrottling1card = new PopupCardView.DPopupCard(freqs);
+            mThrottling1card.setTitle("GPU Throttling 1");
+            mThrottling1card.setDescription("GPU will downclock to this frequency when temperature is higher than 85° C");
+            mThrottling1card.setItem(GPU.getGpuThrottling(4) + getString(R.string.mhz));
+            mThrottling1card.setOnDPopupCardListener(this);
+
+            addView(mThrottling1card);
+
+            mThrottling2card = new PopupCardView.DPopupCard(freqs);
+            mThrottling2card.setTitle("GPU Throttling 2");
+            mThrottling2card.setDescription("GPU will downclock to this frequency when temperature is higher than 90° C");
+            mThrottling2card.setItem(GPU.getGpuThrottling(3) + getString(R.string.mhz));
+            mThrottling2card.setOnDPopupCardListener(this);
+
+            addView(mThrottling2card);
+
+            mThrottling3card = new PopupCardView.DPopupCard(freqs);
+            mThrottling3card.setTitle("GPU Throttling 3");
+            mThrottling3card.setDescription("GPU will downclock to this frequency when temperature is higher than 95° C");
+            mThrottling3card.setItem(GPU.getGpuThrottling(2) + getString(R.string.mhz));
+            mThrottling3card.setOnDPopupCardListener(this);
+
+            addView(mThrottling3card);
+
+            mThrottling4card = new PopupCardView.DPopupCard(freqs);
+            mThrottling4card.setTitle("GPU Throttling 4");
+            mThrottling4card.setDescription("GPU will downclock to this frequency when temperature is higher than 100° C");
+            mThrottling4card.setItem(GPU.getGpuThrottling(1) + getString(R.string.mhz));
+            mThrottling4card.setOnDPopupCardListener(this);
+
+            addView(mThrottling4card);
+
+            mThrottling5card = new PopupCardView.DPopupCard(freqs);
+            mThrottling5card.setTitle("GPU Tripping");
+            mThrottling5card.setDescription("GPU will downclock to this frequency when temperature is higher than 105° C");
+            mThrottling5card.setItem(GPU.getGpuThrottling(0) + getString(R.string.mhz));
+            mThrottling5card.setOnDPopupCardListener(this);
+
+            addView(mThrottling5card);
+
         }
     }
 
@@ -122,6 +175,16 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
             GPU.setGpuMinFreq(GPU.getGpuFreqs().get(position), getActivity());
         else if (dPopupCard == mGovernorCard)
             GPU.setGpuGovernor(GPU.getGpuGovernors().get(position), getActivity());
+        else if (dPopupCard ==  mThrottling1card)
+            GPU.setGpuThrottling(GPU.getGpuFreqs().get(position), 4, getActivity());
+        else if (dPopupCard ==  mThrottling2card)
+            GPU.setGpuThrottling(GPU.getGpuFreqs().get(position), 3, getActivity());
+        else if (dPopupCard ==  mThrottling3card)
+            GPU.setGpuThrottling(GPU.getGpuFreqs().get(position), 2, getActivity());
+        else if (dPopupCard ==  mThrottling4card)
+            GPU.setGpuThrottling(GPU.getGpuFreqs().get(position), 1, getActivity());
+        else if (dPopupCard ==  mThrottling5card)
+            GPU.setGpuThrottling(GPU.getGpuFreqs().get(position), 0, getActivity());
     }
 
     @Override
