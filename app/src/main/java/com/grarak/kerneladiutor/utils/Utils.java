@@ -88,7 +88,7 @@ import java.util.Set;
  */
 public class Utils implements Constants {
 
-    public static boolean DARKTHEME = false;
+    public static boolean DARKTHEME = true;
 
     public static boolean hasCMSDK() {
         return cyanogenmod.os.Build.CM_VERSION.SDK_INT >= cyanogenmod.os.Build.CM_VERSION_CODES.APRICOT;
