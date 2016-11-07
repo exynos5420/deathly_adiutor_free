@@ -1,18 +1,8 @@
 # KernelAdiutor
 
-[![Build Status](https://travis-ci.org/yoinx/kernel_adiutor.svg?branch=master)](https://travis-ci.org/yoinx/kernel_adiutor)
-
-![Screenshot](https://raw.githubusercontent.com/Grarak/KernelAdiutor/master/screenshots/screenshot.png)
-
-* [Join Google+ Community](https://plus.google.com/communities/103764146519204710337)
-
-## Kernel Downloader
-
-This is a feature which allows the user to download different custom kernels for their device. To add more kernel the developers have to add support by their own. I wrote up a [documentation](https://github.com/Grarak/KernelAdiutor/wiki/Adding-Download-Support) which explains how to do this.
-
 ## Report a bug or request a feature
 
-You can report a bug or request a feature by [opening an issue](https://github.com/yoinx/kernel_adiutor/issues/new).
+You can report a bug or request a feature by [opening an issue](https://github.com/exynos5420/kernel_adiutor2/issues/new).
 
 #### How to report a bug
 * A detailed description of the bug
@@ -26,16 +16,6 @@ You can report a bug or request a feature by [opening an issue](https://github.c
 * What's the content if the sys file
 * How to apply a new value
 * Make sure there are no similar feature requests already
-
-## Download & Build
-
-Clone the project and come in:
-
-``` bash
-$ git clone git://github.com/yoinx/kernel_adiutor.git
-$ cd KernelAdiutor
-$ ./gradlew build
-```
 
 ## Credits
 
@@ -75,6 +55,7 @@ _(Many sys interface paths has been taken from his [UKM-Project](https://github.
 ## License
 
     Copyright (C) 2015 Willi Ye
+    Copyright (C) 2016 Exynos5420 Team
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
