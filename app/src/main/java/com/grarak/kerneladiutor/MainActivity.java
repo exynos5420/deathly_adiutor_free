@@ -68,16 +68,12 @@ import com.grarak.kerneladiutor.fragments.kernel.ScreenFragment;
 import com.grarak.kerneladiutor.fragments.kernel.SoundFragment;
 import com.grarak.kerneladiutor.fragments.kernel.ThermalFragment;
 import com.grarak.kerneladiutor.fragments.kernel.VMFragment;
-import com.grarak.kerneladiutor.fragments.kernel.WakeFragment;
-import com.grarak.kerneladiutor.fragments.kernel.WakeLockFragment;
 import com.grarak.kerneladiutor.fragments.other.AboutusFragment;
-import com.grarak.kerneladiutor.fragments.other.FAQFragment;
 import com.grarak.kerneladiutor.fragments.other.SettingsFragment;
 import com.grarak.kerneladiutor.fragments.tools.BackupFragment;
 import com.grarak.kerneladiutor.fragments.tools.BuildpropFragment;
 import com.grarak.kerneladiutor.fragments.tools.InitdFragment;
 import com.grarak.kerneladiutor.fragments.tools.ProfileFragment;
-import com.grarak.kerneladiutor.fragments.tools.RecoveryFragment;
 import com.grarak.kerneladiutor.fragments.tools.StartUpCommandsFragment;
 import com.grarak.kerneladiutor.services.AutoHighBrightnessModeService;
 import com.grarak.kerneladiutor.services.ProfileTileReceiver;
@@ -91,8 +87,6 @@ import com.grarak.kerneladiutor.utils.kernel.LMK;
 import com.grarak.kerneladiutor.utils.kernel.Screen;
 import com.grarak.kerneladiutor.utils.kernel.Sound;
 import com.grarak.kerneladiutor.utils.kernel.Thermal;
-import com.grarak.kerneladiutor.utils.kernel.Wake;
-import com.grarak.kerneladiutor.utils.kernel.WakeLock;
 import com.grarak.kerneladiutor.utils.tools.Backup;
 import com.grarak.kerneladiutor.utils.tools.Buildprop;
 import com.kerneladiutor.library.root.RootUtils;
@@ -239,8 +233,6 @@ public class MainActivity extends BaseActivity implements Constants {
         ITEMS.add(new DAdapter.Item(getString(R.string.gpu), new GPUFragment()));
         if (Screen.hasScreen())
             ITEMS.add(new DAdapter.Item(getString(R.string.screen), new ScreenFragment()));
-        if (Wake.hasWake())
-            ITEMS.add(new DAdapter.Item(getString(R.string.wake_controls), new WakeFragment()));
         if (Sound.hasSound())
             ITEMS.add(new DAdapter.Item(getString(R.string.sound), new SoundFragment()));
         if (!Utils.isTV(this))
@@ -251,9 +243,6 @@ public class MainActivity extends BaseActivity implements Constants {
         if (LMK.getMinFrees() != null)
             ITEMS.add(new DAdapter.Item(getString(R.string.low_memory_killer), new LMKFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.virtual_memory), new VMFragment()));
-        if (WakeLock.hasAnyWakelocks()) {
-            ITEMS.add(new DAdapter.Item(getString(R.string.wakelocks), new WakeLockFragment()));
-        }
         if (Entropy.hasEntropy())
             ITEMS.add(new DAdapter.Item(getString(R.string.entropy), new EntropyFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.misc_controls), new MiscFragment()));
@@ -263,12 +252,10 @@ public class MainActivity extends BaseActivity implements Constants {
         if (Buildprop.hasBuildprop() && RootUtils.busyboxInstalled())
             ITEMS.add(new DAdapter.Item(getString(R.string.build_prop_editor), new BuildpropFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.profile), new ProfileFragment()));
-        ITEMS.add(new DAdapter.Item(getString(R.string.recovery), new RecoveryFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.initd), new InitdFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.startup_commands), new StartUpCommandsFragment()));
         ITEMS.add(new DAdapter.Header(getString(R.string.other)));
         ITEMS.add(new DAdapter.Item(getString(R.string.settings), new SettingsFragment()));
-        ITEMS.add(new DAdapter.Item(getString(R.string.faq), new FAQFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.about_us), new AboutusFragment()));
     }
 

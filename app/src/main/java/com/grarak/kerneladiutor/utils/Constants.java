@@ -328,104 +328,6 @@ public interface Constants {
           {GAMMACONTROL, SCREEN_KCAL_CTRL_MIN, LM3530_BRIGTHNESS_MODE, LM3530_MIN_BRIGHTNESS, LM3530_MAX_BRIGHTNESS,
                   LM3630_BACKLIGHT_DIMMER, LM3630_BACKLIGHT_DIMMER_THRESHOLD, LM3630_BACKLIGHT_DIMMER_OFFSET,
                   NEGATIVE_TOGGLE, REGISTER_HOOK, MASTER_SEQUENCE, GLOVE_MODE}};
-
-  // Wake
-
-  // DT2W
-  String LGE_TOUCH_DT2W = "/sys/devices/virtual/input/lge_touch/dt_wake_enabled";
-  String LGE_TOUCH_CORE_DT2W = "/sys/module/lge_touch_core/parameters/doubletap_to_wake";
-  String LGE_TOUCH_GESTURE = "/sys/devices/virtual/input/lge_touch/touch_gesture";
-  String DT2W = "/sys/android_touch/doubletap2wake";
-  String DT2W_2 = "/sys/android_touch2/doubletap2wake";
-  String TOUCH_PANEL_DT2W = "/proc/touchpanel/double_tap_enable";
-  String DT2W_WAKEUP_GESTURE = "/sys/devices/virtual/input/input1/wakeup_gesture";
-  String DT2W_ENABLE = "/sys/devices/platform/s3c2440-i2c.3/i2c-3/3-004a/dt2w_enable";
-  String DT2W_WAKE_GESTURE = "/sys/devices/platform/spi-tegra114.2/spi_master/spi2/spi2.0/input/input0/wake_gesture";
-  String DT2W_WAKE_GESTURE_2 = "/sys/devices/soc.0/f9924000.i2c/i2c-2/2-0070/input/input0/wake_gesture";
-
-  String[] DT2W_ARRAY = {LGE_TOUCH_DT2W, LGE_TOUCH_CORE_DT2W, LGE_TOUCH_GESTURE, DT2W, DT2W_2,
-          TOUCH_PANEL_DT2W, DT2W_WAKEUP_GESTURE, DT2W_ENABLE, DT2W_WAKE_GESTURE, DT2W_WAKE_GESTURE_2};
-
-  // S2W
-  String S2W_ONLY = "/sys/android_touch/s2w_s2sonly";
-  String SW2 = "/sys/android_touch/sweep2wake";
-  String SW3 = "/proc/touchpanel/sweep_wake_enable";
-  String SW2_2 = "/sys/android_touch2/sweep2wake";
-
-  String[] S2W_ARRY = {S2W_ONLY, SW2, SW3, SW2_2};
-
-  // S2W Leniency
-  String LENIENT = "/sys/android_touch/sweep2wake_sensitive";
-
-  // T2W
-  String TSP_T2W = "/sys/devices/f9966000.i2c/i2c-1/1-004a/tsp";
-  String TOUCHWAKE_T2W = "/sys/class/misc/touchwake/enabled";
-
-  String[] T2W_ARRAY = {TSP_T2W, TOUCHWAKE_T2W};
-
-  // Wake Misc
-  String SCREEN_WAKE_OPTIONS = "/sys/devices/f9924000.i2c/i2c-2/2-0020/input/input2/screen_wake_options";
-
-  String[] WAKE_MISC_ARRAY = {SCREEN_WAKE_OPTIONS};
-
-  // Sleep Misc
-  String S2S = "/sys/android_touch/sweep2sleep";
-  String S2S_2 = "/sys/android_touch2/sweep2sleep";
-  String SCREEN_SLEEP_OPTIONS = "/sys/devices/f9924000.i2c/i2c-2/2-0020/input/input2/screen_sleep_options";
-
-  String[] SLEEP_MISC_ARRAY = {S2S, S2S_2, SCREEN_SLEEP_OPTIONS};
-
-  // DT2S
-  String DT2S = "/sys/android_touch2/doubletap2sleep";
-
-  String[] DT2S_ARRAY = {DT2S};
-
-  // Gesture
-  String GESTURE_CRTL[] = {"/sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl",
-          "/proc/touchpanel/gesture_enable/sdf"};
-
-  Integer[] GESTURE_HEX_VALUES = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512};
-  String[] GESTURE_STRING_VALUES = {"up", "down", "left", "right", "e", "o", "w", "c", "m", "double_click"};
-
-  //TorchWake
-  String TW = "/proc/touchpanel/flashlight_enable";
-
-  //Musicwake
-  String MW = "/proc/touchpanel/music_enable";
-
-  // Camera Gesture
-  String CAMERA_GESTURE[] = {"/sys/android_touch/camera_gesture",
-          "/proc/touchpanel/camera_enable"};
-
-  // Pocket mode for Gesture
-  String POCKET_MODE = "/sys/android_touch/pocket_mode";
-  String POCKET_DETECT = "/sys/android_touch/pocket_detect";
-
-  String[] POCKET_MODE_ARRAY = {
-          POCKET_MODE, POCKET_DETECT
-  };
-
-  String WAKE_TIMEOUT = "/sys/android_touch/wake_timeout";
-  String WAKE_TIMEOUT_2 = "/sys/android_touch2/wake_timeout";
-
-  String[] WAKE_TIMEOUT_ARRAY = {
-          WAKE_TIMEOUT, WAKE_TIMEOUT_2
-  };
-
-  String []POWER_KEY_SUSPEND = {"/sys/module/qpnp_power_on/parameters/pwrkey_suspend",
-          "sys/devices/virtual/input/lge_touch/dt_wake_pwr_disable"};
-
-  String WAKE_VIB_STRENGTH = "/sys/android_touch/vib_strength";
-  String WAKE_ST2W_TIME = "/sys/android_touch/sweep_timeout";
-  String WAKE_DT2W_TIMEBETWEENTAPS = "/sys/android_touch/dt2w_time";
-  String WAKE_DT2W_FEATHERX = "/sys/android_touch/dt2w_feather_x";
-  String WAKE_DT2W_FEATHERY = "/sys/android_touch/dt2w_feather_y";
-
-
-  String[][] WAKE_ARRAY = {DT2W_ARRAY, S2W_ARRY, T2W_ARRAY, WAKE_MISC_ARRAY, SLEEP_MISC_ARRAY,  WAKE_TIMEOUT_ARRAY, DT2S_ARRAY,
-          SLEEP_MISC_ARRAY, WAKE_MISC_ARRAY, T2W_ARRAY, POCKET_MODE_ARRAY, GESTURE_CRTL, CAMERA_GESTURE, POWER_KEY_SUSPEND, {LENIENT, POCKET_MODE,
-          WAKE_DT2W_TIMEBETWEENTAPS, WAKE_DT2W_FEATHERX, WAKE_DT2W_FEATHERY, WAKE_VIB_STRENGTH, WAKE_ST2W_TIME, LENIENT }};
-
   // Sound
   String SOUND_CONTROL_ENABLE[] = {"/sys/module/snd_soc_wcd9320/parameters/enable_fs",
           "/sys/kernel/sound_control_3/gpl_sound_control_locked"};
@@ -565,42 +467,6 @@ public interface Constants {
   String LED_SPEED_GREEN = "/sys/class/leds/green/rate";
 
   String LED_ACTIVE = "/sys/class/leds/green/blink";
-
-  // Wakelocks
-  String[] SMB135X_WAKELOCKS = {
-          "/sys/module/smb135x_charger/parameters/use_wlock",
-          "/sys/module/wakeup/parameters/enable_smb135x_wake_ws"
-  };
-
-  String BLUESLEEP_WAKELOCK = "/sys/module/wakeup/parameters/enable_bluesleep_ws";
-
-  String SENSOR_IND_WAKELOCK = "/sys/module/wakeup/parameters/enable_si_ws";
-  String MSM_HSIC_HOST_WAKELOCK = "/sys/module/wakeup/parameters/enable_msm_hsic_ws";
-
-  String[] WLAN_RX_WAKELOCKS = {
-          "/sys/module/wakeup/parameters/wlan_rx_wake",
-          "/sys/module/wakeup/parameters/enable_wlan_rx_wake_ws"
-  };
-
-  String[] WLAN_CTRL_WAKELOCKS = {
-          "/sys/module/wakeup/parameters/wlan_ctrl_wake",
-          "/sys/module/wakeup/parameters/enable_wlan_ctrl_wake_ws"
-  };
-
-  String[] WLAN_WAKELOCKS = {
-          "/sys/module/wakeup/parameters/wlan_wake",
-          "/sys/module/wakeup/parameters/enable_wlan_wake_ws"
-  };
-
-  String WLAN_RX_WAKELOCK_DIVIDER = "/sys/module/bcmdhd/parameters/wl_divide";
-  String MSM_HSIC_WAKELOCK_DIVIDER = "/sys/module/xhci_hcd/parameters/wl_divide";
-  String BCMDHD_WAKELOCK_DIVIDER = "/sys/module/bcmdhd/parameters/wl_divide";
-
-  String[][] WAKELOCK_ARRAY = {SMB135X_WAKELOCKS, WLAN_RX_WAKELOCKS, WLAN_CTRL_WAKELOCKS, WLAN_WAKELOCKS, {
-          SENSOR_IND_WAKELOCK, MSM_HSIC_HOST_WAKELOCK, WLAN_RX_WAKELOCK_DIVIDER,
-          MSM_HSIC_WAKELOCK_DIVIDER, BCMDHD_WAKELOCK_DIVIDER, BLUESLEEP_WAKELOCK}};
-
-
   // Misc
 
   // Vibration
@@ -683,7 +549,7 @@ public interface Constants {
 
   String[][] MISC_ARRAY = {
           VIBRATION_ARRAY,
-          {VIB_LIGHT, VIB_ENABLE, SENSOR_IND_WAKELOCK, LOGGER_ENABLED, DYNAMIC_FSYNC, GENTLE_FAIR_SLEEPERS, BCL_HOTPLUG,
+          {VIB_LIGHT, VIB_ENABLE, LOGGER_ENABLED, DYNAMIC_FSYNC, GENTLE_FAIR_SLEEPERS, BCL_HOTPLUG,
                   POWER_SUSPEND_STATE, TCP_AVAILABLE_CONGESTIONS, HOSTNAME_KEY, ADB_OVER_WIFI, GETENFORCE, SETENFORCE, LED_SPEED_GREEN, LED_ACTIVE, SWITCH_BUTTONS },
           LOGGER_ARRAY, CRC_ARRAY, FSYNC_ARRAY, BCL_ARRAY};
 

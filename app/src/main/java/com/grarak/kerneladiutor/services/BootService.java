@@ -42,8 +42,6 @@ import com.grarak.kerneladiutor.fragments.kernel.ScreenFragment;
 import com.grarak.kerneladiutor.fragments.kernel.SoundFragment;
 import com.grarak.kerneladiutor.fragments.kernel.ThermalFragment;
 import com.grarak.kerneladiutor.fragments.kernel.VMFragment;
-import com.grarak.kerneladiutor.fragments.kernel.WakeFragment;
-import com.grarak.kerneladiutor.fragments.kernel.WakeLockFragment;
 import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;
 import com.grarak.kerneladiutor.utils.database.CommandDB;
@@ -90,8 +88,7 @@ public class BootService extends Service {
         Class[] classes = {BatteryFragment.class, CPUFragment.class,
                 CPUVoltageFragment.class, EntropyFragment.class, GPUFragment.class, IOFragment.class,
                 KSMFragment.class, LMKFragment.class, MiscFragment.class,
-                ScreenFragment.class, SoundFragment.class, ThermalFragment.class, WakeLockFragment.class,
-                VMFragment.class, WakeFragment.class
+                ScreenFragment.class, SoundFragment.class, ThermalFragment.class, VMFragment.class
         };
 
         for (Class mClass : classes)
