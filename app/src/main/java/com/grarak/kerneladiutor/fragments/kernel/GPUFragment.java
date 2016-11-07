@@ -73,40 +73,40 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
                 freqs.add(GPU.getGpuFreqs().get(i) + getString(R.string.mhz));
             }
             mThrottling1card = new PopupCardView.DPopupCard(freqs);
-            mThrottling1card.setTitle("GPU Throttling 1");
-            mThrottling1card.setDescription("GPU will downclock to this frequency when temperature is higher than 85° C");
+            mThrottling1card.setTitle(getString(R.string.gpu_thermal_tittle) + " 1");
+            mThrottling1card.setDescription(getString(R.string.gpu_thermal_description) + "85° C");
             mThrottling1card.setItem(GPU.getGpuThrottling(4) + getString(R.string.mhz));
             mThrottling1card.setOnDPopupCardListener(this);
 
             addView(mThrottling1card);
 
             mThrottling2card = new PopupCardView.DPopupCard(freqs);
-            mThrottling2card.setTitle("GPU Throttling 2");
-            mThrottling2card.setDescription("GPU will downclock to this frequency when temperature is higher than 90° C");
+            mThrottling2card.setTitle(getString(R.string.gpu_thermal_tittle) + " 2");
+            mThrottling2card.setDescription(getString(R.string.gpu_thermal_description) + "90° C");
             mThrottling2card.setItem(GPU.getGpuThrottling(3) + getString(R.string.mhz));
             mThrottling2card.setOnDPopupCardListener(this);
 
             addView(mThrottling2card);
 
             mThrottling3card = new PopupCardView.DPopupCard(freqs);
-            mThrottling3card.setTitle("GPU Throttling 3");
-            mThrottling3card.setDescription("GPU will downclock to this frequency when temperature is higher than 95° C");
+            mThrottling3card.setTitle(getString(R.string.gpu_thermal_tittle) + " 3");
+            mThrottling3card.setDescription(getString(R.string.gpu_thermal_description) + "95° C");
             mThrottling3card.setItem(GPU.getGpuThrottling(2) + getString(R.string.mhz));
             mThrottling3card.setOnDPopupCardListener(this);
 
             addView(mThrottling3card);
 
             mThrottling4card = new PopupCardView.DPopupCard(freqs);
-            mThrottling4card.setTitle("GPU Throttling 4");
-            mThrottling4card.setDescription("GPU will downclock to this frequency when temperature is higher than 100° C");
+            mThrottling4card.setTitle(getString(R.string.gpu_thermal_tittle) + " 4");
+            mThrottling4card.setDescription(getString(R.string.gpu_thermal_description) + "100° C");
             mThrottling4card.setItem(GPU.getGpuThrottling(1) + getString(R.string.mhz));
             mThrottling4card.setOnDPopupCardListener(this);
 
             addView(mThrottling4card);
 
             mThrottling5card = new PopupCardView.DPopupCard(freqs);
-            mThrottling5card.setTitle("GPU Tripping");
-            mThrottling5card.setDescription("GPU will downclock to this frequency when temperature is higher than 105° C");
+            mThrottling5card.setTitle(getString(R.string.gpu_thermal_tittle) + " 5 (Tripping)");
+            mThrottling5card.setDescription(getString(R.string.gpu_thermal_description) + "105° C");
             mThrottling5card.setItem(GPU.getGpuThrottling(0) + getString(R.string.mhz));
             mThrottling5card.setOnDPopupCardListener(this);
 

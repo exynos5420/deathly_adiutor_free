@@ -965,20 +965,22 @@
     <string name="materialtabs" translatable="false">MaterialTabs</string>
     <string name="frenn" translatable="false">Karim Frenn</string>
     <string name="open_source">Open source</string>
-    <string name="open_source_summary">This application is open source. Check it out on my GitHub!</string>
+    <string name="open_source_summary">This application is open source. Check it out on GitHub!</string>
     <string name="google_plus_community">Google Plus Community</string>
     <string name="google_plus_community_summary">This project is now also on Google+. Click here to visit the community.</string>
     <string name="feature_request">Feature request</string>
     <string name="feature_request_summary">Do you want more features? Open a new issue on GitHub and submit your idea.</string>
-    <string name="donate_summary">This is a donation link for Yoinx for the modifications. Not to Grarak the original author. This button is the only place for a donation to me, all other donation popups will still go to Grarak</string>
+    <string name="donate_summary">This is a donation link for Exynos5420 Team for the modifications. Not to Grarak the original author. This button is the only place for a donation to me, all other donation popups will still go to Grarak.</string>
     <string name="google_plus_summary">Join our community.</string>
     <string name="translation">Translation</string>
     <string name="translation_summary">Help me translate this app!</string>
 
     <string name="modification">Modified build of Kernel Adiutor</string>
-    <string name="modification_summary">This application is being modified for various custom features that are not included in the original Kernel Adiutor.</string>
+    <string name="modification_summary">This application is being modified for exynos5420 Deathly Kernel manipulation only.</string>
 
     <string name="accessibility_service_label">KA Per App Monitor</string>
     <string name="accessibility_service_desc">Service to monitor when foreground app changes for per-app profile loading</string>
+    <string name="gpu_thermal_tittle">GPU Throttling Level</string>
+    <string name="gpu_thermal_description">"GPU will downclock to this frequency when temperature is higher than "</string>
 
 </resources>

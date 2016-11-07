@@ -30,10 +30,8 @@ import com.grarak.kerneladiutor.utils.Utils;
  */
 public class AboutusFragment extends RecyclerViewFragment {
 
-    private final String APP_SOURCE = "https://github.com/yoinx/kernel_adiutor/";
-    private final String ISSUE_LINK = "https://github.com/yoinx/kernel_adiutor/issues";
-    private final String DONATION_LINK = "https://www.paypal.com/paypalme/JosephSchubert";
-    private final String GOOGLE_PLUS_LINK = "https://plus.google.com/communities/103764146519204710337";
+    private final String APP_SOURCE = "https://github.com/exynos5420/kernel_adiutor2/";
+    private final String ISSUE_LINK = "https://github.com/exynos5420/kernel_adiutor2/issues";
 
     @Override
     public boolean showApplyOnBoot() {
@@ -45,11 +43,9 @@ public class AboutusFragment extends RecyclerViewFragment {
         super.init(savedInstanceState);
 
         ModificationInit();
-        googlePlusInit();
         licenseInit();
         appSourceInit();
         featureRequestInit();
-        donateInit();
     }
 
     private void ModificationInit() {
@@ -58,20 +54,6 @@ public class AboutusFragment extends RecyclerViewFragment {
             mModificationCard.setDescription(getString(R.string.modification_summary));
 
         addView(mModificationCard);
-    }
-
-    private void googlePlusInit() {
-        CardViewItem.DCardView mGooglePlusCard = new CardViewItem.DCardView();
-        mGooglePlusCard.setTitle(getString(R.string.google_plus_community));
-        mGooglePlusCard.setDescription(getString(R.string.google_plus_community_summary));
-        mGooglePlusCard.setOnDCardListener(new CardViewItem.DCardView.OnDCardListener() {
-            @Override
-            public void onClick(CardViewItem.DCardView dCardView) {
-                Utils.launchUrl(getActivity(), GOOGLE_PLUS_LINK);
-            }
-        });
-
-        addView(mGooglePlusCard);
     }
 
     private void licenseInit() {
@@ -110,20 +92,6 @@ public class AboutusFragment extends RecyclerViewFragment {
         });
 
         addView(mFeatureRequestCard);
-    }
-
-    private void donateInit() {
-        CardViewItem.DCardView mDonationCard = new CardViewItem.DCardView();
-        mDonationCard.setTitle(getString(R.string.donate));
-        mDonationCard.setDescription(getString(R.string.donate_summary));
-        mDonationCard.setOnDCardListener(new CardViewItem.DCardView.OnDCardListener() {
-            @Override
-            public void onClick(CardViewItem.DCardView dCardView) {
-                Utils.launchUrl(getActivity(), DONATION_LINK);
-            }
-        });
-
-        addView(mDonationCard);
     }
 
 }
