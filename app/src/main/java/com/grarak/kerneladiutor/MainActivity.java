@@ -58,7 +58,6 @@ import com.grarak.kerneladiutor.fragments.information.KernelInformationFragment;
 import com.grarak.kerneladiutor.fragments.kernel.BatteryFragment;
 import com.grarak.kerneladiutor.fragments.kernel.CPUFragment;
 import com.grarak.kerneladiutor.fragments.kernel.CPUVoltageFragment;
-import com.grarak.kerneladiutor.fragments.kernel.CoreControlFragment;
 import com.grarak.kerneladiutor.fragments.kernel.EntropyFragment;
 import com.grarak.kerneladiutor.fragments.kernel.GPUFragment;
 import com.grarak.kerneladiutor.fragments.kernel.IOFragment;
@@ -86,7 +85,6 @@ import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;
 import com.grarak.kerneladiutor.utils.database.ProfileDB;
 import com.grarak.kerneladiutor.utils.kernel.CPUVoltage;
-import com.grarak.kerneladiutor.utils.kernel.CoreControl;
 import com.grarak.kerneladiutor.utils.kernel.Entropy;
 import com.grarak.kerneladiutor.utils.kernel.KSM;
 import com.grarak.kerneladiutor.utils.kernel.LMK;
@@ -236,8 +234,6 @@ public class MainActivity extends BaseActivity implements Constants {
         ITEMS.add(new DAdapter.Item(getString(R.string.cpu), new CPUFragment()));
         if (CPUVoltage.hasCpuVoltage())
             ITEMS.add(new DAdapter.Item(getString(R.string.cpu_voltage), new CPUVoltageFragment()));
-        if (CoreControl.hasMinLittle())
-            ITEMS.add(new DAdapter.Item(getString(R.string.corecontrol), new CoreControlFragment()));
         if (Thermal.hasThermal())
             ITEMS.add(new DAdapter.Item(getString(R.string.thermal), new ThermalFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.gpu), new GPUFragment()));
