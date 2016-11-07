@@ -87,7 +87,7 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
         );
         addView(muptimeCard);
         int wasoffline = 0;
-        for (int i = 0; i < CPU.getCoreCount(); i++) {
+        int i = 0;
             if (!CPU.isCoreOnline(i)) {
                 wasoffline = 1;
                 CPU.activateCore(i, true, getContext());
@@ -115,15 +115,14 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
             } catch (Exception ex) {
                 Log.w(TAG, "No Time In State Stats found for core: " + i);
                 ex.printStackTrace();
-                // No reason to continue to card generation if there weren't any stats. Let's check the next core.
-                continue;
+                // No reason to continue to card generation if there weren't any stats.
             }
 
             List<Integer> allfreqs = CPU.getFreqs(i);
             LinearLayout uiStatesView = new LinearLayout(getActivity());
             uiStatesView.setOrientation(LinearLayout.VERTICAL);
             CardViewItem.DCardView frequencyCard = new CardViewItem.DCardView();
-            frequencyCard.setTitle("Core: " + i + " - Time in States.  (Online: " + getDurationBreakdown(total_time * 10) + ")");
+            frequencyCard.setTitle("Time in States (Online: " + getDurationBreakdown(total_time * 10) + ")");
             frequencyCard.setView(uiStatesView);
             frequencyCard.setFullSpan(true);
             for (int x = 0; x < freq_use_list.size(); x++) {
@@ -166,7 +165,7 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
             addView(frequencyCard);
             if (unusedStates.length() > 0) {
                 CardViewItem.DCardView mUnUsedStatesCard = new CardViewItem.DCardView();
-                mUnUsedStatesCard.setTitle("Core: " + i + " Unused States: (<1%)");
+                mUnUsedStatesCard.setTitle("Unused States: (<1%)");
                 mUnUsedStatesCard.setDescription(unusedStates.toString());
                 addView(mUnUsedStatesCard);
             }
@@ -175,7 +174,6 @@ public class FrequencyTableFragment extends RecyclerViewFragment implements Cons
                 CPU.activateCore(i, false, getContext());
                 wasoffline = 0;
             }
-        }
 
     }
 
