@@ -73,7 +73,6 @@ public class SettingsFragment extends RecyclerViewFragment {
             forceenglishlanguageInit();
         if (Constants.VERSION_NAME.contains("beta")) betainfoInit();
         if (Utils.hasCMSDK()) profileTileInit();
-        updatecheckInit();
         applyonbootInit();
         debuggingInit();
         securityInit();
@@ -144,30 +143,6 @@ public class SettingsFragment extends RecyclerViewFragment {
         });
 
         addView(mShowProfileTileCard);
-    }
-
-    private void updatecheckInit() {
-        DDivider mUpdateCheckDividerCard = new DDivider();
-        mUpdateCheckDividerCard.setText(getString(R.string.update_check));
-
-        addView(mUpdateCheckDividerCard);
-
-        if (!Utils.isTV(getActivity())) {
-            SwitchCardView.DSwitchCard mUpdateCheckCard = new SwitchCardView.DSwitchCard();
-            mUpdateCheckCard.setTitle(getString(R.string.update_check));
-            mUpdateCheckCard.setDescription(getString(R.string.update_check_summary));
-            mUpdateCheckCard.setChecked(Utils.getBoolean("updatecheck", true, getActivity()));
-            mUpdateCheckCard.setOnDSwitchCardListener(new SwitchCardView.DSwitchCard.OnDSwitchCardListener() {
-                @Override
-                public void onChecked(SwitchCardView.DSwitchCard dSwitchCard, boolean checked) {
-                    Utils.saveBoolean("updatecheck", checked, getActivity());
-                }
-            });
-
-            addView(mUpdateCheckCard);
-        }
-
-
     }
 
     private void applyonbootInit() {

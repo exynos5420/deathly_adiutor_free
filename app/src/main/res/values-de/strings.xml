@@ -756,26 +756,6 @@
   <string name="update_available_open_app">Zum Herunterladen Kernel Adiutor-Mod öffnen.</string>
   <string name="not_installed">Nicht installiert</string>
 
-  <!-- Downloads -->
-  <string name="no_kernels">Keine Kernel gefunden</string>
-  <string name="logo">Logo</string>
-  <string name="features">Features</string>
-  <string name="loading_counting">Lade %1$d/%2$d</string>
-  <string name="downloading_db">Datenbank wird heruntergeladen</string>
-  <string name="xda">XDA</string>
-  <string name="github">GitHub</string>
-  <string name="google_plus">Google Plus</string>
-  <string name="paypal">PayPal</string>
-  <string name="download">Download</string>
-  <string name="downloading_counting">%1$s/%2$s</string>
-  <string name="resume">Fortsetzen</string>
-  <string name="checking_md5">MD5sum wird überprüft</string>
-  <string name="md5_mismatch">MD5sum stimmt nicht überein</string>
-  <string name="md5_mismatch_summary">Die heruntergeladene Datei hat eine andere MD5sum. Das hat folgende Gründe: \n\n\u2022 Die heruntergeladene Datei ist korrupt \n\u2022 Der Entwickler hat eine falsche MD5sum angegeben \n\nVersuchen Sie die Datei erneut herunterzuladen. Wenn Sie immer noch diesen Fehler bekommen, kontaktieren Sie bitte den Entwickler des Kernel.</string>
-  <string name="download_success">%s erfolgreich heruntergeladen. Möchten Sie jetzt installieren?</string>
-  <string name="manual_flashing">Ich werde es selbst tun</string>
-  <string name="file_location">Heruntergeladene Datei ist in %s</string>
-
   <!-- Backup -->
   <string name="no_backups">Keine Sicherungen</string>
   <string name="flash_img">IMG flashen</string>

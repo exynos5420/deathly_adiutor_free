@@ -19,7 +19,6 @@ package com.grarak.kerneladiutor;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
-import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -82,18 +81,15 @@ import com.grarak.kerneladiutor.fragments.tools.InitdFragment;
 import com.grarak.kerneladiutor.fragments.tools.ProfileFragment;
 import com.grarak.kerneladiutor.fragments.tools.RecoveryFragment;
 import com.grarak.kerneladiutor.fragments.tools.StartUpCommandsFragment;
-import com.grarak.kerneladiutor.fragments.tools.download.DownloadsFragment;
 import com.grarak.kerneladiutor.services.AutoHighBrightnessModeService;
 import com.grarak.kerneladiutor.services.ProfileTileReceiver;
 import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;
 import com.grarak.kerneladiutor.utils.database.ProfileDB;
-import com.grarak.kerneladiutor.utils.json.Downloads;
 import com.grarak.kerneladiutor.utils.kernel.CPUHotplug;
 import com.grarak.kerneladiutor.utils.kernel.CPUVoltage;
 import com.grarak.kerneladiutor.utils.kernel.CoreControl;
 import com.grarak.kerneladiutor.utils.kernel.Entropy;
-import com.grarak.kerneladiutor.utils.kernel.GPU;
 import com.grarak.kerneladiutor.utils.kernel.KSM;
 import com.grarak.kerneladiutor.utils.kernel.LMK;
 import com.grarak.kerneladiutor.utils.kernel.Screen;
@@ -103,10 +99,8 @@ import com.grarak.kerneladiutor.utils.kernel.Wake;
 import com.grarak.kerneladiutor.utils.kernel.WakeLock;
 import com.grarak.kerneladiutor.utils.tools.Backup;
 import com.grarak.kerneladiutor.utils.tools.Buildprop;
-import com.grarak.kerneladiutor.utils.tools.UpdateChecker;
 import com.kerneladiutor.library.root.RootUtils;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -272,10 +266,6 @@ public class MainActivity extends BaseActivity implements Constants {
             ITEMS.add(new DAdapter.Item(getString(R.string.entropy), new EntropyFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.misc_controls), new MiscFragment()));
         ITEMS.add(new DAdapter.Header(getString(R.string.tools)));
-        Downloads downloads;
-        if ((downloads = new Downloads(this)).isSupported())
-            ITEMS.add(new DAdapter.Item(getString(R.string.downloads),
-                    DownloadsFragment.newInstance(downloads.getLink())));
         if (Backup.hasBackup())
             ITEMS.add(new DAdapter.Item(getString(R.string.backup), new BackupFragment()));
         if (Buildprop.hasBuildprop() && RootUtils.busyboxInstalled())
@@ -425,9 +415,6 @@ public class MainActivity extends BaseActivity implements Constants {
                 finish();
                 return;
             }
-            if (Utils.getBoolean("updatecheck", true, getApplicationContext())) {
-                checkForAppUpdate();
-            }
             mSplashView.finish();
             setInterface();
 
@@ -560,60 +547,4 @@ public class MainActivity extends BaseActivity implements Constants {
         }
         return false;
     }
-
-    private void checkForAppUpdate() {
-        Log.d(TAG, "Checking for app update...");
-
-
-        UpdateChecker.checkForUpdate(new UpdateChecker.Callback() {
-            @Override
-            public void onSuccess(final UpdateChecker.AppUpdateData appUpdateData) {
-                Log.d(TAG, "update check onSuccess");
-
-                if (UpdateChecker.isOldVersion(appUpdateData)) {
-                    new AlertDialog.Builder(MainActivity.this)
-                            .setTitle("New Version Available")
-                            .setMessage("Please download the new app version (Build "+ appUpdateData.currentBuildNumber + ")")
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-
-                                    final ProgressDialog progressDialog = ProgressDialog.show(MainActivity.this, "Updating", "Downloading app update");
-
-                                    UpdateChecker.downloadNewVersion(appUpdateData, getExternalCacheDir(), new UpdateChecker.DownloadCallback() {
-                                        @Override
-                                        public void onSuccess(File file) {
-                                            progressDialog.hide();
-                                            Log.i(TAG, "We got file " + file.toURI().toString() + " back");
-
-                                            Intent intent = new Intent(Intent.ACTION_VIEW);
-                                            intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                            startActivity(intent);
-                                        }
-
-                                        @Override
-                                        public void onError() {
-                                            progressDialog.hide();
-                                        }
-                                    });
-                                }
-                            })
-                            .setNegativeButton("Later", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-
-                                }
-                            })
-                            .show();
-                }
-            }
-
-            @Override
-            public void onError() {
-                Log.w(TAG, "update check onSuccess");
-            }
-        } , getString(R.string.APP_UPDATE_URL));
-    }
-
 }

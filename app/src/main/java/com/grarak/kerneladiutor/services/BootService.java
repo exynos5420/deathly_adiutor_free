@@ -51,7 +51,6 @@ import com.grarak.kerneladiutor.utils.database.CommandDB;
 import com.grarak.kerneladiutor.utils.kernel.CPUVoltage;
 import com.grarak.kerneladiutor.utils.kernel.CoreControl;
 import com.grarak.kerneladiutor.utils.kernel.Screen;
-import com.grarak.kerneladiutor.utils.tools.UpdateChecker;
 import com.kerneladiutor.library.root.RootUtils;
 
 import java.util.ArrayList;
@@ -202,9 +201,6 @@ public class BootService extends Service {
 
         su.close();
         toast(getString(R.string.apply_on_boot_finished));
-        if (Utils.getBoolean("updatecheck", true, getApplicationContext())) {
-            bootCheckForAppUpdate();
-        }
     }
 
     private void log(String log) {
@@ -220,37 +216,4 @@ public class BootService extends Service {
                 }
             });
     }
-
-    private void bootCheckForAppUpdate() {
-        log("Checking for app update...");
-
-        UpdateChecker.checkForUpdate(new UpdateChecker.Callback() {
-            @Override
-            public void onSuccess(final UpdateChecker.AppUpdateData appUpdateData) {
-                log("update check onSuccess");
-
-                if (UpdateChecker.isOldVersion(appUpdateData)) {
-                    mNotifyManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                    mUpdate = new NotificationCompat.Builder(BootService.this);
-                    mUpdate.setContentTitle(getString(R.string.update_available))
-                            .setContentText(getString(R.string.update_available_open_app))
-                            .setSmallIcon(R.drawable.ic_launcher_preview);
-
-                    TaskStackBuilder updatestackBuilder = TaskStackBuilder.create(BootService.this);
-                    updatestackBuilder.addParentStack(MainActivity.class);
-                    updatestackBuilder.addNextIntent(new Intent(BootService.this, MainActivity.class));
-                    PendingIntent updatependingIntent = updatestackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-                    mUpdate.setContentIntent(updatependingIntent);
-
-                    mNotifyManager.notify(id, mUpdate.build());
-                }
-            }
-
-            @Override
-            public void onError() {
-                log("update check onSuccess");
-            }
-        } , getString(R.string.APP_UPDATE_URL));
-    }
-
 }
