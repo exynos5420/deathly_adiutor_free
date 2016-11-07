@@ -54,7 +54,6 @@ import com.grarak.kerneladiutor.fragments.kernel.ScreenFragment;
 import com.grarak.kerneladiutor.fragments.kernel.SoundFragment;
 import com.grarak.kerneladiutor.fragments.kernel.ThermalFragment;
 import com.grarak.kerneladiutor.fragments.kernel.VMFragment;
-import com.grarak.kerneladiutor.fragments.kernel.WakeFragment;
 import com.grarak.kerneladiutor.fragments.kernel.WakeLockFragment;
 import com.grarak.kerneladiutor.utils.kernel.CPU;
 import com.kerneladiutor.library.Tools;
@@ -370,8 +369,6 @@ public class Utils implements Constants {
             applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
         else if (mClass == VMFragment.class)
             applys.addAll(new ArrayList<>(Arrays.asList(VM_ARRAY)));
-        else if (mClass == WakeFragment.class) for (String[] arrays : WAKE_ARRAY)
-            applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
         else if (mClass == WakeLockFragment.class) for (String[] arrays : WAKELOCK_ARRAY)
             applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
 
