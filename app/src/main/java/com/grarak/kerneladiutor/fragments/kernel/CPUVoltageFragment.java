@@ -46,11 +46,9 @@ import java.util.Map;
 /**
  * Created by willi on 26.12.14.
  */
-public class CPUVoltageFragment extends RecyclerViewFragment implements
-        SwitchCardView.DSwitchCard.OnDSwitchCardListener {
+public class CPUVoltageFragment extends RecyclerViewFragment {
 
     private EditTextCardView.DEditTextCard[] mVoltageCard;
-    private SwitchCardView.DSwitchCard mOverrideVminCard;
     Map<String, String> voltagetable = new HashMap<String, String>();
 
     @Override
@@ -93,20 +91,9 @@ public class CPUVoltageFragment extends RecyclerViewFragment implements
 
         if (voltages.isEmpty()) return;
 
-        if (CPUVoltage.hasOverrideVmin()) {
-            mOverrideVminCard = new SwitchCardView.DSwitchCard();
-            mOverrideVminCard.setTitle(getString(R.string.override_vmin));
-            mOverrideVminCard.setDescription(getString(R.string.override_vmin_summary));
-            mOverrideVminCard.setChecked(CPUVoltage.isOverrideVminActive());
-            mOverrideVminCard.setFullSpan(true);
-            mOverrideVminCard.setOnDSwitchCardListener(this);
-
-            addView(mOverrideVminCard);
-        }
-
         for (int i = 0; i < frequencies.size(); i++) {
             mVoltageCard[i] = new EditTextCardView.DEditTextCard();
-            String freq = CPUVoltage.isVddVoltage() ? String.valueOf(Utils.stringToInt(frequencies.get(i)) / 1000) : frequencies.get(i);
+            String freq = String.valueOf(Utils.stringToInt(frequencies.get(i)));
             mVoltageCard[i].setTitle(freq + getString(R.string.mhz));
 
             if (voltagetable.get(frequencies.get(i)) != null) {
@@ -255,9 +242,4 @@ public class CPUVoltageFragment extends RecyclerViewFragment implements
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onChecked(SwitchCardView.DSwitchCard dSwitchCard, boolean checked) {
-        if (dSwitchCard == mOverrideVminCard)
-            CPUVoltage.activateOverrideVmin(checked, getActivity());
-    }
 }

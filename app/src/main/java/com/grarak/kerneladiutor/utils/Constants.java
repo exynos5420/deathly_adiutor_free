@@ -129,12 +129,8 @@ public interface Constants {
 
   // CPU Voltage
   String CPU_VOLTAGE = "/sys/devices/system/cpu/cpu0/cpufreq/UV_mV_table";
-  String CPU_VDD_VOLTAGE = "/sys/devices/system/cpu/cpu0/cpufreq/vdd_levels";
-  String CPU_FAUX_VOLTAGE = "/sys/devices/system/cpu/cpufreq/vdd_table/vdd_levels";
 
-  String CPU_OVERRIDE_VMIN = "/sys/devices/system/cpu/cpu0/cpufreq/override_vmin";
-
-  String[] CPU_VOLTAGE_ARRAY = {CPU_VOLTAGE, CPU_VDD_VOLTAGE, CPU_FAUX_VOLTAGE, CPU_OVERRIDE_VMIN};
+  String[] CPU_VOLTAGE_ARRAY = {CPU_VOLTAGE};
 
   // CPU Hotplug
   String BCH = "/sys/kernel/boeffla_config_mode/enabled";

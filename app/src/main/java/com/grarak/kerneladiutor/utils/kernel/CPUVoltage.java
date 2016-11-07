@@ -37,37 +37,13 @@ public class CPUVoltage implements Constants {
     private static String CPU_VOLTAGE_FILE;
     private static String[] mCpuFreqs;
 
-    public static void activateOverrideVmin(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", CPU_OVERRIDE_VMIN, Control.CommandType.GENERIC, context);
-    }
-
-    public static boolean isOverrideVminActive() {
-        return Utils.readFile(CPU_OVERRIDE_VMIN).equals("1");
-    }
-
-    public static boolean hasOverrideVmin() {
-        return Utils.existFile(CPU_OVERRIDE_VMIN);
-    }
-
     public static void setGlobalOffset(String voltage, Context context) {
         int adjust = Utils.stringToInt(voltage);
-        String command = String.valueOf(adjust);
-
-        switch (CPU_VOLTAGE_FILE) {
-            case CPU_VDD_VOLTAGE:
-            case CPU_FAUX_VOLTAGE:
-                if (CPU_VOLTAGE_FILE.equals(CPU_FAUX_VOLTAGE))
-                    command = String.valueOf(adjust * 1000);
-                if (adjust > 0) command = "+" + command;
-                break;
-            default:
-                command = "";
-                for (String volt : getVoltages())
-                    if (volt != null)
-                        command += command.isEmpty() ? (Utils.stringToInt(volt) + adjust) :
+        String command = "";
+            for (String volt : getVoltages())
+                if (volt != null)
+                    command += command.isEmpty() ? (Utils.stringToInt(volt) + adjust) :
                                 " " + (Utils.stringToInt(volt) + adjust);
-                break;
-        }
 
         Control.runCommand(command, CPU_VOLTAGE_FILE, Control.CommandType.GENERIC, context);
     }
@@ -75,26 +51,20 @@ public class CPUVoltage implements Constants {
     public static void setVoltage(String freq, String voltage, Context context) {
         String command = "";
         int position = 0;
+
         for (int i = 0; i < getFreqs().size(); i++) {
             if (freq.equals(getFreqs().get(i)))
                 position = i;
         }
-        switch (CPU_VOLTAGE_FILE) {
-            case CPU_VDD_VOLTAGE:
-            case CPU_FAUX_VOLTAGE:
-                command = getFreqs().get(position) + " " + Utils.stringToInt(voltage) * 1000;
-                Control.runCommand(command, CPU_VOLTAGE_FILE, Control.CommandType.GENERIC, String.valueOf(position), context);
-                break;
-            default:
-                List<String> voltages = getVoltages();
-                for (int i = 0; i < voltages.size(); i++)
-                    if (i == position)
-                        command += command.isEmpty() ? voltage : " " + voltage;
-                    else
-                        command += command.isEmpty() ? voltages.get(i) : " " + voltages.get(i);
-                Control.runCommand(command, CPU_VOLTAGE_FILE, Control.CommandType.GENERIC, context);
-                break;
-        }
+
+        List<String> voltages = getVoltages();
+        for (int i = 0; i < voltages.size(); i++)
+            if (i == position)
+                command += command.isEmpty() ? voltage : " " + voltage;
+            else
+                command += command.isEmpty() ? voltages.get(i) : " " + voltages.get(i);
+
+        Control.runCommand(command, CPU_VOLTAGE_FILE, Control.CommandType.GENERIC, context);
     }
 
     public static List<String> getVoltages() {
@@ -102,36 +72,14 @@ public class CPUVoltage implements Constants {
         if (value != null) {
             String[] lines;
             value = value.replace(" ", "");
-            switch (CPU_VOLTAGE_FILE) {
-                case CPU_VDD_VOLTAGE:
-                case CPU_FAUX_VOLTAGE:
-                    lines = value.split("\\r?\\n");
-                    break;
-                default:
-                    lines = value.split("mV");
-                    break;
-            }
+            lines = value.split("mV");
+
             String[] voltages = new String[lines.length];
             for (int i = 0; i < voltages.length; i++) {
                 String[] voltageLine;
-                switch (CPU_VOLTAGE_FILE) {
-                    case CPU_VDD_VOLTAGE:
-                    case CPU_FAUX_VOLTAGE:
-                        voltageLine = lines[i].split(":");
-                        break;
-                    default:
-                        voltageLine = lines[i].split("mhz:");
-                        break;
-                }
+                voltageLine = lines[i].split("mhz:");
                 if (voltageLine.length > 1) {
-                    switch (CPU_VOLTAGE_FILE) {
-                        case CPU_FAUX_VOLTAGE:
-                            voltages[i] = String.valueOf(Utils.stringToInt(voltageLine[1]) / 1000).trim();
-                            break;
-                        default:
-                            voltages[i] = voltageLine[1].trim();
-                            break;
-                    }
+                      voltages[i] = voltageLine[1].trim();
                 }
             }
             return new ArrayList<>(Arrays.asList(voltages));
@@ -143,46 +91,23 @@ public class CPUVoltage implements Constants {
 
         if (mCpuFreqs == null) {
 
-            if(CPU_VOLTAGE_FILE == null){
-                Log.e(TAG, "CPU_VOLTAGE_FILE is null ??");
-                return Collections.emptyList();
-            }
-
             String value = Utils.readFile(CPU_VOLTAGE_FILE);
 
             if (value != null) {
                 String[] lines;
                 value = value.replace(" ", "");
-                switch (CPU_VOLTAGE_FILE) {
-                    case CPU_VDD_VOLTAGE:
-                    case CPU_FAUX_VOLTAGE:
-                        lines = value.split("\\r?\\n");
-                        break;
-                    default:
-                        lines = value.split("mV");
-                        break;
-                }
+                lines = value.split("mV");
+
                 mCpuFreqs = new String[lines.length];
                 for (int i = 0; i < lines.length; i++) {
-                    switch (CPU_VOLTAGE_FILE) {
-                        case CPU_VDD_VOLTAGE:
-                        case CPU_FAUX_VOLTAGE:
-                            mCpuFreqs[i] = lines[i].split(":")[0].trim();
-                            break;
-                        default:
-                            mCpuFreqs[i] = lines[i].split("mhz:")[0].trim();
-                            break;
-                    }
+                     mCpuFreqs[i] = lines[i].split("mhz:")[0].trim();
+
                 }
             }
             return new ArrayList<>(Arrays.asList(mCpuFreqs));
         } else {
             return new ArrayList<>(Arrays.asList(mCpuFreqs));
         }
-    }
-
-    public static boolean isVddVoltage() {
-        return CPU_VOLTAGE_FILE.equals(CPU_VDD_VOLTAGE) || CPU_VOLTAGE_FILE.equals(CPU_FAUX_VOLTAGE);
     }
 
     public static boolean hasCpuVoltage() {
@@ -212,6 +137,4 @@ public class CPUVoltage implements Constants {
             return false;
         }
     }
-
-
 }
