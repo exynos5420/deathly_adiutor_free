@@ -51,10 +51,7 @@ public class RootUtils {
     }
 
     public static boolean hasAppletSupport() {
-        if ( busyboxInstalled() || toyboxInstalled() ) {
-         return true;
-        }
-        return false;
+        return busyboxInstalled() || toyboxInstalled();
     }
 
     public static boolean busyboxInstalled() {

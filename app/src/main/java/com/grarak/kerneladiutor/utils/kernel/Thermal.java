@@ -253,10 +253,7 @@ public class Thermal implements Constants {
 
     public static boolean isTempThrottleActive() {
         String temp = Utils.readFile(MSM_THERMAL_TEMP_THROTTLE);
-        if (temp.equals("Y") || temp.equals("1")) {
-            return true;
-        }
-        return false;
+        return temp.equals("Y") || temp.equals("1");
     }
 
     public static boolean hasTempThrottleEnable() {

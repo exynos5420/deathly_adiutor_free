@@ -489,11 +489,7 @@ public class Screen implements Constants {
 
     public static void activateScreenHBM(boolean active, Context context, String source) {
         if (source.equals("Manual")) {
-            if (Screen.isScreenAutoHBMActive(context) && AutoHighBrightnessModeService.HBM_Manually_Toggled) {
-                AutoHighBrightnessModeService.HBM_Manually_Toggled = false;
-            } else {
-                AutoHighBrightnessModeService.HBM_Manually_Toggled = true;
-            }
+            AutoHighBrightnessModeService.HBM_Manually_Toggled = !(Screen.isScreenAutoHBMActive(context) && AutoHighBrightnessModeService.HBM_Manually_Toggled);
         }
         Control.runCommand(active ? "1" : "0", Utils.getsysfspath(SCREEN_HBM), Control.CommandType.GENERIC, context);
         if (Utils.getBoolean("Widget_Active", false, context)) {

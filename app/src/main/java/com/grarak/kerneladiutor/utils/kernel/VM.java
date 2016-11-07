@@ -49,8 +49,7 @@ public class VM implements Constants {
     }
 
     public static boolean hasDirtyRatio() {
-        if (Utils.existFile(VM_DIRTY_RATIO)) return true;
-        return false;
+        return Utils.existFile(VM_DIRTY_RATIO);
     }
 
     public static void setDirtyRatio(int value, Context context) {
@@ -62,8 +61,7 @@ public class VM implements Constants {
     }
 
     public static boolean hasDirtyBackgroundRatio() {
-        if (Utils.existFile(VM_DIRTY_BACKGROUND_RATIO)) return true;
-        return false;
+        return Utils.existFile(VM_DIRTY_BACKGROUND_RATIO);
     }
 
     public static void setDirtyBackgroundRatio(int value, Context context) {
@@ -75,8 +73,7 @@ public class VM implements Constants {
     }
 
     public static boolean hasDirtyExpire() {
-        if (Utils.existFile(VM_DIRTY_EXPIRE_CENTISECS)) return true;
-        return false;
+        return Utils.existFile(VM_DIRTY_EXPIRE_CENTISECS);
     }
 
     public static void setDirtyExpire(int value, Context context) {
@@ -88,8 +85,7 @@ public class VM implements Constants {
     }
 
     public static boolean hasDirtyWriteback() {
-        if (Utils.existFile(VM_DIRTY_WRITEBACK_CENTISECS)) return true;
-        return false;
+        return Utils.existFile(VM_DIRTY_WRITEBACK_CENTISECS);
     }
 
     public static void setDirtyWriteback(int value, Context context) {
@@ -101,8 +97,7 @@ public class VM implements Constants {
     }
 
     public static boolean hasOverCommitRatio() {
-        if (Utils.existFile(VM_DIRTY_RATIO)) return true;
-        return false;
+        return Utils.existFile(VM_DIRTY_RATIO);
     }
 
     public static void setOverCommitRatio(int value, Context context) {
@@ -114,8 +109,7 @@ public class VM implements Constants {
     }
 
     public static boolean hasSwappiness() {
-        if (Utils.existFile(VM_SWAPPINESS)) return true;
-        return false;
+        return Utils.existFile(VM_SWAPPINESS);
     }
 
     public static void setSwappiness(int value, Context context) {
@@ -127,8 +121,7 @@ public class VM implements Constants {
     }
 
     public static boolean hasVFSCachePressure() {
-        if (Utils.existFile(VM_VFS_CACHE_PRESSURE)) return true;
-        return false;
+        return Utils.existFile(VM_VFS_CACHE_PRESSURE);
     }
 
     public static void setVFSCachePressure(int value, Context context) {
@@ -140,8 +133,7 @@ public class VM implements Constants {
     }
 
     public static boolean hasLaptopMode() {
-        if (Utils.existFile(VM_LAPTOP_MODE)) return true;
-        return false;
+        return Utils.existFile(VM_LAPTOP_MODE);
     }
 
     public static void activateLaptopMode(boolean active, Context context) {
@@ -153,8 +145,7 @@ public class VM implements Constants {
     }
 
     public static boolean hasMinFreeKbytes() {
-        if (Utils.existFile(VM_MIN_FREE_KBYTES)) return true;
-        return false;
+        return Utils.existFile(VM_MIN_FREE_KBYTES);
     }
 
     public static void setMinFreeKbytes(String value, Context context) {
@@ -168,8 +159,7 @@ public class VM implements Constants {
     }
 
     public static boolean hasExtraFreeKbytes() {
-        if (Utils.existFile(VM_EXTRA_FREE_KBYTES)) return true;
-        return false;
+        return Utils.existFile(VM_EXTRA_FREE_KBYTES);
     }
 
     public static void setExtraFreeKbytes(String value, Context context) {
@@ -183,8 +173,7 @@ public class VM implements Constants {
     }
 
     public static boolean hasDynamicDirtyWriteback() {
-        if (Utils.existFile(VM_DYNAMIC_DIRTY_WRITEBACK)) return true;
-        return false;
+        return Utils.existFile(VM_DYNAMIC_DIRTY_WRITEBACK);
     }
 
     public static void activateDynamicDirtyWriteback(boolean active, Context context) {
@@ -196,8 +185,7 @@ public class VM implements Constants {
     }
 
     public static boolean hasDirtySuspendWriteback() {
-        if (Utils.existFile(VM_DIRTY_WRITEBACK_SUSPEND_CENTISECS)) return true;
-        return false;
+        return Utils.existFile(VM_DIRTY_WRITEBACK_SUSPEND_CENTISECS);
     }
 
     public static void setDirtySuspendWriteback(int value, Context context) {
@@ -209,8 +197,7 @@ public class VM implements Constants {
     }
 
     public static boolean hasDirtyActiveWriteback() {
-        if (Utils.existFile(VM_DIRTY_WRITEBACK_ACTIVE_CENTISECS)) return true;
-        return false;
+        return Utils.existFile(VM_DIRTY_WRITEBACK_ACTIVE_CENTISECS);
     }
 
     public static void setDirtyActiveWriteback(int value, Context context) {
