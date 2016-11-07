@@ -60,17 +60,14 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
 
     private void curFreqInit() {
 
-        if (GPU.hasGpuCurFreq()) {
             mCurFreqCard = new CardViewItem.DCardView();
             mCurFreqCard.setTitle(getString(R.string.gpu_cur_freq));
 
             addView(mCurFreqCard);
-        }
     }
 
     private void throttlingInit() {
 
-        if (GPU.hasGpuMaxFreq() && GPU.hasGpuFreqs()) {
             List<String> freqs = new ArrayList<>();
               for (int i = 0; i< GPU.getGpuFreqs().size() - 1; i++ ) {
                 freqs.add(GPU.getGpuFreqs().get(i) + getString(R.string.mhz));
@@ -115,12 +112,10 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
 
             addView(mThrottling5card);
 
-        }
     }
 
     private void maxFreqInit() {
 
-        if (GPU.hasGpuMaxFreq() && GPU.hasGpuFreqs()) {
             List<String> freqs = new ArrayList<>();
             for (int freq : GPU.getGpuFreqs()) {
                 freqs.add(freq + getString(R.string.mhz));
@@ -133,11 +128,9 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
             mMaxFreqCard.setOnDPopupCardListener(this);
 
             addView(mMaxFreqCard);
-        }
     }
 
     private void minFreqInit() {
-        if (GPU.hasGpuMinFreq() && GPU.hasGpuFreqs()) {
             List<String> freqs = new ArrayList<>();
             for (int freq : GPU.getGpuFreqs()) {
                 freqs.add(freq + getString(R.string.mhz));
@@ -150,7 +143,6 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
             mMinFreqCard.setOnDPopupCardListener(this);
 
             addView(mMinFreqCard);
-        }
     }
 
     private void governorInit() {

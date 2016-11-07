@@ -56,7 +56,6 @@ public class DashClockService extends DashClockExtension {
                             message.append(getString(R.string.cpu_governor)).append(": ")
                                     .append(CPU.getCurGovernor(true)).append("\n");
 
-                            if (GPU.hasGpuCurFreq())
                                 message.append(getString(R.string.gpu)).append(": ")
                                         .append(GPU.getGpuCurFreq() / 1000000).append(getString(R.string.mhz));
                         } else message.append(getString(R.string.no_root));

@@ -444,7 +444,7 @@ public interface Constants {
 
   String[][] GPU_ARRAY = {GPU_CUR_FREQ_ARRAY,
           GPU_MAX_FREQ_ARRAY, GPU_MIN_FREQ_ARRAY, GPU_AVAILABLE_FREQS_ARRAY,
-          GPU_SCALING_GOVERNOR_ARRAY};
+          GPU_SCALING_GOVERNOR_ARRAY, GPU_THERMAL_THRORRLING_ARRAY};
 
   // Screen
   String SCREEN_KCAL = "/sys/devices/platform/kcal_ctrl.0";
