@@ -29,7 +29,6 @@ import com.grarak.kerneladiutor.elements.cards.CardViewItem;
 import com.grarak.kerneladiutor.fragments.RecyclerViewFragment;
 import com.grarak.kerneladiutor.fragments.kernel.BatteryFragment;
 import com.grarak.kerneladiutor.fragments.kernel.CPUFragment;
-import com.grarak.kerneladiutor.fragments.kernel.CPUHotplugFragment;
 import com.grarak.kerneladiutor.fragments.kernel.CPUVoltageFragment;
 import com.grarak.kerneladiutor.fragments.kernel.EntropyFragment;
 import com.grarak.kerneladiutor.fragments.kernel.GPUFragment;
@@ -79,7 +78,7 @@ public class StartUpCommandsFragment extends RecyclerViewFragment {
         final List<String> applys = new ArrayList<>();
         List<String> commands = new ArrayList<>();
 
-        Class[] classes = {BatteryFragment.class, CPUFragment.class, CPUHotplugFragment.class,
+        Class[] classes = {BatteryFragment.class, CPUFragment.class,
                 CPUVoltageFragment.class, EntropyFragment.class, GPUFragment.class, IOFragment.class,
                 KSMFragment.class, LMKFragment.class, MiscFragment.class,
                 ScreenFragment.class, SoundFragment.class, ThermalFragment.class, WakeLockFragment.class,

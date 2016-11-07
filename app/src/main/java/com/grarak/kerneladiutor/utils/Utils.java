@@ -43,7 +43,6 @@ import android.widget.Toast;
 import com.grarak.kerneladiutor.R;
 import com.grarak.kerneladiutor.fragments.kernel.BatteryFragment;
 import com.grarak.kerneladiutor.fragments.kernel.CPUFragment;
-import com.grarak.kerneladiutor.fragments.kernel.CPUHotplugFragment;
 import com.grarak.kerneladiutor.fragments.kernel.CPUVoltageFragment;
 import com.grarak.kerneladiutor.fragments.kernel.EntropyFragment;
 import com.grarak.kerneladiutor.fragments.kernel.GPUFragment;
@@ -350,9 +349,7 @@ public class Utils implements Constants {
                     for (int i = 0; i < CPU.getCoreCount(); i++)
                         applys.add(String.format(cpu, i));
                 else applys.add(cpu);
-        } else if (mClass == CPUHotplugFragment.class) for (String[] array : CPU_HOTPLUG_ARRAY)
-            applys.addAll(new ArrayList<>(Arrays.asList(array)));
-        else if (mClass == CPUVoltageFragment.class)
+        }else if (mClass == CPUVoltageFragment.class)
             applys.addAll(new ArrayList<>(Arrays.asList(CPU_VOLTAGE_ARRAY)));
         else if (mClass == EntropyFragment.class)
             applys.addAll(new ArrayList<>(Arrays.asList(ENTROPY_ARRAY)));

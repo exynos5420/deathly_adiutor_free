@@ -31,7 +31,6 @@ import com.grarak.kerneladiutor.MainActivity;
 import com.grarak.kerneladiutor.R;
 import com.grarak.kerneladiutor.fragments.kernel.BatteryFragment;
 import com.grarak.kerneladiutor.fragments.kernel.CPUFragment;
-import com.grarak.kerneladiutor.fragments.kernel.CPUHotplugFragment;
 import com.grarak.kerneladiutor.fragments.kernel.CPUVoltageFragment;
 import com.grarak.kerneladiutor.fragments.kernel.EntropyFragment;
 import com.grarak.kerneladiutor.fragments.kernel.GPUFragment;
@@ -89,7 +88,7 @@ public class BootService extends Service {
             startService(new Intent(this, AutoHighBrightnessModeService.class));
         }
 
-        Class[] classes = {BatteryFragment.class, CPUFragment.class, CPUHotplugFragment.class,
+        Class[] classes = {BatteryFragment.class, CPUFragment.class,
                 CPUVoltageFragment.class, EntropyFragment.class, GPUFragment.class, IOFragment.class,
                 KSMFragment.class, LMKFragment.class, MiscFragment.class,
                 ScreenFragment.class, SoundFragment.class, ThermalFragment.class, WakeLockFragment.class,

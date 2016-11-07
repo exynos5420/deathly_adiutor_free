@@ -23,7 +23,6 @@ import com.grarak.kerneladiutor.utils.Constants;
 import com.grarak.kerneladiutor.utils.Utils;
 import com.grarak.kerneladiutor.utils.database.CommandDB;
 import com.grarak.kerneladiutor.utils.kernel.CPU;
-import com.grarak.kerneladiutor.utils.kernel.CPUHotplug;
 import com.kerneladiutor.library.root.RootUtils;
 
 import java.util.ArrayList;
@@ -116,10 +115,6 @@ public class Control implements Constants {
             public void run() {
                 if (command == CommandType.CPU || command == CommandType.CPU_LITTLE) {
                     boolean mpd = false;
-                    if (CPUHotplug.hasMpdecision() && CPUHotplug.isMpdecisionActive()) {
-                        mpd = true;
-                        stopService(HOTPLUG_MPDEC, null);
-                    }
 
                     List<Integer> range = command == CommandType.CPU ? CPU.getBigCoreRange() : CPU.getLITTLECoreRange();
                     for (int i = 0; i < range.size(); i++) {
@@ -131,7 +126,6 @@ public class Control implements Constants {
                         setPermission(String.format(file, range.get(i)), 444, context);
                     }
 
-                    if (mpd) startService(HOTPLUG_MPDEC, null);
                 } else if (command == CommandType.GENERIC) {
                     runGeneric(file, value, id, context);
                 } else if (command == CommandType.FAUX_GENERIC) {
