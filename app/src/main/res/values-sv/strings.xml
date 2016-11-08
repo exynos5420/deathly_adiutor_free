@@ -43,7 +43,6 @@
   <string name="other">Övrigt</string>
   <string name="downloads">Hämtade filer</string>
   <string name="kernel_information">Information om din Kernel</string>
-  <string name="frequency_table">Frekvenstabell</string>
   <string name="cpu">CPU</string>
   <string name="cpu_voltage">Spänning CPU</string>
   <string name="cpu_hotplug">CPU Hotplug</string>

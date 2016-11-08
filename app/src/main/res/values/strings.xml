@@ -68,7 +68,7 @@
     <!-- Tabs -->
     <string name="downloads">Downloads</string>
     <string name="kernel_information">Kernel Information</string>
-    <string name="frequency_table">Frequency Table</string>
+    <string name="frequency_table">Usage Statistics</string>
     <string name="cpu">CPU</string>
     <string name="cpu_voltage">CPU Voltage</string>
     <string name="cpu_hotplug">CPU Hotplug</string>

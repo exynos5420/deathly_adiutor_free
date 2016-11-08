@@ -43,7 +43,6 @@
   <string name="other">Остало</string>
   <string name="downloads">Преузимања</string>
   <string name="kernel_information">Подаци о кернелу</string>
-  <string name="frequency_table">Табела фреквенција</string>
   <string name="cpu">Процесор</string>
   <string name="cpu_voltage">Напон</string>
   <string name="cpu_hotplug">Укључење</string>

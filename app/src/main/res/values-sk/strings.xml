@@ -42,7 +42,6 @@
   <string name="other">Ostatné</string>
   <string name="downloads">Prevzatia</string>
   <string name="kernel_information">Informácie o jadre</string>
-  <string name="frequency_table">Tabuľka frekvencií</string>
   <string name="cpu">CPU</string>
   <string name="cpu_voltage">CPU napätie</string>
   <string name="cpu_hotplug">CPU Hotplug</string>

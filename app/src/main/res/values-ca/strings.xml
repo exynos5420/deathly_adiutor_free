@@ -42,7 +42,6 @@
   <string name="other">Altres</string>
   <string name="downloads">Baixades</string>
   <string name="kernel_information">Informació del nucli</string>
-  <string name="frequency_table">Taula de freqüència</string>
   <string name="cpu">CPU</string>
   <string name="cpu_voltage">Voltatge del CPU</string>
   <string name="cpu_hotplug">CPU Hotplug</string>

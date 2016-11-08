@@ -43,7 +43,6 @@
   <string name="other">Egyéb</string>
   <string name="downloads">Letöltések</string>
   <string name="kernel_information">Kernel információ</string>
-  <string name="frequency_table">Frekvencia táblázat</string>
   <string name="cpu">CPU</string>
   <string name="cpu_voltage">CPU feszültség</string>
   <string name="cpu_hotplug">CPU Hotplug</string>

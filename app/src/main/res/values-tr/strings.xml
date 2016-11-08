@@ -43,7 +43,6 @@
   <string name="other">Diğer</string>
   <string name="downloads">İndirilenler</string>
   <string name="kernel_information">Kernel Bilgisi</string>
-  <string name="frequency_table">Frekans Tablosu</string>
   <string name="cpu">CPU</string>
   <string name="cpu_voltage">İşlemci Voltajı</string>
   <string name="cpu_hotplug">İşlemci Hotplug</string>

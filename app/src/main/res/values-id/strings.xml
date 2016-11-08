@@ -42,7 +42,6 @@
   <string name="other">Lainnya</string>
   <string name="downloads">Unduhan</string>
   <string name="kernel_information">Informasi Kernel</string>
-  <string name="frequency_table">Tabel Frekuensi</string>
   <string name="cpu">CPU</string>
   <string name="cpu_voltage">Tegangan CPU</string>
   <string name="cpu_hotplug">CPU Hotplug</string>

@@ -41,7 +41,6 @@
   <string name="other">Muut</string>
   <string name="downloads">Lataukset</string>
   <string name="kernel_information">Kernel-tiedot</string>
-  <string name="frequency_table">Taajuustaulukko</string>
   <string name="cpu">CPU</string>
   <string name="cpu_voltage">CPU:n Jännite</string>
   <string name="cpu_hotplug">CPU Hotplug</string>

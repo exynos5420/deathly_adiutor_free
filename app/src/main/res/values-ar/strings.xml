@@ -43,7 +43,6 @@
   <string name="other">أخرى</string>
   <string name="downloads">التحميلات</string>
   <string name="kernel_information">معلونات النوات</string>
-  <string name="frequency_table">جدول الترددات</string>
   <string name="cpu">المعالج</string>
   <string name="cpu_voltage">جهد المعالج</string>
   <string name="cpu_hotplug">إضافات المعالج</string>

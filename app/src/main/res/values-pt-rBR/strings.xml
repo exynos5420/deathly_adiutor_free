@@ -43,7 +43,6 @@
   <string name="other">Outros</string>
   <string name="downloads">Downloads</string>
   <string name="kernel_information">Informações do Kernel</string>
-  <string name="frequency_table">Tabela de frequência</string>
   <string name="cpu">CPU</string>
   <string name="cpu_voltage">Voltagem da CPU</string>
   <string name="cpu_hotplug">CPU HotPlug</string>

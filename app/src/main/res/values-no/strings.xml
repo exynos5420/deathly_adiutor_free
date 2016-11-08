@@ -42,7 +42,6 @@
   <string name="other">Annet</string>
   <string name="downloads">Nedlastinger</string>
   <string name="kernel_information">Kjerneinformasjon</string>
-  <string name="frequency_table">Frekvenstabell</string>
   <string name="cpu">CPU</string>
   <string name="cpu_voltage">CPU-spenning</string>
   <string name="cpu_hotplug">CPU varsling</string>

@@ -53,7 +53,7 @@ import com.grarak.kerneladiutor.elements.DAdapter;
 import com.grarak.kerneladiutor.elements.ScrimInsetsFrameLayout;
 import com.grarak.kerneladiutor.elements.SplashView;
 import com.grarak.kerneladiutor.fragments.BaseFragment;
-import com.grarak.kerneladiutor.fragments.information.FrequencyTableFragment;
+import com.grarak.kerneladiutor.fragments.information.UsageStatisticsFragment;
 import com.grarak.kerneladiutor.fragments.information.KernelInformationFragment;
 import com.grarak.kerneladiutor.fragments.kernel.BatteryFragment;
 import com.grarak.kerneladiutor.fragments.kernel.CPUFragment;
@@ -223,7 +223,7 @@ public class MainActivity extends BaseActivity implements Constants {
         ITEMS.add(new DAdapter.MainHeader());
         ITEMS.add(new DAdapter.Header(getString(R.string.information)));
         ITEMS.add(new DAdapter.Item(getString(R.string.kernel_information), new KernelInformationFragment()));
-        ITEMS.add(new DAdapter.Item(getString(R.string.frequency_table), new FrequencyTableFragment()));
+        ITEMS.add(new DAdapter.Item(getString(R.string.frequency_table), new UsageStatisticsFragment()));
         ITEMS.add(new DAdapter.Header(getString(R.string.kernel)));
         ITEMS.add(new DAdapter.Item(getString(R.string.cpu), new CPUFragment()));
         if (CPUVoltage.hasCpuVoltage())

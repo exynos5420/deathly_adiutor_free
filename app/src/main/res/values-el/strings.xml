@@ -43,7 +43,6 @@
   <string name="other">Άλλα</string>
   <string name="downloads">Λήψεις</string>
   <string name="kernel_information">Πληροφορίες Πυρήνα</string>
-  <string name="frequency_table">Πίνακας Συχνοτήτων</string>
   <string name="cpu">CPU</string>
   <string name="cpu_voltage">Τάση CPU</string>
   <string name="cpu_hotplug">Hotplug της CPU</string>

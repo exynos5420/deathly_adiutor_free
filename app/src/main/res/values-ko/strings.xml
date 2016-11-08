@@ -43,7 +43,6 @@
   <string name="other">기타</string>
   <string name="downloads">다운로드</string>
   <string name="kernel_information">커널 정보</string>
-  <string name="frequency_table">클럭 테이블</string>
   <string name="cpu">CPU</string>
   <string name="cpu_voltage">CPU 전압</string>
   <string name="cpu_hotplug">CPU 핫플러그</string>

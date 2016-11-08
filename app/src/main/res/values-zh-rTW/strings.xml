@@ -43,7 +43,6 @@
   <string name="other">其他</string>
   <string name="downloads">下載</string>
   <string name="kernel_information">核心資訊</string>
-  <string name="frequency_table">頻率表</string>
   <string name="cpu">CPU</string>
   <string name="cpu_voltage">CPU 電壓</string>
   <string name="cpu_hotplug">CPU 熱插拔</string>
@@ -516,4 +515,5 @@
   <string name="google_plus_summary">加入我們的社群</string>
   <string name="translation">翻譯</string>
   <string name="translation_summary">幫助我們翻譯此APP！</string>
+  <string name="frequency_table"></string>
 </resources>

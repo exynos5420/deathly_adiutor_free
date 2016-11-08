@@ -43,7 +43,6 @@
   <string name="other">Ostalo</string>
   <string name="downloads">Prenosi</string>
   <string name="kernel_information">Informacije o jedru</string>
-  <string name="frequency_table">Tabela frekvenc</string>
   <string name="cpu">CPU</string>
   <string name="cpu_voltage">Napetost CPU</string>
   <string name="cpu_hotplug">CPU hotplug</string>

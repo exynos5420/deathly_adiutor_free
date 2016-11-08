@@ -42,7 +42,6 @@
   <string name="other">שונות</string>
   <string name="downloads">הורדות</string>
   <string name="kernel_information">מידע על הקרנל</string>
-  <string name="frequency_table">טבלת תדרים</string>
   <string name="cpu">מעבד</string>
   <string name="cpu_voltage">מתח מעבד</string>
   <string name="cpu_hotplug">Hotplug מעבד</string>

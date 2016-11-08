@@ -43,7 +43,6 @@
   <string name="other">Другое</string>
   <string name="downloads">Загрузки</string>
   <string name="kernel_information">Информация о ядре</string>
-  <string name="frequency_table">Таблица частот</string>
   <string name="cpu">ЦП</string>
   <string name="cpu_voltage">Напряжение ЦП</string>
   <string name="cpu_hotplug">CPU Hotplug</string>

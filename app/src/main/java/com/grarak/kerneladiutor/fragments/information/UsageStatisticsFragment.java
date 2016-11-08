@@ -31,7 +31,7 @@ import java.util.concurrent.TimeUnit;
 This rewrite is re-using code that Grarak had originally used in his fragment. Credits go to the original source.
 
  */
-public class FrequencyTableFragment extends RecyclerViewFragment implements Constants {
+public class UsageStatisticsFragment extends RecyclerViewFragment implements Constants {
 
     @Override
     protected boolean pullToRefreshIsEnabled() {
