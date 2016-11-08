@@ -101,6 +101,8 @@ import io.fabric.sdk.android.Fabric;
  */
 public class MainActivity extends BaseActivity implements Constants {
 
+    private static final String TAG = "MainActivity";
+
     /**
      * Views
      */
