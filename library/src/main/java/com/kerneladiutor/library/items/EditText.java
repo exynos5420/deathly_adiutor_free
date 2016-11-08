@@ -31,7 +31,7 @@ import com.kerneladiutor.library.Item;
  */
 public class EditText extends Item {
 
-    public static final String VALUE = "com.kerneladiutor.library.items.VALUE";
+    public static final String VALUE = "com.deathlyadiutor.library.items.VALUE";
 
     private String mTitle;
     private String mValue;

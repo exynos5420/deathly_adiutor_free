@@ -19,7 +19,7 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
     defaultConfig {
-        applicationId 'com.deathlyadiutor'
+        applicationId 'com.exynos5420.deathlyadiutor'
         minSdkVersion 19
         targetSdkVersion 23
         versionCode 15

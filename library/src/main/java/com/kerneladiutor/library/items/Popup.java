@@ -34,8 +34,8 @@ import java.util.List;
  */
 public class Popup extends Item {
 
-    public static final String POSITION = "com.kerneladiutor.library.items.POSITION";
-    public static final String ITEM = "com.kerneladiutor.library.items.ITEM";
+    public static final String POSITION = "com.deathlyadiutor.library.items.POSITION";
+    public static final String ITEM = "com.deathlyadiutor.library.items.ITEM";
 
     private final List<String> mItems;
     private String mTitle;

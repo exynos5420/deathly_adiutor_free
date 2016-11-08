@@ -9,7 +9,7 @@ package com.bvalosek.cpuspy;
 
 import android.content.Context;
 
-import com.grarak.kerneladiutor.utils.Utils;
+import com.exynos5420.deathlyadiutor.utils.Utils;
 
 import java.util.HashMap;
 import java.util.Map;

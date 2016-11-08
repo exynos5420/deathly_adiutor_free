@@ -30,7 +30,7 @@
 
     </LinearLayout>
 
-    <com.grarak.kerneladiutor.elements.SplashView
+    <com.exynos5420.deathlyadiutor.elements.SplashView
         android:id="@+id/splash_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

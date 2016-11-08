@@ -31,7 +31,7 @@ import com.kerneladiutor.library.Item;
  */
 public class Switcher extends Item {
 
-    public static final String CHECKED = "com.kerneladiutor.library.items.CHECKED";
+    public static final String CHECKED = "com.deathlyadiutor.library.items.CHECKED";
 
     private String mTitle;
     private String mDescription;
