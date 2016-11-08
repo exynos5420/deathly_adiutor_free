@@ -983,4 +983,7 @@
     <string name="gpu_thermal_tittle">GPU Throttling Level</string>
     <string name="gpu_thermal_description">"GPU will downclock to this frequency when temperature is higher than "</string>
 
+    # Admob Test ID
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+
 </resources>
