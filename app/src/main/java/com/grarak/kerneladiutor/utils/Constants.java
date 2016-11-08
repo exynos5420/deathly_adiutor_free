@@ -203,6 +203,7 @@ public interface Constants {
   String GPU_THERMAL_EXYNOS5_THROTTLING3 = "/sys/devices/platform/mali.0/throttling3";
   String GPU_THERMAL_EXYNOS5_THROTTLING2 = "/sys/devices/platform/mali.0/throttling2";
   String GPU_THERMAL_EXYNOS5_THROTTLING1 = "/sys/devices/platform/mali.0/throttling1";
+  String GPU_TIME_IN_STATE = "/sys/devices/platform/mali.0/time_in_state";
 
   String[] GPU_CUR_FREQ_ARRAY = {GPU_CUR_EXYNOS5_FREQ};
 
