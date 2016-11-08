@@ -260,12 +260,10 @@ public class Sound implements Constants {
     }
 
     public static boolean hasDriverTunables() {
-        if (Utils.existFile(WCD_SPKR_DRV_WRND) || Utils.existFile(Utils.getsysfspath(WCD_HIGHPERF_MODE_ENABLE))) return true;
-        else return false;
+        return Utils.existFile(WCD_SPKR_DRV_WRND) || Utils.existFile(Utils.getsysfspath(WCD_HIGHPERF_MODE_ENABLE));
     }
 
     public static boolean hasThirdPartyTunables() {
-        if (Utils.existFile(FAUX_SOUND) || Utils.existFile(FRANCO_SOUND)) return true;
-        else return false;
+        return Utils.existFile(FAUX_SOUND) || Utils.existFile(FRANCO_SOUND);
     }
 }

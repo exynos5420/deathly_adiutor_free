@@ -133,10 +133,7 @@ public class Misc implements Constants {
     }
 
     public static boolean isADBOverWifiActive() {
-        if (Utils.getProp(ADB_OVER_WIFI).equals("5555")) {
-            return true;
-        }
-        return false;
+        return Utils.getProp(ADB_OVER_WIFI).equals("5555");
     }
 
     public static void activateGentleFairSleepers(boolean active, Context context) {
@@ -347,8 +344,7 @@ public class Misc implements Constants {
 
     public static boolean isSELinuxActive () {
         String result = RootUtils.runCommand(GETENFORCE);
-        if (result.equals("Enforcing")) return true;
-        return false;
+        return result.equals("Enforcing");
     }
 
     public static void activateSELinux (boolean active, Context context) {

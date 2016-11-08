@@ -526,10 +526,7 @@ public class Utils implements Constants {
     }
 
     public static boolean isLetter (String testchar) {
-        if (Character.isLetter(testchar.charAt(0))) {
-            return true;
-        }
-        return false;
+        return Character.isLetter(testchar.charAt(0));
     }
 
     public static boolean is64bit() {
