@@ -73,11 +73,15 @@ public class GPU implements Constants {
     }
 
     public static void setGpuMinFreq(int freq, Context context) {
+            Control.runCommand("0", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
             Control.runCommand(String.valueOf(freq), GPU_MIN_EXYNOS5_FREQ, Control.CommandType.GENERIC, context);
+            Control.runCommand("1", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
     }
 
     public static void setGpuMaxFreq(int freq, Context context) {
-            Control.runCommand(String.valueOf(freq), GPU_MAX_EXYNOS5_FREQ, Control.CommandType.GENERIC, context);
+        Control.runCommand("0", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
+        Control.runCommand(String.valueOf(freq), GPU_MAX_EXYNOS5_FREQ, Control.CommandType.GENERIC, context);
+        Control.runCommand("1", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
     }
 
     public static List<Integer> getGpuFreqs() {
@@ -87,7 +91,7 @@ public class GPU implements Constants {
                     String[] freqs = value.split(" ");
                     mGpuFreqs = new Integer[freqs.length];
                     for (int i = 0; i < mGpuFreqs.length; i++) {
-                        mGpuFreqs[i] = Utils.stringToInt(freqs[i]);
+                            mGpuFreqs[i] = Utils.stringToInt(freqs[i]);
                     }
                 }
             }
@@ -114,7 +118,7 @@ public class GPU implements Constants {
             else if (value != null) {
                 return getGpuMinFreq();
             }
-        return 0;
+          return 0;
     }
 
     public static int getGpuThrottling(int step) {
@@ -131,7 +135,10 @@ public class GPU implements Constants {
 
     public static void setGpuThrottling(int freq, int step, Context context) {
         if (GPU_THERMAL_THRORRLING_ARRAY != null)
-            Control.runCommand(String.valueOf(freq), GPU_THERMAL_THRORRLING_ARRAY[step], Control.CommandType.GENERIC, context);
+        Control.runCommand("0", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
+        Control.runCommand(String.valueOf(freq), GPU_THERMAL_THRORRLING_ARRAY[step], Control.CommandType.GENERIC, context);
+        Control.runCommand("1", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
+
     }
 
 

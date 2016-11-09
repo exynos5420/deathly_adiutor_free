@@ -351,8 +351,11 @@ public class Utils implements Constants {
             applys.addAll(new ArrayList<>(Arrays.asList(CPU_VOLTAGE_ARRAY)));
         else if (mClass == EntropyFragment.class)
             applys.addAll(new ArrayList<>(Arrays.asList(ENTROPY_ARRAY)));
-        else if (mClass == GPUFragment.class) for (String[] arrays : GPU_ARRAY)
-            applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
+        else if (mClass == GPUFragment.class) {
+            applys.add("echo 0 > " + GPU_EXYNOS5_DVFS);
+            for (String[] arrays : GPU_ARRAY) {applys.addAll(new ArrayList<>(Arrays.asList(arrays)));}
+            applys.add("echo 1 > " + GPU_EXYNOS5_DVFS);
+        }
         else if (mClass == IOFragment.class)
             applys.addAll(new ArrayList<>(Arrays.asList(IO_ARRAY)));
         else if (mClass == KSMFragment.class)

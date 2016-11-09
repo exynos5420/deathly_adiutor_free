@@ -192,10 +192,11 @@ public interface Constants {
   // GPU
   String GPU_GENERIC_GOVERNORS = "performance powersave ondemand interactive simple conservative";
 
+  String GPU_EXYNOS5_DVFS = "/sys/devices/platform/mali.0/dvfs";
   String GPU_CUR_EXYNOS5_FREQ = "/sys/devices/platform/mali.0/clock";
   String GPU_MAX_EXYNOS5_FREQ = "/sys/devices/platform/mali.0/max_clock";
   String GPU_MIN_EXYNOS5_FREQ = "/sys/devices/platform/mali.0/min_clock";
-  String GPU_AVALIBLE_EXYNOS5_FREQS = "/sys/devices/platform/mali.0/dvfs_table";
+  String GPU_AVALIBLE_EXYNOS5_FREQS = "/sys/devices/platform/mali.0/freq_table";
   String GPU_AVALIBLE_EXYNOS5_GOVS = "/sys/devices/platform/mali.0/dvfs_governor";
   String GPU_AVALIBLE_EXYNOS5_POWERP = "/sys/devices/platform/mali.0/power_policy";
   String GPU_THERMAL_EXYNOS5_TRIPPING = "/sys/devices/platform/mali.0/tripping";

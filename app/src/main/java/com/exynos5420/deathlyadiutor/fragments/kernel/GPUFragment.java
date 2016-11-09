@@ -43,6 +43,8 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
 
     private PopupCardView.DPopupCard mGovernorCard;
 
+    private int offset = 0;
+
     @Override
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
@@ -66,7 +68,7 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
     private void throttlingInit() {
 
             List<String> freqs = new ArrayList<>();
-              for (int i = 0; i< GPU.getGpuFreqs().size() - 1; i++ ) {
+              for (int i = 0; i< GPU.getGpuFreqs().size(); i++ ) {
                 freqs.add(GPU.getGpuFreqs().get(i) + getString(R.string.mhz));
             }
             mThrottling1card = new PopupCardView.DPopupCard(freqs);
@@ -114,9 +116,9 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
     private void maxFreqInit() {
 
             List<String> freqs = new ArrayList<>();
-            for (int freq : GPU.getGpuFreqs()) {
-                freqs.add(freq + getString(R.string.mhz));
-            }
+        for (int i = 0; i< GPU.getGpuFreqs().size(); i++ ) {
+            freqs.add(GPU.getGpuFreqs().get(i) + getString(R.string.mhz));
+        }
 
             mMaxFreqCard = new PopupCardView.DPopupCard(freqs);
             mMaxFreqCard.setTitle(getString(R.string.gpu_max_freq));
@@ -128,9 +130,12 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
     }
 
     private void minFreqInit() {
+            offset = 0;
             List<String> freqs = new ArrayList<>();
             for (int freq : GPU.getGpuFreqs()) {
-                freqs.add(freq + getString(R.string.mhz));
+                if (freq <= 350) {
+                    freqs.add(freq + getString(R.string.mhz));
+                } else offset++;
             }
 
             mMinFreqCard = new PopupCardView.DPopupCard(freqs);
@@ -161,7 +166,7 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
         if (dPopupCard == mMaxFreqCard)
             GPU.setGpuMaxFreq(GPU.getGpuFreqs().get(position), getActivity());
         else if (dPopupCard == mMinFreqCard)
-            GPU.setGpuMinFreq(GPU.getGpuFreqs().get(position), getActivity());
+            GPU.setGpuMinFreq(GPU.getGpuFreqs().get(position + offset), getActivity()); // we sum 3 to possition cause we are limiting min clock to 350mhz max. i dont like this.
         else if (dPopupCard == mGovernorCard)
             GPU.setGpuGovernor(GPU.getGpuGovernors().get(position), getActivity());
         else if (dPopupCard ==  mThrottling1card)
