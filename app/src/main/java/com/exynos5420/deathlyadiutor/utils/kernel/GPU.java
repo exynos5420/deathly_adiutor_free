@@ -32,46 +32,65 @@ import java.util.List;
  */
 public class GPU implements Constants {
 
-    private static String GPU_SCALING_GOVERNOR;
-    private static String[] GPU_AVAILABLE_GOVERNORS;
+    private static String GPU_CURRENT_POWERPOLICY;
+    private static String GPU_CURRENT_GOVERNOR;
 
     private static Integer[] mGpuFreqs;
 
-    public static void setGpuGovernor(String governor, Context context) {
-        if (GPU_SCALING_GOVERNOR != null)
-            Control.runCommand(governor, GPU_SCALING_GOVERNOR, Control.CommandType.GENERIC, context);
+    public static void setGpuPowerPolicy(String governor, Context context) {
+        Control.runCommand("0", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
+        Control.runCommand(governor, GPU_AVALIBLE_EXYNOS5_POWERP, Control.CommandType.GENERIC, context);
+        Control.runCommand("1", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
     }
 
-    public static List<String> getGpuGovernors() {
-        if (GPU_AVAILABLE_GOVERNORS == null)
-            for (String file : GPU_AVAILABLE_GOVERNORS_ARRAY)
-                if (GPU_AVAILABLE_GOVERNORS == null)
-                    if (Utils.existFile(file)) {
-                        String value = Utils.readFile(file);
-                        if (value != null)
-                            GPU_AVAILABLE_GOVERNORS = value.split(" ");
-                        Collections.sort(Arrays.asList(GPU_AVAILABLE_GOVERNORS), String.CASE_INSENSITIVE_ORDER);
-                    }
-        return new ArrayList<>(Arrays.asList(GPU_AVAILABLE_GOVERNORS == null ? GPU_GENERIC_GOVERNORS
-                .split(" ") : GPU_AVAILABLE_GOVERNORS));
+    public static List<String> getGpuPowerPolicies() {
+        String value = Utils.readFile(GPU_AVALIBLE_EXYNOS5_POWERP);
+        String [] AvailiblePowerPolicies = value.split(" ");
+        for (int i = 0; i< AvailiblePowerPolicies.length; i++){
+                if (AvailiblePowerPolicies[i].contains("[")){
+                    AvailiblePowerPolicies[i] = AvailiblePowerPolicies[i].substring(1, AvailiblePowerPolicies[i].length() - 1);
+                    GPU_CURRENT_POWERPOLICY = AvailiblePowerPolicies[i];
+                }
+            }
+            Collections.sort(Arrays.asList(AvailiblePowerPolicies), String.CASE_INSENSITIVE_ORDER);
+            return new ArrayList<>(Arrays.asList(AvailiblePowerPolicies));
+    }
+
+    public static String getGpuPowerPolicy() {
+        if (GPU_CURRENT_POWERPOLICY != null){
+            return GPU_CURRENT_POWERPOLICY;
+        }
+        else{
+            getGpuPowerPolicies();
+            return GPU_CURRENT_POWERPOLICY;
+        }
+    }
+    public static void setGpuGovernor(String governor, Context context) {
+        Control.runCommand("0", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
+        Control.runCommand(Integer.toString(getGpuAvailibleGovernors().indexOf(governor)), GPU_AVALIBLE_EXYNOS5_GOVS, Control.CommandType.GENERIC, context);
+        Control.runCommand("1", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
+    }
+
+    public static List<String> getGpuAvailibleGovernors() {
+        String value = Utils.readFile(GPU_AVALIBLE_EXYNOS5_GOVS);
+        String[] tempGovs = value.split("\n");
+        String[] AvailibleGovernors = new String[tempGovs.length - 1];
+            for (int i = 0; i < AvailibleGovernors.length; i++){
+                AvailibleGovernors[i] = tempGovs[i];
+            }
+        GPU_CURRENT_GOVERNOR = tempGovs[tempGovs.length - 1].split("] ")[1];
+        return new ArrayList<>(Arrays.asList(AvailibleGovernors));
     }
 
     public static String getGpuGovernor() {
-        if (GPU_SCALING_GOVERNOR != null)
-            if (Utils.existFile(GPU_SCALING_GOVERNOR)) {
-                String value = Utils.readFile(GPU_SCALING_GOVERNOR);
-                if (value != null) return value;
-            }
-        return "";
+        if (GPU_CURRENT_GOVERNOR != null){
+            return GPU_CURRENT_GOVERNOR;
+        }
+        else{
+            getGpuPowerPolicies();
+            return GPU_CURRENT_GOVERNOR;
+        }
     }
-
-    public static boolean hasGpuGovernor() {
-        if (GPU_SCALING_GOVERNOR == null)
-            for (String file : GPU_SCALING_GOVERNOR_ARRAY)
-                if (Utils.existFile(file)) GPU_SCALING_GOVERNOR = file;
-        return GPU_SCALING_GOVERNOR != null;
-    }
-
     public static void setGpuMinFreq(int freq, Context context) {
             Control.runCommand("0", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
             Control.runCommand(String.valueOf(freq), GPU_MIN_EXYNOS5_FREQ, Control.CommandType.GENERIC, context);
