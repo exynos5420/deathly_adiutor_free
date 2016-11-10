@@ -224,6 +224,12 @@ public interface Constants {
           GPU_MAX_FREQ_ARRAY, GPU_MIN_FREQ_ARRAY, GPU_AVAILABLE_FREQS_ARRAY,
           GPU_SCALING_GOVERNOR_ARRAY, GPU_POWER_POLICIES_ARRAY, GPU_THERMAL_THRORRLING_ARRAY};
 
+  //GPU Voltage
+
+  String GPU_VOLTAGE_EXYNOS5_FILE = "/sys/devices/platform/mali.0/volt_table";
+
+  String[] GPU_VOLTAGE_ARRAY = {GPU_VOLTAGE_EXYNOS5_FILE};
+
   // Screen
   String SCREEN_KCAL = "/sys/devices/platform/kcal_ctrl.0";
   String SCREEN_KCAL_CTRL = SCREEN_KCAL + "/kcal";

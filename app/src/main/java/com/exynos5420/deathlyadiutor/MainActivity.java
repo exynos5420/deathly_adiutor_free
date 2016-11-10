@@ -60,6 +60,7 @@ import com.exynos5420.deathlyadiutor.fragments.kernel.CPUFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.CPUVoltageFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.EntropyFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.GPUFragment;
+import com.exynos5420.deathlyadiutor.fragments.kernel.GPUVoltageFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.IOFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.KSMFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.LMKFragment;
@@ -233,6 +234,7 @@ public class MainActivity extends BaseActivity implements Constants {
         if (Thermal.hasThermal())
             ITEMS.add(new DAdapter.Item(getString(R.string.thermal), new ThermalFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.gpu), new GPUFragment()));
+        ITEMS.add(new DAdapter.Item("GPU Voltage", new GPUVoltageFragment()));
         if (Screen.hasScreen())
             ITEMS.add(new DAdapter.Item(getString(R.string.screen), new ScreenFragment()));
         if (Sound.hasSound())
