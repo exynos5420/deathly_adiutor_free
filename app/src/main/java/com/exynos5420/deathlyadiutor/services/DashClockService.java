@@ -16,11 +16,11 @@
 
 package com.exynos5420.deathlyadiutor.services;
 
-import com.google.android.apps.dashclock.api.DashClockExtension;
-import com.google.android.apps.dashclock.api.ExtensionData;
 import com.exynos5420.deathlyadiutor.R;
 import com.exynos5420.deathlyadiutor.utils.kernel.CPU;
 import com.exynos5420.deathlyadiutor.utils.kernel.GPU;
+import com.google.android.apps.dashclock.api.DashClockExtension;
+import com.google.android.apps.dashclock.api.ExtensionData;
 import com.kerneladiutor.library.root.RootUtils;
 
 /**
@@ -56,8 +56,8 @@ public class DashClockService extends DashClockExtension {
                             message.append(getString(R.string.cpu_governor)).append(": ")
                                     .append(CPU.getCurGovernor(true)).append("\n");
 
-                                message.append(getString(R.string.gpu)).append(": ")
-                                        .append(GPU.getGpuCurFreq() / 1000000).append(getString(R.string.mhz));
+                            message.append(getString(R.string.gpu)).append(": ")
+                                    .append(GPU.getGpuCurFreq() / 1000000).append(getString(R.string.mhz));
                         } else message.append(getString(R.string.no_root));
 
                         publishUpdate(extensionData.status(status).expandedBody(message.toString()));

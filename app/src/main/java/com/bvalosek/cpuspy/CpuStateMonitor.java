@@ -40,43 +40,6 @@ public class CpuStateMonitor implements Constants {
     }
 
     /**
-     * exception class
-     */
-    public class CpuStateMonitorException extends Exception {
-        /**
-         *
-         */
-        private static final long serialVersionUID = 1L;
-
-        public CpuStateMonitorException(String s) {
-            super(s);
-        }
-    }
-
-    /**
-     * simple struct for states/time
-     */
-    public final class CpuState implements Comparable<CpuState> {
-
-        public final int freq;
-        public final long duration;
-
-        /**
-         * init with freq and duration
-         */
-        public CpuState(int freq, long duration) {
-            this.freq = freq;
-            this.duration = duration;
-        }
-        /**
-         * for sorting, compare the freqs
-         */
-        public int compareTo(@NonNull CpuState other) {
-            return Integer.compare(freq, other.freq);
-        }
-    }
-
-    /**
      * @return List of CpuState with the offsets applied
      */
     public List<CpuState> getStates() {
@@ -207,6 +170,44 @@ public class CpuStateMonitor implements Constants {
             }
         } catch (IOException e) {
             throw new CpuStateMonitorException("Problem processing time-in-states file");
+        }
+    }
+
+    /**
+     * exception class
+     */
+    public class CpuStateMonitorException extends Exception {
+        /**
+         *
+         */
+        private static final long serialVersionUID = 1L;
+
+        public CpuStateMonitorException(String s) {
+            super(s);
+        }
+    }
+
+    /**
+     * simple struct for states/time
+     */
+    public final class CpuState implements Comparable<CpuState> {
+
+        public final int freq;
+        public final long duration;
+
+        /**
+         * init with freq and duration
+         */
+        public CpuState(int freq, long duration) {
+            this.freq = freq;
+            this.duration = duration;
+        }
+
+        /**
+         * for sorting, compare the freqs
+         */
+        public int compareTo(@NonNull CpuState other) {
+            return Integer.compare(freq, other.freq);
         }
     }
 

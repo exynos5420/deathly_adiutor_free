@@ -43,17 +43,20 @@ import java.util.List;
  */
 public abstract class PathReaderFragment extends RecyclerViewFragment {
 
-    public enum PATH_TYPE {
-        GOVERNOR, IO
-    }
+    private TextView title;
+    private SwipeRefreshLayout refreshLayout;
+    private final Runnable refresh = new Runnable() {
+        @Override
+        public void run() {
+            refresh();
+            refreshLayout.setRefreshing(false);
+        }
+    };
 
     @Override
     public boolean showApplyOnBoot() {
         return false;
     }
-
-    private TextView title;
-    private SwipeRefreshLayout refreshLayout;
 
     @Override
     public RecyclerView getRecyclerView() {
@@ -77,14 +80,6 @@ public abstract class PathReaderFragment extends RecyclerViewFragment {
         fabView.setVisibility(View.GONE);
         fabView = null;
     }
-
-    private final Runnable refresh = new Runnable() {
-        @Override
-        public void run() {
-            refresh();
-            refreshLayout.setRefreshing(false);
-        }
-    };
 
     public void reload() {
         getActivity().runOnUiThread(new Runnable() {
@@ -186,5 +181,9 @@ public abstract class PathReaderFragment extends RecyclerViewFragment {
     public abstract PATH_TYPE getType();
 
     public abstract String getError(Context context);
+
+    public enum PATH_TYPE {
+        GOVERNOR, IO
+    }
 
 }

@@ -47,8 +47,8 @@ import java.util.Map;
  */
 public class CPUVoltageFragment extends RecyclerViewFragment {
 
-    private EditTextCardView.DEditTextCard[] mVoltageCard;
     Map<String, String> voltagetable = new HashMap<String, String>();
+    private EditTextCardView.DEditTextCard[] mVoltageCard;
 
     @Override
     public int getSpan() {
@@ -79,8 +79,8 @@ public class CPUVoltageFragment extends RecyclerViewFragment {
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
         SharedPreferences storedvoltagetable = getContext().getSharedPreferences("voltage_table", 0);
-        for( Map.Entry entry : storedvoltagetable.getAll().entrySet() )
-            voltagetable.put( entry.getKey().toString(), entry.getValue().toString() );
+        for (Map.Entry entry : storedvoltagetable.getAll().entrySet())
+            voltagetable.put(entry.getKey().toString(), entry.getValue().toString());
 
         Log.i(Constants.TAG, "Volt Table: " + voltagetable);
 
@@ -100,11 +100,10 @@ public class CPUVoltageFragment extends RecyclerViewFragment {
                 int current = Integer.parseInt(voltages.get(i));
                 String diff;
                 if (stock > current) {
-                    diff =  "(-" + (stock-current) +")";
+                    diff = "(-" + (stock - current) + ")";
                 } else if (stock < current) {
                     diff = "(+" + (current - stock) + ")";
-                }
-                else {
+                } else {
                     diff = "";
                 }
                 mVoltageCard[i].setDescription(voltages.get(i) + getString(R.string.mv) + diff);
@@ -150,11 +149,10 @@ public class CPUVoltageFragment extends RecyclerViewFragment {
                                             int current = Integer.parseInt(voltages.get(i));
                                             String diff;
                                             if (stock > current) {
-                                                diff =  "(-" + (stock-current) +")";
+                                                diff = "(-" + (stock - current) + ")";
                                             } else if (stock < current) {
                                                 diff = "(+" + (current - stock) + ")";
-                                            }
-                                            else {
+                                            } else {
                                                 diff = "";
                                             }
                                             mVoltageCard[i].setDescription(voltages.get(i) + getString(R.string.mv) + diff);

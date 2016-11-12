@@ -33,12 +33,11 @@ import java.util.List;
  */
 public class EntropyFragment extends RecyclerViewFragment implements PopupCardView.DPopupCard.OnDPopupCardListener {
 
+    private final List<String> items = new ArrayList<>();
     private CardViewItem.DCardView mAvailableCard;
     private CardViewItem.DCardView mPoolsizeCard;
     private PopupCardView.DPopupCard mReadCard;
     private PopupCardView.DPopupCard mWriteCard;
-
-    private final List<String> items = new ArrayList<>();
 
     @Override
     public void init(Bundle savedInstanceState) {

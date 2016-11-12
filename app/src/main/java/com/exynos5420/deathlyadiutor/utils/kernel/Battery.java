@@ -115,7 +115,7 @@ public class Battery implements Constants {
         return Utils.stringToInt(Utils.readFile(AC_CHARGE_LEVEL));
     }
 
-    public static void setChargeLevelControlAC (int value, Context context) {
+    public static void setChargeLevelControlAC(int value, Context context) {
         Control.runCommand(String.valueOf(value), AC_CHARGE_LEVEL, Control.CommandType.GENERIC, context);
     }
 
@@ -127,7 +127,7 @@ public class Battery implements Constants {
         return Utils.stringToInt(Utils.readFile(USB_CHARGE_LEVEL));
     }
 
-    public static void setChargeLevelControlUSB (int value, Context context) {
+    public static void setChargeLevelControlUSB(int value, Context context) {
         Control.runCommand(String.valueOf(value), USB_CHARGE_LEVEL, Control.CommandType.GENERIC, context);
     }
 
@@ -199,13 +199,13 @@ public class Battery implements Constants {
         return Utils.readFile(STATE_NOTIFIER_ENABLED).equals("Y");
     }
 
-    public static boolean hasStateNotifier()  {
+    public static boolean hasStateNotifier() {
         return Utils.existFile(STATE_NOTIFIER_ENABLED);
     }
 
-    public static void activateC0State (boolean active, Context context) {
+    public static void activateC0State(boolean active, Context context) {
         String path = C0STATE;
-        for (int i = 0; i < CPU.getCoreCount(); i++ ) {
+        for (int i = 0; i < CPU.getCoreCount(); i++) {
             Control.runCommand(active ? "1" : "0", path.replace("0", Integer.toString(i)), Control.CommandType.GENERIC, context);
         }
     }
@@ -215,13 +215,13 @@ public class Battery implements Constants {
         return Utils.readFile(C0STATE).equals("1");
     }
 
-    public static boolean hasC0State () {
+    public static boolean hasC0State() {
         return Utils.existFile(C0STATE);
     }
 
-    public static void activateC1State (boolean active, Context context) {
+    public static void activateC1State(boolean active, Context context) {
         String path = C1STATE;
-        for (int i = 0; i < CPU.getCoreCount(); i++ ) {
+        for (int i = 0; i < CPU.getCoreCount(); i++) {
             Control.runCommand(active ? "1" : "0", path.replace("0", Integer.toString(i)), Control.CommandType.GENERIC, context);
         }
     }
@@ -231,13 +231,13 @@ public class Battery implements Constants {
         return Utils.readFile(C1STATE).equals("1");
     }
 
-    public static boolean hasC1State () {
+    public static boolean hasC1State() {
         return Utils.existFile(C1STATE);
     }
 
-    public static void activateC2State (boolean active, Context context) {
+    public static void activateC2State(boolean active, Context context) {
         String path = C2STATE;
-        for (int i = 0; i < CPU.getCoreCount(); i++ ) {
+        for (int i = 0; i < CPU.getCoreCount(); i++) {
             Control.runCommand(active ? "1" : "0", path.replace("0", Integer.toString(i)), Control.CommandType.GENERIC, context);
         }
     }
@@ -247,13 +247,13 @@ public class Battery implements Constants {
         return Utils.readFile(C2STATE).equals("1");
     }
 
-    public static boolean hasC2State () {
+    public static boolean hasC2State() {
         return Utils.existFile(C2STATE);
     }
 
-    public static void activateC3State (boolean active, Context context) {
+    public static void activateC3State(boolean active, Context context) {
         String path = C3STATE;
-        for (int i = 0; i < CPU.getCoreCount(); i++ ) {
+        for (int i = 0; i < CPU.getCoreCount(); i++) {
             Control.runCommand(active ? "1" : "0", path.replace("0", Integer.toString(i)), Control.CommandType.GENERIC, context);
         }
     }
@@ -262,7 +262,7 @@ public class Battery implements Constants {
         return Utils.readFile(C3STATE).equals("1");
     }
 
-    public static boolean hasC3State () {
+    public static boolean hasC3State() {
         return Utils.existFile(C3STATE);
     }
 

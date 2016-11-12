@@ -514,8 +514,7 @@ public class Screen implements Constants {
         Intent intent = new Intent(context, AutoHighBrightnessModeService.class);
         if (active) {
             context.startService(intent);
-        }
-        else {
+        } else {
             context.stopService(intent);
         }
     }
@@ -742,7 +741,7 @@ public class Screen implements Constants {
         return false;
     }
 
-    public static GammaProfiles.ScreenColorProfiles getScreenColorProfiles (Context context) {
+    public static GammaProfiles.ScreenColorProfiles getScreenColorProfiles(Context context) {
         if (GAMMA_PROFILES == null) {
             if (Utils.existFile(context.getFilesDir() + "/gamma_profiles.json")) {
                 GAMMA_PROFILES = new GammaProfiles(Utils.readFile(context.getFilesDir() + "/gamma_profiles.json"));
@@ -753,11 +752,11 @@ public class Screen implements Constants {
         return GAMMA_PROFILES.getScreenColorProfiles();
     }
 
-    public static String getCurrentColorProfile (Context context) {
+    public static String getCurrentColorProfile(Context context) {
         getScreenColorProfiles(context);
         String current = Utils.readFile(SCREEN_KCAL_CTRL) + "," + Utils.readFile(SCREEN_KCAL_CTRL_SAT) + "," + Utils.readFile(SCREEN_KCAL_CTRL_VAL) + "," + Utils.readFile(SCREEN_KCAL_CTRL_CONT) + "," + Utils.readFile(SCREEN_KCAL_CTRL_HUE);
         GammaProfiles.ScreenColorProfiles screenColorProfiles = Screen.getScreenColorProfiles(context);
-        for (int i = 0 ;i < screenColorProfiles.length(); i++) {
+        for (int i = 0; i < screenColorProfiles.length(); i++) {
             if (current.equals(screenColorProfiles.getValues(i))) {
                 return screenColorProfiles.getName(i);
             }
@@ -765,7 +764,7 @@ public class Screen implements Constants {
         return "Custom";
     }
 
-    public static void setScreenColorProfile (int profile, GammaProfiles.ScreenColorProfiles screenColorProfiles, Context context) {
+    public static void setScreenColorProfile(int profile, GammaProfiles.ScreenColorProfiles screenColorProfiles, Context context) {
         if (screenColorProfiles == null) return;
         setColorCalibrationKcal(screenColorProfiles.getRGB(profile), context);
         setSaturationIntensityKcal(screenColorProfiles.getSat(profile), context);
@@ -778,18 +777,20 @@ public class Screen implements Constants {
     public static void setColorCalibrationKcal(String value, Context context) {
         Control.runCommand(value, SCREEN_KCAL_CTRL, Control.CommandType.GENERIC, context);
     }
-    public static void setScreenValueKcal (String value, Context context) {
+
+    public static void setScreenValueKcal(String value, Context context) {
         Control.runCommand(value, SCREEN_KCAL_CTRL_VAL, Control.CommandType.GENERIC, context);
     }
 
-    public static void setScreenContrastKcal (String value, Context context) {
+    public static void setScreenContrastKcal(String value, Context context) {
         Control.runCommand(value, SCREEN_KCAL_CTRL_CONT, Control.CommandType.GENERIC, context);
     }
-    public static void setSaturationIntensityKcal (String value, Context context) {
+
+    public static void setSaturationIntensityKcal(String value, Context context) {
         Control.runCommand(value, SCREEN_KCAL_CTRL_SAT, Control.CommandType.GENERIC, context);
     }
 
-    public static void setScreenHueKcal (String value, Context context) {
+    public static void setScreenHueKcal(String value, Context context) {
         Control.runCommand(value, SCREEN_KCAL_CTRL_HUE, Control.CommandType.GENERIC, context);
     }
 

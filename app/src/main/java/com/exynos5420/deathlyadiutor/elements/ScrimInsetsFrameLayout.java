@@ -33,10 +33,9 @@ import com.exynos5420.deathlyadiutor.R;
  * (status and navigation bars, overlay action bars).
  */
 public class ScrimInsetsFrameLayout extends FrameLayout {
-    private Drawable mInsetForeground;
-
-    private Rect mInsets;
     private final Rect mTempRect = new Rect();
+    private Drawable mInsetForeground;
+    private Rect mInsets;
     private OnInsetsCallback mOnInsetsCallback;
 
     public ScrimInsetsFrameLayout(Context context) {

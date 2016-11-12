@@ -44,36 +44,6 @@ public class ProfileTileReceiver extends BroadcastReceiver {
     private static final String COMMANDS = "commands";
     private static final String ACTION_TOGGLE_STATE = "com.deathlyadiutor.mod.action.ACTION_TOGGLE_STATE";
 
-    @Override
-    public void onReceive(Context context, Intent intent) {
-        if (ACTION_TOGGLE_STATE.equals(intent.getAction())) {
-            String[] commands = intent.getStringArrayExtra(COMMANDS);
-            log("Applying: " + intent.getStringExtra(NAME));
-            Utils.toast("Applying: " + intent.getStringExtra(NAME), context);
-            if (commands == null) return;
-            if (!RootUtils.rootAccess()) {
-                Utils.toast(context.getString(R.string.no_root), context);
-                return;
-            }
-            if (!RootUtils.hasAppletSupport()) {
-                Utils.toast(context.getString(R.string.no_busybox), context);
-                return;
-            }
-            RootUtils.closeSU();
-            RootUtils.SU su = new RootUtils.SU();
-            for (String command : commands) {
-                su.runCommand(command);
-                Log.i(Constants.TAG + ": " + getClass().getSimpleName(), "Run: " + command);
-            }
-            Utils.toast("Applied: " + intent.getStringExtra(NAME), context);
-            su.close();
-        }
-    }
-
-    private void log(String message) {
-        Log.i(getClass().getSimpleName(), message);
-    }
-
     public static void publishProfileTile(List<ProfileDB.ProfileItem> profiles, Context context) {
         if (!Utils.hasCMSDK()) return;
         if (profiles == null || profiles.size() < 1 || !Utils.getBoolean("profiletile", true, context)) {
@@ -113,6 +83,36 @@ public class ProfileTileReceiver extends BroadcastReceiver {
             Utils.saveBoolean("profiletile", false, context);
             Utils.toast(e.getMessage(), context, Toast.LENGTH_LONG);
         }
+    }
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        if (ACTION_TOGGLE_STATE.equals(intent.getAction())) {
+            String[] commands = intent.getStringArrayExtra(COMMANDS);
+            log("Applying: " + intent.getStringExtra(NAME));
+            Utils.toast("Applying: " + intent.getStringExtra(NAME), context);
+            if (commands == null) return;
+            if (!RootUtils.rootAccess()) {
+                Utils.toast(context.getString(R.string.no_root), context);
+                return;
+            }
+            if (!RootUtils.hasAppletSupport()) {
+                Utils.toast(context.getString(R.string.no_busybox), context);
+                return;
+            }
+            RootUtils.closeSU();
+            RootUtils.SU su = new RootUtils.SU();
+            for (String command : commands) {
+                su.runCommand(command);
+                Log.i(Constants.TAG + ": " + getClass().getSimpleName(), "Run: " + command);
+            }
+            Utils.toast("Applied: " + intent.getStringExtra(NAME), context);
+            su.close();
+        }
+    }
+
+    private void log(String message) {
+        Log.i(getClass().getSimpleName(), message);
     }
 
 }

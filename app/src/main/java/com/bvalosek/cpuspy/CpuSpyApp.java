@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * main application class
  */
-public class CpuSpyApp{
+public class CpuSpyApp {
 
     private final String PREF_OFFSETS;
 

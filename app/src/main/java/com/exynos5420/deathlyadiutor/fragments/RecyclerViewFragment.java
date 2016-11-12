@@ -54,22 +54,31 @@ import java.util.List;
  */
 public class RecyclerViewFragment extends BaseFragment {
 
+    private final Handler handler = new Handler(Looper.getMainLooper());
+    private final Runnable run = new Runnable() {
+        @Override
+        public void run() {
+            if (isAdded() && onRefresh()) {
+                handler.postDelayed(run, 1000);
+            } else {
+                handler.removeCallbacks(run);
+            }
+        }
+    };
     protected View view;
     protected LayoutInflater inflater;
     protected ViewGroup container;
-
-    private ProgressBar progressBar;
     protected RecyclerView recyclerView;
     protected SwipeRefreshLayout refreshLayout;
-    private CustomScrollListener onScrollListener;
     protected View applyOnBootLayout;
     protected TextView applyOnBootText;
     protected SwitchCompat applyOnBootView;
-    private DAdapter.Adapter adapter;
     protected StaggeredGridLayoutManager layoutManager;
     protected View backgroundView;
     protected View fabView;
-    private final Handler handler = new Handler(Looper.getMainLooper());
+    private ProgressBar progressBar;
+    private CustomScrollListener onScrollListener;
+    private DAdapter.Adapter adapter;
     private boolean firstOpening = true;
 
     @Override
@@ -154,8 +163,8 @@ public class RecyclerViewFragment extends BaseFragment {
         if (!showApplyOnBoot()) showApplyOnBoot(false);
 
         refreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.refresh_layout);
-        if(refreshLayout != null){
-            if(pullToRefreshIsEnabled()){
+        if (refreshLayout != null) {
+            if (pullToRefreshIsEnabled()) {
                 refreshLayout.setEnabled(true);
 
                 refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -238,13 +247,13 @@ public class RecyclerViewFragment extends BaseFragment {
         return (RecyclerView) getParentView(R.layout.recyclerview_vertical).findViewById(R.id.recycler_view);
     }
 
-    public String getClassName() {
-        return getClass().getSimpleName();
-    }
-
     public void setRecyclerView(RecyclerView recyclerView) {
         layoutManager = new StaggeredGridLayoutManager(getSpan(), StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
+    }
+
+    public String getClassName() {
+        return getClass().getSimpleName();
     }
 
     public void applyOnBootChecked(boolean isChecked) {
@@ -281,10 +290,10 @@ public class RecyclerViewFragment extends BaseFragment {
             adapter.DViews.add(view);
 
             // Ensure we always call notifyDataSetChanged() on the main thread
-            if(Looper.myLooper() == Looper.getMainLooper()){
+            if (Looper.myLooper() == Looper.getMainLooper()) {
                 adapter.notifyDataSetChanged();
             } else {
-                new Handler(Looper.getMainLooper()).post(new Runnable(){
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
                     @Override
                     public void run() {
                         adapter.notifyDataSetChanged();
@@ -361,6 +370,63 @@ public class RecyclerViewFragment extends BaseFragment {
         }
     }
 
+    public void resetTranslations() {
+        if (applyOnBootLayout != null) ViewHelper.setTranslationY(applyOnBootLayout, 0);
+        if (onScrollListener != null) onScrollListener.reset();
+    }
+
+    protected boolean pullToRefreshIsEnabled() {
+        return false;
+    }
+
+    protected boolean showApplyOnBoot() {
+        return true;
+    }
+
+    public void showApplyOnBoot(boolean visible) {
+        try {
+            getParentView(R.layout.recyclerview_vertical).findViewById(R.id.apply_on_boot_layout).setVisibility(
+                    visible ? View.VISIBLE : View.GONE);
+            int paddingTop = visible ? recyclerView.getPaddingTop() + applyOnBootLayout.getHeight() :
+                    recyclerView.getPaddingTop() - applyOnBootLayout.getHeight();
+            recyclerView.setPadding(recyclerView.getPaddingLeft(), paddingTop, recyclerView.getPaddingRight(), 0);
+        } catch (NullPointerException ignored) {
+        }
+    }
+
+    public int getSpan() {
+        int orientation = Utils.getScreenOrientation(getActivity());
+        if (Utils.isTV(getActivity())) return 2;
+        if (Utils.isTablet(getActivity()))
+            return orientation == Configuration.ORIENTATION_PORTRAIT ? 2 : 3;
+        return orientation == Configuration.ORIENTATION_PORTRAIT ? 1 : 2;
+    }
+
+    public Handler getHandler() {
+        return handler;
+    }
+
+    public boolean onRefresh() {
+        return false;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        handler.post(run);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        handler.removeCallbacks(run);
+    }
+
+    @Override
+    public boolean onBackPressed() {
+        return false;
+    }
+
     private class CustomScrollListener extends RecyclerView.OnScrollListener {
 
         private int offset;
@@ -423,74 +489,6 @@ public class RecyclerViewFragment extends BaseFragment {
                     }).start();
             }
         }
-    }
-
-    public void resetTranslations() {
-        if (applyOnBootLayout != null) ViewHelper.setTranslationY(applyOnBootLayout, 0);
-        if (onScrollListener != null) onScrollListener.reset();
-    }
-
-    protected boolean pullToRefreshIsEnabled(){
-        return false;
-    }
-
-    protected boolean showApplyOnBoot() {
-        return true;
-    }
-
-    public void showApplyOnBoot(boolean visible) {
-        try {
-            getParentView(R.layout.recyclerview_vertical).findViewById(R.id.apply_on_boot_layout).setVisibility(
-                    visible ? View.VISIBLE : View.GONE);
-            int paddingTop = visible ? recyclerView.getPaddingTop() + applyOnBootLayout.getHeight() :
-                    recyclerView.getPaddingTop() - applyOnBootLayout.getHeight();
-            recyclerView.setPadding(recyclerView.getPaddingLeft(), paddingTop, recyclerView.getPaddingRight(), 0);
-        } catch (NullPointerException ignored) {
-        }
-    }
-
-    public int getSpan() {
-        int orientation = Utils.getScreenOrientation(getActivity());
-        if (Utils.isTV(getActivity())) return 2;
-        if (Utils.isTablet(getActivity()))
-            return orientation == Configuration.ORIENTATION_PORTRAIT ? 2 : 3;
-        return orientation == Configuration.ORIENTATION_PORTRAIT ? 1 : 2;
-    }
-
-    public Handler getHandler() {
-        return handler;
-    }
-
-    public boolean onRefresh() {
-        return false;
-    }
-
-    private final Runnable run = new Runnable() {
-        @Override
-        public void run() {
-                if (isAdded() && onRefresh()) {
-                    handler.postDelayed(run, 1000);
-                } else{
-                    handler.removeCallbacks(run);
-                }
-        }
-    };
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        handler.post(run);
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        handler.removeCallbacks(run);
-    }
-
-    @Override
-    public boolean onBackPressed() {
-        return false;
     }
 
 }

@@ -42,6 +42,15 @@ public final class PluginBundleManager {
             "com.exynos5420.deathlyadiutor.tasker.extra.INT_VERSION_CODE"; //$NON-NLS-1$
 
     /**
+     * Private constructor prevents instantiation
+     *
+     * @throws UnsupportedOperationException because this class cannot be instantiated.
+     */
+    private PluginBundleManager() {
+        throw new UnsupportedOperationException("This class is non-instantiable"); //$NON-NLS-1$
+    }
+
+    /**
      * Method to verify the content of the bundle are correct.
      * <p/>
      * This method will not mutate {@code bundle}.
@@ -67,14 +76,5 @@ public final class PluginBundleManager {
         result.putString(BUNDLE_EXTRA_STRING_MESSAGE, message);
 
         return result;
-    }
-
-    /**
-     * Private constructor prevents instantiation
-     *
-     * @throws UnsupportedOperationException because this class cannot be instantiated.
-     */
-    private PluginBundleManager() {
-        throw new UnsupportedOperationException("This class is non-instantiable"); //$NON-NLS-1$
     }
 }

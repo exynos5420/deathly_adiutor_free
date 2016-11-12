@@ -40,10 +40,10 @@ public class CPUVoltage implements Constants {
     public static void setGlobalOffset(String voltage, Context context) {
         int adjust = Utils.stringToInt(voltage);
         String command = "";
-            for (String volt : getVoltages())
-                if (volt != null)
-                    command += command.isEmpty() ? (Utils.stringToInt(volt) + adjust) :
-                                " " + (Utils.stringToInt(volt) + adjust);
+        for (String volt : getVoltages())
+            if (volt != null)
+                command += command.isEmpty() ? (Utils.stringToInt(volt) + adjust) :
+                        " " + (Utils.stringToInt(volt) + adjust);
 
         Control.runCommand(command, CPU_VOLTAGE_FILE, Control.CommandType.GENERIC, context);
     }
@@ -79,7 +79,7 @@ public class CPUVoltage implements Constants {
                 String[] voltageLine;
                 voltageLine = lines[i].split("mhz:");
                 if (voltageLine.length > 1) {
-                      voltages[i] = voltageLine[1].trim();
+                    voltages[i] = voltageLine[1].trim();
                 }
             }
             return new ArrayList<>(Arrays.asList(voltages));
@@ -100,7 +100,7 @@ public class CPUVoltage implements Constants {
 
                 mCpuFreqs = new String[lines.length];
                 for (int i = 0; i < lines.length; i++) {
-                     mCpuFreqs[i] = lines[i].split("mhz:")[0].trim();
+                    mCpuFreqs[i] = lines[i].split("mhz:")[0].trim();
 
                 }
             }
@@ -119,9 +119,9 @@ public class CPUVoltage implements Constants {
         return false;
     }
 
-    public static boolean storeVoltageTable (Context context) {
+    public static boolean storeVoltageTable(Context context) {
         // Have to call this function to pre-load variables
-        if(CPUVoltage.hasCpuVoltage() && !CPUVoltage.getFreqs().isEmpty() && !CPUVoltage.getVoltages().isEmpty()){
+        if (CPUVoltage.hasCpuVoltage() && !CPUVoltage.getFreqs().isEmpty() && !CPUVoltage.getVoltages().isEmpty()) {
             List<String> freqs = CPUVoltage.getFreqs();
             List<String> voltages = CPUVoltage.getVoltages();
 

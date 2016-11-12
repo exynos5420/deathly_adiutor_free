@@ -245,8 +245,7 @@ public class Thermal implements Constants {
     public static void activateTempThrottle(boolean active, Context context) {
         if (TEMP_ENABLE_FORMAT.equals("string")) {
             Control.runCommand(active ? "Y" : "N", MSM_THERMAL_TEMP_THROTTLE, Control.CommandType.GENERIC, context);
-        }
-        else if (TEMP_ENABLE_FORMAT.equals("int")) {
+        } else if (TEMP_ENABLE_FORMAT.equals("int")) {
             Control.runCommand(active ? "1" : "0", MSM_THERMAL_TEMP_THROTTLE, Control.CommandType.GENERIC, context);
         }
     }
@@ -260,8 +259,7 @@ public class Thermal implements Constants {
         String temp = Utils.readFile(MSM_THERMAL_TEMP_THROTTLE);
         if (temp.equals("Y") || temp.equals("N")) {
             TEMP_ENABLE_FORMAT = "string";
-        }
-        else if (temp.equals("1") || temp.equals("0")) {
+        } else if (temp.equals("1") || temp.equals("0")) {
             TEMP_ENABLE_FORMAT = "int";
         }
         return Utils.existFile(MSM_THERMAL_TEMP_THROTTLE) && !Utils.existFile("/sys/module/msm_thermal/parameters/core_limit_temp_degC");
@@ -487,7 +485,7 @@ public class Thermal implements Constants {
         return Utils.existFile(THERMAL_FRANCO_STAGE_ONE);
     }
 
-    public static int getFrancoThermalStageOne () {
+    public static int getFrancoThermalStageOne() {
         if (Utils.existFile(THERMAL_FRANCO_STAGE_ONE)) {
             String value = Utils.readFile(THERMAL_FRANCO_STAGE_ONE);
             if (value != null) return Utils.stringToInt(value);
@@ -503,7 +501,7 @@ public class Thermal implements Constants {
         return Utils.existFile(THERMAL_FRANCO_STAGE_TWO);
     }
 
-    public static int getFrancoThermalStageTwo () {
+    public static int getFrancoThermalStageTwo() {
         if (Utils.existFile(THERMAL_FRANCO_STAGE_TWO)) {
             String value = Utils.readFile(THERMAL_FRANCO_STAGE_TWO);
             if (value != null) return Utils.stringToInt(value);
@@ -519,7 +517,7 @@ public class Thermal implements Constants {
         return Utils.existFile(THERMAL_FRANCO_STAGE_THREE);
     }
 
-    public static int getFrancoThermalStageThree () {
+    public static int getFrancoThermalStageThree() {
         if (Utils.existFile(THERMAL_FRANCO_STAGE_THREE)) {
             String value = Utils.readFile(THERMAL_FRANCO_STAGE_THREE);
             if (value != null) return Utils.stringToInt(value);
@@ -535,7 +533,7 @@ public class Thermal implements Constants {
         return Utils.existFile(THERMAL_FRANCO_STAGE_FOUR);
     }
 
-    public static int getFrancoThermalStageFour () {
+    public static int getFrancoThermalStageFour() {
         if (Utils.existFile(THERMAL_FRANCO_STAGE_FOUR)) {
             String value = Utils.readFile(THERMAL_FRANCO_STAGE_FOUR);
             if (value != null) return Utils.stringToInt(value);
@@ -575,11 +573,11 @@ public class Thermal implements Constants {
         return Utils.existFile(THERMAL_FRANCO_STEP);
     }
 
-    public static int calcFrancoTrigger (int multiplier) {
+    public static int calcFrancoTrigger(int multiplier) {
         int thresh = Utils.stringToInt(Utils.readFile(MSM_THERMAL_TEMP_THRESHOLD));
         int step = Utils.stringToInt(Utils.readFile(THERMAL_FRANCO_STEP));
         int increase = 0;
-        for (int i = 1; i < multiplier ; i++) {
+        for (int i = 1; i < multiplier; i++) {
             increase = increase + step;
         }
         return thresh + increase;

@@ -28,25 +28,25 @@ import android.support.annotation.NonNull;
  */
 public class GetPermission {
 
+    private static PermissionCallBack permissionCallBack;
     private Activity activity;
     private String[] permissions;
-    private static PermissionCallBack permissionCallBack;
 
     public GetPermission(Activity activity, String... permissions) {
         this.activity = activity;
         this.permissions = permissions;
     }
 
-    public interface PermissionCallBack {
-        void granted(String permission);
-
-        void denied(String permission);
-    }
-
     public void ask(PermissionCallBack permissionCallBack) {
         GetPermission.permissionCallBack = permissionCallBack;
         PermissionActivity.permissions = permissions;
         activity.startActivity(new Intent(activity, PermissionActivity.class));
+    }
+
+    public interface PermissionCallBack {
+        void granted(String permission);
+
+        void denied(String permission);
     }
 
     public static class PermissionActivity extends Activity {

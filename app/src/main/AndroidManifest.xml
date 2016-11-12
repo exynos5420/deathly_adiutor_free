@@ -146,7 +146,7 @@
         <service
             android:name="com.exynos5420.deathlyadiutor.services.PerAppMonitor"
             android:label="@string/accessibility_service_label"
-            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" >
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
             </intent-filter>
@@ -160,7 +160,7 @@
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.exynos5420.deathlyadiutor.fileprovider"
             android:exported="false"
-            android:grantUriPermissions="true" >
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_provider_paths" />

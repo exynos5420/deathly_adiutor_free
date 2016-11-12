@@ -10,31 +10,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        tools:text="300 Mhz"/>
+        tools:text="300 Mhz" />
 
     <TextView
         android:id="@+id/ui_percentage_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        tools:text="58.0%"/>
+        tools:text="58.0%" />
 
     <TextView
         android:id="@+id/ui_duration_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        tools:text="1H 58M 44S"/>
+        tools:text="1H 58M 44S" />
 
     <ProgressBar
         android:id="@+id/ui_bar"
-        android:layout_gravity="bottom"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="5dp"
+        android:layout_gravity="bottom"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="5dp"
         android:max="100"
-        tools:progress="22"/>
+        tools:progress="22" />
 
 </FrameLayout>

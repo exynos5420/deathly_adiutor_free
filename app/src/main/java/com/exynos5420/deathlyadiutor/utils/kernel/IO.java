@@ -32,10 +32,6 @@ import java.util.List;
  */
 public class IO implements Constants {
 
-    public enum StorageType {
-        INTERNAL, EXTERNAL
-    }
-
     public static void setReadahead(StorageType type, int readahead, Context context) {
         Control.runCommand(String.valueOf(readahead), type == StorageType.INTERNAL ? IO_INTERNAL_READ_AHEAD :
                 IO_EXTERNAL_READ_AHEAD, Control.CommandType.GENERIC, context);
@@ -95,19 +91,19 @@ public class IO implements Constants {
                 || Utils.existFile(IO_EXTERNAL_SCHEDULER);
     }
 
-     public static void activaterotational (boolean active, Context context) {
-         Control.runCommand(active ? "1" : "0", IO_ROTATIONAL, Control.CommandType.GENERIC, context);
-     }
+    public static void activaterotational(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", IO_ROTATIONAL, Control.CommandType.GENERIC, context);
+    }
 
-     public static boolean isRotationalActive() {
+    public static boolean isRotationalActive() {
         return Utils.readFile(IO_ROTATIONAL).equals("1");
-     }
+    }
 
-     public static boolean hasRotational () {
+    public static boolean hasRotational() {
         return Utils.existFile(IO_ROTATIONAL);
-     }
+    }
 
-    public static void activateIORandom (boolean active, Context context) {
+    public static void activateIORandom(boolean active, Context context) {
         Control.runCommand(active ? "1" : "0", IO_RANDOM, Control.CommandType.GENERIC, context);
     }
 
@@ -115,11 +111,11 @@ public class IO implements Constants {
         return Utils.readFile(IO_RANDOM).equals("1");
     }
 
-    public static boolean hasIORandom () {
+    public static boolean hasIORandom() {
         return Utils.existFile(IO_RANDOM);
     }
 
-    public static void activateIOstats (boolean active, Context context) {
+    public static void activateIOstats(boolean active, Context context) {
         Control.runCommand(active ? "1" : "0", IO_STATS, Control.CommandType.GENERIC, context);
     }
 
@@ -127,7 +123,7 @@ public class IO implements Constants {
         return Utils.readFile(IO_STATS).equals("1");
     }
 
-    public static boolean hasIOStats () {
+    public static boolean hasIOStats() {
         return Utils.existFile(IO_STATS);
     }
 
@@ -135,13 +131,17 @@ public class IO implements Constants {
         return Utils.existFile(IO_AFFINITY);
     }
 
-    public static int getIOAffinity () {
+    public static int getIOAffinity() {
         String value = Utils.readFile(IO_AFFINITY);
         return Utils.stringToInt(value);
     }
 
     public static void setIOAffinity(int value, Context context) {
         Control.runCommand(String.valueOf(value), IO_AFFINITY, Control.CommandType.GENERIC, context);
+    }
+
+    public enum StorageType {
+        INTERNAL, EXTERNAL
     }
 
 }

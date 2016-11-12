@@ -58,7 +58,7 @@ public class PerAppDB extends JsonDB {
             if (profile.getApp().equals(app)) {
                 list.add(0, profile.getApp());
                 list.add(1, profile.getID());
-                return(list);
+                return (list);
             }
         }
 
@@ -79,7 +79,7 @@ public class PerAppDB extends JsonDB {
     }
 
     public void delApp(int index) {
-            delete(index);
+        delete(index);
     }
 
     public List<PerAppItem> getAllApps() {

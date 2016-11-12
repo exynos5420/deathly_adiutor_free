@@ -31,15 +31,14 @@ import java.util.List;
 public abstract class JsonDB {
 
     /**
+     * JSON file location
+     */
+    private final String path;
+    /**
      * JSON Objects
      */
     private JSONObject databaseMain;
     private JSONArray databaseItems;
-
-    /**
-     * JSON file location
-     */
-    private final String path;
 
     /**
      * JSON Database is used to store large amount of datasets

@@ -233,8 +233,8 @@ public class IOFragment extends ViewPagerFragment implements Constants {
                 IO.setIOAffinity(position, getActivity());
         }
 
-    @Override
-    public void onClick(CardViewItem.DCardView dCardView) {
+        @Override
+        public void onClick(CardViewItem.DCardView dCardView) {
             ioFragment.storageType = dCardView == mInternalTunableCard ? IO.StorageType.INTERNAL : IO.StorageType.EXTERNAL;
             ioFragment.schedulerPart.reload();
             ioFragment.setCurrentItem(1);

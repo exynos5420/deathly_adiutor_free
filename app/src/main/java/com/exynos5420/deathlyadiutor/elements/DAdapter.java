@@ -62,15 +62,10 @@ public class DAdapter {
 
     public static class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-        public interface OnItemClickListener {
-            void onItemClick(View view, int position);
-        }
-
         public final List<DView> DViews;
         private OnItemClickListener onItemClickListener;
         private int selectedItem;
         private boolean itemOnly;
-
         public Adapter(List<DView> DViews) {
             this.DViews = DViews;
         }
@@ -128,6 +123,10 @@ public class DAdapter {
                     }
                 });
             }
+        }
+
+        public interface OnItemClickListener {
+            void onItemClick(View view, int position);
         }
 
     }
@@ -234,6 +233,47 @@ public class DAdapter {
         private static ImageView image;
         private boolean noPic;
 
+        public static void animate() {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                image.setVisibility(View.INVISIBLE);
+                Utils.circleAnimate(image, image.getWidth() / 2, image.getHeight() / 2);
+            }
+        }
+
+        public static void setImage(Uri uri) throws IOException, NullPointerException {
+            String selectedImagePath = null;
+            try {
+                selectedImagePath = getPath(uri, image.getContext());
+            } catch (Exception ignored) {
+            }
+            Bitmap bitmap;
+            if ((bitmap = selectedImagePath != null ? BitmapFactory.decodeFile(selectedImagePath) :
+                    uriToBitmap(uri, image.getContext())) != null)
+                image.setImageBitmap(Utils.scaleDownBitmap(bitmap, 1024, 1024));
+            else throw new NullPointerException("Getting Bitmap failed");
+        }
+
+        private static Bitmap uriToBitmap(Uri uri, Context context) throws IOException {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+                context.getContentResolver().takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            InputStream inputStream = context.getContentResolver().openInputStream(uri);
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+            inputStream.close();
+            return bitmap;
+        }
+
+        private static String getPath(Uri uri, Context context) {
+            Cursor cursor = context.getContentResolver().query(uri, new String[]{MediaStore.Images.Media.DATA},
+                    null, null, null);
+            if (cursor != null) {
+                int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                cursor.moveToFirst();
+                String path = cursor.getString(column_index);
+                cursor.close();
+                return path;
+            } else return null;
+        }
+
         @Override
         public String getTitle() {
             return null;
@@ -331,47 +371,6 @@ public class DAdapter {
                 finish();
             }
 
-        }
-
-        public static void animate() {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                image.setVisibility(View.INVISIBLE);
-                Utils.circleAnimate(image, image.getWidth() / 2, image.getHeight() / 2);
-            }
-        }
-
-        public static void setImage(Uri uri) throws IOException, NullPointerException {
-            String selectedImagePath = null;
-            try {
-                selectedImagePath = getPath(uri, image.getContext());
-            } catch (Exception ignored) {
-            }
-            Bitmap bitmap;
-            if ((bitmap = selectedImagePath != null ? BitmapFactory.decodeFile(selectedImagePath) :
-                    uriToBitmap(uri, image.getContext())) != null)
-                image.setImageBitmap(Utils.scaleDownBitmap(bitmap, 1024, 1024));
-            else throw new NullPointerException("Getting Bitmap failed");
-        }
-
-        private static Bitmap uriToBitmap(Uri uri, Context context) throws IOException {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
-                context.getContentResolver().takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            InputStream inputStream = context.getContentResolver().openInputStream(uri);
-            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-            inputStream.close();
-            return bitmap;
-        }
-
-        private static String getPath(Uri uri, Context context) {
-            Cursor cursor = context.getContentResolver().query(uri, new String[]{MediaStore.Images.Media.DATA},
-                    null, null, null);
-            if (cursor != null) {
-                int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-                cursor.moveToFirst();
-                String path = cursor.getString(column_index);
-                cursor.close();
-                return path;
-            } else return null;
         }
 
     }

@@ -61,6 +61,9 @@ import java.util.List;
 public class ProfileFragment extends RecyclerViewFragment {
 
     private static final String TAG = ProfileFragment.class.getSimpleName();
+    private TextView title;
+    private boolean taskerMode;
+    private AlertDialog.Builder mPerAppDialog;
 
     public static ProfileFragment newInstance() {
         Bundle args = new Bundle();
@@ -69,10 +72,6 @@ public class ProfileFragment extends RecyclerViewFragment {
         fragment.setArguments(args);
         return fragment;
     }
-
-    private TextView title;
-    private boolean taskerMode;
-    private AlertDialog.Builder mPerAppDialog;
 
     @Override
     public boolean showApplyOnBoot() {
@@ -217,8 +216,7 @@ public class ProfileFragment extends RecyclerViewFragment {
                                                             }).show();
                                                 }
                                             });
-                                        }
-                                        else if (!name.isEmpty() && commands.size() > 0)
+                                        } else if (!name.isEmpty() && commands.size() > 0)
                                             profileDB.putProfile(name, commands);
                                         profileDB.commit();
 
@@ -251,7 +249,7 @@ public class ProfileFragment extends RecyclerViewFragment {
         removeAllViews();
 
         ProfileDB profileDB = new ProfileDB(getActivity());
-        if (profileDB.updateDB(getActivity()) == 1 ) {
+        if (profileDB.updateDB(getActivity()) == 1) {
             removeAllViews();
 
             profileDB = new ProfileDB(getActivity());
@@ -338,6 +336,7 @@ public class ProfileFragment extends RecyclerViewFragment {
         }
         ProfileTileReceiver.publishProfileTile(profileItems, getActivity());
     }
+
     private void PerAppDialog(String id) {
         if (!Per_App.isAccessibilityEnabled(getActivity(), PerAppMonitor.accessibilityId)) {
             startActivityForResult(new Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS), 0);
@@ -391,7 +390,7 @@ public class ProfileFragment extends RecyclerViewFragment {
 
                             String packageName = packagelist[y];
 
-                            Log.d(TAG, "Saving "+packageName+" to "+profile_id);
+                            Log.d(TAG, "Saving " + packageName + " to " + profile_id);
                             Per_App.save_app(packageName, profile_id, getActivity());
                         }
                     }

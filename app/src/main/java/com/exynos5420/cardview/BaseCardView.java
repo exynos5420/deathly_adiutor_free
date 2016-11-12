@@ -44,14 +44,11 @@ public abstract class BaseCardView extends CardView {
      * Views
      */
     protected final View layoutView;
-
-    private HeaderCardView headerCardView;
+    protected final LinearLayout customLayout;
     private final LinearLayout headerLayout;
-
+    private HeaderCardView headerCardView;
     private TextView innerView;
     private CharSequence mTitle;
-
-    protected final LinearLayout customLayout;
     private View customView;
 
     public BaseCardView(Context context) {

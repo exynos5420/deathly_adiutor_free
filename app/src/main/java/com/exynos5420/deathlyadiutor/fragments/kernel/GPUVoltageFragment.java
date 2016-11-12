@@ -32,8 +32,8 @@ import java.util.Map;
 
 public class GPUVoltageFragment extends RecyclerViewFragment {
 
-    private EditTextCardView.DEditTextCard[] mVoltageCard;
     Map<String, String> voltagetable = new HashMap<String, String>();
+    private EditTextCardView.DEditTextCard[] mVoltageCard;
 
     @Override
     public int getSpan() {
@@ -64,8 +64,8 @@ public class GPUVoltageFragment extends RecyclerViewFragment {
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
         SharedPreferences storedvoltagetable = getContext().getSharedPreferences("gpu_voltage_table", 0);
-        for( Map.Entry entry : storedvoltagetable.getAll().entrySet() )
-            voltagetable.put( entry.getKey().toString(), entry.getValue().toString() );
+        for (Map.Entry entry : storedvoltagetable.getAll().entrySet())
+            voltagetable.put(entry.getKey().toString(), entry.getValue().toString());
 
         Log.i(Constants.TAG, "Volt Table: " + voltagetable);
 
@@ -85,18 +85,17 @@ public class GPUVoltageFragment extends RecyclerViewFragment {
                 double current = Double.parseDouble(voltages.get(i));
                 String diff;
                 if (stock > current) {
-                    diff =  "(-" + Double.toString((stock-current) / 1000) +")";
+                    diff = "(-" + Double.toString((stock - current) / 1000) + ")";
                 } else if (stock < current) {
-                    diff = "(+" + Double.toString((current-stock) / 1000) + ")";
-                }
-                else {
+                    diff = "(+" + Double.toString((current - stock) / 1000) + ")";
+                } else {
                     diff = "";
                 }
                 mVoltageCard[i].setDescription((Utils.stringtodouble(voltages.get(i)) / 1000) + getString(R.string.mv) + diff);
             } else {
                 mVoltageCard[i].setDescription((Utils.stringtodouble(voltages.get(i)) / 1000) + getString(R.string.mv));
             }
-            mVoltageCard[i].setValue(Double.toString(Utils.stringtodouble(voltages.get(i))/ 1000));
+            mVoltageCard[i].setValue(Double.toString(Utils.stringtodouble(voltages.get(i)) / 1000));
             mVoltageCard[i].setInputType(InputType.TYPE_CLASS_NUMBER);
             mVoltageCard[i].setOnDEditTextCardListener(new EditTextCardView.DEditTextCard.OnDEditTextCardListener() {
                 @Override
@@ -135,18 +134,17 @@ public class GPUVoltageFragment extends RecyclerViewFragment {
                                             double current = Double.parseDouble(voltages.get(i));
                                             String diff;
                                             if (stock > current) {
-                                                diff =  "(-" + Double.toString((stock-current) / 1000) +")";
+                                                diff = "(-" + Double.toString((stock - current) / 1000) + ")";
                                             } else if (stock < current) {
-                                                diff = "(+" + Double.toString((current-stock) / 1000) + ")";
-                                            }
-                                            else {
+                                                diff = "(+" + Double.toString((current - stock) / 1000) + ")";
+                                            } else {
                                                 diff = "";
                                             }
                                             mVoltageCard[i].setDescription((Utils.stringtodouble(voltages.get(i)) / 1000) + getString(R.string.mv) + diff);
                                         } else {
                                             mVoltageCard[i].setDescription((Utils.stringtodouble(voltages.get(i)) / 1000) + getString(R.string.mv));
                                         }
-                                        mVoltageCard[i].setValue(Double.toString(Utils.stringtodouble(voltages.get(i))/ 1000));
+                                        mVoltageCard[i].setValue(Double.toString(Utils.stringtodouble(voltages.get(i)) / 1000));
                                     } catch (IndexOutOfBoundsException e) {
                                         e.printStackTrace();
                                     }

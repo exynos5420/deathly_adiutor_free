@@ -30,8 +30,7 @@ import java.util.List;
 /**
  * Created by willi on 26.12.14.
  */
-public class GPUFragment extends RecyclerViewFragment implements PopupCardView.DPopupCard.OnDPopupCardListener
-{
+public class GPUFragment extends RecyclerViewFragment implements PopupCardView.DPopupCard.OnDPopupCardListener {
 
     private CardViewItem.DCardView mCurFreqCard;
 
@@ -60,113 +59,114 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
 
     private void curFreqInit() {
 
-            mCurFreqCard = new CardViewItem.DCardView();
-            mCurFreqCard.setTitle(getString(R.string.gpu_cur_freq));
+        mCurFreqCard = new CardViewItem.DCardView();
+        mCurFreqCard.setTitle(getString(R.string.gpu_cur_freq));
 
-            addView(mCurFreqCard);
+        addView(mCurFreqCard);
     }
 
     private void throttlingInit() {
 
-            List<String> freqs = new ArrayList<>();
-              for (int i = 0; i< GPU.getGpuFreqs().size(); i++ ) {
-                freqs.add(GPU.getGpuFreqs().get(i) + getString(R.string.mhz));
-            }
-            mThrottling1card = new PopupCardView.DPopupCard(freqs);
-            mThrottling1card.setTitle(getString(R.string.gpu_thermal_tittle) + " 1");
-            mThrottling1card.setDescription(getString(R.string.gpu_thermal_description) + "85° C");
-            mThrottling1card.setItem(GPU.getGpuThrottling(4) + getString(R.string.mhz));
-            mThrottling1card.setOnDPopupCardListener(this);
+        List<String> freqs = new ArrayList<>();
+        for (int i = 0; i < GPU.getGpuFreqs().size(); i++) {
+            freqs.add(GPU.getGpuFreqs().get(i) + getString(R.string.mhz));
+        }
+        mThrottling1card = new PopupCardView.DPopupCard(freqs);
+        mThrottling1card.setTitle(getString(R.string.gpu_thermal_tittle) + " 1");
+        mThrottling1card.setDescription(getString(R.string.gpu_thermal_description) + "85° C");
+        mThrottling1card.setItem(GPU.getGpuThrottling(4) + getString(R.string.mhz));
+        mThrottling1card.setOnDPopupCardListener(this);
 
-            addView(mThrottling1card);
+        addView(mThrottling1card);
 
-            mThrottling2card = new PopupCardView.DPopupCard(freqs);
-            mThrottling2card.setTitle(getString(R.string.gpu_thermal_tittle) + " 2");
-            mThrottling2card.setDescription(getString(R.string.gpu_thermal_description) + "90° C");
-            mThrottling2card.setItem(GPU.getGpuThrottling(3) + getString(R.string.mhz));
-            mThrottling2card.setOnDPopupCardListener(this);
+        mThrottling2card = new PopupCardView.DPopupCard(freqs);
+        mThrottling2card.setTitle(getString(R.string.gpu_thermal_tittle) + " 2");
+        mThrottling2card.setDescription(getString(R.string.gpu_thermal_description) + "90° C");
+        mThrottling2card.setItem(GPU.getGpuThrottling(3) + getString(R.string.mhz));
+        mThrottling2card.setOnDPopupCardListener(this);
 
-            addView(mThrottling2card);
+        addView(mThrottling2card);
 
-            mThrottling3card = new PopupCardView.DPopupCard(freqs);
-            mThrottling3card.setTitle(getString(R.string.gpu_thermal_tittle) + " 3");
-            mThrottling3card.setDescription(getString(R.string.gpu_thermal_description) + "95° C");
-            mThrottling3card.setItem(GPU.getGpuThrottling(2) + getString(R.string.mhz));
-            mThrottling3card.setOnDPopupCardListener(this);
+        mThrottling3card = new PopupCardView.DPopupCard(freqs);
+        mThrottling3card.setTitle(getString(R.string.gpu_thermal_tittle) + " 3");
+        mThrottling3card.setDescription(getString(R.string.gpu_thermal_description) + "95° C");
+        mThrottling3card.setItem(GPU.getGpuThrottling(2) + getString(R.string.mhz));
+        mThrottling3card.setOnDPopupCardListener(this);
 
-            addView(mThrottling3card);
+        addView(mThrottling3card);
 
-            mThrottling4card = new PopupCardView.DPopupCard(freqs);
-            mThrottling4card.setTitle(getString(R.string.gpu_thermal_tittle) + " 4");
-            mThrottling4card.setDescription(getString(R.string.gpu_thermal_description) + "100° C");
-            mThrottling4card.setItem(GPU.getGpuThrottling(1) + getString(R.string.mhz));
-            mThrottling4card.setOnDPopupCardListener(this);
+        mThrottling4card = new PopupCardView.DPopupCard(freqs);
+        mThrottling4card.setTitle(getString(R.string.gpu_thermal_tittle) + " 4");
+        mThrottling4card.setDescription(getString(R.string.gpu_thermal_description) + "100° C");
+        mThrottling4card.setItem(GPU.getGpuThrottling(1) + getString(R.string.mhz));
+        mThrottling4card.setOnDPopupCardListener(this);
 
-            addView(mThrottling4card);
+        addView(mThrottling4card);
 
-            mThrottling5card = new PopupCardView.DPopupCard(freqs);
-            mThrottling5card.setTitle(getString(R.string.gpu_thermal_tittle) + " 5 (Tripping)");
-            mThrottling5card.setDescription(getString(R.string.gpu_thermal_description) + "105° C");
-            mThrottling5card.setItem(GPU.getGpuThrottling(0) + getString(R.string.mhz));
-            mThrottling5card.setOnDPopupCardListener(this);
+        mThrottling5card = new PopupCardView.DPopupCard(freqs);
+        mThrottling5card.setTitle(getString(R.string.gpu_thermal_tittle) + " 5 (Tripping)");
+        mThrottling5card.setDescription(getString(R.string.gpu_thermal_description) + "105° C");
+        mThrottling5card.setItem(GPU.getGpuThrottling(0) + getString(R.string.mhz));
+        mThrottling5card.setOnDPopupCardListener(this);
 
-            addView(mThrottling5card);
+        addView(mThrottling5card);
 
     }
 
     private void maxFreqInit() {
 
-            List<String> freqs = new ArrayList<>();
-        for (int i = 0; i< GPU.getGpuFreqs().size(); i++ ) {
+        List<String> freqs = new ArrayList<>();
+        for (int i = 0; i < GPU.getGpuFreqs().size(); i++) {
             freqs.add(GPU.getGpuFreqs().get(i) + getString(R.string.mhz));
         }
 
-            mMaxFreqCard = new PopupCardView.DPopupCard(freqs);
-            mMaxFreqCard.setTitle(getString(R.string.gpu_max_freq));
-            mMaxFreqCard.setDescription(getString(R.string.gpu_max_freq_summary));
-            mMaxFreqCard.setItem(GPU.getGpuMaxFreq() + getString(R.string.mhz));
-            mMaxFreqCard.setOnDPopupCardListener(this);
+        mMaxFreqCard = new PopupCardView.DPopupCard(freqs);
+        mMaxFreqCard.setTitle(getString(R.string.gpu_max_freq));
+        mMaxFreqCard.setDescription(getString(R.string.gpu_max_freq_summary));
+        mMaxFreqCard.setItem(GPU.getGpuMaxFreq() + getString(R.string.mhz));
+        mMaxFreqCard.setOnDPopupCardListener(this);
 
-            addView(mMaxFreqCard);
+        addView(mMaxFreqCard);
     }
 
     private void minFreqInit() {
-            offset = 0;
-            List<String> freqs = new ArrayList<>();
-            for (int freq : GPU.getGpuFreqs()) {
-                if (freq <= 350) {
-                    freqs.add(freq + getString(R.string.mhz));
-                } else offset++;
-            }
+        offset = 0;
+        List<String> freqs = new ArrayList<>();
+        for (int freq : GPU.getGpuFreqs()) {
+            if (freq <= 350) {
+                freqs.add(freq + getString(R.string.mhz));
+            } else offset++;
+        }
 
-            mMinFreqCard = new PopupCardView.DPopupCard(freqs);
-            mMinFreqCard.setTitle(getString(R.string.gpu_min_freq));
-            mMinFreqCard.setDescription(getString(R.string.gpu_min_freq_summary));
-            mMinFreqCard.setItem(GPU.getGpuMinFreq() + getString(R.string.mhz));
-            mMinFreqCard.setOnDPopupCardListener(this);
+        mMinFreqCard = new PopupCardView.DPopupCard(freqs);
+        mMinFreqCard.setTitle(getString(R.string.gpu_min_freq));
+        mMinFreqCard.setDescription(getString(R.string.gpu_min_freq_summary));
+        mMinFreqCard.setItem(GPU.getGpuMinFreq() + getString(R.string.mhz));
+        mMinFreqCard.setOnDPopupCardListener(this);
 
-            addView(mMinFreqCard);
+        addView(mMinFreqCard);
     }
 
     private void powerpolicyInit() {
 
-            mPowerPolicyCard = new PopupCardView.DPopupCard(GPU.getGpuPowerPolicies());
-            mPowerPolicyCard.setTitle(getString(R.string.gpu_powerpolicy));
-            mPowerPolicyCard.setDescription(getString(R.string.gpu_powerpolicy_summary));
-            mPowerPolicyCard.setItem(GPU.getGpuPowerPolicy());
-            mPowerPolicyCard.setOnDPopupCardListener(this);
+        mPowerPolicyCard = new PopupCardView.DPopupCard(GPU.getGpuPowerPolicies());
+        mPowerPolicyCard.setTitle(getString(R.string.gpu_powerpolicy));
+        mPowerPolicyCard.setDescription(getString(R.string.gpu_powerpolicy_summary));
+        mPowerPolicyCard.setItem(GPU.getGpuPowerPolicy());
+        mPowerPolicyCard.setOnDPopupCardListener(this);
 
-            addView(mPowerPolicyCard);
+        addView(mPowerPolicyCard);
     }
+
     private void governorInit() {
 
-            mGovernorCard = new PopupCardView.DPopupCard(GPU.getGpuAvailibleGovernors());
-            mGovernorCard.setTitle(getString(R.string.gpu_governor));
-            mGovernorCard.setDescription(getString(R.string.gpu_governor_summary));
-            mGovernorCard.setItem(GPU.getGpuGovernor());
-            mGovernorCard.setOnDPopupCardListener(this);
+        mGovernorCard = new PopupCardView.DPopupCard(GPU.getGpuAvailibleGovernors());
+        mGovernorCard.setTitle(getString(R.string.gpu_governor));
+        mGovernorCard.setDescription(getString(R.string.gpu_governor_summary));
+        mGovernorCard.setItem(GPU.getGpuGovernor());
+        mGovernorCard.setOnDPopupCardListener(this);
 
-            addView(mGovernorCard);
+        addView(mGovernorCard);
     }
 
     @Override
@@ -179,15 +179,15 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
             GPU.setGpuPowerPolicy(GPU.getGpuPowerPolicies().get(position), getActivity());
         else if (dPopupCard == mGovernorCard)
             GPU.setGpuGovernor(GPU.getGpuAvailibleGovernors().get(position), getActivity());
-        else if (dPopupCard ==  mThrottling1card)
+        else if (dPopupCard == mThrottling1card)
             GPU.setGpuThrottling(GPU.getGpuFreqs().get(position), 4, getActivity());
-        else if (dPopupCard ==  mThrottling2card)
+        else if (dPopupCard == mThrottling2card)
             GPU.setGpuThrottling(GPU.getGpuFreqs().get(position), 3, getActivity());
-        else if (dPopupCard ==  mThrottling3card)
+        else if (dPopupCard == mThrottling3card)
             GPU.setGpuThrottling(GPU.getGpuFreqs().get(position), 2, getActivity());
-        else if (dPopupCard ==  mThrottling4card)
+        else if (dPopupCard == mThrottling4card)
             GPU.setGpuThrottling(GPU.getGpuFreqs().get(position), 1, getActivity());
-        else if (dPopupCard ==  mThrottling5card)
+        else if (dPopupCard == mThrottling5card)
             GPU.setGpuThrottling(GPU.getGpuFreqs().get(position), 0, getActivity());
     }
 

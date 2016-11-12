@@ -261,13 +261,13 @@ public class SeekBarCardView extends BaseCardView {
             }
         }
 
+        public int getProgress() {
+            return progress;
+        }
+
         public void setProgress(int progress) {
             this.progress = progress;
             if (seekBarCardView != null) seekBarCardView.setProgress(progress);
-        }
-
-        public int getProgress() {
-            return progress;
         }
 
         public void setEnabled(boolean enabled) {

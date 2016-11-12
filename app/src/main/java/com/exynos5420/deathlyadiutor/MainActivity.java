@@ -53,8 +53,8 @@ import com.exynos5420.deathlyadiutor.elements.DAdapter;
 import com.exynos5420.deathlyadiutor.elements.ScrimInsetsFrameLayout;
 import com.exynos5420.deathlyadiutor.elements.SplashView;
 import com.exynos5420.deathlyadiutor.fragments.BaseFragment;
-import com.exynos5420.deathlyadiutor.fragments.information.UsageStatisticsFragment;
 import com.exynos5420.deathlyadiutor.fragments.information.KernelInformationFragment;
+import com.exynos5420.deathlyadiutor.fragments.information.UsageStatisticsFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.BatteryFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.CPUFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.CPUVoltageFragment;
@@ -103,33 +103,27 @@ import io.fabric.sdk.android.Fabric;
 public class MainActivity extends BaseActivity implements Constants {
 
     private static final String TAG = "MainActivity";
-
+    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
     /**
      * Views
      */
     private Toolbar toolbar;
-
     private ActionBarDrawerToggle mDrawerToggle;
-
     private DrawerLayout mDrawerLayout;
     private ScrimInsetsFrameLayout mScrimInsetsFrameLayout;
     private RecyclerView mDrawerList;
     private SplashView mSplashView;
-
     private DAdapter.Adapter mAdapter;
-
     private boolean pressAgain = true;
-
     /**
      * Current Fragment position
      */
     private int cur_position;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(!BuildConfig.DEBUG){
+        if (!BuildConfig.DEBUG) {
             Fabric.with(this, new Crashlytics());
         }
 
@@ -353,80 +347,6 @@ public class MainActivity extends BaseActivity implements Constants {
         }
     }
 
-    private class Task extends AsyncTask<Void, Void, Void> {
-
-        private boolean hasRoot;
-        private boolean hasBusybox;
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            // Check root access and busybox installation
-            if (RootUtils.rooted()) hasRoot = RootUtils.rootAccess();
-            if (hasRoot) hasBusybox = RootUtils.hasAppletSupport();
-
-            if (hasRoot && hasBusybox) {
-                // Set permissions to specific files which are not readable by default
-                String[] writePermission = {LMK_MINFREE};
-                for (String file : writePermission)
-                    RootUtils.runCommand("chmod 644 " + file);
-
-                setList();
-            }
-            check_writeexternalstorage();
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            if (!hasRoot || !hasBusybox) {
-                Intent i = new Intent(MainActivity.this, TextActivity.class);
-                Bundle args = new Bundle();
-                args.putString(TextActivity.ARG_TEXT, !hasRoot ? getString(R.string.no_root)
-                        : getString(R.string.no_busybox));
-                Log.d(TAG, !hasRoot ? "no root" : "no busybox");
-                i.putExtras(args);
-                startActivity(i);
-
-                if (hasRoot)
-                    // Root is there but busybox is missing
-                    try {
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=stericson.busybox")));
-                    } catch (ActivityNotFoundException ignored) {
-                    }
-                cancel(true);
-                finish();
-                return;
-            }
-            mSplashView.finish();
-            setInterface();
-
-            try {
-                // Show a dialog if user is running a beta version
-                if (VERSION_NAME.contains("beta") && Utils.getBoolean("betainfo", true, MainActivity.this))
-                    new AlertDialog.Builder(MainActivity.this)
-                            .setMessage(getString(R.string.beta_message, VERSION_NAME))
-                            .setNeutralButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                }
-                            }).show();
-            } catch (Exception ignored) {
-            }
-
-            // Start with the very first fragment on the list
-            for (int i = 0; i < VISIBLE_ITEMS.size(); i++) {
-                if (VISIBLE_ITEMS.get(i).getFragment() != null) {
-                    selectItem(i);
-                    break;
-                }
-            }
-
-            ProfileTileReceiver.publishProfileTile(new ProfileDB(MainActivity.this).getAllProfiles(),
-                    MainActivity.this);
-        }
-    }
-
     @Override
     public boolean getDisplayHomeAsUpEnabled() {
         return false;
@@ -499,15 +419,6 @@ public class MainActivity extends BaseActivity implements Constants {
         return params;
     }
 
-    /**
-     * Interface to make onBackPressed function work in Fragments
-     */
-    public interface OnBackButtonListener {
-        boolean onBackPressed();
-    }
-
-    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
-
     @TargetApi(23)
     private void check_writeexternalstorage() {
         if (Build.VERSION.SDK_INT >= 23) {
@@ -529,5 +440,86 @@ public class MainActivity extends BaseActivity implements Constants {
             }
         }
         return false;
+    }
+
+    /**
+     * Interface to make onBackPressed function work in Fragments
+     */
+    public interface OnBackButtonListener {
+        boolean onBackPressed();
+    }
+
+    private class Task extends AsyncTask<Void, Void, Void> {
+
+        private boolean hasRoot;
+        private boolean hasBusybox;
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            // Check root access and busybox installation
+            if (RootUtils.rooted()) hasRoot = RootUtils.rootAccess();
+            if (hasRoot) hasBusybox = RootUtils.hasAppletSupport();
+
+            if (hasRoot && hasBusybox) {
+                // Set permissions to specific files which are not readable by default
+                String[] writePermission = {LMK_MINFREE};
+                for (String file : writePermission)
+                    RootUtils.runCommand("chmod 644 " + file);
+
+                setList();
+            }
+            check_writeexternalstorage();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            if (!hasRoot || !hasBusybox) {
+                Intent i = new Intent(MainActivity.this, TextActivity.class);
+                Bundle args = new Bundle();
+                args.putString(TextActivity.ARG_TEXT, !hasRoot ? getString(R.string.no_root)
+                        : getString(R.string.no_busybox));
+                Log.d(TAG, !hasRoot ? "no root" : "no busybox");
+                i.putExtras(args);
+                startActivity(i);
+
+                if (hasRoot)
+                    // Root is there but busybox is missing
+                    try {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=stericson.busybox")));
+                    } catch (ActivityNotFoundException ignored) {
+                    }
+                cancel(true);
+                finish();
+                return;
+            }
+            mSplashView.finish();
+            setInterface();
+
+            try {
+                // Show a dialog if user is running a beta version
+                if (VERSION_NAME.contains("beta") && Utils.getBoolean("betainfo", true, MainActivity.this))
+                    new AlertDialog.Builder(MainActivity.this)
+                            .setMessage(getString(R.string.beta_message, VERSION_NAME))
+                            .setNeutralButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            }).show();
+            } catch (Exception ignored) {
+            }
+
+            // Start with the very first fragment on the list
+            for (int i = 0; i < VISIBLE_ITEMS.size(); i++) {
+                if (VISIBLE_ITEMS.get(i).getFragment() != null) {
+                    selectItem(i);
+                    break;
+                }
+            }
+
+            ProfileTileReceiver.publishProfileTile(new ProfileDB(MainActivity.this).getAllProfiles(),
+                    MainActivity.this);
+        }
     }
 }

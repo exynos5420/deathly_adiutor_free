@@ -41,61 +41,10 @@ public class AutoHighBrightnessModeService extends Service {
     public static float lux = 0, avglux = 0;
     public static int LuxThresh = 3000;
     public static boolean HBM_Manually_Toggled = false;
-    public static float[] luxvalues = new float [3];
+    public static float[] luxvalues = new float[3];
 
     private static long prevuptime = 0;
-    private SensorManager sMgr;
     Sensor light;
-
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        LuxThresh = Screen.getAutoHBMThresh(getApplicationContext());
-        luxvalues = new float [Screen.getAutoHBMSmoothingSamples(getApplicationContext())];
-        init();
-    }
-
-    @Override
-    public void onDestroy() {
-        LuxThresh = Screen.getAutoHBMThresh(getApplicationContext());
-        luxvalues = new float [Screen.getAutoHBMSmoothingSamples(getApplicationContext())];
-        super.onDestroy();
-        unregisterAutoHBMReceiver(getApplicationContext());
-        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        if (Build.VERSION.SDK_INT > 19 && pm.isInteractive()) {
-            deactivateLightSensorRead();
-        } else if (Build.VERSION.SDK_INT < 20 ) {
-            deactivateLightSensorRead();
-        }
-    }
-
-    private void init() {
-        if (Screen.isScreenAutoHBMActive(getApplicationContext())) {
-            registerAutoHBMReceiver(getApplicationContext());
-            PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-            if (Build.VERSION.SDK_INT > 19 && pm.isInteractive()) {
-                activateLightSensorRead();
-            } else if (Build.VERSION.SDK_INT < 20) {
-                activateLightSensorRead();
-            }
-        }
-    }
-
-    public void activateLightSensorRead() {
-        sMgr = (SensorManager) getApplicationContext().getSystemService(Context.SENSOR_SERVICE);
-        light = sMgr.getDefaultSensor(Sensor.TYPE_LIGHT);
-        sMgr.registerListener(_SensorEventListener, light, SensorManager.SENSOR_DELAY_NORMAL);
-    }
-
-    public void deactivateLightSensorRead() {
-        sMgr.unregisterListener(_SensorEventListener);
-    }
-
     SensorEventListener _SensorEventListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
@@ -133,8 +82,57 @@ public class AutoHighBrightnessModeService extends Service {
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
         }
     };
-
+    private SensorManager sMgr;
     private BroadcastReceiver AutoHBMreceiver = null;
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        LuxThresh = Screen.getAutoHBMThresh(getApplicationContext());
+        luxvalues = new float[Screen.getAutoHBMSmoothingSamples(getApplicationContext())];
+        init();
+    }
+
+    @Override
+    public void onDestroy() {
+        LuxThresh = Screen.getAutoHBMThresh(getApplicationContext());
+        luxvalues = new float[Screen.getAutoHBMSmoothingSamples(getApplicationContext())];
+        super.onDestroy();
+        unregisterAutoHBMReceiver(getApplicationContext());
+        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        if (Build.VERSION.SDK_INT > 19 && pm.isInteractive()) {
+            deactivateLightSensorRead();
+        } else if (Build.VERSION.SDK_INT < 20) {
+            deactivateLightSensorRead();
+        }
+    }
+
+    private void init() {
+        if (Screen.isScreenAutoHBMActive(getApplicationContext())) {
+            registerAutoHBMReceiver(getApplicationContext());
+            PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+            if (Build.VERSION.SDK_INT > 19 && pm.isInteractive()) {
+                activateLightSensorRead();
+            } else if (Build.VERSION.SDK_INT < 20) {
+                activateLightSensorRead();
+            }
+        }
+    }
+
+    public void activateLightSensorRead() {
+        sMgr = (SensorManager) getApplicationContext().getSystemService(Context.SENSOR_SERVICE);
+        light = sMgr.getDefaultSensor(Sensor.TYPE_LIGHT);
+        sMgr.registerListener(_SensorEventListener, light, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    public void deactivateLightSensorRead() {
+        sMgr.unregisterListener(_SensorEventListener);
+    }
 
     private void registerAutoHBMReceiver(Context context) {
         if (Screen.isScreenAutoHBMActive(getApplicationContext())) {

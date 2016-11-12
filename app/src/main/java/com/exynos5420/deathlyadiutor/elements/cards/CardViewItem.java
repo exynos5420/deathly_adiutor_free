@@ -108,11 +108,6 @@ public class CardViewItem extends BaseCardView {
             if (cardViewItem != null) cardViewItem.setTitle(title);
         }
 
-        public void setDescription(CharSequence description) {
-            this.description = description;
-            if (cardViewItem != null) cardViewItem.setDescription(description);
-        }
-
         public void setView(View view) {
             this.view = view;
             if (cardViewItem != null) cardViewItem.setView(view);
@@ -120,6 +115,11 @@ public class CardViewItem extends BaseCardView {
 
         public CharSequence getDescription() {
             return description;
+        }
+
+        public void setDescription(CharSequence description) {
+            this.description = description;
+            if (cardViewItem != null) cardViewItem.setDescription(description);
         }
 
         public void setOnDCardListener(OnDCardListener onDCardListener) {

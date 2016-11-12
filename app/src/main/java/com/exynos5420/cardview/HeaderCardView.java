@@ -35,13 +35,12 @@ public class HeaderCardView {
     private static final int DEFAULT_LAYOUT = R.layout.header_cardview;
 
     private final Context context;
-
+    private final View view;
     /**
      * Views
      */
     private TextView textView;
     private CharSequence title;
-    private final View view;
 
     public HeaderCardView(Context context) {
         this(context, DEFAULT_LAYOUT);

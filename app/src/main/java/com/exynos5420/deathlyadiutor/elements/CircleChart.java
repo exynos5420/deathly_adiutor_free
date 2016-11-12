@@ -33,14 +33,14 @@ import com.exynos5420.deathlyadiutor.utils.Utils;
  */
 public class CircleChart extends View {
 
-    private int mProgress = 0;
-    private int mMax = 100;
     private final Paint mPaintCircle;
     private final Paint mPaintBackground;
     private final RectF mRectF;
     private final int mCircleColor;
     private final int mPadding;
     private final int mTextsize;
+    private int mProgress = 0;
+    private int mMax = 100;
 
     public CircleChart(Context context) {
         this(context, null);

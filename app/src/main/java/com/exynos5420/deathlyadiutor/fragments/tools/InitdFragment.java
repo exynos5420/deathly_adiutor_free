@@ -116,67 +116,6 @@ public class InitdFragment extends RecyclerViewFragment {
             recyclerView.addOnScrollListener(fabHideScrollListener = new FabHideScrollListener());
     }
 
-    private class FabHideScrollListener extends RecyclerView.OnScrollListener {
-
-        private boolean hide;
-        private boolean scrolled;
-        private boolean reset;
-
-        @Override
-        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-            super.onScrolled(recyclerView, dx, dy);
-            if (!reset) {
-                hide = dy > -1;
-                scrolled = true;
-            }
-            reset = false;
-        }
-
-        @Override
-        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-            super.onScrollStateChanged(recyclerView, newState);
-
-            if (scrolled && newState == RecyclerView.SCROLL_STATE_IDLE) {
-                final int height = addButtonBg.getHeight();
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        float offset = getResources().getDisplayMetrics().density * 10;
-                        if (!hide && ViewHelper.getTranslationY(addButtonBg) == height) {
-                            for (int i = height; i > 0; i -= offset)
-                                try {
-                                    move(i);
-                                    Thread.sleep(16);
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
-                            move(0);
-                        } else if (hide && ViewHelper.getTranslationY(addButtonBg) == 0) {
-                            for (int i = 0; i < height; i += offset)
-                                try {
-                                    move(i);
-                                    Thread.sleep(16);
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
-                            move(height);
-                        }
-                    }
-                }).start();
-            }
-            scrolled = false;
-        }
-
-        private void move(final int translation) {
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    ViewHelper.setTranslationY(addButtonBg, translation);
-                }
-            });
-        }
-    }
-
     @Override
     public void resetTranslations() {
         super.resetTranslations();
@@ -291,6 +230,67 @@ public class InitdFragment extends RecyclerViewFragment {
                 @Override
                 public void run() {
                     refresh();
+                }
+            });
+        }
+    }
+
+    private class FabHideScrollListener extends RecyclerView.OnScrollListener {
+
+        private boolean hide;
+        private boolean scrolled;
+        private boolean reset;
+
+        @Override
+        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            super.onScrolled(recyclerView, dx, dy);
+            if (!reset) {
+                hide = dy > -1;
+                scrolled = true;
+            }
+            reset = false;
+        }
+
+        @Override
+        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            super.onScrollStateChanged(recyclerView, newState);
+
+            if (scrolled && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                final int height = addButtonBg.getHeight();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        float offset = getResources().getDisplayMetrics().density * 10;
+                        if (!hide && ViewHelper.getTranslationY(addButtonBg) == height) {
+                            for (int i = height; i > 0; i -= offset)
+                                try {
+                                    move(i);
+                                    Thread.sleep(16);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            move(0);
+                        } else if (hide && ViewHelper.getTranslationY(addButtonBg) == 0) {
+                            for (int i = 0; i < height; i += offset)
+                                try {
+                                    move(i);
+                                    Thread.sleep(16);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            move(height);
+                        }
+                    }
+                }).start();
+            }
+            scrolled = false;
+        }
+
+        private void move(final int translation) {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    ViewHelper.setTranslationY(addButtonBg, translation);
                 }
             });
         }

@@ -64,20 +64,21 @@ public class VMFragment extends RecyclerViewFragment implements SeekBarCardView.
         if (VM.hasZRAM()) zramInit();
     }
 
-    private void dirtyratioInit(){
-            List<String> list = new ArrayList<>();
-            list.add(getString(R.string.disabled));
-            for (int i = 1; i <= 100; i++)
-                list.add(i + getString(R.string.percent));
+    private void dirtyratioInit() {
+        List<String> list = new ArrayList<>();
+        list.add(getString(R.string.disabled));
+        for (int i = 1; i <= 100; i++)
+            list.add(i + getString(R.string.percent));
 
-            mDirtyRatioCard = new SeekBarCardView.DSeekBarCard(list);
-            mDirtyRatioCard.setTitle(getString(R.string.dirty_ratio));
-            mDirtyRatioCard.setDescription(getString(R.string.dirty_ratio_summary));
-            mDirtyRatioCard.setProgress(VM.getDirtyRatio());
-            mDirtyRatioCard.setOnDSeekBarCardListener(this);
+        mDirtyRatioCard = new SeekBarCardView.DSeekBarCard(list);
+        mDirtyRatioCard.setTitle(getString(R.string.dirty_ratio));
+        mDirtyRatioCard.setDescription(getString(R.string.dirty_ratio_summary));
+        mDirtyRatioCard.setProgress(VM.getDirtyRatio());
+        mDirtyRatioCard.setOnDSeekBarCardListener(this);
 
-            addView(mDirtyRatioCard);
+        addView(mDirtyRatioCard);
     }
+
     private void dirtybackgroundratioInit() {
         List<String> list = new ArrayList<>();
         list.add(getString(R.string.disabled));
@@ -92,7 +93,8 @@ public class VMFragment extends RecyclerViewFragment implements SeekBarCardView.
 
         addView(mDirtyBackgroundRatioCard);
     }
-    private void dirtyexpireInit(){
+
+    private void dirtyexpireInit() {
         List<String> list = new ArrayList<>();
         for (int i = 1; i <= 500; i++)
             list.add(i * 10 + getString(R.string.cs));
@@ -105,6 +107,7 @@ public class VMFragment extends RecyclerViewFragment implements SeekBarCardView.
 
         addView(mDirtyExpireCard);
     }
+
     private void dirtywritebackInit() {
         List<String> list = new ArrayList<>();
         for (int i = 1; i <= 900; i++)
@@ -176,7 +179,8 @@ public class VMFragment extends RecyclerViewFragment implements SeekBarCardView.
         addView(mOverCommitRatioCard);
 
     }
-    private void swappinessInit(){
+
+    private void swappinessInit() {
         List<String> list = new ArrayList<>();
         list.add(getString(R.string.disabled));
         for (int i = 1; i <= 100; i++)
@@ -190,6 +194,7 @@ public class VMFragment extends RecyclerViewFragment implements SeekBarCardView.
 
         addView(mSwappinessCard);
     }
+
     private void vfscachepressureInit() {
         List<String> list = new ArrayList<>();
         list.add(getString(R.string.disabled));
@@ -204,6 +209,7 @@ public class VMFragment extends RecyclerViewFragment implements SeekBarCardView.
 
         addView(mVFSCachePressureCard);
     }
+
     private void laptopmodeInit() {
         mLaptopModeCard = new SwitchCardView.DSwitchCard();
         mLaptopModeCard.setTitle(getString(R.string.laptop_mode));
@@ -213,6 +219,7 @@ public class VMFragment extends RecyclerViewFragment implements SeekBarCardView.
 
         addView(mLaptopModeCard);
     }
+
     private void minfreekbytesInit() {
         DDivider mMinFreeKbytesDividerCard = new DDivider();
         mMinFreeKbytesDividerCard.setText(getString(R.string.min_free_kbytes));
@@ -220,7 +227,7 @@ public class VMFragment extends RecyclerViewFragment implements SeekBarCardView.
         addView(mMinFreeKbytesDividerCard);
 
         String value = VM.getMinFreeKbytes();
-        mMinFreeKbytesCard= new EditTextCardView.DEditTextCard();
+        mMinFreeKbytesCard = new EditTextCardView.DEditTextCard();
         mMinFreeKbytesCard.setDescription(value + " kb");
         mMinFreeKbytesCard.setValue(value);
         mMinFreeKbytesCard.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -243,7 +250,7 @@ public class VMFragment extends RecyclerViewFragment implements SeekBarCardView.
         addView(mExtraFreeKbytesDividerCard);
 
         String value = VM.getExtraFreeKbytes();
-        mExtraFreeKbytesCard= new EditTextCardView.DEditTextCard();
+        mExtraFreeKbytesCard = new EditTextCardView.DEditTextCard();
         mExtraFreeKbytesCard.setDescription(value + " kb");
         mExtraFreeKbytesCard.setValue(value);
         mExtraFreeKbytesCard.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -283,15 +290,23 @@ public class VMFragment extends RecyclerViewFragment implements SeekBarCardView.
     @Override
     public void onStop(SeekBarCardView.DSeekBarCard dSeekBarCard, int position) {
         if (dSeekBarCard == mDirtyRatioCard) VM.setDirtyRatio(position, getActivity());
-        else if (dSeekBarCard == mDirtyBackgroundRatioCard) VM.setDirtyBackgroundRatio(position, getActivity());
-        else if (dSeekBarCard == mDirtyExpireCard) VM.setDirtyExpire((position + 1) * 10, getActivity());
-        else if (dSeekBarCard == mDirtyWritebackCard) VM.setDirtyWriteback(position + 1, getActivity());
-        else if (dSeekBarCard == mDirty_Writeback_SuspendCard) VM.setDirtySuspendWriteback(position + 1, getActivity());
-        else if (dSeekBarCard == mDirty_Writeback_ActiveCard) VM.setDirtyActiveWriteback(position + 1, getActivity());
-        else if (dSeekBarCard == mOverCommitRatioCard) VM.setOverCommitRatio(position, getActivity());
+        else if (dSeekBarCard == mDirtyBackgroundRatioCard)
+            VM.setDirtyBackgroundRatio(position, getActivity());
+        else if (dSeekBarCard == mDirtyExpireCard)
+            VM.setDirtyExpire((position + 1) * 10, getActivity());
+        else if (dSeekBarCard == mDirtyWritebackCard)
+            VM.setDirtyWriteback(position + 1, getActivity());
+        else if (dSeekBarCard == mDirty_Writeback_SuspendCard)
+            VM.setDirtySuspendWriteback(position + 1, getActivity());
+        else if (dSeekBarCard == mDirty_Writeback_ActiveCard)
+            VM.setDirtyActiveWriteback(position + 1, getActivity());
+        else if (dSeekBarCard == mOverCommitRatioCard)
+            VM.setOverCommitRatio(position, getActivity());
         else if (dSeekBarCard == mSwappinessCard) VM.setSwappiness(position, getActivity());
-        else if (dSeekBarCard == mVFSCachePressureCard) VM.setVFSCachePressure(position + 1, getActivity());
-        else if (dSeekBarCard == mZRAMDisksizeCard) VM.setZRAMDisksize(position * 10, getActivity());
+        else if (dSeekBarCard == mVFSCachePressureCard)
+            VM.setVFSCachePressure(position + 1, getActivity());
+        else if (dSeekBarCard == mZRAMDisksizeCard)
+            VM.setZRAMDisksize(position * 10, getActivity());
     }
 
     @Override

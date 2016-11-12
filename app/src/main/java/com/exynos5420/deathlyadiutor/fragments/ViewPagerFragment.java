@@ -41,13 +41,12 @@ import io.karim.MaterialTabs;
  */
 public class ViewPagerFragment extends BaseFragment {
 
+    private final List<ViewPagerItem> items = new ArrayList<>();
     protected LayoutInflater inflater;
     protected ViewGroup container;
+    protected MaterialTabs mTabs;
     private Adapter adapter;
     private CustomViewPager mViewPager;
-    protected MaterialTabs mTabs;
-
-    private final List<ViewPagerItem> items = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -157,11 +156,11 @@ public class ViewPagerFragment extends BaseFragment {
             adapter.notifyDataSetChanged();
         }
 
-        if (!items.isEmpty() && isVisible() && mTabs != null){
+        if (!items.isEmpty() && isVisible() && mTabs != null) {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    mTabs.setIndicatorColor(ContextCompat.getColor(getActivity(),R.color.white));
+                    mTabs.setIndicatorColor(ContextCompat.getColor(getActivity(), R.color.white));
                 }
             });
         }
@@ -181,6 +180,11 @@ public class ViewPagerFragment extends BaseFragment {
 
     public List<ViewPagerItem> getItems() {
         return items;
+    }
+
+    @Override
+    public boolean onBackPressed() {
+        return false;
     }
 
     private static class Adapter extends FragmentPagerAdapter {
@@ -227,11 +231,6 @@ public class ViewPagerFragment extends BaseFragment {
             return title;
         }
 
-    }
-
-    @Override
-    public boolean onBackPressed() {
-        return false;
     }
 
 }

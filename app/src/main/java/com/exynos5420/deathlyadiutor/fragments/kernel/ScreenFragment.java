@@ -288,7 +288,7 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
                     mScreenAutoHBMSmoothingSamplesCard = new SeekBarCardView.DSeekBarCard(list);
                     mScreenAutoHBMSmoothingSamplesCard.setTitle(getString(R.string.auto_high_brightness_smoothing_samples));
                     mScreenAutoHBMSmoothingSamplesCard.setDescription("Number of Samples: " + Screen.getAutoHBMSmoothingSamples(view.getContext()));
-                    mScreenAutoHBMSmoothingSamplesCard.setProgress(Screen.getAutoHBMSmoothingSamples(view.getContext()) -3 );
+                    mScreenAutoHBMSmoothingSamplesCard.setProgress(Screen.getAutoHBMSmoothingSamples(view.getContext()) - 3);
                     mScreenAutoHBMSmoothingSamplesCard.setOnDSeekBarCardListener(this);
 
                     addView(mScreenAutoHBMSmoothingSamplesCard);
@@ -303,7 +303,7 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
                 addView(mScreenHBMLockCard);
 
                 List<String> list = new ArrayList<>();
-                for (int i = 0; i <= 10000; i+=5)
+                for (int i = 0; i <= 10000; i += 5)
                     list.add(String.valueOf(i));
 
                 mScreenAutoHBMValueCard = new SeekBarCardView.DSeekBarCard(list);
@@ -819,8 +819,7 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
         else if (dSeekBarCard == mScreenAutoHBMSmoothingSamplesCard) {
             Screen.setAutoHBMSmoothingSamples(position + 3, getActivity());
             mScreenAutoHBMSmoothingSamplesCard.setDescription("Number of Samples: " + (position + 3));
-        }
-        else if (dSeekBarCard == mScreenAutoHBMValueCard)
+        } else if (dSeekBarCard == mScreenAutoHBMValueCard)
             Screen.setAutoHBMThresh(position * 5, getActivity());
         else if (dSeekBarCard == mLcdMinBrightnessCard)
             Screen.setLcdMinBrightness(position + 2, getActivity());
@@ -964,7 +963,7 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
                 // This sleep isn't great, but the update was happening while the values were being set.
                 try {
                     Thread.sleep(100);
-                } catch(InterruptedException ex) {
+                } catch (InterruptedException ex) {
                     Thread.currentThread().interrupt();
                 }
                 forcerefresh();
@@ -1184,7 +1183,7 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
         if (mScreenAutoHBMValueCard != null) {
             mScreenAutoHBMValueCard.setDescription("Current Lux Value: " + AutoHighBrightnessModeService.lux);
         }
-        if ( mScreenHBMCard != null) {
+        if (mScreenHBMCard != null) {
             mScreenHBMCard.setChecked(Screen.isScreenHBMActive());
         }
         return true;

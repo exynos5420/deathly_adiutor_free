@@ -30,9 +30,9 @@ import com.exynos5420.deathlyadiutor.fragments.RecyclerViewFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.BatteryFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.CPUFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.CPUVoltageFragment;
-import com.exynos5420.deathlyadiutor.fragments.kernel.GPUVoltageFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.EntropyFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.GPUFragment;
+import com.exynos5420.deathlyadiutor.fragments.kernel.GPUVoltageFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.IOFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.KSMFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.LMKFragment;
@@ -57,6 +57,22 @@ import java.util.List;
  */
 public class StartUpCommandsFragment extends RecyclerViewFragment {
 
+    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            switch (which) {
+                case DialogInterface.BUTTON_POSITIVE:
+                    //Yes button clicked
+                    Control.deletespecificcommand(getActivity(), null, null);
+                    forcerefresh(getActivity());
+                    break;
+
+                case DialogInterface.BUTTON_NEGATIVE:
+                    //No button clicked
+                    break;
+            }
+        }
+    };
     private CardViewItem.DCardView mAllStartUpCommandsCard;
     private CardViewItem.DCardView[] mStartUpCommands;
 
@@ -71,7 +87,7 @@ public class StartUpCommandsFragment extends RecyclerViewFragment {
         listcommands();
     }
 
-    public void listcommands () {
+    public void listcommands() {
         CommandDB commandDB = new CommandDB(getActivity());
         List<CommandDB.CommandItem> commandItems = commandDB.getAllCommands();
         final List<String> applys = new ArrayList<>();
@@ -154,36 +170,35 @@ public class StartUpCommandsFragment extends RecyclerViewFragment {
                 mStartUpCommands[i].setDescription(commands.get(i));
                 final String command = commands.get(i);
                 mStartUpCommands[i].setOnDCardListener(new CardViewItem.DCardView.OnDCardListener() {
-                                                    @Override
-                                                    public void onClick(CardViewItem.DCardView dCardView) {
+                    @Override
+                    public void onClick(CardViewItem.DCardView dCardView) {
 
-                                                        new AlertDialog.Builder(getActivity()).setItems(getResources().getStringArray(R.array.startup_commands_menu),
-                                                                new DialogInterface.OnClickListener() {
-                                                                    @Override
-                                                                    public void onClick(DialogInterface dialog, int which) {
-                                                                        switch (which) {
-                                                                            case 0: {
-                                                                                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-                                                                                ClipData clip = ClipData.newPlainText("Startup Comnmand", command);
-                                                                                clipboard.setPrimaryClip(clip);
-                                                                                break;
-                                                                            }
-                                                                            case 1: {
-                                                                                Control.deletespecificcommand(getActivity(), null, command);
-                                                                                forcerefresh(getActivity());
-                                                                                break;
-                                                                            }
+                        new AlertDialog.Builder(getActivity()).setItems(getResources().getStringArray(R.array.startup_commands_menu),
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        switch (which) {
+                                            case 0: {
+                                                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                                                ClipData clip = ClipData.newPlainText("Startup Comnmand", command);
+                                                clipboard.setPrimaryClip(clip);
+                                                break;
+                                            }
+                                            case 1: {
+                                                Control.deletespecificcommand(getActivity(), null, command);
+                                                forcerefresh(getActivity());
+                                                break;
+                                            }
 
-                                                                        }
-                                                                    }
-                                                                }).show();
+                                        }
+                                    }
+                                }).show();
 
-                                                    }
-                                                });
+                    }
+                });
                 addView(mStartUpCommands[i]);
             }
-        }
-        else {
+        } else {
             mAllStartUpCommandsCard = new CardViewItem.DCardView();
             mAllStartUpCommandsCard.setTitle(getString(R.string.startup_commands_none));
 
@@ -195,22 +210,6 @@ public class StartUpCommandsFragment extends RecyclerViewFragment {
         view.invalidate();
         getActivity().getSupportFragmentManager().beginTransaction().detach(this).attach(this).commit();
     }
-    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            switch (which){
-                case DialogInterface.BUTTON_POSITIVE:
-                    //Yes button clicked
-                    Control.deletespecificcommand(getActivity(), null, null);
-                    forcerefresh(getActivity());
-                    break;
-
-                case DialogInterface.BUTTON_NEGATIVE:
-                    //No button clicked
-                    break;
-            }
-        }
-    };
 
     private String convert_to_rc(String text) {
         StringBuilder sb = new StringBuilder();
@@ -219,12 +218,12 @@ public class StartUpCommandsFragment extends RecyclerViewFragment {
             String line = null;
             while ((line = bufReader.readLine()) != null) {
                 String[] tar = line.split(" ");
-                if(tar[0].equals("echo")) {
-                   String fparse[] = line.split(">");
-                   String fcmd = fparse[0].replaceFirst("^echo", "");
-                   sb.append("write" + fparse[1] + fcmd + "\n");
+                if (tar[0].equals("echo")) {
+                    String fparse[] = line.split(">");
+                    String fcmd = fparse[0].replaceFirst("^echo", "");
+                    sb.append("write" + fparse[1] + fcmd + "\n");
                 } else {
-                   sb.append(line + "\n");
+                    sb.append(line + "\n");
                 }
             }
         } catch (IOException x) {

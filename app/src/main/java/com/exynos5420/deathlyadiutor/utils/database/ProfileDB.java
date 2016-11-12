@@ -95,7 +95,7 @@ public class ProfileDB extends JsonDB {
         return items;
     }
 
-    public int updateDB (Context context) {
+    public int updateDB(Context context) {
         ProfileDB profileDB = new ProfileDB(context);
         int result = 0;
 
@@ -129,8 +129,7 @@ public class ProfileDB extends JsonDB {
         public String getID() {
             if (getString("id") != null) {
                 return getString("id");
-            }
-            else return "111";
+            } else return "111";
         }
 
         public List<String> getPath() {

@@ -47,22 +47,32 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
 
     private UsageCardView.DUsageCard mBatteryLevelCard;
     private CardViewItem.DCardView mBatteryVoltageCard, mBatteryTemperature;
+    private final BroadcastReceiver mBatInfoReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context arg0, Intent intent) {
+            int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
+            int voltage = intent.getIntExtra(BatteryManager.EXTRA_VOLTAGE, 0);
+            int temperature = intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0);
 
+            if (mBatteryLevelCard != null) mBatteryLevelCard.setProgress(level);
+            if (mBatteryVoltageCard != null)
+                mBatteryVoltageCard.setDescription(voltage + getString(R.string.mv));
+            if (mBatteryTemperature != null) {
+                double celsius = (double) temperature / 10;
+                mBatteryTemperature.setDescription(Utils.formatCelsius(celsius) + " " + Utils.celsiusToFahrenheit(celsius));
+            }
+        }
+    };
     private SwitchCardView.DSwitchCard mForceFastChargeCard, mArchPowerCard;
-
     private SeekBarCardView.DSeekBarCard mBlxCard, mACLevelCard, mUSBLevelCard;
-
     private SwitchCardView.DSwitchCard mCustomChargeRateEnableCard;
     private SeekBarCardView.DSeekBarCard mForceFastChargeCurrentCard;
     private SeekBarCardView.DSeekBarCard mChargingRateCard;
     private SeekBarCardView.DSeekBarCard mlowpowervalueCard;
-
     private SwitchCardView.DSwitchCard mC0StateCard, mC1StateCard, mC2StateCard, mC3StateCard;
-
     private PopupCardView.DPopupCard mPowerSuspendModeCard;
     private SwitchCardView.DSwitchCard mOldPowerSuspendStateCard;
     private SeekBarCardView.DSeekBarCard mNewPowerSuspendStateCard;
-
     private SwitchCardView.DSwitchCard mStateNotifierStateCard;
 
     @Override
@@ -102,7 +112,7 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
     }
 
     private void lowpowervalueInit() {
-         if (Battery.haslowpowervalue()) {
+        if (Battery.haslowpowervalue()) {
             List<String> list = new ArrayList<>();
             for (int i = 0; i < 101; i++) list.add(String.valueOf(i));
 
@@ -113,7 +123,8 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
             mlowpowervalueCard.setOnDSeekBarCardListener(this);
 
             addView(mlowpowervalueCard);
-        }}
+        }
+    }
 
     private void batteryVoltageInit() {
         mBatteryVoltageCard = new CardViewItem.DCardView();
@@ -137,9 +148,9 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
         mForceFastChargeCard.setOnDSwitchCardListener(this);
         addView(mForceFastChargeCard);
 
-        if(Battery.hasForceFastChargeCurrent()){
+        if (Battery.hasForceFastChargeCurrent()) {
             List<String> list = new ArrayList<>();
-            for (int i = 0; i < 2200; i+=10) list.add(String.valueOf(i));
+            for (int i = 0; i < 2200; i += 10) list.add(String.valueOf(i));
 
             mForceFastChargeCurrentCard = new SeekBarCardView.DSeekBarCard(list);
             mForceFastChargeCurrentCard.setTitle(getString(R.string.usb_fast_charge_current));
@@ -151,7 +162,7 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
 
     }
 
-    private void chargeLevelControlInit(){
+    private void chargeLevelControlInit() {
         DDivider mChargeLevelCard = new DDivider();
         mChargeLevelCard.setText(getString(R.string.charge_levels));
         mChargeLevelCard.setDescription(getString(R.string.charge_levels_summary));
@@ -160,7 +171,7 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
 
         if (Battery.hasChargeLevelControlAC()) {
             List<String> list = new ArrayList<>();
-            for (int i = 0; i < 2200; i+=10) list.add(String.valueOf(i));
+            for (int i = 0; i < 2200; i += 10) list.add(String.valueOf(i));
 
             mACLevelCard = new SeekBarCardView.DSeekBarCard(list);
             mACLevelCard.setTitle(getString(R.string.charge_level_ac));
@@ -173,7 +184,7 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
 
         if (Battery.hasChargeLevelControlUSB()) {
             List<String> list = new ArrayList<>();
-            for (int i = 0; i < 900; i+=10) list.add(String.valueOf(i));
+            for (int i = 0; i < 900; i += 10) list.add(String.valueOf(i));
 
             mUSBLevelCard = new SeekBarCardView.DSeekBarCard(list);
             mUSBLevelCard.setTitle(getString(R.string.charge_level_usb));
@@ -268,18 +279,18 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
             mNewPowerSuspendStateCard.setOnDSeekBarCardListener(this);
 
             addView(mNewPowerSuspendStateCard);
-        }}
+        }
+    }
 
     private void statenotifierInit() {
-            mStateNotifierStateCard = new SwitchCardView.DSwitchCard();
-            mStateNotifierStateCard.setTitle(getString(R.string.state_notifier_mode));
-            mStateNotifierStateCard.setDescription(getString(Battery.isStateNotifierStateActive() ? R.string.state_notifier_mode_summary_enabled : R.string.state_notifier_mode_summary_disabled));
-            mStateNotifierStateCard.setChecked(Battery.isStateNotifierStateActive());
-            mStateNotifierStateCard.setOnDSwitchCardListener(this);
+        mStateNotifierStateCard = new SwitchCardView.DSwitchCard();
+        mStateNotifierStateCard.setTitle(getString(R.string.state_notifier_mode));
+        mStateNotifierStateCard.setDescription(getString(Battery.isStateNotifierStateActive() ? R.string.state_notifier_mode_summary_enabled : R.string.state_notifier_mode_summary_disabled));
+        mStateNotifierStateCard.setChecked(Battery.isStateNotifierStateActive());
+        mStateNotifierStateCard.setOnDSwitchCardListener(this);
 
-            addView(mStateNotifierStateCard);
-        }
-
+        addView(mStateNotifierStateCard);
+    }
 
     private void cstatesInit() {
         List<DAdapter.DView> views = new ArrayList<>();
@@ -329,26 +340,9 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
             mCstatesCard.setText(getString(R.string.cstates));
             addView(mCstatesCard);
 
-           addAllViews(views);
+            addAllViews(views);
         }
     }
-
-    private final BroadcastReceiver mBatInfoReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context arg0, Intent intent) {
-            int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
-            int voltage = intent.getIntExtra(BatteryManager.EXTRA_VOLTAGE, 0);
-            int temperature = intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0);
-
-            if (mBatteryLevelCard != null) mBatteryLevelCard.setProgress(level);
-            if (mBatteryVoltageCard != null)
-                mBatteryVoltageCard.setDescription(voltage + getString(R.string.mv));
-            if (mBatteryTemperature != null) {
-                double celsius = (double) temperature / 10;
-                mBatteryTemperature.setDescription(Utils.formatCelsius(celsius) + " " + Utils.celsiusToFahrenheit(celsius));
-            }
-        }
-    };
 
     @Override
     public void onItemSelected(PopupCardView.DPopupCard dPopupCard, int position) {
@@ -375,8 +369,7 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
         else if (dSwitchCard == mStateNotifierStateCard) {
             Battery.activateStateNotifier(checked, getActivity());
             mStateNotifierStateCard.setDescription(getString(checked ? R.string.state_notifier_mode_summary_enabled : R.string.state_notifier_mode_summary_disabled));
-        }
-        else if (dSwitchCard == mOldPowerSuspendStateCard)
+        } else if (dSwitchCard == mOldPowerSuspendStateCard)
             if (Battery.getPowerSuspendMode() == 1) {
                 Battery.activateOldPowerSuspend(checked, getActivity());
             } else dSwitchCard.setChecked(Battery.isOldPowerSuspendStateActive());
@@ -403,8 +396,8 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
                 Battery.setNewPowerSuspend(position, getActivity());
             } else dSeekBarCard.setProgress(Battery.getNewPowerSuspendState());
         else if (dSeekBarCard == mlowpowervalueCard) {
-            Battery.setlowpowervalue((position) ,getActivity());
-	}
+            Battery.setlowpowervalue((position), getActivity());
+        }
     }
 
     @Override

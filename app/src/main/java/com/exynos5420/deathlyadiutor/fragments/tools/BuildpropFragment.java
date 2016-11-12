@@ -57,6 +57,34 @@ public class BuildpropFragment extends RecyclerViewFragment implements View.OnCl
     private LinkedHashMap<String, String> buildpropItem;
 
     private MenuItem searchItem;
+    private final Runnable refresh = new Runnable() {
+        @Override
+        public void run() {
+            if (searchItem != null) MenuItemCompat.collapseActionView(searchItem);
+
+            removeAllViews();
+            buildpropItem = Buildprop.getProps();
+            for (int i = 0; i < buildpropItem.size(); i++) {
+                PopupCardView.DPopupCard mPropCard = new PopupCardView.DPopupCard(null);
+                mPropCard.setDescription((String) buildpropItem.keySet().toArray()[i]);
+                mPropCard.setItem((String) buildpropItem.values().toArray()[i]);
+                mPropCard.setOnClickListener(BuildpropFragment.this);
+
+                addView(mPropCard);
+            }
+
+            try {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        title.setText(getString(R.string.items_found, buildpropItem.size()));
+                        refreshLayout.setRefreshing(false);
+                    }
+                });
+            } catch (NullPointerException ignored) {
+            }
+        }
+    };
 
     @Override
     public RecyclerView getRecyclerView() {
@@ -115,7 +143,7 @@ public class BuildpropFragment extends RecyclerViewFragment implements View.OnCl
     @Override
     public void postInit(Bundle savedInstanceState) {
         super.postInit(savedInstanceState);
-            title.setText(getString(R.string.items_found, buildpropItem.size()));
+        title.setText(getString(R.string.items_found, buildpropItem.size()));
     }
 
     @Override
@@ -139,35 +167,6 @@ public class BuildpropFragment extends RecyclerViewFragment implements View.OnCl
                     }
                 }).show();
     }
-
-    private final Runnable refresh = new Runnable() {
-        @Override
-        public void run() {
-            if (searchItem != null) MenuItemCompat.collapseActionView(searchItem);
-
-            removeAllViews();
-            buildpropItem = Buildprop.getProps();
-            for (int i = 0; i < buildpropItem.size(); i++) {
-                PopupCardView.DPopupCard mPropCard = new PopupCardView.DPopupCard(null);
-                mPropCard.setDescription((String) buildpropItem.keySet().toArray()[i]);
-                mPropCard.setItem((String) buildpropItem.values().toArray()[i]);
-                mPropCard.setOnClickListener(BuildpropFragment.this);
-
-                addView(mPropCard);
-            }
-
-            try {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        title.setText(getString(R.string.items_found, buildpropItem.size()));
-                        refreshLayout.setRefreshing(false);
-                    }
-                });
-            } catch (NullPointerException ignored) {
-            }
-        }
-    };
 
     private void addKeyDialog(final String key, final String value, final boolean modify) {
         LinearLayout dialogLayout = new LinearLayout(getActivity());

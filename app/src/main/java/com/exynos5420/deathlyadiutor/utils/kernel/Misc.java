@@ -93,11 +93,11 @@ public class Misc implements Constants {
     }
 
     public static void setLedSpeed(int value, Context context) {
-            Control.runCommand(String.valueOf(value), LED_SPEED_GREEN, Control.CommandType.GENERIC, context);
+        Control.runCommand(String.valueOf(value), LED_SPEED_GREEN, Control.CommandType.GENERIC, context);
     }
 
     public static boolean isLedActive() {
- 		return Utils.readFile(LED_ACTIVE).equals("1");
+        return Utils.readFile(LED_ACTIVE).equals("1");
     }
 
     public static void activateLedMode(boolean active, Context context) {
@@ -126,8 +126,7 @@ public class Misc implements Constants {
     public static void activateADBOverWifi(boolean active, Context context) {
         if (active) {
             Control.setProp("service.adb.tcp.port", "5555", context);
-        }
-        else {
+        } else {
             Control.setProp("service.adb.tcp.port", "-1", context);
         }
     }
@@ -201,7 +200,7 @@ public class Misc implements Constants {
     }
 
     public static boolean hasBcl() {
-        for (int i = 0; i < BCL_ARRAY.length;i++) {
+        for (int i = 0; i < BCL_ARRAY.length; i++) {
             if (Utils.existFile(BCL_ARRAY[i])) {
                 BCL_FILE = BCL_ARRAY[i];
                 return true;
@@ -342,16 +341,16 @@ public class Misc implements Constants {
         return VIBRATION_PATH != null;
     }
 
-    public static boolean isSELinuxActive () {
+    public static boolean isSELinuxActive() {
         String result = RootUtils.runCommand(GETENFORCE);
         return result.equals("Enforcing");
     }
 
-    public static void activateSELinux (boolean active, Context context) {
+    public static void activateSELinux(boolean active, Context context) {
         Control.runCommand(active ? "1" : "0", SETENFORCE, Control.CommandType.SHELL, context);
     }
 
-    public static String getSELinuxStatus () {
+    public static String getSELinuxStatus() {
         String result = RootUtils.runCommand(GETENFORCE);
         if (result != null) {
             if (result.equals("Enforcing")) return "Enforcing";

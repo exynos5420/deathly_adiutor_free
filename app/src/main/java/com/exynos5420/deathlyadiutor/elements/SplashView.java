@@ -41,12 +41,12 @@ public class SplashView extends View {
 
     private final Paint mPaintCircle;
     private final float density;
-    private int radius = 0;
-    private int rotate = 0;
     private final Bitmap icon;
     private final Matrix matrix;
     private final int textColor;
     private final int textSize;
+    private int radius = 0;
+    private int rotate = 0;
     private boolean finished = false;
 
     public SplashView(Context context) {

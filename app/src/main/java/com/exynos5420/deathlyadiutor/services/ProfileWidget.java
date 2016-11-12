@@ -110,8 +110,8 @@ public class ProfileWidget extends AppWidgetProvider {
 
     private static class ListViewFactory implements RemoteViewsService.RemoteViewsFactory {
 
-        private final Context context;
         public static List<ProfileDB.ProfileItem> items;
+        private final Context context;
 
         public ListViewFactory(Context context) {
             this.context = context;

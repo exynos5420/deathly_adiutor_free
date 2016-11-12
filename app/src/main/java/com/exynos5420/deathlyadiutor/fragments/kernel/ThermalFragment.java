@@ -355,7 +355,7 @@ public class ThermalFragment extends RecyclerViewFragment implements SwitchCardV
 
             mFrancoThermalPollCard = new SeekBarCardView.DSeekBarCard(list);
             mFrancoThermalPollCard.setTitle(getString(R.string.thermal_franco_thermal_poll));
-            mFrancoThermalPollCard.setProgress(Thermal.getFrancoThermalPoll() / 10000 );
+            mFrancoThermalPollCard.setProgress(Thermal.getFrancoThermalPoll() / 10000);
             mFrancoThermalPollCard.setOnDSeekBarCardListener(this);
 
             addView(mFrancoThermalPollCard);
@@ -631,10 +631,14 @@ public class ThermalFragment extends RecyclerViewFragment implements SwitchCardV
 
     @Override
     public boolean onRefresh() {
-     if (mFrancoThermalStageOneCard != null) mFrancoThermalStageOneCard.setDescription(getString(R.string.thermal_franco_stage_one_summary) + " : " + Utils.formatCelsius(Thermal.calcFrancoTrigger(1)) + " " + Utils.celsiusToFahrenheit(Thermal.calcFrancoTrigger(1)));
-     if (mFrancoThermalStageTwoCard != null) mFrancoThermalStageTwoCard.setDescription(getString(R.string.thermal_franco_stage_two_summary) + " : " + Utils.formatCelsius(Thermal.calcFrancoTrigger(2)) + " " + Utils.celsiusToFahrenheit(Thermal.calcFrancoTrigger(2)));
-     if (mFrancoThermalStageThreeCard != null) mFrancoThermalStageThreeCard.setDescription(getString(R.string.thermal_franco_stage_three_summary) + " : " + Utils.formatCelsius(Thermal.calcFrancoTrigger(3)) + " " + Utils.celsiusToFahrenheit(Thermal.calcFrancoTrigger(3)));
-     if (mFrancoThermalStageFourCard != null) mFrancoThermalStageFourCard.setDescription(getString(R.string.thermal_franco_stage_four_summary) + " : " + Utils.formatCelsius(Thermal.calcFrancoTrigger(4)) + " " + Utils.celsiusToFahrenheit(Thermal.calcFrancoTrigger(4)));
-       return true;
+        if (mFrancoThermalStageOneCard != null)
+            mFrancoThermalStageOneCard.setDescription(getString(R.string.thermal_franco_stage_one_summary) + " : " + Utils.formatCelsius(Thermal.calcFrancoTrigger(1)) + " " + Utils.celsiusToFahrenheit(Thermal.calcFrancoTrigger(1)));
+        if (mFrancoThermalStageTwoCard != null)
+            mFrancoThermalStageTwoCard.setDescription(getString(R.string.thermal_franco_stage_two_summary) + " : " + Utils.formatCelsius(Thermal.calcFrancoTrigger(2)) + " " + Utils.celsiusToFahrenheit(Thermal.calcFrancoTrigger(2)));
+        if (mFrancoThermalStageThreeCard != null)
+            mFrancoThermalStageThreeCard.setDescription(getString(R.string.thermal_franco_stage_three_summary) + " : " + Utils.formatCelsius(Thermal.calcFrancoTrigger(3)) + " " + Utils.celsiusToFahrenheit(Thermal.calcFrancoTrigger(3)));
+        if (mFrancoThermalStageFourCard != null)
+            mFrancoThermalStageFourCard.setDescription(getString(R.string.thermal_franco_stage_four_summary) + " : " + Utils.formatCelsius(Thermal.calcFrancoTrigger(4)) + " " + Utils.celsiusToFahrenheit(Thermal.calcFrancoTrigger(4)));
+        return true;
     }
 }

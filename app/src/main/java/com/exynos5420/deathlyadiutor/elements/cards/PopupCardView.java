@@ -93,18 +93,8 @@ public class PopupCardView extends BaseCardView {
         setUpTitle();
     }
 
-    public void setDescription(CharSequence description) {
-        descriptionText = description;
-        setUpDescription();
-    }
-
     public void setItem(int position) {
         valueText = list.get(position) + " ";
-        if (valueView != null) valueView.setText(valueText);
-    }
-
-    public void setItem(String value) {
-        valueText = value + " ";
         if (valueView != null) valueView.setText(valueText);
     }
 
@@ -112,8 +102,18 @@ public class PopupCardView extends BaseCardView {
         return descriptionText;
     }
 
+    public void setDescription(CharSequence description) {
+        descriptionText = description;
+        setUpDescription();
+    }
+
     public String getItem() {
         return valueText;
+    }
+
+    public void setItem(String value) {
+        valueText = value + " ";
+        if (valueView != null) valueView.setText(valueText);
     }
 
     private void setUpTitle() {

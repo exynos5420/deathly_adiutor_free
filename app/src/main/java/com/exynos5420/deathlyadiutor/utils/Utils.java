@@ -44,9 +44,9 @@ import com.exynos5420.deathlyadiutor.R;
 import com.exynos5420.deathlyadiutor.fragments.kernel.BatteryFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.CPUFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.CPUVoltageFragment;
-import com.exynos5420.deathlyadiutor.fragments.kernel.GPUVoltageFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.EntropyFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.GPUFragment;
+import com.exynos5420.deathlyadiutor.fragments.kernel.GPUVoltageFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.IOFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.KSMFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.LMKFragment;
@@ -86,6 +86,7 @@ import java.util.Set;
  */
 public class Utils implements Constants {
 
+    private static final Set<CustomTarget> protectedFromGarbageCollectorTargets = new HashSet<>();
     public static boolean DARKTHEME = true;
 
     public static boolean hasCMSDK() {
@@ -199,36 +200,10 @@ public class Utils implements Constants {
         return Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, false);
     }
 
-    private static final Set<CustomTarget> protectedFromGarbageCollectorTargets = new HashSet<>();
-
     public static void loadImagefromUrl(String url, ImageView imageView) {
         CustomTarget target = new CustomTarget().setImageView(imageView);
         protectedFromGarbageCollectorTargets.add(target);
         Picasso.with(imageView.getContext()).load(url).into(target);
-    }
-
-    private static class CustomTarget implements Target {
-        private ImageView imageView;
-
-        public CustomTarget setImageView(ImageView imageView) {
-            this.imageView = imageView;
-            return this;
-        }
-
-        @Override
-        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-            imageView.setImageBitmap(scaleDownBitmap(bitmap, 1920, 1920));
-            protectedFromGarbageCollectorTargets.remove(this);
-        }
-
-        @Override
-        public void onBitmapFailed(Drawable errorDrawable) {
-            protectedFromGarbageCollectorTargets.remove(this);
-        }
-
-        @Override
-        public void onPrepareLoad(Drawable placeHolderDrawable) {
-        }
     }
 
     public static String getDeviceName() {
@@ -348,22 +323,22 @@ public class Utils implements Constants {
                     for (int i = 0; i < CPU.getCoreCount(); i++)
                         applys.add(String.format(cpu, i));
                 else applys.add(cpu);
-        }else if (mClass == CPUVoltageFragment.class)
+        } else if (mClass == CPUVoltageFragment.class)
             applys.addAll(new ArrayList<>(Arrays.asList(CPU_VOLTAGE_ARRAY)));
         else if (mClass == GPUVoltageFragment.class)
             applys.add(GPU_VOLTAGE_EXYNOS5_FILE);
         else if (mClass == EntropyFragment.class)
             applys.addAll(new ArrayList<>(Arrays.asList(ENTROPY_ARRAY)));
         else if (mClass == GPUFragment.class) for (String[] arrays : GPU_ARRAY)
-              applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
+            applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
         else if (mClass == IOFragment.class)
-             applys.addAll(new ArrayList<>(Arrays.asList(IO_ARRAY)));
+            applys.addAll(new ArrayList<>(Arrays.asList(IO_ARRAY)));
         else if (mClass == KSMFragment.class)
-             applys.addAll(new ArrayList<>(Arrays.asList(KSM_ARRAY)));
+            applys.addAll(new ArrayList<>(Arrays.asList(KSM_ARRAY)));
         else if (mClass == LMKFragment.class)
-             applys.add(LMK_MINFREE);
+            applys.add(LMK_MINFREE);
         else if (mClass == MiscFragment.class) for (String[] arrays : MISC_ARRAY)
-             applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
+            applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
         else if (mClass == ScreenFragment.class) for (String[] arrays : SCREEN_ARRAY)
             applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
         else if (mClass == SoundFragment.class) for (String[] arrays : SOUND_ARRAY)
@@ -393,7 +368,7 @@ public class Utils implements Constants {
     }
 
     public static long stringToLong(String number) {
-        if(TextUtils.isEmpty(number)){
+        if (TextUtils.isEmpty(number)) {
             return 0;
         }
         try {
@@ -404,17 +379,19 @@ public class Utils implements Constants {
     }
 
     public static int stringToInt(String number) {
-        if(TextUtils.isEmpty(number)){
+        if (TextUtils.isEmpty(number)) {
             return 0;
         }
-        if(number.contains(".")){
+        if (number.contains(".")) {
             try {
                 return Math.round(Float.parseFloat(number));
-            } catch (Exception ignored){}
+            } catch (Exception ignored) {
+            }
         } else {
             try {
                 return Integer.parseInt(number);
-            } catch (Exception ignored){}
+            } catch (Exception ignored) {
+            }
         }
         return 0;
     }
@@ -472,7 +449,7 @@ public class Utils implements Constants {
     public static boolean getBoolean(String name, boolean defaults, Context context) {
         try {
             return context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE).getBoolean(name, defaults);
-        } catch (Exception ignored){
+        } catch (Exception ignored) {
             return false;
         }
     }
@@ -521,7 +498,7 @@ public class Utils implements Constants {
         return Tools.readFile(file, true);
     }
 
-    public static double stringtodouble (String text) {
+    public static double stringtodouble(String text) {
         try {
             return Double.parseDouble(text);
         } catch (NumberFormatException e) {
@@ -529,16 +506,15 @@ public class Utils implements Constants {
         }
     }
 
-    public static boolean isLetter (String testchar) {
+    public static boolean isLetter(String testchar) {
         return Character.isLetter(testchar.charAt(0));
     }
 
     public static boolean is64bit() {
         if (Build.VERSION.SDK_INT < 21) {
             return false;
-        }
-        else if (Build.SUPPORTED_64_BIT_ABIS.length >= 1) {
-                return true;
+        } else if (Build.SUPPORTED_64_BIT_ABIS.length >= 1) {
+            return true;
         }
         return false;
     }
@@ -555,10 +531,34 @@ public class Utils implements Constants {
     //Helper function to get paths with integer format substitutions
     public static String getsysfspath(String[] paths, int sub) {
         for (int i = 0; i < paths.length; i++) {
-            if (Utils.existFile(String.format(paths[i], sub))){
+            if (Utils.existFile(String.format(paths[i], sub))) {
                 return String.format(paths[i], sub);
             }
         }
         return "";
+    }
+
+    private static class CustomTarget implements Target {
+        private ImageView imageView;
+
+        public CustomTarget setImageView(ImageView imageView) {
+            this.imageView = imageView;
+            return this;
+        }
+
+        @Override
+        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+            imageView.setImageBitmap(scaleDownBitmap(bitmap, 1920, 1920));
+            protectedFromGarbageCollectorTargets.remove(this);
+        }
+
+        @Override
+        public void onBitmapFailed(Drawable errorDrawable) {
+            protectedFromGarbageCollectorTargets.remove(this);
+        }
+
+        @Override
+        public void onPrepareLoad(Drawable placeHolderDrawable) {
+        }
     }
 }

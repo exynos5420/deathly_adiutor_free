@@ -24,7 +24,7 @@ public class PerAppMonitor extends AccessibilityService {
     public static String accessibilityId;
     String last_package = "";
     String last_profile = "";
-    long time= System.currentTimeMillis();
+    long time = System.currentTimeMillis();
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
@@ -36,15 +36,14 @@ public class PerAppMonitor extends AccessibilityService {
         intent.addCategory("android.intent.category.HOME");
         String launcher = localPackageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY).activityInfo.packageName;
 
-        if(event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED && event.getPackageName() != null) {
+        if (event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED && event.getPackageName() != null) {
             sPackageName = event.getPackageName().toString();
-            Log.d(TAG, "Package Name is "+sPackageName);
+            Log.d(TAG, "Package Name is " + sPackageName);
             if ((System.currentTimeMillis() - time) < 1000) {
                 if (!sPackageName.equals(launcher) || !sPackageName.equals("com.android.systemui")) {
                     process_window_change(sPackageName);
                 }
-            }
-            else if ((System.currentTimeMillis() - time) >= 1000) {
+            } else if ((System.currentTimeMillis() - time) >= 1000) {
                 process_window_change(sPackageName);
             }
         }
@@ -55,7 +54,7 @@ public class PerAppMonitor extends AccessibilityService {
 
     }
 
-    private void process_window_change (String packageName) {
+    private void process_window_change(String packageName) {
         if (!Per_App.app_profile_exists(packageName, getApplicationContext())) {
             packageName = "Default";
             Log.d(TAG, "Profile does not exist. Using Default");

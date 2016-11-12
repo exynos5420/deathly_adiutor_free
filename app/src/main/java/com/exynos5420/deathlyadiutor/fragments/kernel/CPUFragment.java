@@ -107,7 +107,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
         private AppCompatTextView[] mCoreFreqText;
 
         private PopupCardView.DPopupCard mMaxFreqCard, mMinFreqCard, mMaxScreenOffFreqCard, mMSM_LimiterResumeMaxFreqNoPerCoreCard, mMSM_LimiterSuspendMinFreqNoPerCoreCard, mMSM_LimiterSuspendMaxFreqNoPerCoreCard;
-        private PopupCardView.DPopupCard mMSM_LimiterResumeMaxFreqCard[], mMSM_LimiterSuspendMinFreqCard[], mMSM_LimiterSuspendMaxFreqCard[] ;
+        private PopupCardView.DPopupCard mMSM_LimiterResumeMaxFreqCard[], mMSM_LimiterSuspendMinFreqCard[], mMSM_LimiterSuspendMaxFreqCard[];
 
         private PopupCardView.DPopupCard mGovernorCard;
         private PopupCardView.DPopupCard mMSM_LimiterGovernorNoPerCoreCard, mMSM_LimiterGovernorPerCoreCard[];
@@ -117,22 +117,70 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
         private AppCompatCheckBox[] mCoreCheckBoxLITTLE;
         private ProgressBar[] mCoreProgressBarLITTLE;
         private AppCompatTextView[] mCoreUsageTextLITTLE;
+        private final Runnable cpuUsage = new Runnable() {
+            @Override
+            public void run() {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        final float[] usage = CPU.getCpuUsage();
+                        try {
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (usage != null) {
+                                        if (mUsageCard != null)
+                                            mUsageCard.setProgress(Math.round(usage[0]));
+
+                                        if (mCoreUsageText != null) {
+                                            List<Integer> cores = CPU.getBigCoreRange();
+                                            for (int i = 0; i < mCoreUsageText.length; i++) {
+                                                String message = Math.round(usage[cores.get(i) + 1]) + "%";
+                                                if (mCoreUsageText[i] != null) {
+                                                    if (mCoreProgressBar != null && mCoreProgressBar[i] != null && mCoreProgressBar[i].getProgress() == 0) {
+                                                        mCoreUsageText[i].setText("");
+                                                    } else {
+                                                        mCoreUsageText[i].setText(message);
+                                                    }
+                                                }
+
+                                            }
+                                        }
+
+                                        if (mCoreUsageTextLITTLE != null) {
+                                            List<Integer> cores = CPU.getLITTLECoreRange();
+                                            for (int i = 0; i < mCoreUsageTextLITTLE.length; i++) {
+                                                String message = Math.round(usage[cores.get(i) + 1]) + "%";
+                                                if (mCoreUsageTextLITTLE[i] != null) {
+                                                    if (mCoreProgressBarLITTLE != null && mCoreProgressBarLITTLE[i] != null && mCoreProgressBarLITTLE[i].getProgress() == 0) {
+                                                        mCoreUsageTextLITTLE[i].setText("");
+                                                    } else {
+                                                        mCoreUsageTextLITTLE[i].setText(message);
+                                                    }
+                                                }
+
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                        } catch (NullPointerException ignored) {
+                        }
+                    }
+                }).start();
+
+                getHandler().postDelayed(cpuUsage, 1000);
+            }
+        };
         private AppCompatTextView[] mCoreFreqTextLITTLE;
-
         private PopupCardView.DPopupCard mMaxFreqLITTLECard, mMinFreqLITTLECard, mMaxScreenOffFreqLITTLECard;
-
         private PopupCardView.DPopupCard mGovernorLITTLECard;
         private CardViewItem.DCardView mGovernorTunableLITTLECard;
-
         private PopupCardView.DPopupCard mMcPowerSavingCard;
-
         private SwitchCardView.DSwitchCard mPowerSavingWqCard;
-
         private PopupCardView.DPopupCard mCFSSchedulerCard;
-
         private SwitchCardView.DSwitchCard mCpuQuietEnableCard;
         private PopupCardView.DPopupCard mCpuQuietGovernorCard;
-
         private SwitchCardView.DSwitchCard mCpuBoostEnableCard;
         private SwitchCardView.DSwitchCard mCpuBoostDebugMaskCard;
         private SeekBarCardView.DSeekBarCard mCpuBoostMsCard;
@@ -142,9 +190,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
         private SwitchCardView.DSwitchCard mCpuBoostWakeupCard, mCpuInputBoostEnableCard;
         private SwitchCardView.DSwitchCard mCpuBoostHotplugCard;
         private SwitchCardView.DSwitchCard mMSM_Limiter_EnableCard, mPerCoreControlCard;
-
         private SwitchCardView.DSwitchCard mCpuTouchBoostCard;
-
         private SeekBarCardView.DSeekBarCard mAlu_T_BoostMsCard;
         private SeekBarCardView.DSeekBarCard mAlu_T_BoostMiiCard;
         private SeekBarCardView.DSeekBarCard mAlu_T_BoostCpusCard;
@@ -251,7 +297,8 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
 
             if (CPU.hasMSM_Limiter() && CPU.isMSM_LimiterActive()) {
                 DDivider mMSM_LimiterHeaderCard = new DDivider();
-                if (CPU.hasMSM_Limiter_Version()) mMSM_LimiterHeaderCard.setText("MSM_Limiter: Version " + Double.toString(CPU.getMSM_Limiter_Version()));
+                if (CPU.hasMSM_Limiter_Version())
+                    mMSM_LimiterHeaderCard.setText("MSM_Limiter: Version " + Double.toString(CPU.getMSM_Limiter_Version()));
                 else mMSM_LimiterHeaderCard.setText("MSM_Limiter");
                 addView(mMSM_LimiterHeaderCard);
             }
@@ -298,7 +345,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
             }
             if (CPU.isMSM_LimiterActive()) {
 
-                if (!CPU.isPerCoreControlActive(getActivity())){
+                if (!CPU.isPerCoreControlActive(getActivity())) {
 
                     if (CPU.hasMSM_LimiterResumeMaxFreq()) {
                         List<String> freqs = new ArrayList<>();
@@ -327,9 +374,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
 
                         views.add(mMSM_LimiterSuspendMinFreqNoPerCoreCard);
                     }
-                }
-
-                else if (CPU.isPerCoreControlActive(getActivity())) {
+                } else if (CPU.isPerCoreControlActive(getActivity())) {
                     for (int freq : CPU.getFreqs())
                         freqs.add(freq / 1000 + getString(R.string.mhz));
 
@@ -849,16 +894,16 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
         @Override
         public void onItemSelected(PopupCardView.DPopupCard dPopupCard, int position) {
             for (int i = 0; i < CPU.getCoreCount(); i++) {
-                if ( mMSM_LimiterResumeMaxFreqCard != null && dPopupCard == mMSM_LimiterResumeMaxFreqCard[i] ) {
+                if (mMSM_LimiterResumeMaxFreqCard != null && dPopupCard == mMSM_LimiterResumeMaxFreqCard[i]) {
                     CPU.setMSM_LimiterResumeMaxFreq(CPU.getFreqs().get(position), getActivity(), i);
                 }
-                if ( mMSM_LimiterSuspendMaxFreqCard != null && dPopupCard == mMSM_LimiterSuspendMaxFreqCard[i] ) {
+                if (mMSM_LimiterSuspendMaxFreqCard != null && dPopupCard == mMSM_LimiterSuspendMaxFreqCard[i]) {
                     CPU.setMSM_LimiterSuspendMaxFreq(CPU.getFreqs().get(position), i, getActivity());
                 }
-                if ( mMSM_LimiterSuspendMinFreqCard != null && dPopupCard == mMSM_LimiterSuspendMinFreqCard[i] ) {
+                if (mMSM_LimiterSuspendMinFreqCard != null && dPopupCard == mMSM_LimiterSuspendMinFreqCard[i]) {
                     CPU.setMSM_LimiterSuspendMinFreq(CPU.getFreqs().get(position), i, getActivity());
                 }
-                if ( mMSM_LimiterGovernorPerCoreCard != null && dPopupCard == mMSM_LimiterGovernorPerCoreCard[i]) {
+                if (mMSM_LimiterGovernorPerCoreCard != null && dPopupCard == mMSM_LimiterGovernorPerCoreCard[i]) {
                     CPU.setMSMLimiterGovernor(CPU.getAvailableGovernors().get(position), getActivity(), i);
                 }
             }
@@ -868,8 +913,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 CPU.setMinFreq(CPU.getFreqs().get(position), getActivity());
             else if (dPopupCard == mMSM_LimiterResumeMaxFreqNoPerCoreCard) {
                 CPU.setMSM_LimiterResumeMaxFreq(CPU.getFreqs().get(position), getActivity(), -1);
-            }
-            else if (dPopupCard == mMSM_LimiterSuspendMaxFreqNoPerCoreCard)
+            } else if (dPopupCard == mMSM_LimiterSuspendMaxFreqNoPerCoreCard)
                 CPU.setMSM_LimiterSuspendMaxFreq(CPU.getFreqs().get(position), -1, getActivity());
             else if (dPopupCard == mMSM_LimiterSuspendMinFreqNoPerCoreCard)
                 CPU.setMSM_LimiterSuspendMinFreq(CPU.getFreqs().get(position), -1, getActivity());
@@ -878,7 +922,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
             else if (dPopupCard == mGovernorCard)
                 CPU.setGovernor(CPU.getAvailableGovernors().get(position), getActivity());
             else if (dPopupCard == mMSM_LimiterGovernorNoPerCoreCard)
-                    CPU.setMSMLimiterGovernor(CPU.getAvailableGovernors().get(position), getActivity(), -1);
+                CPU.setMSMLimiterGovernor(CPU.getAvailableGovernors().get(position), getActivity(), -1);
             else if (dPopupCard == mMaxFreqLITTLECard)
                 CPU.setMaxFreq(Control.CommandType.CPU_LITTLE, CPU.getFreqs(CPU.getLITTLEcore()).get(position), getActivity());
             else if (dPopupCard == mMinFreqLITTLECard)
@@ -912,7 +956,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
         @Override
         public void onClick(CardViewItem.DCardView dCardView) {
             for (int i = 0; i < CPU.getCoreCount(); i++) {
-                if ( mGovernorTunableCoreCard != null && dCardView == mGovernorTunableCoreCard[i] ) {
+                if (mGovernorTunableCoreCard != null && dCardView == mGovernorTunableCoreCard[i]) {
                     cpuFragment.core = i;
                     cpuFragment.governorPart.reload();
                     cpuFragment.setCurrentItem(1);
@@ -964,16 +1008,14 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
             else if (dSwitchCard == mCpuInputBoostEnableCard) {
                 CPU.activateCpuInputBoost(checked, getActivity());
                 ForceRefresh();
-            }
-            else if (dSwitchCard == mCpuBoostHotplugCard)
+            } else if (dSwitchCard == mCpuBoostHotplugCard)
                 CPU.activateCpuBoostHotplug(checked, getActivity());
             else if (dSwitchCard == mCpuTouchBoostCard)
                 CPU.activateCpuTouchBoost(checked, getActivity());
             else if (dSwitchCard == mMSM_Limiter_EnableCard) {
                 CPU.activateMSM_Limiter(checked, getActivity());
                 ForceRefresh();
-            }
-            else if (dSwitchCard == mPerCoreControlCard) {
+            } else if (dSwitchCard == mPerCoreControlCard) {
                 CPU.activatePerCoreControl(checked, getActivity());
                 ForceRefresh();
             }
@@ -994,9 +1036,9 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 for (int i = 0; i < CPU.getCoreCount(); i++) {
                     String msm_limiter_governor = CPU.getMSMLimiterGovernor(i);
 
-                        if (mMSM_LimiterGovernorPerCoreCard[i] != null && !msm_limiter_governor.isEmpty()) {
-                           mMSM_LimiterGovernorPerCoreCard[i].setItem(msm_limiter_governor);
-                       }
+                    if (mMSM_LimiterGovernorPerCoreCard[i] != null && !msm_limiter_governor.isEmpty()) {
+                        mMSM_LimiterGovernorPerCoreCard[i].setItem(msm_limiter_governor);
+                    }
                 }
             }
             if (mTempCard != null) mTempCard.setDescription(CPU.getTemp());
@@ -1028,7 +1070,8 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
             }
             if (mMSM_LimiterGovernorNoPerCoreCard != null) {
                 String msm_limiter_governor = CPU.getMSMLimiterGovernor(-1);
-                if (!msm_limiter_governor.isEmpty()) mMSM_LimiterGovernorNoPerCoreCard.setItem(msm_limiter_governor);
+                if (!msm_limiter_governor.isEmpty())
+                    mMSM_LimiterGovernorNoPerCoreCard.setItem(msm_limiter_governor);
             }
             if (mCoreCheckBoxLITTLE != null && mCoreProgressBarLITTLE != null && mCoreFreqTextLITTLE != null) {
                 List<Integer> range = CPU.getLITTLECoreRange();
@@ -1061,62 +1104,6 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
             return true;
         }
 
-        private final Runnable cpuUsage = new Runnable() {
-            @Override
-            public void run() {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        final float[] usage = CPU.getCpuUsage();
-                        try {
-                            getActivity().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    if (usage != null) {
-                                        if (mUsageCard != null)
-                                            mUsageCard.setProgress(Math.round(usage[0]));
-
-                                        if (mCoreUsageText != null) {
-                                            List<Integer> cores = CPU.getBigCoreRange();
-                                            for (int i = 0; i < mCoreUsageText.length; i++) {
-                                                String message = Math.round(usage[cores.get(i) + 1]) + "%";
-                                                if (mCoreUsageText[i] != null){
-                                                    if (mCoreProgressBar != null && mCoreProgressBar[i] != null && mCoreProgressBar[i].getProgress() == 0){
-                                                        mCoreUsageText[i].setText("");
-                                                    } else {
-                                                        mCoreUsageText[i].setText(message);
-                                                    }
-                                                }
-
-                                            }
-                                        }
-
-                                        if (mCoreUsageTextLITTLE != null) {
-                                            List<Integer> cores = CPU.getLITTLECoreRange();
-                                            for (int i = 0; i < mCoreUsageTextLITTLE.length; i++) {
-                                                String message = Math.round(usage[cores.get(i) + 1]) + "%";
-                                                if (mCoreUsageTextLITTLE[i] != null){
-                                                    if (mCoreProgressBarLITTLE != null &&  mCoreProgressBarLITTLE[i] != null && mCoreProgressBarLITTLE[i].getProgress() == 0) {
-                                                        mCoreUsageTextLITTLE[i].setText("");
-                                                    } else {
-                                                        mCoreUsageTextLITTLE[i].setText(message);
-                                                    }
-                                                }
-
-                                            }
-                                        }
-                                    }
-                                }
-                            });
-                        } catch (NullPointerException ignored) {
-                        }
-                    }
-                }).start();
-
-                getHandler().postDelayed(cpuUsage, 1000);
-            }
-        };
-
         @Override
         public void onResume() {
             super.onResume();
@@ -1141,15 +1128,15 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
             if (CPU.isPerCoreControlActive(getActivity())) {
                 return CPU.getMSMLimiterGovernor(cpuFragment.core);
             }
-            return(null);
+            return (null);
         }
 
         @Override
         public String getPath() {
             if (!CPU.isPerCoreControlActive(getActivity())) {
-                if ( CPU.isBigLITTLE() && cpuFragment.cluster.equals("little") && Utils.existFile(String.format(CPU_GOVERNOR_TUNABLES_CORE, CPU.LITTLEcore) + "/" + CPU.getCurGovernor(CPU.getLITTLEcore(), true))) {
+                if (CPU.isBigLITTLE() && cpuFragment.cluster.equals("little") && Utils.existFile(String.format(CPU_GOVERNOR_TUNABLES_CORE, CPU.LITTLEcore) + "/" + CPU.getCurGovernor(CPU.getLITTLEcore(), true))) {
                     return getPath(String.format(CPU_GOVERNOR_TUNABLES_CORE, CPU.LITTLEcore), CPU.getCurGovernor(cpuFragment.core, true));
-                } else if ( CPU.isBigLITTLE() && cpuFragment.cluster.equals("big") && Utils.existFile(String.format(CPU_GOVERNOR_TUNABLES_CORE, CPU.bigCore) + "/" + CPU.getCurGovernor(CPU.getBigCore(), true))) {
+                } else if (CPU.isBigLITTLE() && cpuFragment.cluster.equals("big") && Utils.existFile(String.format(CPU_GOVERNOR_TUNABLES_CORE, CPU.bigCore) + "/" + CPU.getCurGovernor(CPU.getBigCore(), true))) {
                     return getPath(String.format(CPU_GOVERNOR_TUNABLES_CORE, CPU.bigCore), CPU.getCurGovernor(cpuFragment.core, true));
                 }
                 return getPath(CPU_GOVERNOR_TUNABLES, CPU.getCurGovernor(cpuFragment.core, true));
@@ -1157,20 +1144,20 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
             if (CPU.isPerCoreControlActive(getActivity())) {
                 return getPath(CPU_GOVERNOR_TUNABLES, CPU.getMSMLimiterGovernor(cpuFragment.core));
             }
-            return(null);
+            return (null);
         }
 
         private String getPath(String path, String governor) {
-                if (Utils.existFile(path + "/" + governor)) return path + "/" + governor;
-                else for (String file : new RootFile(path).list())
-                    if (governor.contains(file))
-                        return path + "/" + file;
-                return null;
+            if (Utils.existFile(path + "/" + governor)) return path + "/" + governor;
+            else for (String file : new RootFile(path).list())
+                if (governor.contains(file))
+                    return path + "/" + file;
+            return null;
         }
 
         @Override
         public PATH_TYPE getType() {
-                return PATH_TYPE.GOVERNOR;
+            return PATH_TYPE.GOVERNOR;
         }
 
         @Override
@@ -1182,7 +1169,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
                 return context.getString(R.string.not_tunable, CPU.getMSMLimiterGovernor(cpuFragment.core));
             }
 
-            return(null);
+            return (null);
         }
     }
 }

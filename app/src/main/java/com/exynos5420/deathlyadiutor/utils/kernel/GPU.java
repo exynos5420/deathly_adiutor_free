@@ -45,26 +45,26 @@ public class GPU implements Constants {
 
     public static List<String> getGpuPowerPolicies() {
         String value = Utils.readFile(GPU_AVALIBLE_EXYNOS5_POWERP);
-        String [] AvailiblePowerPolicies = value.split(" ");
-        for (int i = 0; i< AvailiblePowerPolicies.length; i++){
-                if (AvailiblePowerPolicies[i].contains("[")){
-                    AvailiblePowerPolicies[i] = AvailiblePowerPolicies[i].substring(1, AvailiblePowerPolicies[i].length() - 1);
-                    GPU_CURRENT_POWERPOLICY = AvailiblePowerPolicies[i];
-                }
+        String[] AvailiblePowerPolicies = value.split(" ");
+        for (int i = 0; i < AvailiblePowerPolicies.length; i++) {
+            if (AvailiblePowerPolicies[i].contains("[")) {
+                AvailiblePowerPolicies[i] = AvailiblePowerPolicies[i].substring(1, AvailiblePowerPolicies[i].length() - 1);
+                GPU_CURRENT_POWERPOLICY = AvailiblePowerPolicies[i];
             }
-            Collections.sort(Arrays.asList(AvailiblePowerPolicies), String.CASE_INSENSITIVE_ORDER);
-            return new ArrayList<>(Arrays.asList(AvailiblePowerPolicies));
+        }
+        Collections.sort(Arrays.asList(AvailiblePowerPolicies), String.CASE_INSENSITIVE_ORDER);
+        return new ArrayList<>(Arrays.asList(AvailiblePowerPolicies));
     }
 
     public static String getGpuPowerPolicy() {
-        if (GPU_CURRENT_POWERPOLICY != null){
+        if (GPU_CURRENT_POWERPOLICY != null) {
             return GPU_CURRENT_POWERPOLICY;
-        }
-        else{
+        } else {
             getGpuPowerPolicies();
             return GPU_CURRENT_POWERPOLICY;
         }
     }
+
     public static void setGpuGovernor(String governor, Context context) {
         Control.runCommand("0", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
         Control.runCommand(Integer.toString(getGpuAvailibleGovernors().indexOf(governor)), GPU_AVALIBLE_EXYNOS5_GOVS, Control.CommandType.GENERIC, context);
@@ -75,26 +75,26 @@ public class GPU implements Constants {
         String value = Utils.readFile(GPU_AVALIBLE_EXYNOS5_GOVS);
         String[] tempGovs = value.split("\n");
         String[] AvailibleGovernors = new String[tempGovs.length - 1];
-            for (int i = 0; i < AvailibleGovernors.length; i++){
-                AvailibleGovernors[i] = tempGovs[i];
-            }
+        for (int i = 0; i < AvailibleGovernors.length; i++) {
+            AvailibleGovernors[i] = tempGovs[i];
+        }
         GPU_CURRENT_GOVERNOR = tempGovs[tempGovs.length - 1].split("] ")[1];
         return new ArrayList<>(Arrays.asList(AvailibleGovernors));
     }
 
     public static String getGpuGovernor() {
-        if (GPU_CURRENT_GOVERNOR != null){
+        if (GPU_CURRENT_GOVERNOR != null) {
             return GPU_CURRENT_GOVERNOR;
-        }
-        else{
+        } else {
             getGpuPowerPolicies();
             return GPU_CURRENT_GOVERNOR;
         }
     }
+
     public static void setGpuMinFreq(int freq, Context context) {
-            Control.runCommand("0", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
-            Control.runCommand(String.valueOf(freq), GPU_MIN_EXYNOS5_FREQ, Control.CommandType.GENERIC, context);
-            Control.runCommand("1", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
+        Control.runCommand("0", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
+        Control.runCommand(String.valueOf(freq), GPU_MIN_EXYNOS5_FREQ, Control.CommandType.GENERIC, context);
+        Control.runCommand("1", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
     }
 
     public static void setGpuMaxFreq(int freq, Context context) {
@@ -104,47 +104,46 @@ public class GPU implements Constants {
     }
 
     public static List<Integer> getGpuFreqs() {
-            if (mGpuFreqs == null) {
-                String value = Utils.readFile(GPU_AVALIBLE_EXYNOS5_FREQS);
-                if (value != null) {
-                    String[] freqs = value.split(" ");
-                    mGpuFreqs = new Integer[freqs.length];
-                    for (int i = 0; i < mGpuFreqs.length; i++) {
-                            mGpuFreqs[i] = Utils.stringToInt(freqs[i]);
-                    }
+        if (mGpuFreqs == null) {
+            String value = Utils.readFile(GPU_AVALIBLE_EXYNOS5_FREQS);
+            if (value != null) {
+                String[] freqs = value.split(" ");
+                mGpuFreqs = new Integer[freqs.length];
+                for (int i = 0; i < mGpuFreqs.length; i++) {
+                    mGpuFreqs[i] = Utils.stringToInt(freqs[i]);
                 }
             }
+        }
         return new ArrayList<>(Arrays.asList(mGpuFreqs));
     }
 
     public static int getGpuMinFreq() {
-            String value = Utils.readFile(GPU_MIN_EXYNOS5_FREQ);
-            if (value != null) return Utils.stringToInt(value);
+        String value = Utils.readFile(GPU_MIN_EXYNOS5_FREQ);
+        if (value != null) return Utils.stringToInt(value);
         return 0;
     }
 
     public static int getGpuMaxFreq() {
-            String value = Utils.readFile(GPU_MAX_EXYNOS5_FREQ);
-            if (value != null) return Utils.stringToInt(value);
+        String value = Utils.readFile(GPU_MAX_EXYNOS5_FREQ);
+        if (value != null) return Utils.stringToInt(value);
         return 0;
     }
 
     public static int getGpuCurFreq() {
-            String value = Utils.readFile(GPU_CUR_EXYNOS5_FREQ);
-            if (value != null && Utils.stringToInt(value) != 0) {
-                return Utils.stringToInt(value);
-            }
-            else if (value != null) {
-                return getGpuMinFreq();
-            }
-          return 0;
+        String value = Utils.readFile(GPU_CUR_EXYNOS5_FREQ);
+        if (value != null && Utils.stringToInt(value) != 0) {
+            return Utils.stringToInt(value);
+        } else if (value != null) {
+            return getGpuMinFreq();
+        }
+        return 0;
     }
 
     public static int getGpuThrottling(int step) {
-        if (step <= 4 && step >= 0){
+        if (step <= 4 && step >= 0) {
             String value;
             value = Utils.readFile(GPU_THERMAL_THRORRLING_ARRAY[step]);
-            if (value != null){
+            if (value != null) {
                 return Utils.stringToInt(value);
             }
             return 0;
@@ -154,7 +153,7 @@ public class GPU implements Constants {
 
     public static void setGpuThrottling(int freq, int step, Context context) {
         if (GPU_THERMAL_THRORRLING_ARRAY != null)
-        Control.runCommand("0", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
+            Control.runCommand("0", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
         Control.runCommand(String.valueOf(freq), GPU_THERMAL_THRORRLING_ARRAY[step], Control.CommandType.GENERIC, context);
         Control.runCommand("1", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
 

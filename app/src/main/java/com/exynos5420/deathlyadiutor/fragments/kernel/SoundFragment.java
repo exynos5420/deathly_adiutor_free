@@ -52,7 +52,8 @@ public class SoundFragment extends RecyclerViewFragment implements
 
         if (Sound.hasWcdSpkr_Drv_WrndEnable()) wcdspkr_drv_wrnd_Init();
         //Only show the SOC built-in highperf mode if there isn't a third party one present.
-        if (Sound.hasWcdHighPerfMode() && !Sound.hasHighPerfModeEnable()) wcdhighPerfModeEnableInit();
+        if (Sound.hasWcdHighPerfMode() && !Sound.hasHighPerfModeEnable())
+            wcdhighPerfModeEnableInit();
 
         if (Sound.hasThirdPartyTunables()) thirdpartytunablesInit();
 
@@ -144,9 +145,7 @@ public class SoundFragment extends RecyclerViewFragment implements
 
             addView(mHeadphoneGainRCard);
 
-        }
-
-        else {
+        } else {
 
             mHeadphoneGainCard = new SeekBarCardView.DSeekBarCard(Sound.getHeadphoneGainLimits());
             mHeadphoneGainCard.setTitle(getString(R.string.headphone_gain));
@@ -221,8 +220,7 @@ public class SoundFragment extends RecyclerViewFragment implements
             Sound.setIndependentHeadphoneGainEnabled(checked, getActivity());
             view.invalidate();
             getActivity().getSupportFragmentManager().beginTransaction().detach(this).attach(this).commit();
-        }
-        else if (dSwitchCard == mHighPerfModeEnableCard)
+        } else if (dSwitchCard == mHighPerfModeEnableCard)
             Sound.activateHighPerfMode(checked, getActivity());
         else if (dSwitchCard == mwcdHighPerfModeEnableCard)
             Sound.activateWcdHighPerfMode(checked, getActivity());

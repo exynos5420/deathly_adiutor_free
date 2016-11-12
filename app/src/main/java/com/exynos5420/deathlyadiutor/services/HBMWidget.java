@@ -19,6 +19,18 @@ import com.exynos5420.deathlyadiutor.utils.kernel.Screen;
  */
 public class HBMWidget extends AppWidgetProvider {
 
+    public static void doupdate(Context context, boolean active) {
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.hbm_widget_layout);
+        ComponentName thisWidget = new ComponentName(context, HBMWidget.class);
+        if (active) {
+            remoteViews.setImageViewResource(R.id.imageView, R.drawable.hbm_enable_ic);
+        } else {
+            remoteViews.setImageViewResource(R.id.imageView, R.drawable.hbm_disable_ic);
+        }
+        appWidgetManager.updateAppWidget(thisWidget, remoteViews);
+    }
+
     @Override
     public void onEnabled(Context context) {
         super.onEnabled(context);
@@ -77,20 +89,8 @@ public class HBMWidget extends AppWidgetProvider {
         }
     }
 
-    private void setWidgetActive(boolean active, Context context){
+    private void setWidgetActive(boolean active, Context context) {
         Utils.saveBoolean("Widget_Active", active, context);
-    }
-
-    public static void doupdate (Context context, boolean active) {
-        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.hbm_widget_layout);
-        ComponentName thisWidget = new ComponentName(context, HBMWidget.class);
-        if (active) {
-            remoteViews.setImageViewResource(R.id.imageView, R.drawable.hbm_enable_ic);
-        } else {
-            remoteViews.setImageViewResource(R.id.imageView, R.drawable.hbm_disable_ic);
-        }
-        appWidgetManager.updateAppWidget(thisWidget, remoteViews);
     }
 
 }

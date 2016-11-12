@@ -2,7 +2,6 @@ package com.exynos5420.deathlyadiutor.utils.kernel;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.exynos5420.deathlyadiutor.utils.Constants;
 import com.exynos5420.deathlyadiutor.utils.Utils;
@@ -25,12 +24,12 @@ public class GPUVoltage implements Constants {
         double adjust = Utils.stringtodouble(voltage) * 1000;
         String final_voltage;
         String command;
-        for (int i=0; i < getVoltages().size(); i++){
-                final_voltage = Double.toString(Integer.parseInt(getVoltages().get(i)) + adjust);
-                final_voltage = final_voltage.substring(0, final_voltage.length() - 2);
-                command = getFreqs().get(i) + " " + final_voltage;
-                Control.runCommand(command, GPU_VOLTAGE_FILE, Control.CommandType.GENERIC, Integer.toString(i), context);
-            }
+        for (int i = 0; i < getVoltages().size(); i++) {
+            final_voltage = Double.toString(Integer.parseInt(getVoltages().get(i)) + adjust);
+            final_voltage = final_voltage.substring(0, final_voltage.length() - 2);
+            command = getFreqs().get(i) + " " + final_voltage;
+            Control.runCommand(command, GPU_VOLTAGE_FILE, Control.CommandType.GENERIC, Integer.toString(i), context);
+        }
 
     }
 
@@ -87,9 +86,9 @@ public class GPUVoltage implements Constants {
         }
     }
 
-    public static boolean storeVoltageTable (Context context) {
+    public static boolean storeVoltageTable(Context context) {
         // Have to call this function to pre-load variables
-        if(!GPUVoltage.getFreqs().isEmpty() && !GPUVoltage.getVoltages().isEmpty()){
+        if (!GPUVoltage.getFreqs().isEmpty() && !GPUVoltage.getVoltages().isEmpty()) {
             List<String> freqs = GPUVoltage.getFreqs();
             List<String> voltages = GPUVoltage.getVoltages();
 

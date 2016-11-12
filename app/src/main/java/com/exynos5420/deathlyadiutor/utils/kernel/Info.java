@@ -36,31 +36,29 @@ public class Info implements Constants {
         return Utils.readFile(PROC_VERSION);
     }
 
-    public static boolean hasPVSLevel () {
+    public static boolean hasPVSLevel() {
         return Utils.existFile(PVS_LEVEL);
     }
 
-    public static String getPVSLevel () {
-            return Utils.readFile(PVS_LEVEL);
+    public static String getPVSLevel() {
+        return Utils.readFile(PVS_LEVEL);
     }
 
-    public static boolean hasSpeedLevel () {
+    public static boolean hasSpeedLevel() {
         return Utils.existFile(SPEED_LEVEL);
     }
 
-    public static String getSpeedLevel () {
-            return Utils.readFile(SPEED_LEVEL);
+    public static String getSpeedLevel() {
+        return Utils.readFile(SPEED_LEVEL);
     }
 
-    public static String getBinningInfo () {
+    public static String getBinningInfo() {
         if (hasPVSLevel() && hasSpeedLevel()) {
-            return "PVS Level: " + getPVSLevel() + "\n" + "Speed Level: " +getSpeedLevel();
-        }
-        else if (hasPVSLevel() && !hasSpeedLevel()) {
+            return "PVS Level: " + getPVSLevel() + "\n" + "Speed Level: " + getSpeedLevel();
+        } else if (hasPVSLevel() && !hasSpeedLevel()) {
             return "PVS Level: " + getPVSLevel();
-        }
-        else if (!hasPVSLevel() && hasSpeedLevel()) {
-            return "Speed Level: " +getSpeedLevel();
+        } else if (!hasPVSLevel() && hasSpeedLevel()) {
+            return "Speed Level: " + getSpeedLevel();
         }
         return null;
     }

@@ -91,6 +91,20 @@ public class FileBrowserActivity extends BaseActivity {
         return (Toolbar) findViewById(R.id.toolbar);
     }
 
+    @Override
+    public void onBackPressed() {
+        if (fileBrowserFragment.onBackPressed()) super.onBackPressed();
+    }
+
+    protected void finished(String path) {
+        Bundle args = new Bundle();
+        args.putString("path", path);
+        Intent intent = new Intent();
+        intent.putExtras(args);
+        setResult(RESULT_OK, intent);
+        finish();
+    }
+
     public static class FileBrowserFragment extends ViewPagerFragment {
 
         public static FileBrowserFragment newInstance(String filetype) {
@@ -126,24 +140,14 @@ public class FileBrowserActivity extends BaseActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        if (fileBrowserFragment.onBackPressed()) super.onBackPressed();
-    }
-
-    protected void finished(String path) {
-        Bundle args = new Bundle();
-        args.putString("path", path);
-        Intent intent = new Intent();
-        intent.putExtras(args);
-        setResult(RESULT_OK, intent);
-        finish();
-    }
-
     public static class StorageFragment extends BaseFragment {
 
         private static final String PATH_ARG = "path";
         private static final String TYPE_ARG = "type";
+        private AppCompatTextView pathText;
+        private RecyclerView recyclerView;
+        private String current_path;
+        private String type;
 
         public static StorageFragment newInstance(String path, String type) {
             Bundle args = new Bundle();
@@ -153,11 +157,6 @@ public class FileBrowserActivity extends BaseActivity {
             storageFragment.setArguments(args);
             return storageFragment;
         }
-
-        private AppCompatTextView pathText;
-        private RecyclerView recyclerView;
-        private String current_path;
-        private String type;
 
         @Nullable
         @Override

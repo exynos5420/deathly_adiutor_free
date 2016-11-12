@@ -33,9 +33,7 @@ import java.util.List;
  */
 public class Control implements Constants {
 
-    public enum CommandType {
-        GENERIC, CPU, CPU_LITTLE, FAUX_GENERIC, CUSTOM, SHELL
-    }
+    private static final List<Thread> tasks = new ArrayList<>();
 
     public static void commandSaver(final Context context, final String path, final String command) {
         CommandDB commandDB = new CommandDB(context);
@@ -61,8 +59,7 @@ public class Control implements Constants {
             RootUtils.runCommand(command);
             commandSaver(context, path, command);
             Log.i(TAG, "Run command: " + command);
-        }
-        else {
+        } else {
             Log.i(TAG, "Unable to run command due to null values.");
         }
     }
@@ -105,8 +102,6 @@ public class Control implements Constants {
 
         if (context != null) commandSaver(context, service, "stop " + service);
     }
-
-    private static final List<Thread> tasks = new ArrayList<>();
 
     public static void runCommand(final String value, final String file, final CommandType command, final String id,
                                   final Context context) {
@@ -165,11 +160,10 @@ public class Control implements Constants {
 
         List<CommandDB.CommandItem> commandItems = commandDB.getAllCommands();
         if (path == null && command == null) {
-           for (int i = 0; i <= commandItems.size(); i++) {
-              commandDB.delete(0);
+            for (int i = 0; i <= commandItems.size(); i++) {
+                commandDB.delete(0);
             }
-        }
-        else {
+        } else {
             for (int i = 0; i < commandItems.size(); i++) {
                 String p = commandItems.get(i).getPath();
                 String c = commandItems.get(i).getCommand();
@@ -179,6 +173,10 @@ public class Control implements Constants {
             }
         }
         commandDB.commit();
+    }
+
+    public enum CommandType {
+        GENERIC, CPU, CPU_LITTLE, FAUX_GENERIC, CUSTOM, SHELL
     }
 
 }

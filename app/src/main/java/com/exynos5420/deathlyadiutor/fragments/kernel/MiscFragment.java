@@ -76,7 +76,7 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
         fsyncInit();
         if (Misc.hasGentleFairSleepers()) gentlefairsleepersInit();
         if (Misc.hasUsbOtg()) usbOtgInit();
-		if (Misc.hasLedSpeed()) LedControlInit();
+        if (Misc.hasLedSpeed()) LedControlInit();
     }
 
     private void selinuxInit() {
@@ -117,14 +117,14 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
     }
 
     private void bclInit() {
-         mBclCard = new SwitchCardView.DSwitchCard();
-         mBclCard.setTitle(getString(R.string.bcl));
-         mBclCard.setDescription(getString(R.string.bcl_summary));
-         mBclCard.setChecked(Misc.isBclActive());
-         mBclCard.setOnDSwitchCardListener(this);
- 
-         addView(mBclCard);
-     }
+        mBclCard = new SwitchCardView.DSwitchCard();
+        mBclCard.setTitle(getString(R.string.bcl));
+        mBclCard.setDescription(getString(R.string.bcl_summary));
+        mBclCard.setChecked(Misc.isBclActive());
+        mBclCard.setOnDSwitchCardListener(this);
+
+        addView(mBclCard);
+    }
 
     private void bclHotplugInit() {
         mBclHotplugCard = new SwitchCardView.DSwitchCard();
@@ -191,32 +191,32 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
     }
 
     private void LedControlInit() {
-	List<DAdapter.DView> views = new ArrayList<>();
+        List<DAdapter.DView> views = new ArrayList<>();
 
-	if (Misc.hasLedSpeed()) {
-        List<String> list = new ArrayList<>();
+        if (Misc.hasLedSpeed()) {
+            List<String> list = new ArrayList<>();
 
-        for (int i = 0; i <= Misc.getMaxMinLedSpeed(); i++)
+            for (int i = 0; i <= Misc.getMaxMinLedSpeed(); i++)
                 list.add(String.valueOf(i));
 
-        mLedSetSpeedCard = new SeekBarCardView.DSeekBarCard(list);
-        mLedSetSpeedCard.setTitle(getString(R.string.led_speed));
-        mLedSetSpeedCard.setDescription(getString(R.string.led_speed_summary));
-        mLedSetSpeedCard.setProgress(Misc.getCurLedSpeed());
-        mLedSetSpeedCard.setOnDSeekBarCardListener(this);
+            mLedSetSpeedCard = new SeekBarCardView.DSeekBarCard(list);
+            mLedSetSpeedCard.setTitle(getString(R.string.led_speed));
+            mLedSetSpeedCard.setDescription(getString(R.string.led_speed_summary));
+            mLedSetSpeedCard.setProgress(Misc.getCurLedSpeed());
+            mLedSetSpeedCard.setOnDSeekBarCardListener(this);
 
-        addView(mLedSetSpeedCard);
+            addView(mLedSetSpeedCard);
         }
 
-	if (Misc.hasLedMode()){
-        mLedToggleCard = new SwitchCardView.DSwitchCard();
-        mLedToggleCard.setTitle(getString(R.string.Led_toggle));
-        mLedToggleCard.setDescription(getString(R.string.Led_toggle_summary));
-        mLedToggleCard.setChecked(Misc.isLedActive());
-        mLedToggleCard.setOnDSwitchCardListener(this);
+        if (Misc.hasLedMode()) {
+            mLedToggleCard = new SwitchCardView.DSwitchCard();
+            mLedToggleCard.setTitle(getString(R.string.Led_toggle));
+            mLedToggleCard.setDescription(getString(R.string.Led_toggle_summary));
+            mLedToggleCard.setChecked(Misc.isLedActive());
+            mLedToggleCard.setOnDSwitchCardListener(this);
 
-        addView(mLedToggleCard);
-       }
+            addView(mLedToggleCard);
+        }
     }
 
     private void usbOtgInit() {
@@ -260,8 +260,7 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
         mEnableADBOverWifiCard.setTitle(getString(R.string.adb_over_wifi));
         if (Misc.isADBOverWifiActive()) {
             mEnableADBOverWifiCard.setDescription(getString(R.string.adb_over_wifi_connect_summary) + Misc.getIpAddr(getActivity()) + ":5555");
-        }
-        else {
+        } else {
             mEnableADBOverWifiCard.setDescription(getString(R.string.adb_over_wifi_summary));
         }
         mEnableADBOverWifiCard.setChecked(Misc.isADBOverWifiActive());
@@ -304,10 +303,9 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
                     }
                 }
             }).start();
-        }
-		else if (dSeekBarCard == mLedSetSpeedCard) {
+        } else if (dSeekBarCard == mLedSetSpeedCard) {
             Misc.setLedSpeed(position, getActivity());
-		}
+        }
     }
 
     @Override
@@ -315,8 +313,7 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
         if (dSwitchCard == mSELinuxCard) {
             Misc.activateSELinux(checked, getActivity());
             getActivity().getSupportFragmentManager().beginTransaction().detach(this).attach(this).commit();
-        }
-        else if (dSwitchCard == mLoggerEnableCard)
+        } else if (dSwitchCard == mLoggerEnableCard)
             Misc.activateLogger(checked, getActivity());
         else if (dSwitchCard == mBclCard)
             Misc.activateBcl(checked, getActivity());
@@ -326,8 +323,8 @@ public class MiscFragment extends RecyclerViewFragment implements PopupCardView.
             Misc.activateCrc(checked, getActivity());
         else if (dSwitchCard == mFsyncCard)
             Misc.activateFsync(checked, getActivity());
-		else if (dSwitchCard == mLedToggleCard)
-	   		Misc.activateLedMode(checked, getActivity());
+        else if (dSwitchCard == mLedToggleCard)
+            Misc.activateLedMode(checked, getActivity());
         else if (dSwitchCard == mDynamicFsyncCard)
             Misc.activateDynamicFsync(checked, getActivity());
         else if (dSwitchCard == mswitchbuttonsCard)

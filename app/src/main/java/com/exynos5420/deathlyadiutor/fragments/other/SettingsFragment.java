@@ -287,10 +287,8 @@ public class SettingsFragment extends RecyclerViewFragment {
             public void onClick(CardViewItem.DCardView dCardView) {
                 sysfsDialog = ProgressDialog.show(getActivity(), getString(R.string.dump_sysfs_dialog_title),
                         getString(R.string.dump_sysfs_dialog_summary), true);
-                Thread t = new Thread(new Runnable()
-                {
-                    public void run()
-                    {
+                Thread t = new Thread(new Runnable() {
+                    public void run() {
                         dumpsysfs();
                     }
                 });
@@ -304,7 +302,7 @@ public class SettingsFragment extends RecyclerViewFragment {
 
     private void dumpsysfs() {
         String arrays[][] = {Constants.CPU_ARRAY, Constants.CPU_VOLTAGE_ARRAY, Constants.BATTERY_ARRAY, Constants.IO_ARRAY, Constants.VM_ARRAY};
-        String twodarrays[][][] = { Constants.THERMAL_ARRAYS, Constants.SCREEN_ARRAY,  Constants.SOUND_ARRAY, Constants.MISC_ARRAY};
+        String twodarrays[][][] = {Constants.THERMAL_ARRAYS, Constants.SCREEN_ARRAY, Constants.SOUND_ARRAY, Constants.MISC_ARRAY};
         // loop through each array in the constants file. These contain all the other arrays.
         // have to do this once for the 1d arrays and again for the 2 arrays
         try {
@@ -350,7 +348,7 @@ public class SettingsFragment extends RecyclerViewFragment {
         }
     }
 
-    private String sysfsrecord (String file) {
+    private String sysfsrecord(String file) {
         String ret = "";
         File sysfspath = new File(file);
         if (sysfspath.isDirectory()) {
@@ -372,31 +370,6 @@ public class SettingsFragment extends RecyclerViewFragment {
             ret = ret + "Path: " + file + " | Value: " + Utils.readFile(file) + "\n";
         }
         return ret;
-    }
-
-    private class Execute extends AsyncTask<String, Void, Void> {
-        private ProgressDialog progressDialog;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressDialog = new ProgressDialog(getActivity());
-            progressDialog.setMessage(getString(R.string.execute));
-            progressDialog.setCancelable(false);
-            progressDialog.show();
-        }
-
-        @Override
-        protected Void doInBackground(String... params) {
-            RootUtils.runCommand(params[0]);
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            progressDialog.dismiss();
-        }
     }
 
     private void securityInit() {
@@ -514,7 +487,7 @@ public class SettingsFragment extends RecyclerViewFragment {
                 }).show();
     }
 
-    private void perappInit(){
+    private void perappInit() {
         DDivider mPerAppDividerCard = new DDivider();
         mPerAppDividerCard.setText(getString(R.string.per_app));
         addView(mPerAppDividerCard);
@@ -557,6 +530,31 @@ public class SettingsFragment extends RecyclerViewFragment {
 
                 addView(mSectionCard);
             }
+        }
+    }
+
+    private class Execute extends AsyncTask<String, Void, Void> {
+        private ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(getActivity());
+            progressDialog.setMessage(getString(R.string.execute));
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(String... params) {
+            RootUtils.runCommand(params[0]);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            progressDialog.dismiss();
         }
     }
 
