@@ -15,16 +15,6 @@
     </string-array>
 
     <!-- CPU Hotplug -->
-    <string-array name="thunderplug_endurance_level_items">
-        <item>@string/disabled</item>
-        <item>@string/quad_core_mode</item>
-        <item>@string/dual_core_mode</item>
-    </string-array>
-
-    <string-array name="thunderplug_hp_style">
-        <item>@string/per_core_hp</item>
-        <item>@string/load_balancer</item>
-    </string-array>
 
     <!-- Kernel Samepage Merging -->
     <string-array name="ksm_infos">
@@ -81,10 +71,6 @@
     </string-array>
 
     <!-- Recovery -->
-    <string-array name="recovery_variants">
-        <item>@string/cwm_recovery</item>
-        <item>@string/twrp</item>
-    </string-array>
 
     <!-- Initd -->
     <string-array name="initd_menu">

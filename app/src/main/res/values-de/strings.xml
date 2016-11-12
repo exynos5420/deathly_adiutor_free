@@ -16,11 +16,7 @@
   <string name="password_wrong">Falsches Passwort</string>
   <string name="press_back_again">Drücken Sie noch einmal \"Zurück\", um die App zu verlassen</string>
   <string name="more">Mehr</string>
-  <string name="thank_you">Vielen Dank!</string>
-  <string name="heavy_user_message">Anscheinend genießen Sie diese Anwendung sehr! Vielen Dank für die Verwendung!</string>
-  <string name="rate_app">Bewerten Sie die App</string>
-  <string name="donate">Spenden Sie an mich</string>
-  
+
   <!-- FileBrowser -->
   <string name="no_permission">Keine Erlaubnis</string>
   <string name="select_file">%s auswählen?</string>
@@ -44,12 +40,10 @@
   <string name="ms">ms</string>
   <string name="cs">cs</string>
   <string name="mb">MB</string>
-  <string name="min">min</string>
   <string name="sec">sek</string>
   <string name="ma">mA</string>
   <string name="microsec">μs</string>
-  <string name="pixel">px</string>
-  
+
   <string name="cores">Kerne</string>
 
   <!-- Headers -->
@@ -59,22 +53,18 @@
   <string name="other">Anderes</string>
   
   <!-- Tabs -->
-  <string name="downloads">Downloads</string>
   <string name="kernel_information">Kernel-Informationen</string>
   <string name="cpu">CPU</string>
   <string name="cpu_voltage">CPU-Spannung</string>
-  <string name="cpu_hotplug">CPU-Hotplug</string>
   <string name="thermal">Temperatur</string>
   <string name="gpu">GPU</string>
   <string name="screen">Bildschirm</string>
-  <string name="wake_controls">Aufweck-Einstellungen</string>
   <string name="sound">Ton</string>
   <string name="battery">Akku</string>
   <string name="io_scheduler">I/O-Scheduler</string>
   <string name="ksm">Kernel Samepage Merging</string>
   <string name="low_memory_killer">Low Memory Killer</string>
   <string name="virtual_memory">Virtueller Speicher</string>
-  <string name="wakelocks">Wakelocks</string>
   <string name="entropy">Entropie</string>
   <string name="misc_controls">Verschiedene Einstellungen</string>
   <string name="plugins">Erweiterungen</string>
@@ -91,16 +81,10 @@
   <string name="startup_commands_delete_all_no">Nein</string>
   <string name="startup_commands_none">Keine Startbefehle gefunden</string>
   <string name="settings">Einstellungen</string>
-  <string name="faq">FAQ</string>
   <string name="about_us">Über uns</string>
   
   <!-- Frequency Table -->
-  <string name="unused_cpu_states">Ungenutzte CPU-Stadien</string>
-  <string name="uptime">Laufzeit</string>
-  <string name="deep_sleep">Tiefschlaf</string>
-  <string name="reset_timer">Timer zurücksetzen</string>
-  <string name="restore_timer">Timer wiederherstellen</string>
-  
+
   <!-- Kernel Information -->
   <string name="kernel_version">Kernel-Version</string>
   <string name="binning_information">Binning-Information</string>
@@ -182,165 +166,14 @@
   
   <!-- CPU Voltage -->
   <string name="global_offset">Global</string>
-  <string name="override_vmin">Mindestspannung überschreiben</string>
-  <string name="override_vmin_summary">Deaktivieren, um Hersteller-Limits zu entfernen.</string>
-  
+
   <!-- CPU Hotplug -->
-  <string name="no_enable_toggle">Achtung: Dieser Hotplug hat keinen Ein-/Aus-Schalter. Beachten Sie, dass mehrere gleichzeitig aktivierte Hotplugs Fehlfunktionen verursachen können.</string>
-  <string name="mpdecision">MPDecision</string>
-  <string name="mpdecision_summary">QCOMs Hotplugging Lösung. Sie werden wahrscheinlich Schwierigkeiten mit der Änderung der Frequenzen feststellen, wenn diese Funktion aktiv ist.</string>
-  <string name="intelliplug">IntelliPlug</string>
-  <string name="intelliplug_summary">Ein Kernel-Ersatz für Qualcomms MPDecision, entwickelt von faux123.</string>
-  <string name="profile_summary">Die eingeklammerte Zahl zeigt jene Kerne, die immer online sind.</string>
-  <string name="insanity">Wahnsinnig</string>
-  <string name="balanced">Ausgeglichen</string>
-  <string name="performance">Leistung</string>
-  <string name="conservative">Konservativ</string>
-  <string name="eco_insanity">Eco-Wahnsinnig</string>
-  <string name="eco_performance">Eco-Leistung</string>
-  <string name="eco_conservative">Eco-Konservativ</string>
-  <string name="tri">Tri</string>
-  <string name="eco">Eco</string>
-  <string name="strict">Strikt</string>
-  <string name="eco_mode">Energiesparmodus</string>
-  <string name="eco_mode_summary">Akkuschonender IntelliPlug-Modus.</string>
   <string name="touch_boost">Touch-Boost</string>
   <string name="touch_boost_summary">Dies wird Ihre minimale CPU-Geschwindigkeit erhöhen, wenn Sie auf den Bildschirm oder eine Taste drücken.</string>
-  <string name="hysteresis">Hysteresewert</string>
-  <string name="hysteresis_summary">Je niedriger der Wert ist, desto schneller ist die Reaktion.</string>
   <string name="threshold">Schwellenwert</string>
-  <string name="debug">Fehlersuche</string>
-  <string name="debug_summary">Erlaubt Aktivierung der Debug-Maske für Operationen.</string>
-  <string name="suspend">Ruhezustand</string>
-  <string name="suspend_summary">Ruhezustand verhindern.</string>
-  <string name="cpus_boosted">CPUs erhöht</string>
-  <string name="cpus_boosted_summary">Maximale Anzahl der CPUs, die sich zur gleichen Zeit erhöhen.</string>
-  <string name="min_cpu_online">CPUs online (Minimum)</string>
-  <string name="min_cpu_online_summary">Minimale Anzahl der immer laufenden CPUs.</string>
-  <string name="max_cpu_online">CPUs online (Maximum)</string>
-  <string name="max_cpu_online_summary">Maximale Anzahl der immer laufenden CPUs.</string>
-  <string name="max_cores_screen_off">CPUs online bei ausgeschaltetem Bildschirm</string>
-  <string name="max_cores_screen_off_summary">Maximale Anzahl der laufenden CPUs, wenn der Bildschirm ausgeschaltet ist.</string>
-  <string name="suspend_defer_time">Suspend-Zeitverzögerung</string>
-  <string name="defer_sampling">Verzögerungssampling</string>
-  <string name="boost_lock_duration">Sperrdauer beschleunigen</string>
-  <string name="boost_lock_duration_summary">Minimales Intervall, in der eine CPU beschleunigt wird.</string>
-  <string name="down_lock_duration">Sperrdauer</string>
-  <string name="down_lock_duration_summary">Minimales Intervall, in der eine CPU aktiv bleibt.</string>
-  <string name="fshift">FShift</string>
-  <string name="dyn_plug">Dyn_Plug</string>
-  <string name="dyn_plug_summary">Ein Kernel-Ersatz für Qualcomms MPDecision. Von Stratos Karafotis entwickelt.</string>
-  <string name="auto_hotplug">ARM Auto_hotplug</string>
-  <string name="auto_hotplug_summary">Ein Kernel-Ersatz für Qualcomms MPDecision. Von Will Tisdale (Thalamus).</string>
-  <string name="enable_load_treshold">Lastabhängiger oberer Schwellenwert</string>
-  <string name="enable_load_treshold_summary">Last ab der ein extra CPU-Kern aktiviert wird.</string>
-  <string name="enable_all_load_treshold">CPU-Boost-Schwellenwert</string>
-  <string name="enable_all_load_treshold_summary">Last ab der alle CPU-Kerne aktiviert werden.</string>
-  <string name="disable_load_treshold">Lastabhängiger unterer Schwellenwert</string>
-  <string name="disable_load_treshold_summary">Last ab der ein CPU-Kern deaktiviert wird.</string>
-  <string name="sampling_periods">Minimale Abtastdauer</string>
-  <string name="sampling_periods_summary">Abtastrate in Millisekunden.</string>
-  <string name="blu_plug">Blu_Plug</string>
-  <string name="blu_plug_summary">Ein Kernel-Ersatz für Qualcomms MPDecision. Von Code_Blue Team entwickelt.</string>
-  <string name="powersaver_mode">Energiesparmodus</string>
-  <string name="powersaver_mode_summary">Maximal 1 CPU online mit einer Frequenz @1728MHz.</string>
-  <string name="up_threshold">Oberer Schwellenwert</string>
-  <string name="up_threshold_summary">Über diesem Schwellenwert wird ein weiterer Kern aktiviert.</string>
-  <string name="up_timer_cnt">Timer-Steuerelement (aktiv)</string>
-  <string name="up_timer_cnt_summary">Kontroll-Timer für aktive CPUs.</string>
-  <string name="down_timer_cnt">Timer-Steuerelemt (inaktiv)</string>
-  <string name="down_timer_cnt_summary">Kontroll-Timer für inaktive CPUs.</string>
-  <string name="msm_hotplug">MSM_Hotplug</string>
-  <string name="msm_hotplug_summary">Ein Kernel-Ersatz für Qualcomms MPDecision, entwickelt von myfluxi.</string>
-  <string name="history_size">Verlaufs-Größe</string>
-  <string name="history_size_summary">Anzahl der Proben, die gemacht werden, um die Durchschnittsbelastung der CPU-Kerne zu bestimmen. Ein geringerer Wert bedeutet schnellere und fehlerhaftere Ergebnisse.</string>
-  <string name="update_rate">Aktualisierungsrate</string>
-  <string name="update_rate_summary">Abstand zwischen den Proben, die gemacht werden, um die Durchschnittsbelastung der CPU-Kerne zu bestimmen. Ein geringerer Wert bedeutet schnellere und fehlerhaftere Ergebnisse.</string>
-  <string name="fast_lane_load">Fast Lane</string>
-  <string name="fast_lane_load_summary">Verbesserte Latenz, indem alle CPU-Kerne eingeschaltet werden, wenn die Belastung auf einem Kern den Schwellenwert überschreitet.</string>
-  <string name="fast_lane_min_freq">Fast Lane / Minimale Frequenz</string>
-  <string name="fast_lane_min_freq_summary">Legt die minimale Frequenz fest, auf die die CPU zurückfällt, falls die Fast Lane ausgelastet ist.</string>
-  <string name="offline_load">Offline laden</string>
-  <string name="offline_load_summary">CPU nicht abschalten, wenn sie unter den niedrigsten Level des Schwellenwerts fällt.</string>
-  <string name="io_is_busy">IO ist ausgelastet</string>
-  <string name="io_is_busy_summary">Wird verwendet, damit der Hotplug die I/O-Zeit als CPU-Ladezeit betrachtet.</string>
-  <string name="defer_time">Suspend Verzögerung</string>
-  <string name="mako_hotplug">Mako-Hotplug</string>
-  <string name="mako_hotplug_summary">Ein Kernel-Ersatz für Qualcomms MPDecision, entwickelt von franciscofranco.</string>
-  <string name="cores_on_touch">Kerne während einer Berührung</string>
-  <string name="cores_on_touch_summary">Anzahl der aktiven CPUs, wenn der Bildschirm oder eine Taste berührt wird.</string>
-  <string name="cpu_freq_unplug_limit">CPU-Frequenz Unplug-Limit</string>
-  <string name="first_level">Erste Ebene</string>
-  <string name="first_level_summary">Der Schwellenwert, ab dem alle CPUs aktiviert werden.</string>
-  <string name="high_load_counter">Hohe Last Zähler</string>
-  <string name="load_threshold">Last-Schwellenwert</string>
-  <string name="load_threshold_summary">Der Schwellenwert, ab dem alle CPUs aktiviert werden.</string>
-  <string name="max_load_counter">Maximale Last Zähler</string>
-  <string name="min_time_cpu_online">Minimale Zeit, die eine CPU online ist.</string>
-  <string name="timer">Timer</string>
-  <string name="msm_mpdecision_hotplug">MSM MPDecision-Hotplug</string>
-  <string name="bricked_hotplug">Bricked Hotplug</string>
-  <string name="mb_hotplug_summary">Ein Kernel-Ersatz für Qualcomms MPDecision. Entwickelt von showp1984.</string>
-  <string name="screen_off_single_core">Ein Kern bei inaktivem Bildschirm</string>
-  <string name="screen_off_single_core_summary">Verwende nur einen Kern, wenn der Bildschirm ausgeschaltet ist.</string>
-  <string name="idle_frequency">Leerlauf-Frequenz</string>
-  <string name="idle_frequency_summary">Wenn der erste Kern unter der eingestellten Frequenz läuft, nicht die anderen Kerne aktivieren.</string>
-  <string name="touch_boost_time">Touch-Boost-Zeit</string>
-  <string name="boost_frequecy_core">Frequenz von Kern %d erhöhen</string>
-  <string name="start_delay">Startverzögerung</string>
-  <string name="start_delay_summary">Zeit bis Hotplug zu arbeiten beginnt.</string>
   <string name="delay">Verzögerung</string>
-  <string name="delay_summary">Zeit zwischen den Überprüfungen.</string>
-  <string name="pause">Pause</string>
-  <string name="pause_summary">Wenn etwas anderes den Kern einschaltet, für diesen Zeitraum schlummern.</string>
-  <string name="alucard_hotplug">Alucard-Hotplug</string>
-  <string name="alucard_hotplug_summary">Ein Kernel-Ersatz für Qualcomms MPDecision, entwickelt von Alucard.</string>
-  <string name="sampling_rate">Sampling-Rate</string>
-  <string name="cpu_down_rate">CPU-Rate (inaktiv)</string>
-  <string name="cpu_up_rate">CPU-Rate (aktiv)</string>
-  <string name="thunderplug">Thunderplug</string>
-  <string name="thunderplug_summary">Ein Kernel-Ersatz für Qualcomms MPDecision, entwickelt von varunchitre15.</string>
-  <string name="min_cores_screen_off">Minimale Anzahl der CPUs bei ausgeschaltetem Bildschirm</string>
-  <string name="min_cores_screen_off_summary">Minimale Anzahl an aktiven CPUs bei ausgeschaltetem Bildschirm.</string>
-  <string name="endurance_level">Ausdauer-Level</string>
-  <string name="endurance_level_summary">Ein Energiesparprofil.</string>
-  <string name="quad_core_mode">Quad-Core-Modus</string>
-  <string name="dual_core_mode">Dual-Core-Modus</string>
-  <string name="zen_decision">Zen-Decision</string>
-  <string name="zen_decision_summary">Ein Kernel-Ersatz für Qualcomms MPDecision, entwickelt von bbedward.</string>
-  <string name="wake_wait_time">Aufwachzeit</string>
-  <string name="wake_wait_time_summary">Wartezeit bis ein Kern eingeschaltet wird. </string>
-  <string name="bat_threshold_ignore">Batterie Schwellenwert ignorieren</string>
-  <string name="bat_threshold_ignore_summary">Keine Kerne einschalten, wenn die Batteriekapazität niedriger ist als der vorgegebene Wert.</string>
-  <string name="autosmp">AutoSMP</string>
-  <string name="autosmp_summary">Ein Kernel-Ersatz für Qualcomms MPDecision, entwickelt von mrg666.</string>
-  <string name="downrate_limits">Downrate Limit</string>
-  <string name="uprate_limits">Uprate Limit</string>
-  <string name="cycle_down">Zyklus nach unten</string>
-  <string name="cycle_down_summary">Anzahl der Wartezyklen nach dem letzten Hotplug-Vorgang bis eine weitere CPU deaktiviert wird.</string>
-  <string name="cycle_up">Zyklus nach oben</string>
-  <string name="cycle_up_summary">Anzahl der Wartezyklen nach dem letzten Hotplug-Vorgang bis eine weitere CPU aktiviert wird.</string>
-  <string name="lazyplug">Lazy-Plug</string>
-  <string name="lazyplug_summary">Ein Kernel-Ersatz für Qualcomms MPDecision, basiert auf IntelliPlug von faux123. Entwickelt von arter97.</string>
-  <string name="lazyplugprofile_summary">Voreingestelltes Profil wählen</string>
-  <string name="eco_extreme">Extremer Energiesparmodus</string>
-  <string name="nrpossiblecores_limits">Limitiert die Anzahl der möglichen CPU-Kerne</string>
-  <string name="msm_sleeper">MSM-Sleeper</string>
-  <string name="msm_sleeper_summary">Ein anpassbarer Hotplug</string>
-  <string name="msm_sleeper_up_thresh">Schwellenwert ehe eine andere CPU aktiviert wird.</string>
-  <string name="msm_sleeper_max_online">Maximale Anzahl aktiver CPUs</string>
-  <string name="msm_sleeper_suspend_max_online">Maximale Anzahl aktiver CPUs im Ruhezustand</string>
-  <string name="msm_sleeper_up_count_max">Zeitraum, den der Schwellenwert überschreiten muss, ehe eine CPU aktiviert wird.</string>
-  <string name="msm_sleeper_down_count_max">Zeitraum, den der Schwellenwert unterschreiten muss, ehe eine CPU deaktiviert wird.</string>
-  <string name="bricked_nwns">Schwellenwert-Hotplug-Runqueue CPU%d</string>
-  <string name="bricked_nwns_hotplug">Wenn dieser Schwellenwert erreicht wird, CPU%d hotpluggen.</string>
-  <string name="bricked_nwns_unplug">Wenn dieser Schwellenwert erreicht wird, CPU%d unpluggen.</string>
-  <string name="bricked_twts">Schwellenwert-Hotplug-Zeit CPU%d</string>
-  <string name="bricked_twts_hotplug">Diese Zeit muss für CPU%d vergangen sein, zum Hotpluggen.</string>
-  <string name="bricked_twts_unplug">Diese Zeit muss für CPU%d vergangen sein, zum Unpluggen.</string>
 
   <!-- Thermal -->
-  <string name="thermal_info">Verwenden sie nur einen Thermal-Treiber für folgende Optionen. Die Verwendung von mehreren kann zu unerwartetem Verhalten führen.</string>
   <string name="thermald">Thermald</string>
   <string name="thermald_summary">Standard Qualcomm Thermal-Treiber, der vor Überhitzung schützt. Dieser sollte deaktiviert werden, wenn der aktuelle Kernel eine Alternative hat.</string>
   <string name="intellithermal">Intellithermal</string>
@@ -396,35 +229,14 @@
   <string name="thermal_franco_thermal_step_summary">Dieser Wert wird zum Schwellenwert hinzugefügt, um Auslöse-Schwellenwerte zwischen jeder Stufe zu erstellen.</string>
   
   <!-- GPU -->
-  <string name="gpu_2d_cur_freq">Aktuelle GPU-2D-Frequenz</string>
   <string name="gpu_cur_freq">Aktuelle GPU-Frequenz</string>
-  <string name="gpu_2d_max_freq">GPU 2D-Maximalfrequenz</string>
-  <string name="gpu_2d_max_freq_summary">Maximale 2D-Taktfrequenz der GPU.</string>
   <string name="gpu_max_freq">Maximale GPU-Frequenz</string>
   <string name="gpu_max_freq_summary">Maximale Taktfrequenz der GPU.</string>
   <string name="gpu_min_freq">Minimale GPU-Frequenz</string>
   <string name="gpu_min_freq_summary">Minimale Taktfrequenz der GPU.</string>
-  <string name="gpu_2d_governor">GPU 2D-Governor</string>
-  <string name="gpu_2d_governor_summary">2D-Governor der GPU festlegen.</string>
   <string name="gpu_governor">GPU-Governor</string>
   <string name="gpu_governor_summary">GPU-Governor festlegen.</string>
-  <string name="simple_gpu_algorithm">Einfacher GPU-Algorithmus</string>
-  <string name="simple_gpu_algorithm_summary">Ein Add-on für MSM Adreno TZ GPU-Gouvernor. Entwickelt von faux123.</string>
-  <string name="laziness">Trägheit</string>
-  <string name="laziness_summary">Dies erhöht den Schwellenwert, um die GPU-Frequenzen zu ändern. Die Leistung wird gesteigert, je niedriger der Schwellenwert ist.</string>
-  <string name="ramp_thresold">Schwellenwert-Rampe</string>
-  <string name="ramp_thresold_summary">Erhöht die Anzahl der Anfragen des GPU-Governor bei Frequenzminderung. Die Leistung wird gesteigert, he höher der Schwellenwert ist.</string>
-  <string name="adreno_idler">Adreno-Idler</string>
-  <string name="adreno_idler_summary">Eine effiziente Abhilfe für MSM-Adreno-tz\'s Overheads.</string>
-  <string name="down_differential">Down-Differential</string>
-  <string name="down_differential_summary">Schwellenwert, um zu ermitteln, ob der gegebene Workload tätig ist</string>
-  <string name="idle_wait">Idle-Wait</string>
-  <string name="idle_wait_summary">Anzahl der Ereignisse bis die Frequenz gesenkt wird. Diese Implementierung soll Micro-Lags beim Scrollen oder Gaming verhindern. Adreno-Idler wird aktiver versuchen die Frequenz zu senken, wenn ein niedrigerer Wert gesetzt ist.</string>
-  <string name="workload">Workload</string>
-  <string name="workload_summary">Adreno-Idler wird aktiver versuchen die Frequenz zu senken, wenn ein höherer Wert gesetzt ist.</string>
-  <string name="gpu_gaming_mode">Spielmodus</string>
-  <string name="gpu_gaming_mode_summary">Bei aktiviertem Spielmodus wird die GPU auf höchster Leistung laufen.</string>
-  
+
   <!-- Screen -->
   <string name="screen_color_profile">Farbprofile</string>
   <string name="screen_color_profile_summary">Voreingestelltes Profil wählen</string>
@@ -492,70 +304,8 @@
   <string name="glove_mode_summary">Dadurch läßt sich Ihr Gerät auch mit Handschuhen verwenden.</string>
   
   <!-- Wake Controls -->
-  <string name="vib_strength">Aufweck-Gesten Vibrationsstärke</string>
-  <string name="vib_strength_summary">Dieser Wert ist speziell für Aufweck-Gesten und unabhängig von der normalen Vibrationsstärke. Sie ist ausschließlich für die Kernel-Treiber. Gesten durch Third-Party-Apps werden ignoriert.</string>
-  <string name="dt2w">DoubleTap2Wake</string>
-  <string name="dt2w_summary">Gerät aufwecken durch doppeltes Tippen des Bildschirms.</string>
-  <string name="center">Zentrum</string>
-  <string name="full">Voll</string>
-  <string name="bottom_half">Untere Hälfte</string>
-  <string name="top_half">Obere Hälfte</string>
-  <string name="halfscreen">Halber Bildschirm</string>
-  <string name="fullscreen">Vollbild</string>
-  <string name="s2w">Sweep2Wake</string>
-  <string name="s2w_summary">Gerät aufwecken durch Wischen über den Bildschirm.</string>
-  <string name="lenient">Sweep2Wake-Nachsicht</string>
-  <string name="lenient_summary">Nur 1. und 4. Button werden zum Auslösen gebraucht.</string>
-  <string name="s2s">Sweep2Sleep</string>
-  <string name="s2w_right">Sweep2Wake Rechts</string>
-  <string name="s2w_left">Sweep2Wake Links</string>
-  <string name="s2w_up">Sweep2Wake Hoch</string>
-  <string name="s2w_down">Sweep2Wake Runter</string>
-  <string name="s2w_any">Sweep2Wake Jede</string>
-  <string name="s2s_right">Rechts wischen</string>
-  <string name="s2s_left">Links wischen</string>
-  <string name="s2s_any">Rechts oder links wischen</string>
-  <string name="t2w">Tap2Wake</string>
-  <string name="t2w_summary">Gerät aufwecken durch Tippen des Bildschirms.</string>
-  <string name="wake">Wake</string>
-  <string name="dt2w_charging">DoubleTap2Wake während des Ladens</string>
-  <string name="s2w_charging">Sweep2Wake während des Ladens</string>
-  <string name="dt2w_s2w_charging">DoubleTap2Wake + Sweep2Wake während des Ladens</string>
-  <string name="sleep">Sweep2Sleep</string>
-  <string name="sleep_summary">Über den unteren Bildschirmrand wischen, um den Bildschirm auszuschalten.</string>
-  <string name="dt2s">DoubleTap2Sleep</string>
-  <string name="dt2s_summary">Durch doppeltes Tippen des oberen Bildschirmrands Gerät schließen.</string>
-  <string name="slide_up">Nach oben schieben</string>
-  <string name="slide_down">Nach unten schieben</string>
-  <string name="slide_left">Nach links schieben</string>
-  <string name="slide_right">Nach rechts schieben</string>
-  <string name="draw_e">E zeichnen</string>
-  <string name="draw_o">O zeichnen</string>
-  <string name="draw_w">W zeichnen</string>
-  <string name="draw_c">C zeichnen</string>
-  <string name="draw_m">M zeichnen</string>
-  <string name="camera_gesture">Kamera-Gesten</string>
-  <string name="camera_gesture_summary">Kreis zeichnen, um Kamera zu öffnen.</string>
-  <string name="pocket_mode">Taschen-Modus</string>
-  <string name="pocket_mode_summary">Wenn das Gerät in der Tasche ist, werden die Aufweck-Gesten deaktiviert.</string>
-  <string name="wake_timeout">Wake-Timeout</string>
-  <string name="wake_timeout_summary">Zeit einstellen, nach der die Aufweck-Gesten deaktiviert werden, nachdem der Bildschirm aus ist.</string>
-  <string name="power_key_suspend">Power-Taste</string>
-  <string name="power_key_suspend_summary">Wenn das Gerät mit der Power-Taste ausgeschaltet wird, werden die Aufweck-Gesten deaktiviert.</string>
-  <string name="wake_S2W_time">Sweep2Wake-TimeOut</string>
-  <string name="wake_S2W_time_summary">Wird verwendet um die Zeit zu bestimmen, bis wann eine Wischgeste zu erfolgen hat, damit sie registriert wird. Standardwert 300ms</string>
-  <string name="wake_dt2w_timebetweentaps">DoubleTap2Wake-TimeOut</string>
-  <string name="wake_dt2w_timebetweentaps_summary">Wird verwendet um die Zeit zu bestimmen, bis wann das doppelte Tippen zu erfolgen hat. Standardwert 500ms</string>
-  <string name="wake_dt2w_featherx">DoubleTap2Wake (X-Achse)</string>
-  <string name="wake_dt2w_featherx_summary">Wird verwendet, um die erlaubte Distanz zwischen Tippen #1 und #2 entlang der X-Achse festzulegen. Soll ungewolltes Aufwecken verhindern. Standardwert 150.</string>
-  <string name="wake_dt2w_feathery">DoubleTap2Wake (Y-Achse)</string>
-  <string name="wake_dt2w_feathery_summary">Wird verwendet, um die erlaubte Distanz zwischen Tippen #1 und #2 entlang der Y-Achse festzulegen. Soll ungewolltes Aufwecken verhindern Standardwert 150.</string>
-  <string name="right">Rechts</string>
-  <string name="left">Links</string>
-  <string name="up">Hoch</string>
-  <string name="down">Runter</string>
-  
-  
+
+
   <!-- Sound -->
   <string name="driver_tunables">SOC-Driver Einstellungen</string>
   <string name="third_party_driver_tunables">Einstellungen für Third-Party-Treiber</string>
@@ -718,23 +468,6 @@
   <string name="adb_over_wifi">ADB Over WiFi</string>
   <string name="adb_over_wifi_summary">ADB over WiFi aktivieren</string>
   <string name="adb_over_wifi_connect_summary">Aktiviere ADB over WiFi. Verbinden mit:</string>
-  <string name="wakelock">Wakelocks</string>
-  <string name="wakelocks_summary">Schalter ein: Der Service kann ein Wakelock einrichten. Schalter aus: Der Service kann kein Wakelock einrichten.</string>
-  <string name="smb135x_wakelock">smb135x-Wakelock</string>
-  <string name="bluesleep_wakelock">BlueSleep-Wakelock</string>
-  <string name="bluesleep_wakelock_summary">BlueSleep-Wakelock ist erlaubt. Ausschalten, um dieses Wakelock zu verhindern.\n Aktuell: %s.</string>
-  <string name="sensor_ind_wakelock">sensor_ind-Wakelock</string>
-  <string name="sensor_ind_wakelock_summary">sensor_ind-Wakelock ist erlaubt. Ausschalten, um dieses Wakelock bei deaktiviertem Ambient Display-Modus zu verhindern.\n Aktuell: %s.</string>
-  <string name="msm_hsic_host_wakelock_summary">msm_hsic_host-Wakelock ist erlaubt. Ausschalten, um dieses Wakelock zu verhindern.\n Aktuell: %s.</string>
-  <string name="wlan_rx_wakelock">wlan_rx-Wakelock</string>
-  <string name="wlan_rx_wakelock_summary">wlan_rx-Wakelock ist erlaubt. Ausschalten, um dieses Wakelock zu verhindern.\n Aktuell: %s.</string>
-  <string name="wlan_ctrl_wakelock">wlan_ctrl-Wakelock</string>
-  <string name="wlan_ctrl_wakelock_summary">wlan_ctrl-Wakelock verhindern.\n Aktuell: %s.</string>
-  <string name="wlan_wakelock">wlan-Wakelock</string>
-  <string name="wlan_wakelock_summary">wlan-Wakelock ist erlaubt. Ausschalten, um dieses Wakelock zu verhindern.\n Aktuell: %s.</string>
-  <string name="wlan_rx_wakelock_divider">wlan_rx-Wakelock Divider</string>
-  <string name="msm_hsic_wakelock_divider">msm_hsic-Wakelock Divider</string>
-  <string name="bcmdhd_wakelock_divider">BCMDHD-Wakelock Divider</string>
   <string name="cstates">Krait C-States Einstellungen</string>
   <string name="c0state">C0 (WFI)</string>
   <string name="c0state_summary">Oberflächlicher Schlaf mit sofortigem Aufwachen.</string>
@@ -746,14 +479,6 @@
   <string name="c3state_summary">Sehr tiefer Schlaf mit längster Verzögerung beim Aufwachen.</string>
 
   <!-- Plugins -->
-  <string name="plugin_warning">Ich, der Schöpfer dieser Anwendung, bin nicht verantwortlich für Schäden verursacht durch Third-Party-Apps! Außerdem kann ich nicht für deren Funktionalität garantieren. Seien Sie vorsichtig welche Anwendungen Sie herunterladen!</string>
-  <string name="download_plugins">Download-Plugins</string>
-  <string name="looking_plugins">Suche nach Plugins</string>
-  <string name="no_plugins">Keine Plugins gefunden</string>
-  <string name="installed">Installiert</string>
-  <string name="update_available">Update verfügbar</string>
-  <string name="update_available_open_app">Zum Herunterladen Kernel Adiutor-Mod öffnen.</string>
-  <string name="not_installed">Nicht installiert</string>
 
   <!-- Backup -->
   <string name="no_backups">Keine Sicherungen</string>
@@ -786,27 +511,12 @@
   <string name="removed_all_sections">Sie haben alle Bereiche entfernt! Kein Profil möglich.</string>
   <string name="no_settings">Keine Einstellungen gefunden!</string>
   <string name="press_again_to_apply">Zum Anwenden erneut drücken.</string>
-  <string name="applied">Angewendet</string>
   <string name="applying_profile">Wende %s an</string>
   <string name="replace_profile">Möchten Sie %s ersetzen?</string>
   <string name="set_per_app">Pro-App Einstellungen festlegen</string>
   <string name="per_app_title">Anwendungen festlegen, die dieses Profil aktivieren.</string>
 
   <!-- Recovery -->
-  <string name="reboot">Neustart</string>
-  <string name="reboot_soft">Soft Reboot</string>
-  <string name="reboot_recovery">In Recovery booten</string>
-  <string name="reboot_bootloader">In Bootloader booten</string>
-  <string name="reboot_download">Reboot Download</string>
-  <string name="confirm">Sind Sie sicher?</string>
-  <string name="cwm_recovery">CWM-Recovery</string>
-  <string name="twrp">TWRP</string>
-  <string name="wipe_data">Data löschen</string>
-  <string name="wipe_cache">Cache löschen</string>
-  <string name="flash_zip">Zip flashen</string>
-  <string name="flash_now">Jetzt flashen</string>
-  <string name="flash_now_confirm">Möchten Sie die Aktionen durchführen? Ihr Gerät wird in die Recovery booten, und die Aktionen werden in ihrer festgelegten Reihenfolge ausgeführt.</string>
-  <string name="add_action_first">Sie müssen zuerst eine Aktion hinzufügen.</string>
 
   <!-- Init.d -->
   <string name="emulate_initd">Init.d emulieren</string>
@@ -855,19 +565,7 @@
   <string name="per_app">Pro-App Profile</string>
   <string name="per_app_toast">Pro-App Toast-Benachrichtigung</string>
   <string name="per_app_toast_summary">Zeige eine Toast-Benachrichtigung, wenn ein Pro-App Profil ausgeführt wird.</string>
-  <string name="update_check">Suche nach Updates</string>
-  <string name="update_check_summary">Der Anwendung erlauben beim Start und Öffnen nach Updateszu suchen.</string>
   <!-- FAQ -->
-  <string name="misspelled">Warum hast du \"Auditor\" falsch geschrieben?</string>
-  <string name="misspelled_summary">Adiutor ist lateinisch und bedeutet \"Helfer\".</string>
-  <string name="cpu_freq_not_sticking">Warum bleibt meine eingestellte CPU-Frequenz nicht bestehen?</string>
-  <string name="cpu_freq_not_sticking_summary">Dies kann mehrere Gründe haben. Viele Kernel haben heutzutage ihre eigenen Hotplug-Systeme, die die CPU-Frequenz steuern. CyanogenMod hat eigene CPU-Boost Implementierungen, die die Frequenz steuern. Ich empfehle, dass Sie die CPU-Frequenzen nicht verändern und diese Aufgabe dem Kernel überlassen.</string>
-  <string name="feature_not_appearing">Warum werden einige Funktionen nicht angezeigt?</string>
-  <string name="feature_not_appearing_summary">Die Einstellmöglichkeiten sind vom Kernel abhängig.</string>
-  <string name="feature_function">Was macht die Einstellung \"X\"?</string>
-  <string name="feature_function_summary">Wenn Sie nicht wissen was diese Einstellung tut, verändern Sie diese auch nicht. Informieren Sie sich vorher gut, bevor Sie mit Ihrer teuren Hardware experimentieren.</string>
-  <string name="add_new_features">Kannst du Funktion x und y hinzufügen?</string>
-  <string name="add_new_features_summary">Das ist schwer zu sagen. Ich versuche alle Features hinzuzufügen, aber es ist schwer alle Geräte mit dieser App zu unterstützen. Ich habe nur ein Samsung Galaxy S4 (i9500), ein HTC Desire 816 und bekam vor kurzem ein OnePlus 2, also nicht mir die Schuld geben, wenn neue Funktionen nicht sofort für alle Geräte zur Verfügung stehen.</string>
 
   <!-- About us -->
   <string name="license">Lizenz</string>
@@ -876,16 +574,10 @@
   <string name="open_source_summary">Der Quellcode dieser Anwendung ist offen und kann auf meinem Github eingesehen werden!</string>
   <string name="feature_request">Funktionsanfrage</string>
   <string name="feature_request_summary">Wollen Sie mehr Funktionen? Öffnen Sie ein neues Problem auf GitHub und übermitteln Sie Ihre Idee.</string>
-  <string name="donate_summary">Dies ist ein Spenden-Link für Yoinx. Nicht für Grarak, dem Original-Autor. Diese Taste ist der einzige Weg an mich zu spenden, alle anderen Spenden-Popups führen zu Garak.</string>
-  <string name="google_plus_summary">Treten Sie unserer Community bei.</string>
-  <string name="translation">Übersetzung</string>
-  <string name="translation_summary">Helfen Sie mir diese App zu übersetzen!</string>
 
   <string name="modification">Modifizierte Version von Kernel Adiutor</string>
 
   <string name="accessibility_service_label">KA Per-App-Monitor</string>
   <string name="accessibility_service_desc">Dienst zur Überwachung, ob sich eine Vordergrund-App durch das Laden eines Per-App-Profils ändert.</string>
-  <string name="smb135x_wakelock_summary">smb135x-Wakelock ist erlaubt. Ausschalten, um dieses Wakelock außerhalb des Ladevorgangs zu verhindern.\n Aktuell: %s.</string>
-  <string name="msm_hsic_host_wakelock">msm_hsic_host-Wakelock</string>
 
 </resources>
