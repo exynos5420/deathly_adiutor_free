@@ -29,7 +29,7 @@ public class GPUVoltage implements Constants {
                 final_voltage = Double.toString(Integer.parseInt(getVoltages().get(i)) + adjust);
                 final_voltage = final_voltage.substring(0, final_voltage.length() - 2);
                 command = getFreqs().get(i) + " " + final_voltage;
-                Control.runCommand(command, GPU_VOLTAGE_FILE, Control.CommandType.GENERIC, context);
+                Control.runCommand(command, GPU_VOLTAGE_FILE, Control.CommandType.GENERIC, Integer.toString(i), context);
             }
 
     }
@@ -40,7 +40,7 @@ public class GPUVoltage implements Constants {
         for (int i = 0; i < getVoltages().size(); i++)
             if (getFreqs().get(i).equals(freq)) {
                 command = freq + " " + voltage;
-                Control.runCommand(command, GPU_VOLTAGE_FILE, Control.CommandType.GENERIC, context);
+                Control.runCommand(command, GPU_VOLTAGE_FILE, Control.CommandType.GENERIC, Integer.toString(i), context);
                 return;
             }
 

@@ -30,6 +30,7 @@ import com.exynos5420.deathlyadiutor.fragments.RecyclerViewFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.BatteryFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.CPUFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.CPUVoltageFragment;
+import com.exynos5420.deathlyadiutor.fragments.kernel.GPUVoltageFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.EntropyFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.GPUFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.IOFragment;
@@ -77,7 +78,7 @@ public class StartUpCommandsFragment extends RecyclerViewFragment {
         List<String> commands = new ArrayList<>();
 
         Class[] classes = {BatteryFragment.class, CPUFragment.class,
-                CPUVoltageFragment.class, EntropyFragment.class, GPUFragment.class, IOFragment.class,
+                CPUVoltageFragment.class, GPUVoltageFragment.class, EntropyFragment.class, GPUFragment.class, IOFragment.class,
                 KSMFragment.class, LMKFragment.class, MiscFragment.class,
                 ScreenFragment.class, SoundFragment.class, ThermalFragment.class, VMFragment.class
         };

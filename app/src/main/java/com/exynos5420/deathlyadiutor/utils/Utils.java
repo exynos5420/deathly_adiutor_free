@@ -44,6 +44,7 @@ import com.exynos5420.deathlyadiutor.R;
 import com.exynos5420.deathlyadiutor.fragments.kernel.BatteryFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.CPUFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.CPUVoltageFragment;
+import com.exynos5420.deathlyadiutor.fragments.kernel.GPUVoltageFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.EntropyFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.GPUFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.IOFragment;
@@ -349,18 +350,18 @@ public class Utils implements Constants {
                 else applys.add(cpu);
         }else if (mClass == CPUVoltageFragment.class)
             applys.addAll(new ArrayList<>(Arrays.asList(CPU_VOLTAGE_ARRAY)));
+        else if (mClass == GPUVoltageFragment.class)
+            applys.add(GPU_VOLTAGE_EXYNOS5_FILE);
         else if (mClass == EntropyFragment.class)
             applys.addAll(new ArrayList<>(Arrays.asList(ENTROPY_ARRAY)));
-        else if (mClass == GPUFragment.class) {
-            applys.add("echo 0 > " + GPU_EXYNOS5_DVFS);
-            for (String[] arrays : GPU_ARRAY) {applys.addAll(new ArrayList<>(Arrays.asList(arrays)));}
-            applys.add("echo 1 > " + GPU_EXYNOS5_DVFS);
-        }
+        else if (mClass == GPUFragment.class) for (String[] arrays : GPU_ARRAY)
+              applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
         else if (mClass == IOFragment.class)
-            applys.addAll(new ArrayList<>(Arrays.asList(IO_ARRAY)));
+             applys.addAll(new ArrayList<>(Arrays.asList(IO_ARRAY)));
         else if (mClass == KSMFragment.class)
-            applys.addAll(new ArrayList<>(Arrays.asList(KSM_ARRAY)));
-        else if (mClass == LMKFragment.class) applys.add(LMK_MINFREE);
+             applys.addAll(new ArrayList<>(Arrays.asList(KSM_ARRAY)));
+        else if (mClass == LMKFragment.class)
+             applys.add(LMK_MINFREE);
         else if (mClass == MiscFragment.class) for (String[] arrays : MISC_ARRAY)
              applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
         else if (mClass == ScreenFragment.class) for (String[] arrays : SCREEN_ARRAY)
