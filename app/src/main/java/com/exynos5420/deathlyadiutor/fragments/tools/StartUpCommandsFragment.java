@@ -184,7 +184,7 @@ public class StartUpCommandsFragment extends RecyclerViewFragment {
                                                 clipboard.setPrimaryClip(clip);
                                                 break;
                                             }
-                                            case 1: {
+                                            case 1: { //TODO: this is not working
                                                 Control.deletespecificcommand(getActivity(), null, command);
                                                 forcerefresh(getActivity());
                                                 break;
