@@ -285,16 +285,8 @@
     <string name="tcp">Algoritma Antrian TCP</string>
     <string name="tcp_summary">Transmission Control Protocol adalah salah satu protokol inti dari sepaket protokol Internet (IP), dan secara umum seluruh paketan ini sering disebut TCP/IP.</string>
     <string name="hostname">Nama host</string>
-    <string name="no_backups">Tidak ada cadangan</string>
-    <string name="flash_img">Flash IMG</string>
-    <string name="flashing">Flashing</string>
-    <string name="backing_up">Back up</string>
     <string name="empty_name">Nama kosong!</string>
-    <string name="backup_already_exists">Cadangan dengan nama yang sama sudah ada. Menghapus pertama!</string>
-    <string name="restore">Pulihkan</string>
     <string name="delete">Hapus</string>
-    <string name="overwrite_question">Menimpa %s?</string>
-    <string name="restoring">Mengembalikan</string>
     <string name="delete_question">Menghapus %s?</string>
     <string name="items_found">Ditemukan %d item</string>
     <string name="add">Tambah</string>

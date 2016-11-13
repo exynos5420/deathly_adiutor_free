@@ -272,16 +272,8 @@
     <string name="tcp">Algorithme de Congestion TCP</string>
     <string name="tcp_summary">Le TCP (Transmission Control Protocol) est un des principaux protocoles utilisé sur Internet (couche IP), et est tellement courant que la couche complète est souvent appelée TCP/IP.</string>
     <string name="hostname">Nom d\'hôte</string>
-    <string name="no_backups">Pas de sauvegardes</string>
-    <string name="flash_img">Flasher l\'IMG</string>
-    <string name="flashing">Flash en cours</string>
-    <string name="backing_up">Sauvegarde en cours</string>
     <string name="empty_name">Le nom n\'est pas renseigné !</string>
-    <string name="backup_already_exists">Une sauvegarde avec le même nom existe déjà. Supprimez-la avant !</string>
-    <string name="restore">Restaurer</string>
     <string name="delete">Suppression</string>
-    <string name="overwrite_question">Écraser %s ?</string>
-    <string name="restoring">Restauration en cours</string>
     <string name="delete_question">Supprimer %s ?</string>
     <string name="items_found">%d élément(s) trouvé(s)</string>
     <string name="add">Ajouter</string>

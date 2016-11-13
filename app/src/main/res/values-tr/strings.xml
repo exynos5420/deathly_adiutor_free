@@ -214,11 +214,7 @@
     <string name="tcp">TCP Congestion Algoritması</string>
     <string name="tcp_summary">İletim Denetimi iletişim kuralı (IP) Internet iletişim kuralları dizisi nın çekirdek iletişim kuralları biridir ve tüm paketidir kez ortak TCP/IP sözde.</string>
     <string name="hostname">Ana bilgisayar adı</string>
-    <string name="backup_already_exists">Aynı ada sahip bir yedek zaten var. Önce silin!</string>
-    <string name="restore">Geri yükleme</string>
     <string name="delete">Sil</string>
-    <string name="overwrite_question">%s üzerine yazılsın mı?</string>
-    <string name="restoring">Geri yükleme</string>
     <string name="delete_question">%s silinsin mi?</string>
     <string name="items_found">%d madde bulundu</string>
     <string name="add">Ekle</string>

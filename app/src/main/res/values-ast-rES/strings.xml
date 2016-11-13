@@ -275,16 +275,8 @@
     <string name="tcp">Algoritmu de conxestión TCP</string>
     <string name="tcp_summary">El protocolu de control de tresmisión ye ún de los protocolos principales de la suit de protocolos d\'internet (IP), y ye tan común que tola suit llámase davezu TCP/IP.</string>
     <string name="hostname">Nome d\'agospiu</string>
-    <string name="no_backups">Ensin copies de seguranza</string>
-    <string name="flash_img">Flaxar IMG</string>
-    <string name="flashing">Flaxando</string>
-    <string name="backing_up">Faciendo copia de seguranza</string>
     <string name="empty_name">¡El nome ta baleru!</string>
-    <string name="backup_already_exists">Yá esiste un respaldu col mesmu nome. ¡Desanícialu primero!</string>
-    <string name="restore">Restaurar</string>
     <string name="delete">Desaniciar</string>
-    <string name="overwrite_question">¿Sobrescribir %s?</string>
-    <string name="restoring">Restaurando</string>
     <string name="delete_question">¿Desaniciar %s?</string>
     <string name="items_found">Alcontráronse %d elementu/os</string>
     <string name="add">Amestar</string>

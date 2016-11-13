@@ -67,12 +67,7 @@
     <string name="hybrid">Hübriid</string>
     <string name="network">Võrk</string>
     <string name="hostname">Hosti nimi</string>
-    <string name="no_backups">Varundused puuduvad</string>
-    <string name="backing_up">Varundamine</string>
-    <string name="restore">Taasta</string>
     <string name="delete">Kustuta</string>
-    <string name="overwrite_question">%s üle kirjutada?</string>
-    <string name="restoring">Taastamine</string>
     <string name="delete_question">%s kustutada?</string>
     <string name="add">Lisa</string>
     <string name="edit">Muuda</string>

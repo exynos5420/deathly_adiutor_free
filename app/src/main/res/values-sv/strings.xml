@@ -154,10 +154,7 @@
     <string name="hybrid">Hybrid</string>
     <string name="network">Nätverk</string>
     <string name="hostname">Värdnamn</string>
-    <string name="restore">Återställ</string>
     <string name="delete">Radera</string>
-    <string name="overwrite_question">Skriva över %s?</string>
-    <string name="restoring">Återställer</string>
     <string name="delete_question">Radera %s?</string>
     <string name="items_found">%d objekt hittade</string>
     <string name="add">Lägg till</string>

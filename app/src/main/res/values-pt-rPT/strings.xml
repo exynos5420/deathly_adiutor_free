@@ -258,16 +258,8 @@ Está a usar a versão %s.</string>
     <string name="tcp">Algoritmo de congestionamento TCP</string>
     <string name="tcp_summary">O protocolo de controle de transmissão é um dos principais protocolos de Internet (IP), e é tão comum que todo o conjunto é muitas vezes chamado TCP/IP.</string>
     <string name="hostname">Hostname</string>
-    <string name="no_backups">Nenhum backup</string>
-    <string name="flash_img">Flash IMG</string>
-    <string name="flashing">A flashar</string>
-    <string name="backing_up">A efetuar backup</string>
     <string name="empty_name">O nome está vazio!</string>
-    <string name="backup_already_exists">Já existe um backup com o mesmo nome. Elimine-o primeiro!</string>
-    <string name="restore">Restaurar</string>
     <string name="delete">Excluir</string>
-    <string name="overwrite_question">Substituir %s?</string>
-    <string name="restoring">A restaurar</string>
     <string name="delete_question">Eliminar %s?</string>
     <string name="items_found">%d item/s encontrado/s</string>
     <string name="add">Adicionar</string>

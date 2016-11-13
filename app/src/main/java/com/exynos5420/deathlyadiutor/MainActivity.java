@@ -70,7 +70,6 @@ import com.exynos5420.deathlyadiutor.fragments.kernel.ThermalFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.VMFragment;
 import com.exynos5420.deathlyadiutor.fragments.other.AboutusFragment;
 import com.exynos5420.deathlyadiutor.fragments.other.SettingsFragment;
-import com.exynos5420.deathlyadiutor.fragments.tools.BackupFragment;
 import com.exynos5420.deathlyadiutor.fragments.tools.BuildpropFragment;
 import com.exynos5420.deathlyadiutor.fragments.tools.InitdFragment;
 import com.exynos5420.deathlyadiutor.fragments.tools.ProfileFragment;
@@ -81,13 +80,9 @@ import com.exynos5420.deathlyadiutor.utils.Constants;
 import com.exynos5420.deathlyadiutor.utils.Utils;
 import com.exynos5420.deathlyadiutor.utils.database.ProfileDB;
 import com.exynos5420.deathlyadiutor.utils.kernel.CPUVoltage;
-import com.exynos5420.deathlyadiutor.utils.kernel.Entropy;
-import com.exynos5420.deathlyadiutor.utils.kernel.KSM;
-import com.exynos5420.deathlyadiutor.utils.kernel.LMK;
 import com.exynos5420.deathlyadiutor.utils.kernel.Screen;
 import com.exynos5420.deathlyadiutor.utils.kernel.Sound;
 import com.exynos5420.deathlyadiutor.utils.kernel.Thermal;
-import com.exynos5420.deathlyadiutor.utils.tools.Backup;
 import com.exynos5420.deathlyadiutor.utils.tools.Buildprop;
 import com.kerneladiutor.library.root.RootUtils;
 
@@ -236,8 +231,6 @@ public class MainActivity extends BaseActivity implements Constants {
         ITEMS.add(new DAdapter.Item(getString(R.string.entropy), new EntropyFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.misc_controls), new MiscFragment()));
         ITEMS.add(new DAdapter.Header(getString(R.string.tools)));
-        if (Backup.hasBackup())
-            ITEMS.add(new DAdapter.Item(getString(R.string.backup), new BackupFragment()));
         if (Buildprop.hasBuildprop() && RootUtils.busyboxInstalled())
             ITEMS.add(new DAdapter.Item(getString(R.string.build_prop_editor), new BuildpropFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.profile), new ProfileFragment()));

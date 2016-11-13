@@ -287,16 +287,8 @@
     <string name="tcp">TCP Congestion algoritmus</string>
     <string name="tcp_summary">A Transmission Control Protocol egyike az alapvető protokollnak, az Internet Protocol (IP) mellett, és együtt TCP/IP néven szokás hivatkozni rájuk.</string>
     <string name="hostname">Host név</string>
-    <string name="no_backups">Nincs mentés</string>
-    <string name="flash_img">IMG flashelése</string>
-    <string name="flashing">Fashelés</string>
-    <string name="backing_up">Biztonsági mentés</string>
     <string name="empty_name">Név üres!</string>
-    <string name="backup_already_exists">Azonos névvel már van biztonsági mentése. Először törölje!</string>
-    <string name="restore">Visszaállítás</string>
     <string name="delete">Törlés</string>
-    <string name="overwrite_question">%s felülírása?</string>
-    <string name="restoring">Visszaállítás</string>
     <string name="delete_question">%s törlése?</string>
     <string name="items_found">%d elem található</string>
     <string name="add">Hozzáadás</string>

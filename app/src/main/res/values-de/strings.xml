@@ -464,19 +464,8 @@
     <string name="c3state">C3 (Power Collapse)</string>
     <string name="c3state_summary">Sehr tiefer Schlaf mit längster Verzögerung beim Aufwachen.</string>
 
-    <!-- Plugins -->
-
-    <!-- Backup -->
-    <string name="no_backups">Keine Sicherungen</string>
-    <string name="flash_img">IMG flashen</string>
-    <string name="flashing">Flashe</string>
-    <string name="backing_up">Am Sichern</string>
     <string name="empty_name">Name ist leer!</string>
-    <string name="backup_already_exists">Eine Sicherung mit dem gleichen Namen existiert bereits. Löschen Sie diese zuerst!</string>
-    <string name="restore">Wiederherstellen</string>
     <string name="delete">Löschen</string>
-    <string name="overwrite_question">%s überschreiben?</string>
-    <string name="restoring">Wiederherstellung</string>
     <string name="delete_question">%s löschen?</string>
 
     <!-- Build prop Editor -->

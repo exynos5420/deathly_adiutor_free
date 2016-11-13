@@ -181,10 +181,7 @@
     <string name="dynamic_fsync">Dinamički Fsync</string>
     <string name="tcp">Algoritam TCP zagušenja</string>
     <string name="tcp_summary">Transmission Control Protocol je jedan od sržnih protokola internetskog protokola (IP), te tako se često cijeli paket zove TCP/IP.</string>
-    <string name="no_backups">Nema sigurnosne kopije</string>
-    <string name="backing_up">Izrada sigurnosne kopije</string>
     <string name="empty_name">Polje za ime je prazno!</string>
-    <string name="backup_already_exists">Sigurnosna kopija s istim nazivom već postoji. Izbrišite ju prije nastavka ili promijenite naziv!</string>
     <string name="delete">Izbriši</string>
     <string name="add">Dodaj</string>
     <string name="edit">Promjeni</string>

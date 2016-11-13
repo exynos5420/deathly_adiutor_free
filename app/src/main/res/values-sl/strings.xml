@@ -287,16 +287,8 @@
     <string name="tcp">Algoritem TCP zastojev</string>
     <string name="tcp_summary">Transmission Control Protocol je eden od osnovnih protokolov Internetnega protokolskega sklada (IP), in je tako pogost, da celoten sklad večkrat imenujemo TCP/IP.</string>
     <string name="hostname">Ime gostitelja</string>
-    <string name="no_backups">Ni varnostnih kopij</string>
-    <string name="flash_img">Zapiši IMG</string>
-    <string name="flashing">Zapis poteka</string>
-    <string name="backing_up">Izdelovanje varnostne kopije</string>
     <string name="empty_name">Ime ni določeno!</string>
-    <string name="backup_already_exists">Varnostna kopija z enakim imenom že obstaja. Najprej jo izbrišite!</string>
-    <string name="restore">Obnovi</string>
     <string name="delete">Izbriši</string>
-    <string name="overwrite_question">Ali želite prepisati %s?</string>
-    <string name="restoring">Povračanje</string>
     <string name="delete_question">Izbriši %s?</string>
     <string name="items_found">%d najdenih predmetov</string>
     <string name="add">Dodaj</string>

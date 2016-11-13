@@ -166,16 +166,8 @@
     <string name="network">Мрежа</string>
     <string name="tcp">ТЦП алгоритам загушења</string>
     <string name="hostname">Име домаћина</string>
-    <string name="no_backups">Нема резервних копија</string>
-    <string name="flash_img">Флешуј одраз (IMG)</string>
-    <string name="flashing">Флешујем</string>
-    <string name="backing_up">Правим резервну копију</string>
     <string name="empty_name">Назив је празан!</string>
-    <string name="backup_already_exists">Резервна копија тог назива већ постоји. Најпре је обришите!</string>
-    <string name="restore">Врати</string>
     <string name="delete">Обриши</string>
-    <string name="overwrite_question">Да вратим %s?</string>
-    <string name="restoring">Враћам</string>
     <string name="delete_question">Да обришем %s?</string>
     <string name="items_found">%d ставки нађено</string>
     <string name="add">Додај</string>

@@ -227,16 +227,8 @@
     <string name="tcp">TCP 擁塞控制演算法</string>
     <string name="tcp_summary">擁塞控制是一種用來調整傳輸控制協議（TCP/IP）連接單次發送的分組數量的算法。它通過增減單次發送量逐步調整，使之逼近當前網絡的承載量。</string>
     <string name="hostname">主機名稱</string>
-    <string name="no_backups">沒有備份</string>
-    <string name="flash_img">刷入 IMG</string>
-    <string name="flashing">刷入中</string>
-    <string name="backing_up">備份中</string>
     <string name="empty_name">請輸入名稱！</string>
-    <string name="backup_already_exists">相同名稱的備份已經存在，請先刪除它！</string>
-    <string name="restore">還原</string>
     <string name="delete">刪除</string>
-    <string name="overwrite_question">覆蓋 %s?</string>
-    <string name="restoring">還原中</string>
     <string name="delete_question">刪除 %s?</string>
     <string name="items_found">找到 %d 項目</string>
     <string name="add">增加</string>

@@ -164,14 +164,8 @@
     <string name="hybrid">Hybrydowa</string>
     <string name="network">Sieć</string>
     <string name="hostname">Nazwa hosta</string>
-    <string name="no_backups">Brak kopii zapasowych</string>
-    <string name="backing_up">Tworzenie kopii zapasowej</string>
     <string name="empty_name">Nazwa jest pusta!</string>
-    <string name="backup_already_exists">Kopia zapasowa o tej samej nazwie już istnieje. Najpierw ją usuń!</string>
-    <string name="restore">Przywróć</string>
     <string name="delete">Usuń</string>
-    <string name="overwrite_question">Zastąpić %s?</string>
-    <string name="restoring">Odzyskiwanie</string>
     <string name="delete_question">Usunąć %s?</string>
     <string name="add">Dodaj</string>
     <string name="edit">Edytuj</string>

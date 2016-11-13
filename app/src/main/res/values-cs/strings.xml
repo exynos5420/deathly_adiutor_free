@@ -218,16 +218,8 @@
     <string name="network">Síť</string>
     <string name="tcp_summary">„Transmission Control Protocol“ je jedním z hlavních protokolů sady internetových protokolů (IP) a je natolik běžný, že se pro celou sadu běžně používá označení TCP/IP.</string>
     <string name="hostname">Název hostitele</string>
-    <string name="no_backups">Žádné zálohy</string>
-    <string name="flash_img">Flash IMG</string>
-    <string name="flashing">Flashování</string>
-    <string name="backing_up">Zálohování</string>
     <string name="empty_name">Název není vyplněn!</string>
-    <string name="backup_already_exists">Záloha se stejným názvem již existuje. Nejprve ji odstraňte!</string>
-    <string name="restore">Obnovit</string>
     <string name="delete">Smazat</string>
-    <string name="overwrite_question">Přepsat %s?</string>
-    <string name="restoring">Obnovování</string>
     <string name="delete_question">Odstranit %s?</string>
     <string name="items_found">Nalezené položky: %d</string>
     <string name="add">Přidat</string>

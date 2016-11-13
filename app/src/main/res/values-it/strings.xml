@@ -282,16 +282,8 @@
     <string name="tcp">Algoritmo di congestione TCP</string>
     <string name="tcp_summary">Il Protocollo di controllo trasmissione è uno dei principali protocolli della suite di protocolli Internet (IP), ed è così comune che l\'intera suite è spesso chiamato TCP/IP.</string>
     <string name="hostname">Hostname</string>
-    <string name="no_backups">Nessun backup</string>
-    <string name="flash_img">Flash IMG</string>
-    <string name="flashing">Flash in corso</string>
-    <string name="backing_up">Backup in corso</string>
     <string name="empty_name">Il campo del nome è vuoto!</string>
-    <string name="backup_already_exists">Un backup con lo stesso nome esiste già. Eliminalo prima!</string>
-    <string name="restore">Ripristino</string>
     <string name="delete">Elimina</string>
-    <string name="overwrite_question">Sovrascrivere %s?</string>
-    <string name="restoring">Ripristino in corso</string>
     <string name="delete_question">Eliminare %s?</string>
     <string name="items_found">Trovato/i %d elemento/i</string>
     <string name="add">Aggiungi</string>

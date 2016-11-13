@@ -79,7 +79,6 @@
     <string name="backup">Backup</string>
     <string name="build_prop_editor">Build prop Editor</string>
     <string name="profile">Profile</string>
-    <string name="recovery" translatable="false">Recovery</string>
     <string name="initd">Init.d</string>
     <string name="startup_commands">Start-Up Commands</string>
     <string name="startup_commands_list">Start-Up Commands List:</string>
@@ -492,21 +491,8 @@
     <string name="switchbuttons">Switch Buttons</string>
     <string name="switchbuttons_summary">Switch back and recents buttons.</string>
 
-    <!-- Plugins -->
-
-    <!-- Backup -->
-    <string name="no_backups">No backups</string>
-    <string name="flash_img">Flash IMG</string>
-    <string name="flashing">Flashing</string>
-    <string name="boot" translatable="false">Boot</string>
-    <string name="fota" translatable="false">Fota</string>
-    <string name="backing_up">Backing up</string>
     <string name="empty_name">Name is empty!</string>
-    <string name="backup_already_exists">A backup with the same name already exists. Delete it first!</string>
-    <string name="restore">Restore</string>
     <string name="delete">Delete</string>
-    <string name="overwrite_question">Overwrite %s?</string>
-    <string name="restoring">Restoring</string>
     <string name="delete_question">Delete %s?</string>
 
     <!-- Build prop Editor -->

@@ -287,16 +287,8 @@
     <string name="tcp">TCP輻輳アルゴリズム</string>
     <string name="tcp_summary">TCP とは、伝送制御プロトコルといわれる、インターネットプロトコルスイートの中核プロトコルのひとつです。</string>
     <string name="hostname">ホスト名</string>
-    <string name="no_backups">バックアップはありません。</string>
-    <string name="flash_img">IMGのフラッシュ</string>
-    <string name="flashing">フラッシュ中</string>
-    <string name="backing_up">バックアップ中</string>
     <string name="empty_name">名前が入力されていません!</string>
-    <string name="backup_already_exists">同じ名前のバックアップがあります。削除してください!</string>
-    <string name="restore">復元</string>
     <string name="delete">削除</string>
-    <string name="overwrite_question">%sを上書きしますか?</string>
-    <string name="restoring">復元中</string>
     <string name="delete_question">%sを削除しますか?</string>
     <string name="items_found">%d個見つかりました</string>
     <string name="add">追加</string>

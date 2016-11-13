@@ -288,16 +288,8 @@
     <string name="tcp">Algoritmo de congestión TCP</string>
     <string name="tcp_summary">Protocolo de Control de transmisión es uno de los principales protocolos de la suite de protocolo de Internet (IP), comunmente llamado TCP/IP.</string>
     <string name="hostname">Nombre de host</string>
-    <string name="no_backups">No hay copias de seguridad</string>
-    <string name="flash_img">Flashear IMG</string>
-    <string name="flashing">Flasheando</string>
-    <string name="backing_up">Creando la copia de seguridad</string>
     <string name="empty_name">El nombre está vacío!</string>
-    <string name="backup_already_exists">Ya existe una copia de seguridad con el mismo nombre. Borralá primero!</string>
-    <string name="restore">Restaurar</string>
     <string name="delete">Borrar</string>
-    <string name="overwrite_question">¿Sobrescribir %s?</string>
-    <string name="restoring">Restaurando</string>
     <string name="delete_question">¿Borrar %s?</string>
     <string name="items_found">%d elemento/s encontrados</string>
     <string name="add">Añadir</string>

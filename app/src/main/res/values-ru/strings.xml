@@ -287,16 +287,8 @@
     <string name="tcp">Алгоритм передачи данных по TCP</string>
     <string name="tcp_summary">TCP протокол - один из сетевых протоколов (IP), также известный как TCP/IP.</string>
     <string name="hostname">Имя устройства</string>
-    <string name="no_backups">Нет резервных копий</string>
-    <string name="flash_img">Прошить IMG файл</string>
-    <string name="flashing">Прошивка в процессе</string>
-    <string name="backing_up">Резервирование в процессе</string>
     <string name="empty_name">Пустое имя!</string>
-    <string name="backup_already_exists">Резервная копия с таким именем уже существует. Сначала удалите ее!</string>
-    <string name="restore">Восстановить</string>
     <string name="delete">Удалить</string>
-    <string name="overwrite_question">Перезаписать %s?</string>
-    <string name="restoring">Восстановление в процессе</string>
     <string name="delete_question">Удалить %s?</string>
     <string name="items_found">%d найдено</string>
     <string name="add">Добавить</string>
