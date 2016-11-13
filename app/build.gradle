@@ -22,7 +22,7 @@ android {
         applicationId 'com.exynos5420.deathlyadiutor'
         minSdkVersion 19
         targetSdkVersion 23
-        versionCode 16
+        versionCode 17
         versionName "1.0 build " + getDate()
     }
 
@@ -71,9 +71,6 @@ dependencies {
     compile 'org.cyanogenmod:platform.sdk:1.0'
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.squareup.okhttp3:okhttp:3.3.1'
-    compile('com.crashlytics.sdk.android:crashlytics:2.5.6@aar') {
-        transitive = true;
-    }
     compile 'com.google.firebase:firebase-messaging:9.0.2'
     compile 'com.google.firebase:firebase-crash:9.8.0'
     compile 'com.google.firebase:firebase-ads:9.8.0'

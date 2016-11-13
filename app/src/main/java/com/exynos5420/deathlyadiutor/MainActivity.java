@@ -48,7 +48,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.crashlytics.android.Crashlytics;
 import com.exynos5420.deathlyadiutor.elements.DAdapter;
 import com.exynos5420.deathlyadiutor.elements.ScrimInsetsFrameLayout;
 import com.exynos5420.deathlyadiutor.elements.SplashView;
@@ -95,8 +94,6 @@ import com.kerneladiutor.library.root.RootUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.fabric.sdk.android.Fabric;
-
 /**
  * Created by willi on 01.12.14.
  */
@@ -123,14 +120,12 @@ public class MainActivity extends BaseActivity implements Constants {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (!BuildConfig.DEBUG) {
-            Fabric.with(this, new Crashlytics());
-        }
 
         setView();
         String password;
-        if (!(password = Utils.getString("password", "", this)).isEmpty())
+        if (!(password = Utils.getString("password", "", this)).isEmpty()) {
             askPassword(password);
+        }
         else // Use an AsyncTask to initialize everything
             new Task().execute();
 
