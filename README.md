@@ -25,7 +25,6 @@ I used following libraries:
 * Google: [Cardview v7](https://developer.android.com/tools/support-library/features.html#v7-cardview)
 * Google: [Recyclerview v7](https://developer.android.com/tools/support-library/features.html#v7-recyclerview)
 * Jerzy Chałupski: [FloatingActionButton](https://github.com/futuresimple/android-floating-action-button)
-* Roman Nurik: [Dashclock](https://github.com/romannurik/dashclock)
 * Jake Wharton: [NineOldAndroids](https://github.com/JakeWharton/NineOldAndroids)
 * Square Inc.: [Picasso](https://github.com/square/picasso)
 * Karim Frenn: [MaterialTabs](https://github.com/pizza/MaterialTabs)
@@ -44,8 +43,6 @@ _(Many sys interface paths has been taken from his [UKM-Project](https://github.
 
 #### Brandon Valosek
 
-* [CpuSpyApp](https://github.com/Grarak/KernelAdiutor/blob/master/app/src/main/java/com/bvalosek/cpuspy/CpuSpyApp.java)
-* [CpuStateMonitor](https://github.com/Grarak/KernelAdiutor/blob/master/app/src/main/java/com/bvalosek/cpuspy/CpuStateMonitor.java)
 * [FrequencyTableFragment](https://github.com/Grarak/KernelAdiutor/blob/master/app/src/main/java/com/grarak/kerneladiutor/fragments/information/FrequencyTableFragment.java)
 
 #### Google

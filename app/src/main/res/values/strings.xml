@@ -607,8 +607,6 @@
     <string name="google" translatable="false">Google</string>
     <string name="fab" translatable="false">FloatingActionButton</string>
     <string name="jerzy" translatable="false">Jerzy Chałupski</string>
-    <string name="dashclock" translatable="false">Dashclock</string>
-    <string name="nurik" translatable="false">Roman Nurik</string>
     <string name="nineoldandroids" translatable="false">NineOldAndroids</string>
     <string name="wharton" translatable="false">Jake Wharton</string>
     <string name="picasso" translatable="false">Picasso</string>
