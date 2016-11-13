@@ -51,8 +51,4 @@ public class Entropy implements Constants {
         return Utils.stringToInt(Utils.readFile(PROC_RANDOM_ENTROPY_AVAILABLE));
     }
 
-    public static boolean hasEntropy() {
-        return Utils.existFile(PROC_RANDOM);
-    }
-
 }

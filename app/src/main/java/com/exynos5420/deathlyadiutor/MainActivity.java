@@ -233,8 +233,7 @@ public class MainActivity extends BaseActivity implements Constants {
         ITEMS.add(new DAdapter.Item(getString(R.string.ksm), new KSMFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.low_memory_killer), new LMKFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.virtual_memory), new VMFragment()));
-        if (Entropy.hasEntropy())
-            ITEMS.add(new DAdapter.Item(getString(R.string.entropy), new EntropyFragment()));
+        ITEMS.add(new DAdapter.Item(getString(R.string.entropy), new EntropyFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.misc_controls), new MiscFragment()));
         ITEMS.add(new DAdapter.Header(getString(R.string.tools)));
         if (Backup.hasBackup())
