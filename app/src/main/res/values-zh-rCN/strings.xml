@@ -260,7 +260,6 @@
     <string name="light">轻度</string>
     <string name="medium">中等</string>
     <string name="very_aggressive">非常积极</string>
-    <string name="adaptive">自适应低内存</string>
     <string name="zram">Z-RAM</string>
     <string name="disksize">存储大小</string>
     <string name="disksize_summary">通过阻止对物理存储进行分页以尝试提高性能，而不是在 RAM 中使用被压缩的虚拟设备。分页将在 RAM 中进行直到需要使用物理存储中的交换空间。</string>

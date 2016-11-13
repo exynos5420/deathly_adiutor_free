@@ -261,8 +261,6 @@
     <string name="light">Gyenge</string>
     <string name="medium">Közepes</string>
     <string name="very_aggressive">Nagyon agresszív</string>
-    <string name="adaptive">Adaptive Low Memory Killer</string>
-    <string name="adaptive_summary">LMK dinamikusan agresszívebbé tétele, amikor egy csapkodó forgatókönyvet érzékel.</string>
     <string name="zram">Z-RAM</string>
     <string name="disksize">Lemezméret</string>
     <string name="disksize_summary">Megpróbálja növelni a teljesítményt, elkerülve a lapozást a fizikai tárolón, helyette egy tömörített virtuális eszközt használ a RAM-ban. A lapozás a RAM-ban zajlik, amíg nincs szükség a fizikai tároló swap területének használatára.</string>

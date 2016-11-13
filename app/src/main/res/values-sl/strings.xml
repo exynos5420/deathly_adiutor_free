@@ -261,8 +261,6 @@
     <string name="light">Lahko</string>
     <string name="medium">Srednje</string>
     <string name="very_aggressive">Zelo agresivno</string>
-    <string name="adaptive">Adaptivni Low Memory Killer</string>
-    <string name="adaptive_summary">Dinamično naredi LMK bolj agresiven pri razlićnih scenarijih porabe pomnilnika.</string>
     <string name="zram">Z-RAM</string>
     <string name="disksize">Velikost diska</string>
     <string name="disksize_summary">Poskuša povečati učinkovitost z izogibanjem odstranjevanja na fizični shrambi, namesto tega uporablja stisnjeno navidezno napravo v RAM-u. Ostranjevanje poteka v RAM-u dokler ni potrebna uporaba menjalnega prostora na fizični shrambi.</string>

@@ -261,8 +261,6 @@
     <string name="light">緩め</string>
     <string name="medium">中</string>
     <string name="very_aggressive">積極的 (強)</string>
-    <string name="adaptive">Adaptive Low Memory Killer</string>
-    <string name="adaptive_summary">スラッシング状態を検出した時、LMKを動的によりアグレッシブにします。</string>
     <string name="zram">Z-RAM</string>
     <string name="disksize">ディスクサイズ</string>
     <string name="disksize_summary">物理ストレージに代わりにRAM上の圧縮された仮想デバイスを使用してページングを避けることによってパフォーマンスを向上しようとします。物理ストレージにスワップスペースを使用する必要が生じるまでページングはRAM上で行われます。</string>

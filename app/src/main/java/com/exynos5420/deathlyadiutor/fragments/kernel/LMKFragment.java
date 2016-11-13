@@ -32,7 +32,7 @@ import java.util.List;
 /**
  * Created by willi on 27.12.14.
  */
-public class LMKFragment extends RecyclerViewFragment implements Constants, SwitchCardView.DSwitchCard.OnDSwitchCardListener {
+public class LMKFragment extends RecyclerViewFragment implements Constants{
 
     private final List<String> values = new ArrayList<>(), modifiedvalues = new ArrayList<>();
     private final String[] mProfileValues = new String[]{
@@ -40,7 +40,6 @@ public class LMKFragment extends RecyclerViewFragment implements Constants, Swit
             "2048,4096,8192,16384,24576,32768", "4096,8192,16384,32768,49152,65536"};
     private SeekBarCardView.DSeekBarCard[] mMinFreeCard;
     private CardViewItem.DCardView[] mProfileCard;
-    private SwitchCardView.DSwitchCard mAdaptiveCard;
 
     @Override
     public void init(Bundle savedInstanceState) {
@@ -51,16 +50,6 @@ public class LMKFragment extends RecyclerViewFragment implements Constants, Swit
         for (int x = 0; x < 513; x++) {
             modifiedvalues.add(x + getString(R.string.mb));
             values.add(String.valueOf(x * 256));
-        }
-
-        if (LMK.hasAdaptive()) {
-            mAdaptiveCard = new SwitchCardView.DSwitchCard();
-            mAdaptiveCard.setTitle(getString(R.string.adaptive));
-            mAdaptiveCard.setDescription(getString(R.string.adaptive_summary));
-            mAdaptiveCard.setChecked(LMK.getAdaptive());
-            mAdaptiveCard.setOnDSwitchCardListener(this);
-
-            addView(mAdaptiveCard);
         }
 
         List<String> minfrees = LMK.getMinFrees();
@@ -143,12 +132,6 @@ public class LMKFragment extends RecyclerViewFragment implements Constants, Swit
 
             }
         }.start();
-    }
-
-    @Override
-    public void onChecked(SwitchCardView.DSwitchCard dSwitchCard, boolean checked) {
-        if (dSwitchCard == mAdaptiveCard)
-            LMK.setAdaptive(checked, getActivity());
     }
 
 }

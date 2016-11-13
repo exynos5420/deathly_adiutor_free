@@ -388,8 +388,6 @@
     <string name="light">Sanft</string>
     <string name="medium">Mittel</string>
     <string name="very_aggressive">Sehr aggressiv</string>
-    <string name="adaptive">Adaptiver Low Memory Killer</string>
-    <string name="adaptive_summary">LMK dynamisch, aggressiver ausführen, wenn ein Thrashing-Szenario entdeckt wird.</string>
 
     <!-- Virtual Memory -->
     <string name="zram">Z-RAM</string>

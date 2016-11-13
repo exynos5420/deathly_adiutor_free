@@ -260,7 +260,6 @@
     <string name="light">Leggero</string>
     <string name="medium">Medio</string>
     <string name="very_aggressive">Molto aggressivo</string>
-    <string name="adaptive_summary">Imposta il Low Memory Killer in modalità più dinamicamente aggressiva quando un\'app si blocca.</string>
     <string name="zram">ZRAM</string>
     <string name="disksize">Dimensione Disco</string>
     <string name="disksize_summary">Tentare di aumentare le prestazioni evitando il paging su storage fisico, invece di utilizzare un dispositivo virtuale compresso in RAM. Paging avviene nella RAM finché non è necessario utilizzare lo spazio di swap su memoria fisica.</string>

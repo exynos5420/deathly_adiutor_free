@@ -231,8 +231,7 @@ public class MainActivity extends BaseActivity implements Constants {
         ITEMS.add(new DAdapter.Item(getString(R.string.battery), new BatteryFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.io_scheduler), new IOFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.ksm), new KSMFragment()));
-        if (LMK.getMinFrees() != null)
-            ITEMS.add(new DAdapter.Item(getString(R.string.low_memory_killer), new LMKFragment()));
+        ITEMS.add(new DAdapter.Item(getString(R.string.low_memory_killer), new LMKFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.virtual_memory), new VMFragment()));
         if (Entropy.hasEntropy())
             ITEMS.add(new DAdapter.Item(getString(R.string.entropy), new EntropyFragment()));
