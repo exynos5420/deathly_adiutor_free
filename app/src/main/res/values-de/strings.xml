@@ -87,7 +87,6 @@
 
     <!-- Kernel Information -->
     <string name="kernel_version">Kernel-Version</string>
-    <string name="binning_information">Binning-Information</string>
     <string name="cpu_information">CPU-Information</string>
     <string name="memory_information">Speicher-Information</string>
 

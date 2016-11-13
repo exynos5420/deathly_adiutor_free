@@ -42,14 +42,6 @@ public class KernelInformationFragment extends RecyclerViewFragment {
         kernelVersionCard.setDescription(Info.getKernelVersion());
         addView(kernelVersionCard);
 
-
-        if (Info.hasPVSLevel() || Info.hasSpeedLevel()) {
-            CardViewItem.DCardView binningCard = new CardViewItem.DCardView();
-            binningCard.setTitle(getString(R.string.binning_information));
-            binningCard.setDescription(Info.getBinningInfo());
-            addView(binningCard);
-        }
-
         CardViewItem.DCardView cpuCard = new CardViewItem.DCardView();
         cpuCard.setTitle(getString(R.string.cpu_information));
         cpuCard.setDescription(Info.getCpuInfo());
