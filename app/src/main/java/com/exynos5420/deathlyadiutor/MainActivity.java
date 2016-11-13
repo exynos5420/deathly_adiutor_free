@@ -136,7 +136,7 @@ public class MainActivity extends BaseActivity implements Constants {
 
     @Override
     public int getParentViewId() {
-        return Utils.isTV(this) ? R.layout.activity_main_tv : R.layout.activity_main;
+        return R.layout.activity_main;
     }
 
     @Override
@@ -228,8 +228,7 @@ public class MainActivity extends BaseActivity implements Constants {
             ITEMS.add(new DAdapter.Item(getString(R.string.screen), new ScreenFragment()));
         if (Sound.hasSound())
             ITEMS.add(new DAdapter.Item(getString(R.string.sound), new SoundFragment()));
-        if (!Utils.isTV(this))
-            ITEMS.add(new DAdapter.Item(getString(R.string.battery), new BatteryFragment()));
+        ITEMS.add(new DAdapter.Item(getString(R.string.battery), new BatteryFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.io_scheduler), new IOFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.ksm), new KSMFragment()));
         if (LMK.getMinFrees() != null)

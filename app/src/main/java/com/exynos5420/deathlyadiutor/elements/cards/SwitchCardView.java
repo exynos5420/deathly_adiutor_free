@@ -67,11 +67,6 @@ public class SwitchCardView extends BaseCardView {
                 }
             }
         });
-
-        if (Utils.isTV(getContext())) {
-            switchCompatView.setFocusable(false);
-            switchCompatView.setFocusableInTouchMode(false);
-        }
     }
 
     @Override

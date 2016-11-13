@@ -69,7 +69,7 @@ public class SettingsFragment extends RecyclerViewFragment {
         super.init(savedInstanceState);
 
         darkthemeInit();
-        if (!Resources.getSystem().getConfiguration().locale.getLanguage().startsWith("en") && !Utils.isTV(getActivity()))
+        if (!Resources.getSystem().getConfiguration().locale.getLanguage().startsWith("en"))
             forceenglishlanguageInit();
         if (Constants.VERSION_NAME.contains("beta")) betainfoInit();
         if (Utils.hasCMSDK()) profileTileInit();
@@ -151,20 +151,18 @@ public class SettingsFragment extends RecyclerViewFragment {
 
         addView(mApplyonBootDividerCard);
 
-        if (!Utils.isTV(getActivity())) {
-            SwitchCardView.DSwitchCard mHideApplyOnBootCard = new SwitchCardView.DSwitchCard();
-            mHideApplyOnBootCard.setTitle(getString(R.string.hide_apply_on_boot));
-            mHideApplyOnBootCard.setDescription(getString(R.string.hide_apply_on_boot_summary));
-            mHideApplyOnBootCard.setChecked(Utils.getBoolean("hideapplyonboot", true, getActivity()));
-            mHideApplyOnBootCard.setOnDSwitchCardListener(new SwitchCardView.DSwitchCard.OnDSwitchCardListener() {
-                @Override
-                public void onChecked(SwitchCardView.DSwitchCard dSwitchCard, boolean checked) {
-                    Utils.saveBoolean("hideapplyonboot", checked, getActivity());
-                }
-            });
+        SwitchCardView.DSwitchCard mHideApplyOnBootCard = new SwitchCardView.DSwitchCard();
+        mHideApplyOnBootCard.setTitle(getString(R.string.hide_apply_on_boot));
+        mHideApplyOnBootCard.setDescription(getString(R.string.hide_apply_on_boot_summary));
+        mHideApplyOnBootCard.setChecked(Utils.getBoolean("hideapplyonboot", true, getActivity()));
+        mHideApplyOnBootCard.setOnDSwitchCardListener(new SwitchCardView.DSwitchCard.OnDSwitchCardListener() {
+            @Override
+            public void onChecked(SwitchCardView.DSwitchCard dSwitchCard, boolean checked) {
+                Utils.saveBoolean("hideapplyonboot", checked, getActivity());
+            }
+        });
 
             addView(mHideApplyOnBootCard);
-        }
 
         final List<String> list = new ArrayList<>();
         for (int i = 5; i < 421; i *= 2)

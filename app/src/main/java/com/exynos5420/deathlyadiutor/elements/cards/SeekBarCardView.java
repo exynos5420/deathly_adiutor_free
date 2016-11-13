@@ -131,15 +131,6 @@ public class SeekBarCardView extends BaseCardView {
             minusButton.setTextColor(color);
             plusButton.setTextColor(color);
         }
-
-        if (Utils.isTV(getContext())) {
-            minusButton.setFocusable(true);
-            minusButton.setFocusableInTouchMode(true);
-            plusButton.setFocusable(true);
-            plusButton.setFocusableInTouchMode(true);
-            seekBarView.setFocusable(false);
-            seekBarView.setFocusableInTouchMode(false);
-        }
     }
 
     @Override

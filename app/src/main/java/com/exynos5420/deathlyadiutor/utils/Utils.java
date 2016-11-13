@@ -411,12 +411,6 @@ public class Utils implements Constants {
         return actionBarSize;
     }
 
-    public static boolean isTV(Context context) {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2 && ((UiModeManager) context
-                .getSystemService(Context.UI_MODE_SERVICE))
-                .getCurrentModeType() == Configuration.UI_MODE_TYPE_TELEVISION;
-    }
-
     public static boolean isTablet(Context context) {
         return (context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
                 >= Configuration.SCREENLAYOUT_SIZE_LARGE;

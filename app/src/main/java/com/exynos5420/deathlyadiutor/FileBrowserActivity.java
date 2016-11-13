@@ -272,11 +272,6 @@ public class FileBrowserActivity extends BaseActivity {
                 text.setText(file.getName());
                 text.setCompoundDrawablesWithIntrinsicBounds(file.isDirectory() ? R.drawable.ic_folder : R.drawable.ic_file,
                         0, 0, 0);
-
-                if (Utils.isTV(viewHolder.itemView.getContext())) {
-                    viewHolder.itemView.setFocusable(true);
-                    viewHolder.itemView.setFocusableInTouchMode(true);
-                }
             }
 
             public File getFile() {

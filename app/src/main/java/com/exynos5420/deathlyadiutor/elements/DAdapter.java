@@ -173,10 +173,6 @@ public class DAdapter {
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder viewHolder) {
             view = viewHolder.itemView;
-            if (Utils.isTV(view.getContext())) {
-                view.setFocusable(true);
-                view.setFocusableInTouchMode(true);
-            }
             text = (TextView) view.findViewById(R.id.text);
             text.setText(title);
             view.setBackgroundColor(checked ? checkedBackgroundColor : defaultBackgroundColor);
@@ -326,10 +322,6 @@ public class DAdapter {
                 }
             });
 
-            if (Utils.isTV(view.getContext())) {
-                view.setFocusable(true);
-                view.setFocusableInTouchMode(true);
-            }
             return new RecyclerView.ViewHolder(view) {
             };
         }
