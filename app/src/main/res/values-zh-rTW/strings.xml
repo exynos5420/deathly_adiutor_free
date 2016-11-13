@@ -215,7 +215,6 @@
     <string name="very_light">很小</string>
     <string name="light">小</string>
     <string name="very_aggressive">非常積極的</string>
-    <string name="zram">Z-RAM</string>
     <string name="available">可用</string>
     <string name="read">讀取</string>
     <string name="write">寫入</string>

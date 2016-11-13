@@ -414,9 +414,6 @@
     <string name="very_aggressive">Very Aggressive</string>
 
     <!-- Virtual Memory -->
-    <string name="zram">Z-RAM</string>
-    <string name="disksize">Disksize</string>
-    <string name="disksize_summary">Attempts to increase performance by avoiding paging on physical storage, instead using a compressed virtual device in RAM. Paging takes place in RAM until it is necessary to use the swap space on physical storage.</string>
     <string name="dirty_ratio">Dirty Ratio</string>
     <string name="dirty_ratio_summary">Contains, as a percentage of total system memory, the number of pages at which a process which is generating disk writes will itself start writing out dirty data. Lower the amount of unwritten write cache to reduce lags when a huge write is required.</string>
     <string name="dirty_background_ratio">Dirty Background Ratio</string>
@@ -425,12 +422,6 @@
     <string name="dirty_expire_centisecs_summary">This tunable is used to define when dirty data is old enough to be eligible for writeout by the kernel flusher threads.  It is expressed in 100\'ths of a second.  Data which has been dirty in-memory for longer than this interval will be written out next time a flusher thread wakes up.</string>
     <string name="dirty_writeback_centisecs">Dirty Writeback Centisecs</string>
     <string name="dirty_writeback_centisecs_summary">The kernel flusher threads will periodically wake up and write old data out to disk.  This tunable expresses the interval between those wakeups, in 100\'ths of a second.  Setting this to zero disables periodic writeback altogether.</string>
-    <string name="dynamic_dirty_writeback_centisecs">Dynamic Dirty Writeback</string>
-    <string name="dynamic_dirty_writeback_centisecs_summary">This feature allows to have two different intervals for dirty page writebacks and to dynamically manage them when the system has been resumed (it\'s active) or when has been suspended.</string>
-    <string name="dirty_writeback_suspend_centisecs">Suspend Dirty Writeback Centisecs</string>
-    <string name="dirty_writeback_suspend_centisecs_summary">The kernel flusher threads will periodically wake up and write old data out to disk.  This tunable expresses the interval between those wakeups during suspend, in 100\'ths of a second.  Setting this to zero disables periodic writeback altogether.</string>
-    <string name="dirty_writeback_active_centisecs">Active Writeback Centisecs</string>
-    <string name="dirty_writeback_active_centisecs_summary">The kernel flusher threads will periodically wake up and write old data out to disk.  This tunable expresses the interval between those wakeups while active, in 100\'ths of a second.  Setting this to zero disables periodic writeback altogether.</string>
     <string name="overcommit_ratio">Overcommit Ratio</string>
     <string name="overcommit_ratio_summary">Percentage of physical memory size to include in overcommit calculations.</string>
     <string name="swappiness">Swappiness</string>
@@ -442,8 +433,6 @@
 
     <string name="min_free_kbytes">Min free Kilobytes</string>
     <string name="min_free_kbytes_summary">This is used to force the Linux VM to keep a minimum number of kilobytes free. The VM uses this number to compute a pages_min value for each lowmem zone in the system. Each lowmem zone gets a number of reserved free pages based proportionally on its size.</string>
-    <string name="extra_free_kbytes">Extra Free Kilobytes</string>
-    <string name="extra_free_kbytes_summary">This parameter tells the VM to keep extra free memory between the threshold where background reclaim (kswapd) kicks in, and the threshold where direct reclaim (by allocating processes) kicks in.</string>
 
     <!-- Entropy -->
     <string name="available">Available</string>

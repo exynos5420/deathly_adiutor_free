@@ -261,9 +261,6 @@
     <string name="light">Lahko</string>
     <string name="medium">Srednje</string>
     <string name="very_aggressive">Zelo agresivno</string>
-    <string name="zram">Z-RAM</string>
-    <string name="disksize">Velikost diska</string>
-    <string name="disksize_summary">Poskuša povečati učinkovitost z izogibanjem odstranjevanja na fizični shrambi, namesto tega uporablja stisnjeno navidezno napravo v RAM-u. Ostranjevanje poteka v RAM-u dokler ni potrebna uporaba menjalnega prostora na fizični shrambi.</string>
     <string name="available">Na voljo</string>
     <string name="poolsize">Velikost</string>
     <string name="read">Beri</string>

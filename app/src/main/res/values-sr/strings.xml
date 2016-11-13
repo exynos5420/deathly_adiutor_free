@@ -155,8 +155,6 @@
     <string name="light">Лагано</string>
     <string name="medium">Средње</string>
     <string name="very_aggressive">Веома агресивно</string>
-    <string name="zram">З-РАМ</string>
-    <string name="disksize">Величина диска</string>
     <string name="available">На располагању</string>
     <string name="read">Читање</string>
     <string name="write">Упис</string>

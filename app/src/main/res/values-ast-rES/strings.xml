@@ -254,9 +254,6 @@
     <string name="light">Suave</string>
     <string name="medium">Mediu</string>
     <string name="very_aggressive">Peragresivu</string>
-    <string name="zram">Z-RAM</string>
-    <string name="disksize">Tamañu del discu</string>
-    <string name="disksize_summary">Intenta aumentar el rindimientu evitando\'l paxináu nel almacenamientu físicu en cuantes d\'usar un preséu virtual comprimíu na RAM. El paxináu cueye espaciu na RAM fasta que sía preciso pa usar l\'espaciu d\'intercambéu nel almacenamientu físicu.</string>
     <string name="available">Disponible</string>
     <string name="poolsize">Tamañu de reserva</string>
     <string name="read">Llectura</string>

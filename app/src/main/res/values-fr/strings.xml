@@ -247,9 +247,6 @@
     <string name="light">Léger</string>
     <string name="medium">Moyen</string>
     <string name="very_aggressive">Très agressif</string>
-    <string name="zram">Z-RAM</string>
-    <string name="disksize">Taille du disque</string>
-    <string name="disksize_summary">Tentative d\'augmentation des performances en évitant la pagination sur le mémoire de stockage, en utilisant un lecteur virtuel compressé en RAM à la place. La pagination sera effectuée en RAM à moins que ce soit absolument nécessaire d\'utiliser l\'espace d\'échange de la mémoire de stockage.</string>
     <string name="available">Disponible</string>
     <string name="poolsize">Taille du réservoir (threads poolsize)</string>
     <string name="read">Lecture</string>

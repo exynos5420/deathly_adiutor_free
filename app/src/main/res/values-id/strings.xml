@@ -260,9 +260,6 @@
     <string name="light">Ringan</string>
     <string name="medium">Menengah</string>
     <string name="very_aggressive">Sangat Agresif</string>
-    <string name="zram">Z-RAM</string>
-    <string name="disksize">Disksize</string>
-    <string name="disksize_summary">Mencoba untuk meningkatkan kinerja dengan menghindari paging pada Penyimpanan fisik, tetapi menggunakan perangkat virtual terkompresi dalam RAM. Paging terjadi di RAM sampai perlu menggunakan ruang swap pada Penyimpanan fisik.</string>
     <string name="available">Tersedia</string>
     <string name="poolsize">Poolsize</string>
     <string name="read">Read</string>

@@ -143,9 +143,6 @@
     <string name="light">Lätt</string>
     <string name="medium">Medium</string>
     <string name="very_aggressive">Mycket Aggressiv</string>
-    <string name="zram">Z-RAM</string>
-    <string name="disksize">Diskstorlek</string>
-    <string name="disksize_summary">Försöker öka prestandan genom att undvika paging till sekundärminne och istället använda en komprimerad, virtuell enhet i primärminnet. Paging görs i primärminnet till dess att det är nödvändigt att använda swap-utrymmet på sekundärminnet.</string>
     <string name="available">Tillgängligt</string>
     <string name="poolsize">Poolstorlek</string>
     <string name="read">Läsning</string>

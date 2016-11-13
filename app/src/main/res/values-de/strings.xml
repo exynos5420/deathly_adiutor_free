@@ -390,9 +390,6 @@
     <string name="very_aggressive">Sehr aggressiv</string>
 
     <!-- Virtual Memory -->
-    <string name="zram">Z-RAM</string>
-    <string name="disksize">Disk-Größe</string>
-    <string name="disksize_summary">Verhindert die Auslagerung auf den physikalischen Speicher, und soll dadurch die Leistung erhöhen. Anstatt der Verwendung eines komprimierten virtuellen Gerätes im RAM.</string>
     <string name="dirty_ratio">Dirty-Ratio</string>
     <string name="dirty_ratio_summary">Umfasst die Anzahl der Seiten, ausgedrückt als Prozentsatz des gesamten Systemspeichers, ab welchen ein Prozess, der Schreibzugriffe generiert, sich selbst aus den Dirty-Daten schreibt. Verringere die Anzahl, um Lags bei großer Schreibmenge zu reduzieren.</string>
     <string name="dirty_background_ratio">Dirty Ratio Background</string>
@@ -401,12 +398,6 @@
     <string name="dirty_expire_centisecs_summary">Diese Einstellung definiert, wann Daten alt genug sind, um für den Kernel-Flusher in Frage zu kommen.  Wird in hundertstel einer Sekunde angegeben.  Daten, welche länger als dieses Intervall im Speicher sind, werden vom Kernel-Flusher zurückgeschrieben.</string>
     <string name="dirty_writeback_centisecs">Dirty Writeback Centisecs</string>
     <string name="dirty_writeback_centisecs_summary">Der Kernel-Flusher wird periodisch aufwachen, um alte Daten auf die Disk zu schreiben.  Diese Einstellung gibt das Intervall zwischen den Wakeups an, in hundertstel einer Sekunde.  Der Wert 0 deaktiviert das periodische Rückschreiben.</string>
-    <string name="dynamic_dirty_writeback_centisecs">Dynamic Dirty Writeback</string>
-    <string name="dynamic_dirty_writeback_centisecs_summary">Dieses Feature erlaubt 2 verschiedene Intervalle für das Rückschreiben zu nutzen, und dynamisch zu verwalten, wenn das System aktiv ist oder es ausgesetzt wird.</string>
-    <string name="dirty_writeback_suspend_centisecs">Suspend Dirty Writeback Centisecs</string>
-    <string name="dirty_writeback_suspend_centisecs_summary">Der Kernel-Flusher wird periodisch aufwachen, um alte Daten auf die Disk zu schreiben. Diese Einstellung gibt das Intervall zwischen den Wakeups an, während das Gerät inaktiv ist, in hundertstel einer Sekunde.  Der Wert 0 deaktiviert das periodische Rückschreiben.</string>
-    <string name="dirty_writeback_active_centisecs">Active Writeback Centisecs</string>
-    <string name="dirty_writeback_active_centisecs_summary">Der Kernel-Flusher wird periodisch aufwachen, um alte Daten auf die Disk zu schreiben.  Diese Einstellung gibt das Intervall zwischen den Wakeups an, während das Gerät aktiv ist, in hundertstel einer Sekunde.  Der Wert 0 deaktiviert das periodische Rückschreiben.</string>
     <string name="overcommit_ratio">Overcommit Ratio</string>
     <string name="overcommit_ratio_summary">Prozentsatz der physikalischen Speichergröße, für Overcommit-Kalkulationen.</string>
     <string name="swappiness">Swappiness</string>
@@ -418,8 +409,6 @@
 
     <string name="min_free_kbytes">Min. freie Kilobytes</string>
     <string name="min_free_kbytes_summary">Wird angewendet, um die Linux-VM dazu zu zwingen, eine minimale Anzahl an Kilobytes frei zu halten. Die VM nutzt diese Anzahl, um einen pages_min-Wert für jede lowmem-Zone im System zu berechnen. Jede lowmem-Zone bekommt eine reservierte Anzahl an freien Seiten, proportional basierend auf ihrer Größe.</string>
-    <string name="extra_free_kbytes">Extra freie Kilobytes</string>
-    <string name="extra_free_kbytes_summary">Dieses Parameter befiehlt der VM extra freien Speicher zu reservieren, zwischen dem Schwellenwert wo die Hintergrund-Regenerierung (kswap) einsetzt, und dem Schwellenwert wo die direkte Regenerierung (durch Zuweisen der Prozesse) einsetzt.</string>
 
     <!-- Entropy -->
     <string name="available">Verfügbar</string>

@@ -225,9 +225,6 @@
     <string name="light">가볍게</string>
     <string name="medium">적당하게</string>
     <string name="very_aggressive">매우 적극적이게</string>
-    <string name="zram">Z-RAM</string>
-    <string name="disksize">디스크 크기</string>
-    <string name="disksize_summary">물리 저장소 대신 RAM의 가상 압축 저장소에서 페이징을 실행하여 성능을 향상시킵니다. 페이징은 물리 저장소의 스왑 공간이 필요해지기 전까지 RAM에서 실행됩니다.</string>
     <string name="available">사용 가능</string>
     <string name="read">읽기</string>
     <string name="write">쓰기</string>

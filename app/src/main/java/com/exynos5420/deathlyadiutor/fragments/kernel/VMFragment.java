@@ -36,32 +36,27 @@ import java.util.List;
 
 public class VMFragment extends RecyclerViewFragment implements SeekBarCardView.DSeekBarCard.OnDSeekBarCardListener, SwitchCardView.DSwitchCard.OnDSwitchCardListener {
 
-    private EditTextCardView.DEditTextCard mMinFreeKbytesCard, mExtraFreeKbytesCard;
+    private EditTextCardView.DEditTextCard mMinFreeKbytesCard;
 
     private SeekBarCardView.DSeekBarCard mDirtyRatioCard, mDirtyBackgroundRatioCard, mDirtyExpireCard, mDirtyWritebackCard, mOverCommitRatioCard, mSwappinessCard, mVFSCachePressureCard, mZRAMDisksizeCard;
-    private SeekBarCardView.DSeekBarCard mDirty_Writeback_SuspendCard, mDirty_Writeback_ActiveCard;
 
-    private SwitchCardView.DSwitchCard mLaptopModeCard, mDynamic_Dirty_WritebackCard;
+    private SwitchCardView.DSwitchCard mLaptopModeCard;
 
     @Override
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
 
-        if (VM.hasDirtyRatio()) dirtyratioInit();
-        if (VM.hasDirtyBackgroundRatio()) dirtybackgroundratioInit();
-        if (VM.hasDirtyExpire()) dirtyexpireInit();
-        if (VM.hasDirtyWriteback() && !VM.isDynamicDirtyWritebackActive()) dirtywritebackInit();
-        if (VM.hasDynamicDirtyWriteback()) dynamicdirtywritebackInit();
-        if (VM.hasOverCommitRatio()) overcommitratioInit();
-        if (VM.hasSwappiness()) swappinessInit();
-        if (VM.hasVFSCachePressure()) vfscachepressureInit();
+        dirtyratioInit();
+        dirtybackgroundratioInit();
+        dirtyexpireInit();
+        dirtywritebackInit();
+        overcommitratioInit();
+        swappinessInit();
+        vfscachepressureInit();
 
-        if (VM.hasLaptopMode()) laptopmodeInit();
+        laptopmodeInit();
 
-        if (VM.hasMinFreeKbytes()) minfreekbytesInit();
-        if (VM.hasExtraFreeKbytes()) extrafreekbytesInit();
-
-        if (VM.hasZRAM()) zramInit();
+        minfreekbytesInit();
     }
 
     private void dirtyratioInit() {
@@ -120,48 +115,6 @@ public class VMFragment extends RecyclerViewFragment implements SeekBarCardView.
         mDirtyWritebackCard.setOnDSeekBarCardListener(this);
 
         addView(mDirtyWritebackCard);
-    }
-
-    private void dynamicdirtywritebackInit() {
-
-        if (VM.hasDynamicDirtyWriteback()) {
-            mDynamic_Dirty_WritebackCard = new SwitchCardView.DSwitchCard();
-            mDynamic_Dirty_WritebackCard.setTitle(getString(R.string.dynamic_dirty_writeback_centisecs));
-            mDynamic_Dirty_WritebackCard.setDescription(getString(R.string.dynamic_dirty_writeback_centisecs_summary));
-            mDynamic_Dirty_WritebackCard.setChecked(VM.isDynamicDirtyWritebackActive());
-            mDynamic_Dirty_WritebackCard.setOnDSwitchCardListener(this);
-
-            addView(mDynamic_Dirty_WritebackCard);
-        }
-
-        if (VM.isDynamicDirtyWritebackActive()) {
-
-            List<String> list = new ArrayList<>();
-            for (int i = 1; i <= 900; i++)
-                list.add(i * 10 + getString(R.string.cs));
-
-            if (VM.hasDirtySuspendWriteback()) {
-
-                mDirty_Writeback_SuspendCard = new SeekBarCardView.DSeekBarCard(list);
-                mDirty_Writeback_SuspendCard.setTitle(getString(R.string.dirty_writeback_suspend_centisecs));
-                mDirty_Writeback_SuspendCard.setDescription(getString(R.string.dirty_writeback_suspend_centisecs_summary));
-                mDirty_Writeback_SuspendCard.setProgress((VM.getDirtySuspendWriteback()) - 1);
-                mDirty_Writeback_SuspendCard.setOnDSeekBarCardListener(this);
-
-                addView(mDirty_Writeback_SuspendCard);
-            }
-
-            if (VM.hasDirtyActiveWriteback()) {
-
-                mDirty_Writeback_ActiveCard = new SeekBarCardView.DSeekBarCard(list);
-                mDirty_Writeback_ActiveCard.setTitle(getString(R.string.dirty_writeback_active_centisecs));
-                mDirty_Writeback_ActiveCard.setDescription(getString(R.string.dirty_writeback_active_centisecs_summary));
-                mDirty_Writeback_ActiveCard.setProgress((VM.getDirtySuspendWriteback()) - 1);
-                mDirty_Writeback_ActiveCard.setOnDSeekBarCardListener(this);
-
-                addView(mDirty_Writeback_ActiveCard);
-            }
-        }
     }
 
     private void overcommitratioInit() {
@@ -243,46 +196,6 @@ public class VMFragment extends RecyclerViewFragment implements SeekBarCardView.
 
     }
 
-    private void extrafreekbytesInit() {
-        DDivider mExtraFreeKbytesDividerCard = new DDivider();
-        mExtraFreeKbytesDividerCard.setText(getString(R.string.extra_free_kbytes));
-        mExtraFreeKbytesDividerCard.setDescription(getString(R.string.extra_free_kbytes_summary));
-        addView(mExtraFreeKbytesDividerCard);
-
-        String value = VM.getExtraFreeKbytes();
-        mExtraFreeKbytesCard = new EditTextCardView.DEditTextCard();
-        mExtraFreeKbytesCard.setDescription(value + " kb");
-        mExtraFreeKbytesCard.setValue(value);
-        mExtraFreeKbytesCard.setInputType(InputType.TYPE_CLASS_NUMBER);
-        mExtraFreeKbytesCard.setOnDEditTextCardListener(new EditTextCardView.DEditTextCard.OnDEditTextCardListener() {
-            @Override
-            public void onApply(EditTextCardView.DEditTextCard dEditTextCard, String value) {
-                VM.setExtraFreeKbytes(value.replace(" kb", ""), getActivity());
-                dEditTextCard.setDescription(value + " kb");
-            }
-        });
-
-        addView(mExtraFreeKbytesCard);
-    }
-
-    private void zramInit() {
-        DDivider mZRAMDividerCard = new DDivider();
-        mZRAMDividerCard.setText(getString(R.string.zram));
-        addView(mZRAMDividerCard);
-
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < 101; i++)
-            list.add((i * 10) + getString(R.string.mb));
-
-        mZRAMDisksizeCard = new SeekBarCardView.DSeekBarCard(list);
-        mZRAMDisksizeCard.setTitle(getString(R.string.disksize));
-        mZRAMDisksizeCard.setDescription(getString(R.string.disksize_summary));
-        mZRAMDisksizeCard.setProgress(VM.getZRAMDisksize() / 10);
-        mZRAMDisksizeCard.setOnDSeekBarCardListener(this);
-
-        addView(mZRAMDisksizeCard);
-    }
-
     @Override
     public void onChanged(SeekBarCardView.DSeekBarCard dSeekBarCard, int position) {
     }
@@ -296,27 +209,16 @@ public class VMFragment extends RecyclerViewFragment implements SeekBarCardView.
             VM.setDirtyExpire((position + 1) * 10, getActivity());
         else if (dSeekBarCard == mDirtyWritebackCard)
             VM.setDirtyWriteback(position + 1, getActivity());
-        else if (dSeekBarCard == mDirty_Writeback_SuspendCard)
-            VM.setDirtySuspendWriteback(position + 1, getActivity());
-        else if (dSeekBarCard == mDirty_Writeback_ActiveCard)
-            VM.setDirtyActiveWriteback(position + 1, getActivity());
         else if (dSeekBarCard == mOverCommitRatioCard)
             VM.setOverCommitRatio(position, getActivity());
         else if (dSeekBarCard == mSwappinessCard) VM.setSwappiness(position, getActivity());
         else if (dSeekBarCard == mVFSCachePressureCard)
             VM.setVFSCachePressure(position + 1, getActivity());
-        else if (dSeekBarCard == mZRAMDisksizeCard)
-            VM.setZRAMDisksize(position * 10, getActivity());
     }
 
     @Override
     public void onChecked(SwitchCardView.DSwitchCard dSwitchCard, boolean checked) {
         if (dSwitchCard == mLaptopModeCard)
             VM.activateLaptopMode(checked, getActivity());
-        else if (dSwitchCard == mDynamic_Dirty_WritebackCard) {
-            VM.activateDynamicDirtyWriteback(checked, getActivity());
-            view.invalidate();
-            getActivity().getSupportFragmentManager().beginTransaction().detach(this).attach(this).commit();
-        }
     }
 }

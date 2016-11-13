@@ -202,9 +202,6 @@
     <string name="light">Mírný</string>
     <string name="medium">Střední</string>
     <string name="very_aggressive">Velmi agresivní</string>
-    <string name="zram">Z-RAM</string>
-    <string name="disksize">Disksize</string>
-    <string name="disksize_summary">Pokus o zvýšení výkonu zamezením stránkování na fyzické uložiště. Pro stránkování bude přednostně použito komprimované virtuální zařízení v paměti RAM, dokud nebude nutné použít odkládací prostor na fyzickém uložišti.</string>
     <string name="available">Dostupná</string>
     <string name="poolsize">PoolSize</string>
     <string name="read">Čtení</string>

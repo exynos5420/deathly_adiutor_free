@@ -150,8 +150,6 @@
     <string name="light">Lekki</string>
     <string name="medium">Średni</string>
     <string name="very_aggressive">Bardzo agresywny</string>
-    <string name="zram">Z-RAM</string>
-    <string name="disksize">Rozmiar dysku</string>
     <string name="available">Dostępny</string>
     <string name="read">Odczyt</string>
     <string name="write">Zapis</string>

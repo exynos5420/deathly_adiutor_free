@@ -262,9 +262,6 @@
     <string name="light">Ligero</string>
     <string name="medium">Medio</string>
     <string name="very_aggressive">Muy agresivo</string>
-    <string name="zram">Z-RAM</string>
-    <string name="disksize">Tamaño de memoria</string>
-    <string name="disksize_summary">Intenta aumentar el rendimiento evitando la paginación de almacenamiento físico, en su lugar usa un dispositivo de compresión virtual en la RAM. La paginación toma un lugar en la RAM hasta que sea necesario de usar el intercambio de espacio en el almacenamiento físico.</string>
     <string name="available">Disponible</string>
     <string name="poolsize">Tamaño del Pool</string>
     <string name="read">Lectura</string>

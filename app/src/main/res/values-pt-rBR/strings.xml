@@ -261,9 +261,6 @@
     <string name="light">Suave</string>
     <string name="medium">Médio</string>
     <string name="very_aggressive">Muito agressivo</string>
-    <string name="zram">Z-RAM</string>
-    <string name="disksize">Disksize</string>
-    <string name="disksize_summary">Tenta aumentar o desempenho, evitando a paginação no armazenamento físico, mas usando um dispositivo virtual compactado na RAM. A paginação ocorre na RAM até que seja necessário usar o a área de troca no armazenamento físico.</string>
     <string name="available">Disponível</string>
     <string name="poolsize">PoolSize</string>
     <string name="read">Leitura</string>

@@ -261,9 +261,6 @@
     <string name="light">Легкий</string>
     <string name="medium">Средний</string>
     <string name="very_aggressive">Очень агрессивный</string>
-    <string name="zram">Z-RAM</string>
-    <string name="disksize">Размер диска</string>
-    <string name="disksize_summary">Улучшает производительность методом сжатия данных в ОЗУ вместо постоянной памяти. Использует ОЗУ до тех пор, пока не станет необходимым записать данные в постоянную память.</string>
     <string name="available">Доступно</string>
     <string name="poolsize">Размер пула</string>
     <string name="read">Читать</string>
