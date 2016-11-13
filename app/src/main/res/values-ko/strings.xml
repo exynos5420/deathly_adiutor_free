@@ -212,7 +212,6 @@
     <string name="ksm_pages_volatile">휘발성 페이지</string>
     <string name="ksm_enable">KSM 활성화</string>
     <string name="ksm_enable_summary">메모리 사용량을 줄일 수 있지만, CPU 사용량에 영향을 끼칩니다.</string>
-    <string name="ksm_pages_to_scan">검색 페이지</string>
     <string name="ksm_sleep_milliseconds">검색 사이의 간격</string>
     <string name="ksm_deferred_timer">Deferred timer</string>
     <string name="ksm_deferred_timer_summary">몇몇 CPU 사용량을 줄이고, 약간의 메모리를 아낄 수 있습니다.</string>

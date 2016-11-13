@@ -38,7 +38,7 @@ public class KSMFragment extends RecyclerViewFragment implements SwitchCardView.
 
     private SwitchCardView.DSwitchCard mEnableKsmCard, mDeferredTimerCard;
 
-    private SeekBarCardView.DSeekBarCard mPagesToScanCard, mSleepMillisecondsCard, mCpuUseCard;
+    private SeekBarCardView.DSeekBarCard mSleepMillisecondsCard, mCpuUseCard;
 
     @Override
     public void init(Bundle savedInstanceState) {
@@ -69,52 +69,35 @@ public class KSMFragment extends RecyclerViewFragment implements SwitchCardView.
 
         addView(mEnableKsmCard);
 
-        if (KSM.hasDeferredTimer()) {
-            mDeferredTimerCard = new SwitchCardView.DSwitchCard();
-            mDeferredTimerCard.setTitle(getString(R.string.ksm_deferred_timer));
-            mDeferredTimerCard.setDescription(getString(R.string.ksm_deferred_timer_summary));
-            mDeferredTimerCard.setChecked(KSM.isDeferredTimerActive());
-            mDeferredTimerCard.setOnDSwitchCardListener(this);
+        mDeferredTimerCard = new SwitchCardView.DSwitchCard();
+        mDeferredTimerCard.setTitle(getString(R.string.ksm_deferred_timer));
+        mDeferredTimerCard.setDescription(getString(R.string.ksm_deferred_timer_summary));
+        mDeferredTimerCard.setChecked(KSM.isDeferredTimerActive());
+        mDeferredTimerCard.setOnDSwitchCardListener(this);
 
-            addView(mDeferredTimerCard);
-        }
+        addView(mDeferredTimerCard);
 
-        if (KSM.hasPagesToScan()) {
-            List<String> list = new ArrayList<>();
-            for (int i = 0; i < 1025; i++) list.add(String.valueOf(i));
 
-            mPagesToScanCard = new SeekBarCardView.DSeekBarCard(list);
-            mPagesToScanCard.setTitle(getString(R.string.ksm_pages_to_scan));
-            mPagesToScanCard.setProgress(KSM.getPagesToScan());
-            mPagesToScanCard.setOnDSeekBarCardListener(this);
+        List<String> list_milliseconds = new ArrayList<>();
+        for (int i = 0; i < 5001; i++) list_milliseconds.add(i + getString(R.string.ms));
 
-            addView(mPagesToScanCard);
-        }
+        mSleepMillisecondsCard = new SeekBarCardView.DSeekBarCard(list_milliseconds);
+        mSleepMillisecondsCard.setTitle(getString(R.string.ksm_sleep_milliseconds));
+        mSleepMillisecondsCard.setProgress(KSM.getSleepMilliseconds());
+        mSleepMillisecondsCard.setOnDSeekBarCardListener(this);
 
-        if (KSM.hasSleepMilliseconds()) {
-            List<String> list = new ArrayList<>();
-            for (int i = 0; i < 5001; i++) list.add(i + getString(R.string.ms));
+        addView(mSleepMillisecondsCard);
 
-            mSleepMillisecondsCard = new SeekBarCardView.DSeekBarCard(list);
-            mSleepMillisecondsCard.setTitle(getString(R.string.ksm_sleep_milliseconds));
-            mSleepMillisecondsCard.setProgress(KSM.getSleepMilliseconds());
-            mSleepMillisecondsCard.setOnDSeekBarCardListener(this);
+        List<String> list_cpuuse = new ArrayList<>();
+        for (int i = 0; i < 101; i++) list_cpuuse.add(i + getString(R.string.percent));
 
-            addView(mSleepMillisecondsCard);
-        }
-
-        if (KSM.hasCpuUse()) {
-            List<String> list = new ArrayList<>();
-            for (int i = 0; i < 101; i++) list.add(i + getString(R.string.percent));
-
-            mCpuUseCard = new SeekBarCardView.DSeekBarCard(list);
-            mCpuUseCard.setTitle(getString(R.string.uksm_cpu_use));
-            mCpuUseCard.setDescription(getString(R.string.uksm_cpu_use_summary));
-            mCpuUseCard.setProgress(KSM.getCpuUse());
-            mCpuUseCard.setOnDSeekBarCardListener(this);
+        mCpuUseCard = new SeekBarCardView.DSeekBarCard(list_cpuuse);
+        mCpuUseCard.setTitle(getString(R.string.uksm_cpu_use));
+        mCpuUseCard.setDescription(getString(R.string.uksm_cpu_use_summary));
+        mCpuUseCard.setProgress(KSM.getCpuUse());
+        mCpuUseCard.setOnDSeekBarCardListener(this);
 
             addView(mCpuUseCard);
-        }
 
     }
 
@@ -131,8 +114,7 @@ public class KSMFragment extends RecyclerViewFragment implements SwitchCardView.
 
     @Override
     public void onStop(SeekBarCardView.DSeekBarCard dSeekBarCard, int position) {
-        if (dSeekBarCard == mPagesToScanCard) KSM.setPagesToScan(position, getActivity());
-        else if (dSeekBarCard == mSleepMillisecondsCard)
+        if (dSeekBarCard == mSleepMillisecondsCard)
             KSM.setSleepMilliseconds(position, getActivity());
         else if (dSeekBarCard == mCpuUseCard)
             KSM.setCpuUse(position, getActivity());

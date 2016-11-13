@@ -226,7 +226,6 @@ Está a usar a versão %s.</string>
     <string name="ksm_pages_volatile">Páginas voláteis</string>
     <string name="ksm_enable">Habilitar KSM</string>
     <string name="ksm_enable_summary">Reduz o uso de memória, mas tem um impacto sobre o uso da CPU.</string>
-    <string name="ksm_pages_to_scan">Páginas a analisar</string>
     <string name="ksm_sleep_milliseconds">Dormir entre as analises</string>
     <string name="ksm_deferred_timer">Temporizador diferido</string>
     <string name="ksm_deferred_timer_summary">Reduz um pouco uso da CPU em troca de menos poupança memória.</string>

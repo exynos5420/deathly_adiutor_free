@@ -241,7 +241,6 @@
     <string name="ksm_pages_volatile">Páxines volátiles</string>
     <string name="ksm_enable">Habilitar KSM</string>
     <string name="ksm_enable_summary">Amenorga l\'usu de memoria pero tien un impautu nel usu de CPU.</string>
-    <string name="ksm_pages_to_scan">Páxines pa escaniar</string>
     <string name="ksm_sleep_milliseconds">Dormición ente escaneos</string>
     <string name="ksm_deferred_timer">Temporizador apostalgáu</string>
     <string name="ksm_deferred_timer_summary">Amenorga dél usu de CPU empara de menos aforros d\'enerxía.</string>

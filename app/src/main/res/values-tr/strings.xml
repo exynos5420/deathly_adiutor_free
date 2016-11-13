@@ -182,7 +182,6 @@
     <string name="ksm_pages_volatile">Geçici sayfalar</string>
     <string name="ksm_enable">KSM açık</string>
     <string name="ksm_enable_summary">Bellek kullanımını azaltır ancak CPU kullanımı üzerinde etkisi vardır.</string>
-    <string name="ksm_pages_to_scan">Sayfaları tarama</string>
     <string name="ksm_sleep_milliseconds">Taramalar arasında uyku</string>
     <string name="ksm_deferred_timer">Ertelenmiş zamanlayıcı</string>
     <string name="ksm_deferred_timer_summary">Daha az bellek tasarruf karşılığında bazı CPU kullanımını azaltır.</string>

@@ -414,22 +414,17 @@ public interface Constants {
             IO_STATS, IO_RANDOM, IO_AFFINITY};
 
     // Kernel Samepage Merging
-    String KSM_FOLDER = "/sys/kernel/mm/ksm";
     String UKSM_FOLDER = "/sys/kernel/mm/uksm";
     String FULL_SCANS = "full_scans";
     String PAGES_SHARED = "pages_shared";
     String PAGES_SHARING = "pages_sharing";
     String PAGES_UNSHARED = "pages_unshared";
-    String PAGES_VOLATILE = "pages_volatile";
     String RUN = "run";
     String DEFERRED_TIMER = "deferred_timer";
-    String PAGES_TO_SCAN = "pages_to_scan";
     String SLEEP_MILLISECONDS = "sleep_millisecs";
     String UKSM_CPU_USE = "max_cpu_percentage";
 
-    String[] KSM_INFOS = {FULL_SCANS, PAGES_SHARED, PAGES_SHARING, PAGES_UNSHARED, PAGES_VOLATILE};
-
-    String[] KSM_ARRAY = {KSM_FOLDER, UKSM_FOLDER};
+    String[] KSM_INFOS = {FULL_SCANS, PAGES_SHARED, PAGES_SHARING, PAGES_UNSHARED};
 
     // Low Memory Killer
     String LMK_MINFREE = "/sys/module/lowmemorykiller/parameters/minfree";

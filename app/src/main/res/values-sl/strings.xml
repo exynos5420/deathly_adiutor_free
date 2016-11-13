@@ -248,7 +248,6 @@
     <string name="ksm_pages_volatile">Neobstojne strani</string>
     <string name="ksm_enable">Omogoči KSM</string>
     <string name="ksm_enable_summary">Zmanjšuje porabo spomina, vendar vpliva na porabo CPE.</string>
-    <string name="ksm_pages_to_scan">Strani za skeniranje</string>
     <string name="ksm_sleep_milliseconds">Spanje med skenirajnem</string>
     <string name="ksm_deferred_timer">Odložen časovnik</string>
     <string name="ksm_deferred_timer_summary">Zmanjšuje nekaj porabe CPE v zameno za manj prihranjenega spomina.</string>

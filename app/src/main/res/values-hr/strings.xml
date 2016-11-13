@@ -163,7 +163,6 @@
     <string name="ksm_pages_volatile">Promjenljive stranice</string>
     <string name="ksm_enable">Omogućite KSM</string>
     <string name="ksm_enable_summary">Smanjuje upotrebu memorije, ali utječe na rad CPU-a.</string>
-    <string name="ksm_pages_to_scan">Stranice za scaniranje</string>
     <string name="ksm_sleep_milliseconds">Stanje mirovanja između scaniranja</string>
     <string name="ksm_deferred_timer">Odgođeni istek vremena</string>
     <string name="ksm_deferred_timer_summary">Smanjuje dio korištenja CPU-a po cijenu smanjivanja radne memorije.</string>

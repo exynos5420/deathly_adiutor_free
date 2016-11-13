@@ -248,7 +248,6 @@
     <string name="ksm_pages_volatile">Illékony oldalak</string>
     <string name="ksm_enable">KSM engedélyezése</string>
     <string name="ksm_enable_summary">Csökkenti a memória használatot, de hatással van a CPU-használatra.</string>
-    <string name="ksm_pages_to_scan">Oldalak beolvasása</string>
     <string name="ksm_sleep_milliseconds">Alvás keresések között</string>
     <string name="ksm_deferred_timer">Késleltetett időzítő</string>
     <string name="ksm_deferred_timer_summary">Csökkent néhány CPU használatot a kevesebb memória-megtakarítás fejében.</string>

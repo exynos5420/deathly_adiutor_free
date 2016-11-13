@@ -142,7 +142,6 @@
     <string name="ksm_pages_volatile">Strony niestabilne</string>
     <string name="ksm_enable">Włącz KSM</string>
     <string name="ksm_enable_summary">Zmniejsza zużycie pamięci, ale ma wpływ na wykorzystanie procesora.</string>
-    <string name="ksm_pages_to_scan">Strony do przeskanowania</string>
     <string name="ksm_sleep_milliseconds">Usypianie pomiędzy skanowaniem</string>
     <string name="visible_app">Widoczne aplikacje</string>
     <string name="hidden_app">Ukryte aplikacje</string>

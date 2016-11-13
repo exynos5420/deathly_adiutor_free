@@ -27,18 +27,12 @@ import com.exynos5420.deathlyadiutor.utils.root.Control;
  */
 public class KSM implements Constants {
 
-    private static String KSM_FILE;
-
     public static void setSleepMilliseconds(int ms, Context context) {
         Control.runCommand(String.valueOf(ms), getKsmFile(SLEEP_MILLISECONDS), Control.CommandType.GENERIC, context);
     }
 
     public static int getSleepMilliseconds() {
         return Utils.stringToInt(Utils.readFile(getKsmFile(SLEEP_MILLISECONDS)));
-    }
-
-    public static boolean hasSleepMilliseconds() {
-        return Utils.existFile(getKsmFile(SLEEP_MILLISECONDS));
     }
 
     public static void setCpuUse(int percent, Context context) {
@@ -49,32 +43,12 @@ public class KSM implements Constants {
         return Utils.stringToInt(Utils.readFile(getKsmFile(UKSM_CPU_USE)));
     }
 
-    public static boolean hasCpuUse() {
-        return Utils.existFile(getKsmFile(UKSM_CPU_USE));
-    }
-
-    public static void setPagesToScan(int pages, Context context) {
-        Control.runCommand(String.valueOf(pages), getKsmFile(PAGES_TO_SCAN), Control.CommandType.GENERIC, context);
-    }
-
-    public static int getPagesToScan() {
-        return Utils.stringToInt(Utils.readFile(getKsmFile(PAGES_TO_SCAN)));
-    }
-
-    public static boolean hasPagesToScan() {
-        return Utils.existFile(getKsmFile(PAGES_TO_SCAN));
-    }
-
     public static void activateDeferredTimer(boolean active, Context context) {
         Control.runCommand(active ? "1" : "0", getKsmFile(DEFERRED_TIMER), Control.CommandType.GENERIC, context);
     }
 
     public static boolean isDeferredTimerActive() {
         return Utils.readFile(getKsmFile(DEFERRED_TIMER)).equals("1");
-    }
-
-    public static boolean hasDeferredTimer() {
-        return Utils.existFile(getKsmFile(DEFERRED_TIMER));
     }
 
     public static void activateKsm(boolean active, Context context) {
@@ -98,13 +72,7 @@ public class KSM implements Constants {
     }
 
     private static String getKsmFile(String file) {
-        return KSM_FILE + "/" + file;
-    }
-
-    public static boolean hasKsm() {
-        if (Utils.existFile(UKSM_FOLDER)) KSM_FILE = UKSM_FOLDER;
-        else if (Utils.existFile(KSM_FOLDER)) KSM_FILE = KSM_FOLDER;
-        return KSM_FILE != null;
+        return UKSM_FOLDER + "/" + file;
     }
 
 }

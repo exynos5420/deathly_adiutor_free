@@ -143,7 +143,6 @@
     <string name="ksm_pages_unshared">Недељене странице</string>
     <string name="ksm_pages_volatile">Нестабилне странице</string>
     <string name="ksm_enable">Омогући КСМ</string>
-    <string name="ksm_pages_to_scan">Странице за скенирање</string>
     <string name="ksm_sleep_milliseconds">Паузе између скенирања</string>
     <string name="ksm_deferred_timer">Тајмер одгађања</string>
     <string name="foreground_app">Апликације у првом плану</string>

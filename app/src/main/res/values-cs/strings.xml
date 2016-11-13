@@ -191,7 +191,6 @@
     <string name="read_ahead">Čtení předem</string>
     <string name="read_ahead_summary">Read-ahead hodnota pro paměť zařízení.</string>
     <string name="ksm_enable_summary">Snižuje využití paměti, ale nemá dopad na využití procesoru.</string>
-    <string name="ksm_pages_to_scan">Stránky pro skenování</string>
     <string name="ksm_deferred_timer_summary">Snižuje využití procesoru za cenu menší úspory paměti.</string>
     <string name="foreground_app">Aplikace v popředí</string>
     <string name="visible_app">Viditelné aplikace</string>

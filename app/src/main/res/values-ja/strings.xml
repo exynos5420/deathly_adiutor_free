@@ -248,7 +248,6 @@
     <string name="ksm_pages_volatile">揮発性ページ</string>
     <string name="ksm_enable">KSMの有効化</string>
     <string name="ksm_enable_summary">メモリ使用率を削減しますが、CPU消費量が増えます。</string>
-    <string name="ksm_pages_to_scan">スキャンするページ</string>
     <string name="ksm_sleep_milliseconds">スキャン間のスリープ</string>
     <string name="ksm_deferred_timer">タイマーの遅延</string>
     <string name="ksm_deferred_timer_summary">一部のCPU使用率を低減し、少しだけメモリ使用量を削減します。</string>

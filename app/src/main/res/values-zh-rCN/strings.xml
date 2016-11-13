@@ -247,7 +247,6 @@
     <string name="ksm_pages_volatile">易丢失页面</string>
     <string name="ksm_enable">启用 KSM</string>
     <string name="ksm_enable_summary">减少内存占用但对 CPU 使用率有影响。</string>
-    <string name="ksm_pages_to_scan">要扫描的页面</string>
     <string name="ksm_sleep_milliseconds">扫描休眠间隔</string>
     <string name="ksm_deferred_timer">延迟定时器</string>
     <string name="ksm_deferred_timer_summary">减少 CPU 使用率但增加内存使用。</string>
