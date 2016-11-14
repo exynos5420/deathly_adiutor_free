@@ -80,6 +80,7 @@ import com.exynos5420.deathlyadiutor.utils.Constants;
 import com.exynos5420.deathlyadiutor.utils.Utils;
 import com.exynos5420.deathlyadiutor.utils.database.ProfileDB;
 import com.exynos5420.deathlyadiutor.utils.kernel.CPUVoltage;
+import com.exynos5420.deathlyadiutor.utils.kernel.Info;
 import com.exynos5420.deathlyadiutor.utils.kernel.Screen;
 import com.exynos5420.deathlyadiutor.utils.kernel.Sound;
 import com.exynos5420.deathlyadiutor.utils.kernel.Thermal;
@@ -437,13 +438,16 @@ public class MainActivity extends BaseActivity implements Constants {
 
         private boolean hasRoot;
         private boolean hasBusybox;
+        private boolean hasDeathlyKernel;
+        private boolean hasGPUcontrol;
 
         @Override
         protected Void doInBackground(Void... params) {
             // Check root access and busybox installation
+            if (Info.getKernelVersion().contains("Deathly")) hasDeathlyKernel = true;
+            if (Utils.existFile(GPU_AVALIBLE_EXYNOS5_FREQS)) hasGPUcontrol = true;
             if (RootUtils.rooted()) hasRoot = RootUtils.rootAccess();
             if (hasRoot) hasBusybox = RootUtils.hasAppletSupport();
-
             if (hasRoot && hasBusybox) {
                 // Set permissions to specific files which are not readable by default
                 String[] writePermission = {LMK_MINFREE};
@@ -459,17 +463,18 @@ public class MainActivity extends BaseActivity implements Constants {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            if (!hasRoot || !hasBusybox) {
+            if (!hasRoot || !hasBusybox || !hasDeathlyKernel || !hasGPUcontrol) {
                 Intent i = new Intent(MainActivity.this, TextActivity.class);
                 Bundle args = new Bundle();
-                args.putString(TextActivity.ARG_TEXT, !hasRoot ? getString(R.string.no_root)
-                        : getString(R.string.no_busybox));
-                Log.d(TAG, !hasRoot ? "no root" : "no busybox");
+                if (!hasRoot) args.putString(TextActivity.ARG_TEXT, getString(R.string.no_root));
+                else if (!hasBusybox) args.putString(TextActivity.ARG_TEXT, getString(R.string.no_busybox));
+                else if (!hasDeathlyKernel) args.putString(TextActivity.ARG_TEXT, getString(R.string.no_compatible_kernel));
+                else if (!hasGPUcontrol) args.putString(TextActivity.ARG_TEXT, getString(R.string.outdated_kernel));
                 i.putExtras(args);
                 startActivity(i);
 
-                if (hasRoot)
-                    // Root is there but busybox is missing
+                if (hasRoot && hasDeathlyKernel && hasGPUcontrol)
+                    // Root is there, kernel is compatible but busybox is missing
                     try {
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=stericson.busybox")));
                     } catch (ActivityNotFoundException ignored) {

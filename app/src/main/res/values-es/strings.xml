@@ -355,4 +355,6 @@
     <string name="open_source_summary">Esta aplicación es de código abierto. Revísala en mi GitHub!</string>
     <string name="feature_request">Sugerir una idea</string>
     <string name="feature_request_summary">¿Quieres más funciones? Abre un nuevo tema en GitHub y envíanos tu idea.</string>
+    <string name="no_compatible_kernel">Kernel no compatible</string>
+    <string name="outdated_kernel">Tu kernel esta desactualizado. Pide al desarrollador de la ROM que lo actualize</string>
 </resources>

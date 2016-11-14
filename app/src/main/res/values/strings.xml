@@ -603,5 +603,7 @@
     # Admob Test ID
     <string name="gpu_powerpolicy">GPU Power Policy</string>
     <string name="gpu_powerpolicy_summary">Set the GPU Power Policy</string>
+    <string name="no_compatible_kernel">Your kernel is not compatible</string>
+    <string name="outdated_kernel">Your kernel is outdated. Ask ROM developer to update it</string>
 
 </resources>
