@@ -100,8 +100,6 @@
     <string name="touch_boost">Tăng độ nhạy cảm ứng</string>
     <string name="threshold">Ngưỡng giá trị</string>
     <string name="delay">Độ trễ</string>
-    <string name="poll">Thăm dò ý kiến</string>
-    <string name="check_interval">Khoảng thời gian kiểm tra</string>
     <string name="red">Đỏ</string>
     <string name="green">Xanh lá</string>
 </resources>

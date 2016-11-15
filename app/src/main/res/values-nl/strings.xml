@@ -98,6 +98,4 @@
     <string name="input_boost_freq_core">Input Boost Frequentie Kern %s</string>
     <string name="input_boost_freq_summary">CPU frequentie te stimuleren om deze frequentie na invoer detectie.</string>
     <string name="threshold">Drempelwaarde</string>
-    <string name="temp_limit">Temperatuurgrens</string>
-    <string name="temp_limit_summary">Als de temperatuur te hoog wordt dan zal de thermische throttle de CPU frequentie om de temperatuur te verlagen.</string>
 </resources>

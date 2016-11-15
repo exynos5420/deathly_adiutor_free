@@ -98,8 +98,6 @@
     <string name="touch_boost_summary">Detta kommer att öka din lägsta processorhastighet om du rör vid skärmen eller trycker på en knapp.</string>
     <string name="threshold">Tröskelvärde</string>
     <string name="delay">Fördröjning</string>
-    <string name="temp_limit">Temperaturgräns</string>
-    <string name="temp_limit_summary">Om temperaturen stiger över gränsen så kommer CPU frekvensen strypas för att sänka temperaturen.</string>
     <string name="gpu_max_freq">Högsta frekvensen för GPU:n</string>
     <string name="gpu_max_freq_summary">Ange den högsta frekvensen som GPU:n skalar upp till.</string>
     <string name="red">Röd</string>

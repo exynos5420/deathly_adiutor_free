@@ -95,14 +95,6 @@
     <string name="touch_boost_summary">זה יגביר את המהירות המינימלית של המעבד אם אתה נוגע במסך או לוחץ על כפתור.</string>
     <string name="threshold">ערך הסף</string>
     <string name="delay">השהייה</string>
-    <string name="thermald">Thermald</string>
-    <string name="intellithermal">Intellithermal</string>
-    <string name="intellithermal_summary">תחליף קרנל לקוואלקום Thermald. פותח ע\"י faux123.</string>
-    <string name="intellithermal_optimized_summary">תחליף קרנל לקוואלקום Thermald. פותח ע\"י faux123 ו- alucard_24.</string>
-    <string name="debug_mask_thermal">מאפשר לך להפעיל debug mask לפעולות תרמיות.</string>
-    <string name="core_control">שליטה על ליבה</string>
-    <string name="vdd_restriction">הגבלת VDD</string>
-    <string name="core_throttle_temp_summary">טמפ\' להתחלת השבתת ליבות.</string>
     <string name="gpu_cur_freq">תדר נוכחי של מעבד גרפי</string>
     <string name="gpu_max_freq">תדר מקסימלי של המעבד הגרפי</string>
     <string name="gpu_max_freq_summary">קבע את התדר המקסימלי שאליו יגיע המעבד הגרפי.</string>

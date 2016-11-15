@@ -101,12 +101,6 @@
     <string name="touch_boost_summary">Αυτό θα ενισχύσει την ελάχιστη ταχύτητα της CPU σας εάν η οθόνη αφής ή πατήστε ένα κουμπί.</string>
     <string name="threshold">Κατώτατη τιμή</string>
     <string name="delay">Καθυστέρηση</string>
-    <string name="core_control">Διαχείριση Πυρήνων</string>
-    <string name="freq_throttle_temp">Θερμοκρασία όπου μειώνεται η συχνότητα</string>
-    <string name="thermal_limit_low">Θερμικό Κάτω Όριο</string>
-    <string name="thermal_limit_high">Θερμικό Άνω Όριο</string>
-    <string name="temp_limit">Όριο θερμοκρασίας</string>
-    <string name="temp_limit_summary">Αν η θερμοκρασία πάει πάνω από, το thermal θα βάλει \"κόφτη\" στην συχνότητα του επεξεργαστή για να μειωθεί η θερμοκρασία.</string>
     <string name="gpu_max_freq">Ανώτατη Συχνότητα Κάρτας Γραφικών GPU</string>
     <string name="gpu_max_freq_summary">Ρύθμιση ανώτατης συχνότητας για κάρτα γραφικών GPU.</string>
 </resources>

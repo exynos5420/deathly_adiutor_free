@@ -104,8 +104,6 @@
     <string name="touch_boost">Touch Boost</string>
     <string name="touch_boost_summary">Această funcție accelerează viteza minim al CPU-ului dacă atingeţi ecranul sau apăsaţi un buton.</string>
     <string name="threshold">Valoarea Threshold</string>
-    <string name="temp_limit">Limita de Temperatură</string>
-    <string name="temp_limit_summary">Dacă temperatura urca, termale-le vor accelera frecvenţa CPU pentru a reduce temperatura.</string>
     <string name="gpu_max_freq">Frecvența maximă GPU-ului</string>
     <string name="gpu_max_freq_summary">Setaţi frecvenţa maximă GPU până la sfârșitul scalei.</string>
     <string name="gpu_governor">GPU Governor</string>

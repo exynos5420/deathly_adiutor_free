@@ -44,7 +44,6 @@
     <string name="mb">MB</string>
     <string name="sec">sec</string>
     <string name="ma">mA</string>
-    <string name="microsec">μs</string>
 
     <string name="cores">cores</string>
 
@@ -64,7 +63,7 @@
     <string name="frequency_table">Usage Statistics</string>
     <string name="cpu">CPU</string>
     <string name="cpu_voltage">CPU Voltage</string>
-    <string name="thermal">Thermal</string>
+    <string name="CPUthermal">CPU Thermal</string>
     <string name="gpu">GPU</string>
     <string name="screen">Screen</string>
     <string name="sound">Sound</string>
@@ -184,60 +183,15 @@
     <string name="threshold">Threshold Value</string>
     <string name="delay">Delay</string>
 
-    <!-- Thermal -->
-    <string name="thermald">Thermald</string>
-    <string name="thermald_summary">Stock Qualcomm thermal driver that prevents device from overheating. This should be disabled if current kernel has an alternative.</string>
-    <string name="intellithermal">Intellithermal</string>
-    <string name="intellithermal_summary">An in-kernel replacement for Qualcomm\'s Thermald. Developed by faux123.</string>
-    <string name="intellithermal_optimized">Intellithermal Optimized</string>
-    <string name="intellithermal_optimized_summary">An in-kernel replacement for Qualcomm\'s Thermald. Developed by faux123 and alucard_24.</string>
-    <string name="debug_mask_thermal">Allows you to activate debug mask for thermal operations.</string>
-    <string name="core_control">Core Control</string>
-    <string name="vdd_restriction">VDD Restriction</string>
-    <string name="freq_throttle_temp">Frequency Throttle Temperature</string>
-    <string name="freq_throttle_temp_summary">Temperature to start throttling frequencies.</string>
-    <string name="core_throttle_temp">Core Throttle Temperature</string>
-    <string name="core_throttle_temp_summary">Temperature to start shutting down cores.</string>
-    <string name="core_temp_hysteresis">Core Temperature Hysteresis</string>
-    <string name="freq_step">Frequency Step</string>
-    <string name="immediately_limit_stop">Immediately Limit Stop</string>
-    <string name="poll">Poll</string>
-    <string name="temp_hysteresis">Temperature Hysteresis</string>
-    <string name="thermal_limit_low">Thermal Limit Low</string>
-    <string name="thermal_limit_high">Thermal Limit High</string>
-    <string name="temp_safety">Temperature Safety</string>
-    <string name="msm_thermal">MSM Thermal</string>
-    <string name="msm_thermal_summary">An in-kernel replacement for Qualcomm\'s Thermald. Developed by show-p1984.</string>
-    <string name="allowed_low_low">Phase 1: Allowed Low Low</string>
-    <string name="allowed_low_high">Phase 1: Allowed Low High</string>
-    <string name="allowed_low_freq">Phase 1: Allowed Low Frequency</string>
-    <string name="allowed_mid_low">Phase 2: Allowed Mid Low</string>
-    <string name="allowed_mid_high">Phase 2: Allowed Mid High</string>
-    <string name="allowed_mid_freq">Phase 2: Allowed Mid Frequency</string>
-    <string name="allowed_max_low">Phase 3: Allowed Max Low</string>
-    <string name="allowed_max_high">Phase 3: Allowed Max High</string>
-    <string name="allowed_max_freq">Phase 3: Allowed Max Frequency</string>
-    <string name="check_interval">Check Interval</string>
-    <string name="shutdown_temp">Shutdown Temperature</string>
-    <string name="temp_throttle">Temperature Throttle</string>
-    <string name="temp_throttle_summary">SoC temperature limit toggle.</string>
-    <string name="freq_limit_debug">Frequency Limit Debug</string>
-    <string name="freq_limit_debug_summary">This allows to debug the CPUs throttle when the temperature reaches maximum.</string>
-    <string name="temp_limit_min_freq">Temperature Limit Minimum Frequency</string>
-    <string name="temp_limit_min_freq_summary">The thermal will use this frequency to throttle the maximum temperature.</string>
-    <string name="temp_limit">Temperature Limit</string>
-    <string name="temp_limit_summary">If the temperature goes above, the thermal will throttle the CPU frequency to lower the temperature.</string>
-    <string name="thermal_franco_stage_one">First stage limiting Frequency</string>
-    <string name="thermal_franco_stage_one_summary">Triggered at:</string>
-    <string name="thermal_franco_stage_two">Second stage limiting Frequency</string>
-    <string name="thermal_franco_stage_two_summary">Triggered at:</string>
-    <string name="thermal_franco_stage_three">Third stage limiting Frequency</string>
-    <string name="thermal_franco_stage_three_summary">Triggered at:</string>
-    <string name="thermal_franco_stage_four">Fourth stage limiting Frequency</string>
-    <string name="thermal_franco_stage_four_summary">Triggered at:</string>
-    <string name="thermal_franco_thermal_poll">Polling Interval</string>
-    <string name="thermal_franco_thermal_step">Thermal Step Value</string>
-    <string name="thermal_franco_thermal_step_summary">This value is added on top of threshold to create trigger thresholds between each stage</string>
+    <!-- CPUThermal -->
+    <string name="throttling_point">Throttling Point</string>
+    <string name="temperature">Temperature</string>
+    <string name="frequency">Frequency</string>
+    <string name="degrees_celcius">°C</string>
+    <string name="temp_higher_than_next">Temperature in this throttling point can not be higher than the temperature of the next one</string>
+    <string name="temp_lower_than_previous">Temperature in this throttling point can not be lower than the temperature of the previous one</string>
+    <string name="freq_lower_than_next">Frequency in this throttling point can not be lower than the frequency of the next one</string>
+    <string name="freq_higher_than_previous">Frequency in this throttling point can not be higher than the frequency of the previous one</string>
 
     <!-- GPU -->
     <string name="gpu_cur_freq">GPU Current Frequency</string>

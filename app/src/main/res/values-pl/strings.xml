@@ -103,9 +103,6 @@
     <string name="touch_boost_summary">Ta opcja zwiększy minimalne taktowanie CPU jeżeli dotkniesz ekranu lub nacisniesz przycisk.</string>
     <string name="threshold">Wartość progu</string>
     <string name="delay">Opóźnienie</string>
-    <string name="poll">Ankieta</string>
-    <string name="temp_limit">Limit temperatury</string>
-    <string name="temp_limit_summary">Jeśli temperatura przekroczy wybraną, częstotliwość procesora zostanie zmniejszona by uregulować temperaturę.</string>
     <string name="gpu_cur_freq">Aktualna częstotliwości GPU</string>
     <string name="red">Czerwony</string>
     <string name="green">Zielony</string>

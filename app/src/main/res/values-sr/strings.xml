@@ -91,10 +91,6 @@
     <string name="input_interval">Унос интервала</string>
     <string name="global_offset">Глобални помак</string>
     <string name="delay">Одлагање</string>
-    <string name="freq_step">Корак фреквенције</string>
-    <string name="temp_hysteresis">Температурни хистерезис</string>
-    <string name="check_interval">Интервал провере</string>
-    <string name="shutdown_temp">Температура искључења</string>
     <string name="gpu_governor">ГПУ управљач</string>
     <string name="red">Црвена</string>
     <string name="green">Зелена</string>

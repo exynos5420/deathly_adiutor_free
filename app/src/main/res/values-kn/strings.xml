@@ -101,15 +101,6 @@
     <string name="global_offset">ಜಾಗತಿಕ ಆಫ್ಸೆಟ್</string>
     <string name="touch_boost">ಸ್ಪರ್ಶ ಬೂಸ್ಟ್</string>
     <string name="delay">ವಿಳಂಬ</string>
-    <string name="intellithermal">Intellithermal</string>
-    <string name="intellithermal_summary">Qualcomm\'ನ Thermaldಗಾಗಿ faux123 ಡೆವೆಲಪ್ ಮಾಡಿರುವ ಒಂದು ಪರ್ಯಾಯ ವ್ಯವಸ್ಥೆ.</string>
-    <string name="intellithermal_optimized">Intellithermal Optimized</string>
-    <string name="intellithermal_optimized_summary">Qualcomm\'ನ Thermaldಗಾಗಿ faux123 ಮತ್ತು alucard_24 ಡೆವೆಲಪ್ ಮಾಡಿರುವ ಒಂದು ಪರ್ಯಾಯ ವ್ಯವಸ್ಥೆ.</string>
-    <string name="debug_mask_thermal">ಥರ್ಮಲ್ ಕಾರ್ಯಾಚರಣೆಗಳಿಗಾಗಿ ನಿಮಗೆ ಡೀಬಗ್ ಮಾಸ್ಕನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲು ಅನುಮತಿಸುತ್ತದೆ.</string>
-    <string name="core_control">ಕೋರ್ ನಿಯಂತ್ರಣ</string>
-    <string name="vdd_restriction">ವಿಡಿಡಿ ನಿರ್ಬಂಧಗಳು</string>
-    <string name="msm_thermal">MSM Thermal</string>
-    <string name="msm_thermal_summary">Qualcomm\'ನ Thermaldಗಾಗಿ show-p1984 ಡೆವೆಲಪ್ ಮಾಡಿರುವ ಒಂದು ಪರ್ಯಾಯ ವ್ಯವಸ್ಥೆ.</string>
     <string name="gpu_cur_freq">ಜಿಪಿಯು ಪ್ರಸ್ತುತ ಆವರ್ತನ</string>
     <string name="gpu_max_freq">ಜಿಪಿಯು ಗರಿಷ್ಠ ಆವರ್ತನ</string>
     <string name="gpu_min_freq">ಜಿಪಿಯು ಕನಿಷ್ಠ ಆವರ್ತನ</string>

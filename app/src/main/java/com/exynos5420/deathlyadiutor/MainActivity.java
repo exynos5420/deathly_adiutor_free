@@ -41,7 +41,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -66,7 +65,7 @@ import com.exynos5420.deathlyadiutor.fragments.kernel.LMKFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.MiscFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.ScreenFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.SoundFragment;
-import com.exynos5420.deathlyadiutor.fragments.kernel.ThermalFragment;
+import com.exynos5420.deathlyadiutor.fragments.kernel.CPUThermalFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.VMFragment;
 import com.exynos5420.deathlyadiutor.fragments.other.AboutusFragment;
 import com.exynos5420.deathlyadiutor.fragments.other.SettingsFragment;
@@ -83,7 +82,7 @@ import com.exynos5420.deathlyadiutor.utils.kernel.CPUVoltage;
 import com.exynos5420.deathlyadiutor.utils.kernel.Info;
 import com.exynos5420.deathlyadiutor.utils.kernel.Screen;
 import com.exynos5420.deathlyadiutor.utils.kernel.Sound;
-import com.exynos5420.deathlyadiutor.utils.kernel.Thermal;
+import com.exynos5420.deathlyadiutor.utils.kernel.CPUThermal;
 import com.exynos5420.deathlyadiutor.utils.tools.Buildprop;
 import com.kerneladiutor.library.root.RootUtils;
 
@@ -216,8 +215,7 @@ public class MainActivity extends BaseActivity implements Constants {
         ITEMS.add(new DAdapter.Item(getString(R.string.cpu), new CPUFragment()));
         if (CPUVoltage.hasCpuVoltage())
             ITEMS.add(new DAdapter.Item(getString(R.string.cpu_voltage), new CPUVoltageFragment()));
-        if (Thermal.hasThermal())
-            ITEMS.add(new DAdapter.Item(getString(R.string.thermal), new ThermalFragment()));
+        ITEMS.add(new DAdapter.Item(getString(R.string.CPUthermal), new CPUThermalFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.gpu), new GPUFragment()));
         ITEMS.add(new DAdapter.Item("GPU Voltage", new GPUVoltageFragment()));
         if (Screen.hasScreen())

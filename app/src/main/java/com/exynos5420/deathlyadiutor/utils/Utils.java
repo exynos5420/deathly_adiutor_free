@@ -18,7 +18,6 @@ package com.exynos5420.deathlyadiutor.utils;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.app.UiModeManager;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -53,7 +52,7 @@ import com.exynos5420.deathlyadiutor.fragments.kernel.LMKFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.MiscFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.ScreenFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.SoundFragment;
-import com.exynos5420.deathlyadiutor.fragments.kernel.ThermalFragment;
+import com.exynos5420.deathlyadiutor.fragments.kernel.CPUThermalFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.VMFragment;
 import com.exynos5420.deathlyadiutor.utils.kernel.CPU;
 import com.kerneladiutor.library.Tools;
@@ -343,7 +342,7 @@ public class Utils implements Constants {
             applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
         else if (mClass == SoundFragment.class) for (String[] arrays : SOUND_ARRAY)
             applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
-        else if (mClass == ThermalFragment.class) for (String[] arrays : THERMAL_ARRAYS)
+        else if (mClass == CPUThermalFragment.class) for (String arrays : CPU_THERMAL_ARRAY)
             applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
         else if (mClass == VMFragment.class)
             applys.addAll(new ArrayList<>(Arrays.asList(VM_ARRAY)));

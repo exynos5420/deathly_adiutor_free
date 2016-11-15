@@ -102,15 +102,6 @@
     <string name="touch_boost_summary">Ovo će ubrzati minimalnu brzinu CPU-a čim dodirnete zaslon ili pritisnete tipku.</string>
     <string name="threshold">Granična vrijednost</string>
     <string name="delay">Kašnjenje</string>
-    <string name="thermald">Thermald</string>
-    <string name="thermald_summary">Originalni Qualcommov toplinski upravljački program koji sprječava pregrijavanje uređaja. Ovo bi trebao biti isključeno ako trenutni kernel ima alternativu.</string>
-    <string name="intellithermal">Intellithermal</string>
-    <string name="intellithermal_summary">Zamjena unutar kernela za Qualcomov Mpdecision. Programirao: faux123.</string>
-    <string name="intellithermal_optimized">Intellithermal Optimiziran</string>
-    <string name="intellithermal_optimized_summary">Zamjena unutar kernela za Qualcomov Mpdecision. Programirali: faux123 i alucard_24.</string>
-    <string name="core_control">Kontrola jezgri</string>
-    <string name="temp_limit">Toplotna granica</string>
-    <string name="temp_limit_summary">Ako se temperatura još više podigne, usporiti će se frekvencija CPU-a da se temperatura snizi.</string>
     <string name="gpu_cur_freq">GPU trenutna frekvencija</string>
     <string name="gpu_max_freq">GPU, najviša frekvencija</string>
     <string name="gpu_max_freq_summary">Postavi najvišu moguću GPU frekvenciju do koje se može uzdići.</string>
