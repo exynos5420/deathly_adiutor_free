@@ -1,4 +1,5 @@
 /*
+ * Copyright (C) 2016 Martin Bouchet
  * Copyright (C) 2015 Willi Ye
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,7 +28,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by willi on 03.05.15.
+ * Created by Martin Bouchet on 15.11.16.
  */
 public class CPUThermal implements Constants {
 

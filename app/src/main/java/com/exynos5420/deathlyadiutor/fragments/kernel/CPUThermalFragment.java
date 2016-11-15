@@ -1,4 +1,5 @@
 /*
+ * Copyright (C) 2016 Martin Bouchet
  * Copyright (C) 2015 Willi Ye
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,7 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Tincho on 15.11.16.
+ * Created by Martin Bouchet on 15.11.16.
  */
 public class CPUThermalFragment extends RecyclerViewFragment implements PopupCardView.DPopupCard.OnDPopupCardListener {
 
