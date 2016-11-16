@@ -135,8 +135,8 @@ public class ProfileFragment extends RecyclerViewFragment {
                 checkBoxLayout.addView(selectAllButton);
 
                 boolean load = true;
-                String start = getString(R.string.kernel);
-                String stop = getString(R.string.plugins);
+                String start = getString(R.string.cpu);
+                String stop = getString(R.string.tools);
                 final LinkedHashMap<Class, AppCompatCheckBox> items = new LinkedHashMap<>();
                 for (DAdapter.DView item : Constants.VISIBLE_ITEMS) {
                     if (item.getTitle() != null) {

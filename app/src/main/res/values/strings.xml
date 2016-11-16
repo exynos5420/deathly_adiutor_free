@@ -67,9 +67,12 @@
     <string name="kernel_information">Kernel Information</string>
     <string name="frequency_table">Usage Statistics</string>
     <string name="battery">Power and Battery</string>
-    <string name="core_control">Core Control</string>
-    <string name="voltage">Voltage</string>
-    <string name="thermal">Thermal</string>
+    <string name="cpu_core_control">CPU Core Control</string>
+    <string name="cpu_voltage">CPU Voltage</string>
+    <string name="cpu_thermal">CPU Thermal</string>
+    <string name="gpu_core_control">GPU Core Control</string>
+    <string name="gpu_voltage">GPU Voltage</string>
+    <string name="gpu_thermal">GPU Thermal</string>
     <string name="screen">Screen</string>
     <string name="sound">Sound</string>
     <string name="io_scheduler">I/O Scheduler</string>

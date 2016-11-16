@@ -213,14 +213,14 @@ public class MainActivity extends BaseActivity implements Constants {
         ITEMS.add(new DAdapter.Item(getString(R.string.frequency_table), new UsageStatisticsFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.battery), new BatteryFragment()));
         ITEMS.add(new DAdapter.Header(getString(R.string.cpu)));
-        ITEMS.add(new DAdapter.Item(getString(R.string.core_control), new CPUFragment()));
+        ITEMS.add(new DAdapter.Item(getString(R.string.cpu_core_control), new CPUFragment()));
         if (CPUVoltage.hasCpuVoltage())
-            ITEMS.add(new DAdapter.Item(getString(R.string.voltage), new CPUVoltageFragment()));
-        ITEMS.add(new DAdapter.Item(getString(R.string.thermal), new CPUThermalFragment()));
+            ITEMS.add(new DAdapter.Item(getString(R.string.cpu_voltage), new CPUVoltageFragment()));
+        ITEMS.add(new DAdapter.Item(getString(R.string.cpu_thermal), new CPUThermalFragment()));
         ITEMS.add(new DAdapter.Header(getString(R.string.gpu)));
-        ITEMS.add(new DAdapter.Item(getString(R.string.core_control), new GPUFragment()));
-        ITEMS.add(new DAdapter.Item(getString(R.string.voltage), new GPUVoltageFragment()));
-        ITEMS.add(new DAdapter.Item(getString(R.string.thermal), new GPUThermalFragment()));
+        ITEMS.add(new DAdapter.Item(getString(R.string.gpu_core_control), new GPUFragment()));
+        ITEMS.add(new DAdapter.Item(getString(R.string.gpu_voltage), new GPUVoltageFragment()));
+        ITEMS.add(new DAdapter.Item(getString(R.string.gpu_thermal), new GPUThermalFragment()));
 //        ITEMS.add(new DAdapter.Header(getString(R.string.video_audio)));
         if (Screen.hasScreen())
             ITEMS.add(new DAdapter.Item(getString(R.string.screen), new ScreenFragment()));
