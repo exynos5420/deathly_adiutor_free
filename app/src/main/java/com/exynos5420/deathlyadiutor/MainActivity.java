@@ -56,16 +56,17 @@ import com.exynos5420.deathlyadiutor.fragments.information.UsageStatisticsFragme
 import com.exynos5420.deathlyadiutor.fragments.kernel.BatteryFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.CPUFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.CPUVoltageFragment;
+import com.exynos5420.deathlyadiutor.fragments.kernel.CPUThermalFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.EntropyFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.GPUFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.GPUVoltageFragment;
+import com.exynos5420.deathlyadiutor.fragments.kernel.GPUThermalFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.IOFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.KSMFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.LMKFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.MiscFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.ScreenFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.SoundFragment;
-import com.exynos5420.deathlyadiutor.fragments.kernel.CPUThermalFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.VMFragment;
 import com.exynos5420.deathlyadiutor.fragments.other.AboutusFragment;
 import com.exynos5420.deathlyadiutor.fragments.other.SettingsFragment;
@@ -82,7 +83,6 @@ import com.exynos5420.deathlyadiutor.utils.kernel.CPUVoltage;
 import com.exynos5420.deathlyadiutor.utils.kernel.Info;
 import com.exynos5420.deathlyadiutor.utils.kernel.Screen;
 import com.exynos5420.deathlyadiutor.utils.kernel.Sound;
-import com.exynos5420.deathlyadiutor.utils.kernel.CPUThermal;
 import com.exynos5420.deathlyadiutor.utils.tools.Buildprop;
 import com.kerneladiutor.library.root.RootUtils;
 
@@ -217,7 +217,8 @@ public class MainActivity extends BaseActivity implements Constants {
             ITEMS.add(new DAdapter.Item(getString(R.string.cpu_voltage), new CPUVoltageFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.CPUthermal), new CPUThermalFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.gpu), new GPUFragment()));
-        ITEMS.add(new DAdapter.Item("GPU Voltage", new GPUVoltageFragment()));
+        ITEMS.add(new DAdapter.Item(getString(R.string.gpu_voltage), new GPUVoltageFragment()));
+        ITEMS.add(new DAdapter.Item(getString(R.string.GPUthermal), new GPUThermalFragment()));
         if (Screen.hasScreen())
             ITEMS.add(new DAdapter.Item(getString(R.string.screen), new ScreenFragment()));
         if (Sound.hasSound())

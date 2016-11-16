@@ -65,6 +65,8 @@
     <string name="cpu_voltage">CPU Voltage</string>
     <string name="CPUthermal">CPU Thermal</string>
     <string name="gpu">GPU</string>
+    <string name="gpu_voltage">GPU Voltage</string>
+    <string name="GPUthermal">GPU Thermal</string>
     <string name="screen">Screen</string>
     <string name="sound">Sound</string>
     <string name="battery">Power and Battery</string>
@@ -183,7 +185,7 @@
     <string name="threshold">Threshold Value</string>
     <string name="delay">Delay</string>
 
-    <!-- CPUThermal -->
+    <!-- Thermal -->
     <string name="throttling_point">Throttling Point</string>
     <string name="temperature">Temperature</string>
     <string name="frequency">Frequency</string>

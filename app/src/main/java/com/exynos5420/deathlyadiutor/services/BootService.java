@@ -35,6 +35,7 @@ import com.exynos5420.deathlyadiutor.fragments.kernel.CPUVoltageFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.EntropyFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.GPUFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.GPUVoltageFragment;
+import com.exynos5420.deathlyadiutor.fragments.kernel.GPUThermalFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.IOFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.KSMFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.LMKFragment;
@@ -87,7 +88,7 @@ public class BootService extends Service {
         }
 
         Class[] classes = {BatteryFragment.class, CPUFragment.class,
-                CPUVoltageFragment.class, GPUVoltageFragment.class, EntropyFragment.class, GPUFragment.class, IOFragment.class,
+                CPUVoltageFragment.class, GPUVoltageFragment.class, GPUThermalFragment.class, EntropyFragment.class, GPUFragment.class, IOFragment.class,
                 KSMFragment.class, LMKFragment.class, MiscFragment.class,
                 ScreenFragment.class, SoundFragment.class, CPUThermalFragment.class, VMFragment.class
         };

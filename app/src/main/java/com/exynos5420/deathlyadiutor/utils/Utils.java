@@ -46,6 +46,7 @@ import com.exynos5420.deathlyadiutor.fragments.kernel.CPUVoltageFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.EntropyFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.GPUFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.GPUVoltageFragment;
+import com.exynos5420.deathlyadiutor.fragments.kernel.GPUThermalFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.IOFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.KSMFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.LMKFragment;
@@ -324,12 +325,14 @@ public class Utils implements Constants {
                 else applys.add(cpu);
         } else if (mClass == CPUVoltageFragment.class)
             applys.addAll(new ArrayList<>(Arrays.asList(CPU_VOLTAGE_ARRAY)));
-        else if (mClass == GPUVoltageFragment.class)
-            applys.add(GPU_VOLTAGE_EXYNOS5_FILE);
         else if (mClass == EntropyFragment.class)
             applys.addAll(new ArrayList<>(Arrays.asList(ENTROPY_ARRAY)));
         else if (mClass == GPUFragment.class) for (String[] arrays : GPU_ARRAY)
             applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
+        else if (mClass == GPUVoltageFragment.class)
+            applys.add(GPU_VOLTAGE_EXYNOS5_FILE);
+        else if (mClass == GPUThermalFragment.class) for(String arrays[] : GPU_THERMAL_ARRAY)
+        applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
         else if (mClass == IOFragment.class)
             applys.addAll(new ArrayList<>(Arrays.asList(IO_ARRAY)));
         else if (mClass == KSMFragment.class)

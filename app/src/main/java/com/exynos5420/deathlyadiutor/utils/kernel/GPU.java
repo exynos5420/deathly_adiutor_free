@@ -140,25 +140,5 @@ public class GPU implements Constants {
         return 0;
     }
 
-    public static int getGpuThrottling(int step) {
-        if (step <= 4 && step >= 0) {
-            String value;
-            value = Utils.readFile(GPU_THERMAL_THRORRLING_ARRAY[step]);
-            if (value != null) {
-                return Utils.stringToInt(value);
-            }
-            return 0;
-        }
-        return 0;
-    }
-
-    public static void setGpuThrottling(int freq, int step, Context context) {
-        if (GPU_THERMAL_THRORRLING_ARRAY != null)
-            Control.runCommand("0", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
-        Control.runCommand(String.valueOf(freq), GPU_THERMAL_THRORRLING_ARRAY[step], Control.CommandType.GENERIC, context);
-        Control.runCommand("1", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
-
-    }
-
 
 }
