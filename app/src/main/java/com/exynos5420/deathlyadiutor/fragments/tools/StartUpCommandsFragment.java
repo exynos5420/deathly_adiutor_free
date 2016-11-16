@@ -185,7 +185,13 @@ public class StartUpCommandsFragment extends RecyclerViewFragment {
                                                 clipboard.setPrimaryClip(clip);
                                                 break;
                                             }
-                                            case 1: { //TODO: this is not working
+                                            case 1: {
+                                                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                                                ClipData clip = ClipData.newPlainText("Startup Comnmands RC", convert_to_rc(command));
+                                                clipboard.setPrimaryClip(clip);
+                                                break;
+                                            }
+                                            case 2: {
                                                 Control.deletespecificcommand(getActivity(), null, command);
                                                 forcerefresh(getActivity());
                                                 break;
