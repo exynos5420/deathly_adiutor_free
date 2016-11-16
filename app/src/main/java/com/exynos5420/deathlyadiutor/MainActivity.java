@@ -214,7 +214,8 @@ public class MainActivity extends BaseActivity implements Constants {
         ITEMS.add(new DAdapter.Item(getString(R.string.battery), new BatteryFragment()));
         ITEMS.add(new DAdapter.Header(getString(R.string.cpu)));
         ITEMS.add(new DAdapter.Item(getString(R.string.core_control), new CPUFragment()));
-        ITEMS.add(new DAdapter.Item(getString(R.string.voltage), new CPUVoltageFragment()));
+        if (CPUVoltage.hasCpuVoltage())
+            ITEMS.add(new DAdapter.Item(getString(R.string.voltage), new CPUVoltageFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.thermal), new CPUThermalFragment()));
         ITEMS.add(new DAdapter.Header(getString(R.string.gpu)));
         ITEMS.add(new DAdapter.Item(getString(R.string.core_control), new GPUFragment()));
