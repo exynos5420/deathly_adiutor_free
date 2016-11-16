@@ -37,7 +37,6 @@
     <string name="other">기타</string>
     <string name="kernel_information">커널 정보</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">Thermal</string>
     <string name="gpu">GPU</string>
     <string name="screen">화면</string>
     <string name="sound">소리</string>
@@ -48,7 +47,6 @@
     <string name="virtual_memory">가상 메모리</string>
     <string name="entropy">엔트로피</string>
     <string name="misc_controls">기타</string>
-    <string name="plugins">플러그인</string>
     <string name="backup">백업</string>
     <string name="build_prop_editor">Build prop 편집</string>
     <string name="profile">프로필</string>

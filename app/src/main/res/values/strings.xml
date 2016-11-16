@@ -6,7 +6,6 @@
     <string name="no_root">No root available</string>
     <string name="no_busybox">No busybox or toybox available</string>
     <string name="no_compatible_kernel">Your kernel is not compatible</string>
-    <string name="outdated_kernel">Your kernel is outdated. Ask ROM developer to update it</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="current_value_not_supported">Current value is not supported</string>
@@ -58,7 +57,6 @@
     <string name="information">Information</string>
     <string name="cpu">CPU</string>
     <string name="gpu">GPU</string>
-    <string name="video_audio">Video and Audio</string>
     <string name="kernel">Kernel</string>
     <string name="tools">Tools</string>
     <string name="other">Other</string>
@@ -81,7 +79,6 @@
     <string name="virtual_memory">Virtual Memory</string>
     <string name="entropy">Entropy</string>
     <string name="misc_controls">Misc Controls</string>
-    <string name="plugins">Plugins</string>
     <string name="backup">Backup</string>
     <string name="build_prop_editor">Build prop Editor</string>
     <string name="profile">Profile</string>

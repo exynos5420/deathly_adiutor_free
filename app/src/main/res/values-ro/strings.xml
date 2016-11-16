@@ -37,7 +37,6 @@
     <string name="other">Altele</string>
     <string name="kernel_information">Informaţii Kernel</string>
     <string name="cpu">CPU ( Procesor )</string>
-    <string name="thermal">Temperatură</string>
     <string name="gpu">GPU</string>
     <string name="screen">Ecran</string>
     <string name="sound">Sunet</string>
@@ -48,7 +47,6 @@
     <string name="virtual_memory">Memorie virtuală</string>
     <string name="entropy">Entropie</string>
     <string name="misc_controls">Diverse controale</string>
-    <string name="plugins">Module</string>
     <string name="backup">Copie de rezervă</string>
     <string name="build_prop_editor">Construirea prop Editor</string>
     <string name="profile">Profilul</string>

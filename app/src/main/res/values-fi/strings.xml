@@ -36,7 +36,6 @@
     <string name="other">Muut</string>
     <string name="kernel_information">Kernel-tiedot</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">Lämmönhallinta</string>
     <string name="gpu">GPU</string>
     <string name="screen">Näyttö</string>
     <string name="sound">Ääni</string>
@@ -47,7 +46,6 @@
     <string name="virtual_memory">Virtuaalinen muisti</string>
     <string name="entropy">Entropia</string>
     <string name="misc_controls">Sekalaiset</string>
-    <string name="plugins">Lisäosat</string>
     <string name="backup">Varmuuskopiointi</string>
     <string name="build_prop_editor">Build.prop muokkaaja</string>
     <string name="profile">Profiili</string>

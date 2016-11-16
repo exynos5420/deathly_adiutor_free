@@ -37,7 +37,6 @@
     <string name="other">其他</string>
     <string name="kernel_information">核心資訊</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">溫度管理</string>
     <string name="gpu">GPU</string>
     <string name="screen">螢幕</string>
     <string name="sound">聲音</string>
@@ -48,7 +47,6 @@
     <string name="virtual_memory">虛擬記憶體</string>
     <string name="entropy">熵</string>
     <string name="misc_controls">其他控制項</string>
-    <string name="plugins">Plugins</string>
     <string name="backup">備份</string>
     <string name="build_prop_editor">Build prop 編輯器</string>
     <string name="profile">設定檔</string>

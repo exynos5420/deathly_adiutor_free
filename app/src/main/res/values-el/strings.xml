@@ -37,7 +37,6 @@
     <string name="other">Άλλα</string>
     <string name="kernel_information">Πληροφορίες Πυρήνα</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">Θερμική</string>
     <string name="gpu">GPU</string>
     <string name="screen">Οθόνη</string>
     <string name="sound">Ήχος</string>
@@ -48,7 +47,6 @@
     <string name="virtual_memory">Εικονική Μνήμη</string>
     <string name="entropy">Εντροπία</string>
     <string name="misc_controls">Διάφορα Στοιχεία Ελέγχου</string>
-    <string name="plugins">Πρόσθετα</string>
     <string name="backup">Δημιουργία αντιγράφου</string>
     <string name="build_prop_editor">Επεξεργαστής Build prop</string>
     <string name="profile">Προφίλ</string>

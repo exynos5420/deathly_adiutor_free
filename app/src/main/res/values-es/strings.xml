@@ -38,7 +38,6 @@
     <string name="kernel_information">Información del Kernel</string>
     <string name="frequency_table">Estadisticas de Uso</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">Thermal</string>
     <string name="gpu">GPU</string>
     <string name="screen">Pantalla</string>
     <string name="sound">Sonido</string>
@@ -49,7 +48,6 @@
     <string name="virtual_memory">Memoria Virtual</string>
     <string name="entropy">Entropía</string>
     <string name="misc_controls">Controles Varios</string>
-    <string name="plugins">Extensiones</string>
     <string name="backup">Copia de seguridad</string>
     <string name="build_prop_editor">Editor Build.prop</string>
     <string name="profile">Perfil</string>
@@ -313,5 +311,4 @@
     <string name="feature_request">Sugerir una idea</string>
     <string name="feature_request_summary">¿Quieres más funciones? Abre un nuevo tema en GitHub y envíanos tu idea.</string>
     <string name="no_compatible_kernel">Kernel no compatible</string>
-    <string name="outdated_kernel">Tu kernel esta desactualizado. Pide al desarrollador de la ROM que lo actualize</string>
 </resources>

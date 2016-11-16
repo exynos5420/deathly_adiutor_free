@@ -38,7 +38,6 @@
     <string name="kernel_information">Información del kernel</string>
     <string name="frequency_table">Estadisticas de Uso</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">Temperatura</string>
     <string name="gpu">GPU</string>
     <string name="screen">Pantalla</string>
     <string name="sound">Soníu</string>
@@ -49,7 +48,6 @@
     <string name="virtual_memory">Memoria virtual</string>
     <string name="entropy">Entropía</string>
     <string name="misc_controls">Dellos controles</string>
-    <string name="plugins">Complementos</string>
     <string name="backup">Copies de seguranza</string>
     <string name="build_prop_editor">Editor del build.prop</string>
     <string name="profile">Perfil</string>

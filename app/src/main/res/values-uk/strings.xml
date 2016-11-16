@@ -37,7 +37,6 @@
     <string name="other">Інше</string>
     <string name="kernel_information">Інформація про ядро</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">Термоконтроль</string>
     <string name="gpu">Графічний процесор</string>
     <string name="screen">Дисплей</string>
     <string name="sound">Звук</string>
@@ -48,7 +47,6 @@
     <string name="virtual_memory">Віртуальна пам\'ять</string>
     <string name="entropy">Ентропія</string>
     <string name="misc_controls">Інші елементи</string>
-    <string name="plugins">Плагіни</string>
     <string name="backup">Резервна копія</string>
     <string name="build_prop_editor">Редактор build.prop</string>
     <string name="profile">Профіль</string>

@@ -37,7 +37,6 @@
     <string name="other">Khác</string>
     <string name="kernel_information">Thông tin Kernel</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">Nhiệt</string>
     <string name="gpu">GPU</string>
     <string name="screen">Màn hình</string>
     <string name="sound">Âm thanh</string>
@@ -48,7 +47,6 @@
     <string name="virtual_memory">Bộ nhớ ảo</string>
     <string name="entropy">Dữ liệu ngẫu nhiên</string>
     <string name="misc_controls">Linh tinh</string>
-    <string name="plugins">Plugins</string>
     <string name="backup">Sao lưu</string>
     <string name="build_prop_editor">Sửa build.prop</string>
     <string name="profile">Hồ sơ</string>

@@ -37,7 +37,6 @@
     <string name="other">Övrigt</string>
     <string name="kernel_information">Information om din Kernel</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">Thermal</string>
     <string name="gpu">GPU</string>
     <string name="screen">Skärm</string>
     <string name="sound">Ljud</string>
@@ -48,7 +47,6 @@
     <string name="virtual_memory">Virtuellt Minne</string>
     <string name="entropy">Entropi</string>
     <string name="misc_controls">Övriga Kontrollenheter</string>
-    <string name="plugins">Tillägg</string>
     <string name="backup">Säkerhetskopiera</string>
     <string name="build_prop_editor">Build prop Editor</string>
     <string name="profile">Profiler</string>

@@ -37,7 +37,6 @@
     <string name="other">Egyéb</string>
     <string name="kernel_information">Kernel információ</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">Hőfok</string>
     <string name="gpu">GPU</string>
     <string name="screen">Kijelző</string>
     <string name="sound">Hang</string>
@@ -48,7 +47,6 @@
     <string name="virtual_memory">Virtuális memória</string>
     <string name="entropy">Entrópia</string>
     <string name="misc_controls">Egyéb</string>
-    <string name="plugins">Beépülők</string>
     <string name="backup">Biztonsági mentés</string>
     <string name="build_prop_editor">Build prop szerkesztő</string>
     <string name="profile">Profilok</string>

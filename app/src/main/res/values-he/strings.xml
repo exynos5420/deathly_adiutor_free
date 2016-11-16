@@ -36,7 +36,6 @@
     <string name="other">שונות</string>
     <string name="kernel_information">מידע על הקרנל</string>
     <string name="cpu">מעבד</string>
-    <string name="thermal">תרמי</string>
     <string name="gpu">מעבד גרפי</string>
     <string name="screen">מסך</string>
     <string name="sound">שמע</string>
@@ -46,7 +45,6 @@
     <string name="virtual_memory">זיכרון וירטואלי</string>
     <string name="entropy">אנטרופיה</string>
     <string name="misc_controls">בקרות שונות</string>
-    <string name="plugins">פלאגינים</string>
     <string name="backup">גיבוי</string>
     <string name="build_prop_editor">בנה עורך prop</string>
     <string name="profile">פרופיל</string>

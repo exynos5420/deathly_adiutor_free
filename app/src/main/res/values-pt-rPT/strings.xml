@@ -39,7 +39,6 @@ Está a usar a versão %s.</string>
     <string name="other">Outros</string>
     <string name="kernel_information">Informações do kernel</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">Temperatura</string>
     <string name="gpu">GPU</string>
     <string name="screen">Ecrã</string>
     <string name="sound">Som</string>
@@ -50,7 +49,6 @@ Está a usar a versão %s.</string>
     <string name="virtual_memory">Memória virtual</string>
     <string name="entropy">Entropia</string>
     <string name="misc_controls">Controles variados</string>
-    <string name="plugins">Extensões</string>
     <string name="backup">Backup</string>
     <string name="build_prop_editor">Build prop Editor</string>
     <string name="profile">Perfil</string>

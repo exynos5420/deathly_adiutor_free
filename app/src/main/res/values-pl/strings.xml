@@ -41,7 +41,6 @@
     <string name="other">Inne</string>
     <string name="kernel_information">Informacje o kernelu</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">Termiczne</string>
     <string name="gpu">GPU</string>
     <string name="screen">Ekran</string>
     <string name="sound">Dźwięk</string>
@@ -52,7 +51,6 @@
     <string name="virtual_memory">Pamięć wirtualna</string>
     <string name="entropy">Entropia</string>
     <string name="misc_controls">Różne Ustawienia</string>
-    <string name="plugins">Wtyczki</string>
     <string name="backup">Kopia zapasowa</string>
     <string name="build_prop_editor">Edytor build prop</string>
     <string name="profile">Profil</string>

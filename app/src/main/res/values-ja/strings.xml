@@ -37,7 +37,6 @@
     <string name="other">その他</string>
     <string name="kernel_information">カーネルの情報</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">過熱制御</string>
     <string name="gpu">GPU</string>
     <string name="screen">スクリーン</string>
     <string name="sound">サウンド</string>
@@ -48,7 +47,6 @@
     <string name="virtual_memory">仮想メモリ</string>
     <string name="entropy">エントロピー</string>
     <string name="misc_controls">その他の操作</string>
-    <string name="plugins">プラグイン</string>
     <string name="backup">バックアップ</string>
     <string name="build_prop_editor">Build prop エディタ</string>
     <string name="profile">プロファイル</string>

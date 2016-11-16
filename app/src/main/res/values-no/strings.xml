@@ -36,7 +36,6 @@
     <string name="other">Annet</string>
     <string name="kernel_information">Kjerneinformasjon</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">Termisk</string>
     <string name="gpu">GPU</string>
     <string name="screen">Skjerm</string>
     <string name="sound">Lyd</string>
@@ -47,7 +46,6 @@
     <string name="virtual_memory">Virtuelt minne</string>
     <string name="entropy">Entropi</string>
     <string name="misc_controls">Diverse kontroller</string>
-    <string name="plugins">Utvidelser</string>
     <string name="backup">Sikkerhetskopi</string>
     <string name="build_prop_editor">Propbyggeditor</string>
     <string name="profile">Profil</string>

@@ -36,7 +36,6 @@
     <string name="other">Lainnya</string>
     <string name="kernel_information">Informasi Kernel</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">Suhu</string>
     <string name="gpu">GPU</string>
     <string name="screen">Layar</string>
     <string name="sound">Suara</string>
@@ -47,7 +46,6 @@
     <string name="virtual_memory">Memori virtual</string>
     <string name="entropy">Entropi</string>
     <string name="misc_controls">Pengataturan Lain</string>
-    <string name="plugins">Tambahan</string>
     <string name="backup">Cadangan</string>
     <string name="build_prop_editor">Perubah build. prop</string>
     <string name="profile">Profil</string>

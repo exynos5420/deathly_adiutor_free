@@ -37,7 +37,6 @@
     <string name="other">अन्य</string>
     <string name="kernel_information">कर्नल जानकारी</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">थर्मल</string>
     <string name="gpu">जीपीयू</string>
     <string name="screen">स्क्रीन</string>
     <string name="sound">आवाज़</string>
@@ -49,7 +48,6 @@
     <string name="virtual_memory">आभासी मेमोरी</string>
     <string name="entropy">एन्ट्रॉपी</string>
     <string name="misc_controls">विविध नियंत्रण</string>
-    <string name="plugins">प्लगिन्स</string>
     <string name="backup">बैकअप</string>
     <string name="build_prop_editor">सहारा संपादक का निर्माण</string>
     <string name="profile">प्रोफ़ाइल</string>

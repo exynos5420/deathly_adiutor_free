@@ -37,7 +37,6 @@
     <string name="other">Остало</string>
     <string name="kernel_information">Подаци о кернелу</string>
     <string name="cpu">Процесор</string>
-    <string name="thermal">Температура</string>
     <string name="gpu">ГПУ</string>
     <string name="screen">Екран</string>
     <string name="sound">Звук</string>
@@ -46,7 +45,6 @@
     <string name="virtual_memory">Виртуелна меморија</string>
     <string name="entropy">Ентропија</string>
     <string name="misc_controls">Разне контроле</string>
-    <string name="plugins">Прикључци</string>
     <string name="backup">Резервна копија</string>
     <string name="build_prop_editor">Уређивач „build.prop“ фајла</string>
     <string name="profile">Профил</string>

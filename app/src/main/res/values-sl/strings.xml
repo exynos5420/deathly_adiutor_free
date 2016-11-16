@@ -37,7 +37,6 @@
     <string name="other">Ostalo</string>
     <string name="kernel_information">Informacije o jedru</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">Termalne nastavitve</string>
     <string name="gpu">GPU</string>
     <string name="screen">Prikaz</string>
     <string name="sound">Zvok</string>
@@ -48,7 +47,6 @@
     <string name="virtual_memory">Navidezni pomnilnik</string>
     <string name="entropy">Entropija</string>
     <string name="misc_controls">Ostale nastavitve</string>
-    <string name="plugins">Vtičniki</string>
     <string name="backup">Varnostno kopiranje</string>
     <string name="build_prop_editor">Uredi build.prop</string>
     <string name="profile">Profil</string>

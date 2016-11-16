@@ -37,7 +37,6 @@
     <string name="other">Altro</string>
     <string name="kernel_information">Informazioni kernel</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">Termico</string>
     <string name="gpu">GPU</string>
     <string name="screen">Schermo</string>
     <string name="sound">Suono</string>
@@ -48,7 +47,6 @@
     <string name="virtual_memory">Memoria virtuale</string>
     <string name="entropy">Entropia</string>
     <string name="misc_controls">Controlli vari</string>
-    <string name="plugins">Plugins</string>
     <string name="backup">Backup</string>
     <string name="build_prop_editor">Editor Build prop</string>
     <string name="profile">Profilo</string>

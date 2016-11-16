@@ -54,7 +54,6 @@
     <!-- Tabs -->
     <string name="kernel_information">Kernel-Informationen</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">Temperatur</string>
     <string name="gpu">GPU</string>
     <string name="screen">Bildschirm</string>
     <string name="sound">Ton</string>
@@ -65,7 +64,6 @@
     <string name="virtual_memory">Virtueller Speicher</string>
     <string name="entropy">Entropie</string>
     <string name="misc_controls">Verschiedene Einstellungen</string>
-    <string name="plugins">Erweiterungen</string>
     <string name="backup">Sicherung</string>
     <string name="build_prop_editor">Build.prop-Bearbeiter</string>
     <string name="profile">Profil</string>

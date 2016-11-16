@@ -36,7 +36,6 @@
     <string name="other">Ostatné</string>
     <string name="kernel_information">Informácie o jadre</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">Termálne</string>
     <string name="gpu">GPU</string>
     <string name="screen">Obrazovka</string>
     <string name="sound">Zvuk</string>
@@ -47,7 +46,6 @@
     <string name="virtual_memory">Virtuálna pamäť</string>
     <string name="entropy">Entropy</string>
     <string name="misc_controls">Rôzne ovládacie prvky</string>
-    <string name="plugins">Rozšírenia</string>
     <string name="backup">Záloha</string>
     <string name="build_prop_editor">Build prop Editor</string>
     <string name="profile">Profil</string>

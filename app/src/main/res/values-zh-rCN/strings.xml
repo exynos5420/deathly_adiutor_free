@@ -37,7 +37,6 @@
     <string name="other">其他</string>
     <string name="kernel_information">内核信息</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">发热控制</string>
     <string name="gpu">GPU</string>
     <string name="screen">屏幕</string>
     <string name="sound">声音</string>
@@ -48,7 +47,6 @@
     <string name="virtual_memory">虚拟内存</string>
     <string name="entropy">熵</string>
     <string name="misc_controls">杂项控制</string>
-    <string name="plugins">插件</string>
     <string name="backup">备份</string>
     <string name="build_prop_editor">Build prop 编辑器</string>
     <string name="profile">配置文件</string>

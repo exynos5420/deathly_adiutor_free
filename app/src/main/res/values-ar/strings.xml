@@ -37,7 +37,6 @@
     <string name="other">أخرى</string>
     <string name="kernel_information">معلونات النوات</string>
     <string name="cpu">المعالج</string>
-    <string name="thermal">حرارية</string>
     <string name="gpu">الجرافيكس</string>
     <string name="screen">الشاشة</string>
     <string name="sound">الصوت</string>
@@ -48,7 +47,6 @@
     <string name="virtual_memory">الذاكرة الافتراضية</string>
     <string name="entropy">انتروبيا</string>
     <string name="misc_controls">إعدادات متنوعة</string>
-    <string name="plugins">الملحقات</string>
     <string name="backup">نسخة احتياطية</string>
     <string name="build_prop_editor">تعديل Build prop</string>
     <string name="profile">الملفّ الشّخصي</string>

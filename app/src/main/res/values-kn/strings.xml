@@ -36,7 +36,6 @@
     <string name="other">ಇತರೆ</string>
     <string name="kernel_information">ಕೆರ್ನಲ್ ಮಾಹಿತಿ</string>
     <string name="cpu">ಸಿಪಿಯು</string>
-    <string name="thermal">ಥರ್ಮಲ್</string>
     <string name="gpu">ಜಿಪಿಯು</string>
     <string name="screen">ಪರದೆ</string>
     <string name="sound">ಶಬ್ಧ</string>
@@ -47,7 +46,6 @@
     <string name="virtual_memory">ವರ್ಚುವಲ್ ಮೆಮೊರಿ</string>
     <string name="entropy">ಎಂಟ್ರೋಪಿ</string>
     <string name="misc_controls">ಇತರೆ ನಿಯಂತ್ರಣಗಳು</string>
-    <string name="plugins">ಪ್ಲಗ್ಇನ್ಸ್</string>
     <string name="backup">ಬ್ಯಕ್ಅಪ್</string>
     <string name="build_prop_editor">Build prop ಸಂಪಾದಕ</string>
     <string name="profile">ಪ್ರೊಫೈಲ್</string>

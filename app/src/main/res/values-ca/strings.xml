@@ -36,7 +36,6 @@
     <string name="other">Altres</string>
     <string name="kernel_information">Informació del nucli</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">Temperatura</string>
     <string name="gpu">GPU</string>
     <string name="screen">Pantalla</string>
     <string name="sound">So</string>
@@ -47,7 +46,6 @@
     <string name="virtual_memory">Memòria virtual</string>
     <string name="entropy">Entropia</string>
     <string name="misc_controls">Controls varis</string>
-    <string name="plugins">Extensions</string>
     <string name="backup">Còpia de seguretat</string>
     <string name="build_prop_editor">Editor Build.prop</string>
     <string name="profile">Perfil</string>

@@ -37,7 +37,6 @@
     <string name="other">Diğer</string>
     <string name="kernel_information">Kernel Bilgisi</string>
     <string name="cpu">CPU</string>
-    <string name="thermal">Termal</string>
     <string name="gpu">GPU</string>
     <string name="screen">Ekran</string>
     <string name="sound">Ses</string>
@@ -48,7 +47,6 @@
     <string name="virtual_memory">Sanal Bellek</string>
     <string name="entropy">Entropi</string>
     <string name="misc_controls">Diğer Denetimler</string>
-    <string name="plugins">Eklentiler</string>
     <string name="backup">Yedekleme</string>
     <string name="build_prop_editor">Build prop Editör</string>
     <string name="profile">Profil</string>
