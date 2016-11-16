@@ -37,7 +37,6 @@
     <string name="other">Άλλα</string>
     <string name="kernel_information">Πληροφορίες Πυρήνα</string>
     <string name="cpu">CPU</string>
-    <string name="cpu_voltage">Τάση CPU</string>
     <string name="thermal">Θερμική</string>
     <string name="gpu">GPU</string>
     <string name="screen">Οθόνη</string>

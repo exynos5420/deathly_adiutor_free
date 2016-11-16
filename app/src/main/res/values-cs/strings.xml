@@ -37,7 +37,6 @@
     <string name="other">Ostatní</string>
     <string name="kernel_information">Informace o jádru</string>
     <string name="cpu">Procesor</string>
-    <string name="cpu_voltage">Napětí procesoru</string>
     <string name="thermal">Tepelná</string>
     <string name="gpu">Grafika</string>
     <string name="screen">Obrazovka</string>

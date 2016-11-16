@@ -37,7 +37,6 @@
     <string name="other">Diğer</string>
     <string name="kernel_information">Kernel Bilgisi</string>
     <string name="cpu">CPU</string>
-    <string name="cpu_voltage">İşlemci Voltajı</string>
     <string name="thermal">Termal</string>
     <string name="gpu">GPU</string>
     <string name="screen">Ekran</string>

@@ -37,7 +37,6 @@
     <string name="other">Egyéb</string>
     <string name="kernel_information">Kernel információ</string>
     <string name="cpu">CPU</string>
-    <string name="cpu_voltage">CPU feszültség</string>
     <string name="thermal">Hőfok</string>
     <string name="gpu">GPU</string>
     <string name="screen">Kijelző</string>

@@ -36,7 +36,6 @@
     <string name="other">Ostatné</string>
     <string name="kernel_information">Informácie o jadre</string>
     <string name="cpu">CPU</string>
-    <string name="cpu_voltage">CPU napätie</string>
     <string name="thermal">Termálne</string>
     <string name="gpu">GPU</string>
     <string name="screen">Obrazovka</string>

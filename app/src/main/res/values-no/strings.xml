@@ -36,7 +36,6 @@
     <string name="other">Annet</string>
     <string name="kernel_information">Kjerneinformasjon</string>
     <string name="cpu">CPU</string>
-    <string name="cpu_voltage">CPU-spenning</string>
     <string name="thermal">Termisk</string>
     <string name="gpu">GPU</string>
     <string name="screen">Skjerm</string>

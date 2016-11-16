@@ -36,7 +36,6 @@
     <string name="other">Muut</string>
     <string name="kernel_information">Kernel-tiedot</string>
     <string name="cpu">CPU</string>
-    <string name="cpu_voltage">CPU:n Jännite</string>
     <string name="thermal">Lämmönhallinta</string>
     <string name="gpu">GPU</string>
     <string name="screen">Näyttö</string>

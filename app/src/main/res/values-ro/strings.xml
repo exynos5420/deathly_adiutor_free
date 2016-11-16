@@ -37,7 +37,6 @@
     <string name="other">Altele</string>
     <string name="kernel_information">Informaţii Kernel</string>
     <string name="cpu">CPU ( Procesor )</string>
-    <string name="cpu_voltage">Tensiunea CPU-lui</string>
     <string name="thermal">Temperatură</string>
     <string name="gpu">GPU</string>
     <string name="screen">Ecran</string>

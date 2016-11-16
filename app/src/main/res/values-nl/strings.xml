@@ -37,7 +37,6 @@
     <string name="other">Overige</string>
     <string name="kernel_information">Kernel informatie</string>
     <string name="cpu">CPU</string>
-    <string name="cpu_voltage">CPU Voltage</string>
     <string name="thermal">Thermisch</string>
     <string name="gpu">GPU</string>
     <string name="screen">Scherm</string>

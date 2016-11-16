@@ -37,7 +37,6 @@
     <string name="other">Інше</string>
     <string name="kernel_information">Інформація про ядро</string>
     <string name="cpu">CPU</string>
-    <string name="cpu_voltage">CPU Voltage</string>
     <string name="thermal">Термоконтроль</string>
     <string name="gpu">Графічний процесор</string>
     <string name="screen">Дисплей</string>

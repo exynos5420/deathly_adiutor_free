@@ -37,7 +37,6 @@
     <string name="other">Другое</string>
     <string name="kernel_information">Информация о ядре</string>
     <string name="cpu">ЦП</string>
-    <string name="cpu_voltage">Напряжение ЦП</string>
     <string name="thermal">Температура</string>
     <string name="gpu">Графический процессор</string>
     <string name="screen">Экран</string>

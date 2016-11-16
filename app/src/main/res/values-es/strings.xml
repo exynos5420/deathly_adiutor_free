@@ -38,7 +38,6 @@
     <string name="kernel_information">Información del Kernel</string>
     <string name="frequency_table">Estadisticas de Uso</string>
     <string name="cpu">CPU</string>
-    <string name="cpu_voltage">Voltaje del CPU</string>
     <string name="thermal">Thermal</string>
     <string name="gpu">GPU</string>
     <string name="screen">Pantalla</string>

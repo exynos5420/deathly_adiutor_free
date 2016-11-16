@@ -211,24 +211,27 @@ public class MainActivity extends BaseActivity implements Constants {
         ITEMS.add(new DAdapter.Header(getString(R.string.information)));
         ITEMS.add(new DAdapter.Item(getString(R.string.kernel_information), new KernelInformationFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.frequency_table), new UsageStatisticsFragment()));
-        ITEMS.add(new DAdapter.Header(getString(R.string.kernel)));
-        ITEMS.add(new DAdapter.Item(getString(R.string.cpu), new CPUFragment()));
-        if (CPUVoltage.hasCpuVoltage())
-            ITEMS.add(new DAdapter.Item(getString(R.string.cpu_voltage), new CPUVoltageFragment()));
-        ITEMS.add(new DAdapter.Item(getString(R.string.CPUthermal), new CPUThermalFragment()));
-        ITEMS.add(new DAdapter.Item(getString(R.string.gpu), new GPUFragment()));
-        ITEMS.add(new DAdapter.Item(getString(R.string.gpu_voltage), new GPUVoltageFragment()));
-        ITEMS.add(new DAdapter.Item(getString(R.string.GPUthermal), new GPUThermalFragment()));
+        ITEMS.add(new DAdapter.Item(getString(R.string.battery), new BatteryFragment()));
+        ITEMS.add(new DAdapter.Header(getString(R.string.cpu)));
+        ITEMS.add(new DAdapter.Item(getString(R.string.core_control), new CPUFragment()));
+        ITEMS.add(new DAdapter.Item(getString(R.string.voltage), new CPUVoltageFragment()));
+        ITEMS.add(new DAdapter.Item(getString(R.string.thermal), new CPUThermalFragment()));
+        ITEMS.add(new DAdapter.Header(getString(R.string.gpu)));
+        ITEMS.add(new DAdapter.Item(getString(R.string.core_control), new GPUFragment()));
+        ITEMS.add(new DAdapter.Item(getString(R.string.voltage), new GPUVoltageFragment()));
+        ITEMS.add(new DAdapter.Item(getString(R.string.thermal), new GPUThermalFragment()));
+//        ITEMS.add(new DAdapter.Header(getString(R.string.video_audio)));
         if (Screen.hasScreen())
             ITEMS.add(new DAdapter.Item(getString(R.string.screen), new ScreenFragment()));
         if (Sound.hasSound())
             ITEMS.add(new DAdapter.Item(getString(R.string.sound), new SoundFragment()));
-        ITEMS.add(new DAdapter.Item(getString(R.string.battery), new BatteryFragment()));
+        ITEMS.add(new DAdapter.Header(getString(R.string.kernel)));
         ITEMS.add(new DAdapter.Item(getString(R.string.io_scheduler), new IOFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.ksm), new KSMFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.low_memory_killer), new LMKFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.virtual_memory), new VMFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.entropy), new EntropyFragment()));
+        ITEMS.add(new DAdapter.Header(getString(R.string.misc_controls)));
         ITEMS.add(new DAdapter.Item(getString(R.string.misc_controls), new MiscFragment()));
         ITEMS.add(new DAdapter.Header(getString(R.string.tools)));
         if (Buildprop.hasBuildprop() && RootUtils.busyboxInstalled())

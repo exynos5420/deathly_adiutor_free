@@ -37,7 +37,6 @@
     <string name="other">其他</string>
     <string name="kernel_information">内核信息</string>
     <string name="cpu">CPU</string>
-    <string name="cpu_voltage">CPU 电压</string>
     <string name="thermal">发热控制</string>
     <string name="gpu">GPU</string>
     <string name="screen">屏幕</string>

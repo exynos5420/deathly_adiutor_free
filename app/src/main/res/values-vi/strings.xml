@@ -37,7 +37,6 @@
     <string name="other">Khác</string>
     <string name="kernel_information">Thông tin Kernel</string>
     <string name="cpu">CPU</string>
-    <string name="cpu_voltage">Điện áp CPU</string>
     <string name="thermal">Nhiệt</string>
     <string name="gpu">GPU</string>
     <string name="screen">Màn hình</string>

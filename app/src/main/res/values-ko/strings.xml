@@ -37,7 +37,6 @@
     <string name="other">기타</string>
     <string name="kernel_information">커널 정보</string>
     <string name="cpu">CPU</string>
-    <string name="cpu_voltage">CPU 전압</string>
     <string name="thermal">Thermal</string>
     <string name="gpu">GPU</string>
     <string name="screen">화면</string>

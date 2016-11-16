@@ -5,6 +5,8 @@
     <string name="root_waiting">Waiting for root access</string>
     <string name="no_root">No root available</string>
     <string name="no_busybox">No busybox or toybox available</string>
+    <string name="no_compatible_kernel">Your kernel is not compatible</string>
+    <string name="outdated_kernel">Your kernel is outdated. Ask ROM developer to update it</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="current_value_not_supported">Current value is not supported</string>
@@ -54,6 +56,9 @@
 
     <!-- Headers -->
     <string name="information">Information</string>
+    <string name="cpu">CPU</string>
+    <string name="gpu">GPU</string>
+    <string name="video_audio">Video and Audio</string>
     <string name="kernel">Kernel</string>
     <string name="tools">Tools</string>
     <string name="other">Other</string>
@@ -61,15 +66,12 @@
     <!-- Tabs -->
     <string name="kernel_information">Kernel Information</string>
     <string name="frequency_table">Usage Statistics</string>
-    <string name="cpu">CPU</string>
-    <string name="cpu_voltage">CPU Voltage</string>
-    <string name="CPUthermal">CPU Thermal</string>
-    <string name="gpu">GPU</string>
-    <string name="gpu_voltage">GPU Voltage</string>
-    <string name="GPUthermal">GPU Thermal</string>
+    <string name="battery">Power and Battery</string>
+    <string name="core_control">Core Control</string>
+    <string name="voltage">Voltage</string>
+    <string name="thermal">Thermal</string>
     <string name="screen">Screen</string>
     <string name="sound">Sound</string>
-    <string name="battery">Power and Battery</string>
     <string name="io_scheduler">I/O Scheduler</string>
     <string name="ksm">Kernel Samepage Merging</string>
     <string name="low_memory_killer">Low Memory Killer</string>
@@ -196,6 +198,7 @@
     <string name="freq_higher_than_previous">Frequency in this throttling point can not be higher than the frequency of the previous one</string>
 
     <!-- GPU -->
+    <string name="gpu_usage">GPU Usage</string>
     <string name="gpu_cur_freq">GPU Current Frequency</string>
     <string name="gpu_max_freq">GPU Maximum Frequency</string>
     <string name="gpu_max_freq_summary">Set the maximum frequency the GPU scales up to.</string>
@@ -203,6 +206,8 @@
     <string name="gpu_min_freq_summary">Set the minimum frequency the GPU scales down to.</string>
     <string name="gpu_governor">GPU Governor</string>
     <string name="gpu_governor_summary">Set the governor of the GPU.</string>
+    <string name="gpu_powerpolicy">GPU Power Policy</string>
+    <string name="gpu_powerpolicy_summary">Set the GPU Power Policy</string>
 
     <!-- Screen -->
     <string name="screen_color_profile">Color Profile</string>
@@ -276,9 +281,6 @@
     <string name="master_sequence_summary">Enabling the master sequence will disable and ignore Samsung\'s profiles and scenarios, the ROM controls will be disabled.</string>
     <string name="glove_mode">Glove Mode</string>
     <string name="glove_mode_summary">Enabling this will let you use your phone even while wearing gloves.</string>
-
-    <!-- Wake Controls -->
-
 
     <!-- Sound -->
     <string name="driver_tunables">SOC Driver Tunables</string>
@@ -473,8 +475,6 @@
     <string name="set_per_app">Set Per App Settings</string>
     <string name="per_app_title">Select Apps that will activate this profile</string>
 
-    <!-- Recovery -->
-
     <!-- Init.d -->
     <string name="emulate_initd">Emulate Init.d</string>
     <string name="emulate_initd_summary">If your device does not support Init.d you can enable Emulate Init.d. By enabling the Init.d Emulation the application will run the scripts after your device boots up, but before apply on boot.</string>
@@ -526,7 +526,6 @@
     <string name="per_app">Per App Profiles</string>
     <string name="per_app_toast">Per App Toast</string>
     <string name="per_app_toast_summary">Show a toast when applying a profile for Per App detection</string>
-    <!-- FAQ -->
 
     <!-- About us -->
     <string name="license">License</string>
@@ -553,13 +552,7 @@
 
     <string name="accessibility_service_label">KA Per App Monitor</string>
     <string name="accessibility_service_desc">Service to monitor when foreground app changes for per-app profile loading</string>
-    <string name="gpu_thermal_tittle">GPU Throttling Level</string>
-    <string name="gpu_thermal_description">"GPU will downclock to this frequency when temperature is higher than "</string>
 
     # Admob Test ID
-    <string name="gpu_powerpolicy">GPU Power Policy</string>
-    <string name="gpu_powerpolicy_summary">Set the GPU Power Policy</string>
-    <string name="no_compatible_kernel">Your kernel is not compatible</string>
-    <string name="outdated_kernel">Your kernel is outdated. Ask ROM developer to update it</string>
 
 </resources>

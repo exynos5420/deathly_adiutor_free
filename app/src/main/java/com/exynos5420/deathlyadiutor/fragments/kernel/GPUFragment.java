@@ -60,7 +60,7 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
     }
     private void usageInit() {
         mUsageCard = new UsageCardView.DUsageCard();
-        mUsageCard.setText("GPU Usage");
+        mUsageCard.setText(getString(R.string.gpu_usage));
 
         mUsageCard.setProgress(GPU.getGpuUsage());
 
@@ -136,7 +136,7 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
         if (dPopupCard == mMaxFreqCard)
             GPU.setGpuMaxFreq(GPU.getGpuFreqs().get(position), getActivity());
         else if (dPopupCard == mMinFreqCard)
-            GPU.setGpuMinFreq(GPU.getGpuFreqs().get(position + offset), getActivity()); // we sum 3 to possition cause we are limiting min clock to 350mhz max. i dont like this.
+            GPU.setGpuMinFreq(GPU.getGpuFreqs().get(position + offset), getActivity());
         else if (dPopupCard == mPowerPolicyCard)
             GPU.setGpuPowerPolicy(GPU.getGpuPowerPolicies().get(position), getActivity());
         else if (dPopupCard == mGovernorCard)

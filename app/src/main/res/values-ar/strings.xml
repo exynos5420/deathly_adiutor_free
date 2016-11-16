@@ -37,7 +37,6 @@
     <string name="other">أخرى</string>
     <string name="kernel_information">معلونات النوات</string>
     <string name="cpu">المعالج</string>
-    <string name="cpu_voltage">جهد المعالج</string>
     <string name="thermal">حرارية</string>
     <string name="gpu">الجرافيكس</string>
     <string name="screen">الشاشة</string>

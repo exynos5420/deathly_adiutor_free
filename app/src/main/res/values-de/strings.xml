@@ -54,7 +54,6 @@
     <!-- Tabs -->
     <string name="kernel_information">Kernel-Informationen</string>
     <string name="cpu">CPU</string>
-    <string name="cpu_voltage">CPU-Spannung</string>
     <string name="thermal">Temperatur</string>
     <string name="gpu">GPU</string>
     <string name="screen">Bildschirm</string>

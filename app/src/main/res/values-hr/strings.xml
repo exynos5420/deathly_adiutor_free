@@ -37,7 +37,6 @@
     <string name="other">Ostalo</string>
     <string name="kernel_information">O kernelu</string>
     <string name="cpu">CPU</string>
-    <string name="cpu_voltage">Napon CPU-a</string>
     <string name="thermal">Termalne postavke</string>
     <string name="gpu">GPU</string>
     <string name="screen">Zaslon</string>

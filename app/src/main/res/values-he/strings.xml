@@ -36,7 +36,6 @@
     <string name="other">שונות</string>
     <string name="kernel_information">מידע על הקרנל</string>
     <string name="cpu">מעבד</string>
-    <string name="cpu_voltage">מתח מעבד</string>
     <string name="thermal">תרמי</string>
     <string name="gpu">מעבד גרפי</string>
     <string name="screen">מסך</string>

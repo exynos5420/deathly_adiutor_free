@@ -41,7 +41,6 @@
     <string name="other">Inne</string>
     <string name="kernel_information">Informacje o kernelu</string>
     <string name="cpu">CPU</string>
-    <string name="cpu_voltage">Napięcie CPU</string>
     <string name="thermal">Termiczne</string>
     <string name="gpu">GPU</string>
     <string name="screen">Ekran</string>
