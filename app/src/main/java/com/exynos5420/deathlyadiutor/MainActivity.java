@@ -217,11 +217,15 @@ public class MainActivity extends BaseActivity implements Constants {
         if (CPUVoltage.hasCpuVoltage())
             ITEMS.add(new DAdapter.Item(getString(R.string.cpu_voltage), new CPUVoltageFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.cpu_thermal), new CPUThermalFragment()));
-        ITEMS.add(new DAdapter.Header(getString(R.string.gpu)));
-        ITEMS.add(new DAdapter.Item(getString(R.string.gpu_core_control), new GPUFragment()));
-        ITEMS.add(new DAdapter.Item(getString(R.string.gpu_voltage), new GPUVoltageFragment()));
-        ITEMS.add(new DAdapter.Item(getString(R.string.gpu_thermal), new GPUThermalFragment()));
-//        ITEMS.add(new DAdapter.Header(getString(R.string.video_audio)));
+//      We are adding this GPU check in alpha stage so you can use the app on N!
+//      This will be gone for public release
+        if (Utils.existFile(GPU_AVALIBLE_EXYNOS5_FREQS)) {
+            ITEMS.add(new DAdapter.Header(getString(R.string.gpu)));
+            ITEMS.add(new DAdapter.Item(getString(R.string.gpu_core_control), new GPUFragment()));
+            ITEMS.add(new DAdapter.Item(getString(R.string.gpu_voltage), new GPUVoltageFragment()));
+            ITEMS.add(new DAdapter.Item(getString(R.string.gpu_thermal), new GPUThermalFragment()));
+        }
+//      ITEMS.add(new DAdapter.Header(getString(R.string.video_audio)));
         if (Screen.hasScreen())
             ITEMS.add(new DAdapter.Item(getString(R.string.screen), new ScreenFragment()));
         if (Sound.hasSound())
@@ -442,16 +446,15 @@ public class MainActivity extends BaseActivity implements Constants {
         private boolean hasRoot;
         private boolean hasBusybox;
         private boolean hasDeathlyKernel;
-        private boolean hasGPUcontrol;
 
         @Override
         protected Void doInBackground(Void... params) {
             // Check root access and busybox installation
-            if (Info.getKernelVersion().contains("Deathly")) hasDeathlyKernel = true;
-            if (Utils.existFile(GPU_AVALIBLE_EXYNOS5_FREQS)) hasGPUcontrol = true;
             if (RootUtils.rooted()) hasRoot = RootUtils.rootAccess();
             if (hasRoot) hasBusybox = RootUtils.hasAppletSupport();
             if (hasRoot && hasBusybox) {
+                // Check for kernel compatibility
+                if (Info.getKernelVersion().contains("Deathly")) hasDeathlyKernel = true;
                 // Set permissions to specific files which are not readable by default
                 String[] writePermission = {LMK_MINFREE};
                 for (String file : writePermission)
@@ -466,17 +469,17 @@ public class MainActivity extends BaseActivity implements Constants {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            if (!hasRoot || !hasBusybox || !hasDeathlyKernel || !hasGPUcontrol) {
+            // TODO: Bump kernel version to something greater than 0.3 and check for kernel version for public release
+            if (!hasRoot || !hasBusybox || !hasDeathlyKernel) {
                 Intent i = new Intent(MainActivity.this, TextActivity.class);
                 Bundle args = new Bundle();
                 if (!hasRoot) args.putString(TextActivity.ARG_TEXT, getString(R.string.no_root));
                 else if (!hasBusybox) args.putString(TextActivity.ARG_TEXT, getString(R.string.no_busybox));
                 else if (!hasDeathlyKernel) args.putString(TextActivity.ARG_TEXT, getString(R.string.no_compatible_kernel));
-                else if (!hasGPUcontrol) args.putString(TextActivity.ARG_TEXT, getString(R.string.outdated_kernel));
                 i.putExtras(args);
                 startActivity(i);
 
-                if (hasRoot && hasDeathlyKernel && hasGPUcontrol)
+                if (hasRoot && hasDeathlyKernel)
                     // Root is there, kernel is compatible but busybox is missing
                     try {
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=stericson.busybox")));
