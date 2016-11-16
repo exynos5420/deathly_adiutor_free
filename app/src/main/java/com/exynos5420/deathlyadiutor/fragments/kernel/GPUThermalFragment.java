@@ -102,7 +102,7 @@ public class GPUThermalFragment extends RecyclerViewFragment implements PopupCar
 
             mFreqCard[i] = new PopupCardView.DPopupCard(availibleGPUfreqs);
             mFreqCard[i].setTitle(getString(R.string.frequency));
-            mFreqCard[i].setItem(GPUThermal.getFreq(i) + getString(R.string.mhz));
+            mFreqCard[i].setDescription(GPUThermal.getFreq(i) + getString(R.string.mhz));
             mFreqCard[i].setOnDPopupCardListener(this);
 
             addView(mFreqCard[i]);
@@ -115,13 +115,16 @@ public class GPUThermalFragment extends RecyclerViewFragment implements PopupCar
             if (dPopupCard == mFreqCard[i]){
                 if (i != mFreqCard.length - 1 && GPU.getGpuFreqs().get(position) < GPUThermal.getFreq(i + 1)) {
                     Utils.toast(getString(R.string.freq_lower_than_next), getActivity(), Toast.LENGTH_LONG);
-                    mFreqCard[i].setItem(GPUThermal.getFreq(i) + getString(R.string.mhz));
+                    mFreqCard[i].setDescription(GPUThermal.getFreq(i) + getString(R.string.mhz));
+                    mFreqCard[i].setItem("");
                 }else if (i != 0 && GPU.getGpuFreqs().get(position) > GPUThermal.getFreq(i - 1)) {
                     Utils.toast(getString(R.string.freq_higher_than_previous), getActivity(), Toast.LENGTH_LONG);
-                    mFreqCard[i].setItem(GPUThermal.getFreq(i) + getString(R.string.mhz));
+                    mFreqCard[i].setDescription(GPUThermal.getFreq(i) + getString(R.string.mhz));
+                    mFreqCard[i].setItem("");
                 } else {
                     GPUThermal.setGPUTripPointFreq(GPU.getGpuFreqs().get(position), i, getActivity());
-                    mFreqCard[i].setItem(GPU.getGpuFreqs().get(position) + getString(R.string.mhz));
+                    mFreqCard[i].setDescription(GPU.getGpuFreqs().get(position) + getString(R.string.mhz));
+                    mFreqCard[i].setItem("");
                 }
             }
         }

@@ -101,7 +101,7 @@ public class CPUThermalFragment extends RecyclerViewFragment implements PopupCar
 
             mFreqCard[i] = new PopupCardView.DPopupCard(availibleCPUfreqs);
             mFreqCard[i].setTitle(getString(R.string.frequency));
-            mFreqCard[i].setItem(CPUThermal.getFreqs().get(i) + getString(R.string.mhz));
+            mFreqCard[i].setDescription(CPUThermal.getFreqs().get(i) + getString(R.string.mhz));
             mFreqCard[i].setOnDPopupCardListener(this);
 
             addView(mFreqCard[i]);
@@ -114,13 +114,16 @@ public class CPUThermalFragment extends RecyclerViewFragment implements PopupCar
             if (dPopupCard == mFreqCard[i]){
                 if (i != mFreqCard.length - 1 && Utils.stringToInt(CPUVoltage.getFreqs().get(position)) < CPUThermal.getFreqs().get(i + 1)) {
                     Utils.toast(getString(R.string.freq_lower_than_next), getActivity(), Toast.LENGTH_LONG);
-                    mFreqCard[i].setItem(CPUThermal.getFreqs().get(i) + getString(R.string.mhz));
+                    mFreqCard[i].setDescription(CPUThermal.getFreqs().get(i) + getString(R.string.mhz));
+                    mFreqCard[i].setItem("");
                 }else if (i != 0 && Utils.stringToInt(CPUVoltage.getFreqs().get(position)) > CPUThermal.getFreqs().get(i - 1)) {
                     Utils.toast(getString(R.string.freq_higher_than_previous), getActivity(), Toast.LENGTH_LONG);
-                    mFreqCard[i].setItem(CPUThermal.getFreqs().get(i) + getString(R.string.mhz));
+                    mFreqCard[i].setDescription(CPUThermal.getFreqs().get(i) + getString(R.string.mhz));
+                    mFreqCard[i].setItem("");
                 } else {
                     CPUThermal.setCPUTripPointFreq(Utils.stringToInt(CPUVoltage.getFreqs().get(position)), i, getActivity());
-                    mFreqCard[i].setItem(CPUVoltage.getFreqs().get(position) + getString(R.string.mhz));
+                    mFreqCard[i].setDescription(CPUVoltage.getFreqs().get(position) + getString(R.string.mhz));
+                    mFreqCard[i].setItem("");
                 }
             }
         }
