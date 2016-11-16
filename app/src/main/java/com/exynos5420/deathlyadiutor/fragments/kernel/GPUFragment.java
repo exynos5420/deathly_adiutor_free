@@ -22,6 +22,7 @@ import android.os.Bundle;
 import com.exynos5420.deathlyadiutor.R;
 import com.exynos5420.deathlyadiutor.elements.cards.CardViewItem;
 import com.exynos5420.deathlyadiutor.elements.cards.PopupCardView;
+import com.exynos5420.deathlyadiutor.elements.cards.UsageCardView;
 import com.exynos5420.deathlyadiutor.fragments.RecyclerViewFragment;
 import com.exynos5420.deathlyadiutor.utils.kernel.GPU;
 
@@ -41,18 +42,29 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
 
     private PopupCardView.DPopupCard mGovernorCard, mPowerPolicyCard;
 
+    private UsageCardView.DUsageCard mUsageCard;
+
     private int offset = 0;
 
     @Override
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
 
+        usageInit();
         curFreqInit();
         maxFreqInit();
         minFreqInit();
         powerpolicyInit();
         governorInit();
 
+    }
+    private void usageInit() {
+        mUsageCard = new UsageCardView.DUsageCard();
+        mUsageCard.setText("GPU Usage");
+
+        mUsageCard.setProgress(GPU.getGpuUsage());
+
+        addView(mUsageCard);
     }
 
     private void curFreqInit() {
@@ -138,6 +150,10 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
         if (mCurFreqCard != null)
             mCurFreqCard.setDescription((GPU.getGpuCurFreq()) + getString(R.string.mhz));
 
+        if (mUsageCard != null)
+            mUsageCard.setProgress(GPU.getGpuUsage());
+
         return true;
     }
+
 }

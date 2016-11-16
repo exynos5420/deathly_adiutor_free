@@ -140,6 +140,7 @@ public interface Constants {
     // GPU
 
     String GPU_EXYNOS5_DVFS = "/sys/devices/platform/mali.0/dvfs";
+    String GPU_EXYNOS5_UTILIZATION = "/sys/devices/platform/mali.0/utilization";
     String GPU_CUR_EXYNOS5_FREQ = "/sys/devices/platform/mali.0/clock";
     String GPU_MAX_EXYNOS5_FREQ = "/sys/devices/platform/mali.0/max_clock";
     String GPU_MIN_EXYNOS5_FREQ = "/sys/devices/platform/mali.0/min_clock";

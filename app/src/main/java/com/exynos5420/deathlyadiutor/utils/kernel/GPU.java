@@ -140,5 +140,9 @@ public class GPU implements Constants {
         return 0;
     }
 
+    public static int getGpuUsage() {
+        String value = Utils.readFile(GPU_EXYNOS5_UTILIZATION);
+        return Utils.stringToInt(value);
+    }
 
 }
