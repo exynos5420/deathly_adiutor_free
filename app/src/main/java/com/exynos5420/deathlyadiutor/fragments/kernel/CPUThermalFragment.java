@@ -46,7 +46,7 @@ public class CPUThermalFragment extends RecyclerViewFragment implements PopupCar
     public int getSpan() {
         int orientation = Utils.getScreenOrientation(getActivity());
         if (Utils.isTablet(getActivity()))
-            return orientation == Configuration.ORIENTATION_LANDSCAPE ? 2 : 3;
+            return orientation == Configuration.ORIENTATION_LANDSCAPE ? 2 : 2;
         return orientation == Configuration.ORIENTATION_LANDSCAPE ? 2 : 2;
     }
 
