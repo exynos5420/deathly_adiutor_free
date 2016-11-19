@@ -554,5 +554,6 @@
     <string name="accessibility_service_desc">Service to monitor when foreground app changes for per-app profile loading</string>
 
     # Admob Test ID
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 
 </resources>
