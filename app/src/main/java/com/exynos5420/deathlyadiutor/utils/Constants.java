@@ -181,9 +181,12 @@ public interface Constants {
     String[][] GPU_THERMAL_ARRAY = {GPU_THRORRLING_FREQS_ARRAY, GPU_THRORRLING_TEMPS_ARRAY};
 
     // Screen
-    String GLOVE_MODE = "/sys/devices/virtual/touchscreen/touchscreen_dev/mode";
+    String COMMAND_PATH = "/sys/class/sec/tsp/cmd";
+    String COMMAND_RESULT_PATH = "/sys/class/sec/tsp/cmd_result";
+    String POWER_REDUCE = "/sys/class/lcd/panel/power_reduce";
+    String MDNIE_MODE = "/sys/class/mdnie/mdnie/mode";
 
-    String[] SCREEN_ARRAY = {GLOVE_MODE};
+    String[] SCREEN_ARRAY = {COMMAND_PATH, COMMAND_RESULT_PATH, POWER_REDUCE, MDNIE_MODE};
 
     // Sound
     String SOUND_CONTROL_ENABLE[] = {"/sys/module/snd_soc_wcd9320/parameters/enable_fs",

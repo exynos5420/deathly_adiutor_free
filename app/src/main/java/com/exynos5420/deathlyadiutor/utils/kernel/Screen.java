@@ -1,4 +1,5 @@
 /*
+ * Copyright (C) 2016 Martin Bouchet
  * Copyright (C) 2015 Willi Ye
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,19 +27,40 @@ import com.exynos5420.deathlyadiutor.utils.root.Control;
  * Created by willi on 26.12.14.
  */
 public class Screen implements Constants {
-
+    public static String[] mdnie_modes = {"Dynamic", "Standard", "Natural", "Cinema", "Adaptative"};
 
     public static void activateGloveMode(boolean active, Context context) {
-        Control.runCommand(active ? "glove" : "normal", GLOVE_MODE, Control.CommandType.GENERIC, context);
+        Control.runCommand(active ? "glove_mode,1" : "glove_mode,0", COMMAND_PATH, Control.CommandType.GENERIC, context);
     }
 
     public static boolean isGloveModeActive() {
-        return Utils.readFile(GLOVE_MODE).equals("glove");
+        return Utils.readFile(COMMAND_RESULT_PATH).equals("glove_mode,1:OK");
     }
 
-    public static boolean hasGloveMode() {
-        return Utils.existFile(GLOVE_MODE);
+    public static void activatePowerReduce(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", POWER_REDUCE, Control.CommandType.GENERIC, context);
     }
 
+    public static boolean isPowerReduceActive() {
+        return Utils.readFile(POWER_REDUCE).equals("1");
+    }
 
+    public static String getmdnieMode() {
+        String value = Utils.readFile(MDNIE_MODE);
+        for (int i = 0; i < mdnie_modes.length; i++) {
+            if (i == Utils.stringToInt(value)) {
+                return mdnie_modes[i];
+            }
+        }
+        return "";
+    }
+
+    public static void setmdnieMode(String mode, Context context){
+        for (int i = 0; i < mdnie_modes.length; i++) {
+            if (mode.equals(mdnie_modes[i]))
+            {
+                Control.runCommand(Integer.toString(i), MDNIE_MODE, Control.CommandType.GENERIC, context);
+            }
+        }
+    }
 }

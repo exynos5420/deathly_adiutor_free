@@ -214,8 +214,16 @@
     <string name="led_speed_summary">Allows you to toggle the LED speed lower than it\'s possible on stock.</string>
     <string name="Led_toggle">Led Toggle</string>
     <string name="Led_toggle_summary">Test Led blink.</string>
+    <string name="mdnie_mode">Color Profile</string>
+    <string name="mdnie_mode_Dynamic">Enhaced color and bright whites.</string>
+    <string name="mdnie_mode_Standard">Accurate color and bright whites.</string>
+    <string name="mdnie_mode_Natural">Realistic colors and flesh tones.</string>
+    <string name="mdnie_mode_Cinema">Perfect color reproduction for video.</string>
+    <string name="mdnie_mode_Adaptative">Colors adapt to ambient conditions.</string>
     <string name="glove_mode">Glove Mode</string>
     <string name="glove_mode_summary">Enabling this will let you use your phone even while wearing gloves.</string>
+    <string name="power_reduce">Reduce Power Consumption</string>
+    <string name="power_reduce_summary">Adjust display for lower power consumption without degradation.</string>
 
     <!-- Sound -->
     <string name="driver_tunables">SOC Driver Tunables</string>

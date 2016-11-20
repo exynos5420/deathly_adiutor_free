@@ -1,4 +1,5 @@
 /*
+ * Copyright (C) 2016 Martin Bouchet
  * Copyright (C) 2015 Willi Ye
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,9 +21,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.os.Handler;
 
 import com.exynos5420.deathlyadiutor.R;
 import com.exynos5420.deathlyadiutor.elements.ColorPalette;
+import com.exynos5420.deathlyadiutor.elements.cards.PopupCardView;
 import com.exynos5420.deathlyadiutor.elements.cards.SwitchCardView;
 import com.exynos5420.deathlyadiutor.fragments.RecyclerViewFragment;
 
@@ -30,14 +33,21 @@ import com.exynos5420.deathlyadiutor.utils.Utils;
 
 import com.exynos5420.deathlyadiutor.utils.kernel.Screen;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by willi on 26.12.14.
  */
-public class ScreenFragment extends RecyclerViewFragment implements SwitchCardView.DSwitchCard.OnDSwitchCardListener {
+public class ScreenFragment extends RecyclerViewFragment implements SwitchCardView.DSwitchCard.OnDSwitchCardListener,
+        PopupCardView.DPopupCard.OnDPopupCardListener{
 
     private ColorPalette mColorPalette;
 
     private SwitchCardView.DSwitchCard mGloveModeCard;
+    private SwitchCardView.DSwitchCard mPowerReduceCard;
+    private PopupCardView.DPopupCard mMdnieMode;
+    List<String> modes = new ArrayList<>();
 
     @Override
     public RecyclerView getRecyclerView() {
@@ -51,7 +61,9 @@ public class ScreenFragment extends RecyclerViewFragment implements SwitchCardVi
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
 
-        if (Screen.hasGloveMode()) gloveModeInit();
+        mdnieModeInit();
+        PowerReduceInit();
+        gloveModeInit();
     }
 
     @Override
@@ -59,7 +71,30 @@ public class ScreenFragment extends RecyclerViewFragment implements SwitchCardVi
         super.postInit(savedInstanceState);
         Utils.circleAnimate(mColorPalette, 0, mColorPalette.getHeight());
     }
+    
+    private void mdnieModeInit(){
+        modes.clear();
+        for (int i = 0; i<Screen.mdnie_modes.length; i++)
+            modes.add(Screen.mdnie_modes[i]);
 
+        mMdnieMode = new PopupCardView.DPopupCard(modes);
+        mMdnieMode.setTitle(getString(R.string.mdnie_mode));
+        mMdnieMode.setDescription(getmdnieDescription());
+        mMdnieMode.setItem(Screen.getmdnieMode());
+        mMdnieMode.setOnDPopupCardListener(this);
+
+        addView(mMdnieMode);
+    }
+    
+    private void PowerReduceInit() {
+        mPowerReduceCard = new SwitchCardView.DSwitchCard();
+        mPowerReduceCard.setTitle(getString(R.string.power_reduce));
+        mPowerReduceCard.setDescription(getString(R.string.power_reduce_summary));
+        mPowerReduceCard.setChecked(Screen.isPowerReduceActive());
+        mPowerReduceCard.setOnDSwitchCardListener(this);
+
+        addView(mPowerReduceCard);
+    }
 
     private void gloveModeInit() {
         mGloveModeCard = new SwitchCardView.DSwitchCard();
@@ -75,6 +110,38 @@ public class ScreenFragment extends RecyclerViewFragment implements SwitchCardVi
     public void onChecked(SwitchCardView.DSwitchCard dSwitchCard, boolean checked) {
         if (dSwitchCard == mGloveModeCard)
             Screen.activateGloveMode(checked, getActivity());
+        else if (dSwitchCard == mPowerReduceCard)
+            Screen.activatePowerReduce(checked, getActivity());
+    }
+
+    @Override
+    public void onItemSelected(PopupCardView.DPopupCard dPopupCard, int position) {
+        Handler handler = new Handler();
+        if (dPopupCard == mMdnieMode) {
+            Screen.setmdnieMode(modes.get(position), getActivity());
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mMdnieMode.setDescription(getmdnieDescription());
+                }
+            }, 500);
+        }
+    }
+
+    private String getmdnieDescription(){
+        switch (Screen.getmdnieMode()) {
+            case "Dynamic":
+                return getString(R.string.mdnie_mode_Dynamic);
+            case "Standard":
+                return getString(R.string.mdnie_mode_Standard);
+            case "Natural":
+                return getString(R.string.mdnie_mode_Natural);
+            case "Cinema":
+                return getString(R.string.mdnie_mode_Cinema);
+            case "Adaptative":
+                return getString(R.string.mdnie_mode_Adaptative);
+        }
+        return "";
     }
 
 }
