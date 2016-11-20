@@ -299,9 +299,10 @@ public class SettingsFragment extends RecyclerViewFragment {
     }
 
     private void dumpsysfs() {
-        String arrays[][] = {Constants.CPU_ARRAY, Constants.CPU_VOLTAGE_ARRAY, Constants.CPU_THERMAL_ARRAY, Constants.SCREEN_ARRAY,
-                            Constants.BATTERY_ARRAY, Constants.IO_ARRAY, Constants.VM_ARRAY};
-        String twodarrays[][][] = {Constants.SOUND_ARRAY, Constants.MISC_ARRAY};
+        String arrays[][] = {Constants.CPU_ARRAY, Constants.CPU_VOLTAGE_ARRAY, Constants.CPU_THERMAL_ARRAY, Constants.GPU_ARRAY,
+                Constants.GPU_VOLTAGE_ARRAY, Constants.SCREEN_ARRAY, Constants.BATTERY_ARRAY, Constants.IO_ARRAY, Constants.KSM_INFOS,
+                Constants.VM_ARRAY};
+        String twodarrays[][][] = {Constants.GPU_THERMAL_ARRAY, Constants.SOUND_ARRAY, Constants.MISC_ARRAY};
         // loop through each array in the constants file. These contain all the other arrays.
         // have to do this once for the 1d arrays and again for the 2 arrays
         try {
