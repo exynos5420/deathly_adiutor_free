@@ -93,7 +93,6 @@
     <string name="input_boost_freq_summary">تردد المعالج لتعزيزه للتردد المدخل الذي تم تحديده.</string>
     <string name="touch_boost">تواصل التعزيز</string>
     <string name="touch_boost_summary">هذا سوف يقوم بتعزيز السرعة الدنيا للمعالج اذا قمت بلمس الشاشة او قمت بالضغط على الزر.</string>
-    <string name="threshold">قيمة الخطوة البدائية</string>
     <string name="confirm_new_password">قم بتأكيد كلمة المرور الجديدة</string>
     <string name="old_password">كلمة المرور القديمة</string>
     <string name="old_password_wrong">كلمة المرور القديمة خاطئة</string>

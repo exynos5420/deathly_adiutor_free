@@ -100,16 +100,9 @@
     <string name="global_offset">Global Offset</string>
     <string name="touch_boost">Touch Boost</string>
     <string name="touch_boost_summary">Această funcție accelerează viteza minim al CPU-ului dacă atingeţi ecranul sau apăsaţi un buton.</string>
-    <string name="threshold">Valoarea Threshold</string>
     <string name="gpu_max_freq">Frecvența maximă GPU-ului</string>
     <string name="gpu_max_freq_summary">Setaţi frecvenţa maximă GPU până la sfârșitul scalei.</string>
     <string name="gpu_governor">GPU Governor</string>
     <string name="gpu_governor_summary">Setaţi guvernator al GPU-ului.</string>
-    <string name="red">Roșu</string>
-    <string name="green">Verde</string>
-    <string name="blue">Albastru</string>
-    <string name="screen_contrast">Contrastul ecranului</string>
-    <string name="loading">Se încarcă</string>
-    <string name="no_internet">Conexiune la internet inexistentă</string>
     <string name="sound_control">Controlul Sunetului</string>
 </resources>

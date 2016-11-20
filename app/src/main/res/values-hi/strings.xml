@@ -108,12 +108,6 @@
     <string name="gpu_min_freq_summary">न्यूनतम CPU को मापता है नीचे करने के लिए आवृत्ति सेट करें।</string>
     <string name="gpu_governor">CPU नियंत्रक</string>
     <string name="gpu_governor_summary">GPU के 2D राज्यपाल सेट करें।</string>
-    <string name="red">लाल</string>
-    <string name="green">हरा</string>
-    <string name="blue">नीला</string>
-    <string name="min_rgb">न्यूनतम RGB मान</string>
-    <string name="invert_screen">स्क्रीन पलटना</string>
-    <string name="master_sequence_summary">अक्षम करें और सैमसंग की प्रोफाइल और परिदृश्यों की उपेक्षा करेंगे मास्टर अनुक्रम को सक्षम करने, ROM नियंत्रण अक्षम कर दिया जाएगा।</string>
     <string name="glove_mode">दस्ताने मोड</string>
     <string name="glove_mode_summary">सक्षम कर रहा है यह आप अपने फ़ोन का उपयोग करते हुए भी दस्ताने पहने दूँगी।</string>
     <string name="feature_request">सुविधा अनुरोध</string>

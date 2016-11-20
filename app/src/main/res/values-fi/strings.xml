@@ -93,27 +93,8 @@
     <string name="global_offset">Globaali siirtymä</string>
     <string name="touch_boost">Touch Boost</string>
     <string name="touch_boost_summary">Tämä nostaa suorittimen miniminopeutta jos kosket näyttöä tai painat nappia.</string>
-    <string name="threshold">Raja-arvo</string>
     <string name="gpu_cur_freq">GPU:n nykyinen taajuus</string>
     <string name="gpu_max_freq">GPU:n maksimi taajuus</string>
     <string name="gpu_governor">GPU governor</string>
-    <string name="red">Punainen</string>
-    <string name="green">Vihreä</string>
-    <string name="blue">Sininen</string>
-    <string name="min_rgb">Minimi RGB arvo</string>
-    <string name="screen_value">Näytön arvo</string>
-    <string name="screen_contrast">Näytön kontrasti</string>
-    <string name="high_brightness_mode">Korkea kirkkaus tila</string>
-    <string name="gamma">Gamma</string>
-    <string name="gamma_profile">Gamma profiili</string>
-    <string name="additional_profiles">Lisäprofiileja</string>
-    <string name="additional_profiles_summary">Lisää profiileja internetistä</string>
-    <string name="loading">Ladataan</string>
-    <string name="no_internet">Ei internet-yhteyttä</string>
-    <string name="no_additional_profiles">Ei löytynyt profiileja</string>
-    <string name="lcd_backlight">LCD-taustavalo</string>
-    <string name="min_brightness">Minimi kirkkaus</string>
-    <string name="max_brightness">Maksimi kirkkaus</string>
-    <string name="backlight_dimmer">Taustavalo himmennin</string>
     <string name="glove_mode">Käsine tila</string>
 </resources>

@@ -68,7 +68,6 @@
 
         <service android:name="com.exynos5420.deathlyadiutor.services.BootService" />
         <service android:name="com.exynos5420.deathlyadiutor.services.InitdService" />
-        <service android:name="com.exynos5420.deathlyadiutor.services.AutoHighBrightnessModeService" />
 
         <!-- Profile Widget -->
         <receiver android:name="com.exynos5420.deathlyadiutor.services.ProfileWidget">
@@ -85,21 +84,6 @@
             android:name="com.exynos5420.deathlyadiutor.services.ProfileWidget$WidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
-        <!-- HBM Widget -->
-        <receiver android:name="com.exynos5420.deathlyadiutor.services.HBMWidget">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.kerneladiutor.mod.action.TOGGLE_HBM" />
-                <action android:name="android.intent.action.USER_PRESENT" />
-            </intent-filter>
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/hbm_widget" />
-        </receiver>
-
-        <!-- DashClock -->
-
-        <!-- Tasker -->
         <activity
             android:name="com.exynos5420.deathlyadiutor.tasker.AddProfileActivity"
             android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize|navigation">
@@ -121,13 +105,6 @@
         <receiver android:name="com.exynos5420.deathlyadiutor.services.ProfileTileReceiver">
             <intent-filter>
                 <action android:name="com.kerneladiutor.mod.action.ACTION_TOGGLE_STATE" />
-            </intent-filter>
-        </receiver>
-
-        <receiver android:name="com.exynos5420.deathlyadiutor.services.HighBrightnessModeReceiver">
-            <intent-filter>
-                <action android:name="com.kerneladiutor.mod.action.HBM_ON" />
-                <action android:name="com.kerneladiutor.mod.action.HBM_OFF" />
             </intent-filter>
         </receiver>
 

@@ -74,7 +74,6 @@ import com.exynos5420.deathlyadiutor.fragments.tools.BuildpropFragment;
 import com.exynos5420.deathlyadiutor.fragments.tools.InitdFragment;
 import com.exynos5420.deathlyadiutor.fragments.tools.ProfileFragment;
 import com.exynos5420.deathlyadiutor.fragments.tools.StartUpCommandsFragment;
-import com.exynos5420.deathlyadiutor.services.AutoHighBrightnessModeService;
 import com.exynos5420.deathlyadiutor.services.ProfileTileReceiver;
 import com.exynos5420.deathlyadiutor.utils.Constants;
 import com.exynos5420.deathlyadiutor.utils.Utils;
@@ -88,9 +87,6 @@ import com.kerneladiutor.library.root.RootUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 /**
  * Created by willi on 01.12.14.
@@ -126,13 +122,6 @@ public class MainActivity extends BaseActivity implements Constants {
         }
         else // Use an AsyncTask to initialize everything
             new Task().execute();
-
-        if (Utils.getBoolean("AutoHBM", false, getApplicationContext()) && Screen.hasScreenHBM() && !isMyServiceRunning(AutoHighBrightnessModeService.class)) {
-            startService(new Intent(this, AutoHighBrightnessModeService.class));
-        }
-        AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
     }
 
     @Override
@@ -231,9 +220,8 @@ public class MainActivity extends BaseActivity implements Constants {
             ITEMS.add(new DAdapter.Item(getString(R.string.gpu_voltage), new GPUVoltageFragment()));
             ITEMS.add(new DAdapter.Item(getString(R.string.gpu_thermal), new GPUThermalFragment()));
         }
-//      ITEMS.add(new DAdapter.Header(getString(R.string.video_audio)));
-        if (Screen.hasScreen())
-            ITEMS.add(new DAdapter.Item(getString(R.string.screen), new ScreenFragment()));
+        ITEMS.add(new DAdapter.Header(getString(R.string.video_audio)));
+        ITEMS.add(new DAdapter.Item(getString(R.string.screen), new ScreenFragment()));
         if (Sound.hasSound())
             ITEMS.add(new DAdapter.Item(getString(R.string.sound), new SoundFragment()));
         ITEMS.add(new DAdapter.Header(getString(R.string.kernel)));

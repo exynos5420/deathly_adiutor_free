@@ -48,7 +48,6 @@ import com.exynos5420.deathlyadiutor.utils.Constants;
 import com.exynos5420.deathlyadiutor.utils.Utils;
 import com.exynos5420.deathlyadiutor.utils.database.CommandDB;
 import com.exynos5420.deathlyadiutor.utils.kernel.CPUVoltage;
-import com.exynos5420.deathlyadiutor.utils.kernel.Screen;
 import com.kerneladiutor.library.root.RootUtils;
 
 import java.util.ArrayList;
@@ -82,10 +81,6 @@ public class BootService extends Service {
         final List<String> plugins = new ArrayList<>();
 
         CPUVoltage.storeVoltageTable(this);
-
-        if (Screen.isScreenAutoHBMActive(this) && Screen.hasScreenHBM()) {
-            startService(new Intent(this, AutoHighBrightnessModeService.class));
-        }
 
         Class[] classes = {BatteryFragment.class, CPUFragment.class,
                 CPUVoltageFragment.class, GPUVoltageFragment.class, GPUThermalFragment.class, EntropyFragment.class, GPUFragment.class, IOFragment.class,

@@ -165,7 +165,6 @@
     <!-- CPU Hotplug -->
     <string name="touch_boost">Touch-Boost</string>
     <string name="touch_boost_summary">Dies wird Ihre minimale CPU-Geschwindigkeit erhöhen, wenn Sie auf den Bildschirm oder eine Taste drücken.</string>
-    <string name="threshold">Schwellenwert</string>
     <string name="delay">Verzögerung</string>
 
     <!-- CPUThermal -->
@@ -180,68 +179,6 @@
     <string name="gpu_governor_summary">GPU-Governor festlegen.</string>
 
     <!-- Screen -->
-    <string name="screen_color_profile">Farbprofile</string>
-    <string name="screen_color_profile_summary">Voreingestelltes Profil wählen</string>
-    <string name="red">Rot</string>
-    <string name="green">Grün</string>
-    <string name="blue">Blau</string>
-    <string name="min_rgb">Minimaler RGB-Wert</string>
-    <string name="invert_screen">Bildschirm invertieren</string>
-    <string name="saturation_intensity">Sättigungs-Intensität</string>
-    <string name="grayscale_mode">Graustufen-Modus</string>
-    <string name="screen_hue">Bildschirm-Farbton</string>
-    <string name="screen_hue_summary">Führt möglicherweise zu Problemen mit dem MSM8x26 SoC, wenn ein hoher Wert gesetzt wird.</string>
-    <string name="screen_value">Rasterwert</string>
-    <string name="screen_contrast">Bildschirm-Kontrast</string>
-    <string name="auto_high_brightness_mode">Autom. Hohe-Helligkeit-Modus (HBM)</string>
-    <string name="auto_high_brightness_mode_threshold">Autom. Hohe-Helligkeit-Modus (HBM) Schwellenwert</string>
-    <string name="auto_high_brightness_smoothing">Gleichmäßige Lux-Werte für Auto. HBM</string>
-    <string name="auto_high_brightness_smoothing_warning">Einstellung führt zu einer gewissen Verzögerung bei signifikanten Lux-Änderungen.</string>
-    <string name="high_brightness_mode">Hohe-Helligkeit-Modus (HBM)</string>
-    <string name="gamma">Gamma</string>
-    <string name="gamma_profile">Gamma-Profile</string>
-    <string name="red_greys">Rot-Grau</string>
-    <string name="red_mids">Rot-Mids</string>
-    <string name="red_blacks">Rot-Schwarz</string>
-    <string name="red_whites">Rot-Weiß</string>
-    <string name="green_greys">Grün-Grau</string>
-    <string name="green_mids">Grün-Mids</string>
-    <string name="green_blacks">Grün-Schwarz</string>
-    <string name="green_whites">Grün-Weiß</string>
-    <string name="blue_greys">Blau-Grau</string>
-    <string name="blue_mids">Blau-Mids</string>
-    <string name="blue_blacks">Blau-Schwarz</string>
-    <string name="blue_whites">Blau-Weiß</string>
-    <string name="contrast">Kontrast</string>
-    <string name="brightness">Helligkeit</string>
-    <string name="red_positive">Rot Positiv</string>
-    <string name="red_negative">Rot Negativ</string>
-    <string name="green_positive">Grün Positiv</string>
-    <string name="green_negative">Grün Negativ</string>
-    <string name="blue_positive">Blau Positiv</string>
-    <string name="blue_negative">Blau Negativ</string>
-    <string name="white_point">Weißpunkt</string>
-    <string name="gamma_profile_summary">Nach Auswahl eines Profils, bitte den Bildschirm aus- und wieder einschalten.</string>
-    <string name="additional_profiles">Zusätzliche Profile</string>
-    <string name="additional_profiles_summary">Weitere Profile online abrufen.</string>
-    <string name="loading">Lade</string>
-    <string name="no_internet">Keine Internetverbindung</string>
-    <string name="no_additional_profiles">Keine zusätzlichen Profile gefunden</string>
-    <string name="lcd_backlight">LCD-Hintergrundbeleuchtung</string>
-    <string name="brightness_mode">Exponentiellen statt linearen Hintergrundbeleuchtungsmodus benutzen.</string>
-    <string name="min_brightness">Minimale Helligkeit</string>
-    <string name="min_brightness_summary">Erlaubt es die minimale Helligkeit niedriger einzustellen als der Standardwert.</string>
-    <string name="max_brightness">Maximale Helligkeit</string>
-    <string name="max_brightness_summary">Erlaubt es die maximale Helligkeit höher einzustellen als der Standardwert.</string>
-    <string name="backlight_dimmer">Hintergrundbeleuchtungs-Dimmer</string>
-    <string name="offset">Offset</string>
-    <string name="negative_toggle">Negativer Schalter</string>
-    <string name="negative_toggle_summary">Um die Bildschirmfarben schnell umzukehren, Menü-Button 4 mal schnell drücken.</string>
-    <string name="mdnie_global_controls">mDNIe Globale Kontrollen</string>
-    <string name="register_hook">Registrier-Haken</string>
-    <string name="register_hook_summary">Registrier-Intercept agiert wie ein Haken und wird es ermöglichen Szenario-Einstellungen zu kontrollieren und über Delta-Kontrollen zu modifizieren. Wenn ein Szenario keine Einstellungen (Registrierung) in seiner Basis-Sequenz hat, kann es nicht mit dem Haken modofiziert werden.</string>
-    <string name="master_sequence">Haupt-Sequenz</string>
-    <string name="master_sequence_summary"> Durch Aktivierung der Haupt-Sequenz werden Samsungs Profile und Szenarien deaktiviert und ignoriert, die ROM-Einstellungen werden deaktiviert.</string>
     <string name="glove_mode">Handschuh-Modus</string>
     <string name="glove_mode_summary">Dadurch läßt sich Ihr Gerät auch mit Handschuhen verwenden.</string>
 

@@ -193,111 +193,12 @@ public interface Constants {
                                             GPU_THERMAL_THROTTLING4_TEMP, GPU_THERMAL_THROTTLING5_TEMP};
 
     String[][] GPU_THERMAL_ARRAY = {GPU_THRORRLING_FREQS_ARRAY, GPU_THRORRLING_TEMPS_ARRAY};
+
     // Screen
-    String SCREEN_KCAL = "/sys/devices/platform/kcal_ctrl.0";
-    String SCREEN_KCAL_CTRL = SCREEN_KCAL + "/kcal";
-    String SCREEN_KCAL_CTRL_CTRL = SCREEN_KCAL + "/kcal_ctrl";
-    String SCREEN_KCAL_CTRL_ENABLE = SCREEN_KCAL + "/kcal_enable";
-    String SCREEN_KCAL_CTRL_MIN = SCREEN_KCAL + "/kcal_min";
-    String SCREEN_KCAL_CTRL_INVERT = SCREEN_KCAL + "/kcal_invert";
-    String SCREEN_KCAL_CTRL_SAT = SCREEN_KCAL + "/kcal_sat";
-    String SCREEN_KCAL_CTRL_HUE = SCREEN_KCAL + "/kcal_hue";
-    String SCREEN_KCAL_CTRL_VAL = SCREEN_KCAL + "/kcal_val";
-    String SCREEN_KCAL_CTRL_CONT = SCREEN_KCAL + "/kcal_cont";
-
-    String[] SCREEN_KCAL_CTRL_NEW_ARRAY = {SCREEN_KCAL_CTRL_ENABLE, SCREEN_KCAL_CTRL_INVERT, SCREEN_KCAL_CTRL_SAT,
-            SCREEN_KCAL_CTRL_HUE, SCREEN_KCAL_CTRL_VAL, SCREEN_KCAL_CTRL_CONT};
-
-    String SCREEN_DIAG0 = "/sys/devices/platform/DIAG0.0";
-    String SCREEN_DIAG0_POWER = SCREEN_DIAG0 + "/power_rail";
-    String SCREEN_DIAG0_POWER_CTRL = SCREEN_DIAG0 + "/power_rail_ctrl";
-
-    String SCREEN_COLOR = "/sys/class/misc/colorcontrol";
-    String SCREEN_COLOR_CONTROL = SCREEN_COLOR + "/multiplier";
-    String SCREEN_COLOR_CONTROL_CTRL = SCREEN_COLOR + "/safety_enabled";
-
-    String SCREEN_SAMOLED_COLOR = "/sys/class/misc/samoled_color";
-    String SCREEN_SAMOLED_COLOR_RED = SCREEN_SAMOLED_COLOR + "/red_multiplier";
-    String SCREEN_SAMOLED_COLOR_GREEN = SCREEN_SAMOLED_COLOR + "/green_multiplier";
-    String SCREEN_SAMOLED_COLOR_BLUE = SCREEN_SAMOLED_COLOR + "/blue_multiplier";
-
-    String SCREEN_FB0_RGB = "/sys/class/graphics/fb0/rgb";
-
-    String SCREEN_FB_KCAL = "/sys/devices/virtual/graphics/fb0/kcal";
-
-    String[] SCREEN_RGB_ARRAY = {SCREEN_KCAL_CTRL, SCREEN_DIAG0_POWER, SCREEN_COLOR_CONTROL, SCREEN_SAMOLED_COLOR, SCREEN_FB0_RGB, SCREEN_FB_KCAL};
-
-    String[] SCREEN_RGB_CTRL_ARRAY = {SCREEN_KCAL_CTRL_ENABLE, SCREEN_KCAL_CTRL_CTRL,
-            SCREEN_DIAG0_POWER_CTRL, SCREEN_COLOR_CONTROL_CTRL};
-
-    String SCREEN_HBM[] = {"/sys/devices/virtual/graphics/fb0/hbm", "/sys/class/graphics/fb0/sre"};
-
-    // Gamma
-    String K_GAMMA_R = "/sys/devices/platform/mipi_lgit.1537/kgamma_r";
-    String K_GAMMA_G = "/sys/devices/platform/mipi_lgit.1537/kgamma_g";
-    String K_GAMMA_B = "/sys/devices/platform/mipi_lgit.1537/kgamma_b";
-
-    String K_GAMMA_RED = "/sys/devices/platform/mipi_lgit.1537/kgamma_red";
-    String K_GAMMA_GREEN = "/sys/devices/platform/mipi_lgit.1537/kgamma_green";
-    String K_GAMMA_BLUE = "/sys/devices/platform/mipi_lgit.1537/kgamma_blue";
-
-    String[] K_GAMMA_ARRAY = {K_GAMMA_R, K_GAMMA_G, K_GAMMA_B, K_GAMMA_RED, K_GAMMA_GREEN, K_GAMMA_BLUE};
-
-    String GAMMACONTROL = "/sys/class/misc/gammacontrol";
-    String GAMMACONTROL_RED_GREYS = GAMMACONTROL + "/red_greys";
-    String GAMMACONTROL_RED_MIDS = GAMMACONTROL + "/red_mids";
-    String GAMMACONTROL_RED_BLACKS = GAMMACONTROL + "/red_blacks";
-    String GAMMACONTROL_RED_WHITES = GAMMACONTROL + "/red_whites";
-    String GAMMACONTROL_GREEN_GREYS = GAMMACONTROL + "/green_greys";
-    String GAMMACONTROL_GREEN_MIDS = GAMMACONTROL + "/green_mids";
-    String GAMMACONTROL_GREEN_BLACKS = GAMMACONTROL + "/green_blacks";
-    String GAMMACONTROL_GREEN_WHITES = GAMMACONTROL + "/green_whites";
-    String GAMMACONTROL_BLUE_GREYS = GAMMACONTROL + "/blue_greys";
-    String GAMMACONTROL_BLUE_MIDS = GAMMACONTROL + "/blue_mids";
-    String GAMMACONTROL_BLUE_BLACKS = GAMMACONTROL + "/blue_blacks";
-    String GAMMACONTROL_BLUE_WHITES = GAMMACONTROL + "/blue_whites";
-    String GAMMACONTROL_CONTRAST = GAMMACONTROL + "/contrast";
-    String GAMMACONTROL_BRIGHTNESS = GAMMACONTROL + "/brightness";
-    String GAMMACONTROL_SATURATION = GAMMACONTROL + "/saturation";
-
-    String DSI_PANEL_RP = "/sys/module/dsi_panel/kgamma_rp";
-    String DSI_PANEL_RN = "/sys/module/dsi_panel/kgamma_rn";
-    String DSI_PANEL_GP = "/sys/module/dsi_panel/kgamma_gp";
-    String DSI_PANEL_GN = "/sys/module/dsi_panel/kgamma_gn";
-    String DSI_PANEL_BP = "/sys/module/dsi_panel/kgamma_bp";
-    String DSI_PANEL_BN = "/sys/module/dsi_panel/kgamma_bn";
-    String DSI_PANEL_W = "/sys/module/dsi_panel/kgamma_w";
-
-    String[] DSI_PANEL_ARRAY = {DSI_PANEL_RP, DSI_PANEL_RN, DSI_PANEL_GP, DSI_PANEL_GN, DSI_PANEL_BP, DSI_PANEL_BN, DSI_PANEL_W};
-
-    // LCD Backlight
-    String LM3530_BRIGTHNESS_MODE = "/sys/devices/i2c-0/0-0038/lm3530_br_mode";
-    String LM3530_MIN_BRIGHTNESS = "/sys/devices/i2c-0/0-0038/lm3530_min_br";
-    String LM3530_MAX_BRIGHTNESS = "/sys/devices/i2c-0/0-0038/lm3530_max_br";
-
-    String ZE551ML_MIN_BRIGHTNESS = "/sys/class/backlight/psb-bl/min_brightness";
-    String ZE551ML_MAX_BRIGHTNESS = "/sys/class/backlight/psb-bl/max_brightness";
-
-    // Backlight Dimmer
-    String LM3630_BACKLIGHT_DIMMER = "/sys/module/lm3630_bl/parameters/backlight_dimmer";
-    String LM3630_MIN_BRIGHTNESS = "/sys/module/lm3630_bl/parameters/min_brightness";
-    String LM3630_BACKLIGHT_DIMMER_THRESHOLD = "/sys/module/lm3630_bl/parameters/backlight_threshold";
-    String LM3630_BACKLIGHT_DIMMER_OFFSET = "/sys/module/lm3630_bl/parameters/backlight_offset";
-
-    String MSM_BACKLIGHT_DIMMER = "/sys/module/msm_fb/parameters/backlight_dimmer";
-
-    String[] MIN_BRIGHTNESS_ARRAY = {LM3630_MIN_BRIGHTNESS, MSM_BACKLIGHT_DIMMER, ZE551ML_MIN_BRIGHTNESS};
-
-    String NEGATIVE_TOGGLE = "/sys/module/cypress_touchkey/parameters/mdnie_shortcut_enabled";
-    String REGISTER_HOOK = "/sys/class/misc/mdnie/hook_intercept";
-    String MASTER_SEQUENCE = "/sys/class/misc/mdnie/sequence_intercept";
     String GLOVE_MODE = "/sys/devices/virtual/touchscreen/touchscreen_dev/mode";
 
-    String[][] SCREEN_ARRAY = {SCREEN_RGB_ARRAY, SCREEN_RGB_CTRL_ARRAY, SCREEN_KCAL_CTRL_NEW_ARRAY, K_GAMMA_ARRAY,
-            DSI_PANEL_ARRAY, MIN_BRIGHTNESS_ARRAY, SCREEN_HBM,
-            {GAMMACONTROL, SCREEN_KCAL_CTRL_MIN, LM3530_BRIGTHNESS_MODE, LM3530_MIN_BRIGHTNESS, LM3530_MAX_BRIGHTNESS,
-                    LM3630_BACKLIGHT_DIMMER, LM3630_BACKLIGHT_DIMMER_THRESHOLD, LM3630_BACKLIGHT_DIMMER_OFFSET,
-                    NEGATIVE_TOGGLE, REGISTER_HOOK, MASTER_SEQUENCE, GLOVE_MODE}};
+    String[] SCREEN_ARRAY = {GLOVE_MODE};
+
     // Sound
     String SOUND_CONTROL_ENABLE[] = {"/sys/module/snd_soc_wcd9320/parameters/enable_fs",
             "/sys/kernel/sound_control_3/gpl_sound_control_locked"};

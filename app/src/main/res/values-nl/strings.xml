@@ -94,5 +94,4 @@
     <string name="input_boost_freq">Input Boost frequentie</string>
     <string name="input_boost_freq_core">Input Boost Frequentie Kern %s</string>
     <string name="input_boost_freq_summary">CPU frequentie te stimuleren om deze frequentie na invoer detectie.</string>
-    <string name="threshold">Drempelwaarde</string>
 </resources>

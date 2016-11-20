@@ -52,17 +52,6 @@
     <string name="sync_threshold">Sünkroonimise künnis</string>
     <string name="input_interval">Sisendi intervall</string>
     <string name="delay">Viivitus</string>
-    <string name="red">Punane</string>
-    <string name="green">Roheline</string>
-    <string name="blue">Sinine</string>
-    <string name="grayscale_mode">Halltoonides</string>
-    <string name="screen_contrast">Ekraani kontrast</string>
-    <string name="contrast">Kontrast</string>
-    <string name="brightness">Heledus</string>
-    <string name="loading">Laadimine</string>
-    <string name="no_internet">Internetiühendus puudub</string>
-    <string name="lcd_backlight">LCD taustvalgustus</string>
-    <string name="offset">Nihe</string>
     <string name="battery_voltage">Aku pinge</string>
     <string name="hybrid">Hübriid</string>
     <string name="network">Võrk</string>

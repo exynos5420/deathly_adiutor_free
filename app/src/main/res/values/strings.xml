@@ -57,6 +57,7 @@
     <string name="information">Information</string>
     <string name="cpu">CPU</string>
     <string name="gpu">GPU</string>
+    <string name="video_audio">Video and Audio</string>
     <string name="kernel">Kernel</string>
     <string name="tools">Tools</string>
     <string name="other">Other</string>
@@ -184,7 +185,6 @@
     <!-- CPU Hotplug -->
     <string name="touch_boost">Touch Boost</string>
     <string name="touch_boost_summary">This will boost your minimum CPU speed if you touch the screen or press a button.</string>
-    <string name="threshold">Threshold Value</string>
     <string name="delay">Delay</string>
 
     <!-- Thermal -->
@@ -210,75 +210,10 @@
     <string name="gpu_powerpolicy_summary">Set the GPU Power Policy</string>
 
     <!-- Screen -->
-    <string name="screen_color_profile">Color Profile</string>
-    <string name="screen_color_profile_summary">Select a preset profile</string>
-    <string name="red">Red</string>
-    <string name="green">Green</string>
-    <string name="blue">Blue</string>
-    <string name="min_rgb">Minimum RGB Value</string>
-    <string name="invert_screen">Invert Screen</string>
-    <string name="saturation_intensity">Saturation Intensity</string>
-    <string name="grayscale_mode">Grayscale Mode</string>
-    <string name="screen_hue">Screen Hue</string>
-    <string name="screen_hue_summary">You might get problems with MSM8x26 SoC when setting a high value.</string>
-    <string name="screen_value">Screen Value</string>
-    <string name="screen_contrast">Screen Contrast</string>
-    <string name="auto_high_brightness_mode">Automatic High Brightness Mode</string>
-    <string name="auto_high_brightness_smoothing">Smooth Lux Values for AutoHBM</string>
-    <string name="hbm_lock">Persist Disable AutoHBM on Manual Toggle</string>
-    <string name="hbm_lock_summary">Enable to persist lock through screen on/off events.</string>
-    <string name="auto_high_brightness_smoothing_warning">Smoothing will cause some delay in significant lux changes causing HBM to toggle.</string>
-    <string name="auto_high_brightness_mode_threshold">Automatic High Brightness Mode Threshold</string>
-    <string name="auto_high_brightness_smoothing_samples">Smoothing Sample Count</string>
-    <string name="high_brightness_mode">High Brightness Mode</string>
-    <string name="gamma">Gamma</string>
-    <string name="gamma_profile">Gamma Profile</string>
-    <string name="red_greys">Red Greys</string>
-    <string name="red_mids">Red Mids</string>
-    <string name="red_blacks">Red Blacks</string>
-    <string name="red_whites">Red Whites</string>
-    <string name="green_greys">Green Greys</string>
-    <string name="green_mids">Green Mids</string>
-    <string name="green_blacks">Green Blacks</string>
-    <string name="green_whites">Green Whites</string>
-    <string name="blue_greys">Blue Greys</string>
-    <string name="blue_mids">Blue Mids</string>
-    <string name="blue_blacks">Blue Blacks</string>
-    <string name="blue_whites">Blue Whites</string>
-    <string name="contrast">Contrast</string>
-    <string name="brightness">Brightness</string>
-    <string name="red_positive">Red Positive</string>
-    <string name="red_negative">Red Negative</string>
-    <string name="green_positive">Green Positive</string>
-    <string name="green_negative">Green Negative</string>
-    <string name="blue_positive">Blue Positive</string>
-    <string name="blue_negative">Blue Negative</string>
-    <string name="white_point">White Point</string>
-    <string name="gamma_profile_summary">After selecting a profile, please turn your screen off and on.</string>
-    <string name="additional_profiles">Additional Profiles</string>
-    <string name="additional_profiles_summary">Get more profiles from the internet.</string>
-    <string name="loading">Loading</string>
-    <string name="no_internet">No internet connection</string>
-    <string name="no_additional_profiles">No additional profiles found</string>
-    <string name="lcd_backlight">LCD Backlight</string>
-    <string name="brightness_mode">Use exponential backlight mode instead of linear mode.</string>
-    <string name="min_brightness">Minimum Brightness</string>
-    <string name="min_brightness_summary">Allows you to decrease the LCD screen brightness lower than it\'s possible on stock.</string>
     <string name="led_speed">LED SPEED</string>
     <string name="led_speed_summary">Allows you to toggle the LED speed lower than it\'s possible on stock.</string>
-    <string name="max_brightness">Maximum Brightness</string>
-    <string name="max_brightness_summary">Allows you to increase the LCD screen brightness higher than it\'s possible on stock.</string>
-    <string name="backlight_dimmer">Backlight Dimmer</string>
-    <string name="offset">Offset</string>
     <string name="Led_toggle">Led Toggle</string>
     <string name="Led_toggle_summary">Test Led blink.</string>
-    <string name="negative_toggle">Negative Toggle</string>
-    <string name="negative_toggle_summary">Enable inverting the screen colors by quickly pressing MENU button 4 times.</string>
-    <string name="mdnie_global_controls">mDNIe global controls</string>
-    <string name="register_hook">Register Hook</string>
-    <string name="register_hook_summary">Register intercept acts like a hook and will enable catching scenario settings and modifying them through delta controls. If a scenario does not have a setting (register) in its base sequence, then it cannot be modified by the hook.</string>
-    <string name="master_sequence">Master Sequence</string>
-    <string name="master_sequence_summary">Enabling the master sequence will disable and ignore Samsung\'s profiles and scenarios, the ROM controls will be disabled.</string>
     <string name="glove_mode">Glove Mode</string>
     <string name="glove_mode_summary">Enabling this will let you use your phone even while wearing gloves.</string>
 

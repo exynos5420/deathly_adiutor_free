@@ -103,22 +103,5 @@
     <string name="gpu_min_freq">ಜಿಪಿಯು ಕನಿಷ್ಠ ಆವರ್ತನ</string>
     <string name="gpu_governor">ಜಿಪಿಯು ಗವರ್ನರ್</string>
     <string name="gpu_governor_summary">ಜಿಪಿಯುನ ಗವರ್ನರ್ ಅನ್ನು ಆಯ್ಕೆಮಾಡಿ.</string>
-    <string name="red">ಕೆಂಪು</string>
-    <string name="green">ಹಸಿರು</string>
-    <string name="blue">ನೀಲಿ</string>
-    <string name="min_rgb">ಕನಿಷ್ಠ RGB ಮೌಲ್ಯ</string>
-    <string name="invert_screen">ಪರದೆ ಇನ್ವರ್ಟ್ ಮಾಡು</string>
-    <string name="saturation_intensity">ಸ್ಯಾಚುರೇಶನ್‍ ತೀವೃತೆ</string>
-    <string name="grayscale_mode">ಗ್ರೇಸ್ಕೇಲ್ ಮೋಡ್</string>
-    <string name="screen_hue">ಪರದೆ ವರ್ಣ</string>
-    <string name="screen_hue_summary">ಹೆಚ್ಚಿನ ಮೌಲ್ಯವನ್ನು ಹೊಂದಿಸುವಾಗ MSM8x26 SoC ಜೊತೆ ನಿಮಗ ತೊಂದರೆಗಳುಂಟಾಗಬಹುದು.</string>
-    <string name="screen_value">ಪರದೆ ಮೌಲ್ಯ</string>
-    <string name="min_brightness">ಕನಿಷ್ಠ ಪ್ರಖರತೆ</string>
-    <string name="max_brightness">ಗರಿಷ್ಠ ಪ್ರಖರತೆ</string>
-    <string name="backlight_dimmer">ಬ್ಯಾಕ್ಲೈಟ್ ಡಿಮ್ಮರ್</string>
-    <string name="offset">ಆಫ್ಸೆಟ್</string>
-    <string name="negative_toggle">ನೆಗೆಟಿವ್ ಟಾಗಲ್</string>
-    <string name="mdnie_global_controls">mDNIe ಜಾಗತಿಕ ನಿಯಂತ್ರಣಗಳು</string>
-    <string name="register_hook">ರೆಜಿಸ್ಟರ್ ಹೂಕ್</string>
     <string name="glove_mode">ಗ್ಲೋವ್ ಮೋಡ್</string>
 </resources>

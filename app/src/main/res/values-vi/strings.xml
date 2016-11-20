@@ -95,8 +95,5 @@
     <string name="input_boost_freq">Tần số đầu vào tăng cường</string>
     <string name="input_boost_freq_core">Đầu vào tăng cường tần số lõi %s</string>
     <string name="touch_boost">Tăng độ nhạy cảm ứng</string>
-    <string name="threshold">Ngưỡng giá trị</string>
     <string name="delay">Độ trễ</string>
-    <string name="red">Đỏ</string>
-    <string name="green">Xanh lá</string>
 </resources>

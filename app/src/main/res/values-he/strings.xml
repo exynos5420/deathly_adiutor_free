@@ -90,27 +90,12 @@
     <string name="global_offset">אוף-סט גלובלי</string>
     <string name="touch_boost">בוסט מגע</string>
     <string name="touch_boost_summary">זה יגביר את המהירות המינימלית של המעבד אם אתה נוגע במסך או לוחץ על כפתור.</string>
-    <string name="threshold">ערך הסף</string>
     <string name="delay">השהייה</string>
     <string name="gpu_cur_freq">תדר נוכחי של מעבד גרפי</string>
     <string name="gpu_max_freq">תדר מקסימלי של המעבד הגרפי</string>
     <string name="gpu_max_freq_summary">קבע את התדר המקסימלי שאליו יגיע המעבד הגרפי.</string>
     <string name="gpu_governor">GPU Governor</string>
     <string name="gpu_governor_summary">קבע את ה- governor של המעבד הגרפי.</string>
-    <string name="red">אדום</string>
-    <string name="green">ירוק</string>
-    <string name="blue">כחול</string>
-    <string name="min_rgb">ערך ה-RGB מינימלי</string>
-    <string name="invert_screen">היפוך מסך</string>
-    <string name="saturation_intensity">עוצמת רוויה</string>
-    <string name="grayscale_mode">מצב גווני אפור</string>
-    <string name="screen_hue_summary">אולי תקבל בעיות עם MSM8x26 SoC בעת הגדרת ערך גבוה.</string>
-    <string name="screen_value">ערך מסך</string>
-    <string name="screen_contrast">ניגודיות מסך</string>
-    <string name="high_brightness_mode">מצב בהירות גבוהה</string>
-    <string name="gamma">גמא</string>
-    <string name="gamma_profile">פרופיל גמא</string>
-    <string name="contrast">ניגודיות</string>
     <string name="glove_mode">מצב כפפה</string>
     <string name="glove_mode_summary">הפעלת מצב זה יאפשר להשתמש במכשיר עם כפפות.</string>
 </resources>

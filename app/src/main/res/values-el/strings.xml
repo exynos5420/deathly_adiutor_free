@@ -96,7 +96,6 @@
     <string name="global_offset">Παγκόσμια Offset</string>
     <string name="touch_boost">Ώθηση αφής</string>
     <string name="touch_boost_summary">Αυτό θα ενισχύσει την ελάχιστη ταχύτητα της CPU σας εάν η οθόνη αφής ή πατήστε ένα κουμπί.</string>
-    <string name="threshold">Κατώτατη τιμή</string>
     <string name="delay">Καθυστέρηση</string>
     <string name="gpu_max_freq">Ανώτατη Συχνότητα Κάρτας Γραφικών GPU</string>
     <string name="gpu_max_freq_summary">Ρύθμιση ανώτατης συχνότητας για κάρτα γραφικών GPU.</string>
