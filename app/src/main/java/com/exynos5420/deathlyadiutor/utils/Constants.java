@@ -185,34 +185,13 @@ public interface Constants {
     String COMMAND_RESULT_PATH = "/sys/class/sec/tsp/cmd_result";
     String POWER_REDUCE = "/sys/class/lcd/panel/power_reduce";
     String MDNIE_MODE = "/sys/class/mdnie/mdnie/mode";
+    String TOUCHKEY_GLOVE_MODE = "/sys/class/mdnie/mdnie/mode";
 
     String[] SCREEN_ARRAY = {COMMAND_PATH, COMMAND_RESULT_PATH, POWER_REDUCE, MDNIE_MODE};
 
     // Sound
-    String SOUND_CONTROL_ENABLE[] = {"/sys/module/snd_soc_wcd9320/parameters/enable_fs",
-            "/sys/kernel/sound_control_3/gpl_sound_control_locked"};
-    String WCD_HIGHPERF_MODE_ENABLE[] = {"/sys/module/snd_soc_wcd9320/parameters/high_perf_mode",
-            "/sys/module/snd_soc_wcd9330/parameters/high_perf_mode"};
-    String WCD_SPKR_DRV_WRND = "/sys/module/snd_soc_wcd9320/parameters/spkr_drv_wrnd";
 
-    String FAUX_SOUND = "/sys/kernel/sound_control_3";
-    String HEADPHONE_GAIN[] = {"/sys/kernel/sound_control_3/gpl_headphone_gain",
-            "/sys/kernel/sound_control_3/gpl_headphone_l_gain"};
-    String HANDSET_MICROPONE_GAIN = "/sys/kernel/sound_control_3/gpl_mic_gain";
-    String CAM_MICROPHONE_GAIN = "/sys/kernel/sound_control_3/gpl_cam_mic_gain";
-    String SPEAKER_GAIN = "/sys/kernel/sound_control_3/gpl_speaker_gain";
-    String HEADPHONE_POWERAMP_GAIN = "/sys/kernel/sound_control_3/gpl_headphone_pa_gain";
-
-    String FRANCO_SOUND = "/sys/devices/virtual/misc/soundcontrol";
-    String HIGHPERF_MODE_ENABLE = "/sys/devices/virtual/misc/soundcontrol/highperf_enabled";
-    String MIC_BOOST = "/sys/devices/virtual/misc/soundcontrol/mic_boost";
-    String SPEAKER_BOOST = "/sys/devices/virtual/misc/soundcontrol/speaker_boost";
-    String VOLUME_BOOST = "/sys/devices/virtual/misc/soundcontrol/volume_boost";
-
-    String[] SPEAKER_GAIN_ARRAY = {SPEAKER_GAIN, SPEAKER_BOOST};
-
-    String[][] SOUND_ARRAY = {SPEAKER_GAIN_ARRAY, SOUND_CONTROL_ENABLE, WCD_HIGHPERF_MODE_ENABLE, HEADPHONE_GAIN, {HIGHPERF_MODE_ENABLE, HANDSET_MICROPONE_GAIN,
-            CAM_MICROPHONE_GAIN, HEADPHONE_POWERAMP_GAIN, MIC_BOOST, VOLUME_BOOST, WCD_SPKR_DRV_WRND}};
+    String[] SOUND_ARRAY = {};
 
     // Battery
     String FORCE_FAST_CHARGE = "/sys/kernel/fast_charge/force_fast_charge";

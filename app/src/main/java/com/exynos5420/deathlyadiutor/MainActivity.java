@@ -222,8 +222,7 @@ public class MainActivity extends BaseActivity implements Constants {
         }
         ITEMS.add(new DAdapter.Header(getString(R.string.video_audio)));
         ITEMS.add(new DAdapter.Item(getString(R.string.screen), new ScreenFragment()));
-        if (Sound.hasSound())
-            ITEMS.add(new DAdapter.Item(getString(R.string.sound), new SoundFragment()));
+        ITEMS.add(new DAdapter.Item(getString(R.string.sound), new SoundFragment()));
         ITEMS.add(new DAdapter.Header(getString(R.string.kernel)));
         ITEMS.add(new DAdapter.Item(getString(R.string.io_scheduler), new IOFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.ksm), new KSMFragment()));
