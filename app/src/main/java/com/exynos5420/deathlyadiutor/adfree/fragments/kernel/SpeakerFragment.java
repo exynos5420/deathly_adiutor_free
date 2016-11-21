@@ -47,7 +47,7 @@ public class SpeakerFragment extends RecyclerViewFragment implements Constants, 
         if (Sound.hasEarpiece()) EarpieceInit();
         SpeakerGainLeftInit();
         SpeakerGainRightInit();
-        addDivider("Speaker Equalizer");
+        addDivider(getString(R.string.speaker_equalizer));
         switchEQonoff();
         SpeakerEQgainsInit();
 
@@ -56,12 +56,12 @@ public class SpeakerFragment extends RecyclerViewFragment implements Constants, 
     private void EarpieceInit(){
         List<String> list_earpiece_volumes = new ArrayList<>();
         for (int i = -8; i < 17; i++){
-            list_earpiece_volumes.add(i + "dB");
-            if (i!= 16) list_earpiece_volumes.add((i + 0.5) + "dB");
+            list_earpiece_volumes.add(i + getString(R.string.dB));
+            if (i!= 16) list_earpiece_volumes.add((i + 0.5) + getString(R.string.dB));
         }
         mEarpieceVolume = new SeekBarCardView.DSeekBarCard(list_earpiece_volumes);
-        mEarpieceVolume.setTitle("Earpiece Volume");
-        mEarpieceVolume.setDescription("Sets the Earpiece volume.");
+        mEarpieceVolume.setTitle(getString(R.string.earpiece_volume));
+        mEarpieceVolume.setDescription(getString(R.string.earpiece_volume_summary));
         mEarpieceVolume.setProgress(Utils.stringToInt(Sound.getEarpieceVolume()));
         mEarpieceVolume.setOnDSeekBarCardListener(this);
 
@@ -71,12 +71,12 @@ public class SpeakerFragment extends RecyclerViewFragment implements Constants, 
     private void SpeakerGainLeftInit(){
         List<String> list_speaker_volumes = new ArrayList<>();
         for (int i = -8; i < 17; i++){
-            list_speaker_volumes.add(i + "dB");
-            if (i!= 16) list_speaker_volumes.add((i + 0.5) + "dB");
+            list_speaker_volumes.add(i + getString(R.string.dB));
+            if (i!= 16) list_speaker_volumes.add((i + 0.5) + getString(R.string.dB));
         }
         mSpeakerGainLeft = new SeekBarCardView.DSeekBarCard(list_speaker_volumes);
-        mSpeakerGainLeft.setTitle("Left Speaker Gain");
-        mSpeakerGainLeft.setDescription("Sets the left speaker gain.");
+        mSpeakerGainLeft.setTitle(getString(R.string.left_speaker_gain));
+        mSpeakerGainLeft.setDescription(getString(R.string.left_speaker_gain_summary));
         mSpeakerGainLeft.setProgress(Utils.stringToInt(Sound.getSpeakerGainLeft()));
         mSpeakerGainLeft.setOnDSeekBarCardListener(this);
 
@@ -86,12 +86,12 @@ public class SpeakerFragment extends RecyclerViewFragment implements Constants, 
     private void SpeakerGainRightInit(){
         List<String> list_speaker_volumes = new ArrayList<>();
         for (int i = -8; i < 17; i++){
-            list_speaker_volumes.add(i + "dB");
-            if (i!= 16) list_speaker_volumes.add((i + 0.5) + "dB");
+            list_speaker_volumes.add(i + getString(R.string.dB));
+            if (i!= 16) list_speaker_volumes.add((i + 0.5) + getString(R.string.dB));
         }
         mSpeakerGainRight = new SeekBarCardView.DSeekBarCard(list_speaker_volumes);
-        mSpeakerGainRight.setTitle("Right Speaker Gain");
-        mSpeakerGainRight.setDescription("Right the left speaker gain.");
+        mSpeakerGainRight.setTitle(getString(R.string.right_speaker_gain));
+        mSpeakerGainRight.setDescription(getString(R.string.right_speaker_gain_summary));
         mSpeakerGainRight.setProgress(Utils.stringToInt(Sound.getSpeakerGainRight()));
         mSpeakerGainRight.setOnDSeekBarCardListener(this);
 
@@ -100,8 +100,8 @@ public class SpeakerFragment extends RecyclerViewFragment implements Constants, 
 
     private void switchEQonoff(){
         mEQenabled = new SwitchCardView.DSwitchCard();
-        mEQenabled.setTitle("Speaker Equalizer");
-        mEQenabled.setDescription("Enables or disables Speaker Equalizer.");
+        mEQenabled.setTitle(getString(R.string.speaker_equalizer));
+        mEQenabled.setDescription(getString(R.string.speaker_equalizer_toggle_summary));
         mEQenabled.setChecked(Sound.isSpeakerEqEnabled());
         mEQenabled.setOnDSwitchCardListener(this);
 
@@ -111,12 +111,12 @@ public class SpeakerFragment extends RecyclerViewFragment implements Constants, 
     private void SpeakerEQgainsInit(){
         List<String> list_eq_gains = new ArrayList<>();
         for (int i = -12; i < 13; i++) {
-            list_eq_gains.add(i + "dB");
-            if (i != 12) list_eq_gains.add((i + 0.5) + "dB");
+            list_eq_gains.add(i + getString(R.string.dB));
+            if (i != 12) list_eq_gains.add((i + 0.5) + getString(R.string.dB));
         }
         for (int i = 0; i < 5; i++){
             mEQgains[i] = new SeekBarCardView.DSeekBarCard(list_eq_gains);
-            mEQgains[i].setTitle("Equalizer Band " + (i+1));
+            mEQgains[i].setTitle(getString(R.string.equalizer_band) + " " + (i+1));
             mEQgains[i].setDescription(getBandDescription(i));
             mEQgains[i].setProgress(Utils.stringToInt(Sound.getSpeakerEqGain(i)));
             mEQgains[i].setOnDSeekBarCardListener(this);
@@ -161,15 +161,15 @@ public class SpeakerFragment extends RecyclerViewFragment implements Constants, 
     private String getBandDescription(int i){
         switch (i) {
             case 0:
-                return "Cutoff-frequency: 160Hz";
+                return getString(R.string.sp_eq_band1_description);
             case 1:
-                return "Center-frequency: 500Hz, bandwidth: 1050Hz";
+                return getString(R.string.sp_eq_band2_description);
             case 2:
-                return "Center-frequency: 2800Hz, bandwidth: 2200Hz";
+                return getString(R.string.sp_eq_band3_description);
             case 3:
-                return "Center-frequency: 7600Hz, bandwidth: 4500Hz";
+                return getString(R.string.sp_eq_band4_description);
             case 4:
-                return "Center-frequency: 7600Hz, bandwidth: 4500Hz";
+                return getString(R.string.sp_eq_band5_description);
         }
         return "";
     }

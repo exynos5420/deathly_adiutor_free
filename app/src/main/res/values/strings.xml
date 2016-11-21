@@ -226,6 +226,22 @@
     <string name="power_reduce_summary">Adjust display for lower power consumption without degradation.</string>
 
     <!-- Sound -->
+    <string name="dB">dB</string>
+    <string name="earpiece_volume">Earpiece Volume</string>
+    <string name="earpiece_volume_summary">Sets the Earpiece volume.</string>
+    <string name="left_speaker_gain">Left Speaker Gain</string>
+    <string name="left_speaker_gain_summary">Sets the left speaker gain.</string>
+    <string name="right_speaker_gain">Right Speaker Gain</string>
+    <string name="right_speaker_gain_summary">Sets the right speaker gain.</string>
+    <string name="speaker_equalizer">Speaker Equalizer</string>
+    <string name="speaker_equalizer_toggle_summary">Enables or disables Speaker Equalizer.</string>
+    <string name="equalizer_band">Equalizer Band</string>
+    <string name="sp_eq_band1_description">Cutoff-frequency: 160Hz</string>
+    <string name="sp_eq_band2_description">Center-frequency: 500Hz, bandwidth: 1050Hz</string>
+    <string name="sp_eq_band3_description">Center-frequency: 2800Hz, bandwidth: 2200Hz</string>
+    <string name="sp_eq_band4_description">Center-frequency: 7600Hz, bandwidth: 4500Hz</string>
+    <string name="sp_eq_band5_description">Cutoff-frequency: 20000Hz</string>
+
 
     <!-- Battery -->
     <string name="battery_voltage">Battery Voltage</string>
