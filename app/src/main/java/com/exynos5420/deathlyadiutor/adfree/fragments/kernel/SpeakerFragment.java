@@ -37,7 +37,7 @@ public class SpeakerFragment extends RecyclerViewFragment implements Constants, 
         SeekBarCardView.DSeekBarCard.OnDSeekBarCardListener{
 
     private SeekBarCardView.DSeekBarCard mEarpieceVolume, mSpeakerGainLeft, mSpeakerGainRight;
-    private SwitchCardView.DSwitchCard mEQenabled;
+    private SwitchCardView.DSwitchCard mEQenabled, mPrivacyMode;
     private SeekBarCardView.DSeekBarCard[] mEQgains = new SeekBarCardView.DSeekBarCard[5];
 
     @Override
@@ -47,6 +47,7 @@ public class SpeakerFragment extends RecyclerViewFragment implements Constants, 
         if (Sound.hasEarpiece()) EarpieceInit();
         SpeakerGainLeftInit();
         SpeakerGainRightInit();
+        switchPrivateModeonoff();
         addDivider(getString(R.string.speaker_equalizer));
         switchEQonoff();
         SpeakerEQgainsInit();
@@ -98,6 +99,16 @@ public class SpeakerFragment extends RecyclerViewFragment implements Constants, 
         addView(mSpeakerGainRight);
     }
 
+    private void switchPrivateModeonoff(){
+        mPrivacyMode = new SwitchCardView.DSwitchCard();
+        mPrivacyMode.setTitle(getString(R.string.speaker_privacy));
+        mPrivacyMode.setDescription(getString(R.string.speaker_privacy_summary));
+        mPrivacyMode.setChecked(Sound.isSpeakerPrivacyEnabled());
+        mPrivacyMode.setOnDSwitchCardListener(this);
+
+        addView(mPrivacyMode);
+    }
+
     private void switchEQonoff(){
         mEQenabled = new SwitchCardView.DSwitchCard();
         mEQenabled.setTitle(getString(R.string.speaker_equalizer));
@@ -135,6 +146,8 @@ public class SpeakerFragment extends RecyclerViewFragment implements Constants, 
     public void onChecked(SwitchCardView.DSwitchCard dSwitchCard, boolean checked) {
         if (dSwitchCard == mEQenabled)
             Sound.switchSpeakerEq(checked, getActivity());
+        else if (dSwitchCard == mPrivacyMode)
+            Sound.switchSpeakerPrivacy(checked, getActivity());
     }
 
     @Override

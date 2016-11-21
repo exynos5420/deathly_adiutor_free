@@ -236,6 +236,8 @@
     <string name="left_speaker_gain_summary">Sets the left speaker gain.</string>
     <string name="right_speaker_gain">Right Speaker Gain</string>
     <string name="right_speaker_gain_summary">Sets the right speaker gain.</string>
+    <string name="speaker_privacy">Privacy mode</string>
+    <string name="speaker_privacy_summary">Disables the main speakers when audio is outputted via headphones.</string>
     <string name="speaker_equalizer">Speakers Equalizer</string>
     <string name="speaker_equalizer_toggle_summary">Enables or disables Speakers Equalizer.</string>
     <string name="sp_eq_band1_description">Cutoff-frequency: 160Hz</string>

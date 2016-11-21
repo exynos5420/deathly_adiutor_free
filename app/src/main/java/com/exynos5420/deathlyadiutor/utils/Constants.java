@@ -193,6 +193,7 @@ public interface Constants {
     String EARPICE_VOLUME = "/sys/class/misc/wolfson_control/earpiece_volume";
     String SP_GAIN_LEFT = "/sys/class/misc/wolfson_control/speaker_gain_left";
     String SP_GAIN_RIGHT = "/sys/class/misc/wolfson_control/speaker_gain_right";
+    String SP_PRIVACY_MODE = "/sys/class/misc/wolfson_control/switch_sp_privacy";
     String SP_EQ_ENABLE = "/sys/class/misc/wolfson_control/switch_eq_speaker";
     String SP_EQ_BAND1_GAIN = "/sys/class/misc/wolfson_control/eq_sp_gain_1";
     String SP_EQ_BAND2_GAIN = "/sys/class/misc/wolfson_control/eq_sp_gain_2";
@@ -202,7 +203,7 @@ public interface Constants {
 
     String[] SPEAKER_EQ_GAINS_ARRAY = {SP_EQ_BAND1_GAIN, SP_EQ_BAND2_GAIN, SP_EQ_BAND3_GAIN, SP_EQ_BAND4_GAIN, SP_EQ_BAND5_GAIN};
 
-    String[] SPEAKER_ARRAY = {EARPICE_VOLUME, SP_GAIN_LEFT, SP_GAIN_RIGHT, SP_EQ_ENABLE, SP_EQ_BAND1_GAIN, SP_EQ_BAND2_GAIN,
+    String[] SPEAKER_ARRAY = {EARPICE_VOLUME, SP_GAIN_LEFT, SP_GAIN_RIGHT, SP_PRIVACY_MODE, SP_EQ_ENABLE, SP_EQ_BAND1_GAIN, SP_EQ_BAND2_GAIN,
             SP_EQ_BAND3_GAIN, SP_EQ_BAND4_GAIN, SP_EQ_BAND5_GAIN};
 
     // HeadPhone

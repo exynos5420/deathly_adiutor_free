@@ -77,6 +77,14 @@ public class Sound implements Constants {
         Control.runCommand(activate ? "1" : "0", SP_EQ_ENABLE, Control.CommandType.GENERIC, context);
     }
 
+    public static boolean isSpeakerPrivacyEnabled(){
+        return Utils.readFile(SP_PRIVACY_MODE).equals("1");
+    }
+
+    public static void switchSpeakerPrivacy(boolean activate, Context context){
+        Control.runCommand(activate ? "1" : "0", SP_PRIVACY_MODE, Control.CommandType.GENERIC, context);
+    }
+
     public static String getSpeakerEqGain(int band){
         double value = Utils.stringtodouble(Utils.readFile(SPEAKER_EQ_GAINS_ARRAY[band]));
         return Double.toString((value + 12) * 2);
