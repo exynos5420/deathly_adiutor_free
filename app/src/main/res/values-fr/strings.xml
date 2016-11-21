@@ -111,15 +111,6 @@
     <string name="gpu_governor_summary">Définissez le gouverneur du GPU.</string>
     <string name="glove_mode">Mode gants</string>
     <string name="glove_mode_summary">Activer ceci vous permettra d\'utiliser votre téléphone même en portant des gants.</string>
-    <string name="sound_control">Contrôle Audio</string>
-    <string name="headset_highperf_mode">Mode casque haute performance</string>
-    <string name="headphone_gain">Gain du Casque</string>
-    <string name="handset_microphone_gain">Gain du Microphone Casque</string>
-    <string name="cam_microphone_gain">Gain Microphone Caméra</string>
-    <string name="speaker_gain">Gain du Haut-Parleur</string>
-    <string name="headphone_poweramp_gain">Gain de casque PowerAmp</string>
-    <string name="microphone_gain">Amplification microphone</string>
-    <string name="volume_gain">Amplification du volume</string>
     <string name="battery_voltage">Voltage de la batterie</string>
     <string name="battery_level">Niveau de la batterie</string>
     <string name="battery_temperature">Température de la batterie</string>

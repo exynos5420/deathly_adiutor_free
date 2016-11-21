@@ -111,15 +111,6 @@
     <string name="gpu_governor_summary">Atur Governor GPU.</string>
     <string name="glove_mode">Mode Sarung tangan</string>
     <string name="glove_mode_summary">Memungkinkan akan membiarkan Anda menggunakan telepon bahkan ketika mengenakan sarung tangan.</string>
-    <string name="sound_control">Kontrol Suara</string>
-    <string name="headset_highperf_mode">Mode tinggi performa headset</string>
-    <string name="headphone_gain">Peningkatan Headphone</string>
-    <string name="handset_microphone_gain">Peningkatan Microfon Perangkat</string>
-    <string name="cam_microphone_gain">Peningkatan Mikrofon Camcorder</string>
-    <string name="speaker_gain">Peningkatan Speaker</string>
-    <string name="headphone_poweramp_gain">Peningkatan Speaker PowerAmp</string>
-    <string name="microphone_gain">Peningkatan Mikrofon</string>
-    <string name="volume_gain">Peningkatan Volume</string>
     <string name="battery_voltage">Voltase Baterai</string>
     <string name="battery_level">Tingkat baterai</string>
     <string name="battery_temperature">Suhu Baterai</string>

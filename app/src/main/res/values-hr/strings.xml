@@ -103,12 +103,6 @@
     <string name="gpu_max_freq_summary">Postavi najvišu moguću GPU frekvenciju do koje se može uzdići.</string>
     <string name="gpu_governor">GPU Governor</string>
     <string name="gpu_governor_summary">Postavi Governor za GPU.</string>
-    <string name="sound_control">Kontrola zvuka</string>
-    <string name="headphone_gain">Glasnoća slušalica</string>
-    <string name="handset_microphone_gain">Glasnoća mikrofona slušalica</string>
-    <string name="cam_microphone_gain">Glasnoća mikrofona video kamere</string>
-    <string name="speaker_gain">Glasnoća zvučnika</string>
-    <string name="headphone_poweramp_gain">Glasnoća pojačala za slušalice</string>
     <string name="battery_voltage">Napon baterije</string>
     <string name="battery_level">Razina punjenja baterije</string>
     <string name="battery_temperature">Temperatura baterije</string>

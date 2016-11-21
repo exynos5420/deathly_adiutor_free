@@ -100,11 +100,6 @@
     <string name="touch_boost_summary">Ta opcja zwiększy minimalne taktowanie CPU jeżeli dotkniesz ekranu lub nacisniesz przycisk.</string>
     <string name="delay">Opóźnienie</string>
     <string name="gpu_cur_freq">Aktualna częstotliwości GPU</string>
-    <string name="sound_control">Kontrola dźwięku</string>
-    <string name="headphone_gain">Wzmocnienie słuchawek</string>
-    <string name="speaker_gain">Wzmocnienie głośnika</string>
-    <string name="microphone_gain">Wzmocnienie mikrofonu</string>
-    <string name="volume_gain">Wzmocnienie głośności</string>
     <string name="battery_voltage">Napięcie baterii</string>
     <string name="battery_level">Poziom naładowania baterii</string>
     <string name="battery_temperature">Temperatura baterii</string>

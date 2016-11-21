@@ -112,14 +112,6 @@
     <string name="gpu_governor_summary">Afita\'l gobernador de la GPU.</string>
     <string name="glove_mode">Mou guantes</string>
     <string name="glove_mode_summary">Habilitando esto dexaráte usar el to móvil magar que teas con guantes.</string>
-    <string name="sound_control">Control de soníu</string>
-    <string name="headphone_gain">Ganancia d\'auriculares</string>
-    <string name="handset_microphone_gain">Ganancia de micrófonu de cascos</string>
-    <string name="cam_microphone_gain">Ganancia de micrófonu de cámara</string>
-    <string name="speaker_gain">Ganancia d\'altavoces</string>
-    <string name="headphone_poweramp_gain">Ganancia PowerAmp d\'auriculares</string>
-    <string name="microphone_gain">Ganacia de micrófonu</string>
-    <string name="volume_gain">Ganancia de volume</string>
     <string name="battery_voltage">Voltaxe de batería</string>
     <string name="battery_level">Nivel de batería</string>
     <string name="battery_temperature">Temperatura de batería</string>

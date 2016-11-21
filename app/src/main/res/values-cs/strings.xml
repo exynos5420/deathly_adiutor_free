@@ -111,14 +111,6 @@
     <string name="gpu_governor_summary">Nastavení správce grafiky.</string>
     <string name="glove_mode">Režim v rukavicích</string>
     <string name="glove_mode_summary">Povolení této funkce vám umožní používat vaše zařízení i s nasazenými rukavicemi.</string>
-    <string name="sound_control">Ovládání zvuku</string>
-    <string name="headphone_gain">Zesílení sluchátek</string>
-    <string name="handset_microphone_gain">Zesílení sluchátkového mikrofonu</string>
-    <string name="cam_microphone_gain">Zesílení mikrofonu kamery</string>
-    <string name="speaker_gain">Zesílení reproduktoru</string>
-    <string name="headphone_poweramp_gain">Zesílení PowerAmp sluchátek</string>
-    <string name="microphone_gain">Zesílení mikrofonu</string>
-    <string name="volume_gain">Zesílení hlasitosti</string>
     <string name="battery_voltage">Napětí baterie</string>
     <string name="battery_level">Úroveň nabití</string>
     <string name="battery_temperature">Teplota baterie</string>

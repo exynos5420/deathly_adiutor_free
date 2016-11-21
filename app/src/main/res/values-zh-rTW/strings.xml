@@ -103,12 +103,6 @@
     <string name="gpu_max_freq_summary">設置 GPU 可提升的最大頻率。</string>
     <string name="gpu_governor">GPU 管理模式</string>
     <string name="gpu_governor_summary">設定 GPU 的管理模式。</string>
-    <string name="sound_control">聲音控制</string>
-    <string name="headphone_gain">耳機增益</string>
-    <string name="handset_microphone_gain">頭戴式麥克風增益</string>
-    <string name="speaker_gain">喇叭增益</string>
-    <string name="microphone_gain">麥克風增益</string>
-    <string name="volume_gain">音量增益</string>
     <string name="battery_voltage">電池電壓</string>
     <string name="battery_level">電池存量</string>
     <string name="battery_temperature">電池溫度</string>

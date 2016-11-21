@@ -186,24 +186,6 @@
 
 
     <!-- Sound -->
-    <string name="driver_tunables">SOC-Driver Einstellungen</string>
-    <string name="third_party_driver_tunables">Einstellungen für Third-Party-Treiber</string>
-    <string name="sound_control">Lautstärken-Kontrolle</string>
-    <string name="headset_highperf_mode">Kopfhörer High-Performance-Modus</string>
-    <string name="headset_highperf_mode_summary">Hilft dabei Verzerrungen bei hoher Lautstärke zu verhindern.</string>
-    <string name="headphone_gain_independent">Unabhängige Kopfhörer-Verstärkung</string>
-    <string name="headphone_gain_independent_summary">Separate Links/Rechts Werte setzen.</string>
-    <string name="headphone_gain_l">Kopfhörer-Verstärkung Links</string>
-    <string name="headphone_gain_r">Kopfhörer-Verstärkung Rechts</string>
-    <string name="headphone_gain">Kopfhörer-Verstärkung</string>
-    <string name="handset_microphone_gain">Handset Mikrofon-Verstärkung</string>
-    <string name="cam_microphone_gain">Camcorder Mikrofon-Verstärkung</string>
-    <string name="speaker_gain">Lautsprecher-Verstärkung</string>
-    <string name="headphone_poweramp_gain">Kopfhörer PowerAmp-Verstärkung</string>
-    <string name="microphone_gain">Mikrofon-Verstärkung</string>
-    <string name="volume_gain">Lautstärke-Verstärkung</string>
-    <string name="headset_mspkr_drv_mode">Lautsprecher-Treiber</string>
-    <string name="headset_mspkr_drv_mode_summary">Software-Workaround starten, um den Verlust der Lautsprecher zu verhindern</string>
 
     <!-- Battery -->
     <string name="battery_voltage">Akku-Spannung</string>

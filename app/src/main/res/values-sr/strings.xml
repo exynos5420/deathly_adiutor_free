@@ -89,7 +89,6 @@
     <string name="global_offset">Глобални помак</string>
     <string name="delay">Одлагање</string>
     <string name="gpu_governor">ГПУ управљач</string>
-    <string name="sound_control">Контрола звука</string>
     <string name="battery_voltage">Напон батерије</string>
     <string name="battery_level">Ниво батерије</string>
     <string name="battery_temperature">Температура батерије</string>

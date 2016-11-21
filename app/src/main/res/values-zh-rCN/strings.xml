@@ -112,15 +112,6 @@
     <string name="gpu_governor_summary">设置 GPU 的调速器。</string>
     <string name="glove_mode">手套模式</string>
     <string name="glove_mode_summary">启用此选项，将让您使用手机时，即使戴着手套。</string>
-    <string name="sound_control">声音控制</string>
-    <string name="headset_highperf_mode">耳机高性能模式</string>
-    <string name="headphone_gain">耳机增益</string>
-    <string name="handset_microphone_gain">手机听筒麦克风增益</string>
-    <string name="cam_microphone_gain">录音麦克风增益</string>
-    <string name="speaker_gain">扬声器增益</string>
-    <string name="headphone_poweramp_gain">耳机 PowerAmp 增益</string>
-    <string name="microphone_gain">麦克风增益</string>
-    <string name="volume_gain">音量增益</string>
     <string name="battery_voltage">电池电压</string>
     <string name="battery_level">电量</string>
     <string name="battery_temperature">电池温度</string>

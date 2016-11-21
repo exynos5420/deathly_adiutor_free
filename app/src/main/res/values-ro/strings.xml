@@ -104,5 +104,4 @@
     <string name="gpu_max_freq_summary">Setaţi frecvenţa maximă GPU până la sfârșitul scalei.</string>
     <string name="gpu_governor">GPU Governor</string>
     <string name="gpu_governor_summary">Setaţi guvernator al GPU-ului.</string>
-    <string name="sound_control">Controlul Sunetului</string>
 </resources>

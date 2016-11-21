@@ -112,14 +112,6 @@
     <string name="gpu_governor_summary">Imposta il governor della GPU.</string>
     <string name="glove_mode">Modalità guanti</string>
     <string name="glove_mode_summary">L\'attivazione di questa funzione vi permetterà di utilizzare il telefono anche con i guanti.</string>
-    <string name="sound_control">Controllo del suono</string>
-    <string name="headphone_gain">Guadagno suono cuffie</string>
-    <string name="handset_microphone_gain">Guadagno del microfono</string>
-    <string name="cam_microphone_gain">Guadagno microfono videocamera</string>
-    <string name="speaker_gain">Guadagno altoparlanti</string>
-    <string name="headphone_poweramp_gain">Guadagno cuffie con PowerAmp</string>
-    <string name="microphone_gain">Guadagno microfono</string>
-    <string name="volume_gain">Guadagno volume</string>
     <string name="battery_voltage">Tensione batteria</string>
     <string name="battery_level">Livello Batteria</string>
     <string name="battery_temperature">Temperatura batteria</string>

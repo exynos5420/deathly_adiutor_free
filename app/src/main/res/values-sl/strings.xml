@@ -112,15 +112,6 @@
     <string name="gpu_governor_summary">Določi Governorja GPE.</string>
     <string name="glove_mode">Rokavični način</string>
     <string name="glove_mode_summary">Vklop tega dovoli, da telefon uporabljate tudi, ko nosite rokavice.</string>
-    <string name="sound_control">Nadzor zvoka</string>
-    <string name="headset_highperf_mode">Visokoodzivni način za slušalke</string>
-    <string name="headphone_gain">Ojačanje slušalk</string>
-    <string name="handset_microphone_gain">Ojačanje mikrofona slušalk</string>
-    <string name="cam_microphone_gain">Ojačanje mikrofona kamere</string>
-    <string name="speaker_gain">Ojačanje zvočnika</string>
-    <string name="headphone_poweramp_gain">PowerAmp ojačanje slušalk</string>
-    <string name="microphone_gain">Ojačanje mikrofona</string>
-    <string name="volume_gain">Ojačanje glasnosti</string>
     <string name="battery_voltage">Napetost baterije</string>
     <string name="battery_level">Raven baterije</string>
     <string name="battery_temperature">Temperatura baterije</string>

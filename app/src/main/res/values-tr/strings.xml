@@ -109,14 +109,6 @@
     <string name="gpu_governor_summary">GPU Denetleyiciyi Ayarla.</string>
     <string name="glove_mode">Eldiven modu</string>
     <string name="glove_mode_summary">Bunun etkinleştirilmesiyle eldiven giyerken telefonunuzu kullanmanıza izin verir.</string>
-    <string name="sound_control">Ses Denetimi</string>
-    <string name="headphone_gain">Kulaklık Yükseltmesi</string>
-    <string name="handset_microphone_gain">Kulaklık Mikrofon Yükseltmesi</string>
-    <string name="cam_microphone_gain">Video Kamera Mikrofon Yükseltmesi</string>
-    <string name="speaker_gain">Hoparlör Yükseltmesi</string>
-    <string name="headphone_poweramp_gain">Kulaklık PowerAmp Yükseltmesi</string>
-    <string name="microphone_gain">Mikrofon kazancı</string>
-    <string name="volume_gain">Ses kazanç</string>
     <string name="battery_voltage">Pil Voltajı</string>
     <string name="battery_level">Pil Seviyesi</string>
     <string name="battery_temperature">Pil Sıcaklığı</string>

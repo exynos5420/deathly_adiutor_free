@@ -112,15 +112,6 @@
     <string name="gpu_governor_summary">GPUのガバナを設定します。</string>
     <string name="glove_mode">手ぶくろモード</string>
     <string name="glove_mode_summary">手ぶくろをしたままでも操作ができるようになります。</string>
-    <string name="sound_control">サウンド操作</string>
-    <string name="headset_highperf_mode">ヘッドセット高パフォーマンスモード</string>
-    <string name="headphone_gain">ヘッドフォンゲイン</string>
-    <string name="handset_microphone_gain">機器マイクゲイン</string>
-    <string name="cam_microphone_gain">カメラマイクゲイン</string>
-    <string name="speaker_gain">スピーカーゲイン</string>
-    <string name="headphone_poweramp_gain">ヘッドフォンPowerAmpゲイン</string>
-    <string name="microphone_gain">マイクゲイン</string>
-    <string name="volume_gain">ボリュームゲイン</string>
     <string name="battery_voltage">バッテリー電圧</string>
     <string name="battery_level">バッテリー残量</string>
     <string name="battery_temperature">バッテリー温度</string>

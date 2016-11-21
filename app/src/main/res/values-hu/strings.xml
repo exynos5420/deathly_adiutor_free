@@ -112,15 +112,6 @@
     <string name="gpu_governor_summary">Állítsa be a GPU irányítóját.</string>
     <string name="glove_mode">Kesztyűs üzemmód</string>
     <string name="glove_mode_summary">Engedélyezésével a telefon még kesztyűben is használható.</string>
-    <string name="sound_control">Hangvezérlő</string>
-    <string name="headset_highperf_mode">Fülhallagató nagy teljesítményű mód</string>
-    <string name="headphone_gain">Fejhallgató erősítés</string>
-    <string name="handset_microphone_gain">Készülék mikrofon erősítés</string>
-    <string name="cam_microphone_gain">Kamera mikrofon erősítés</string>
-    <string name="speaker_gain">Hangszóró erősítés</string>
-    <string name="headphone_poweramp_gain">Fejhallgató PowerAmp erősítés</string>
-    <string name="microphone_gain">Mikrofon erősítés</string>
-    <string name="volume_gain">Hangerő erősítés</string>
     <string name="battery_voltage">Akkumulátor feszültség</string>
     <string name="battery_level">Akkumulátorszint</string>
     <string name="battery_temperature">Akkumulátor hőmérséklete</string>

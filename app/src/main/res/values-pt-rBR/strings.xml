@@ -112,15 +112,6 @@
     <string name="gpu_governor_summary">Definir o governador da GPU.</string>
     <string name="glove_mode">Modo de luva</string>
     <string name="glove_mode_summary">Habilitar isso permitirá que use o seu celular mesmo se estiver usando luvas.</string>
-    <string name="sound_control">Controle de som</string>
-    <string name="headset_highperf_mode">Modo de alto desempenho do fone de ouvido</string>
-    <string name="headphone_gain">Ganho de fone de ouvido</string>
-    <string name="handset_microphone_gain">Ganho do microfone no monofone</string>
-    <string name="cam_microphone_gain">Ganho do microfone na filmadora</string>
-    <string name="speaker_gain">Ganho de alto-falante</string>
-    <string name="headphone_poweramp_gain">Ganho de PowerAmp em fones de ouvido</string>
-    <string name="microphone_gain">Ganho do microfone</string>
-    <string name="volume_gain">Ganho de volume</string>
     <string name="battery_voltage">Voltagem da bateria</string>
     <string name="battery_level">Nível de Bateria</string>
     <string name="battery_temperature">Temperatura da bateria</string>

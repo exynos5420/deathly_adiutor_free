@@ -112,15 +112,6 @@
     <string name="gpu_governor_summary">Установите говернор GPU.</string>
     <string name="glove_mode">Режим перчаток</string>
     <string name="glove_mode_summary">Это позволит вам использовать ваш телефон даже при ношении перчатки.</string>
-    <string name="sound_control">Упраление звуком</string>
-    <string name="headset_highperf_mode">Режим высокой производительности гарнитуры</string>
-    <string name="headphone_gain">Усиление для наушников</string>
-    <string name="handset_microphone_gain">Усиление микрофона гарнитуры</string>
-    <string name="cam_microphone_gain">Усиление микрофона видеокамеры</string>
-    <string name="speaker_gain">Усиление динамиков</string>
-    <string name="headphone_poweramp_gain">Усиление наушников в PowerAmp</string>
-    <string name="microphone_gain">Усиление микрофона</string>
-    <string name="volume_gain">Увеличение громкости</string>
     <string name="battery_voltage">Напряжение батареи</string>
     <string name="battery_level">Уровень заряда</string>
     <string name="battery_temperature">Температура батареи</string>

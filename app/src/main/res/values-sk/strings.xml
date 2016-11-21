@@ -73,7 +73,6 @@
     <string name="input_boost_freq">Vstupné zvýšiť frekvenciu</string>
     <string name="input_boost_freq_summary">Frekvencia Procesora sa zvýšila na túto frekvenciu vstupného detekcií.</string>
     <string name="delay">Oneskorenie</string>
-    <string name="sound_control">Ovládanie zvuku</string>
     <string name="battery_voltage">Napätie batérie</string>
     <string name="battery_level">Úroveň batérie</string>
     <string name="battery_temperature">Teplota batérie</string>
