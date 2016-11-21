@@ -38,7 +38,6 @@
     <string name="cpu">מעבד</string>
     <string name="gpu">מעבד גרפי</string>
     <string name="screen">מסך</string>
-    <string name="sound">שמע</string>
     <string name="battery">סוללה</string>
     <string name="io_scheduler">מתזמן קלט/פלט</string>
     <string name="low_memory_killer">מפנה זכרון נמוך</string>

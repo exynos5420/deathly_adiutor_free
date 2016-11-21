@@ -39,7 +39,6 @@
     <string name="cpu">CPU</string>
     <string name="gpu">GPU</string>
     <string name="screen">Tela</string>
-    <string name="sound">Som</string>
     <string name="battery">Bateria</string>
     <string name="io_scheduler">Escalonador de I/O</string>
     <string name="ksm">Memória Compartilhada do Kernel (Ksm)</string>

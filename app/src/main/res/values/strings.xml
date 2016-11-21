@@ -73,7 +73,7 @@
     <string name="gpu_voltage">GPU Voltage</string>
     <string name="gpu_thermal">GPU Thermal</string>
     <string name="screen">Screen</string>
-    <string name="sound">Sound</string>
+    <string name="speaker">Speaker</string>
     <string name="io_scheduler">I/O Scheduler</string>
     <string name="ksm">Kernel Samepage Merging</string>
     <string name="low_memory_killer">Low Memory Killer</string>

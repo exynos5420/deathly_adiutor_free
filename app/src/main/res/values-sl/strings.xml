@@ -39,7 +39,6 @@
     <string name="cpu">CPU</string>
     <string name="gpu">GPU</string>
     <string name="screen">Prikaz</string>
-    <string name="sound">Zvok</string>
     <string name="battery">Baterija</string>
     <string name="io_scheduler">V/I časovni razvrščevalnik</string>
     <string name="ksm">Kernel Samepage Merging</string>

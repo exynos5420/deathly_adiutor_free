@@ -39,7 +39,6 @@
     <string name="cpu">Procesor</string>
     <string name="gpu">Grafika</string>
     <string name="screen">Obrazovka</string>
-    <string name="sound">Zvuk</string>
     <string name="battery">Baterie</string>
     <string name="io_scheduler">I/O plánovač</string>
     <string name="ksm">Slučování sdílených částí paměti jádrem</string>

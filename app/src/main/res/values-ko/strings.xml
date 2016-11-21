@@ -39,7 +39,6 @@
     <string name="cpu">CPU</string>
     <string name="gpu">GPU</string>
     <string name="screen">화면</string>
-    <string name="sound">소리</string>
     <string name="battery">배터리</string>
     <string name="io_scheduler">I/O 스케줄러</string>
     <string name="ksm">Kernel Samepage Merging</string>

@@ -39,7 +39,6 @@
     <string name="cpu">CPU</string>
     <string name="gpu">जीपीयू</string>
     <string name="screen">स्क्रीन</string>
-    <string name="sound">आवाज़</string>
     <string name="battery">बैटरी</string>
   <string name="io_scheduler">इनपुट/आउटपुट अनुसूचक
 </string>

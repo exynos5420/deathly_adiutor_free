@@ -38,7 +38,6 @@
     <string name="cpu">ಸಿಪಿಯು</string>
     <string name="gpu">ಜಿಪಿಯು</string>
     <string name="screen">ಪರದೆ</string>
-    <string name="sound">ಶಬ್ಧ</string>
     <string name="battery">ಬ್ಯಾಟರಿ</string>
     <string name="io_scheduler">I/O ಶೆಡ್ಯೂಲರ್</string>
     <string name="ksm">ಕೆರ್ನಲ್ ಸೇಮ್ಪೇಗ್ ಮರ್ಜಿಂಗ್</string>

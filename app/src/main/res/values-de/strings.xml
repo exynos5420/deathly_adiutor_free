@@ -56,7 +56,6 @@
     <string name="cpu">CPU</string>
     <string name="gpu">GPU</string>
     <string name="screen">Bildschirm</string>
-    <string name="sound">Ton</string>
     <string name="battery">Akku</string>
     <string name="io_scheduler">I/O-Scheduler</string>
     <string name="ksm">Kernel Samepage Merging</string>

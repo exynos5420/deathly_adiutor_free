@@ -39,7 +39,6 @@
     <string name="cpu">CPU</string>
     <string name="gpu">GPU</string>
     <string name="screen">Màn hình</string>
-    <string name="sound">Âm thanh</string>
     <string name="battery">Pin</string>
     <string name="io_scheduler">Lịch trình nhập xuất I/O</string>
     <string name="ksm">Hạt nhân Samepage hợp nhất</string>

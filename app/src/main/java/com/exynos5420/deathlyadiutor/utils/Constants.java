@@ -189,9 +189,37 @@ public interface Constants {
 
     String[] SCREEN_ARRAY = {COMMAND_PATH, COMMAND_RESULT_PATH, POWER_REDUCE, MDNIE_MODE};
 
-    // Sound
+    // Speaker
+    String EARPICE_VOLUME = "/sys/class/misc/wolfson_control/earpiece_volume";
+    String SP_GAIN_LEFT = "/sys/class/misc/wolfson_control/speaker_gain_left";
+    String SP_GAIN_RIGHT = "/sys/class/misc/wolfson_control/speaker_gain_right";
+    String SP_EQ_ENABLE = "/sys/class/misc/wolfson_control/switch_eq_speaker";
+    String SP_EQ_BAND1_GAIN = "/sys/class/misc/wolfson_control/eq_sp_gain_1";
+    String SP_EQ_BAND2_GAIN = "/sys/class/misc/wolfson_control/eq_sp_gain_2";
+    String SP_EQ_BAND3_GAIN = "/sys/class/misc/wolfson_control/eq_sp_gain_3";
+    String SP_EQ_BAND4_GAIN = "/sys/class/misc/wolfson_control/eq_sp_gain_4";
+    String SP_EQ_BAND5_GAIN = "/sys/class/misc/wolfson_control/eq_sp_gain_5";
 
-    String[] SOUND_ARRAY = {};
+    String[] SPEAKER_EQ_GAINS_ARRAY = {SP_EQ_BAND1_GAIN, SP_EQ_BAND2_GAIN, SP_EQ_BAND3_GAIN, SP_EQ_BAND4_GAIN, SP_EQ_BAND5_GAIN};
+
+    String[] SPEAKER_ARRAY = {EARPICE_VOLUME, SP_GAIN_LEFT, SP_GAIN_RIGHT, SP_EQ_ENABLE, SP_EQ_BAND1_GAIN, SP_EQ_BAND2_GAIN,
+            SP_EQ_BAND3_GAIN, SP_EQ_BAND4_GAIN, SP_EQ_BAND5_GAIN};
+
+    // HeadPhone
+    String HP_GAIN_LEFT = "/sys/class/misc/wolfson_control/headphone_left";
+    String HP_GAIN_RIGHT = "/sys/class/misc/wolfson_control/headphone_right";
+    String HP_SWITCH_MONO = "/sys/class/misc/wolfson_control/switch_hp_mono";
+    String HP_EQ_ENABLE = "/sys/class/misc/wolfson_control/switch_eq_headphone";
+    String HP_EQ_BAND1_GAIN = "/sys/class/misc/wolfson_control/eq_hp_gain_1";
+    String HP_EQ_BAND2_GAIN = "/sys/class/misc/wolfson_control/eq_hp_gain_2";
+    String HP_EQ_BAND3_GAIN = "/sys/class/misc/wolfson_control/eq_hp_gain_3";
+    String HP_EQ_BAND4_GAIN = "/sys/class/misc/wolfson_control/eq_hp_gain_4";
+    String HP_EQ_BAND5_GAIN = "/sys/class/misc/wolfson_control/eq_hp_gain_5";
+
+    String[] HEADPHONE_EQ_GAINS_ARRAY = {HP_EQ_BAND1_GAIN, HP_EQ_BAND2_GAIN, HP_EQ_BAND3_GAIN, HP_EQ_BAND4_GAIN, HP_EQ_BAND5_GAIN};
+
+    String[] HEADPHONE_ARRAY = {HP_GAIN_LEFT, HP_GAIN_RIGHT, HP_SWITCH_MONO, HP_EQ_ENABLE, SP_EQ_BAND1_GAIN, HP_EQ_BAND1_GAIN,
+            HP_EQ_BAND2_GAIN, HP_EQ_BAND3_GAIN, HP_EQ_BAND4_GAIN, HP_EQ_BAND5_GAIN};
 
     // Battery
     String FORCE_FAST_CHARGE = "/sys/kernel/fast_charge/force_fast_charge";

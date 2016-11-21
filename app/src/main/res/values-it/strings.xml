@@ -39,7 +39,6 @@
     <string name="cpu">CPU</string>
     <string name="gpu">GPU</string>
     <string name="screen">Schermo</string>
-    <string name="sound">Suono</string>
     <string name="battery">Batteria</string>
     <string name="io_scheduler">Scheduler I/O</string>
     <string name="ksm">Fusione pagine del kernel</string>

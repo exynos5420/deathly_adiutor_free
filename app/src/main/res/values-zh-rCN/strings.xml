@@ -39,7 +39,6 @@
     <string name="cpu">CPU</string>
     <string name="gpu">GPU</string>
     <string name="screen">屏幕</string>
-    <string name="sound">声音</string>
     <string name="battery">电池</string>
     <string name="io_scheduler">I/O 调度器</string>
     <string name="ksm">内核同页合并(KSM)</string>

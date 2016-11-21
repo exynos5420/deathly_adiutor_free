@@ -38,7 +38,6 @@
     <string name="cpu">CPU</string>
     <string name="gpu">GPU</string>
     <string name="screen">Skjerm</string>
-    <string name="sound">Lyd</string>
     <string name="battery">Batteri</string>
     <string name="io_scheduler">I/O-planlegger</string>
     <string name="ksm">Kjerne likesidesammenfletting</string>

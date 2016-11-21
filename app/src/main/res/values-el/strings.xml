@@ -39,7 +39,6 @@
     <string name="cpu">CPU</string>
     <string name="gpu">GPU</string>
     <string name="screen">Οθόνη</string>
-    <string name="sound">Ήχος</string>
     <string name="battery">Μπαταρία</string>
     <string name="io_scheduler">I/O scheduler</string>
     <string name="ksm">Kernel Samepage Merging</string>

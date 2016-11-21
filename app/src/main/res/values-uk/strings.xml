@@ -39,7 +39,6 @@
     <string name="cpu">CPU</string>
     <string name="gpu">Графічний процесор</string>
     <string name="screen">Дисплей</string>
-    <string name="sound">Звук</string>
     <string name="battery">Акумулятор</string>
     <string name="io_scheduler">Планувальник вводу/виводу</string>
     <string name="ksm">ядро злиття схожих сторінок</string>

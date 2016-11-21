@@ -39,7 +39,6 @@
     <string name="cpu">المعالج</string>
     <string name="gpu">الجرافيكس</string>
     <string name="screen">الشاشة</string>
-    <string name="sound">الصوت</string>
     <string name="battery">البطارية</string>
     <string name="io_scheduler">جدولة الإدخال/الإخراج</string>
     <string name="ksm">دمج samepage النواة</string>

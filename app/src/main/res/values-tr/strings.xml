@@ -39,7 +39,6 @@
     <string name="cpu">CPU</string>
     <string name="gpu">GPU</string>
     <string name="screen">Ekran</string>
-    <string name="sound">Ses</string>
     <string name="battery">Pil</string>
     <string name="io_scheduler">G/Ç Zamanlayıcısı</string>
     <string name="ksm">KSM (Çekirdek Benzer Sayfa Birleştirmesi)</string>

@@ -41,7 +41,6 @@ Está a usar a versão %s.</string>
     <string name="cpu">CPU</string>
     <string name="gpu">GPU</string>
     <string name="screen">Ecrã</string>
-    <string name="sound">Som</string>
     <string name="battery">Bateria</string>
     <string name="io_scheduler">I/O Scheduler</string>
     <string name="ksm">Kernel Samepage Merging</string>

@@ -39,7 +39,6 @@
     <string name="cpu">CPU</string>
     <string name="gpu">GPU</string>
     <string name="screen">Scherm</string>
-    <string name="sound">Geluid</string>
     <string name="battery">Batterij</string>
     <string name="io_scheduler">I/o-Scheduler</string>
     <string name="ksm">Kernel Samepage samenvoegen</string>

@@ -39,7 +39,6 @@
     <string name="cpu">ЦП</string>
     <string name="gpu">Графический процессор</string>
     <string name="screen">Экран</string>
-    <string name="sound">Звук</string>
     <string name="battery">Батарея</string>
     <string name="io_scheduler">Планировщик I/O</string>
     <string name="ksm">Объединять страницы памяти ядра</string>

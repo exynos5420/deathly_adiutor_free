@@ -39,7 +39,6 @@
     <string name="cpu">CPU</string>
     <string name="gpu">GPU</string>
     <string name="screen">Zaslon</string>
-    <string name="sound">Zvuk</string>
     <string name="battery">Baterija</string>
     <string name="io_scheduler">I/O Scheduler</string>
     <string name="ksm">KSM Kernel Samepage Merging</string>

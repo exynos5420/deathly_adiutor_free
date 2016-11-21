@@ -40,7 +40,6 @@
     <string name="cpu">CPU</string>
     <string name="gpu">GPU</string>
     <string name="screen">Pantalla</string>
-    <string name="sound">Soníu</string>
     <string name="battery">Batería</string>
     <string name="io_scheduler">Planificador d\'E/S</string>
     <string name="ksm">Amiestu samepage del kernel</string>

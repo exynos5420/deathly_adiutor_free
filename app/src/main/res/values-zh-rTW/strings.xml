@@ -39,7 +39,6 @@
     <string name="cpu">CPU</string>
     <string name="gpu">GPU</string>
     <string name="screen">螢幕</string>
-    <string name="sound">聲音</string>
     <string name="battery">電池</string>
     <string name="io_scheduler">I/O 排程</string>
     <string name="ksm">核心同頁合併(Kernel Samepage Merging)</string>

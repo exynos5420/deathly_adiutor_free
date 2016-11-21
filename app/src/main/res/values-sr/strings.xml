@@ -39,7 +39,6 @@
     <string name="cpu">Процесор</string>
     <string name="gpu">ГПУ</string>
     <string name="screen">Екран</string>
-    <string name="sound">Звук</string>
     <string name="battery">Батерија</string>
     <string name="io_scheduler">У/И планер</string>
     <string name="virtual_memory">Виртуелна меморија</string>

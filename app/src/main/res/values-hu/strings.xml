@@ -39,7 +39,6 @@
     <string name="cpu">CPU</string>
     <string name="gpu">GPU</string>
     <string name="screen">Kijelző</string>
-    <string name="sound">Hang</string>
     <string name="battery">Akkumulátor</string>
     <string name="io_scheduler">I/O ütemező</string>
     <string name="ksm">Kernel Samepage Merging</string>

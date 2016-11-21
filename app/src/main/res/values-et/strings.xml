@@ -30,7 +30,6 @@
     <string name="cpu">CPU</string>
     <string name="gpu">GPU</string>
     <string name="screen">Ekraan</string>
-    <string name="sound">Heli</string>
     <string name="battery">Aku</string>
     <string name="virtual_memory">Virtuaalmälu</string>
     <string name="profile">Profiil</string>

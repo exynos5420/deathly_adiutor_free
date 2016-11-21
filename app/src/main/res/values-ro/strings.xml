@@ -39,7 +39,6 @@
     <string name="cpu">CPU ( Procesor )</string>
     <string name="gpu">GPU</string>
     <string name="screen">Ecran</string>
-    <string name="sound">Sunet</string>
     <string name="battery">Baterie</string>
     <string name="io_scheduler">Programator I/O</string>
     <string name="ksm">Fuzionarea Kernel Samepage</string>

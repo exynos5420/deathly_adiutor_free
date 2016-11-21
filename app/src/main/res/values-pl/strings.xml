@@ -43,7 +43,6 @@
     <string name="cpu">CPU</string>
     <string name="gpu">GPU</string>
     <string name="screen">Ekran</string>
-    <string name="sound">Dźwięk</string>
     <string name="battery">Bateria</string>
     <string name="io_scheduler">Zarządca I/O</string>
     <string name="ksm">Łączenie stron kernela</string>

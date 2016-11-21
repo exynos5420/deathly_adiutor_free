@@ -39,7 +39,6 @@
     <string name="cpu">CPU</string>
     <string name="gpu">GPU</string>
     <string name="screen">Skärm</string>
-    <string name="sound">Ljud</string>
     <string name="battery">Batteri</string>
     <string name="io_scheduler">I/O-schemaläggare</string>
     <string name="ksm">Kernel Samepage Merging (KSM)</string>
