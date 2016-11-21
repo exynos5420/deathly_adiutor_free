@@ -53,6 +53,7 @@ import com.exynos5420.deathlyadiutor.fragments.kernel.LMKFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.MiscFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.ScreenFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.SpeakerFragment;
+import com.exynos5420.deathlyadiutor.fragments.kernel.HeadphoneFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.CPUThermalFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.VMFragment;
 import com.exynos5420.deathlyadiutor.utils.kernel.CPU;
@@ -344,6 +345,8 @@ public class Utils implements Constants {
         else if (mClass == ScreenFragment.class) for (String arrays : SCREEN_ARRAY)
             applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
         else if (mClass == SpeakerFragment.class) for (String arrays : SPEAKER_ARRAY)
+            applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
+        else if (mClass == HeadphoneFragment.class) for (String arrays : HEADPHONE_ARRAY)
             applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
         else if (mClass == CPUThermalFragment.class) for (String arrays : CPU_THERMAL_ARRAY)
             applys.addAll(new ArrayList<>(Arrays.asList(arrays)));

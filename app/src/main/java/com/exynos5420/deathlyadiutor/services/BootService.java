@@ -42,6 +42,7 @@ import com.exynos5420.deathlyadiutor.fragments.kernel.LMKFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.MiscFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.ScreenFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.SpeakerFragment;
+import com.exynos5420.deathlyadiutor.fragments.kernel.HeadphoneFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.CPUThermalFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.VMFragment;
 import com.exynos5420.deathlyadiutor.utils.Constants;
@@ -84,8 +85,8 @@ public class BootService extends Service {
 
         Class[] classes = {BatteryFragment.class, CPUFragment.class,
                 CPUVoltageFragment.class, GPUVoltageFragment.class, GPUThermalFragment.class, EntropyFragment.class, GPUFragment.class, IOFragment.class,
-                KSMFragment.class, LMKFragment.class, MiscFragment.class,
-                ScreenFragment.class, SpeakerFragment.class, CPUThermalFragment.class, VMFragment.class
+                KSMFragment.class, LMKFragment.class, MiscFragment.class, ScreenFragment.class, SpeakerFragment.class, HeadphoneFragment.class,
+                CPUThermalFragment.class, VMFragment.class
         };
 
         for (Class mClass : classes)

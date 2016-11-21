@@ -67,6 +67,7 @@ import com.exynos5420.deathlyadiutor.fragments.kernel.LMKFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.MiscFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.ScreenFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.SpeakerFragment;
+import com.exynos5420.deathlyadiutor.fragments.kernel.HeadphoneFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.VMFragment;
 import com.exynos5420.deathlyadiutor.fragments.other.AboutusFragment;
 import com.exynos5420.deathlyadiutor.fragments.other.SettingsFragment;
@@ -217,12 +218,12 @@ public class MainActivity extends BaseActivity implements Constants {
             ITEMS.add(new DAdapter.Header(getString(R.string.gpu)));
             ITEMS.add(new DAdapter.Item(getString(R.string.gpu_core_control), new GPUFragment()));
             ITEMS.add(new DAdapter.Item(getString(R.string.gpu_voltage), new GPUVoltageFragment()));
-            ITEMS.add(new DAdapter.Item(getString(R.string.gpu_thermal), new GPUThermalFragment()));
-        }
+            ITEMS.add(new DAdapter.Item(getString(R.string.gpu_thermal), new GPUThermalFragment()));}
         ITEMS.add(new DAdapter.Header(getString(R.string.video_audio)));
         ITEMS.add(new DAdapter.Item(getString(R.string.screen), new ScreenFragment()));
-        if (Sound.hasWolfsonChip())
+        if (Sound.hasWolfsonChip()){
             ITEMS.add(new DAdapter.Item(getString(R.string.speaker), new SpeakerFragment()));
+            ITEMS.add(new DAdapter.Item(getString(R.string.headphone), new HeadphoneFragment()));}
         ITEMS.add(new DAdapter.Header(getString(R.string.kernel)));
         ITEMS.add(new DAdapter.Item(getString(R.string.io_scheduler), new IOFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.ksm), new KSMFragment()));
