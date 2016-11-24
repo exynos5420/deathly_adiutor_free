@@ -341,24 +341,6 @@ public class Misc implements Constants {
         return VIBRATION_PATH != null;
     }
 
-    public static boolean isSELinuxActive() {
-        String result = RootUtils.runCommand(GETENFORCE);
-        return result.equals("Enforcing");
-    }
-
-    public static void activateSELinux(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", SETENFORCE, Control.CommandType.SHELL, context);
-    }
-
-    public static String getSELinuxStatus() {
-        String result = RootUtils.runCommand(GETENFORCE);
-        if (result != null) {
-            if (result.equals("Enforcing")) return "Enforcing";
-            else if (result.equals("Permissive")) return "Permissive";
-        }
-        return "Unknown Status";
-    }
-
     public static void activateswitchbuttons(boolean active, Context context) {
         Control.runCommand(active ? "1" : "0", SWITCH_BUTTONS, Control.CommandType.GENERIC, context);
     }
