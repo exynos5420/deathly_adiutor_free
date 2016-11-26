@@ -59,7 +59,7 @@
     <string name="information">Information</string>
     <string name="cpu">CPU</string>
     <string name="gpu">GPU</string>
-    <string name="video_audio">Video and Audio</string>
+    <string name="other_hardware">Other Hardware</string>
     <string name="kernel">Kernel</string>
     <string name="tools">Tools</string>
     <string name="other">Other</string>
@@ -278,8 +278,8 @@
     <string name="max_batt_capacity">Maximum Battery Capacity</string>
     <string name="battery_voltage">Battery Voltage</string>
     <string name="battery_temperature">Battery Temperature</string>
-    <string name="charging_source">Charging Source</string>
-    <string name="charging_curr_limits">Charging Current Limits</string>
+    <string name="charging_source">Power Source</string>
+    <string name="charging_curr_limits">Current Limits</string>
     <string name="current_now">Actual Charging Current:</string>
     <string name="current_avg">Charging Current Limit:</string>
     <string name="current_max">Input Current Limit:</string>

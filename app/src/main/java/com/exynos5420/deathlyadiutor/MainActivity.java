@@ -206,7 +206,6 @@ public class MainActivity extends BaseActivity implements Constants {
         ITEMS.add(new DAdapter.Header(getString(R.string.information)));
         ITEMS.add(new DAdapter.Item(getString(R.string.kernel_information), new KernelInformationFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.frequency_table), new UsageStatisticsFragment()));
-        ITEMS.add(new DAdapter.Item(getString(R.string.battery), new BatteryFragment()));
         ITEMS.add(new DAdapter.Header(getString(R.string.cpu)));
         ITEMS.add(new DAdapter.Item(getString(R.string.cpu_core_control), new CPUFragment()));
         if (CPUVoltage.hasCpuVoltage())
@@ -219,7 +218,8 @@ public class MainActivity extends BaseActivity implements Constants {
             ITEMS.add(new DAdapter.Item(getString(R.string.gpu_core_control), new GPUFragment()));
             ITEMS.add(new DAdapter.Item(getString(R.string.gpu_voltage), new GPUVoltageFragment()));
             ITEMS.add(new DAdapter.Item(getString(R.string.gpu_thermal), new GPUThermalFragment()));}
-        ITEMS.add(new DAdapter.Header(getString(R.string.video_audio)));
+        ITEMS.add(new DAdapter.Header(getString(R.string.other_hardware)));
+        ITEMS.add(new DAdapter.Item(getString(R.string.battery), new BatteryFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.screen), new ScreenFragment()));
         if (Sound.hasWolfsonChip()){
             ITEMS.add(new DAdapter.Item(getString(R.string.speaker), new SpeakerFragment()));
