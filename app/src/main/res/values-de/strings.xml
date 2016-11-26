@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
-    <string name="app_name">Kernel Adiutor-Mod</string>
+    <string name="app_name">Deathly Adiutor-Mod</string>
     <string name="root_waiting">Auf Root-Zugriff wird gewartet</string>
     <string name="no_root">Kein Root vorhanden</string>
     <string name="no_busybox">Kein Busybox vorhanden</string>
@@ -349,7 +349,7 @@
     <string name="driver_message_summary">Driver message (dmesg) nach /sdcard/dmesg.txt kopieren</string>
     <string name="security">Sicherheit</string>
     <string name="set_password">Passwort setzen</string>
-    <string name="set_password_summary">Sie können Kernel Adiutor schützen, indem Sie ein Passwort setzen. Jedesmal, wenn Sie die Anwendung öffnen, müssen Sie es eingeben. Falls Sie es vergessen haben, löschen Sie die Daten der Anwendung. Keine Angst, ich werde Ihr Passwort nicht teilen.</string>
+    <string name="set_password_summary">Sie können Deathly Adiutor schützen, indem Sie ein Passwort setzen. Jedesmal, wenn Sie die Anwendung öffnen, müssen Sie es eingeben. Falls Sie es vergessen haben, löschen Sie die Daten der Anwendung. Keine Angst, ich werde Ihr Passwort nicht teilen.</string>
     <string name="delete_password">Passwort löschen</string>
     <string name="new_password">Neues Passwort</string>
     <string name="confirm_new_password">Neues Passwort bestätigen</string>
@@ -367,7 +367,7 @@
 
     <!-- About us -->
     <string name="license">Lizenz</string>
-    <string name="app_license">Kernel Adiutor ist lizenziert unter der Apache License, Version 2.0, und benutzt folgende Librarys</string>
+    <string name="app_license">Deathly Adiutor ist lizenziert unter der Apache License, Version 2.0, und benutzt folgende Librarys</string>
     <string name="open_source">Open Source</string>
     <string name="open_source_summary">Der Quellcode dieser Anwendung ist offen und kann auf meinem Github eingesehen werden!</string>
     <string name="feature_request">Funktionsanfrage</string>

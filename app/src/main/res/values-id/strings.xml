@@ -207,7 +207,7 @@
     <string name="driver_message_summary">Menyalin pesan driver (dmesg) ke /sdcard/dmesg.txt</string>
     <string name="security">Keamanan</string>
     <string name="set_password">Tetapkan sandi</string>
-    <string name="set_password_summary">Anda dapat melindungi Kernel Adiutor dengan membuat password. Setiap kali Anda membuka aplikasi ini, Anda harus memasukkannya. Jika Anda lupa, cukup menghapus data dari aplikasi ini dalam pengaturan perangkat Anda. Jangan khawatir saya tidak akan berbagi password Anda.</string>
+    <string name="set_password_summary">Anda dapat melindungi Deathly Adiutor dengan membuat password. Setiap kali Anda membuka aplikasi ini, Anda harus memasukkannya. Jika Anda lupa, cukup menghapus data dari aplikasi ini dalam pengaturan perangkat Anda. Jangan khawatir saya tidak akan berbagi password Anda.</string>
     <string name="delete_password">Menghapus Password</string>
     <string name="new_password">Sandi baru</string>
     <string name="confirm_new_password">Konfirmasi sandi baru</string>
@@ -219,7 +219,7 @@
     <string name="set_password_first">Menetapkan dulu sandi</string>
     <string name="show_sections">Tampilkan bagian</string>
     <string name="license">Lisensi</string>
-    <string name="app_license">Kernel Adiutor berlisensi Apache, versi 2.0, dan menggunakan library berikut</string>
+    <string name="app_license">Deathly Adiutor berlisensi Apache, versi 2.0, dan menggunakan library berikut</string>
     <string name="open_source">Sumber Terbuka</string>
     <string name="open_source_summary">Aplikasi ini merupakan open source. Silahkan cek di GitHub Saya!</string>
     <string name="feature_request">Meminta fitur</string>

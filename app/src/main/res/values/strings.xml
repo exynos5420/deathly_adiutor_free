@@ -475,7 +475,7 @@
     <string name="dump_sysfs_dialog_summary">This will take a second. Please wait...</string>
     <string name="security">Security</string>
     <string name="set_password">Set Password</string>
-    <string name="set_password_summary">You can protect Kernel Adiutor by setting up a password. Every time you open this application, you have to enter it. If you forget it, simply wipe the data of this application in settings of your device. Don\'t worry I won\'t share your password.</string>
+    <string name="set_password_summary">You can protect Deathly Adiutor by setting up a password. Every time you open this application, you have to enter it. If you forget it, simply wipe the data of this application in settings of your device. Don\'t worry I won\'t share your password.</string>
     <string name="delete_password">Delete Password</string>
     <string name="new_password">New password</string>
     <string name="confirm_new_password">Confirm new password</string>
@@ -492,7 +492,7 @@
 
     <!-- About us -->
     <string name="license">License</string>
-    <string name="app_license">Kernel Adiutor is licensed under the Apache License, Version 2.0, and uses following libraries</string>
+    <string name="app_license">Deathly Adiutor is licensed under the Apache License, Version 2.0, and uses following libraries</string>
     <string name="appcompat_v7" translatable="false">v7 Appcompat Library</string>
     <string name="cardview_v7" translatable="false">v7 Cardview Library</string>
     <string name="recyclerview_v7" translatable="false">v7 Recyclerview Library</string>
