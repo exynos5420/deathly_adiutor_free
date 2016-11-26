@@ -76,13 +76,14 @@ public class RootUtils {
     }
 
     public static void mount(boolean writeable, String mountpoint) {
-        if (Build.VERSION.SDK_INT <= 23) {
-            runCommand(writeable ? "mount -o remount,rw " + mountpoint + " " + mountpoint :
-                    "mount -o remount,ro " + mountpoint + " " + mountpoint);
-        } else {
-            runCommand(writeable ? "mount -o rw,remount -t auto " + mountpoint + " " + mountpoint :
-                    "mount -o ro,remount -t auto " + mountpoint + " " + mountpoint);
-        }
+        mount(writeable, mountpoint, getSU());
+    }
+
+    public static void mount(boolean writeable, String mountpoint, SU su) {
+        su.runCommand(writeable ? "mount -o remount,rw " + mountpoint + " " + mountpoint :
+                "mount -o remount,ro " + mountpoint + " " + mountpoint);
+        su.runCommand(writeable ? "mount -o remount,rw " + mountpoint :
+                "mount -o remount,ro " + mountpoint);
     }
 
     public static void closeSU() {
