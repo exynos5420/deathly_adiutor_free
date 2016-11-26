@@ -30,7 +30,6 @@
     <string name="ms">ms</string>
     <string name="mb">MB</string>
     <string name="sec">sn</string>
-    <string name="ma">mA</string>
     <string name="information">Bilgi</string>
     <string name="kernel">Kernel</string>
     <string name="tools">Araçlar</string>
@@ -111,13 +110,6 @@
     <string name="battery_voltage">Pil Voltajı</string>
     <string name="battery_level">Pil Seviyesi</string>
     <string name="battery_temperature">Pil Sıcaklığı</string>
-    <string name="usb_fast_charge">Hızlı USB Şarj</string>
-    <string name="usb_fast_charge_summary">Cihaz, USB ile bağlıyken daha hızlı şarj edecektir. Bu seçeneği değiştirdikten sonra şarj aletinizi yeniden bağlayın.</string>
-    <string name="blx">Pil Ömrü Uzatıcı</string>
-    <string name="blx_summary">Kapasite için pil 0 ile 100 arasında bir değer ileterek tahsil edilecektir için bir sınır belirleyin.</string>
-    <string name="custom_charge_rate">Şarj Oranı</string>
-    <string name="charge_rate">Pil Şarj Oranı</string>
-    <string name="charge_rate_summary">Özel pil şarj oranını ayarlamak. Dikkat: 1250mA aşan şarj sürücünüze zarar verebilir.</string>
     <string name="internal_storage">Dahili Depolama</string>
     <string name="external_storage">Harici Depolama</string>
     <string name="scheduler">Zamanlayıcı</string>
@@ -152,13 +144,6 @@
     <string name="android_logger">Android günlüğü</string>
     <string name="fsync">Fsync</string>
     <string name="dynamic_fsync">Dinamik Fsync</string>
-    <string name="power_suspend_mode">Güç Askıya Alma Modu</string>
-    <string name="autosleep">Oto uyku</string>
-    <string name="userspace">Kullanıcı Alanı</string>
-    <string name="lcd_panel">LCD Panel</string>
-    <string name="hybrid">Melez</string>
-    <string name="power_suspend_state">Güç Askıya Alma Durumu</string>
-    <string name="power_suspend_state_summary">Çekirdek güç yönetimi sürücüsü ekran kapalı iken. Etkin ise daha iyi pil tasarruf. Not: Güç askıya alma modundan kullanıcı modunda ise sadece bu ayarı değiştirebilirsiniz.</string>
     <string name="network">Ağ</string>
     <string name="tcp">TCP Congestion Algoritması</string>
     <string name="tcp_summary">İletim Denetimi iletişim kuralı (IP) Internet iletişim kuralları dizisi nın çekirdek iletişim kuralları biridir ve tüm paketidir kez ortak TCP/IP sözde.</string>

@@ -30,7 +30,6 @@
     <string name="ms">ms</string>
     <string name="mb">MB</string>
     <string name="sec">seg</string>
-    <string name="ma">mA</string>
     <string name="information">Información</string>
     <string name="kernel">Kernel</string>
     <string name="tools">Ferramientes</string>
@@ -114,13 +113,6 @@
     <string name="battery_voltage">Voltaxe de batería</string>
     <string name="battery_level">Nivel de batería</string>
     <string name="battery_temperature">Temperatura de batería</string>
-    <string name="usb_fast_charge">Carga rápida pente USB</string>
-    <string name="usb_fast_charge_summary">El preséu cargaráse aína al coneutalu al USB. Vuelvi a enchufar el to cargador al camudar esta opción.</string>
-    <string name="blx">Battery Life eXtender</string>
-    <string name="blx_summary">Afita una llende pa la capacidá a la que la batería cargará pasando\'l valor ente 0 y 100.</string>
-    <string name="custom_charge_rate">Tasa de carga</string>
-    <string name="charge_rate">Tasa de carga de batería</string>
-    <string name="charge_rate_summary">Afita la tasa de carga personalizada de batería. Curiáu: Perpasase de 1250mA quiciabes dañe\'l to controlador de carga.</string>
     <string name="internal_storage">Almacenamientu internu</string>
     <string name="external_storage">Almacenamientu esternu</string>
     <string name="scheduler">Planificador</string>
@@ -158,14 +150,6 @@
     <string name="crc_summary">CRC ye un mecanismu que tien como oxetivu evitar el toyimientu de datos al habilitase. Los bloques de datos puen perder fasta un 30% del so rindimientu.</string>
     <string name="fsync">Fsync</string>
     <string name="dynamic_fsync">Fsync dinámicu</string>
-    <string name="power_suspend_mode">Mou de suspensión d\'enerxía</string>
-    <string name="power_suspend_mode_summary">El mou kernel, los gabitos LCD y el gabitu de nivel más altu tán xestionaos automáticamente pol kernel. P\'habilitar o deshabilitar a mano l\'estáu de suspensión d\'enerxía, escueyi\'l mou usuariu.</string>
-    <string name="autosleep">Auto-dormición</string>
-    <string name="userspace">Espaciu d\'usuariu</string>
-    <string name="lcd_panel">Panel LCD</string>
-    <string name="hybrid">Híbridu</string>
-    <string name="power_suspend_state">Estáu de suspensión d\'enerxía</string>
-    <string name="power_suspend_state_summary">Controlador de xestión d\'enerxía cuanto tea la pantalla apagada. Aforros d\'enerxía meyores si s\'habilita. Nota: Namái pues camudar esti axuste si\'l mou suspensión d\'enerxía ta nel mou usuariu.</string>
     <string name="network">Rede</string>
     <string name="tcp">Algoritmu de conxestión TCP</string>
     <string name="tcp_summary">El protocolu de control de tresmisión ye ún de los protocolos principales de la suit de protocolos d\'internet (IP), y ye tan común que tola suit llámase davezu TCP/IP.</string>

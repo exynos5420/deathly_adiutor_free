@@ -29,7 +29,6 @@
     <string name="ms">ms</string>
     <string name="mb">MB</string>
     <string name="sec">detik</string>
-    <string name="ma">mA</string>
     <string name="information">Informasi</string>
     <string name="kernel">Kernel</string>
     <string name="tools">Peralatan</string>
@@ -113,13 +112,6 @@
     <string name="battery_voltage">Voltase Baterai</string>
     <string name="battery_level">Tingkat baterai</string>
     <string name="battery_temperature">Suhu Baterai</string>
-    <string name="usb_fast_charge">Pengecasan Cepat USB</string>
-    <string name="usb_fast_charge_summary">Perangkat akan lebih cepat terisi saat terhubung dengan USB. Colokkan kembali saat mengganti pilihan ini.</string>
-    <string name="blx">Baterai eXtender</string>
-    <string name="blx_summary">Menetapkan batas kapasitas baterai dimana akan diisi setelah melewati nilai tertentu antara 0 dan 100.</string>
-    <string name="custom_charge_rate">Rasio Pengisian</string>
-    <string name="charge_rate">Rasio Pengisian Baterai</string>
-    <string name="charge_rate_summary">Menetapkan Rasio Pengisian Baterai Kustom. Melebihi 1250mA dapat merusak driver pengisian Anda.</string>
     <string name="internal_storage">Penyimpanan Internal</string>
     <string name="external_storage">Penyimpanan Eksternal</string>
     <string name="scheduler">Penjadwal</string>
@@ -161,14 +153,6 @@
     <string name="dynamic_fsync_summary">Ketika aktif dan layar hidup, operasi fsync menjadi asynchronous. Ketika layar mati, operasi ini menjadi synchronously</string>
     <string name="gentlefairsleepers">Keadilan adil sleepers</string>
     <string name="gentlefairsleepers_summary">Hanya memberikan 50% sleepers dari layanan. Menonaktifkan dapat menghemat sedikit daya baterai.</string>
-    <string name="power_suspend_mode">Modus Penangguh Daya</string>
-    <string name="power_suspend_mode_summary">Kernel Mode, LCD Hooks dan Tingkat Hook Tertinggi otomatis dikelola oleh kernel, untuk mengaktifkan atau menonaktifkan Kondisi Penangguh Daya secara manual, pilih Modus Pengguna.</string>
-    <string name="autosleep">Autosleep</string>
-    <string name="userspace">Userspace</string>
-    <string name="lcd_panel">Panel LCD</string>
-    <string name="hybrid">Hibrid</string>
-    <string name="power_suspend_state">Power Suspend State</string>
-    <string name="power_suspend_state_summary">Pengendali manajemen daya kernel ketika layar dimatikan. Baterai menjadi lebih irit saat diaktifkan. Catatan: Anda hanya dapat mengubah pengaturan ini jika Power Suspend Mode dalam User Mode.</string>
     <string name="network">Jaringan</string>
     <string name="tcp">Algoritma Antrian TCP</string>
     <string name="tcp_summary">Transmission Control Protocol adalah salah satu protokol inti dari sepaket protokol Internet (IP), dan secara umum seluruh paketan ini sering disebut TCP/IP.</string>

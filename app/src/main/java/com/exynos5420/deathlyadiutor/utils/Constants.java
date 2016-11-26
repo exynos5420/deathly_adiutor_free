@@ -31,7 +31,6 @@ public interface Constants {
     String VERSION_NAME = BuildConfig.VERSION_NAME;
     int VERSION_CODE = BuildConfig.VERSION_CODE;
     String PREF_NAME = "prefs";
-    String GAMMA_URL = "https://raw.githubusercontent.com/Grarak/KernelAdiutor/master/gamma_profiles.json";
     List<DAdapter.DView> ITEMS = new ArrayList<>();
     List<DAdapter.DView> VISIBLE_ITEMS = new ArrayList<>();
 
@@ -223,39 +222,36 @@ public interface Constants {
             HP_EQ_BAND2_GAIN, HP_EQ_BAND3_GAIN, HP_EQ_BAND4_GAIN, HP_EQ_BAND5_GAIN};
 
     // Battery
-    String FORCE_FAST_CHARGE = "/sys/kernel/fast_charge/force_fast_charge";
-    String FORCE_FAST_CHARGE_CURRENT = "/sys/kernel/fast_charge_current/force_fast_charge_current";
-    String BLX = "/sys/devices/virtual/misc/batterylifeextender/charging_limit";
-    String CHARGE_LEVEL = "/sys/kernel/charge_levels";
-    String AC_CHARGE_LEVEL = CHARGE_LEVEL + "/charge_level_ac";
-    String USB_CHARGE_LEVEL = CHARGE_LEVEL + "/charge_level_usb";
+    String BATT_CHARGERATE = "/sys/devices/platform/sec-battery/power_supply/battery/capacity";
+    String BATT_CURRENT_NOW = "/sys/devices/platform/sec-battery/power_supply/battery/current_now";
+    String BATT_CURRENT_AVG = "/sys/devices/platform/sec-battery/power_supply/battery/current_avg";
+    String BATT_CURRENT_MAX = "/sys/devices/platform/sec-battery/power_supply/battery/current_max";
+    String BATT_CHARGING_SOURCE = "/sys/devices/platform/sec-battery/power_supply/battery/batt_charging_source";
+    String BATT_TEMP = "/sys/devices/platform/sec-battery/power_supply/battery/temp";
+    String BATT_VOLTAGE = "/sys/devices/platform/sec-battery/power_supply/battery/voltage_now";
 
-    String CHARGE_RATE = "sys/kernel/thundercharge_control";
-    String CHARGE_RATE_ENABLE = CHARGE_RATE + "/enabled";
-    String CUSTOM_CHARGING_RATE = CHARGE_RATE + "/custom_current";
-    String LOW_POWER_VALUE = "sys/module/battery_current_limit/parameters/low_battery_value";
+    String UNSTABLE_POWER_DETECTION = "/sys/devices/platform/sec-battery/unstable_power_detection";
+    String SIOP_LEVEL = "/sys/devices/platform/sec-battery/power_supply/battery/siop_level";
 
-    // C-States
-    String C0STATE = "/sys/module/msm_pm/modes/cpu0/wfi/idle_enabled";
-    String C1STATE = "/sys/module/msm_pm/modes/cpu0/retention/idle_enabled";
-    String C2STATE = "/sys/module/msm_pm/modes/cpu0/standalone_power_collapse/idle_enabled";
-    String C3STATE = "/sys/module/msm_pm/modes/cpu0/power_collapse/idle_enabled";
+    String AC_INPUT_CURR = "/sys/devices/platform/sec-battery/ac_input_curr";
+    String AC_CHRG_CURR = "/sys/devices/platform/sec-battery/ac_chrg_curr";
+    String SIOP_INPUT_CURR = "/sys/devices/platform/sec-battery/siop_input_limit";
+    String SIOP_CHRG_CURR = "/sys/devices/platform/sec-battery/siop_charge_limit";
+    String SDP_INPUT_CURR = "/sys/devices/platform/sec-battery/sdp_input_curr";
+    String SDP_CHRG_CURR = "/sys/devices/platform/sec-battery/sdp_chrg_curr";
+    String DCP_INPUT_CURR = "/sys/devices/platform/sec-battery/dcp_input_curr";
+    String DCP_CHRG_CURR = "/sys/devices/platform/sec-battery/dcp_chrg_curr";
+    String CDP_INPUT_CURR = "/sys/devices/platform/sec-battery/cdp_input_curr";
+    String CDP_CHRG_CURR = "/sys/devices/platform/sec-battery/cdp_chrg_curr";
+    String ACA_INPUT_CURR = "/sys/devices/platform/sec-battery/aca_input_curr";
+    String ACA_CHRG_CURR = "/sys/devices/platform/sec-battery/aca_chrg_curr";
+    String MISC_INPUT_CURR = "/sys/devices/platform/sec-battery/misc_input_curr";
+    String MISC_CHRG_CURR = "/sys/devices/platform/sec-battery/misc_chrg_curr";
 
-    // State Notifier added By Eliminater74
-    String STATE_NOTIFIER = "/sys/module/state_notifier/parameters";
-    String STATE_NOTIFIER_ENABLED = STATE_NOTIFIER + "/enabled";
-
-    // Power suspend
-    String POWER_SUSPEND = "/sys/kernel/power_suspend";
-    String POWER_SUSPEND_MODE = POWER_SUSPEND + "/power_suspend_mode";
-    String POWER_SUSPEND_STATE = POWER_SUSPEND + "/power_suspend_state";
-    String POWER_SUSPEND_VERSION = POWER_SUSPEND + "/power_suspend_version";
-
-    // Arch power
-    String ARCH_POWER = "/sys/kernel/sched/arch_power";
-
-    String[] BATTERY_ARRAY = {POWER_SUSPEND_MODE, POWER_SUSPEND_STATE, C0STATE, C1STATE, C2STATE, C3STATE, FORCE_FAST_CHARGE,
-            CHARGE_RATE, BLX, CHARGE_RATE, ARCH_POWER, STATE_NOTIFIER, CHARGE_LEVEL, LOW_POWER_VALUE};
+    String[] BATTERY_ARRAY = {BATT_CHARGERATE, BATT_CURRENT_NOW, BATT_CURRENT_AVG, BATT_CURRENT_MAX,
+            BATT_CHARGING_SOURCE, BATT_TEMP, BATT_VOLTAGE, UNSTABLE_POWER_DETECTION, AC_INPUT_CURR, AC_CHRG_CURR,
+            SIOP_INPUT_CURR, SIOP_CHRG_CURR, SDP_INPUT_CURR, SDP_CHRG_CURR, DCP_INPUT_CURR, DCP_CHRG_CURR,
+            CDP_INPUT_CURR, CDP_CHRG_CURR, ACA_INPUT_CURR, ACA_CHRG_CURR, MISC_INPUT_CURR, MISC_CHRG_CURR};
 
     // I/O
     String IO_INTERNAL_SCHEDULER = "/sys/block/mmcblk0/queue/scheduler";
@@ -393,16 +389,13 @@ public interface Constants {
     String HOSTNAME_KEY = "net.hostname";
     String ADB_OVER_WIFI = "service.adb.tcp.port";
 
-    String GETENFORCE = "getenforce";
-    String SETENFORCE = "setenforce";
-
     // Switch Buttons
     String SWITCH_BUTTONS = "/proc/s1302/key_rep";
 
     String[][] MISC_ARRAY = {
             VIBRATION_ARRAY,
             {VIB_LIGHT, VIB_ENABLE, LOGGER_ENABLED, DYNAMIC_FSYNC, GENTLE_FAIR_SLEEPERS, BCL_HOTPLUG,
-                    POWER_SUSPEND_STATE, TCP_AVAILABLE_CONGESTIONS, HOSTNAME_KEY, ADB_OVER_WIFI, GETENFORCE, SETENFORCE, LED_SPEED_GREEN, LED_ACTIVE, SWITCH_BUTTONS},
+                    TCP_AVAILABLE_CONGESTIONS, HOSTNAME_KEY, ADB_OVER_WIFI, LED_SPEED_GREEN, LED_ACTIVE, SWITCH_BUTTONS},
             LOGGER_ARRAY, CRC_ARRAY, FSYNC_ARRAY, BCL_ARRAY};
 
     // Build prop

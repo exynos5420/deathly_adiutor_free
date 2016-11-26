@@ -30,7 +30,6 @@
     <string name="ms">ms</string>
     <string name="mb"> MO</string>
     <string name="sec">sec</string>
-    <string name="ma">mA</string>
     <string name="information">Informations </string>
     <string name="kernel">Kernel</string>
     <string name="tools">Outils</string>
@@ -113,13 +112,6 @@
     <string name="battery_voltage">Voltage de la batterie</string>
     <string name="battery_level">Niveau de la batterie</string>
     <string name="battery_temperature">Température de la batterie</string>
-    <string name="usb_fast_charge">Charge Rapide USB</string>
-    <string name="usb_fast_charge_summary">L\'appareil se chargera plus vite lorsqu\'il est connecté en USB. Rebranchez votre chargeur lorsque vous modifiez cette option.</string>
-    <string name="blx">Prolongateur d\'autonomie</string>
-    <string name="blx_summary">Défini une limite de capacité de charge de la batterie en entrant une valeur entre 0 et 100.</string>
-    <string name="custom_charge_rate">Taux de charge</string>
-    <string name="charge_rate">Taux de charge de la batterie</string>
-    <string name="charge_rate_summary">Paramétrer un taux de charge de batterie personnalisé. Attention : dépasser 1250 mA peut endommager votre pilote de charge.</string>
     <string name="internal_storage">Stockage interne</string>
     <string name="external_storage">Stockage externe</string>
     <string name="scheduler">Scheduler</string>
@@ -161,14 +153,6 @@
     <string name="dynamic_fsync">Fsync dynamique</string>
     <string name="dynamic_fsync_summary">Lorsque que activé et que l\'écran est allumé, l\'opération fsync est asynchrone. Lorsque que l\'écran est éteint, cette opération s\'effectue de manière synchrone.</string>
     <string name="gentlefairsleepers">Gentle Fair Sleepers</string>
-    <string name="power_suspend_mode">Mode de suspension de l\'alimentation</string>
-    <string name="power_suspend_mode_summary">Les paramètres Kernel Mode, LCD Hooks et Highest Level Hook sont automatiquement gérés par le noyau. Pour gérer manuellement l\'état d\'alimentation en veille (RAM toujours sous tension), choisissez le mode utilisateur (User Mode).</string>
-    <string name="autosleep">Mise en veille automatique</string>
-    <string name="userspace">Espace utilisateur</string>
-    <string name="lcd_panel">Panneau LCD</string>
-    <string name="hybrid">Hybride</string>
-    <string name="power_suspend_state">État de suspension de l\'alimentation</string>
-    <string name="power_suspend_state_summary">Driver de modificateur de l\'alimentation quand l\'écran est éteint. Meilleurs économies d\'énergies si activé. Note : Vous pouvez seulement changer ce paramètre si le mode de suspension de l\'énergie est en mode utilisateur.</string>
     <string name="network">Réseau</string>
     <string name="tcp">Algorithme de Congestion TCP</string>
     <string name="tcp_summary">Le TCP (Transmission Control Protocol) est un des principaux protocoles utilisé sur Internet (couche IP), et est tellement courant que la couche complète est souvent appelée TCP/IP.</string>

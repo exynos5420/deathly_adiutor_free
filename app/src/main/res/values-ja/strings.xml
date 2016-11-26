@@ -30,7 +30,6 @@
     <string name="ms">ms</string>
     <string name="mb">MB</string>
     <string name="sec">秒</string>
-    <string name="ma">mA</string>
     <string name="information">情報</string>
     <string name="kernel">カーネル</string>
     <string name="tools">ツール</string>
@@ -114,13 +113,6 @@
     <string name="battery_voltage">バッテリー電圧</string>
     <string name="battery_level">バッテリー残量</string>
     <string name="battery_temperature">バッテリー温度</string>
-    <string name="usb_fast_charge">USB高速充電</string>
-    <string name="usb_fast_charge_summary">USB接続時の充電を高速化します。この設定を変更した後は充電器を抜き差ししてください。</string>
-    <string name="blx">Battery Life eXtender</string>
-    <string name="blx_summary">どの残量になるまで充電するか、0 から 100 までの値で指定します。</string>
-    <string name="custom_charge_rate">充電率</string>
-    <string name="charge_rate">バッテリーの充電率</string>
-    <string name="charge_rate_summary">カスタムバッテリー充電率を設定します。注意: 1250mAを超えると、充電機器に損傷を与える可能性があります。</string>
     <string name="internal_storage">内部ストレージ</string>
     <string name="external_storage">外部ストレージ</string>
     <string name="scheduler">スケジューラ</string>
@@ -163,14 +155,6 @@
     <string name="dynamic_fsync_summary">有効にすると画面点灯中のfsync操作が非同期になります。画面が消灯すると操作が同期的に実行されます。</string>
     <string name="gentlefairsleepers">Gentle Fair Sleepers</string>
     <string name="gentlefairsleepers_summary">Sleepersの動作をデフォルトの50%にします。無効にすると少しバッテリー消費を抑えられます。</string>
-    <string name="power_suspend_mode">Power Suspendモード</string>
-    <string name="power_suspend_mode_summary">Kernel Mode、LCD Hooks、Highest Level Hookはカーネルによって自動的に制御されます。Power Suspend State を手動で有効/無効化したい場合は User Mode を選択してください。</string>
-    <string name="autosleep">Autosleep</string>
-    <string name="userspace">Userspace</string>
-    <string name="lcd_panel">LCD Panel</string>
-    <string name="hybrid">Hybrid</string>
-    <string name="power_suspend_state">Power Suspend State</string>
-    <string name="power_suspend_state_summary">画面消灯時のカーネル電源管理ドライバーです。有効にするとバッテリーを節約できます。注意: Power Suspend ModeがUserspaceの場合のみ変更できます。</string>
     <string name="network">ネットワーク</string>
     <string name="tcp">TCP輻輳アルゴリズム</string>
     <string name="tcp_summary">TCP とは、伝送制御プロトコルといわれる、インターネットプロトコルスイートの中核プロトコルのひとつです。</string>

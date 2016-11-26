@@ -21,7 +21,6 @@
     <string name="ms">ms</string>
     <string name="mb">MB</string>
     <string name="sec">sek</string>
-    <string name="ma">mA</string>
     <string name="information">Informatsioon</string>
     <string name="kernel">Tuum</string>
     <string name="tools">Tööriistad</string>
@@ -52,7 +51,6 @@
     <string name="input_interval">Sisendi intervall</string>
     <string name="delay">Viivitus</string>
     <string name="battery_voltage">Aku pinge</string>
-    <string name="hybrid">Hübriid</string>
     <string name="network">Võrk</string>
     <string name="hostname">Hosti nimi</string>
     <string name="delete">Kustuta</string>

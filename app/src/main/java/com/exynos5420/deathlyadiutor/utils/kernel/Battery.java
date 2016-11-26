@@ -1,4 +1,5 @@
 /*
+ * Copyright (C) 2016 Martin Bouchet
  * Copyright (C) 2015 Willi Ye
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,249 +22,151 @@ import android.content.Context;
 import com.exynos5420.deathlyadiutor.utils.Constants;
 import com.exynos5420.deathlyadiutor.utils.Utils;
 import com.exynos5420.deathlyadiutor.utils.root.Control;
+import com.exynos5420.deathlyadiutor.utils.tools.Buildprop;
+
+import java.util.LinkedHashMap;
 
 /**
- * Created by willi on 03.01.15.
+ * Created by Martin Bouchet on 25.11.16.
  */
 public class Battery implements Constants {
+    
+    private static String devicemodel;
 
-    public static void setChargingRate(int value, Context context) {
-        Control.runCommand(String.valueOf(value), CUSTOM_CHARGING_RATE, Control.CommandType.GENERIC, context);
+    public static int getChargeLevel(){
+        return Utils.stringToInt(Utils.readFile(BATT_CHARGERATE));
     }
 
-    public static int getChargingRate() {
-        return Utils.stringToInt(Utils.readFile(CUSTOM_CHARGING_RATE));
+    public static String getVoltage(){
+        return Utils.readFile(BATT_VOLTAGE);
     }
 
-    public static boolean hasChargingRate() {
-        return Utils.existFile(CUSTOM_CHARGING_RATE);
-    }
-
-    public static void setlowpowervalue(int value, Context context) {
-        Control.runCommand(String.valueOf(value), LOW_POWER_VALUE, Control.CommandType.GENERIC, context);
-    }
-
-    public static int getlowpowervalue() {
-        return Utils.stringToInt(Utils.readFile(LOW_POWER_VALUE));
-    }
-
-    public static boolean haslowpowervalue() {
-        return Utils.existFile(LOW_POWER_VALUE);
-    }
-
-    public static void activateCustomChargeRate(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", CHARGE_RATE_ENABLE, Control.CommandType.GENERIC, context);
-    }
-
-    public static boolean isCustomChargeRateActive() {
-        return Utils.readFile(CHARGE_RATE_ENABLE).equals("1");
-    }
-
-    public static boolean hasCustomChargeRateEnable() {
-        return Utils.existFile(CHARGE_RATE_ENABLE);
-    }
-
-    public static boolean hasChargeRate() {
-        return Utils.existFile(CHARGE_RATE);
-    }
-
-    public static void setBlx(int value, Context context) {
-        Control.runCommand(String.valueOf(value), BLX, Control.CommandType.GENERIC, context);
-    }
-
-    public static int getCurBlx() {
-        return Utils.stringToInt(Utils.readFile(BLX));
-    }
-
-    public static boolean hasBlx() {
-        return Utils.existFile(BLX);
-    }
-
-    public static void activateForceFastCharge(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", FORCE_FAST_CHARGE, Control.CommandType.GENERIC, context);
-    }
-
-    public static void setFastChargeCurrent(int value, Context context) {
-        Control.runCommand(String.valueOf(value), FORCE_FAST_CHARGE_CURRENT, Control.CommandType.GENERIC, context);
-    }
-
-    public static int getFastChargeCurrent() {
-        return Utils.stringToInt(Utils.readFile(FORCE_FAST_CHARGE_CURRENT));
-    }
-
-    public static boolean isForceFastChargeActive() {
-        return Utils.readFile(FORCE_FAST_CHARGE).equals("1");
-    }
-
-    public static boolean hasForceFastCharge() {
-        return Utils.existFile(FORCE_FAST_CHARGE);
-    }
-
-    public static boolean hasForceFastChargeCurrent() {
-        return Utils.existFile(FORCE_FAST_CHARGE_CURRENT);
-    }
-
-    public static boolean hasChargeLevelControl() {
-        return Utils.existFile(CHARGE_LEVEL);
-    }
-
-    public static boolean hasChargeLevelControlAC() {
-        return Utils.existFile(AC_CHARGE_LEVEL);
-    }
-
-    public static int getChargeLevelControlAC() {
-        return Utils.stringToInt(Utils.readFile(AC_CHARGE_LEVEL));
-    }
-
-    public static void setChargeLevelControlAC(int value, Context context) {
-        Control.runCommand(String.valueOf(value), AC_CHARGE_LEVEL, Control.CommandType.GENERIC, context);
-    }
-
-    public static boolean hasChargeLevelControlUSB() {
-        return Utils.existFile(USB_CHARGE_LEVEL);
-    }
-
-    public static int getChargeLevelControlUSB() {
-        return Utils.stringToInt(Utils.readFile(USB_CHARGE_LEVEL));
-    }
-
-    public static void setChargeLevelControlUSB(int value, Context context) {
-        Control.runCommand(String.valueOf(value), USB_CHARGE_LEVEL, Control.CommandType.GENERIC, context);
-    }
-
-
-    public static void activateArchPower(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", ARCH_POWER, Control.CommandType.GENERIC, context);
-    }
-
-    public static boolean isArchPowerActive() {
-        return Utils.readFile(ARCH_POWER).equals("1");
-    }
-
-    public static boolean hasArchPower() {
-        return Utils.existFile(ARCH_POWER);
-    }
-
-    public static void setNewPowerSuspend(int value, Context context) {
-        Control.runCommand(String.valueOf(value), POWER_SUSPEND_STATE, Control.CommandType.GENERIC, context);
-    }
-
-    public static int getNewPowerSuspendState() {
-        return Utils.stringToInt(Utils.readFile(POWER_SUSPEND_STATE));
-    }
-
-    public static boolean hasNewPowerSuspendState() {
-        if (Utils.existFile(POWER_SUSPEND_STATE) && Utils.existFile(POWER_SUSPEND_VERSION)) {
-            String version = Utils.readFile(POWER_SUSPEND_VERSION);
-            if (version.contains("1.3") || version.contains("1.5")) return true;
+    public static String getDevice(){
+        if (devicemodel == null) {
+            LinkedHashMap<String, String> buildpropItem;
+            buildpropItem = Buildprop.getProps();
+            Object[] keys = buildpropItem.keySet().toArray();
+            Object[] values = buildpropItem.values().toArray();
+            for (int i = 0; i < keys.length; i++) {
+                if (((String) keys[i]).contains("ro.product.name"))
+                    devicemodel = values[i].toString();
+            }
         }
-        return false;
+        return devicemodel;
+    }
+    public static int getBatteryCapacity(){
+        if (devicemodel == null) getDevice();
+        if (devicemodel.contains("ha"))
+            return 3200;
+        else if (devicemodel.contains("klimt"))
+            return 4900;
+        else if (devicemodel.contains("chagall"))
+            return 7900;
+        else if (devicemodel.contains("n1a") || devicemodel.contains("lt03"))
+            return 8220;
+        else if (devicemodel.contains("v1a") || devicemodel.contains("v2a"))
+            return 9500;
+
+        return 0;
     }
 
-    public static void activateOldPowerSuspend(boolean active, Context context) {
-        Control.runCommand(active ? "1" : "0", POWER_SUSPEND_STATE, Control.CommandType.GENERIC, context);
+    public static String getTemperature(){
+        return Utils.readFile(BATT_TEMP);
     }
 
-    public static boolean isOldPowerSuspendStateActive() {
-        return Utils.readFile(POWER_SUSPEND_STATE).equals("1");
+    public static String getChargingSource(){
+        return Utils.readFile(BATT_CHARGING_SOURCE);
     }
 
-    public static boolean hasOldPowerSuspendState() {
-        if (Utils.existFile(POWER_SUSPEND_STATE) && Utils.existFile(POWER_SUSPEND_VERSION))
-            if (Utils.readFile(POWER_SUSPEND_VERSION).contains("1.2")) return true;
-        return false;
-    }
-
-    public static void setPowerSuspendMode(int value, Context context) {
-        Control.runCommand(String.valueOf(value), POWER_SUSPEND_MODE, Control.CommandType.GENERIC, context);
-    }
-
-    public static int getPowerSuspendMode() {
-        return Utils.stringToInt(Utils.readFile(POWER_SUSPEND_MODE));
-    }
-
-    public static boolean hasPowerSuspendMode() {
-        return Utils.existFile(POWER_SUSPEND_MODE);
-    }
-
-    public static boolean hasPowerSuspend() {
-        return Utils.existFile(POWER_SUSPEND);
-    }
-
-
-    public static void activateStateNotifier(boolean active, Context context) {
-        Control.runCommand(active ? "Y" : "N", STATE_NOTIFIER_ENABLED, Control.CommandType.GENERIC, context);
-    }
-
-    public static boolean isStateNotifierStateActive() {
-        return Utils.readFile(STATE_NOTIFIER_ENABLED).equals("Y");
-    }
-
-    public static boolean hasStateNotifier() {
-        return Utils.existFile(STATE_NOTIFIER_ENABLED);
-    }
-
-    public static void activateC0State(boolean active, Context context) {
-        String path = C0STATE;
-        for (int i = 0; i < CPU.getCoreCount(); i++) {
-            Control.runCommand(active ? "1" : "0", path.replace("0", Integer.toString(i)), Control.CommandType.GENERIC, context);
+    public static String getCurrent(String desired_current){
+        switch (desired_current){
+            case "now":
+                return Utils.readFile(BATT_CURRENT_NOW);
+            case "avg":
+                if (!Utils.readFile(SIOP_LEVEL).equals("100") && Utils.readFile(BATT_CHARGING_SOURCE).equals("3")){
+                    return Utils.readFile(SIOP_CHRG_CURR);
+                }
+                else return Utils.readFile(BATT_CURRENT_AVG);
+            case "max":
+                return Utils.readFile(BATT_CURRENT_MAX);
         }
+        return "";
     }
 
-
-    public static boolean isC0StateActive() {
-        return Utils.readFile(C0STATE).equals("1");
+    public static void activateUnstablePowerDetection(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", UNSTABLE_POWER_DETECTION, Control.CommandType.GENERIC, context);
     }
 
-    public static boolean hasC0State() {
-        return Utils.existFile(C0STATE);
+    public static boolean isUnstablePowerDetectionActive() {
+        return Utils.readFile(UNSTABLE_POWER_DETECTION).equals("1");
     }
 
-    public static void activateC1State(boolean active, Context context) {
-        String path = C1STATE;
-        for (int i = 0; i < CPU.getCoreCount(); i++) {
-            Control.runCommand(active ? "1" : "0", path.replace("0", Integer.toString(i)), Control.CommandType.GENERIC, context);
-        }
+    public static String getACmainsInputcurr(){
+        double value = Utils.stringtodouble(Utils.readFile(AC_INPUT_CURR));
+        return Double.toString((value - 450) /25);
     }
 
-
-    public static boolean isC1StateActive() {
-        return Utils.readFile(C1STATE).equals("1");
+    public static void setACmainsInputcurr(int curr, Context context){
+        curr = (curr*25) + 450;
+        Control.runCommand(Integer.toString(curr), AC_INPUT_CURR, Control.CommandType.GENERIC, context);
     }
 
-    public static boolean hasC1State() {
-        return Utils.existFile(C1STATE);
+    public static String getACmainschrgcurr(){
+        double value = Utils.stringtodouble(Utils.readFile(AC_CHRG_CURR));
+        return Double.toString((value - 450) /25);
     }
 
-    public static void activateC2State(boolean active, Context context) {
-        String path = C2STATE;
-        for (int i = 0; i < CPU.getCoreCount(); i++) {
-            Control.runCommand(active ? "1" : "0", path.replace("0", Integer.toString(i)), Control.CommandType.GENERIC, context);
-        }
+    public static void setACmainschrgcurr(int curr, Context context){
+        curr = (curr*25) + 450;
+        Control.runCommand(Integer.toString(curr), AC_CHRG_CURR, Control.CommandType.GENERIC, context);
     }
 
-
-    public static boolean isC2StateActive() {
-        return Utils.readFile(C2STATE).equals("1");
+    public static void activateSIOP(boolean active, Context context) {
+        Control.runCommand(active ? "99" : "100", SIOP_LEVEL, Control.CommandType.GENERIC, context);
     }
 
-    public static boolean hasC2State() {
-        return Utils.existFile(C2STATE);
+    public static boolean isSIOPActive() {
+        return !Utils.readFile(SIOP_LEVEL).equals("100");
     }
 
-    public static void activateC3State(boolean active, Context context) {
-        String path = C3STATE;
-        for (int i = 0; i < CPU.getCoreCount(); i++) {
-            Control.runCommand(active ? "1" : "0", path.replace("0", Integer.toString(i)), Control.CommandType.GENERIC, context);
-        }
+    public static String getSIOPInputcurr(){
+        double value = Utils.stringtodouble(Utils.readFile(SIOP_INPUT_CURR));
+        return Double.toString((value - 450) /50);
     }
 
-    public static boolean isC3StateActive() {
-        return Utils.readFile(C3STATE).equals("1");
+    public static void setSIOPInputcurr(int curr, Context context){
+        curr = (curr*50) + 450;
+        Control.runCommand(Integer.toString(curr), SIOP_INPUT_CURR, Control.CommandType.GENERIC, context);
     }
 
-    public static boolean hasC3State() {
-        return Utils.existFile(C3STATE);
+    public static String getSIOPchrgcurr(){
+        double value = Utils.stringtodouble(Utils.readFile(SIOP_CHRG_CURR));
+        return Double.toString((value - 450) /50);
+    }
+
+    public static void setSIOPchrgcurr(int curr, Context context){
+        curr = (curr*50) + 450;
+        Control.runCommand(Integer.toString(curr), SIOP_CHRG_CURR, Control.CommandType.GENERIC, context);
+    }
+
+    public static String getSDPInputcurr(){
+        double value = Utils.stringtodouble(Utils.readFile(SDP_INPUT_CURR));
+        return Double.toString((value - 450) /25);
+    }
+
+    public static void setSDPInputcurr(int curr, Context context){
+        curr = (curr*25) + 450;
+        Control.runCommand(Integer.toString(curr), SDP_INPUT_CURR, Control.CommandType.GENERIC, context);
+    }
+
+    public static String getSDPchrgcurr(){
+        double value = Utils.stringtodouble(Utils.readFile(SDP_CHRG_CURR));
+        return Double.toString((value - 450) /25);
+    }
+
+    public static void setSDPchrgcurr(int curr, Context context){
+        curr = (curr*25) + 450;
+        Control.runCommand(Integer.toString(curr), SDP_CHRG_CURR, Control.CommandType.GENERIC, context);
     }
 
 }

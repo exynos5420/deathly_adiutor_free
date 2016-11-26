@@ -1,4 +1,5 @@
 /*
+ * Copyright (C) 2016 Martin Bouchet
  * Copyright (C) 2015 Willi Ye
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,18 +17,11 @@
 
 package com.exynos5420.deathlyadiutor.fragments.kernel;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.BatteryManager;
 import android.os.Bundle;
 
 import com.exynos5420.deathlyadiutor.R;
-import com.exynos5420.deathlyadiutor.elements.DAdapter;
 import com.exynos5420.deathlyadiutor.elements.DDivider;
 import com.exynos5420.deathlyadiutor.elements.cards.CardViewItem;
-import com.exynos5420.deathlyadiutor.elements.cards.PopupCardView;
 import com.exynos5420.deathlyadiutor.elements.cards.SeekBarCardView;
 import com.exynos5420.deathlyadiutor.elements.cards.SwitchCardView;
 import com.exynos5420.deathlyadiutor.elements.cards.UsageCardView;
@@ -36,66 +30,38 @@ import com.exynos5420.deathlyadiutor.utils.Utils;
 import com.exynos5420.deathlyadiutor.utils.kernel.Battery;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+
 /**
- * Created by willi on 03.01.15.
+ * Created by Martin Bouchet on 25.11.16.
  */
 public class BatteryFragment extends RecyclerViewFragment implements SwitchCardView.DSwitchCard.OnDSwitchCardListener,
-        SeekBarCardView.DSeekBarCard.OnDSeekBarCardListener, PopupCardView.DPopupCard.OnDPopupCardListener {
+        SeekBarCardView.DSeekBarCard.OnDSeekBarCardListener{
 
     private UsageCardView.DUsageCard mBatteryLevelCard;
-    private CardViewItem.DCardView mBatteryVoltageCard, mBatteryTemperature;
-    private final BroadcastReceiver mBatInfoReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context arg0, Intent intent) {
-            int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
-            int voltage = intent.getIntExtra(BatteryManager.EXTRA_VOLTAGE, 0);
-            int temperature = intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0);
-
-            if (mBatteryLevelCard != null) mBatteryLevelCard.setProgress(level);
-            if (mBatteryVoltageCard != null)
-                mBatteryVoltageCard.setDescription(voltage + getString(R.string.mv));
-            if (mBatteryTemperature != null) {
-                double celsius = (double) temperature / 10;
-                mBatteryTemperature.setDescription(Utils.formatCelsius(celsius) + " " + Utils.celsiusToFahrenheit(celsius));
-            }
-        }
-    };
-    private SwitchCardView.DSwitchCard mForceFastChargeCard, mArchPowerCard;
-    private SeekBarCardView.DSeekBarCard mBlxCard, mACLevelCard, mUSBLevelCard;
-    private SwitchCardView.DSwitchCard mCustomChargeRateEnableCard;
-    private SeekBarCardView.DSeekBarCard mForceFastChargeCurrentCard;
-    private SeekBarCardView.DSeekBarCard mChargingRateCard;
-    private SeekBarCardView.DSeekBarCard mlowpowervalueCard;
-    private SwitchCardView.DSwitchCard mC0StateCard, mC1StateCard, mC2StateCard, mC3StateCard;
-    private PopupCardView.DPopupCard mPowerSuspendModeCard;
-    private SwitchCardView.DSwitchCard mOldPowerSuspendStateCard;
-    private SeekBarCardView.DSeekBarCard mNewPowerSuspendStateCard;
-    private SwitchCardView.DSwitchCard mStateNotifierStateCard;
+    private CardViewItem.DCardView mBatteryCapacity, mBatteryVoltageCard, mBatteryTemperature, mChargingSource, mChargingCurrents;
+    private SwitchCardView.DSwitchCard mUnstablePowerDetection, mSIOPtoggle;
+    private SeekBarCardView.DSeekBarCard mACmainsInputCurr, mACmainschrgCurr, mSIOPInputCurr, mSIOPchrgCurr, mSDPInputCurr, mSDPchrgCurr;
 
     @Override
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
 
         batteryLevelInit();
-        lowpowervalueInit();
+        batteryCapacityInit();
         batteryVoltageInit();
         batteryTemperatureInit();
-        if (Battery.hasForceFastCharge()) forceFastChargeInit();
-        if (Battery.hasChargeLevelControl()) chargeLevelControlInit();
-        if (Battery.hasBlx()) blxInit();
-        if (Battery.hasChargeRate()) chargerateInit();
+        chargingSourceInit();
+        chargingCurrentsInit();
+        unstablePowerDetectionToggleInit();
+        AddDivider(getString(R.string.ac_divider), getString(R.string.ac_divider_summary));
+        mACmainsCurrnetsInit();
+        AddDivider(getString(R.string.siop_divider), getString(R.string.siop_divider_summary));
+        mSIOPInit();
+        AddDivider(getString(R.string.sdp_divider), getString(R.string.sdp_divider_summary));
+        mSDPCurrnetsInit();
 
-        try {
-            getActivity().registerReceiver(mBatInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
-        } catch (NullPointerException ignored) {
-        }
-        if (Battery.hasArchPower()) archpowerInit();
-        if (Battery.hasPowerSuspend()) powersuspendInit();
-        if (Battery.hasStateNotifier()) statenotifierInit();
-        cstatesInit();
     }
 
     @Override
@@ -107,272 +73,164 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
     private void batteryLevelInit() {
         mBatteryLevelCard = new UsageCardView.DUsageCard();
         mBatteryLevelCard.setText(getString(R.string.battery_level));
+        mBatteryLevelCard.setProgress(Battery.getChargeLevel());
 
         addView(mBatteryLevelCard);
     }
 
-    private void lowpowervalueInit() {
-        if (Battery.haslowpowervalue()) {
-            List<String> list = new ArrayList<>();
-            for (int i = 0; i < 101; i++) list.add(String.valueOf(i));
+    private void batteryCapacityInit() {
+        mBatteryCapacity = new CardViewItem.DCardView();
+        mBatteryCapacity.setTitle(getString(R.string.max_batt_capacity));
+        mBatteryCapacity.setDescription(Battery.getBatteryCapacity() + getString(R.string.mah));
 
-            mlowpowervalueCard = new SeekBarCardView.DSeekBarCard(list);
-            mlowpowervalueCard.setTitle(getString(R.string.lowpowervalue));
-            mlowpowervalueCard.setDescription(getString(R.string.lowpowervalue_summary));
-            mlowpowervalueCard.setProgress(Battery.getlowpowervalue());
-            mlowpowervalueCard.setOnDSeekBarCardListener(this);
-
-            addView(mlowpowervalueCard);
-        }
+        addView(mBatteryCapacity);
     }
 
     private void batteryVoltageInit() {
         mBatteryVoltageCard = new CardViewItem.DCardView();
         mBatteryVoltageCard.setTitle(getString(R.string.battery_voltage));
+        mBatteryVoltageCard.setDescription((Utils.stringToInt(Battery.getVoltage())/1000) + getString(R.string.mv));
 
         addView(mBatteryVoltageCard);
     }
 
     private void batteryTemperatureInit() {
+        double celsius = (double) Utils.stringToInt(Battery.getTemperature()) / 10;
         mBatteryTemperature = new CardViewItem.DCardView();
         mBatteryTemperature.setTitle(getString(R.string.battery_temperature));
+        mBatteryTemperature.setDescription(Utils.formatCelsius(celsius) + " " + Utils.celsiusToFahrenheit(celsius));
 
         addView(mBatteryTemperature);
     }
 
-    private void forceFastChargeInit() {
-        mForceFastChargeCard = new SwitchCardView.DSwitchCard();
-        mForceFastChargeCard.setTitle(getString(R.string.usb_fast_charge));
-        mForceFastChargeCard.setDescription(getString(R.string.usb_fast_charge_summary));
-        mForceFastChargeCard.setChecked(Battery.isForceFastChargeActive());
-        mForceFastChargeCard.setOnDSwitchCardListener(this);
-        addView(mForceFastChargeCard);
+    private void chargingSourceInit() {
+        mChargingSource = new CardViewItem.DCardView();
+        mChargingSource.setTitle(getString(R.string.charging_source));
+        mChargingSource.setDescription(getChrgSourceName());
 
-        if (Battery.hasForceFastChargeCurrent()) {
-            List<String> list = new ArrayList<>();
-            for (int i = 0; i < 2200; i += 10) list.add(String.valueOf(i));
+        addView(mChargingSource);
+    }
+    private void chargingCurrentsInit() {
+        mChargingCurrents = new CardViewItem.DCardView();
+        mChargingCurrents.setTitle(getString(R.string.charging_curr_limits));
+        mChargingCurrents.setDescription(getString(R.string.current_now) + Battery.getCurrent("now") + getString(R.string.ma) + "\n"
+                + getString(R.string.current_avg) + Battery.getCurrent("avg") + getString(R.string.ma) + "\n"
+                + getString(R.string.current_max) + Battery.getCurrent("max") + getString(R.string.ma)); //This string will have to look more understandable for users.
 
-            mForceFastChargeCurrentCard = new SeekBarCardView.DSeekBarCard(list);
-            mForceFastChargeCurrentCard.setTitle(getString(R.string.usb_fast_charge_current));
-            mForceFastChargeCurrentCard.setDescription(getString(R.string.usb_fast_charge_current_summary));
-            mForceFastChargeCurrentCard.setProgress(Battery.getFastChargeCurrent() / 10);
-            mForceFastChargeCurrentCard.setOnDSeekBarCardListener(this);
-            addView(mForceFastChargeCurrentCard);
-        }
+        addView(mChargingCurrents);
+    }
+    
+    private void unstablePowerDetectionToggleInit(){
+            mUnstablePowerDetection = new SwitchCardView.DSwitchCard();
+            mUnstablePowerDetection.setTitle(getString(R.string.unstable_power_detection));
+            mUnstablePowerDetection.setDescription(getString(R.string.unstable_power_detection_summary));
+            mUnstablePowerDetection.setChecked(Battery.isUnstablePowerDetectionActive());
+            mUnstablePowerDetection.setOnDSwitchCardListener(this);
 
+            addView(mUnstablePowerDetection);
     }
 
-    private void chargeLevelControlInit() {
-        DDivider mChargeLevelCard = new DDivider();
-        mChargeLevelCard.setText(getString(R.string.charge_levels));
-        mChargeLevelCard.setDescription(getString(R.string.charge_levels_summary));
-        addView(mChargeLevelCard);
+    private void mACmainsCurrnetsInit(){
+        List<String> list_input_curr_options = new ArrayList<>();
+        List<String> list_chrg_curr_options = new ArrayList<>();
 
-
-        if (Battery.hasChargeLevelControlAC()) {
-            List<String> list = new ArrayList<>();
-            for (int i = 0; i < 2200; i += 10) list.add(String.valueOf(i));
-
-            mACLevelCard = new SeekBarCardView.DSeekBarCard(list);
-            mACLevelCard.setTitle(getString(R.string.charge_level_ac));
-            mACLevelCard.setDescription(getString(R.string.charge_level_ac_summary));
-            mACLevelCard.setProgress(Battery.getChargeLevelControlAC() / 10);
-            mACLevelCard.setOnDSeekBarCardListener(this);
-
-            addView(mACLevelCard);
+        for (int i = 450; i <= 3000; i = i + 25){
+            list_input_curr_options.add(i + getString(R.string.ma));
+            if (i <= 2550){
+                list_chrg_curr_options.add(i + getString(R.string.ma));
+            }
         }
 
-        if (Battery.hasChargeLevelControlUSB()) {
-            List<String> list = new ArrayList<>();
-            for (int i = 0; i < 900; i += 10) list.add(String.valueOf(i));
+        mACmainsInputCurr = new SeekBarCardView.DSeekBarCard(list_input_curr_options);
+        mACmainsInputCurr.setTitle(getString(R.string.ac_mains_input));
+        mACmainsInputCurr.setDescription("");
+        mACmainsInputCurr.setProgress(Utils.stringToInt(Battery.getACmainsInputcurr()));
+        mACmainsInputCurr.setOnDSeekBarCardListener(this);
 
-            mUSBLevelCard = new SeekBarCardView.DSeekBarCard(list);
-            mUSBLevelCard.setTitle(getString(R.string.charge_level_usb));
-            mUSBLevelCard.setDescription(getString(R.string.charge_level_usb_summary));
-            mUSBLevelCard.setProgress(Battery.getChargeLevelControlUSB() / 10);
-            mUSBLevelCard.setOnDSeekBarCardListener(this);
+        addView(mACmainsInputCurr);
 
-            addView(mUSBLevelCard);
-        }
+        mACmainschrgCurr = new SeekBarCardView.DSeekBarCard(list_chrg_curr_options);
+        mACmainschrgCurr.setTitle(getString(R.string.ac_mains_charge));
+        mACmainschrgCurr.setDescription(getString(R.string.ac_mains_charge_summary));
+        mACmainschrgCurr.setProgress(Utils.stringToInt(Battery.getACmainschrgcurr()));
+        mACmainschrgCurr.setOnDSeekBarCardListener(this);
 
+        addView(mACmainschrgCurr);
     }
 
-    private void blxInit() {
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < 101; i++) list.add(String.valueOf(i));
+    private void mSIOPInit(){
+        mSIOPtoggle = new SwitchCardView.DSwitchCard();
+        mSIOPtoggle.setTitle(getString(R.string.siop_toggle_tittle));
+        mSIOPtoggle.setDescription(getString(R.string.siop_toggle_summary));
+        mSIOPtoggle.setChecked(Battery.isSIOPActive());
+        mSIOPtoggle.setOnDSwitchCardListener(this);
 
-        mBlxCard = new SeekBarCardView.DSeekBarCard(list);
-        mBlxCard.setTitle(getString(R.string.blx));
-        mBlxCard.setDescription(getString(R.string.blx_summary));
-        mBlxCard.setProgress(Battery.getCurBlx());
-        mBlxCard.setOnDSeekBarCardListener(this);
+        addView(mSIOPtoggle);
 
-        addView(mBlxCard);
+        List<String> list_input_curr_options = new ArrayList<>();
+        List<String> list_chrg_curr_options = new ArrayList<>();
+
+        for (int i = 450; i <= 3000; i = i + 25){
+            list_input_curr_options.add(i + getString(R.string.ma));
+            if (i <= 2550){
+                list_chrg_curr_options.add(i + getString(R.string.ma));
+            }
+        }
+
+        mSIOPInputCurr = new SeekBarCardView.DSeekBarCard(list_input_curr_options);
+        mSIOPInputCurr.setTitle(getString(R.string.siop_input_curr));
+        mSIOPInputCurr.setDescription("");
+        mSIOPInputCurr.setProgress(Utils.stringToInt(Battery.getSIOPInputcurr()));
+        mSIOPInputCurr.setOnDSeekBarCardListener(this);
+
+        addView(mSIOPInputCurr);
+
+        mSIOPchrgCurr = new SeekBarCardView.DSeekBarCard(list_chrg_curr_options);
+        mSIOPchrgCurr.setTitle(getString(R.string.siop_charge_curr));
+        mSIOPchrgCurr.setDescription(getString(R.string.siop_charge_curr_summary));
+        mSIOPchrgCurr.setProgress(Utils.stringToInt(Battery.getSIOPchrgcurr()));
+        mSIOPchrgCurr.setOnDSeekBarCardListener(this);
+
+        addView(mSIOPchrgCurr);
     }
 
-    private void chargerateInit() {
-
-        if (Battery.hasCustomChargeRateEnable()) {
-            mCustomChargeRateEnableCard = new SwitchCardView.DSwitchCard();
-            mCustomChargeRateEnableCard.setDescription(getString(R.string.custom_charge_rate));
-            mCustomChargeRateEnableCard.setChecked(Battery.isCustomChargeRateActive());
-            mCustomChargeRateEnableCard.setOnDSwitchCardListener(this);
-
-            addView(mCustomChargeRateEnableCard);
+    private void mSDPCurrnetsInit(){
+        List<String> list_curr_options = new ArrayList<>();
+        for (int i = 450; i <= 1500; i = i + 25){
+            list_curr_options.add(i + getString(R.string.ma));
         }
+        mSDPInputCurr = new SeekBarCardView.DSeekBarCard(list_curr_options);
+        mSDPInputCurr.setTitle(getString(R.string.sdp_input_curr));
+        mSDPInputCurr.setDescription("");
+        mSDPInputCurr.setProgress(Utils.stringToInt(Battery.getSDPInputcurr()));
+        mSDPInputCurr.setOnDSeekBarCardListener(this);
 
-        if (Battery.hasChargingRate()) {
-            List<String> list = new ArrayList<>();
-            for (int i = 10; i < 151; i++) list.add((i * 10) + getString(R.string.ma));
+        addView(mSDPInputCurr);
 
-            mChargingRateCard = new SeekBarCardView.DSeekBarCard(list);
-            mChargingRateCard.setTitle(getString(R.string.charge_rate));
-            mChargingRateCard.setDescription(getString(R.string.charge_rate_summary));
-            mChargingRateCard.setProgress((Battery.getChargingRate() / 10) - 10);
-            mChargingRateCard.setOnDSeekBarCardListener(this);
+        mSDPchrgCurr = new SeekBarCardView.DSeekBarCard(list_curr_options);
+        mSDPchrgCurr.setTitle(getString(R.string.sdp_charge_curr));
+        mSDPchrgCurr.setDescription(getString(R.string.sdp_charge_curr_summary));
+        mSDPchrgCurr.setProgress(Utils.stringToInt(Battery.getSDPchrgcurr()));
+        mSDPchrgCurr.setOnDSeekBarCardListener(this);
 
-            addView(mChargingRateCard);
-        }
+        addView(mSDPchrgCurr);
     }
 
-    private void archpowerInit() {
-        mArchPowerCard = new SwitchCardView.DSwitchCard();
-        mArchPowerCard.setTitle(getString(R.string.archpower));
-        mArchPowerCard.setDescription(getString(R.string.archpower_summary));
-        mArchPowerCard.setChecked(Battery.isArchPowerActive());
-        mArchPowerCard.setOnDSwitchCardListener(this);
+    private void AddDivider(String tittle, String description){
+        DDivider mDivider = new DDivider();
+        mDivider.setText(tittle);
+        mDivider.setDescription(description);
 
-        addView(mArchPowerCard);
-    }
-
-    private void powersuspendInit() {
-        if (Battery.hasPowerSuspendMode()) {
-            mPowerSuspendModeCard = new PopupCardView.DPopupCard(new ArrayList<>(
-                    Arrays.asList(getResources().getStringArray(R.array.powersuspend_items))));
-            mPowerSuspendModeCard.setTitle(getString(R.string.power_suspend_mode));
-            mPowerSuspendModeCard.setDescription(getString(R.string.power_suspend_mode_summary));
-            mPowerSuspendModeCard.setItem(Battery.getPowerSuspendMode());
-            mPowerSuspendModeCard.setOnDPopupCardListener(this);
-
-            addView(mPowerSuspendModeCard);
-        }
-
-        if (Battery.hasOldPowerSuspendState()) {
-            mOldPowerSuspendStateCard = new SwitchCardView.DSwitchCard();
-            mOldPowerSuspendStateCard.setTitle(getString(R.string.power_suspend_state));
-            mOldPowerSuspendStateCard.setDescription(getString(R.string.power_suspend_state_summary));
-            mOldPowerSuspendStateCard.setChecked(Battery.isOldPowerSuspendStateActive());
-            mOldPowerSuspendStateCard.setOnDSwitchCardListener(this);
-
-            addView(mOldPowerSuspendStateCard);
-        }
-
-        if (Battery.hasNewPowerSuspendState()) {
-            List<String> list = new ArrayList<>();
-            for (int i = 0; i < 3; i++)
-                list.add(String.valueOf(i));
-
-            mNewPowerSuspendStateCard = new SeekBarCardView.DSeekBarCard(list);
-            mNewPowerSuspendStateCard.setTitle(getString(R.string.power_suspend_state));
-            mNewPowerSuspendStateCard.setDescription(getString(R.string.power_suspend_state_summary));
-            mNewPowerSuspendStateCard.setProgress(Battery.getNewPowerSuspendState());
-            mNewPowerSuspendStateCard.setOnDSeekBarCardListener(this);
-
-            addView(mNewPowerSuspendStateCard);
-        }
-    }
-
-    private void statenotifierInit() {
-        mStateNotifierStateCard = new SwitchCardView.DSwitchCard();
-        mStateNotifierStateCard.setTitle(getString(R.string.state_notifier_mode));
-        mStateNotifierStateCard.setDescription(getString(Battery.isStateNotifierStateActive() ? R.string.state_notifier_mode_summary_enabled : R.string.state_notifier_mode_summary_disabled));
-        mStateNotifierStateCard.setChecked(Battery.isStateNotifierStateActive());
-        mStateNotifierStateCard.setOnDSwitchCardListener(this);
-
-        addView(mStateNotifierStateCard);
-    }
-
-    private void cstatesInit() {
-        List<DAdapter.DView> views = new ArrayList<>();
-
-        if (Battery.hasC0State()) {
-            mC0StateCard = new SwitchCardView.DSwitchCard();
-            mC0StateCard.setTitle(getString(R.string.c0state));
-            mC0StateCard.setDescription(getString(R.string.c0state_summary));
-            mC0StateCard.setChecked(Battery.isC0StateActive());
-            mC0StateCard.setOnDSwitchCardListener(this);
-
-            views.add(mC0StateCard);
-        }
-
-        if (Battery.hasC1State()) {
-            mC1StateCard = new SwitchCardView.DSwitchCard();
-            mC1StateCard.setTitle(getString(R.string.c1state));
-            mC1StateCard.setDescription(getString(R.string.c1state_summary));
-            mC1StateCard.setChecked(Battery.isC1StateActive());
-            mC1StateCard.setOnDSwitchCardListener(this);
-
-            views.add(mC1StateCard);
-        }
-
-        if (Battery.hasC2State()) {
-            mC2StateCard = new SwitchCardView.DSwitchCard();
-            mC2StateCard.setTitle(getString(R.string.c2state));
-            mC2StateCard.setDescription(getString(R.string.c2state_summary));
-            mC2StateCard.setChecked(Battery.isC2StateActive());
-            mC2StateCard.setOnDSwitchCardListener(this);
-
-            views.add(mC2StateCard);
-        }
-
-        if (Battery.hasC3State()) {
-            mC3StateCard = new SwitchCardView.DSwitchCard();
-            mC3StateCard.setTitle(getString(R.string.c3state));
-            mC3StateCard.setDescription(getString(R.string.c3state_summary));
-            mC3StateCard.setChecked(Battery.isC3StateActive());
-            mC3StateCard.setOnDSwitchCardListener(this);
-
-            views.add(mC3StateCard);
-        }
-
-        if (views.size() > 0) {
-            DDivider mCstatesCard = new DDivider();
-            mCstatesCard.setText(getString(R.string.cstates));
-            addView(mCstatesCard);
-
-            addAllViews(views);
-        }
-    }
-
-    @Override
-    public void onItemSelected(PopupCardView.DPopupCard dPopupCard, int position) {
-        if (dPopupCard == mPowerSuspendModeCard)
-            Battery.setPowerSuspendMode(position, getActivity());
+        addView(mDivider);
     }
 
     @Override
     public void onChecked(SwitchCardView.DSwitchCard dSwitchCard, boolean checked) {
-        if (dSwitchCard == mForceFastChargeCard)
-            Battery.activateForceFastCharge(checked, getActivity());
-        else if (dSwitchCard == mCustomChargeRateEnableCard)
-            Battery.activateCustomChargeRate(checked, getActivity());
-        else if (dSwitchCard == mC0StateCard)
-            Battery.activateC0State(checked, getActivity());
-        else if (dSwitchCard == mC1StateCard)
-            Battery.activateC1State(checked, getActivity());
-        else if (dSwitchCard == mC2StateCard)
-            Battery.activateC2State(checked, getActivity());
-        else if (dSwitchCard == mC3StateCard)
-            Battery.activateC3State(checked, getActivity());
-        else if (dSwitchCard == mArchPowerCard)
-            Battery.activateArchPower(checked, getActivity());
-        else if (dSwitchCard == mStateNotifierStateCard) {
-            Battery.activateStateNotifier(checked, getActivity());
-            mStateNotifierStateCard.setDescription(getString(checked ? R.string.state_notifier_mode_summary_enabled : R.string.state_notifier_mode_summary_disabled));
-        } else if (dSwitchCard == mOldPowerSuspendStateCard)
-            if (Battery.getPowerSuspendMode() == 1) {
-                Battery.activateOldPowerSuspend(checked, getActivity());
-            } else dSwitchCard.setChecked(Battery.isOldPowerSuspendStateActive());
+        if (dSwitchCard == mUnstablePowerDetection)
+            Battery.activateUnstablePowerDetection(checked, getActivity());
+        else if (dSwitchCard == mSIOPtoggle)
+            Battery.activateSIOP(checked, getActivity());
+
     }
 
     @Override
@@ -381,31 +239,72 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
 
     @Override
     public void onStop(SeekBarCardView.DSeekBarCard dSeekBarCard, int position) {
-        if (dSeekBarCard == mBlxCard)
-            Battery.setBlx(position, getActivity());
-        else if (dSeekBarCard == mACLevelCard)
-            Battery.setChargeLevelControlAC(position * 10, getActivity());
-        else if (dSeekBarCard == mForceFastChargeCurrentCard)
-            Battery.setFastChargeCurrent(position * 10, getActivity());
-        else if (dSeekBarCard == mUSBLevelCard)
-            Battery.setChargeLevelControlUSB(position * 10, getActivity());
-        else if (dSeekBarCard == mChargingRateCard)
-            Battery.setChargingRate((position * 10) + 100, getActivity());
-        else if (dSeekBarCard == mNewPowerSuspendStateCard)
-            if (Battery.getPowerSuspendMode() == 1) {
-                Battery.setNewPowerSuspend(position, getActivity());
-            } else dSeekBarCard.setProgress(Battery.getNewPowerSuspendState());
-        else if (dSeekBarCard == mlowpowervalueCard) {
-            Battery.setlowpowervalue((position), getActivity());
-        }
+        if (dSeekBarCard == mACmainsInputCurr)
+            Battery.setACmainsInputcurr(position, getActivity());
+        else if (dSeekBarCard == mACmainschrgCurr)
+            Battery.setACmainschrgcurr(position, getActivity());
+        else if (dSeekBarCard == mSIOPInputCurr)
+            Battery.setSIOPInputcurr(position, getActivity());
+        else if (dSeekBarCard == mSIOPchrgCurr)
+            Battery.setSIOPchrgcurr(position, getActivity());
+        else if (dSeekBarCard == mSDPInputCurr)
+            Battery.setSDPInputcurr(position, getActivity());
+        else if (dSeekBarCard == mSDPchrgCurr)
+            Battery.setSDPchrgcurr(position, getActivity());
+
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        try {
-            getActivity().unregisterReceiver(mBatInfoReceiver);
-        } catch (IllegalArgumentException ignored) {
+    public boolean onRefresh() {
+
+        if (mBatteryLevelCard != null)
+            mBatteryLevelCard.setProgress(Battery.getChargeLevel());
+        if (mBatteryVoltageCard != null)
+            mBatteryVoltageCard.setDescription((Utils.stringToInt(Battery.getVoltage())/1000) + getString(R.string.mv));
+        if (mBatteryTemperature != null) {
+            double celsius = (double) Utils.stringToInt(Battery.getTemperature()) / 10;
+            mBatteryTemperature.setDescription(Utils.formatCelsius(celsius) + " " + Utils.celsiusToFahrenheit(celsius));
         }
+        if (mChargingSource != null)
+            mChargingSource.setDescription(getChrgSourceName());
+        if (mChargingCurrents != null)
+            mChargingCurrents.setDescription(getString(R.string.current_now) + Battery.getCurrent("now") + getString(R.string.ma) + "\n"
+                    + getString(R.string.current_avg) + Battery.getCurrent("avg") + getString(R.string.ma) + "\n"
+                    + getString(R.string.current_max) + Battery.getCurrent("max") + getString(R.string.ma)); //This string will have to look more understandable for users.
+        return true;
+
     }
+    
+    public String getChrgSourceName(){
+        switch (Battery.getChargingSource()){
+            case "0":
+                return getString(R.string.chrg_src_unknown);
+            case "1":
+                return getString(R.string.chrg_src_battery);
+            case "2":
+                return getString(R.string.chrg_src_wtf);
+            case "3":
+                return getString(R.string.chrg_src_acmains);
+            case "4":
+                return getString(R.string.chrg_src_sdp);
+            case "5":
+                return getString(R.string.chrg_src_dcp);
+            case "6":
+                return getString(R.string.chrg_src_cdp);
+            case "7":
+                return getString(R.string.chrg_src_aca);
+            case "8":
+                return getString(R.string.chrg_src_misc);
+            case "9":
+                return getString(R.string.chrg_src_car);
+            case "10":
+                return getString(R.string.chrg_src_wireless);
+            case "11":
+                return getString(R.string.chrg_src_uartoff);
+            case "12":
+                return getString(R.string.chrg_src_otg);
+        }
+        return "";
+    }
+
 }

@@ -30,7 +30,6 @@
     <string name="ms">ms</string>
     <string name="mb">MB</string>
     <string name="sec">sek</string>
-    <string name="ma">mA</string>
     <string name="information">Information</string>
     <string name="kernel">Kernel</string>
     <string name="tools">Verktyg</string>
@@ -98,8 +97,6 @@
     <string name="battery_voltage">Batterispänning</string>
     <string name="battery_level">Batterinivå</string>
     <string name="battery_temperature">Batteritemperatur</string>
-    <string name="usb_fast_charge">USB snabbladdning</string>
-    <string name="usb_fast_charge_summary">Enheten laddas snabbare när den är ansluten med USB. Dra ur och sätt tillbaka din laddare när du ändrar det här alternativet.</string>
     <string name="internal_storage">Intern lagring</string>
     <string name="external_storage">Extern lagring</string>
     <string name="scheduler">Schemaläggare</string>
@@ -123,7 +120,6 @@
     <string name="android_logger">Android-loggning</string>
     <string name="fsync">Fsync</string>
     <string name="dynamic_fsync">Dynamisk Fsync</string>
-    <string name="hybrid">Hybrid</string>
     <string name="network">Nätverk</string>
     <string name="hostname">Värdnamn</string>
     <string name="delete">Radera</string>

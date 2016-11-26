@@ -30,7 +30,6 @@
     <string name="ms">ms</string>
     <string name="mb">MB</string>
     <string name="sec">сек</string>
-    <string name="ma">mA</string>
     <string name="information">Подаци</string>
     <string name="kernel">Кернел</string>
     <string name="tools">Алатке</string>
@@ -91,7 +90,6 @@
     <string name="battery_voltage">Напон батерије</string>
     <string name="battery_level">Ниво батерије</string>
     <string name="battery_temperature">Температура батерије</string>
-    <string name="usb_fast_charge">УСБ брзо пуњење</string>
     <string name="internal_storage">Унутрашње складиште</string>
     <string name="external_storage">Спољашње складиште</string>
     <string name="scheduler">Планер</string>
@@ -124,8 +122,6 @@
     <string name="vibration_strength">Јачина вибрације</string>
     <string name="fsync">Fsync</string>
     <string name="dynamic_fsync">Динамички Fsync</string>
-    <string name="autosleep">Аутоспавање</string>
-    <string name="lcd_panel">ЛЦД панел</string>
     <string name="network">Мрежа</string>
     <string name="tcp">ТЦП алгоритам загушења</string>
     <string name="hostname">Име домаћина</string>

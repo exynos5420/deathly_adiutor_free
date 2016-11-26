@@ -30,7 +30,6 @@
     <string name="ms">ms</string>
     <string name="mb">MB</string>
     <string name="sec">secondi</string>
-    <string name="ma">mA</string>
     <string name="information">Informazioni</string>
     <string name="kernel">Kernel</string>
     <string name="tools">Strumenti</string>
@@ -114,13 +113,6 @@
     <string name="battery_voltage">Tensione batteria</string>
     <string name="battery_level">Livello Batteria</string>
     <string name="battery_temperature">Temperatura batteria</string>
-    <string name="usb_fast_charge">USB carica veloce</string>
-    <string name="usb_fast_charge_summary">Il dispositivo sarà caricato più velocemente quando è collegato con USB. Ricollegare l\'alimentatore quando si modifica questa opzione.</string>
-    <string name="blx">Estensione della durata della batteria</string>
-    <string name="blx_summary">Imposta un limite di carica della batteria con un valore compreso tra 0 e 100.</string>
-    <string name="custom_charge_rate">Tasso di carica</string>
-    <string name="charge_rate">Tasso di ricarica batteria</string>
-    <string name="charge_rate_summary">Impostare il tasso di carica batteria personalizzato. Attenzione: Superiore a 1250mA può danneggiare il driver di ricarica.</string>
     <string name="internal_storage">Memoria interna</string>
     <string name="external_storage">Memoria esterna</string>
     <string name="scheduler">Scheduler</string>
@@ -159,14 +151,6 @@
     <string name="crc_summary">CRC è un meccanisco che permette di prevenire la corruzione dei dati. I blocchi di dati possono perdere fino al 30% delle loro performance.</string>
     <string name="fsync">Fsync</string>
     <string name="dynamic_fsync">Fsync dimanico</string>
-    <string name="power_suspend_mode">Modalità Sospensione Energia</string>
-    <string name="power_suspend_mode_summary">La modalità kernel, hooks LED e hooks di alto livello sono gestiti automaticamente dal kernel. Per settare manualmente il Power Suspend State selezionare User Mode.</string>
-    <string name="autosleep">Autosleep</string>
-    <string name="userspace">Spazio Utente</string>
-    <string name="lcd_panel">Pannello LCD</string>
-    <string name="hybrid">Hybrid</string>
-    <string name="power_suspend_state">In stato di sospensione</string>
-    <string name="power_suspend_state_summary">La potenza del kernel viene gestita dai driver quando lo schermo è spento. Migliore sarà il risparmio di batteria se abilitato. Nota: Tu potrai in qualsiasi momento quambiare questa impostazione se il potere di sospensione è in modalità attiva</string>
     <string name="network">Rete</string>
     <string name="tcp">Algoritmo di congestione TCP</string>
     <string name="tcp_summary">Il Protocollo di controllo trasmissione è uno dei principali protocolli della suite di protocolli Internet (IP), ed è così comune che l\'intera suite è spesso chiamato TCP/IP.</string>

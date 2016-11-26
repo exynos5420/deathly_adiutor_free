@@ -30,7 +30,6 @@
     <string name="ms">ms</string>
     <string name="mb">MB</string>
     <string name="sec">s</string>
-    <string name="ma">mA</string>
     <string name="information">Informacije</string>
     <string name="kernel">Kernel</string>
     <string name="tools">Orodja</string>
@@ -114,13 +113,6 @@
     <string name="battery_voltage">Napetost baterije</string>
     <string name="battery_level">Raven baterije</string>
     <string name="battery_temperature">Temperatura baterije</string>
-    <string name="usb_fast_charge">USB hitro polnjenje</string>
-    <string name="usb_fast_charge_summary">Baterija naprave se bo polnila hitreje ko bo povezana na USB. Pri izbiri te možnosti izključite-vključite napajanje.</string>
-    <string name="blx">Podaljševalec avtonomije baterije</string>
-    <string name="blx_summary">Določite mejo do katere naj se napolni baterija z izbiro vrednosti med 0 in 100.</string>
-    <string name="custom_charge_rate">Stopnja napolnjenosti</string>
-    <string name="charge_rate">Stopnja polnjenja baterije</string>
-    <string name="charge_rate_summary">Spremeni stopnjo polnjenja baterije. POZOR: Preseganje 1250mA lahko poškoduje vaš polnilec/baterijo.</string>
     <string name="internal_storage">Notranji pomnilnik</string>
     <string name="external_storage">Zunanji pomnilnik</string>
     <string name="scheduler">Razporejevalnik</string>
@@ -163,14 +155,6 @@
     <string name="dynamic_fsync_summary">Ko je to omogočeno in je zaslon vklopljen, je fsync operacija asinhrona. Ko je zaslon izklopljen, je operacija opravljena sinhrono.</string>
     <string name="gentlefairsleepers">Gentle Fair Sleepers</string>
     <string name="gentlefairsleepers_summary">Dodeljeno jih je le 50% zmožnosti. Izklapljanje tega lahko privarčuje nekaj baterije.</string>
-    <string name="power_suspend_mode">Moč pripravljenosti</string>
-    <string name="power_suspend_mode_summary">Kernel Mode (Način Jedra), LCD Hooks (Kavlji Zaslona) in Highest Level Hook (Kavelj najvišje stopnje) so uravnavani avtomatsko iz strani jedra. Za ročno nastavljanje Power Suspend stanja izberi User Mode (Uporabniški Način).</string>
-    <string name="autosleep">Samodejno spanje</string>
-    <string name="userspace">Uporabniški prostor</string>
-    <string name="lcd_panel">LCD plošča</string>
-    <string name="hybrid">Hibrid</string>
-    <string name="power_suspend_state">Stanje pripravljenosti</string>
-    <string name="power_suspend_state_summary">Kernel gonilnik za nadzor napajanja pri izklopljenem zaslonu. Boljše varčevanje z baterijo je omogočeno. Opomba: To nastavitev lahko spremenite le, če je v uporabniškem načinu Stanje odloga moči.</string>
     <string name="network">Omrežje</string>
     <string name="tcp">Algoritem TCP zastojev</string>
     <string name="tcp_summary">Transmission Control Protocol je eden od osnovnih protokolov Internetnega protokolskega sklada (IP), in je tako pogost, da celoten sklad večkrat imenujemo TCP/IP.</string>

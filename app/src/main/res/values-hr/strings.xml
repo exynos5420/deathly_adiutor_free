@@ -30,7 +30,6 @@
     <string name="ms">ms</string>
     <string name="mb">MB</string>
     <string name="sec">sek</string>
-    <string name="ma">mA</string>
     <string name="information">Informacija</string>
     <string name="kernel">Kernel</string>
     <string name="tools">Alatke</string>
@@ -105,10 +104,6 @@
     <string name="battery_voltage">Napon baterije</string>
     <string name="battery_level">Razina punjenja baterije</string>
     <string name="battery_temperature">Temperatura baterije</string>
-    <string name="usb_fast_charge">Brzo punjenje preko USB-a</string>
-    <string name="usb_fast_charge_summary">Baterija će se puniti brže pri spoju preko USB-a. Odvojite punjač ako mijenjate ovu vrijednost.</string>
-    <string name="blx">Produživač života baterije</string>
-    <string name="blx_summary">Odredite granicu do koje će se baterija napuniti postavkom veličine između 0 i 100.</string>
     <string name="internal_storage">Unutarnja pohrana</string>
     <string name="external_storage">Vanjska pohrana</string>
     <string name="scheduler">Scheduler</string>

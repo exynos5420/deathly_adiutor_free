@@ -39,12 +39,14 @@
     <!-- Units -->
     <string name="mhz">MHz</string>
     <string name="mv">mV</string>
+    <string name="ma">mA</string>
+    <string name="mah">mAh</string>
     <string name="kb">kB</string>
     <string name="ms">ms</string>
     <string name="cs">cs</string>
     <string name="mb">MB</string>
     <string name="sec">sec</string>
-    <string name="ma">mA</string>
+    <string name="dB">dB</string>
 
     <string name="cores">cores</string>
 
@@ -227,7 +229,6 @@
     <string name="power_reduce_summary">Adjust display for lower power consumption without degradation.</string>
 
     <!-- Sound -->
-    <string name="dB">dB</string>
     <string name="equalizer_band">Equalizer Band</string>
 
     <string name="earpiece_volume">Earpiece Volume</string>
@@ -261,28 +262,55 @@
     <string name="hp_eq_band5_description">Cutoff-frequency: 6340Hz</string>
 
 
-    <!-- Battery -->
-    <string name="battery_voltage">Battery Voltage</string>
-    <string name="battery_level">Battery Level</string>
-    <string name="battery_temperature">Battery Temperature</string>
-    <string name="usb_fast_charge">USB Fast Charge</string>
-    <string name="usb_fast_charge_summary">Device will charge faster when connected with USB. Replug your charger when changing this option.</string>
-    <string name="usb_fast_charge_current">USB Fast Charge Current</string>
-    <string name="usb_fast_charge_current_summary">Device will charge with this current when connected with USB.</string>
-    <string name="charge_levels">Charge Levels Interface</string>
-    <string name="charge_levels_summary">Setting levels higher than your device supports can damage your device and any device it is plugged into. USE CAUTION.</string>
-    <string name="charge_level_ac">AC Charge Level</string>
-    <string name="charge_level_ac_summary">Set MAX mA allowed while charging via AC (0 = stock charging logic)</string>
-    <string name="charge_level_usb">USB Charge Level</string>
-    <string name="charge_level_usb_summary">Set MAX mA allowed while charging via USB (0 = stock charging logic)</string>
 
-    <string name="blx">Battery Life eXtender</string>
-    <string name="blx_summary">Set a limit for the capacity to which the battery will be charged by passing a value between 0 and 100.</string>
-    <string name="custom_charge_rate">Charge Rate</string>
-    <string name="charge_rate">Battery Charging Rate</string>
-    <string name="charge_rate_summary">Set Custom Battery Charge Rate. Caution: Exceeding 1250mA may damage your charging driver.</string>
-    <string name="lowpowervalue">Low Power Value</string>
-    <string name="lowpowervalue_summary">Set the Battery Level in % where big cores will shutdown.</string>
+
+    <!-- Battery Dividers -->
+    <string name="ac_divider">AC Charger Currents</string>
+    <string name="ac_divider_summary">AC or mains current limits applied to designated dedicated
+        chargers and corresponding cables.</string>
+    <string name="siop_divider">AC Charger Currents (Screen-On)</string>
+    <string name="siop_divider_summary">AC or mains current limits applied to designated dedicated
+        chargers and corresponding cables while the screen is on.</string>
+    <string name="sdp_divider">Standard Downstream Port</string>
+    <string name="sdp_divider_summary">Standard Downstream Port current limits applied on plain and compliant USB data connectivity ports.</string>
+    <!-- Battery ViewItems-->
+    <string name="battery_level">Battery Level</string>
+    <string name="max_batt_capacity">Maximum Battery Capacity</string>
+    <string name="battery_voltage">Battery Voltage</string>
+    <string name="battery_temperature">Battery Temperature</string>
+    <string name="charging_source">Charging Source</string>
+    <string name="charging_curr_limits">Charging Current Limits</string>
+    <string name="current_now">Actual Charging Current:</string>
+    <string name="current_avg">Charging Current Limit:</string>
+    <string name="current_max">Input Current Limit:</string>
+    <string name="unstable_power_detection">Unstable Power Detection</string>
+    <string name="unstable_power_detection_summary">If disabled, the charger chip will ignore unstable currents. Unstable power detection will reduce the input current until a stable voltage from the power source is achieved.</string>
+    <string name="ac_mains_input">AC/Mains Input Current</string>
+    <string name="ac_mains_charge">AC/Mains Charge Current</string>
+    <string name="ac_mains_charge_summary">AC or mains charge current supplied to battery during charging.</string>
+    <string name="siop_toggle_tittle">Screen-On Current Limiter</string>
+    <string name="siop_toggle_summary">If enabled, Input and charging current are limited to certain maximas if the screen is turned on to avoid elevated heat generation. Normal charging limits are applied when the screen is off.</string>
+    <string name="siop_input_curr">AC/Mains Input Current (Screen-On)</string>
+    <string name="siop_charge_curr">AC/Mains Charge Current (Screen-On)</string>
+    <string name="siop_charge_curr_summary">AC or mains charge current supplied to battery during charging while screen is on.</string>
+    <string name="sdp_input_curr">SDP Input Current</string>
+    <string name="sdp_charge_curr">SDP Charge Current</string>
+    <string name="sdp_charge_curr_summary">NOTE: SDP charge limit serves as a global minima for ALL charge currents except MHL currents, overriding their respective value if they are inferior!</string>
+    <!-- Battery PowerSources-->
+    <string name="chrg_src_unknown">Unknown Source</string>
+    <string name="chrg_src_battery">Battery power</string>
+    <string name="chrg_src_wtf">How the fuck did you manage this one?</string>
+    <string name="chrg_src_acmains">Mains AC charger</string>
+    <string name="chrg_src_sdp">USB Standard Downstream Port</string>
+    <string name="chrg_src_cdp">SB Dedicated Charging Port</string>
+    <string name="chrg_src_dcp">USB Charging Downstream Port</string>
+    <string name="chrg_src_aca">USB Accessory Charger Adapter</string>
+    <string name="chrg_src_misc">Miscaenellous power source</string>
+    <string name="chrg_src_car">Car dock charger</string>
+    <string name="chrg_src_wireless">Wireless Power Consortium charger</string>
+    <string name="chrg_src_uartoff">UART Off charge mode</string>
+    <string name="chrg_src_otg">OTG charging</string>
+
 
     <!-- I/O Scheduler -->
     <string name="internal_storage">Internal Storage</string>
@@ -357,8 +385,6 @@
 
     <!-- Misc Controls -->
     <string name="misc_settings">Misc Settings</string>
-    <string name="se_linux">Toggle SE Linux</string>
-    <string name="se_linux_summary">Current SELinux Status:</string>
     <string name="vibration_strength">Vibration Strength</string>
     <string name="android_logger">Android logging</string>
     <string name="bcl">BCL</string>
@@ -375,19 +401,6 @@
     <string name="gentlefairsleepers_summary">Only give sleepers 50% of their service deficit. Disabling this can save a little battery power.</string>
     <string name="msm_usb_otg">MSM USB OTG</string>
     <string name="msm_usb_otg_summary">Enable this hack to allow externally powered usb host mode. Developed by ziddey and faux123.</string>
-    <string name="archpower">Arch Power</string>
-    <string name="archpower_summary">Enable Arch Specific Power Function/Savings</string>
-    <string name="power_suspend_mode">Power Suspend Mode</string>
-    <string name="power_suspend_mode_summary">Kernel Mode, LCD Hooks and Highest Level Hook are automatically managed by the kernel. To manually enable or disable the Power Suspend State choose User Mode.</string>
-    <string name="state_notifier_mode">State Notifier Mode</string>
-    <string name="state_notifier_mode_summary_enabled">Toggle between State and FB Notifiers. \nCurrently: State Notifier</string>
-    <string name="state_notifier_mode_summary_disabled">Toggle between State and FB Notifiers. \nCurrently: FB Notifier</string>
-    <string name="autosleep">Autosleep</string>
-    <string name="userspace">Userspace</string>
-    <string name="lcd_panel">LCD Panel</string>
-    <string name="hybrid">Hybrid</string>
-    <string name="power_suspend_state">Power Suspend State</string>
-    <string name="power_suspend_state_summary">Kernel power management driver when screen is off. Better battery savings if enabled. Note: You can only change this setting if Power Suspend Mode is in User Mode.</string>
     <string name="network">Network</string>
     <string name="tcp">TCP Congestion Algorithm</string>
     <string name="tcp_summary">The Transmission Control Protocol is one of the core protocols of the Internet protocol suite (IP), and is so common that the entire suite is often called TCP/IP.</string>
@@ -395,15 +408,6 @@
     <string name="adb_over_wifi">ADB Over WiFi</string>
     <string name="adb_over_wifi_summary">Enable ADB over WiFi</string>
     <string name="adb_over_wifi_connect_summary">Enable ADB over WiFi. Connect to: </string>
-    <string name="cstates">Krait C-States Settings</string>
-    <string name="c0state">C0 (WFI)</string>
-    <string name="c0state_summary">Shallowest Sleep with instant wake up.</string>
-    <string name="c1state">C1 (Retention)</string>
-    <string name="c1state_summary">Slightly deeper sleep with slight latency when waking up. (Disable this if you encounter screen flickering)</string>
-    <string name="c2state">C2 (Stand Alone Power Collapse)</string>
-    <string name="c2state_summary">Deeper sleep with longer latency when waking up.</string>
-    <string name="c3state">C3 (Power Collapse)</string>
-    <string name="c3state_summary">Really deep sleep with longest latency when waking up.</string>
     <string name="switchbuttons">Switch Buttons</string>
     <string name="switchbuttons_summary">Switch back and recents buttons.</string>
 

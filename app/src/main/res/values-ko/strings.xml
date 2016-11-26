@@ -30,7 +30,6 @@
     <string name="ms">ms</string>
     <string name="mb">MB</string>
     <string name="sec">초</string>
-    <string name="ma">mA</string>
     <string name="information">정보</string>
     <string name="kernel">커널</string>
     <string name="tools">도구</string>
@@ -107,13 +106,6 @@
     <string name="battery_voltage">배터리 전압</string>
     <string name="battery_level">배터리 잔량</string>
     <string name="battery_temperature">배터리 온도</string>
-    <string name="usb_fast_charge">빠른 충전</string>
-    <string name="usb_fast_charge_summary">USB에 연결했을 때 충전되는 속도가 빨라집니다. 이 설정을 변경하셨으면 충전기를 다시 연결해 주세요.</string>
-    <string name="blx">배터리 사용시간 확장</string>
-    <string name="blx_summary">0~100 사이에서 배터리가 충전될 때의 한계값을 설정합니다.</string>
-    <string name="custom_charge_rate">충전 속도</string>
-    <string name="charge_rate">배터리 충전 속도</string>
-    <string name="charge_rate_summary">배터리 충전 속도를 설정합니다. 주의: 1250mA를 넘으면 문제가 발샐할 수 있습니다.</string>
     <string name="internal_storage">내부 저장소</string>
     <string name="external_storage">외부 저장소</string>
     <string name="scheduler">스케줄러</string>
@@ -149,13 +141,6 @@
     <string name="android_logger">안드로이드 로깅</string>
     <string name="fsync">Fsync</string>
     <string name="dynamic_fsync">Dynamic Fsync</string>
-    <string name="power_suspend_mode">Power Suspend 모드</string>
-    <string name="autosleep">자동 잠김</string>
-    <string name="userspace">사용자 설정</string>
-    <string name="lcd_panel">LCD 패널</string>
-    <string name="hybrid">하이브리드</string>
-    <string name="power_suspend_state">Power Suspend 상태</string>
-    <string name="power_suspend_state_summary">화면이 꺼져 있을 때의 커널 전원 관리 드라이버입니다. 활성화할 경우 배터리 소모를 줄일 수 있습니다. 주의: 이 설정을 변경하려면 Power Suspend 모드가 사용자 모드로 설정되어 있어야 합니다.</string>
     <string name="network">네트워크</string>
     <string name="tcp">TCP 혼잡 알고리즘</string>
     <string name="tcp_summary">TCP는 IP의 핵심 프로토콜 중 하나이며, 전체 제품군은 TCP/IP라고 불리는 것이 일반적입니다.</string>

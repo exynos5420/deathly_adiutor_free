@@ -30,7 +30,6 @@
     <string name="ms">微秒</string>
     <string name="mb">MB</string>
     <string name="sec">秒</string>
-    <string name="ma">mA</string>
     <string name="information">信息</string>
     <string name="kernel">内核</string>
     <string name="tools">工具</string>
@@ -114,13 +113,6 @@
     <string name="battery_voltage">电池电压</string>
     <string name="battery_level">电量</string>
     <string name="battery_temperature">电池温度</string>
-    <string name="usb_fast_charge">USB 快充</string>
-    <string name="usb_fast_charge_summary">设备连接到 USB 时充电速度将被加快。更改此设置后请重新拔插充电器。</string>
-    <string name="blx">电池寿命延长器</string>
-    <string name="blx_summary">设置电池充电时满电容量的上限（在 0–100 之间）。</string>
-    <string name="custom_charge_rate">充电速率</string>
-    <string name="charge_rate">电池充电速率</string>
-    <string name="charge_rate_summary">设置自定义电池充电速率。注意: 超过 1250mA 可能会损坏您的充电驱动程序。</string>
     <string name="internal_storage">内部存储</string>
     <string name="external_storage">外部存储</string>
     <string name="scheduler">调度器</string>
@@ -160,14 +152,6 @@
     <string name="dynamic_fsync">动态 Fsync</string>
     <string name="dynamic_fsync_summary">启用后，当屏幕开启时 fsync 操作为异步。当屏幕关闭后，fsync 操作将变为同步。</string>
     <string name="gentlefairsleepers">温柔的公平露宿者</string>
-    <string name="power_suspend_mode">电源延迟模式</string>
-    <string name="power_suspend_mode_summary">内核模式，LCD 钩子和最高等级钩子将自动由内核管理，要手动启用或禁用电源延迟状态请选择用户模式</string>
-    <string name="autosleep">自动休眠</string>
-    <string name="userspace">用户空间</string>
-    <string name="lcd_panel">LCD 面板</string>
-    <string name="hybrid">混合</string>
-    <string name="power_suspend_state">电源延迟状态</string>
-    <string name="power_suspend_state_summary">屏幕关闭时的内核电源管理驱动。如果启用将获得更好的节电效果。注意：你只能在电源延迟模式处在用户模式时更改此项设置。</string>
     <string name="network">网络</string>
     <string name="tcp">TCP 拥塞算法</string>
     <string name="tcp_summary">传输控制协议（TCP）是互联网协议（IP）组件的核心协议之一，并且通常被合称为 TCP/IP。</string>

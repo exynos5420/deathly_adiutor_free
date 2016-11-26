@@ -32,7 +32,6 @@ Está a usar a versão %s.</string>
     <string name="ms">ms</string>
     <string name="mb">MB</string>
     <string name="sec">seg</string>
-    <string name="ma">mA</string>
     <string name="information">Informação</string>
     <string name="kernel">Kernel</string>
     <string name="tools">Ferramentas</string>
@@ -110,12 +109,6 @@ Está a usar a versão %s.</string>
     <string name="battery_voltage">Voltagem da bateria</string>
     <string name="battery_level">Nível da bateria</string>
     <string name="battery_temperature">Temperatura da bateria</string>
-    <string name="usb_fast_charge">Carga rápida USB</string>
-    <string name="usb_fast_charge_summary">Dispositivo irá carregar mais rápido quando conectado com USB. Reconecte o carregador ao alterar esta opção.</string>
-    <string name="blx">Extensor de autonomia da bateria</string>
-    <string name="blx_summary">Defina um limite para a capacidade que a bateria será carregada, passando um valor entre 0 e 100.</string>
-    <string name="custom_charge_rate">Taxa de carregamento</string>
-    <string name="charge_rate">Taxa de carregamento da bateria</string>
     <string name="internal_storage">Armazenamento interno</string>
     <string name="external_storage">Armazenamento externo</string>
     <string name="scheduler">Agendador</string>
@@ -152,13 +145,6 @@ Está a usar a versão %s.</string>
     <string name="crc">Software de controle de CRC</string>
     <string name="fsync">Fsync</string>
     <string name="dynamic_fsync">Fsync dinâmico</string>
-    <string name="power_suspend_mode">Ligar modo de suspenção</string>
-    <string name="autosleep">Autosleep</string>
-    <string name="userspace">Userspace</string>
-    <string name="lcd_panel">Painel LCD</string>
-    <string name="hybrid">Híbrido</string>
-    <string name="power_suspend_state">Ligar modo de estado</string>
-    <string name="power_suspend_state_summary">Driver de gestão de energia da kernel quando a tela estiver desligada. Poupança de bateria melhor se habilitado. Nota: Você só pode alterar essa configuração se o Modo Suspensão de Energia estiver no modo de usuário.</string>
     <string name="network">Rede</string>
     <string name="tcp">Algoritmo de congestionamento TCP</string>
     <string name="tcp_summary">O protocolo de controle de transmissão é um dos principais protocolos de Internet (IP), e é tão comum que todo o conjunto é muitas vezes chamado TCP/IP.</string>

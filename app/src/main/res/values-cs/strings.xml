@@ -30,7 +30,6 @@
     <string name="ms"> ms</string>
     <string name="mb"> MB</string>
     <string name="sec">s</string>
-    <string name="ma">mA</string>
     <string name="information">Informace</string>
     <string name="kernel">Jádro</string>
     <string name="tools">Nástroje</string>
@@ -113,12 +112,6 @@
     <string name="battery_voltage">Napětí baterie</string>
     <string name="battery_level">Úroveň nabití</string>
     <string name="battery_temperature">Teplota baterie</string>
-    <string name="usb_fast_charge">Rychlé USB nabíjení</string>
-    <string name="usb_fast_charge_summary">Rychlejší nabíjení zařízení při připojení přes USB. Při změně této volby odpojte a znovu zapojte nabíječku.</string>
-    <string name="blx_summary">Nastavení omezení kapacity, na kterou bude baterie nabita pomocí hodnoty mezi 0 a 100.</string>
-    <string name="custom_charge_rate">Úroveň nabití</string>
-    <string name="charge_rate">Úroveň nabití baterie</string>
-    <string name="charge_rate_summary">Nastavení úrovně nabití baterie. Varování: Překročení hodnoty 1 250 mA může vést k poškození ovladače napájení.</string>
     <string name="internal_storage">Vnitřní uložiště</string>
     <string name="external_storage">Externí úložiště</string>
     <string name="scheduler">Plánovač</string>
@@ -146,12 +139,6 @@
     <string name="vibration_strength">Intenzita vibrace</string>
     <string name="crc_summary">CRC je mechanismus, jehož cílem v případě povolení je zabránit poškození dat. Datové bloky mohou ztratit až 30 % jejich výkonu.</string>
     <string name="fsync">Fsync</string>
-    <string name="power_suspend_mode">Režim odstavení výkonu</string>
-    <string name="power_suspend_mode_summary">Kernel Mode, LCD Hooks a Highest Level Hook jsou automaticky spravovány jádrem operačního systému. Pro ruční zapnutí nebo vypnutí stavu odstavení výkonu zvolte uživatelský režim.</string>
-    <string name="lcd_panel">LCD panel</string>
-    <string name="hybrid">Hybridní</string>
-    <string name="power_suspend_state">Stav odstavení výkonu</string>
-    <string name="power_suspend_state_summary">Ovladač jádra pro správu napájení při vypnuté obrazovce. Větší úspora energie, pokud je zapnuto. Poznámka: Toto nastavení lze změnit pouze, pokud je Režim odstavení výkonu v uživatelském režimu.</string>
     <string name="network">Síť</string>
     <string name="tcp_summary">„Transmission Control Protocol“ je jedním z hlavních protokolů sady internetových protokolů (IP) a je natolik běžný, že se pro celou sadu běžně používá označení TCP/IP.</string>
     <string name="hostname">Název hostitele</string>

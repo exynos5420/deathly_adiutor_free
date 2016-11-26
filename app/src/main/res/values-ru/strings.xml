@@ -30,7 +30,6 @@
     <string name="ms">мс</string>
     <string name="mb">МБ</string>
     <string name="sec">сек</string>
-    <string name="ma">мА</string>
     <string name="information">Информация</string>
     <string name="kernel">Ядро</string>
     <string name="tools">Инструменты</string>
@@ -114,13 +113,6 @@
     <string name="battery_voltage">Напряжение батареи</string>
     <string name="battery_level">Уровень заряда</string>
     <string name="battery_temperature">Температура батареи</string>
-    <string name="usb_fast_charge">Быстрая зарядка</string>
-    <string name="usb_fast_charge_summary">Устройство будет заряжаться быстрее, когда оно подключено по USB. Переподключите устройство после изменения этой опции.</string>
-    <string name="blx">Максимальный порог заряда</string>
-    <string name="blx_summary">Установите максимальный уровень заряда батареи, установив значение от 0 до 100.</string>
-    <string name="custom_charge_rate">Темп зарядки</string>
-    <string name="charge_rate">Скорость зарядки аккумулятора</string>
-    <string name="charge_rate_summary">Пользовательские настройки зарядки. ВНИМАНИЕ: Превышение тока в 1250мА может повредить зарядку или ваше мобильное устройство.</string>
     <string name="internal_storage">Внутренняя память</string>
     <string name="external_storage">Внешняя память</string>
     <string name="scheduler">Планировщик</string>
@@ -163,14 +155,6 @@
     <string name="dynamic_fsync_summary">При активированной функции и включенном экране fsync не синхронизируется. Когда экран выключен, операция выполняется синхронно.</string>
     <string name="gentlefairsleepers">Вежливое обращение со спящими</string>
     <string name="gentlefairsleepers_summary">Предоставление спящим службам только 50% их функционала. Отключение этой функции может способствовать небольшой экономии батареи.</string>
-    <string name="power_suspend_mode">Режим понижения питания</string>
-    <string name="power_suspend_mode_summary">Режим ядра, инструменты LCD и средства высшего уровня автоматически управляются ядром. Чтобы вручную включить или отключить состояние приостановки питания, выберите режим пользователя.</string>
-    <string name="autosleep">Автосон</string>
-    <string name="userspace">Пользовательский</string>
-    <string name="lcd_panel">Дисплей</string>
-    <string name="hybrid">Гибридный</string>
-    <string name="power_suspend_state">Состояние пониженного питания</string>
-    <string name="power_suspend_state_summary">Контроллер питания при выключенном экране (Лучше для батареи). Менять можно только в том случае, если \"Режим пониженного питания\" находится в режиме \"Пользовательский\".</string>
     <string name="network">Сеть</string>
     <string name="tcp">Алгоритм передачи данных по TCP</string>
     <string name="tcp_summary">TCP протокол - один из сетевых протоколов (IP), также известный как TCP/IP.</string>

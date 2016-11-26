@@ -30,7 +30,6 @@
     <string name="ms">ms</string>
     <string name="mb">MB</string>
     <string name="sec">sec</string>
-    <string name="ma">mA</string>
     <string name="information">Información</string>
     <string name="kernel">Kernel</string>
     <string name="tools">Herramientas</string>
@@ -115,13 +114,6 @@
     <string name="battery_voltage">Voltaje de la batería</string>
     <string name="battery_level">Nivel de batería</string>
     <string name="battery_temperature">Temperatura de la batería</string>
-    <string name="usb_fast_charge">Carga rápida USB</string>
-    <string name="usb_fast_charge_summary">Dispositivo cargará más rápido cuando está conectado con el USB. Vuelva a conectar el cargador al cambiar esta opción.</string>
-    <string name="blx">Extensión de la duración de la batería</string>
-    <string name="blx_summary">Establecer un límite a la capacidad que la batería se cargará pasando un valor entre 0 y 100.</string>
-    <string name="custom_charge_rate">Índice de carga</string>
-    <string name="charge_rate">Tasa de carga de batería</string>
-    <string name="charge_rate_summary">Ajustar indice de carga de batería. Cuidado: Exceder los 1250mA puede dañar el controlador de carga.</string>
     <string name="internal_storage">Almacenamiento interno</string>
     <string name="external_storage">Almacenamiento externo</string>
     <string name="scheduler">Planificador</string>
@@ -164,14 +156,6 @@
     <string name="dynamic_fsync_summary">Cuando esté activado y la pantalla esté encendida, la operación fsync es asincrónica. Cuando la pantalla esté apagada, esta operación es realizada sincrónicamente.</string>
     <string name="gentlefairsleepers">Fair Sleepers Ligeros</string>
     <string name="gentlefairsleepers_summary">Permitir sólo un 50% del déficit de servicio de los sleepers. Deshabilitar esta opcion puede salvar un poco de batería.</string>
-    <string name="power_suspend_mode">Modo de suspensión de energía</string>
-    <string name="power_suspend_mode_summary">El modo de Kernel, Ganchos de LCD y El gancho de nivel más alto son gestionados automáticamente por el Kernel. Para activar o desactivar manualmente el Estado de Suspensión de Energía elige el Modo de Usuario.</string>
-    <string name="autosleep">AutoSuspensión</string>
-    <string name="userspace">Espacio de Usuario</string>
-    <string name="lcd_panel">Panel LCD</string>
-    <string name="hybrid">Híbrido</string>
-    <string name="power_suspend_state">Estado de Suspensión de Energía</string>
-    <string name="power_suspend_state_summary">Controlador de manejo de energia del Kernel con la pantalla apagada. Mejora la batería si esta activo. Nota: Solo podrás cambiar esta configuración si el Modo de Suspención de Energia esta en Modo Usuario.</string>
     <string name="network">Red</string>
     <string name="tcp">Algoritmo de congestión TCP</string>
     <string name="tcp_summary">Protocolo de Control de transmisión es uno de los principales protocolos de la suite de protocolo de Internet (IP), comunmente llamado TCP/IP.</string>

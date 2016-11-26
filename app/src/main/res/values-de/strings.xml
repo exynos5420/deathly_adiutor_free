@@ -41,7 +41,6 @@
     <string name="cs">cs</string>
     <string name="mb">MB</string>
     <string name="sec">sek</string>
-    <string name="ma">mA</string>
 
     <string name="cores">Kerne</string>
 
@@ -190,20 +189,6 @@
     <string name="battery_voltage">Akku-Spannung</string>
     <string name="battery_level">Akku-Level</string>
     <string name="battery_temperature">Akku-Temperatur</string>
-    <string name="usb_fast_charge">USB Fast Charge</string>
-    <string name="usb_fast_charge_summary">Gerät lädt schneller auf, wenn mit USB verbunden. Ladegerät neu anschließen, nachdem Optionen geändert wurden.</string>
-    <string name="charge_levels">Ladestrom Interface</string>
-    <string name="charge_levels_summary">Zu hohe Werte, die Ihr Gerät nicht unterstützen, können dieses und eingesteckte Geräte beschädigen. MIT VORSICHT BENUTZEN.</string>
-    <string name="charge_level_ac">Ladestrom (Stecker)</string>
-    <string name="charge_level_ac_summary">MAXIMAL erlaubte mA während des Ladevorgangs über Stecker (0 = Standardwert)</string>
-    <string name="charge_level_usb">Ladestrom (USB)</string>
-    <string name="charge_level_usb_summary">MAXIMAL erlaubte mA während des Ladevorgangs über USB (0 = Standardwert)</string>
-
-    <string name="blx">Battery Life-eXtender</string>
-    <string name="blx_summary">Setzen Sie einen Wert bis zu welcher Kapazität Ihr Gerät geladen wird (0-100).</string>
-    <string name="custom_charge_rate">Ladestrom</string>
-    <string name="charge_rate">Akku-Ladestrom</string>
-    <string name="charge_rate_summary">Eigenen Ladestrom setzen. Vorsicht: Eine Überschreitung von 1250mA kann Ihren Lade-Treiber zerstören..</string>
 
     <!-- I/O Scheduler -->
     <string name="internal_storage">Interner Speicher</string>
@@ -278,8 +263,6 @@
 
     <!-- Misc Controls -->
     <string name="misc_settings">Sonstige Einstellungen</string>
-    <string name="se_linux">SELinux-Schalter</string>
-    <string name="se_linux_summary">Aktueller SELinux-Status: </string>
     <string name="vibration_strength">Vibrationsstärke</string>
     <string name="android_logger">Android-Logger</string>
     <string name="bcl">BCL</string>
@@ -296,17 +279,6 @@
     <string name="gentlefairsleepers_summary">Sleeper nur 50% ihres Service-Defizites geben. Deaktivierung kann ein bißchen Akkuleistung einsparen.</string>
     <string name="msm_usb_otg">MSM USB OTG</string>
     <string name="msm_usb_otg_summary">Dieser Hack aktiviert den USB Host Modus mit externer Stromversorgung. Entwickelt von ziddey und faux123.</string>
-    <string name="archpower">Arch-Power</string>
-    <string name="archpower_summary">Arch-Power spezifische Funktionen/Einsparungen aktivieren</string>
-    <string name="power_suspend_mode">Power Suspend-Modus</string>
-    <string name="power_suspend_mode_summary">Kernel-Modus, LCD-Hooks und Highest Level Hook werden automatisch durch den Kernel verwaltet. Benutzer-Modus wählen, um den Power Suspend-Status manuell zu ändern.</string>
-    <string name="state_notifier_mode">Benachrichtigungs-Modus</string>
-    <string name="autosleep">Auto-sleep</string>
-    <string name="userspace">User-space</string>
-    <string name="lcd_panel">LCD-Panel</string>
-    <string name="hybrid">Hybrid</string>
-    <string name="power_suspend_state">Power Suspend-Zustand</string>
-    <string name="power_suspend_state_summary">Power-Management Treiber bei inaktivem Bildschirm. Kann Akku einsparen. Hinweis: Sie können diese Einstellung nur ändern, wenn der Power Suspend-Modus im Benutzer-Modus läuft.</string>
     <string name="network">Netzwerk</string>
     <string name="tcp">TCP-Congestion Algorithmus</string>
     <string name="tcp_summary">Das Transmission Control Protocol ist eines der Kern-Protokolle der Internet-Protokoll-Suite (IP).Die gesamte Suite wird oft TCP/IP genannt.</string>
@@ -314,15 +286,6 @@
     <string name="adb_over_wifi">ADB Over WiFi</string>
     <string name="adb_over_wifi_summary">ADB over WiFi aktivieren</string>
     <string name="adb_over_wifi_connect_summary">Aktiviere ADB over WiFi. Verbinden mit:</string>
-    <string name="cstates">Krait C-States Einstellungen</string>
-    <string name="c0state">C0 (WFI)</string>
-    <string name="c0state_summary">Oberflächlicher Schlaf mit sofortigem Aufwachen.</string>
-    <string name="c1state">C1 (Retention)</string>
-    <string name="c1state_summary">Etwas tieferer Schlaf mit leichter Verzögerung beim Aufwachen (Deaktivieren, wenn dies zu Bildschirmflackern führt).</string>
-    <string name="c2state">C2 (Stand Alone Power Collapse)</string>
-    <string name="c2state_summary">Tiefer Schlaf mit langer Verzögerung beim Aufwachen.</string>
-    <string name="c3state">C3 (Power Collapse)</string>
-    <string name="c3state_summary">Sehr tiefer Schlaf mit längster Verzögerung beim Aufwachen.</string>
 
     <string name="empty_name">Name ist leer!</string>
     <string name="delete">Löschen</string>

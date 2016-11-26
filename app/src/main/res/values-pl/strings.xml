@@ -34,7 +34,6 @@
     <string name="ms">ms</string>
     <string name="mb">MB</string>
     <string name="sec">sekunda</string>
-    <string name="ma">mA</string>
     <string name="information">Informacja</string>
     <string name="kernel">Kernel</string>
     <string name="tools">Narzędzia</string>
@@ -102,8 +101,6 @@
     <string name="battery_voltage">Napięcie baterii</string>
     <string name="battery_level">Poziom naładowania baterii</string>
     <string name="battery_temperature">Temperatura baterii</string>
-    <string name="usb_fast_charge">Szybkie ładowanie USB</string>
-    <string name="blx">Przedłużacz życia baterii</string>
     <string name="internal_storage">Pamięć wewnętrzna</string>
     <string name="external_storage">Pamięć zewnętrzna</string>
     <string name="scheduler">Harmonogram</string>
@@ -130,11 +127,6 @@
     <string name="android_logger">Logowanie Androida</string>
     <string name="fsync">Fsync</string>
     <string name="dynamic_fsync">Dynamiczne Fsync</string>
-    <string name="power_suspend_mode">Oszczędzanie energii</string>
-    <string name="autosleep">Automatyczne zasypianie</string>
-    <string name="userspace">Przestrzeń użytkownika</string>
-    <string name="lcd_panel">Panel LCD</string>
-    <string name="hybrid">Hybrydowa</string>
     <string name="network">Sieć</string>
     <string name="hostname">Nazwa hosta</string>
     <string name="empty_name">Nazwa jest pusta!</string>

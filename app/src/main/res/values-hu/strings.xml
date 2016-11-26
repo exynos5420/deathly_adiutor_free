@@ -30,7 +30,6 @@
     <string name="ms">ms</string>
     <string name="mb">MB</string>
     <string name="sec">másodperc</string>
-    <string name="ma">mA</string>
     <string name="information">Információ</string>
     <string name="kernel">Kernel</string>
     <string name="tools">Eszközök</string>
@@ -114,13 +113,6 @@
     <string name="battery_voltage">Akkumulátor feszültség</string>
     <string name="battery_level">Akkumulátorszint</string>
     <string name="battery_temperature">Akkumulátor hőmérséklete</string>
-    <string name="usb_fast_charge">USB gyorstöltés</string>
-    <string name="usb_fast_charge_summary">Eszköz gyorsabban töltődik, ha USB-n csatlakozik. Ismét csatlakoztassa a töltőt, ha ezt az opciót változtatja.</string>
-    <string name="blx">Battery Life eXtender</string>
-    <string name="blx_summary">Korlátozhatja az akkumulátor feltöltési kapacitást (amelyig töltésre kerül) egy 0 és 100 közötti érték megadásával.</string>
-    <string name="custom_charge_rate">Töltési arány</string>
-    <string name="charge_rate">Akkumulátor töltési arány</string>
-    <string name="charge_rate_summary">Állítson be egyéni akkumulátor töltési mértéket. Figyelmeztetés: a 1250mA fölötti érték károsíthatja a töltés vezérlőjét.</string>
     <string name="internal_storage">Belső memória</string>
     <string name="external_storage">Külső tárhely</string>
     <string name="scheduler">Ütemező</string>
@@ -163,14 +155,6 @@
     <string name="dynamic_fsync_summary">Amikor engedélyezett és a képernyő be van kapcsolva, az fsync művelet aszinkron működik. Amikor a képernyő ki van kapcsolva, ez a művelet elkötelezetten szinkron működik.</string>
     <string name="gentlefairsleepers">Gentle Fair Sleepers</string>
     <string name="gentlefairsleepers_summary">Az alvóknak csak a szolgáltatásuk hiányának 50%-át adja. Letiltásával egy kis akkumulátor energiát spórolhat.</string>
-    <string name="power_suspend_mode">Energia felfüggesztési üzemmód</string>
-    <string name="power_suspend_mode_summary">Kernel üzemmód, az LCD Hook-ok és a Legmagasabb Szintű Hook-ok automatikusan a kernel által kezeltek, manuálisan engedélyezheti vagy letilthatja az Energia felfüggesztési állapotot, ha a felhasználói módot választja.</string>
-    <string name="autosleep">Autosleep</string>
-    <string name="userspace">Userspace</string>
-    <string name="lcd_panel">LCD Panel</string>
-    <string name="hybrid">Hibrid</string>
-    <string name="power_suspend_state">Energia felfüggesztési állapot</string>
-    <string name="power_suspend_state_summary">Kernel energiagazdálkodási vezérlő, ha a képernyő ki van kapcsolva. Jobb energiatakarékosság, ha engedélyezve van. Megjegyzés: Csak akkor módosítsa ezt a beállítást, ha az Energia felfüggesztési üzemmód Felhasználói módban.</string>
     <string name="network">Hálózat</string>
     <string name="tcp">TCP Congestion algoritmus</string>
     <string name="tcp_summary">A Transmission Control Protocol egyike az alapvető protokollnak, az Internet Protocol (IP) mellett, és együtt TCP/IP néven szokás hivatkozni rájuk.</string>
