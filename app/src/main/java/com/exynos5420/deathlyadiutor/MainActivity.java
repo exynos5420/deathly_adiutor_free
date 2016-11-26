@@ -233,8 +233,7 @@ public class MainActivity extends BaseActivity implements Constants {
         ITEMS.add(new DAdapter.Header(getString(R.string.misc_controls)));
         ITEMS.add(new DAdapter.Item(getString(R.string.misc_controls), new MiscFragment()));
         ITEMS.add(new DAdapter.Header(getString(R.string.tools)));
-        if (Buildprop.hasBuildprop() && RootUtils.busyboxInstalled())
-            ITEMS.add(new DAdapter.Item(getString(R.string.build_prop_editor), new BuildpropFragment()));
+        ITEMS.add(new DAdapter.Item(getString(R.string.build_prop_editor), new BuildpropFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.profile), new ProfileFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.initd), new InitdFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.startup_commands), new StartUpCommandsFragment()));
