@@ -17,6 +17,7 @@
 package com.exynos5420.deathlyadiutor.fragments.kernel;
 
 import android.os.Bundle;
+import android.os.Handler;
 
 import com.exynos5420.deathlyadiutor.R;
 import com.exynos5420.deathlyadiutor.elements.DDivider;
@@ -146,8 +147,17 @@ public class SpeakerFragment extends RecyclerViewFragment implements Constants, 
     public void onChecked(SwitchCardView.DSwitchCard dSwitchCard, boolean checked) {
         if (dSwitchCard == mEQenabled)
             Sound.switchSpeakerEq(checked, getActivity());
-        else if (dSwitchCard == mPrivacyMode)
+        else if (dSwitchCard == mPrivacyMode) {
+            Handler handler = new Handler();
             Sound.switchSpeakerPrivacy(checked, getActivity());
+            Sound.switchSpeakerEq(!Sound.isSpeakerEqEnabled(), getActivity());
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Sound.switchSpeakerEq(!Sound.isSpeakerEqEnabled(), getActivity());
+                }
+            }, 500);
+        }
     }
 
     @Override
