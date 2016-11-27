@@ -17,7 +17,6 @@
 
 package com.exynos5420.deathlyadiutor.fragments.kernel;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -28,6 +27,7 @@ import com.exynos5420.deathlyadiutor.elements.ColorPalette;
 import com.exynos5420.deathlyadiutor.elements.cards.PopupCardView;
 import com.exynos5420.deathlyadiutor.elements.cards.SwitchCardView;
 import com.exynos5420.deathlyadiutor.fragments.RecyclerViewFragment;
+import com.exynos5420.deathlyadiutor.utils.Constants;
 
 import com.exynos5420.deathlyadiutor.utils.Utils;
 
@@ -44,16 +44,14 @@ public class ScreenFragment extends RecyclerViewFragment implements SwitchCardVi
 
     private ColorPalette mColorPalette;
 
-    private SwitchCardView.DSwitchCard mGloveModeCard;
-    private SwitchCardView.DSwitchCard mPowerReduceCard;
+    private SwitchCardView.DSwitchCard mPowerReduceCard, mGloveModeCard, mepenSavingMode;
     private PopupCardView.DPopupCard mMdnieMode;
     List<String> modes = new ArrayList<>();
 
     @Override
     public RecyclerView getRecyclerView() {
         mColorPalette = (ColorPalette) getParentView(R.layout.screen_fragment).findViewById(R.id.colorpalette);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-            mColorPalette.setVisibility(View.INVISIBLE);
+        mColorPalette.setVisibility(View.INVISIBLE);
         return (RecyclerView) getParentView(R.layout.screen_fragment).findViewById(R.id.recycler_view);
     }
 
@@ -62,8 +60,9 @@ public class ScreenFragment extends RecyclerViewFragment implements SwitchCardVi
         super.init(savedInstanceState);
 
         mdnieModeInit();
-        PowerReduceInit();
+        if (!Utils.hasCMSDK()) PowerReduceInit();
         gloveModeInit();
+        if (Utils.existFile(Constants.EPEN_SAVING_MODE)) epenSavingModeInit();
     }
 
     @Override
@@ -106,12 +105,24 @@ public class ScreenFragment extends RecyclerViewFragment implements SwitchCardVi
         addView(mGloveModeCard);
     }
 
+    private void epenSavingModeInit() {
+        mepenSavingMode = new SwitchCardView.DSwitchCard();
+        mepenSavingMode.setTitle(getString(R.string.epen_saving_mode));
+        mepenSavingMode.setDescription(getString(R.string.epen_saving_mode_summary));
+        mepenSavingMode.setChecked(Screen.isepenSavingModeActive());
+        mepenSavingMode.setOnDSwitchCardListener(this);
+
+        addView(mepenSavingMode);
+    }
+
     @Override
     public void onChecked(SwitchCardView.DSwitchCard dSwitchCard, boolean checked) {
         if (dSwitchCard == mGloveModeCard)
             Screen.activateGloveMode(checked, getActivity());
         else if (dSwitchCard == mPowerReduceCard)
             Screen.activatePowerReduce(checked, getActivity());
+        else if (dSwitchCard == mepenSavingMode)
+            Screen.activatepenSavingMode(checked, getActivity());
     }
 
     @Override

@@ -22,6 +22,7 @@ import android.content.Context;
 import com.exynos5420.deathlyadiutor.utils.Constants;
 import com.exynos5420.deathlyadiutor.utils.Utils;
 import com.exynos5420.deathlyadiutor.utils.root.Control;
+import com.exynos5420.deathlyadiutor.utils.tools.Buildprop;
 
 /**
  * Created by willi on 26.12.14.
@@ -43,6 +44,14 @@ public class Screen implements Constants {
 
     public static boolean isPowerReduceActive() {
         return Utils.readFile(POWER_REDUCE).equals("1");
+    }
+
+    public static void activatepenSavingMode(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", EPEN_SAVING_MODE, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean isepenSavingModeActive() {
+        return Utils.readFile(EPEN_SAVING_MODE).equals("1");
     }
 
     public static String getmdnieMode() {

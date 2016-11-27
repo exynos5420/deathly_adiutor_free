@@ -183,10 +183,11 @@ public interface Constants {
     String COMMAND_PATH = "/sys/class/sec/tsp/cmd";
     String COMMAND_RESULT_PATH = "/sys/class/sec/tsp/cmd_result";
     String POWER_REDUCE = "/sys/class/lcd/panel/power_reduce";
+    String EPEN_SAVING_MODE = "/sys/devices/virtual/sec/sec_epen/epen_saving_mode";
     String MDNIE_MODE = "/sys/class/mdnie/mdnie/mode";
     String TOUCHKEY_GLOVE_MODE = "/sys/class/mdnie/mdnie/mode";
 
-    String[] SCREEN_ARRAY = {COMMAND_PATH, COMMAND_RESULT_PATH, POWER_REDUCE, MDNIE_MODE};
+    String[] SCREEN_ARRAY = {COMMAND_PATH, COMMAND_RESULT_PATH, POWER_REDUCE, EPEN_SAVING_MODE, MDNIE_MODE, TOUCHKEY_GLOVE_MODE};
 
     // Speaker
     String EARPICE_VOLUME = "/sys/class/misc/wolfson_control/earpiece_volume";
