@@ -241,7 +241,7 @@
     <string name="right_speaker_gain_summary">Sets the right speaker gain.</string>
     <string name="speaker_privacy">Privacy mode</string>
     <string name="speaker_privacy_summary">Disables the main speakers when audio is outputted via headphones.</string>
-    <string name="speaker_equalizer">Speakers Equalizer</string>
+    <string name="speaker_equalizer">Speakers Equalizer Gains</string>
     <string name="speaker_equalizer_toggle_summary">Enables or disables Speakers Equalizer.</string>
     <string name="sp_eq_band1_description">Cutoff-frequency: 160Hz</string>
     <string name="sp_eq_band2_description">Center-frequency: 500Hz, bandwidth: 1050Hz</string>
@@ -255,7 +255,7 @@
     <string name="right_headphone_gain_summary">Sets the right headphone channel gain.</string>
     <string name="headphone_mono">Mono mixer</string>
     <string name="headphone_mono_summary">Enables mono output.</string>
-    <string name="headphone_equalizer">Headphones Equalizer</string>
+    <string name="headphone_equalizer">Headphones Equalizer Gains</string>
     <string name="headphone_equalizer_toggle_summary">Enables or disables Headphones Equalizer.</string>
     <string name="hp_eq_band1_description">Cutoff-frequency: 96Hz</string>
     <string name="hp_eq_band2_description">Center-frequency: 273Hz, bandwidth: 551Hz</string>

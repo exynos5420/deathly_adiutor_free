@@ -48,8 +48,8 @@ public class HeadphoneFragment extends RecyclerViewFragment implements Constants
         HeadphoneGainLeftInit();
         HeadphoneGainRightInit();
         switchHeadphoneMono();
-        addDivider(getString(R.string.headphone_equalizer));
         switchEQonoff();
+        addDivider(getString(R.string.headphone_equalizer));
         HeadphoneEQgainsInit();
 
     }

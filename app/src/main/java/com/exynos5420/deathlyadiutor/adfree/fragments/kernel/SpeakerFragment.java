@@ -48,8 +48,8 @@ public class SpeakerFragment extends RecyclerViewFragment implements Constants, 
         SpeakerGainLeftInit();
         SpeakerGainRightInit();
         switchPrivateModeonoff();
-        addDivider(getString(R.string.speaker_equalizer));
         switchEQonoff();
+        addDivider(getString(R.string.speaker_equalizer));
         SpeakerEQgainsInit();
 
     }
