@@ -183,7 +183,7 @@
 
     <!-- CPU Voltage -->
     <string name="global_offset">Global Offset</string>
-    <string name="non_default_reference">Default Voltages not saved, using current voltages as reference. Please reboot for accurate refernce values.</string>
+    <string name="non_default_reference">Default Voltages not saved, using current voltages as reference. Please reboot for accurate reference values.</string>
     <string name="voltages_toast_notification">Values in parenthesis show your change from the reference values.</string>
     <!-- CPU Hotplug -->
     <string name="touch_boost">Touch Boost</string>
@@ -472,7 +472,7 @@
     <string name="dump_sysfs">Dump SysFS</string>
     <string name="dump_sysfs_summary">Dumps the values for all SysFS entries that this app is looking for</string>
     <string name="dump_sysfs_dialog_title">Dumping SysFS entries</string>
-    <string name="dump_sysfs_dialog_summary">This will take a second. Please wait...</string>
+    <string name="dump_sysfs_dialog_summary">This will take a second. Please wait…</string>
     <string name="security">Security</string>
     <string name="set_password">Set Password</string>
     <string name="set_password_summary">You can protect Deathly Adiutor by setting up a password. Every time you open this application, you have to enter it. If you forget it, simply wipe the data of this application in settings of your device. Don\'t worry I won\'t share your password.</string>
@@ -513,10 +513,9 @@
     <string name="modification">Modified build of Kernel Adiutor</string>
     <string name="modification_summary">This application is being modified for exynos5420 Deathly Kernel manipulation only.</string>
 
-    <string name="accessibility_service_label">KA Per App Monitor</string>
+    <string name="accessibility_service_label">DA Per App Monitor</string>
     <string name="accessibility_service_desc">Service to monitor when foreground app changes for per-app profile loading</string>
 
     # Admob Test ID
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
-
 </resources>
