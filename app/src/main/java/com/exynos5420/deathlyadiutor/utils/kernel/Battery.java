@@ -131,21 +131,21 @@ public class Battery implements Constants {
 
     public static String getSIOPInputcurr(){
         double value = Utils.stringtodouble(Utils.readFile(SIOP_INPUT_CURR));
-        return Double.toString((value - 450) /50);
+        return Double.toString((value - 450) /25);
     }
 
     public static void setSIOPInputcurr(int curr, Context context){
-        curr = (curr*50) + 450;
+        curr = (curr*25) + 450;
         Control.runCommand(Integer.toString(curr), SIOP_INPUT_CURR, Control.CommandType.GENERIC, context);
     }
 
     public static String getSIOPchrgcurr(){
         double value = Utils.stringtodouble(Utils.readFile(SIOP_CHRG_CURR));
-        return Double.toString((value - 450) /50);
+        return Double.toString((value - 450) /25);
     }
 
     public static void setSIOPchrgcurr(int curr, Context context){
-        curr = (curr*50) + 450;
+        curr = (curr*25) + 450;
         Control.runCommand(Integer.toString(curr), SIOP_CHRG_CURR, Control.CommandType.GENERIC, context);
     }
 
