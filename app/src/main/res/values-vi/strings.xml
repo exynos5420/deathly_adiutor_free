@@ -63,8 +63,6 @@
     <string name="cpu_max_freq_summary">Cài tần số tối đa CPU quy mô lên đến.</string>
     <string name="cpu_min_freq">Xung nhịp xử lý thiểu</string>
     <string name="cpu_min_freq_summary">Cài đặt tần số tối thiểu của CPU xuống.</string>
-    <string name="cpu_max_screen_off_freq">Tần số tối đa CPU khi tắt màn hình</string>
-    <string name="cpu_max_screen_off_freq_summary">Cài đặt tần số tối đa CPU khi màn hình tắt lên đến.</string>
     <string name="cpu_governor">Trình điều tiết CPU</string>
     <string name="cpu_governor_summary">Trình điều tiết CPU sẽ xác định cách CPU hoạt động để đáp ứng với những thay đổi trong khối lượng xử lý. Thay đổi trình điều tiết sẽ ảnh hưởng tới việc điều chỉnh các bước tần số có sẵn cho CPU của bạn.</string>
     <string name="cpu_governor_tunables">Hiệu chỉnh có thể của trình điều tiết CPU</string>
@@ -73,25 +71,8 @@
     <string name="mc_power_saving">Tiết kiệm năng lượng đa lõi</string>
     <string name="mc_power_saving_summary">Cố gắng gộp nhiều tác vụ vào ít lõi nhất.</string>
     <string name="power_saving_wq">Sắp tác vụ vào CPU đang thức để tiết kiệm năng lượng.</string>
-    <string name="cfs_scheduler_policy">Chính sách lập lịch CFS</string>
-    <string name="cfs_scheduler_policy_summary">Chính sách quyết định trình CFS cân bằng các tác vụ lên các CPU khác nhau như thế nào.</string>
     <string name="disabled">Đã tắt</string>
     <string name="enabled">Đã bật</string>
     <string name="aggressive">Tích cực</string>
-    <string name="cpu_quiet">CPUQuiet</string>
-    <string name="cpu_quiet_summary">CPUQuiet dùng chính sách cắm ép các lõi vào trạng thái im lặng. Những chính sách thích hợp sẽ tiết kiệm năng lượng mà không ảnh hưởng hiệu suất.</string>
-    <string name="cpu_quiet_governor">Trình điều tiết CPUQuiet</string>
-    <string name="cpu_boost">Tăng cường CPU</string>
-    <string name="debug_mask">Mặt nạ gỡ lỗi</string>
-    <string name="debug_mask_summary">Cho phép bạn kích hoạt mặt nạ gỡ lỗi cho các hoạt động tăng cường CPU.</string>
-    <string name="interval">Khoảng thời gian</string>
-    <string name="interval_summary">Khoảng thời gian tối thiểu một CPU được tăng cường.</string>
-    <string name="sync_threshold">Ngưỡng đồng bộ hóa</string>
-    <string name="sync_threshold_summary">Khi CPU tải vượt ngưỡng cài sẵn, CPU hiện tại sẽ được nâng lên đến tần số này.</string>
-    <string name="input_interval">Khoảng thời gian đầu vào</string>
-    <string name="input_interval_summary">Khoảng thời gian tối thiểu tăng cường một CPU khi phát hiện đầu vào.</string>
-    <string name="input_boost_freq">Tần số đầu vào tăng cường</string>
-    <string name="input_boost_freq_core">Đầu vào tăng cường tần số lõi %s</string>
-    <string name="touch_boost">Tăng độ nhạy cảm ứng</string>
     <string name="delay">Độ trễ</string>
 </resources>

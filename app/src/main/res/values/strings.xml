@@ -49,8 +49,6 @@
     <string name="sec">sec</string>
     <string name="dB">dB</string>
 
-    <string name="cores">cores</string>
-
     <!-- Special signs -->
     <string name="minus" translatable="false">-</string>
     <string name="plus" translatable="false">+</string>
@@ -100,8 +98,6 @@
     <string name="about_us">About Us</string>
 
     <!-- Frequency Table -->
-    <string name="big" translatable="false">Big</string>
-    <string name="little" translatable="false">Little</string>
 
     <!-- Kernel Information -->
     <string name="kernel_version">Kernel Version</string>
@@ -114,13 +110,10 @@
     <string name="current_freq">Current Frequency</string>
     <string name="core">Core %d</string>
     <string name="offline">Offline</string>
-    <string name="cpu_per_core_control">Enable Per Core Control</string>
     <string name="cpu_max_freq">CPU Maximum Frequency</string>
     <string name="cpu_max_freq_summary">Set the maximum frequency the CPU scales up to.</string>
     <string name="cpu_min_freq">CPU Minimum Frequency</string>
     <string name="cpu_min_freq_summary">Set the minimum frequency the CPU scales down to.</string>
-    <string name="cpu_max_screen_off_freq">CPU Maximum Screen Off Frequency</string>
-    <string name="cpu_max_screen_off_freq_summary">Set the maximum frequency the CPU scales up to when the screen is off.</string>
     <string name="cpu_governor">CPU Governor</string>
     <string name="cpu_governor_summary">The CPU governor determines how the CPU behaves in response to changes in workload. Changing the governor will impact how the CPU scales through the frequency steps available to your CPU.</string>
     <string name="cpu_governor_tunables">CPU Governor Tunables</string>
@@ -129,57 +122,9 @@
     <string name="mc_power_saving">Multicore Power Saving</string>
     <string name="mc_power_saving_summary">Try to group tasks into the least cores possible.</string>
     <string name="power_saving_wq">Schedule workqueues on awake CPUs to save power.</string>
-    <string name="cfs_scheduler_policy">CFS Scheduler Policy</string>
-    <string name="cfs_scheduler_policy_summary">Policy decides the CFS scheduler how to balance tasks onto different CPU unit.</string>
     <string name="disabled">Disabled</string>
     <string name="enabled">Enabled</string>
     <string name="aggressive">Aggressive</string>
-    <string name="cpu_quiet">CPUQuiet</string>
-    <string name="cpu_quiet_summary">CPUQuiet implements pluggable policies for forcing cpu cores into quiescent state. Appropriate policies will save power without hurting performance.</string>
-    <string name="cpu_quiet_governor">CPUQuiet Governor</string>
-    <string name="cpu_boost">CPU Boost</string>
-    <string name="debug_mask">Debug Mask</string>
-    <string name="debug_mask_summary">Allows you to activate debug mask for CPU Boost operations.</string>
-    <string name="interval">Interval</string>
-    <string name="interval_summary">Minimum interval a CPU is boosted.</string>
-    <string name="sync_threshold">Sync Threshold</string>
-    <string name="sync_threshold_summary">When CPU loading crosses the preset threshold, the current CPU is raised to this frequency.</string>
-    <string name="input_boost">Input Boost</string>
-    <string name="input_boost_summary">Boost the CPU when a touch is detected</string>
-    <string name="input_interval">Input Interval</string>
-    <string name="input_interval_summary">Minimum interval a CPU is boosted when input is detected.</string>
-    <string name="input_boost_freq">Input Boost Frequency</string>
-    <string name="input_boost_freq_core">Input Boost Frequency Core %s</string>
-    <string name="input_boost_freq_summary">CPU frequency to be boosted to this frequency upon input detection.</string>
-    <string name="wakeup_boost">Wakeup Boost</string>
-    <string name="wakeup_boost_summary">Wakeup Boost is similar to input boost but it occurs when screen is turned on.</string>
-    <string name="hotplug_boost">Hotplug Boost</string>
-    <string name="hotplug_boost_summary">Hotplug Boost is similar to input boost but it occurs when CPUs go online.</string>
-    <string name="cpu_msm_limiter">MSM Limiter</string>
-    <string name="cpu_msm_limiter_summary">Enable MSM Limiter</string>
-    <string name="cpu_msm_limiter_resume_max">Max Frequency</string>
-    <string name="cpu_msm_limiter_resume_max_summary">Set the maximum frequency all CPUs scales up to.</string>
-    <string name="cpu_msm_limiter_resume_max_summary_per_core">Set the maximum frequency each CPU scales up to.</string>
-    <string name="cpu_msm_limiter_suspend_min">Suspend Min Frequency</string>
-    <string name="cpu_msm_limiter_suspend_min_summary">Set the minimum frequency all CPUs scales down to during suspend.</string>
-    <string name="cpu_msm_limiter_suspend_min_summary_per_core">Set the minimum frequency each CPU scales down to.</string>
-    <string name="cpu_msm_limiter_suspend_max">Suspend Max Frequency</string>
-    <string name="cpu_msm_limiter_suspend_max_summary">Set the maximum frequency all CPUs scales up to during suspend.</string>
-    <string name="cpu_msm_limiter_suspend_max_summary_per_core">Set the maximum frequency each CPU scales up to.</string>
-    <string name="cpu_msm_limiter_resume_max_per_core">CPU %d: Maximum Frequency</string>
-    <string name="cpu_msm_limiter_suspend_min_per_core">CPU %d: Min Suspend Frequency</string>
-    <string name="cpu_msm_limiter_governor_per_core">CPU %d: Governor</string>
-    <string name="cpu_governor_tunables_per_core_header">Edit Tunables for each core\'s Governor</string>
-    <string name="cpu_governor_tunables_per_core_summary">The various configuration items which are Governor-dependent. Note that if a Governor is selected for multiple cores, it\'s tunables are shared and are not customizable for each core. When they\'re changed for one core below the changes will reflect in the other cores that utilize it.</string>
-    <string name="cpu_governor_tunables_per_core_tunable">Core %d tuneables. Governor:</string>
-    <string name="alu_t_boostms">Alu Touch Input Boost</string>
-    <string name="alu_t_boostms_summary">Minimum interval a CPU is boosted when input is detected.</string>
-    <string name="alu_t_boostfreq">Alu Touch Input Boost Frequency</string>
-    <string name="alu_t_boostfreq_summary">This will boost your minimum CPU speed to the selected frequency when you touch the screen or press a button.</string>
-    <string name="alu_t_boostmii">Alu Touch Min Input Interval</string>
-    <string name="alu_t_boostmii_summary">Minimum Input Interval between touches.</string>
-    <string name="alu_t_boostcpus">Alu Touch Maximum CPUs Boosted</string>
-    <string name="alu_t_boostcpus_summary">Try to group tasks into the least cores possible. The higher the value, the more aggressive the grouping.</string>
 
 
     <!-- CPU Voltage -->
@@ -187,8 +132,6 @@
     <string name="non_default_reference">Default Voltages not saved, using current voltages as reference. Please reboot for accurate reference values.</string>
     <string name="voltages_toast_notification">Values in parenthesis show your change from the reference values.</string>
     <!-- CPU Hotplug -->
-    <string name="touch_boost">Touch Boost</string>
-    <string name="touch_boost_summary">This will boost your minimum CPU speed if you touch the screen or press a button.</string>
     <string name="delay">Delay</string>
 
     <!-- Thermal -->

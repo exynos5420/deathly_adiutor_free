@@ -42,8 +42,6 @@
     <string name="mb">MB</string>
     <string name="sec">sek</string>
 
-    <string name="cores">Kerne</string>
-
     <!-- Headers -->
     <string name="information">Informationen</string>
     <string name="kernel">Kernel</string>
@@ -90,13 +88,10 @@
     <string name="current_freq">Aktuelle Frequenz</string>
     <string name="core">Kern %d</string>
     <string name="offline">Ausgeschaltet</string>
-    <string name="cpu_per_core_control">Pro Kern-Steuerung aktivieren</string>
     <string name="cpu_max_freq">Maximale CPU-Frequenz</string>
     <string name="cpu_max_freq_summary">Maximale Taktfrequenz der CPU ändern.</string>
     <string name="cpu_min_freq">Minimale CPU-Frequenz</string>
     <string name="cpu_min_freq_summary">Minimale Taktfrequenz der CPU ändern.</string>
-    <string name="cpu_max_screen_off_freq">Maximale CPU-Taktfrequenz bei ausgeschaltetem Bildschirm</string>
-    <string name="cpu_max_screen_off_freq_summary">Maximale Taktfrequenz der CPU ändern, wenn der Bildschirm inaktiv ist.</string>
     <string name="cpu_governor">CPU-Governor</string>
     <string name="cpu_governor_summary">Der CPU-Governor bestimmt, wie sich die CPU bei Änderungen in der Auslastung verhält. Das Wechseln des Governors hat Auswirkung darauf, wie die CPU die ihr zur Verfügung stehenden Frequenzschritte nutzt.</string>
     <string name="cpu_governor_tunables">CPU-Governor Einstellungen</string>
@@ -105,64 +100,15 @@
     <string name="mc_power_saving">Energiesparmodus für Mehrkernprozessoren</string>
     <string name="mc_power_saving_summary">Gruppiert die Aufgaben möglichst wenigen Kernen zu.</string>
     <string name="power_saving_wq">Anstehende Aufgaben laufenden CPUs zuweisen, um Strom zu sparen.</string>
-    <string name="cfs_scheduler_policy">Richtlinien für den CFS-Planer</string>
-    <string name="cfs_scheduler_policy_summary">Richtlinien entscheiden, wie der CFS-Planer Aufgaben verschiedenen CPU-Einheiten zuweist.</string>
     <string name="disabled">Deaktiviert</string>
     <string name="enabled">Aktiviert</string>
     <string name="aggressive">Aggressiv</string>
-    <string name="cpu_quiet">CPUQuiet</string>
-    <string name="cpu_quiet_summary">CPUQuiet implementiert austauschbare Richtlinien für CPU-Kerne diese in den Ruhezustand zu zwingen. Entsprechende Richtlinien sparen Strom ohne die Leistung zu beeinflussen.</string>
-    <string name="cpu_quiet_governor">CPUQuiet-Governor</string>
-    <string name="cpu_boost">CPU-Boost</string>
-    <string name="debug_mask">Debug-Mask</string>
-    <string name="debug_mask_summary">Erlaubt dir, Debug-Mask für CPU-Boost-Operationen zu aktivieren.</string>
-    <string name="interval">Intervall</string>
-    <string name="interval_summary">Minimales Intervall, für das eine CPU beschleunigt wird.</string>
-    <string name="sync_threshold">Sync-Schwellenwert</string>
-    <string name="sync_threshold_summary">Wenn die CPU-Belastung den voreingestellten Schwellenwert überschreitet, wird die aktuelle CPU auf diese Frequenz angehoben.</string>
-    <string name="input_boost">Eingabe-Boost</string>
-    <string name="input_boost_summary">CPU wird beschleunigt, wenn eine Berührung registriert wird</string>
-    <string name="input_interval">Eingabe-Intervall</string>
-    <string name="input_interval_summary">Minimales Intervall des CPU-Boost, wenn eine Eingabe erfolgt.</string>
-    <string name="input_boost_freq">Eingabe-Boost-Frequenz</string>
-    <string name="input_boost_freq_core">Eingabe-Boost-Frequenz Kern %s</string>
-    <string name="input_boost_freq_summary">Die CPU-Frequenz wird bei Berühren des Bildschirms auf diesen Wert gesetzt.</string>
-    <string name="wakeup_boost">Wakeup-Boost</string>
-    <string name="wakeup_boost_summary">Wakeup-Boost ist vergleichbar mit dem Eingabe-Boost, jedoch wird er angewendet, wenn der Bildschirm eingeschaltet wird.</string>
-    <string name="hotplug_boost">Hotplug-Boost</string>
-    <string name="hotplug_boost_summary">Hotplug-Boost ist vergleichbar mit dem Eingabe-Boost, jedoch wird er angewendet, wenn CPUs online gehen.</string>
-    <string name="cpu_msm_limiter">MSM-Limiter</string>
-    <string name="cpu_msm_limiter_summary">MSM-Limiter aktivieren</string>
-    <string name="cpu_msm_limiter_resume_max">Maximale Frequenz</string>
-    <string name="cpu_msm_limiter_resume_max_summary">Maximale Frequenz für alle CPUs festlegen.</string>
-    <string name="cpu_msm_limiter_resume_max_summary_per_core">Maximale Frequenz für einzelne CPUs festlegen.</string>
-    <string name="cpu_msm_limiter_suspend_min">Minimale Frequenz</string>
-    <string name="cpu_msm_limiter_suspend_min_summary">Minimale Frequenz für alle CPUs festlegen.</string>
-    <string name="cpu_msm_limiter_suspend_min_summary_per_core">Minimale Frequenz für einzelne CPUs festlegen.</string>
-    <string name="cpu_msm_limiter_suspend_max">Maximale Suspend-Frequenz</string>
-    <string name="cpu_msm_limiter_suspend_max_summary">Maximale Frequenz für alle CPUs festlegen, wenn das Gerät ausgesetzt wird.</string>
-    <string name="cpu_msm_limiter_resume_max_per_core">CPU %d: Maximale Frequenz</string>
-    <string name="cpu_msm_limiter_suspend_min_per_core">CPU %d: Minimale Frequenz</string>
-    <string name="cpu_msm_limiter_governor_per_core">CPU %d: Governor</string>
-    <string name="cpu_governor_tunables_per_core_header">Govenor-Einstellungen für einzelne Kerne ändern.</string>
-    <string name="cpu_governor_tunables_per_core_summary">Unterschiedliche Konfigurationen, die vom Governor abhängig sind. Beachte, dass Einstellungen geteilt werden und nicht für jeden einzelnen Kern einstellbar sind, wenn der Governor für mehrere Kerne ausgewählt wird. Wenn eine Einstellung gewählt wird, wird sie auch auf die anderen Kerne übertragen.</string>
-    <string name="cpu_governor_tunables_per_core_tunable">Einstellungen Kern %d. Governor:</string>
-    <string name="alu_t_boostms">Alu-Touch-Eingabe-Boost</string>
-    <string name="alu_t_boostms_summary">Minimales Intervall für das eine CPU beschleunigt wird, wenn eine Eingabe registriert wird.</string>
-    <string name="alu_t_boostfreq">Alu-Touch-Eingabe-Boost-Frequenz</string>
-    <string name="alu_t_boostfreq_summary">Erhöht die minimale CPU-Geschwindigkeit auf die ausgewählte Frequenz, wenn eine Berührung registriert wird.</string>
-    <string name="alu_t_boostmii">Alu-Touch Minimales Eingabe-Intervall</string>
-    <string name="alu_t_boostmii_summary">Minimales Eingabe-Intervall zwischen Berührungen.</string>
-    <string name="alu_t_boostcpus">Alu-Touch Maximale CPUs Boosted</string>
-    <string name="alu_t_boostcpus_summary">Gruppiert die Aufgaben möglichst wenigen Kernen zu. Je höher der Wert, umso aggressiver ist die Zuweisung.</string>
 
 
     <!-- CPU Voltage -->
     <string name="global_offset">Global</string>
 
     <!-- CPU Hotplug -->
-    <string name="touch_boost">Touch-Boost</string>
-    <string name="touch_boost_summary">Dies wird Ihre minimale CPU-Geschwindigkeit erhöhen, wenn Sie auf den Bildschirm oder eine Taste drücken.</string>
     <string name="delay">Verzögerung</string>
 
     <!-- CPUThermal -->

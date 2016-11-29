@@ -45,10 +45,6 @@
     <string name="disabled">Keelatud</string>
     <string name="enabled">Lubatud</string>
     <string name="aggressive">Agressiivne</string>
-    <string name="cpu_boost">CPU Kiirendus</string>
-    <string name="interval">Intervall</string>
-    <string name="sync_threshold">Sünkroonimise künnis</string>
-    <string name="input_interval">Sisendi intervall</string>
     <string name="delay">Viivitus</string>
     <string name="battery_voltage">Aku pinge</string>
     <string name="network">Võrk</string>

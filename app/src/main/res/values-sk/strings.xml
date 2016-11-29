@@ -61,15 +61,10 @@
     <string name="cpu_max_freq_summary">Zvýšiť maximálnu frekvenciu CPU až na.</string>
     <string name="cpu_min_freq">Minimálna frekvencia CPU</string>
     <string name="cpu_min_freq_summary">Znížiť minimálnu frekvenciu CPU až na.</string>
-    <string name="cpu_max_screen_off_freq">Maximálna frekvencia CPU pri vypnutej obrazovke</string>
-    <string name="cpu_max_screen_off_freq_summary">Nastaviť maximálnu frekvenciu CPU keď je obrazovka vypnutá.</string>
     <string name="cpu_governor">CPU správca</string>
     <string name="disabled">Zakázané</string>
     <string name="enabled">Povolené</string>
     <string name="aggressive">Agresívne</string>
-    <string name="interval">Interval</string>
-    <string name="input_boost_freq">Vstupné zvýšiť frekvenciu</string>
-    <string name="input_boost_freq_summary">Frekvencia Procesora sa zvýšila na túto frekvenciu vstupného detekcií.</string>
     <string name="delay">Oneskorenie</string>
     <string name="battery_voltage">Napätie batérie</string>
     <string name="battery_level">Úroveň batérie</string>

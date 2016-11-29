@@ -62,8 +62,6 @@
     <string name="cpu_max_freq_summary">Estableix la freqüència màxima de la CPU fins.</string>
     <string name="cpu_min_freq">Freqüència mínima CPU</string>
     <string name="cpu_min_freq_summary">Ajusteu la freqüència mínima de la CPU a.</string>
-    <string name="cpu_max_screen_off_freq">Freqüència màxima del CPU amb la pantalla apagada</string>
-    <string name="cpu_max_screen_off_freq_summary">Establir la màxima freqüència de la CPU quan la pantalla està desactivada fins.</string>
     <string name="cpu_governor">Governador de CPU</string>
     <string name="cpu_governor_summary">El governador de la CPU determina la forma en què la CPU es comporta en resposta als canvis en la càrrega de treball. El canvi de governador impactarà com la CPU tria entre les freqüències disponibles.</string>
     <string name="cpu_governor_tunables">Ajustos Governador CPU</string>
@@ -72,23 +70,7 @@
     <string name="mc_power_saving">Estalvi energia multinucli</string>
     <string name="mc_power_saving_summary">Prova d\'agrupar tasques en el menor nombre de nuclis possible.</string>
     <string name="power_saving_wq">Planificar cues de Treball en CPUs actius per estalviar energia.</string>
-    <string name="cfs_scheduler_policy">CFS Política del programador</string>
-    <string name="cfs_scheduler_policy_summary">El planificador CFS decideix com distribuir les tasques en els diferents nuclis de la CPU.</string>
     <string name="disabled">Desactivat</string>
     <string name="enabled">Activat</string>
     <string name="aggressive">Agressiu</string>
-    <string name="cpu_quiet">CPUQuiet</string>
-    <string name="cpu_quiet_summary">CPUQuiet implementa mòduls per obligar els nuclis de la CPU entrar en estat de repòs per estalviar energia sense perjudicar rendiment.</string>
-    <string name="cpu_quiet_governor">Governador CPUQuiet</string>
-    <string name="cpu_boost">CPU Boost</string>
-    <string name="debug_mask">Màscara de Depuració</string>
-    <string name="debug_mask_summary">Us permet activar depuració màscara per a les operacions de la CPU Boost.</string>
-    <string name="interval">Interval</string>
-    <string name="interval_summary">Interval mínim per a la CPU és impulsat.</string>
-    <string name="sync_threshold">Llindar de sincronització</string>
-    <string name="sync_threshold_summary">Quan la càrrega de CPU creua el llindar predeterminat, la CPU actual s\'eleva a aquesta freqüència.</string>
-    <string name="input_interval">Interval d\'entrada</string>
-    <string name="input_interval_summary">Interval mínim un CPU és incrementat quan es detecta una entrada.</string>
-    <string name="touch_boost">Touch boost</string>
-    <string name="touch_boost_summary">Això augmentarà la seva velocitat mínima de la CPU si toca la pantalla o prem un botó.</string>
 </resources>

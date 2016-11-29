@@ -63,8 +63,6 @@
     <string name="cpu_max_freq_summary">Stel de maximale frequentie van de CPU in</string>
     <string name="cpu_min_freq">Minimale CPU-Frequentie</string>
     <string name="cpu_min_freq_summary">Stel de minimale frequentie van de CPU in</string>
-    <string name="cpu_max_screen_off_freq">CPU Maximum scherm uit frequentie</string>
-    <string name="cpu_max_screen_off_freq_summary">Stel de maximale frequentie in die de CPU kan schalen wanneer het scherm uitgeschakeld is.</string>
     <string name="cpu_governor">CPU governor</string>
     <string name="cpu_governor_summary">DE CPU govenor bepaalt hoe de CPU zich gedraagt op veranderingen in de werklast. Als je de CPU govenor verandert, heeft dat impact op hoe de CPU schaalt tussen de frequentiestappen welke beschikbaar zijn voor jouw CPU.</string>
     <string name="cpu_governor_tunables">CPU governor Tunables</string>
@@ -73,23 +71,7 @@
     <string name="mc_power_saving">Multicore energiebesparing</string>
     <string name="mc_power_saving_summary">Probeer taken te groeperen in de minst mogelijke kernen.</string>
     <string name="power_saving_wq">Schema workqueues op wakker CPU\'s om energie te besparen.</string>
-    <string name="cfs_scheduler_policy">CFS Scheduler beleid</string>
-    <string name="cfs_scheduler_policy_summary">Beleid beslist de CFS scheduler om de taken op verschillende CPU units evenwicht te brengen.</string>
     <string name="disabled">Uitgeschakeld</string>
     <string name="enabled">Ingeschakeld</string>
     <string name="aggressive">Agressieve</string>
-    <string name="cpu_quiet">CPUQuiet</string>
-    <string name="cpu_quiet_governor">CPUQuiet gouverneur</string>
-    <string name="cpu_boost">CPU Boost</string>
-    <string name="debug_mask">Debug masker</string>
-    <string name="debug_mask_summary">Hiermee kunt u foutopsporing voor CPU Boost operaties activeren.</string>
-    <string name="interval">Interval</string>
-    <string name="interval_summary">Minimuminterval wanneer de CPU versneld</string>
-    <string name="sync_threshold">Sync drempel</string>
-    <string name="sync_threshold_summary">Wanneer CPU laden de vooraf ingestelde drempel kruist, wordt de huidige CPU verhoogd naar deze frequentie.</string>
-    <string name="input_interval">Input Interval</string>
-    <string name="input_interval_summary">Minimuminterval een CPU wordt versterkt wanneer invoer wordt gedetecteerd.</string>
-    <string name="input_boost_freq">Input Boost frequentie</string>
-    <string name="input_boost_freq_core">Input Boost Frequentie Kern %s</string>
-    <string name="input_boost_freq_summary">CPU frequentie te stimuleren om deze frequentie na invoer detectie.</string>
 </resources>

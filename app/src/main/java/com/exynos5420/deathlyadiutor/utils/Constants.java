@@ -42,14 +42,9 @@ public interface Constants {
     // CPU
     String CPU_CUR_FREQ = "/sys/devices/system/cpu/cpu%d/cpufreq/scaling_cur_freq";
     String CPU_TEMP_ZONE0 = "/sys/class/thermal/thermal_zone0/temp";
-    String CPU_TEMP_ZONE1 = "/sys/class/thermal/thermal_zone1/temp";
     String CPU_CORE_ONLINE = "/sys/devices/system/cpu/cpu%d/online";
     String CPU_MAX_FREQ = "/sys/devices/system/cpu/cpu%d/cpufreq/scaling_max_freq";
-    String CPU_MAX_FREQ_KT = "/sys/devices/system/cpu/cpu%d/cpufreq/scaling_max_freq_kt";
-    String CPU_ENABLE_OC = "/sys/devices/system/cpu/cpu%d/cpufreq/enable_oc";
     String CPU_MIN_FREQ = "/sys/devices/system/cpu/cpu%d/cpufreq/scaling_min_freq";
-    String CPU_MAX_SCREEN_OFF_FREQ = "/sys/devices/system/cpu/cpu%d/cpufreq/screen_off_max_freq";
-    String CPU_MSM_CPUFREQ_LIMIT = "/sys/kernel/msm_cpufreq_limit/cpufreq_limit";
     String CPU_AVAILABLE_FREQS = "/sys/devices/system/cpu/cpu%d/cpufreq/scaling_available_frequencies";
     String[] CPU_TIME_IN_STATE_ARRAY = {"/sys/devices/system/cpu/cpufreq/stats/cpu%d/time_in_state",
             "/sys/devices/system/cpu/cpu%d/cpufreq/stats/time_in_state"};
@@ -57,72 +52,12 @@ public interface Constants {
     String CPU_AVAILABLE_GOVERNORS = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors";
 
     String CPU_GOVERNOR_TUNABLES = "/sys/devices/system/cpu/cpufreq";
-    String CPU_GOVERNOR_TUNABLES_CORE = "/sys/devices/system/cpu/cpu%d/cpufreq";
 
     String CPU_MC_POWER_SAVING = "/sys/devices/system/cpu/sched_mc_power_savings";
     String CPU_WQ_POWER_SAVING = "/sys/module/workqueue/parameters/power_efficient";
-    String CPU_AVAILABLE_CFS_SCHEDULERS = "/sys/devices/system/cpu/sched_balance_policy/available_sched_balance_policy";
-    String CPU_CURRENT_CFS_SCHEDULER = "/sys/devices/system/cpu/sched_balance_policy/current_sched_balance_policy";
 
-    String CPU_QUIET = "/sys/devices/system/cpu/cpuquiet";
-    String CPU_QUIET_ENABLE = CPU_QUIET + "/cpuquiet_driver/enabled";
-    String CPU_QUIET_AVAILABLE_GOVERNORS = CPU_QUIET + "/available_governors";
-    String CPU_QUIET_CURRENT_GOVERNOR = CPU_QUIET + "/current_governor";
-
-    String CPU_BOOST = "/sys/module/cpu_boost/parameters";
-    String CPU_BOOST_ENABLE = CPU_BOOST + "/cpu_boost";
-    String CPU_BOOST_ENABLE_2 = CPU_BOOST + "/cpuboost_enable";
-    String CPU_BOOST_DEBUG_MASK = CPU_BOOST + "/debug_mask";
-    String CPU_BOOST_MS = CPU_BOOST + "/boost_ms";
-    String CPU_BOOST_SYNC_THRESHOLD = CPU_BOOST + "/sync_threshold";
-    String INPUT_BOOST_ENABLE = CPU_BOOST + "/input_boost_enabled";
-    String CPU_BOOST_INPUT_MS = CPU_BOOST + "/input_boost_ms";
-    String CPU_BOOST_INPUT_BOOST_FREQ = CPU_BOOST + "/input_boost_freq";
-    String CPU_BOOST_WAKEUP = CPU_BOOST + "/wakeup_boost";
-    String CPU_BOOST_HOTPLUG = CPU_BOOST + "/hotplug_boost";
-
-    String CPU_TOUCH_BOOST = "/sys/module/msm_performance/parameters/touchboost";
-
-    // Alu_Touch_Boost : Added By Eliminater74 //
-    String ALU_T_BOOST = "/sys/module/alu_t_boost/parameters";
-    String ALU_T_BOOST_FREQ = ALU_T_BOOST + "/input_boost_freq";
-    String ALU_T_BOOST_MS = ALU_T_BOOST + "/input_boost_ms";
-    String ALU_T_BOOST_INTERVAL = ALU_T_BOOST + "/min_input_interval";
-    String ALU_T_BOOST_CPUS = ALU_T_BOOST + "/nr_boost_cpus";
-
-    String CPU_MSM_LIMITER = "/sys/kernel/msm_limiter";
-    String CPU_MSM_LIMITER_ENABLE = "/sys/kernel/msm_limiter/limiter_enabled";
-    String CPU_MSM_LIMITER_ENABLE_NEW = "/sys/kernel/msm_limiter/freq_control";
-    String CPU_MSM_LIMITER_RESUME_MAX = "/sys/kernel/msm_limiter/resume_max_freq";
-    String CPU_MSM_LIMITER_SUSPEND_MIN = "/sys/kernel/msm_limiter/suspend_min_freq";
-    String CPU_MSM_LIMITER_SUSPEND_MAX = "/sys/kernel/msm_limiter/suspend_max_freq";
-    String CPU_MAX_FREQ_PER_CORE = "/sys/kernel/msm_limiter/resume_max_freq_%d";
-    String CPU_MIN_FREQ_PER_CORE = "/sys/kernel/msm_limiter/suspend_min_freq_%d";
-    String CPU_MSM_LIMITER_SCALING_GOVERNOR = "/sys/kernel/msm_limiter/scaling_governor";
-    String CPU_MSM_LIMITER_SCALING_GOVERNOR_PER_CORE = "/sys/kernel/msm_limiter/scaling_governor_%d";
-    String CPU_MSM_LIMITER_VERSION = "/sys/kernel/msm_limiter/msm_limiter_version";
-
-    // Big.Little Part Numbers
-    // A15: 0xc0f , A57: 0xd07
-    String[] CPU_BIG_PARTS = {"0xc0f", "0xd07"};
-    // A53: 0xd03
-    String[] CPU_LITTLE_PARTS = {"0xd03"};
-
-    String[] CPU_ARRAY = {CPU_CUR_FREQ, CPU_TEMP_ZONE0, CPU_TEMP_ZONE1, CPU_CORE_ONLINE, CPU_MAX_FREQ, CPU_MAX_FREQ_KT, CPU_ENABLE_OC,
-            CPU_MIN_FREQ, CPU_MAX_SCREEN_OFF_FREQ, CPU_MSM_CPUFREQ_LIMIT, CPU_AVAILABLE_FREQS, CPU_SCALING_GOVERNOR,
-            CPU_AVAILABLE_GOVERNORS, CPU_GOVERNOR_TUNABLES, CPU_GOVERNOR_TUNABLES_CORE, CPU_MC_POWER_SAVING, CPU_WQ_POWER_SAVING,
-            CPU_AVAILABLE_CFS_SCHEDULERS, CPU_CURRENT_CFS_SCHEDULER, CPU_QUIET, CPU_BOOST, CPU_TOUCH_BOOST, CPU_MSM_LIMITER_ENABLE, CPU_MSM_LIMITER_ENABLE_NEW,
-            CPU_MSM_LIMITER_RESUME_MAX, CPU_MSM_LIMITER_SUSPEND_MIN, CPU_MSM_LIMITER_SUSPEND_MAX, CPU_MSM_LIMITER_SCALING_GOVERNOR,
-            CPU_MSM_LIMITER_SCALING_GOVERNOR_PER_CORE, CPU_MIN_FREQ_PER_CORE, CPU_MAX_FREQ_PER_CORE, ALU_T_BOOST};
-
-    //Core Control
-    String MINBIG = "/sys/devices/system/cpu/cpu4/core_ctl/min_cpus";
-    String MINLITTLE = "/sys/devices/system/cpu/cpu0/core_ctl/min_cpus";
-
-    String MAXBIG = "/sys/devices/system/cpu/cpu4/core_ctl/max_cpus";
-    String MAXLITTLE = "/sys/devices/system/cpu/cpu0/core_ctl/max_cpus";
-
-    String[] CORECONTROL_ARRAY = {MINBIG, MINLITTLE, MAXBIG, MAXLITTLE};
+    String[] CPU_ARRAY = {CPU_CUR_FREQ, CPU_TEMP_ZONE0, CPU_CORE_ONLINE, CPU_MAX_FREQ, CPU_MIN_FREQ, CPU_AVAILABLE_FREQS, CPU_SCALING_GOVERNOR,
+            CPU_AVAILABLE_GOVERNORS, CPU_GOVERNOR_TUNABLES, CPU_MC_POWER_SAVING, CPU_WQ_POWER_SAVING};
 
     // CPU Voltage
     String CPU_VOLTAGE = "/sys/devices/system/cpu/cpu0/cpufreq/UV_mV_table";
