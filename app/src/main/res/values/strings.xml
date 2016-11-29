@@ -5,7 +5,8 @@
     <string name="root_waiting">Waiting for root access</string>
     <string name="no_root">No root available</string>
     <string name="no_busybox">No busybox or toybox available</string>
-    <string name="no_compatible_kernel">Your kernel is not compatible</string>
+    <string name="no_compatible_platform">You are not running an exynos5420 device.</string>
+    <string name="no_deathly_kernel">SOME FEATURES MAY NOT WORK PROPERLY BECAUSE YOU ARE NOT USING DEATHLY KERNEL!</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="current_value_not_supported">Current value is not supported</string>

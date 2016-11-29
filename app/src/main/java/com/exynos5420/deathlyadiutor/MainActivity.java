@@ -30,6 +30,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -46,6 +47,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.exynos5420.deathlyadiutor.elements.DAdapter;
 import com.exynos5420.deathlyadiutor.elements.ScrimInsetsFrameLayout;
@@ -438,7 +440,8 @@ public class MainActivity extends BaseActivity implements Constants {
 
         private boolean hasRoot;
         private boolean hasBusybox;
-        private boolean hasDeathlyKernel;
+        private boolean isExynos5420;
+        private boolean isKernelCompatible;
 
         @Override
         protected Void doInBackground(Void... params) {
@@ -446,8 +449,9 @@ public class MainActivity extends BaseActivity implements Constants {
             if (RootUtils.rooted()) hasRoot = RootUtils.rootAccess();
             if (hasRoot) hasBusybox = RootUtils.hasAppletSupport();
             if (hasRoot && hasBusybox) {
-                // Check for kernel compatibility
-                if (Info.getKernelVersion().contains("Deathly")) hasDeathlyKernel = true;
+                // Check for platform and kernel compatibility
+                if (Info.getCpuInfo().contains("EXYNOS5420")) isExynos5420 = true;
+                if (Info.getKernelVersion().contains("Deathly") || Info.getKernelVersion().contains("ShEV")) isKernelCompatible = true;
                 // Set permissions to specific files which are not readable by default
                 String[] writePermission = {LMK_MINFREE};
                 for (String file : writePermission)
@@ -463,21 +467,23 @@ public class MainActivity extends BaseActivity implements Constants {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             // TODO: Bump kernel version to something greater than 0.3 and check for kernel version for public release
-            if (!hasRoot || !hasBusybox || !hasDeathlyKernel) {
+            if (!hasRoot || !hasBusybox || !isExynos5420) {
                 Intent i = new Intent(MainActivity.this, TextActivity.class);
                 Bundle args = new Bundle();
                 if (!hasRoot) args.putString(TextActivity.ARG_TEXT, getString(R.string.no_root));
                 else if (!hasBusybox) args.putString(TextActivity.ARG_TEXT, getString(R.string.no_busybox));
-                else if (!hasDeathlyKernel) args.putString(TextActivity.ARG_TEXT, getString(R.string.no_compatible_kernel));
+                else if (!isExynos5420) args.putString(TextActivity.ARG_TEXT, getString(R.string.no_compatible_platform));
                 i.putExtras(args);
                 startActivity(i);
 
-                if (hasRoot && hasDeathlyKernel)
-                    // Root is there, kernel is compatible but busybox is missing
+                if (hasRoot && isExynos5420) {
+                    // Root is there, platform is compatible but busybox is missing
                     try {
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=stericson.busybox")));
                     } catch (ActivityNotFoundException ignored) {
                     }
+                }
+                if (!isKernelCompatible) Utils.toast(getString(R.string.no_deathly_kernel), null, Toast.LENGTH_LONG);
                 cancel(true);
                 finish();
                 return;
