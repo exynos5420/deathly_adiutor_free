@@ -94,5 +94,4 @@
     <string name="gpu_cur_freq">GPU:n nykyinen taajuus</string>
     <string name="gpu_max_freq">GPU:n maksimi taajuus</string>
     <string name="gpu_governor">GPU governor</string>
-    <string name="glove_mode">Käsine tila</string>
 </resources>

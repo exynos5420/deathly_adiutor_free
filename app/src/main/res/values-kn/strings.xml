@@ -101,5 +101,4 @@
     <string name="gpu_min_freq">ಜಿಪಿಯು ಕನಿಷ್ಠ ಆವರ್ತನ</string>
     <string name="gpu_governor">ಜಿಪಿಯು ಗವರ್ನರ್</string>
     <string name="gpu_governor_summary">ಜಿಪಿಯುನ ಗವರ್ನರ್ ಅನ್ನು ಆಯ್ಕೆಮಾಡಿ.</string>
-    <string name="glove_mode">ಗ್ಲೋವ್ ಮೋಡ್</string>
 </resources>

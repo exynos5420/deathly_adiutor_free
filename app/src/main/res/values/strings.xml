@@ -224,8 +224,10 @@
     <string name="mdnie_mode_Natural">Realistic colors and flesh tones.</string>
     <string name="mdnie_mode_Cinema">Perfect color reproduction for video.</string>
     <string name="mdnie_mode_Adaptative">Colors adapt to ambient conditions.</string>
-    <string name="glove_mode">Glove Mode</string>
-    <string name="glove_mode_summary">Enabling this will let you use your phone even while wearing gloves.</string>
+    <string name="ts_glove_mode">Touchscreen Glove Mode</string>
+    <string name="ts_glove_mode_summary">Enabling this will let you use your phone\'s screen even while wearing gloves.</string>
+    <string name="tk_glove_mode">Touchkey Glove Mode</string>
+    <string name="tk_glove_mode_summary">Enabling this will let you use your phone\'s Touchkeys even while wearing gloves.</string>
     <string name="epen_saving_mode">S-Pen Power Saving</string>
     <string name="epen_saving_mode_summary">Enabling this will power off the Wacom Digitizer while the S-Pen is inserted.</string>
     <string name="power_reduce">Reduce Power Consumption</string>

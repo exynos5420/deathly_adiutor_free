@@ -108,8 +108,6 @@
     <string name="gpu_min_freq_summary">Установите минимальную частоту, до которой опускается графический процессор.</string>
     <string name="gpu_governor">Говернор GPU</string>
     <string name="gpu_governor_summary">Установите говернор GPU.</string>
-    <string name="glove_mode">Режим перчаток</string>
-    <string name="glove_mode_summary">Это позволит вам использовать ваш телефон даже при ношении перчатки.</string>
     <string name="battery_voltage">Напряжение батареи</string>
     <string name="battery_level">Уровень заряда</string>
     <string name="battery_temperature">Температура батареи</string>

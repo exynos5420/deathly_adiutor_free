@@ -108,8 +108,6 @@
     <string name="gpu_min_freq_summary">Nastavi najnižjo frekvenco, na katero se bo GPU spustil.</string>
     <string name="gpu_governor">Governor GPE</string>
     <string name="gpu_governor_summary">Določi Governorja GPE.</string>
-    <string name="glove_mode">Rokavični način</string>
-    <string name="glove_mode_summary">Vklop tega dovoli, da telefon uporabljate tudi, ko nosite rokavice.</string>
     <string name="battery_voltage">Napetost baterije</string>
     <string name="battery_level">Raven baterije</string>
     <string name="battery_temperature">Temperatura baterije</string>

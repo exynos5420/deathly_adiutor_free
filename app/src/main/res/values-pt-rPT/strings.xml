@@ -104,8 +104,6 @@ Está a usar a versão %s.</string>
     <string name="gpu_min_freq_summary">Frequência mínima a que o GPU pode descer.</string>
     <string name="gpu_governor">Governador CPU</string>
     <string name="gpu_governor_summary">Defina o governador 2D da GPU.</string>
-    <string name="glove_mode">Modo de luvas</string>
-    <string name="glove_mode_summary">Activar isto permitirá que use o seu telefone mesmo usando luvas.</string>
     <string name="battery_voltage">Voltagem da bateria</string>
     <string name="battery_level">Nível da bateria</string>
     <string name="battery_temperature">Temperatura da bateria</string>

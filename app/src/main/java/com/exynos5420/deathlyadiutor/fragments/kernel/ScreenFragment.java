@@ -44,7 +44,7 @@ public class ScreenFragment extends RecyclerViewFragment implements SwitchCardVi
 
     private ColorPalette mColorPalette;
 
-    private SwitchCardView.DSwitchCard mPowerReduceCard, mGloveModeCard, mepenSavingMode;
+    private SwitchCardView.DSwitchCard mPowerReduceCard, mGloveModeCard,  mTKGloveModeCard, mepenSavingMode;
     private PopupCardView.DPopupCard mMdnieMode;
     List<String> modes = new ArrayList<>();
 
@@ -61,7 +61,8 @@ public class ScreenFragment extends RecyclerViewFragment implements SwitchCardVi
 
         mdnieModeInit();
         if (!Utils.hasCMSDK()) PowerReduceInit();
-        gloveModeInit();
+        touchscreenGloveModeInit();
+        if (Utils.existFile(Constants.TOUCHKEY_GLOVE_MODE)) touchkeyGloveModeInit();
         if (Utils.existFile(Constants.EPEN_SAVING_MODE)) epenSavingModeInit();
     }
 
@@ -95,14 +96,24 @@ public class ScreenFragment extends RecyclerViewFragment implements SwitchCardVi
         addView(mPowerReduceCard);
     }
 
-    private void gloveModeInit() {
+    private void touchscreenGloveModeInit() {
         mGloveModeCard = new SwitchCardView.DSwitchCard();
-        mGloveModeCard.setTitle(getString(R.string.glove_mode));
-        mGloveModeCard.setDescription(getString(R.string.glove_mode_summary));
+        mGloveModeCard.setTitle(getString(R.string.ts_glove_mode));
+        mGloveModeCard.setDescription(getString(R.string.ts_glove_mode_summary));
         mGloveModeCard.setChecked(Screen.isGloveModeActive());
         mGloveModeCard.setOnDSwitchCardListener(this);
 
         addView(mGloveModeCard);
+    }
+
+    private void touchkeyGloveModeInit() {
+        mTKGloveModeCard = new SwitchCardView.DSwitchCard();
+        mTKGloveModeCard.setTitle(getString(R.string.tk_glove_mode));
+        mTKGloveModeCard.setDescription(getString(R.string.tk_glove_mode_summary));
+        mTKGloveModeCard.setChecked(Screen.isTKGloveModeActive());
+        mTKGloveModeCard.setOnDSwitchCardListener(this);
+
+        addView(mTKGloveModeCard);
     }
 
     private void epenSavingModeInit() {
@@ -119,6 +130,8 @@ public class ScreenFragment extends RecyclerViewFragment implements SwitchCardVi
     public void onChecked(SwitchCardView.DSwitchCard dSwitchCard, boolean checked) {
         if (dSwitchCard == mGloveModeCard)
             Screen.activateGloveMode(checked, getActivity());
+        else if (dSwitchCard == mTKGloveModeCard)
+            Screen.activateTKGloveMode(checked, getActivity());
         else if (dSwitchCard == mPowerReduceCard)
             Screen.activatePowerReduce(checked, getActivity());
         else if (dSwitchCard == mepenSavingMode)

@@ -38,6 +38,14 @@ public class Screen implements Constants {
         return Utils.readFile(COMMAND_RESULT_PATH).equals("glove_mode,1:OK");
     }
 
+    public static void activateTKGloveMode(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", TOUCHKEY_GLOVE_MODE, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean isTKGloveModeActive() {
+        return Utils.readFile(TOUCHKEY_GLOVE_MODE).equals("1");
+    }
+
     public static void activatePowerReduce(boolean active, Context context) {
         Control.runCommand(active ? "1" : "0", POWER_REDUCE, Control.CommandType.GENERIC, context);
     }

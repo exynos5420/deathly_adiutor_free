@@ -103,6 +103,4 @@
     <string name="gpu_max_freq_summary">Встановлення максимальної частоти GPU.</string>
     <string name="gpu_min_freq">Мінімальна частота GPU</string>
     <string name="gpu_min_freq_summary">Встановлення мінімальної частоти, до якої опуститься GPU.</string>
-    <string name="glove_mode">Режим рукавичок</string>
-    <string name="glove_mode_summary">Ввімкнення дозволить вам використовувати телефон, навіть в рукавичках.</string>
 </resources>

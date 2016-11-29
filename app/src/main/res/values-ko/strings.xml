@@ -101,8 +101,6 @@
     <string name="gpu_max_freq_summary">최대 GPU 클럭을 설정합니다.</string>
     <string name="gpu_governor">GPU 가버너</string>
     <string name="gpu_governor_summary">GPU의 가버너를 설정합니다.</string>
-    <string name="glove_mode">글러브 모드</string>
-    <string name="glove_mode_summary">이 기능을 활성화하면 장갑을 낀 상태에서도 휴대폰을 사용할 수 있도록 할 것입니다.</string>
     <string name="battery_voltage">배터리 전압</string>
     <string name="battery_level">배터리 잔량</string>
     <string name="battery_temperature">배터리 온도</string>

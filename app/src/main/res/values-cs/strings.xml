@@ -107,8 +107,6 @@
     <string name="gpu_min_freq">Minimální frekvence grafiky</string>
     <string name="gpu_governor">Správce grafiky</string>
     <string name="gpu_governor_summary">Nastavení správce grafiky.</string>
-    <string name="glove_mode">Režim v rukavicích</string>
-    <string name="glove_mode_summary">Povolení této funkce vám umožní používat vaše zařízení i s nasazenými rukavicemi.</string>
     <string name="battery_voltage">Napětí baterie</string>
     <string name="battery_level">Úroveň nabití</string>
     <string name="battery_temperature">Teplota baterie</string>

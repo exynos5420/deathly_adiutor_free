@@ -108,8 +108,6 @@
     <string name="gpu_min_freq_summary">Afita la frecuencia mínima a la que la CPU escala.</string>
     <string name="gpu_governor">Gobernador de GPU</string>
     <string name="gpu_governor_summary">Afita\'l gobernador de la GPU.</string>
-    <string name="glove_mode">Mou guantes</string>
-    <string name="glove_mode_summary">Habilitando esto dexaráte usar el to móvil magar que teas con guantes.</string>
     <string name="battery_voltage">Voltaxe de batería</string>
     <string name="battery_level">Nivel de batería</string>
     <string name="battery_temperature">Temperatura de batería</string>

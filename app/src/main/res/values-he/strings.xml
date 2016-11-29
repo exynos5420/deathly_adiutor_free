@@ -94,6 +94,4 @@
     <string name="gpu_max_freq_summary">קבע את התדר המקסימלי שאליו יגיע המעבד הגרפי.</string>
     <string name="gpu_governor">GPU Governor</string>
     <string name="gpu_governor_summary">קבע את ה- governor של המעבד הגרפי.</string>
-    <string name="glove_mode">מצב כפפה</string>
-    <string name="glove_mode_summary">הפעלת מצב זה יאפשר להשתמש במכשיר עם כפפות.</string>
 </resources>

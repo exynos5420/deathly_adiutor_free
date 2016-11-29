@@ -109,8 +109,6 @@
     <string name="gpu_min_freq_summary">Ajusta la frecuencia mínima a la que la GPU escalará.</string>
     <string name="gpu_governor">Gobernador del GPU</string>
     <string name="gpu_governor_summary">Establecer el gobernador del GPU.</string>
-    <string name="glove_mode">Modo de Guantes</string>
-    <string name="glove_mode_summary">Habilitando esto le permitirá usar el teléfono aunque esté con guantes.</string>
     <string name="battery_voltage">Voltaje de la batería</string>
     <string name="battery_level">Nivel de batería</string>
     <string name="battery_temperature">Temperatura de la batería</string>
@@ -227,5 +225,4 @@
     <string name="open_source_summary">Esta aplicación es de código abierto. Revísala en mi GitHub!</string>
     <string name="feature_request">Sugerir una idea</string>
     <string name="feature_request_summary">¿Quieres más funciones? Abre un nuevo tema en GitHub y envíanos tu idea.</string>
-    <string name="no_compatible_kernel">Kernel no compatible</string>
 </resources>

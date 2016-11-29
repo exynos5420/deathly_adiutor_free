@@ -108,8 +108,6 @@
     <string name="gpu_min_freq_summary">使用する GPU 周波数の最小値を設定します。</string>
     <string name="gpu_governor">GPU ガバナ</string>
     <string name="gpu_governor_summary">GPUのガバナを設定します。</string>
-    <string name="glove_mode">手ぶくろモード</string>
-    <string name="glove_mode_summary">手ぶくろをしたままでも操作ができるようになります。</string>
     <string name="battery_voltage">バッテリー電圧</string>
     <string name="battery_level">バッテリー残量</string>
     <string name="battery_temperature">バッテリー温度</string>

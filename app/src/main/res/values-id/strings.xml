@@ -107,8 +107,6 @@
     <string name="gpu_min_freq_summary">Atur skala frekuensi CPU terendah secara keseluruhan.</string>
     <string name="gpu_governor">GPU Governor</string>
     <string name="gpu_governor_summary">Atur Governor GPU.</string>
-    <string name="glove_mode">Mode Sarung tangan</string>
-    <string name="glove_mode_summary">Memungkinkan akan membiarkan Anda menggunakan telepon bahkan ketika mengenakan sarung tangan.</string>
     <string name="battery_voltage">Voltase Baterai</string>
     <string name="battery_level">Tingkat baterai</string>
     <string name="battery_temperature">Suhu Baterai</string>

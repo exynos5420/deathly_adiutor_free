@@ -105,8 +105,6 @@
     <string name="gpu_max_freq">GPU en yüksek frekans</string>
     <string name="gpu_governor">GPU Düzenleyici</string>
     <string name="gpu_governor_summary">GPU Denetleyiciyi Ayarla.</string>
-    <string name="glove_mode">Eldiven modu</string>
-    <string name="glove_mode_summary">Bunun etkinleştirilmesiyle eldiven giyerken telefonunuzu kullanmanıza izin verir.</string>
     <string name="battery_voltage">Pil Voltajı</string>
     <string name="battery_level">Pil Seviyesi</string>
     <string name="battery_temperature">Pil Sıcaklığı</string>

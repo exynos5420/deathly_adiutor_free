@@ -108,8 +108,6 @@
     <string name="gpu_min_freq_summary">Imposta la frequenza minima a cui la GPU deve scalare.</string>
     <string name="gpu_governor">Governor GPU</string>
     <string name="gpu_governor_summary">Imposta il governor della GPU.</string>
-    <string name="glove_mode">Modalità guanti</string>
-    <string name="glove_mode_summary">L\'attivazione di questa funzione vi permetterà di utilizzare il telefono anche con i guanti.</string>
     <string name="battery_voltage">Tensione batteria</string>
     <string name="battery_level">Livello Batteria</string>
     <string name="battery_temperature">Temperatura batteria</string>

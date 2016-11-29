@@ -177,8 +177,6 @@
     <string name="gpu_governor_summary">GPU-Governor festlegen.</string>
 
     <!-- Screen -->
-    <string name="glove_mode">Handschuh-Modus</string>
-    <string name="glove_mode_summary">Dadurch läßt sich Ihr Gerät auch mit Handschuhen verwenden.</string>
 
     <!-- Wake Controls -->
 

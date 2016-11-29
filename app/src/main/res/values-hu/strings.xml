@@ -108,8 +108,6 @@
     <string name="gpu_min_freq_summary">A minimális frekvencia, amit a GPU használhat.</string>
     <string name="gpu_governor">GPU ütemező</string>
     <string name="gpu_governor_summary">Állítsa be a GPU irányítóját.</string>
-    <string name="glove_mode">Kesztyűs üzemmód</string>
-    <string name="glove_mode_summary">Engedélyezésével a telefon még kesztyűben is használható.</string>
     <string name="battery_voltage">Akkumulátor feszültség</string>
     <string name="battery_level">Akkumulátorszint</string>
     <string name="battery_temperature">Akkumulátor hőmérséklete</string>

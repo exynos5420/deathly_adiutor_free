@@ -108,8 +108,6 @@
     <string name="gpu_min_freq_summary">设置 GPU 鳞片降到最小频率。</string>
     <string name="gpu_governor">GPU 调速器</string>
     <string name="gpu_governor_summary">设置 GPU 的调速器。</string>
-    <string name="glove_mode">手套模式</string>
-    <string name="glove_mode_summary">启用此选项，将让您使用手机时，即使戴着手套。</string>
     <string name="battery_voltage">电池电压</string>
     <string name="battery_level">电量</string>
     <string name="battery_temperature">电池温度</string>

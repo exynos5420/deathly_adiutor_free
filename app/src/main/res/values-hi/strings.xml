@@ -106,7 +106,5 @@
     <string name="gpu_min_freq_summary">न्यूनतम CPU को मापता है नीचे करने के लिए आवृत्ति सेट करें।</string>
     <string name="gpu_governor">CPU नियंत्रक</string>
     <string name="gpu_governor_summary">GPU के 2D राज्यपाल सेट करें।</string>
-    <string name="glove_mode">दस्ताने मोड</string>
-    <string name="glove_mode_summary">सक्षम कर रहा है यह आप अपने फ़ोन का उपयोग करते हुए भी दस्ताने पहने दूँगी।</string>
     <string name="feature_request">सुविधा अनुरोध</string>
 </resources>
