@@ -2,9 +2,9 @@
 <resources>
     <color name="semi_transparent">#26000000</color>
 
-    <color name="color_primary">#2A7289</color>
-    <color name="color_primary_dark">#1D5060</color>
-    <color name="color_primary_light">#3F8095</color>
+    <color name="color_primary">#6F0000</color>
+    <color name="color_primary_dark">#580000</color>
+    <color name="color_primary_light">@color/color_primary</color>
 
     <color name="statusbar_color">@color/color_primary_dark</color>
     <color name="actionbar_color">@color/color_primary</color>

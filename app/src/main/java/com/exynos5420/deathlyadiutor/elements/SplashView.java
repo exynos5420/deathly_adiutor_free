@@ -21,7 +21,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Typeface;
@@ -69,7 +68,7 @@ public class SplashView extends View {
         mPaintCircle.setAntiAlias(true);
         mPaintCircle.setStyle(Paint.Style.FILL);
         mPaintCircle.setStrokeCap(Paint.Cap.ROUND);
-        mPaintCircle.setColor(Color.WHITE);
+        mPaintCircle.setColor(getResources().getColor(R.color.navigationdrawer_background_dark));
 
         matrix = new Matrix();
         icon = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
@@ -97,8 +96,8 @@ public class SplashView extends View {
     }
 
     public void finish() {
-        if (Utils.DARKTHEME)
-            mPaintCircle.setColor(getResources().getColor(R.color.navigationdrawer_background_dark));
+        if (Utils.LIGHTTHEME)
+            mPaintCircle.setColor(getResources().getColor(R.color.navigationdrawer_background_light));
         new Thread(new Runnable() {
             @Override
             public void run() {

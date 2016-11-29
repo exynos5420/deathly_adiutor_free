@@ -42,10 +42,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         // Set english as default language if option is enabled
         if (Utils.getBoolean("forceenglish", false, this)) Utils.setLocale("en_US", this);
 
-        // Check if darktheme is in use and cache it as boolean
-        if (Utils.DARKTHEME = Utils.getBoolean("darktheme", false, this)) {
-            super.setTheme(getDarkTheme());
-            getWindow().getDecorView().getRootView().setBackgroundColor(getResources().getColor(R.color.black));
+        // Check if lighttheme is in use and cache it as boolean
+        if (Utils.LIGHTTHEME = Utils.getBoolean("lighttheme", false, this)) {
+            super.setTheme(getLightTheme());
+            getWindow().getDecorView().getRootView().setBackgroundColor(getResources().getColor(R.color.white));
         }
 
         if (getParentViewId() != 0) setContentView(getParentViewId());
@@ -53,7 +53,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         Toolbar toolbar;
         if ((toolbar = getToolbar()) != null) {
-            if (Utils.DARKTHEME) toolbar.setPopupTheme(R.style.ThemeOverlay_AppCompat_Dark);
+            if (Utils.LIGHTTHEME) toolbar.setPopupTheme(R.style.ThemeOverlay_AppCompat_Light);
             try {
                 setSupportActionBar(toolbar);
             } catch (NoClassDefFoundError e) {
@@ -73,8 +73,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public abstract View getParentView();
 
-    public int getDarkTheme() {
-        return R.style.AppThemeDark;
+    public int getLightTheme() {
+        return R.style.AppThemeLight;
     }
 
     public abstract Toolbar getToolbar();

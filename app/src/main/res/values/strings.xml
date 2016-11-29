@@ -397,7 +397,7 @@
     <string name="file_name">Name of file</string>
 
     <!-- Settings -->
-    <string name="dark_theme">Dark theme</string>
+    <string name="light_theme">Light theme</string>
     <string name="force_english_language">Force English Language</string>
     <string name="beta_info">Beta Information</string>
     <string name="beta_info_summary">Show a dialog on start if you are using a beta version.</string>

@@ -162,9 +162,9 @@ public class DAdapter {
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup) {
             view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_item, viewGroup, false);
             checkedTextColor = view.getResources().getColor(R.color.color_primary);
-            defaultTextColor = view.getResources().getColor(Utils.DARKTHEME ? R.color.white : R.color.black);
+            defaultTextColor = view.getResources().getColor(Utils.LIGHTTHEME ? R.color.black : R.color.white);
             defaultBackgroundColor = view.getResources().getColor(android.R.color.transparent);
-            checkedBackgroundColor = view.getResources().getColor(Utils.DARKTHEME ?
+            checkedBackgroundColor = view.getResources().getColor(Utils.LIGHTTHEME ?
                     R.color.navigationdrawer_selected_background_dark : R.color.navigationdrawer_selected_background_light);
             return new RecyclerView.ViewHolder(view) {
             };
@@ -217,9 +217,9 @@ public class DAdapter {
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder viewHolder) {
             ((TextView) viewHolder.itemView.findViewById(R.id.text)).setText(title.toUpperCase());
-            if (Utils.DARKTHEME)
+            if (Utils.LIGHTTHEME)
                 viewHolder.itemView.findViewById(R.id.divider_view).setBackgroundColor(viewHolder.itemView.getResources()
-                        .getColor(R.color.divider_background_dark));
+                        .getColor(R.color.divider_background_light));
         }
 
     }

@@ -44,7 +44,7 @@ public class EditTextActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         editText = (AppCompatEditText) findViewById(R.id.edittext);
-        editText.setTextColor(getResources().getColor(Utils.DARKTHEME ? R.color.white : R.color.black));
+        editText.setTextColor(getResources().getColor(Utils.LIGHTTHEME ? R.color.black : R.color.white));
         if ((originalText = getIntent().getExtras().getString(TEXT_ARG)) != null)
             editText.setText(originalText);
 

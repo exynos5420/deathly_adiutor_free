@@ -68,7 +68,7 @@ public class SettingsFragment extends RecyclerViewFragment {
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
 
-        darkthemeInit();
+        lightthemeInit();
         if (!Resources.getSystem().getConfiguration().locale.getLanguage().startsWith("en"))
             forceenglishlanguageInit();
         if (Constants.VERSION_NAME.contains("beta")) betainfoInit();
@@ -80,19 +80,19 @@ public class SettingsFragment extends RecyclerViewFragment {
         showSectionsInit();
     }
 
-    private void darkthemeInit() {
-        SwitchCardView.DSwitchCard mDarkthemeCard = new SwitchCardView.DSwitchCard();
-        mDarkthemeCard.setDescription(getString(R.string.dark_theme));
-        mDarkthemeCard.setChecked(Utils.DARKTHEME);
-        mDarkthemeCard.setOnDSwitchCardListener(new SwitchCardView.DSwitchCard.OnDSwitchCardListener() {
+    private void lightthemeInit() {
+        SwitchCardView.DSwitchCard mLightthemeCard = new SwitchCardView.DSwitchCard();
+        mLightthemeCard.setDescription(getString(R.string.light_theme));
+        mLightthemeCard.setChecked(Utils.LIGHTTHEME);
+        mLightthemeCard.setOnDSwitchCardListener(new SwitchCardView.DSwitchCard.OnDSwitchCardListener() {
             @Override
             public void onChecked(SwitchCardView.DSwitchCard dSwitchCard, boolean checked) {
-                Utils.saveBoolean("darktheme", checked, getActivity());
+                Utils.saveBoolean("lighttheme", checked, getActivity());
                 startActivity(new Intent(getActivity(), MainActivity.class));
             }
         });
 
-        addView(mDarkthemeCard);
+        addView(mLightthemeCard);
     }
 
     private void forceenglishlanguageInit() {

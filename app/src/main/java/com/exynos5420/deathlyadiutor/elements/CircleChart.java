@@ -61,7 +61,7 @@ public class CircleChart extends View {
         mPaintBackground.setStrokeWidth(getResources().getDimensionPixelSize(R.dimen.circlechart_background_stroke));
         mPaintBackground.setAntiAlias(true);
         mPaintBackground.setStyle(Paint.Style.STROKE);
-        mPaintBackground.setColor(getResources().getColor(Utils.DARKTHEME ? R.color.circlebar_background_dark :
+        mPaintBackground.setColor(getResources().getColor(Utils.LIGHTTHEME ? R.color.circlebar_background_light :
                 R.color.circlebar_background_light));
         mPaintBackground.setStrokeCap(Paint.Cap.ROUND);
 

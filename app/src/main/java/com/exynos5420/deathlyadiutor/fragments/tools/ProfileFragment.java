@@ -118,7 +118,7 @@ public class ProfileFragment extends RecyclerViewFragment {
                 linearLayout.addView(descriptionText);
 
                 final AppCompatEditText profileName = new AppCompatEditText(getActivity());
-                profileName.setTextColor(getResources().getColor(Utils.DARKTHEME ? R.color.white : R.color.black));
+                profileName.setTextColor(getResources().getColor(Utils.LIGHTTHEME ? R.color.black : R.color.white));
                 profileName.setHint(getString(R.string.name));
                 linearLayout.addView(profileName);
 

@@ -47,8 +47,8 @@ public class TextActivity extends BaseActivity {
     }
 
     @Override
-    public int getDarkTheme() {
-        return R.style.AppThemeActionBarDark;
+    public int getLightTheme() {
+        return R.style.AppThemeActionBarLight;
     }
 
     @Override

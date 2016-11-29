@@ -73,8 +73,8 @@ public abstract class BaseCardView extends CardView {
         setRadius();
 
         // Set background color depending on the current theme
-        setCardBackgroundColor(getResources().getColor(Utils.DARKTHEME ?
-                R.color.card_background_dark : R.color.card_background_light));
+        setCardBackgroundColor(getResources().getColor(Utils.LIGHTTHEME ?
+                R.color.card_background_light : R.color.card_background_dark));
 
         // This will enable the touch feedback of the card
         TypedArray ta = getContext().obtainStyledAttributes(new int[]{R.attr.selectableItemBackground});

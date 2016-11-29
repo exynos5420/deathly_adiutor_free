@@ -42,7 +42,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/navigationdrawer_background_light"
+        android:background="@color/navigationdrawer_background_dark"
         android:fitsSystemWindows="true"
         app:insetFg="#4000">
 

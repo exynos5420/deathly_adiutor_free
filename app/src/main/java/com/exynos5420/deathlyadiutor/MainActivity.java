@@ -30,7 +30,6 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -57,19 +56,19 @@ import com.exynos5420.deathlyadiutor.fragments.information.KernelInformationFrag
 import com.exynos5420.deathlyadiutor.fragments.information.UsageStatisticsFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.BatteryFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.CPUFragment;
-import com.exynos5420.deathlyadiutor.fragments.kernel.CPUVoltageFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.CPUThermalFragment;
+import com.exynos5420.deathlyadiutor.fragments.kernel.CPUVoltageFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.EntropyFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.GPUFragment;
-import com.exynos5420.deathlyadiutor.fragments.kernel.GPUVoltageFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.GPUThermalFragment;
+import com.exynos5420.deathlyadiutor.fragments.kernel.GPUVoltageFragment;
+import com.exynos5420.deathlyadiutor.fragments.kernel.HeadphoneFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.IOFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.KSMFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.LMKFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.MiscFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.ScreenFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.SpeakerFragment;
-import com.exynos5420.deathlyadiutor.fragments.kernel.HeadphoneFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.VMFragment;
 import com.exynos5420.deathlyadiutor.fragments.other.AboutusFragment;
 import com.exynos5420.deathlyadiutor.fragments.other.SettingsFragment;
@@ -78,13 +77,12 @@ import com.exynos5420.deathlyadiutor.fragments.tools.InitdFragment;
 import com.exynos5420.deathlyadiutor.fragments.tools.ProfileFragment;
 import com.exynos5420.deathlyadiutor.fragments.tools.StartUpCommandsFragment;
 import com.exynos5420.deathlyadiutor.services.ProfileTileReceiver;
-import com.exynos5420.deathlyadiutor.utils.kernel.Sound;
 import com.exynos5420.deathlyadiutor.utils.Constants;
 import com.exynos5420.deathlyadiutor.utils.Utils;
 import com.exynos5420.deathlyadiutor.utils.database.ProfileDB;
 import com.exynos5420.deathlyadiutor.utils.kernel.CPUVoltage;
 import com.exynos5420.deathlyadiutor.utils.kernel.Info;
-import com.exynos5420.deathlyadiutor.utils.tools.Buildprop;
+import com.exynos5420.deathlyadiutor.utils.kernel.Sound;
 import com.kerneladiutor.library.root.RootUtils;
 
 import java.util.ArrayList;
@@ -316,8 +314,8 @@ public class MainActivity extends BaseActivity implements Constants {
     private void setInterface() {
         if (mScrimInsetsFrameLayout != null) {
             mScrimInsetsFrameLayout.setLayoutParams(getDrawerParams());
-            if (Utils.DARKTHEME)
-                mScrimInsetsFrameLayout.setBackgroundColor(getResources().getColor(R.color.navigationdrawer_background_dark));
+            if (Utils.LIGHTTHEME)
+                mScrimInsetsFrameLayout.setBackgroundColor(getResources().getColor(R.color.navigationdrawer_background_light));
         }
 
         setItems(null);

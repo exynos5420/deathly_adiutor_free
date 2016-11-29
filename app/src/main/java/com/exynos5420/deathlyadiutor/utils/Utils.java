@@ -88,7 +88,7 @@ import java.util.Set;
 public class Utils implements Constants {
 
     private static final Set<CustomTarget> protectedFromGarbageCollectorTargets = new HashSet<>();
-    public static boolean DARKTHEME = true;
+    public static boolean LIGHTTHEME = false;
 
     public static boolean hasCMSDK() {
         return cyanogenmod.os.Build.CM_VERSION.SDK_INT >= cyanogenmod.os.Build.CM_VERSION_CODES.APRICOT;

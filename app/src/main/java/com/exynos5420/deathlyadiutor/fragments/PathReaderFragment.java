@@ -136,8 +136,8 @@ public abstract class PathReaderFragment extends RecyclerViewFragment {
         editText.setGravity(Gravity.CENTER);
         editText.setLayoutParams(new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        if (!Utils.DARKTHEME)
-            editText.setTextColor(getResources().getColor(R.color.black));
+        if (!Utils.LIGHTTHEME)
+            editText.setTextColor(getResources().getColor(R.color.white));
         editText.setText(value);
 
         layout.addView(editText);

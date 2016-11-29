@@ -126,8 +126,8 @@ public class SeekBarCardView extends BaseCardView {
             }
         });
 
-        if (Utils.DARKTHEME) {
-            int color = getResources().getColor(R.color.textcolor_dark);
+        if (Utils.LIGHTTHEME) {
+            int color = getResources().getColor(R.color.textcolor_light);
             minusButton.setTextColor(color);
             plusButton.setTextColor(color);
         }

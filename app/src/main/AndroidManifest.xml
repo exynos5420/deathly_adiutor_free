@@ -29,7 +29,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="Deathly Adiutor"
         android:supportsRtl="true"
-        android:theme="@style/AppThemeLight">
+        android:theme="@style/AppThemeDark">
         <activity
             android:name="com.exynos5420.deathlyadiutor.MainActivity"
             android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize|navigation">
@@ -44,7 +44,7 @@
         <activity
             android:name="com.exynos5420.deathlyadiutor.TextActivity"
             android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize|navigation"
-            android:theme="@style/AppThemeActionBarLight" />
+            android:theme="@style/AppThemeActionBarDark" />
         <activity
             android:name="com.exynos5420.deathlyadiutor.FileBrowserActivity"
             android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize|navigation" />
