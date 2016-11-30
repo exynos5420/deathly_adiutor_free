@@ -56,6 +56,18 @@ public interface Constants {
     String CPU_MC_POWER_SAVING = "/sys/devices/system/cpu/sched_mc_power_savings";
     String CPU_WQ_POWER_SAVING = "/sys/module/workqueue/parameters/power_efficient";
 
+
+    String[] TOUCHSCREEN_BOOSTER_ENABLED = {"/sys/module/synaptics_i2c_rmi/parameters/tsp_booster_enabled",
+            "/sys/module/mxts/parameters/tsp_booster_enabled",
+            "/sys/module/mxts_n1/parameters/tsp_booster_enabled",
+            "/sys/module/mxtt/parameters/tsp_booster_enabled"};
+    String[] TOUCHKEY_BOOSTER_ENABLED = {"/sys/module/cypress_touchkey/parameters/touchkey_booster_enabled",
+            "/sys/module/cypress_touchkey_h/parameters/touchkey_booster_enabled",
+            "/sys/module/mxts/parameters/touchkey_booster_enabled",
+            "/sys/module/mxts_n1/parameters/touchkey_booster_enabled",
+            "/sys/module/mxtt/parameters/touchkey_booster_enabled"};
+    String WACOM_BOOSTER_ENABLED = "/sys/module/wacom_i2c_func/parameters/wacom_booster_enabled";
+
     String[] CPU_ARRAY = {CPU_CUR_FREQ, CPU_TEMP_ZONE0, CPU_CORE_ONLINE, CPU_MAX_FREQ, CPU_MIN_FREQ, CPU_AVAILABLE_FREQS, CPU_SCALING_GOVERNOR,
             CPU_AVAILABLE_GOVERNORS, CPU_GOVERNOR_TUNABLES, CPU_MC_POWER_SAVING, CPU_WQ_POWER_SAVING};
 
@@ -122,7 +134,7 @@ public interface Constants {
     String MDNIE_MODE = "/sys/class/mdnie/mdnie/mode";
     String TOUCHKEY_GLOVE_MODE = "/sys/devices/virtual/sec/sec_touchkey/glove_mode";
 
-    String[] SCREEN_ARRAY = {COMMAND_PATH, COMMAND_RESULT_PATH, POWER_REDUCE, EPEN_SAVING_MODE, MDNIE_MODE, TOUCHKEY_GLOVE_MODE};
+    String[] SCREEN_ARRAY = {COMMAND_PATH, COMMAND_RESULT_PATH, POWER_REDUCE, EPEN_SAVING_MODE, MDNIE_MODE, TOUCHKEY_GLOVE_MODE, WACOM_BOOSTER_ENABLED};
 
     // Speaker
     String EARPICE_VOLUME = "/sys/class/misc/wolfson_control/earpiece_volume";

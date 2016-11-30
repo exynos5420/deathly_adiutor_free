@@ -119,6 +119,12 @@
     <string name="cpu_governor_tunables">CPU Governor Tunables</string>
     <string name="cpu_governor_tunables_summary">The various configuration items which are Governor-dependent.</string>
     <string name="not_tunable">%s is not tunable</string>
+    <string name="tsp_booster">Touchscreen Input Booster</string>
+    <string name="tsp_booster_summary">If enabled, CPU frequency will get boosted every time you touch the screen.</string>
+    <string name="tk_booster">Touchkey Input Booster</string>
+    <string name="tk_booster_summary">If enabled, CPU frequency will get boosted every time you touch the Touchkeys.</string>
+    <string name="waoom_booster">S-pen Input Booster</string>
+    <string name="wacom_booster_summary">If enabled, CPU frequency will get boosted every time you get the S-pen near the screen.</string>
     <string name="mc_power_saving">Multicore Power Saving</string>
     <string name="mc_power_saving_summary">Try to group tasks into the least cores possible.</string>
     <string name="power_saving_wq">Schedule workqueues on awake CPUs to save power.</string>

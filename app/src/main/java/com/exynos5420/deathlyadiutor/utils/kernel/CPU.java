@@ -356,4 +356,43 @@ public class CPU implements Constants {
         }
     }
 
+
+    public static String getTSPBoosterPath(){
+        for (int i = 0; i < TOUCHSCREEN_BOOSTER_ENABLED.length; i++)
+            if (Utils.existFile(TOUCHSCREEN_BOOSTER_ENABLED[i])) return TOUCHSCREEN_BOOSTER_ENABLED[i];
+
+        return "";
+    }
+
+    public static String getTKBoosterPath(){
+        for (int i = 0; i < TOUCHKEY_BOOSTER_ENABLED.length; i++)
+            if (Utils.existFile(TOUCHKEY_BOOSTER_ENABLED[i])) return TOUCHKEY_BOOSTER_ENABLED[i];
+
+        return "";
+    }
+
+    public static void activateTSPBooster(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", getTSPBoosterPath(), Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean isTSPBoosterActive() {
+        return Utils.readFile(getTSPBoosterPath()).equals("1");
+    }
+
+    public static void activateTKBooster(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", getTKBoosterPath(), Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean isTKBoosterActive() {
+        return Utils.readFile(getTKBoosterPath()).equals("1");
+    }
+
+    public static void activateWacomBooster(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", WACOM_BOOSTER_ENABLED, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean isWacomBoosterActive() {
+        return Utils.readFile(WACOM_BOOSTER_ENABLED).equals("1");
+    }
+
 }

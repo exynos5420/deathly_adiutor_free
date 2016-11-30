@@ -109,7 +109,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
 
         private CardViewItem.DCardView mGovernorTunableNoPerCoreCard;
 
-        private SwitchCardView.DSwitchCard mPowerSavingWqCard;
+        private SwitchCardView.DSwitchCard mPowerSavingWqCard, mTSPBoosterCard, mTKBoosterCard, mWacomBoosterCard;
         private final Runnable cpuUsage = new Runnable() {
             @Override
             public void run() {
@@ -164,6 +164,9 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
             coreInit();
             freqInit();
             governorInit();
+            TSPBoosterInit();
+            TKBoosterInit();
+            if(Utils.existFile(Constants.WACOM_BOOSTER_ENABLED))WacomBoosterInit();
             mcPowerSavingInit();
             powerSavingWqInit();
         }
@@ -259,6 +262,35 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
 
         }
 
+        private void TSPBoosterInit() {
+            mTSPBoosterCard = new SwitchCardView.DSwitchCard();
+            mTSPBoosterCard.setTitle(getString(R.string.tsp_booster));
+            mTSPBoosterCard.setDescription(getString(R.string.tsp_booster_summary));
+            mTSPBoosterCard.setChecked(CPU.isTSPBoosterActive());
+            mTSPBoosterCard.setOnDSwitchCardListener(this);
+
+            addView(mTSPBoosterCard);
+        }
+
+        private void TKBoosterInit() {
+            mTKBoosterCard = new SwitchCardView.DSwitchCard();
+            mTKBoosterCard.setTitle(getString(R.string.tk_booster));
+            mTKBoosterCard.setDescription(getString(R.string.tk_booster_summary));
+            mTKBoosterCard.setChecked(CPU.isTKBoosterActive());
+            mTKBoosterCard.setOnDSwitchCardListener(this);
+
+            addView(mTKBoosterCard);
+        }
+        private void WacomBoosterInit() {
+            mWacomBoosterCard = new SwitchCardView.DSwitchCard();
+            mWacomBoosterCard.setTitle(getString(R.string.waoom_booster));
+            mWacomBoosterCard.setDescription(getString(R.string.wacom_booster_summary));
+            mWacomBoosterCard.setChecked(CPU.isWacomBoosterActive());
+            mWacomBoosterCard.setOnDSwitchCardListener(this);
+
+            addView(mWacomBoosterCard);
+        }
+        
         private void mcPowerSavingInit() {
             mMcPowerSavingCard = new PopupCardView.DPopupCard(new ArrayList<>(Arrays.asList(
                     CPU.getMcPowerSavingItems(getActivity()))));
@@ -317,7 +349,13 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
         public void onChecked(SwitchCardView.DSwitchCard dSwitchCard, boolean checked) {
             if (dSwitchCard == mPowerSavingWqCard)
                 CPU.activatePowerSavingWq(checked, getActivity());
-            }
+            else if (dSwitchCard == mTSPBoosterCard)
+                CPU.activateTSPBooster(checked, getActivity());
+            else if (dSwitchCard == mTKBoosterCard)
+                CPU.activateTKBooster(checked, getActivity());
+            else if (dSwitchCard == mWacomBoosterCard)
+                CPU.activateWacomBooster(checked, getActivity());
+        }
 
         @Override
         public boolean onRefresh() {
