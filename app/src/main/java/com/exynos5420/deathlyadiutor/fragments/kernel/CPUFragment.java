@@ -283,7 +283,7 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
         }
         private void WacomBoosterInit() {
             mWacomBoosterCard = new SwitchCardView.DSwitchCard();
-            mWacomBoosterCard.setTitle(getString(R.string.waoom_booster));
+            mWacomBoosterCard.setTitle(getString(R.string.wacom_booster));
             mWacomBoosterCard.setDescription(getString(R.string.wacom_booster_summary));
             mWacomBoosterCard.setChecked(CPU.isWacomBoosterActive());
             mWacomBoosterCard.setOnDSwitchCardListener(this);

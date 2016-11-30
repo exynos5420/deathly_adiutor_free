@@ -88,7 +88,7 @@
     <string name="initd">Init.d</string>
     <string name="startup_commands">Start-Up Commands</string>
     <string name="startup_commands_list">Start-Up Commands List:</string>
-    <string name="startup_commands_list_info">Tap on an individual command to choose between copying it or deleteing it from the database.</string>
+    <string name="startup_commands_list_info">Tap on an individual command to choose between copying it or deleting it from the database.</string>
     <string name="all_startup_commands">Tap this card to copy or delete all saved startup settings</string>
     <string name="startup_commands_delete_all">Are you sure you want to delete all Start-up Commands?</string>
     <string name="startup_commands_delete_all_yes">Yes</string>
@@ -123,7 +123,7 @@
     <string name="tsp_booster_summary">If enabled, CPU frequency will get boosted every time you touch the screen.</string>
     <string name="tk_booster">Touchkey Input Booster</string>
     <string name="tk_booster_summary">If enabled, CPU frequency will get boosted every time you touch the Touchkeys.</string>
-    <string name="waoom_booster">S-pen Input Booster</string>
+    <string name="wacom_booster">S-pen Input Booster</string>
     <string name="wacom_booster_summary">If enabled, CPU frequency will get boosted every time you get the S-pen near the screen.</string>
     <string name="mc_power_saving">Multicore Power Saving</string>
     <string name="mc_power_saving_summary">Try to group tasks into the least cores possible.</string>
@@ -168,7 +168,7 @@
     <string name="Led_toggle">Led Toggle</string>
     <string name="Led_toggle_summary">Test Led blink.</string>
     <string name="mdnie_mode">Color Profile</string>
-    <string name="mdnie_mode_Dynamic">Enhaced color and bright whites.</string>
+    <string name="mdnie_mode_Dynamic">Enhanced color and bright whites.</string>
     <string name="mdnie_mode_Standard">Accurate color and bright whites.</string>
     <string name="mdnie_mode_Natural">Realistic colors and flesh tones.</string>
     <string name="mdnie_mode_Cinema">Perfect color reproduction for video.</string>
@@ -259,7 +259,7 @@
     <string name="chrg_src_cdp">SB Dedicated Charging Port</string>
     <string name="chrg_src_dcp">USB Charging Downstream Port</string>
     <string name="chrg_src_aca">USB Accessory Charger Adapter</string>
-    <string name="chrg_src_misc">Miscaenellous power source</string>
+    <string name="chrg_src_misc">Miscellaneous power source</string>
     <string name="chrg_src_car">Car dock charger</string>
     <string name="chrg_src_wireless">Wireless Power Consortium charger</string>
     <string name="chrg_src_uartoff">UART Off charge mode</string>
