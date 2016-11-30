@@ -43,12 +43,12 @@ public interface Constants {
     String CPU_CUR_FREQ = "/sys/devices/system/cpu/cpu%d/cpufreq/scaling_cur_freq";
     String CPU_TEMP_ZONE0 = "/sys/class/thermal/thermal_zone0/temp";
     String CPU_CORE_ONLINE = "/sys/devices/system/cpu/cpu%d/online";
-    String CPU_MAX_FREQ = "/sys/devices/system/cpu/cpu%d/cpufreq/scaling_max_freq";
-    String CPU_MIN_FREQ = "/sys/devices/system/cpu/cpu%d/cpufreq/scaling_min_freq";
-    String CPU_AVAILABLE_FREQS = "/sys/devices/system/cpu/cpu%d/cpufreq/scaling_available_frequencies";
+    String CPU_MAX_FREQ = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq";
+    String CPU_MIN_FREQ = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq";
+    String CPU_AVAILABLE_FREQS = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies";
     String[] CPU_TIME_IN_STATE_ARRAY = {"/sys/devices/system/cpu/cpufreq/stats/cpu%d/time_in_state",
             "/sys/devices/system/cpu/cpu%d/cpufreq/stats/time_in_state"};
-    String CPU_SCALING_GOVERNOR = "/sys/devices/system/cpu/cpu%d/cpufreq/scaling_governor";
+    String CPU_SCALING_GOVERNOR = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor";
     String CPU_AVAILABLE_GOVERNORS = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors";
 
     String CPU_GOVERNOR_TUNABLES = "/sys/devices/system/cpu/cpufreq";
@@ -68,8 +68,9 @@ public interface Constants {
             "/sys/module/mxtt/parameters/touchkey_booster_enabled"};
     String WACOM_BOOSTER_ENABLED = "/sys/module/wacom_i2c_func/parameters/wacom_booster_enabled";
 
-    String[] CPU_ARRAY = {CPU_CUR_FREQ, CPU_TEMP_ZONE0, CPU_CORE_ONLINE, CPU_MAX_FREQ, CPU_MIN_FREQ, CPU_AVAILABLE_FREQS, CPU_SCALING_GOVERNOR,
-            CPU_AVAILABLE_GOVERNORS, CPU_GOVERNOR_TUNABLES, CPU_MC_POWER_SAVING, CPU_WQ_POWER_SAVING};
+    String[][] CPU_ARRAY = {{CPU_CUR_FREQ, CPU_TEMP_ZONE0, CPU_CORE_ONLINE, CPU_MAX_FREQ, CPU_MIN_FREQ, CPU_AVAILABLE_FREQS, CPU_SCALING_GOVERNOR,
+            CPU_AVAILABLE_GOVERNORS, CPU_GOVERNOR_TUNABLES, CPU_MC_POWER_SAVING, CPU_WQ_POWER_SAVING, WACOM_BOOSTER_ENABLED},
+            TOUCHSCREEN_BOOSTER_ENABLED, TOUCHKEY_BOOSTER_ENABLED};
 
     // CPU Voltage
     String CPU_VOLTAGE = "/sys/devices/system/cpu/cpu0/cpufreq/UV_mV_table";

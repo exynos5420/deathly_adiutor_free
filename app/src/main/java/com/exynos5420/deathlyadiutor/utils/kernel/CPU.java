@@ -39,11 +39,9 @@ import java.util.List;
  */
 public class CPU implements Constants {
 
-    public static int bigCore = -1;
-    public static int LITTLEcore = -1;
     private static int cores;
-    private static Integer[][] mFreqs;
-    private static String[][] mAvailableGovernors;
+    private static Integer[] mCpuFreqs;
+
     private static String[] mMcPowerSavingItems;
 
     public static String[] getMcPowerSavingItems(Context context) {
@@ -57,150 +55,59 @@ public class CPU implements Constants {
     }
 
     public static void activatePowerSavingWq(boolean active, Context context) {
-        String command = active ? "Y" : "N";
-        Control.runCommand(command, CPU_WQ_POWER_SAVING, Control.CommandType.GENERIC, context);
+        Control.runCommand(active ? "Y" : "N", CPU_WQ_POWER_SAVING, Control.CommandType.GENERIC, context);
     }
 
     public static boolean isPowerSavingWqActive() {
-        String value = Utils.readFile(CPU_WQ_POWER_SAVING);
-        return value.equals("Y");
+        return Utils.readFile(CPU_WQ_POWER_SAVING).equals("Y");
     }
 
     public static List<String> getAvailableGovernors() {
-        return getAvailableGovernors(getBigCore());
-    }
-
-    public static List<String> getAvailableGovernors(int core) {
-        if (mAvailableGovernors == null) mAvailableGovernors = new String[getCoreCount()][];
-        if (mAvailableGovernors[core] == null) {
-            String value = Utils.readFile(CPU_AVAILABLE_GOVERNORS);
-            if (value != null) {
-                mAvailableGovernors[core] = value.split(" ");
-                Collections.sort(Arrays.asList(mAvailableGovernors[core]), String.CASE_INSENSITIVE_ORDER);
-            }
-        }
-        if (mAvailableGovernors[core] == null) return null;
-        return new ArrayList<>(Arrays.asList(mAvailableGovernors[core]));
+        String[] mAvailableGovernors;
+        String value = Utils.readFile(CPU_AVAILABLE_GOVERNORS);
+        mAvailableGovernors = value.split(" ");
+        Collections.sort(Arrays.asList(mAvailableGovernors), String.CASE_INSENSITIVE_ORDER);
+        return new ArrayList<>(Arrays.asList(mAvailableGovernors));
     }
 
     public static void setGovernor(String governor, Context context) {
-        setGovernor(Control.CommandType.CPU, governor, context);
+        Control.runCommand(governor, CPU_SCALING_GOVERNOR, Control.CommandType.CPU, context);
     }
 
-    public static void setGovernor(Control.CommandType command, String governor, Context context) {
-        Control.runCommand(governor, CPU_SCALING_GOVERNOR, command, context);
-    }
-
-    public static String getCurGovernor(boolean forceRead) {
-        return getCurGovernor(getBigCore(), forceRead);
-    }
-
-    public static String getCurGovernor(int core, boolean forceRead) {
-        if (forceRead && core > 0)
-            while (!Utils.existFile(String.format(CPU_SCALING_GOVERNOR, core)))
-                activateCore(core, true, null);
-        if (Utils.existFile(String.format(CPU_SCALING_GOVERNOR, core))) {
-            String value = Utils.readFile(String.format(CPU_SCALING_GOVERNOR, core));
-            if (value != null) return value;
-        }
-        return "";
+    public static String getCurGovernor() {
+        return Utils.readFile(CPU_SCALING_GOVERNOR);
     }
 
     public static List<Integer> getFreqs() {
-        return getFreqs(getBigCore());
-    }
-
-    public static List<Integer> getFreqs(int core) {
-        if (mFreqs == null) mFreqs = new Integer[getCoreCount()][];
-        if (mFreqs[core] == null) {
-            if (Utils.existFile(Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, core)) || Utils.existFile(Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, 0))) {
-                if (core > 0) {
-                    activateCore(core, true, null);
-                }
-                String file;
-                if (Utils.existFile(Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, core))) {
-                    file = Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, core);
-                } else {
-                    file = Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, 0);
-                }
-                String values;
-                if ((values = Utils.readFile(file)) != null) {
-                    String[] valueArray = values.split("\\r?\\n");
-                    mFreqs[core] = new Integer[valueArray.length];
-                    for (int i = 0; i < mFreqs[core].length; i++)
-                        mFreqs[core][i] = Utils.stringToInt(valueArray[i].split(" ")[0]);
-                }
-            } else if (Utils.existFile(String.format(CPU_AVAILABLE_FREQS, 0))) {
-                if (core > 0) {
-                    while (!Utils.existFile(String.format(CPU_AVAILABLE_FREQS, core)))
-                        activateCore(core, true, null);
-                }
-                String values;
-                if ((values = Utils.readFile(String.format(CPU_AVAILABLE_FREQS, core))) != null) {
-                    String[] valueArray = values.split(" ");
-                    mFreqs[core] = new Integer[valueArray.length];
-                    for (int i = 0; i < mFreqs[core].length; i++)
-                        mFreqs[core][i] = Utils.stringToInt(valueArray[i]);
+        if (mCpuFreqs == null) {
+            String value = Utils.readFile(CPU_AVAILABLE_FREQS);
+            if (value != null) {
+                String[] freqs = value.split(" ");
+                mCpuFreqs = new Integer[freqs.length];
+                for (int i = 0; i < mCpuFreqs.length; i++) {
+                    mCpuFreqs[i] = Utils.stringToInt(freqs[i]);
                 }
             }
         }
-        if (mFreqs[core] == null) {
-            return Collections.emptyList();
-        }
-        List<Integer> freqs = Arrays.asList(mFreqs[core]);
-        Collections.sort(freqs);
-        return freqs;
+        ArrayList<Integer> freqslist = new ArrayList<>(Arrays.asList(mCpuFreqs));
+        Collections.sort(freqslist);
+        return freqslist;
     }
 
     public static void setMinFreq(int freq, Context context) {
-        setMinFreq(Control.CommandType.CPU, freq, context);
+        Control.runCommand(String.valueOf(freq), CPU_MIN_FREQ, Control.CommandType.CPU, context);
     }
 
-    public static void setMinFreq(Control.CommandType command, int freq, Context context) {
-        if (getMaxFreq(command == Control.CommandType.CPU ? getBigCore() : getLITTLEcore(), true) < freq)
-            setMaxFreq(command, freq, context);
-        Control.runCommand(String.valueOf(freq), CPU_MIN_FREQ, command, context);
-    }
-
-    public static int getMinFreq(boolean forceRead) {
-        return getMinFreq(getBigCore(), forceRead);
-    }
-
-    public static int getMinFreq(int core, boolean forceRead) {
-        if (forceRead && core > 0) while (!Utils.existFile(String.format(CPU_MIN_FREQ, core)))
-            activateCore(core, true, null);
-        if (Utils.existFile(String.format(CPU_MIN_FREQ, core))) {
-            String value = Utils.readFile(String.format(CPU_MIN_FREQ, core));
-            if (value != null) return Utils.stringToInt(value);
-        }
-        return 0;
+    public static int getMinFreq() {
+            return Utils.stringToInt(Utils.readFile(CPU_MIN_FREQ));
     }
 
     public static void setMaxFreq(int freq, Context context) {
-        setMaxFreq(Control.CommandType.CPU, freq, context);
+        Control.runCommand(String.valueOf(freq), CPU_MAX_FREQ, Control.CommandType.CPU, context);
     }
 
-    public static void setMaxFreq(Control.CommandType command, int freq, Context context) {
-
-        if (getMinFreq(command == Control.CommandType.CPU ? getBigCore() : getLITTLEcore(), true) > freq)
-            setMinFreq(command, freq, context);
-
-        Control.runCommand(String.valueOf(freq), CPU_MAX_FREQ, command, context);
-    }
-
-    public static int getMaxFreq(boolean forceRead) {
-        return getMaxFreq(getBigCore(), forceRead);
-    }
-
-    public static int getMaxFreq(int core, boolean forceRead) {
-        if (forceRead && core > 0) while (!Utils.existFile(String.format(CPU_MAX_FREQ, core)))
-            activateCore(core, true, null);
-
-        if (Utils.existFile(String.format(CPU_MAX_FREQ, core))) {
-            String value = Utils.readFile(String.format(CPU_MAX_FREQ, core));
-            if (value != null) return Utils.stringToInt(value);
-        }
-        return 0;
+    public static int getMaxFreq() {
+        return Utils.stringToInt(Utils.readFile(CPU_MAX_FREQ));
     }
 
     public static int getCurFreq(int core) {
@@ -218,51 +125,10 @@ public class CPU implements Constants {
             RootUtils.runCommand(String.format("echo %s > " + String.format(CPU_CORE_ONLINE, core), active ? "1" : "0"));
     }
 
-    public static List<Integer> getLITTLECoreRange() {
+    public static List<Integer> getCoreRange() {
         List<Integer> list = new ArrayList<>();
-        if (!isBigLITTLE()) for (int i = 0; i < getCoreCount(); i++) list.add(i);
-        else if (getLITTLEcore() == 0) for (int i = 0; i < 4; i++) list.add(i);
-        else for (int i = getLITTLEcore(); i < getCoreCount(); i++) list.add(i);
+        for (int i = 0; i < getCoreCount(); i++) list.add(i);
         return list;
-    }
-
-    public static List<Integer> getBigCoreRange() {
-        List<Integer> list = new ArrayList<>();
-        if (!isBigLITTLE()) for (int i = 0; i < getCoreCount(); i++) list.add(i);
-        else if (getBigCore() == 0) for (int i = 0; i < 4; i++) list.add(i);
-        else for (int i = getBigCore(); i < getCoreCount(); i++) list.add(i);
-        return list;
-    }
-
-    public static int getLITTLEcore() {
-        isBigLITTLE();
-        return LITTLEcore == -1 ? 0 : LITTLEcore;
-    }
-
-    public static int getBigCore() {
-        isBigLITTLE();
-        return bigCore == -1 ? 0 : bigCore;
-    }
-
-    public static boolean isBigLITTLE() {
-        boolean bigLITTLE = getCoreCount() > 4;
-        if (!bigLITTLE) return false;
-
-        if (bigCore == -1 || LITTLEcore == -1) {
-            List<Integer> cpu0Freqs = getFreqs(0);
-            List<Integer> cpu4Freqs = getFreqs(4);
-            if (cpu0Freqs != null && cpu4Freqs != null) {
-                if (cpu0Freqs.size() > cpu4Freqs.size()) {
-                    bigCore = 0;
-                    LITTLEcore = 4;
-                } else {
-                    bigCore = 4;
-                    LITTLEcore = 0;
-                }
-            }
-        }
-
-        return bigCore != -1 && LITTLEcore != -1;
     }
 
     public static int getCoreCount() {

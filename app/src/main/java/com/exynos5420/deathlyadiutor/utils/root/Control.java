@@ -108,19 +108,8 @@ public class Control implements Constants {
         final Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                if (command == CommandType.CPU || command == CommandType.CPU_LITTLE) {
-                    boolean mpd = false;
-
-                    List<Integer> range = command == CommandType.CPU ? CPU.getBigCoreRange() : CPU.getLITTLECoreRange();
-                    for (int i = 0; i < range.size(); i++) {
-                        if (i != 0)
-                            Control.run(String.format("echo 1 > " + CPU_CORE_ONLINE, i),
-                                    String.format(CPU_CORE_ONLINE, i) + "cpuonline", context);
-                        setPermission(String.format(file, range.get(i)), 644, context);
-                        runGeneric(String.format(file, range.get(i)), value, id, context);
-                        setPermission(String.format(file, range.get(i)), 444, context);
-                    }
-
+                if (command == CommandType.CPU) {
+                    runGeneric(file, value, id, context);
                 } else if (command == CommandType.GENERIC) {
                     runGeneric(file, value, id, context);
                 } else if (command == CommandType.FAUX_GENERIC) {

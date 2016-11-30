@@ -318,13 +318,9 @@ public class Utils implements Constants {
 
         if (mClass == BatteryFragment.class)
             applys.addAll(new ArrayList<>(Arrays.asList(BATTERY_ARRAY)));
-        else if (mClass == CPUFragment.class) {
-            for (String cpu : CPU_ARRAY)
-                if (cpu.contains("%d"))
-                    for (int i = 0; i < CPU.getCoreCount(); i++)
-                        applys.add(String.format(cpu, i));
-                else applys.add(cpu);
-        } else if (mClass == CPUVoltageFragment.class)
+        else if (mClass == CPUFragment.class) for (String arrays[] : CPU_ARRAY)
+            applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
+        else if (mClass == CPUVoltageFragment.class)
             applys.addAll(new ArrayList<>(Arrays.asList(CPU_VOLTAGE_ARRAY)));
         else if (mClass == EntropyFragment.class)
             applys.addAll(new ArrayList<>(Arrays.asList(ENTROPY_ARRAY)));
