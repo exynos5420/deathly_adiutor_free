@@ -88,6 +88,9 @@ import com.kerneladiutor.library.root.RootUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 /**
  * Created by willi on 01.12.14.
  */
@@ -122,6 +125,10 @@ public class MainActivity extends BaseActivity implements Constants {
         }
         else // Use an AsyncTask to initialize everything
             new Task().execute();
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     @Override
