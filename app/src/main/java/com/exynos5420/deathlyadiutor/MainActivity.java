@@ -70,6 +70,7 @@ import com.exynos5420.deathlyadiutor.fragments.kernel.MiscFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.ScreenFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.SpeakerFragment;
 import com.exynos5420.deathlyadiutor.fragments.kernel.VMFragment;
+import com.exynos5420.deathlyadiutor.fragments.other.HateAdsFragment;
 import com.exynos5420.deathlyadiutor.fragments.other.AboutusFragment;
 import com.exynos5420.deathlyadiutor.fragments.other.SettingsFragment;
 import com.exynos5420.deathlyadiutor.fragments.tools.BuildpropFragment;
@@ -247,6 +248,7 @@ public class MainActivity extends BaseActivity implements Constants {
         ITEMS.add(new DAdapter.Header(getString(R.string.other)));
         ITEMS.add(new DAdapter.Item(getString(R.string.settings), new SettingsFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.about_us), new AboutusFragment()));
+        ITEMS.add(new DAdapter.Item(getString(R.string.hate_ads), new HateAdsFragment()));
     }
 
     /**
