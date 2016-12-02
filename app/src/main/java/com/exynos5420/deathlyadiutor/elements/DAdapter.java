@@ -161,7 +161,7 @@ public class DAdapter {
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup) {
             view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_item, viewGroup, false);
-            checkedTextColor = view.getResources().getColor(R.color.color_primary);
+            checkedTextColor = view.getResources().getColor(Utils.LIGHTTHEME ? R.color.black : R.color.white);
             defaultTextColor = view.getResources().getColor(Utils.LIGHTTHEME ? R.color.black : R.color.white);
             defaultBackgroundColor = view.getResources().getColor(android.R.color.transparent);
             checkedBackgroundColor = view.getResources().getColor(Utils.LIGHTTHEME ?

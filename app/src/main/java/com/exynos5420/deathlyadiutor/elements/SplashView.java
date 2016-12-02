@@ -21,7 +21,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Matrix;
+//import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
@@ -40,8 +40,8 @@ public class SplashView extends View {
 
     private final Paint mPaintCircle;
     private final float density;
-    private final Bitmap icon;
-    private final Matrix matrix;
+//  private final Bitmap icon;
+//  private final Matrix matrix;
     private final int textColor;
     private final int textSize;
     private int radius = 0;
@@ -70,8 +70,8 @@ public class SplashView extends View {
         mPaintCircle.setStrokeCap(Paint.Cap.ROUND);
         mPaintCircle.setColor(getResources().getColor(R.color.navigationdrawer_background_dark));
 
-        matrix = new Matrix();
-        icon = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+//      matrix = new Matrix();
+//      icon = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
 
         new Thread(new Runnable() {
             @Override
@@ -136,9 +136,9 @@ public class SplashView extends View {
 
     private void draw(Canvas canvas, int x, int y, int radius) {
         if (radius > 0) canvas.drawCircle(x / 2, y / 2, radius, mPaintCircle);
-        matrix.postRotate(rotate);
-        Bitmap iconRotate = Bitmap.createBitmap(icon, 0, 0, icon.getWidth(), icon.getHeight(), matrix, false);
-        canvas.drawBitmap(iconRotate, x / 2 - iconRotate.getWidth() / 2, y / 2 - iconRotate.getHeight() / 2, mPaintCircle);
+//        matrix.postRotate(rotate);
+//        Bitmap iconRotate = Bitmap.createBitmap(icon, 0, 0, icon.getWidth(), icon.getHeight(), matrix, false);
+//        canvas.drawBitmap(iconRotate, x / 2 - iconRotate.getWidth() / 2, y / 2 - iconRotate.getHeight() / 2, mPaintCircle);
 
         TextPaint textPaint = new TextPaint();
         textPaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));

@@ -2,8 +2,8 @@
 <resources>
     <color name="semi_transparent">#26000000</color>
 
-    <color name="color_primary">#6F0000</color>
-    <color name="color_primary_dark">#580000</color>
+    <color name="color_primary">#b30000</color>
+    <color name="color_primary_dark">#990000</color>
     <color name="color_primary_light">@color/color_primary</color>
 
     <color name="statusbar_color">@color/color_primary_dark</color>
@@ -31,8 +31,8 @@
 
     <color name="navigationdrawer_background_light">@color/white</color>
     <color name="navigationdrawer_background_dark">#202020</color>
-    <color name="navigationdrawer_selected_background_light">#1A000000</color>
-    <color name="navigationdrawer_selected_background_dark">#26FFFFFF</color>
+    <color name="navigationdrawer_selected_background_light">#b30000</color>
+    <color name="navigationdrawer_selected_background_dark">#990000</color>
 
     <color name="card_background_light">#FAFAFA</color>
     <color name="card_background_dark">#202020</color>
