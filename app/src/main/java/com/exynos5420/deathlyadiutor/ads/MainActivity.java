@@ -490,23 +490,25 @@ public class MainActivity extends BaseActivity implements Constants {
             setInterface();
 
             try {
-
-                if (Info.getKernelVersion().contains("Deathly") || Info.getKernelVersion().contains("ShEV"))
+                if (Info.getKernelVersion().contains("Deathly") || Info.getKernelVersion().contains("ShEV")) {
                     if (!Info.getKernelVersion().contains("1.0"))
-                    new AlertDialog.Builder(MainActivity.this)
-                            .setMessage(getString(R.string.kernel_outdated_message))
-                            .setNeutralButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                }
-                            }).show();
-                else new AlertDialog.Builder(MainActivity.this)
-                            .setMessage(getString(R.string.no_deathly_kernel))
-                            .setNeutralButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                }
-                            }).show();
+                        new AlertDialog.Builder(MainActivity.this)
+                                .setMessage(getString(R.string.kernel_outdated_message))
+                                .setNeutralButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                    }
+                                }).show();
+                }
+                else {
+                        new AlertDialog.Builder(MainActivity.this)
+                                .setMessage(getString(R.string.no_deathly_kernel))
+                                .setNeutralButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                    }
+                                }).show();
+                    }
             } catch (Exception ignored) {
             }
 
