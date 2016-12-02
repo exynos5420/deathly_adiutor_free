@@ -447,8 +447,6 @@ public class MainActivity extends BaseActivity implements Constants {
 
         private boolean hasRoot;
         private boolean hasBusybox;
-        private boolean isExynos5420;
-        private boolean isKernelCompatible;
 
         @Override
         protected Void doInBackground(Void... params) {
@@ -456,9 +454,6 @@ public class MainActivity extends BaseActivity implements Constants {
             if (RootUtils.rooted()) hasRoot = RootUtils.rootAccess();
             if (hasRoot) hasBusybox = RootUtils.hasAppletSupport();
             if (hasRoot && hasBusybox) {
-                // Check for platform and kernel compatibility
-                if (Info.getCpuInfo().contains("EXYNOS5420")) isExynos5420 = true;
-                if (Info.getKernelVersion().contains("Deathly") || Info.getKernelVersion().contains("ShEV")) isKernelCompatible = true;
                 // Set permissions to specific files which are not readable by default
                 String[] writePermission = {LMK_MINFREE};
                 for (String file : writePermission)
@@ -473,24 +468,21 @@ public class MainActivity extends BaseActivity implements Constants {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            // TODO: Bump kernel version to something greater than 0.3 and check for kernel version for public release
-            if (!hasRoot || !hasBusybox || !isExynos5420) {
+            if (!hasRoot || !hasBusybox) {
                 Intent i = new Intent(MainActivity.this, TextActivity.class);
                 Bundle args = new Bundle();
                 if (!hasRoot) args.putString(TextActivity.ARG_TEXT, getString(R.string.no_root));
                 else if (!hasBusybox) args.putString(TextActivity.ARG_TEXT, getString(R.string.no_busybox));
-                else if (!isExynos5420) args.putString(TextActivity.ARG_TEXT, getString(R.string.no_compatible_platform));
                 i.putExtras(args);
                 startActivity(i);
 
-                if (hasRoot && isExynos5420) {
+                if (hasRoot) {
                     // Root is there, platform is compatible but busybox is missing
                     try {
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=stericson.busybox")));
                     } catch (ActivityNotFoundException ignored) {
                     }
                 }
-                if (!isKernelCompatible) Utils.toast(getString(R.string.no_deathly_kernel), null, Toast.LENGTH_LONG);
                 cancel(true);
                 finish();
                 return;
@@ -499,10 +491,18 @@ public class MainActivity extends BaseActivity implements Constants {
             setInterface();
 
             try {
-                // Show a dialog if user is running a beta version
-                if (VERSION_NAME.contains("beta") && Utils.getBoolean("betainfo", true, MainActivity.this))
+
+                if (Info.getKernelVersion().contains("Deathly") || Info.getKernelVersion().contains("ShEV"))
+                    if (!Info.getKernelVersion().contains("1.0"))
                     new AlertDialog.Builder(MainActivity.this)
-                            .setMessage(getString(R.string.beta_message, VERSION_NAME))
+                            .setMessage(getString(R.string.kernel_outdated_message))
+                            .setNeutralButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            }).show();
+                else new AlertDialog.Builder(MainActivity.this)
+                            .setMessage(getString(R.string.no_deathly_kernel))
                             .setNeutralButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
