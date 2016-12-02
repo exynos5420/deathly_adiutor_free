@@ -8,7 +8,6 @@
     <string name="ok">OK</string>
     <string name="cancel">Abbrechen</string>
     <string name="current_value_not_supported">Aktueller Wert wird nicht unterstützt</string>
-    <string name="beta_message">Danke, dass du Beta Tester bist! Falls du irgendwelche Probleme hast, zögere bitte nicht mich zu kontaktieren. Momentan benutzt du Version %s.</string>
     <string name="select_picture">Bild auswählen</string>
     <string name="no_picture">Kein Bild</string>
     <string name="went_wrong">Etwas ist schief gelaufen!</string>
@@ -271,7 +270,6 @@
     <string name="file_name">Dateiname</string>
 
     <!-- Settings -->
-    <string name="dark_theme">Dunkles Design</string>
     <string name="force_english_language">Englische Sprache erzwingen</string>
     <string name="beta_info">Beta-Information</string>
     <string name="beta_info_summary">Einen Hinweis nach dem Start anzeigen, wenn Sie eine Beta Version benutzen.</string>

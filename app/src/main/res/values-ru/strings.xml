@@ -5,7 +5,6 @@
     <string name="root_waiting">Ожидание доступа с правами root</string>
     <string name="no_root">Права суперпользователя недоступны</string>
     <string name="no_busybox">Busybox недоступен</string>
-    <string name="no_compatible_platform">Программа предназначена для устройств на процессоре Exynos 5420.</string>
     <string name="no_deathly_kernel">ПРЕДУПРЕЖДЕНИЕ! ПРОГРАММА МОЖЕТ НЕ РАБОТАТЬ ПРАВИЛЬНО, ПОСКОЛЬКУ ВЫ НЕ ИСПОЛЬЗУЕТЕ Deathly ИЛИ ShEV ЯДРО!</string>
     <string name="ok">Ага</string>
     <string name="cancel">Отмена</string>

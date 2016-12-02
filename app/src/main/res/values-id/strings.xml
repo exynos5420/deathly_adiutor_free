@@ -6,7 +6,6 @@
     <string name="ok">Ok</string>
     <string name="cancel">Batal</string>
     <string name="current_value_not_supported">Nilai yang anda masukkan tidak didukung</string>
-    <string name="beta_message">Terimakasih sudah menjadi beta tester! Jika anda punya permasalahan, jangan sungkan untuk mengontak saya. Saat ini anda menggunakan versi %s.</string>
     <string name="select_picture">Pilih gambar</string>
     <string name="no_picture">Tidak ada gambar</string>
     <string name="went_wrong">Ada yang salah!</string>
@@ -158,7 +157,6 @@
     <string name="starting_initd">Memulai Emulasi Inti.d</string>
     <string name="finishing_initd">Mengakhiri Emulasi Init.d</string>
     <string name="file_name">Nama file</string>
-    <string name="dark_theme">Tema gelap</string>
     <string name="force_english_language">Paksa Bahasa Inggris</string>
     <string name="beta_info">Informasi Beta</string>
     <string name="beta_info_summary">Tampilkan dialog awal jika Anda menggunakan versi beta.</string>

@@ -7,7 +7,6 @@
     <string name="ok">OK</string>
     <string name="cancel">Annuler</string>
     <string name="current_value_not_supported">La valeur actuelle n\'est pas supportée</string>
-    <string name="beta_message">Merci d\'être un beta testeur ! Si vous avez des problèmes, n\'hésitez pas à me contacter. Vous utilisez actuellement la version %s.</string>
     <string name="select_picture">Sélectionner une image</string>
     <string name="no_picture">Pas de photo</string>
     <string name="went_wrong">Quelque chose s\'est mal passé !</string>
@@ -159,7 +158,6 @@
     <string name="starting_initd">Démarrage de l’émulation init.d</string>
     <string name="finishing_initd">Arrêt de l’émulation init.d</string>
     <string name="file_name">Nom du fichier</string>
-    <string name="dark_theme">Thème sombre</string>
     <string name="force_english_language">Forcer la Langue Anglaise</string>
     <string name="beta_info">Informations Bêta</string>
     <string name="beta_info_summary">Afficher une boîte de dialogue au démarrage si vous utilisez une version bêta.</string>

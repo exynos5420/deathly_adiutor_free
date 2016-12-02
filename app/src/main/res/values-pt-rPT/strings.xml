@@ -8,9 +8,7 @@
     <string name="ok">OK</string>
     <string name="cancel">Cancelar </string>
     <string name="current_value_not_supported">Valor não suportado </string>
-  <string name="beta_message">Obrigado por testar a beta! Se tiver problemas, não hesite em contactar-me.
-Está a usar a versão %s.</string>
-    <string name="select_picture">Selecionar Imagem</string>
+  <string name="select_picture">Selecionar Imagem</string>
     <string name="no_picture">Sem imagem</string>
     <string name="went_wrong">Algo correu mal!</string>
     <string name="password">Palavra-passe</string>
@@ -155,8 +153,7 @@ Está a usar a versão %s.</string>
     <string name="starting_initd">Começar emulação Init.d</string>
     <string name="finishing_initd">Acabar com a emulação init.d</string>
     <string name="file_name">Nome do ficheiro</string>
-    <string name="dark_theme">Tema escuro</string>
-    <string name="force_english_language">Força de língua inglesa</string>
+  <string name="force_english_language">Força de língua inglesa</string>
     <string name="beta_info">Informações beta</string>
     <string name="beta_info_summary">Mostre uma caixa de diálogo no início, se estiver a usar uma versão beta.</string>
     <string name="show_profile_tile">Mostrar o perfil</string>
