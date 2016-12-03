@@ -23,7 +23,7 @@ public class HateAdsFragment extends RecyclerViewFragment {
         super.init(savedInstanceState);
 
         try {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.exynos5420.deathlyadiutor.ads.adfree")));
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.exynos5420.deathlyadiutor.adfree")));
         } catch (ActivityNotFoundException ignored) {
         }
     }
