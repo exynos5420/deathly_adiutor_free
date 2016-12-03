@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.exynos5420.deathlyadiutor">
+    package="com.exynos5420.deathlyadiutor.ads">
 
     <uses-permission android:name="android.permission.ACCESS_SUPERUSER" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -31,7 +31,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeDark">
         <activity
-            android:name="com.exynos5420.deathlyadiutor.MainActivity"
+            android:name="com.exynos5420.deathlyadiutor.ads.ads.MainActivity"
             android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize|navigation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,35 +42,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.exynos5420.deathlyadiutor.TextActivity"
+            android:name="com.exynos5420.deathlyadiutor.ads.ads.TextActivity"
             android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize|navigation"
             android:theme="@style/AppThemeActionBarDark" />
         <activity
-            android:name="com.exynos5420.deathlyadiutor.FileBrowserActivity"
+            android:name="com.exynos5420.deathlyadiutor.ads.ads.FileBrowserActivity"
             android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize|navigation" />
         <activity
-            android:name="com.exynos5420.deathlyadiutor.EditTextActivity"
+            android:name="com.exynos5420.deathlyadiutor.ads.ads.EditTextActivity"
             android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize|navigation" />
         <activity
-            android:name="com.exynos5420.deathlyadiutor.elements.DAdapter$MainHeader$MainHeaderActivity"
+            android:name="com.exynos5420.deathlyadiutor.ads.elements.DAdapter$MainHeader$MainHeaderActivity"
             android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize|navigation"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name="com.exynos5420.deathlyadiutor.utils.GetPermission$PermissionActivity"
+            android:name="com.exynos5420.deathlyadiutor.ads.utils.GetPermission$PermissionActivity"
             android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize|navigation"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <receiver android:name="com.exynos5420.deathlyadiutor.services.BootReceiver">
+        <receiver android:name="com.exynos5420.deathlyadiutor.ads.services.BootReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
-        <service android:name="com.exynos5420.deathlyadiutor.services.BootService" />
-        <service android:name="com.exynos5420.deathlyadiutor.services.InitdService" />
+        <service android:name="com.exynos5420.deathlyadiutor.ads.services.BootService" />
+        <service android:name="com.exynos5420.deathlyadiutor.ads.services.InitdService" />
 
         <!-- Profile Widget -->
-        <receiver android:name="com.exynos5420.deathlyadiutor.services.ProfileWidget">
+        <receiver android:name="com.exynos5420.deathlyadiutor.ads.services.ProfileWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -81,11 +81,11 @@
         </receiver>
 
         <service
-            android:name="com.exynos5420.deathlyadiutor.services.ProfileWidget$WidgetService"
+            android:name="com.exynos5420.deathlyadiutor.ads.services.ProfileWidget$WidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <activity
-            android:name="com.exynos5420.deathlyadiutor.tasker.AddProfileActivity"
+            android:name="com.exynos5420.deathlyadiutor.ads.tasker.AddProfileActivity"
             android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize|navigation">
             <intent-filter>
                 <action android:name="com.twofortyfouram.locale.intent.action.EDIT_SETTING" />
@@ -93,7 +93,7 @@
         </activity>
 
         <receiver
-            android:name="com.exynos5420.deathlyadiutor.tasker.RunProfileReceiver"
+            android:name="com.exynos5420.deathlyadiutor.ads.tasker.RunProfileReceiver"
             android:process=":background">
 
             <intent-filter>
@@ -102,14 +102,14 @@
         </receiver>
 
         <!-- CM SDK -->
-        <receiver android:name="com.exynos5420.deathlyadiutor.services.ProfileTileReceiver">
+        <receiver android:name="com.exynos5420.deathlyadiutor.ads.services.ProfileTileReceiver">
             <intent-filter>
                 <action android:name="com.kerneladiutor.mod.action.ACTION_TOGGLE_STATE" />
             </intent-filter>
         </receiver>
 
         <service
-            android:name="com.exynos5420.deathlyadiutor.services.PerAppMonitor"
+            android:name="com.exynos5420.deathlyadiutor.ads.services.PerAppMonitor"
             android:label="@string/accessibility_service_label"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
@@ -123,7 +123,7 @@
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.exynos5420.deathlyadiutor.fileprovider"
+            android:authorities="com.exynos5420.deathlyadiutor.ads.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

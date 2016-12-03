@@ -27,8 +27,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.exynos5420.deathlyadiutor.R;
-import com.exynos5420.deathlyadiutor.utils.Utils;
+import com.exynos5420.deathlyadiutor.ads.R;
+import com.exynos5420.deathlyadiutor.ads.utils.Utils;
 
 /**
  * Created by willi on 23.12.14.

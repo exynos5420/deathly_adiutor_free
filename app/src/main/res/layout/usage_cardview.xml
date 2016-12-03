@@ -11,7 +11,7 @@
     android:paddingStart="16dp"
     android:paddingTop="16dp">
 
-    <com.exynos5420.deathlyadiutor.elements.CircleChart
+    <com.exynos5420.deathlyadiutor.ads.elements.CircleChart
         android:id="@+id/circle_chart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

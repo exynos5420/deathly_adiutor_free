@@ -15,6 +15,50 @@
       },
       "oauth_client": [
         {
+          "client_id": "237837634119-ous2beafe7qsk6iiq340hc1ndmuus2hg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.exynos5420.deathlyadiutor",
+            "certificate_hash": "9202959E049A2FDBBB178BA7BB2C6CB11E9148BC"
+          }
+        },
+        {
+          "client_id": "237837634119-vgtmlt0j8f5kr5524cftt5kn69eclg3e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwau7FAkiAsl-SOsrFYLM019sAgiYIv-4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "237837634119-vgtmlt0j8f5kr5524cftt5kn69eclg3e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:237837634119:android:4be354dc0585c8f0",
+        "android_client_info": {
+          "package_name": "com.exynos5420.deathlyadiutor.adfree"
+        }
+      },
+      "oauth_client": [
+        {
           "client_id": "237837634119-vgtmlt0j8f5kr5524cftt5kn69eclg3e.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -31,6 +75,50 @@
         "appinvite_service": {
           "status": 1,
           "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:237837634119:android:6ec25c98696d1690",
+        "android_client_info": {
+          "package_name": "com.exynos5420.deathlyadiutor.ads"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "237837634119-9pqljj49ff5ucllb1sjlntr615str04a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.exynos5420.deathlyadiutor.ads",
+            "certificate_hash": "A7362972E9D1DCE9D48E1DBA41ED02550CC20D55"
+          }
+        },
+        {
+          "client_id": "237837634119-vgtmlt0j8f5kr5524cftt5kn69eclg3e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwau7FAkiAsl-SOsrFYLM019sAgiYIv-4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "237837634119-vgtmlt0j8f5kr5524cftt5kn69eclg3e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

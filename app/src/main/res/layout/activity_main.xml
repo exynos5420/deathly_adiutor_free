@@ -32,12 +32,12 @@
 
     </LinearLayout>
 
-    <com.exynos5420.deathlyadiutor.elements.SplashView
+    <com.exynos5420.deathlyadiutor.ads.elements.SplashView
         android:id="@+id/splash_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <com.exynos5420.deathlyadiutor.elements.ScrimInsetsFrameLayout
+    <com.exynos5420.deathlyadiutor.ads.elements.ScrimInsetsFrameLayout
         android:id="@+id/scrimInsetsFrameLayout"
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -54,6 +54,6 @@
             android:scrollbarStyle="outsideOverlay"
             android:scrollbars="vertical" />
 
-    </com.exynos5420.deathlyadiutor.elements.ScrimInsetsFrameLayout>
+    </com.exynos5420.deathlyadiutor.ads.elements.ScrimInsetsFrameLayout>
 
 </android.support.v4.widget.DrawerLayout>
