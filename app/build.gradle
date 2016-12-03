@@ -20,9 +20,9 @@ android {
     buildToolsVersion "23.0.3"
     defaultConfig {
         applicationId 'com.exynos5420.deathlyadiutor.ads'
-        minSdkVersion 23
+        minSdkVersion 19
         targetSdkVersion 23
-        versionCode 24
+        versionCode 25
         versionName "1.0 build " + getDate()
     }
 
