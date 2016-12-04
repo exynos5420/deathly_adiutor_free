@@ -17,6 +17,13 @@ You can report a bug or request a feature by [opening an issue](https://github.c
 * How to apply a new value
 * Make sure there are no similar feature requests already
 
+## Download
+
+The latest stable version of Deathly Auditor can be downloaded via the Google Play Store.
+
+* [Deathly Auditor](https://play.google.com/store/apps/details?id=com.exynos5420.deathlyadiutor.ads)
+* [Deathly Auditor Donate](https://play.google.com/store/apps/details?id=com.exynos5420.deathlyadiutor.adfree)
+
 ## Credits
 
 I used following libraries:
