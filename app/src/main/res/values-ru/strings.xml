@@ -48,8 +48,6 @@
     <string name="sec">сек</string>
     <string name="dB">dB</string>
 
-    <!-- Special signs -->
-
     <!-- Headers -->
     <string name="information">Информация</string>
     <string name="cpu">Управлоение Центральным Процессором</string>
@@ -92,6 +90,7 @@
     <string name="startup_commands_none">Нет команд, выполняемых при запуске</string>
     <string name="settings">Настройки</string>
     <string name="about_us">О нас</string>
+    <string name="hate_ads">Надоела реклама?</string>
 
     <!-- Frequency Table -->
 
@@ -245,7 +244,7 @@
     <string name="chrg_src_battery">Питание от батареи</string>
     <string name="chrg_src_wtf">Ахренеть, как Вам это удалось?</string>
     <string name="chrg_src_acmains">Зарядка от сети</string>
-    <string name="chrg_src_sdp">Стандартный USB порт</string> <!-- USB Standard Downstream Port -->
+    <string name="chrg_src_sdp">Стандартный USB порт</string>
     <string name="chrg_src_cdp">Выделенный порт для зарядки</string>
     <string name="chrg_src_dcp">Зарядка через USB порт</string>
     <string name="chrg_src_aca">Аксессуар USB зарядного устройства</string>
