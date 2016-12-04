@@ -46,8 +46,7 @@ public interface Constants {
     String CPU_MAX_FREQ = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq";
     String CPU_MIN_FREQ = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq";
     String CPU_AVAILABLE_FREQS = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies";
-    String[] CPU_TIME_IN_STATE_ARRAY = {"/sys/devices/system/cpu/cpufreq/stats/cpu%d/time_in_state",
-            "/sys/devices/system/cpu/cpu%d/cpufreq/stats/time_in_state"};
+    String CPU_TIME_IN_STATE_ARRAY = "/sys/devices/system/cpu/cpu0/cpufreq/stats/time_in_state";
     String CPU_SCALING_GOVERNOR = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor";
     String CPU_AVAILABLE_GOVERNORS = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors";
 

@@ -93,9 +93,9 @@ public class UsageStatisticsFragment extends RecyclerViewFragment implements Con
 
             @Override
             protected Void doInBackground(Void... params) {
-                generateSystemTimes();
-                generateViewCPU();
-                generateViewGPU();
+                if (Utils.existFile(CPU_TIME_IN_STATE_ARRAY) && Utils.existFile(GPU_TIME_IN_STATE)) generateSystemTimes();
+                if (Utils.existFile(CPU_TIME_IN_STATE_ARRAY)) generateViewCPU();
+                if (Utils.existFile(GPU_TIME_IN_STATE)) generateViewGPU();
                 return null;
             }
 
@@ -120,9 +120,9 @@ public class UsageStatisticsFragment extends RecyclerViewFragment implements Con
     @Override
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
-        generateSystemTimes();
-        generateViewCPU();
-        generateViewGPU();
+        if (Utils.existFile(CPU_TIME_IN_STATE_ARRAY) && Utils.existFile(GPU_TIME_IN_STATE)) generateSystemTimes();
+        if (Utils.existFile(CPU_TIME_IN_STATE_ARRAY)) generateViewCPU();
+        if (Utils.existFile(GPU_TIME_IN_STATE)) generateViewGPU();
     }
 
     private void generateSystemTimes() {
@@ -140,9 +140,9 @@ public class UsageStatisticsFragment extends RecyclerViewFragment implements Con
     }
 
     private void generateViewCPU() {
-        String value = Utils.readFile(Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, 0));
+        String value = Utils.readFile(CPU_TIME_IN_STATE_ARRAY);
         String[] lines = value.split("\n");
-        int total_time = getUPtime(Utils.getsysfspath(CPU_TIME_IN_STATE_ARRAY, 0));
+        int total_time = getUPtime(CPU_TIME_IN_STATE_ARRAY);
         String unusedStates = "";
 
         LinearLayout uiStatesView = new LinearLayout(getActivity());
