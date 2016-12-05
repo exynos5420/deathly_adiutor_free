@@ -65,12 +65,14 @@ public class UsageStatisticsFragment extends RecyclerViewFragment implements Con
     private static int getUPtime(String path) {
         int total_time = 0;
         String value = Utils.readFile(path);
-        String[] lines = value.split("\n"); // get lines
-        String[] times = new String[lines.length];
-        for (int a = 0; a < lines.length; a++) { //separate freqs from times
-            String[] temp = lines[a].split(" ");
-            times[a] = temp[1];
-            total_time = total_time + Utils.stringToInt(times[a]);
+        if (value != null) {
+            String[] lines = value.split("\n"); // get lines
+            String[] times = new String[lines.length];
+            for (int a = 0; a < lines.length; a++) { //separate freqs from times
+                String[] temp = lines[a].split(" ");
+                times[a] = temp[1];
+                total_time = total_time + Utils.stringToInt(times[a]);
+            }
         }
         return total_time;
     }
