@@ -27,7 +27,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
 
-import com.exynos5420.deathlyadiutor.ads.ads.MainActivity;
+import com.exynos5420.deathlyadiutor.ads.MainActivity;
 import com.exynos5420.deathlyadiutor.ads.R;
 import com.exynos5420.deathlyadiutor.ads.fragments.kernel.BatteryFragment;
 import com.exynos5420.deathlyadiutor.ads.fragments.kernel.CPUFragment;

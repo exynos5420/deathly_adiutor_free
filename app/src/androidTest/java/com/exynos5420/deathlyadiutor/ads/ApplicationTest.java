@@ -1,4 +1,4 @@
-package com.exynos5420.deathlyadiutor.ads.ads;
+package com.exynos5420.deathlyadiutor.ads;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

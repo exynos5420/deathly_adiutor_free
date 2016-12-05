@@ -29,7 +29,7 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 
-import com.exynos5420.deathlyadiutor.ads.ads.EditTextActivity;
+import com.exynos5420.deathlyadiutor.ads.EditTextActivity;
 import com.exynos5420.deathlyadiutor.ads.R;
 import com.exynos5420.deathlyadiutor.ads.elements.cards.CardViewItem;
 import com.exynos5420.deathlyadiutor.ads.elements.cards.InformationCardView;

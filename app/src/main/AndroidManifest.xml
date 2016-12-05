@@ -31,7 +31,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeDark">
         <activity
-            android:name="com.exynos5420.deathlyadiutor.ads.ads.MainActivity"
+            android:name="com.exynos5420.deathlyadiutor.ads.MainActivity"
             android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize|navigation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,14 +42,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.exynos5420.deathlyadiutor.ads.ads.TextActivity"
+            android:name="com.exynos5420.deathlyadiutor.ads.TextActivity"
             android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize|navigation"
             android:theme="@style/AppThemeActionBarDark" />
         <activity
-            android:name="com.exynos5420.deathlyadiutor.ads.ads.FileBrowserActivity"
+            android:name="com.exynos5420.deathlyadiutor.ads.FileBrowserActivity"
             android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize|navigation" />
         <activity
-            android:name="com.exynos5420.deathlyadiutor.ads.ads.EditTextActivity"
+            android:name="com.exynos5420.deathlyadiutor.ads.EditTextActivity"
             android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize|navigation" />
         <activity
             android:name="com.exynos5420.deathlyadiutor.ads.elements.DAdapter$MainHeader$MainHeaderActivity"

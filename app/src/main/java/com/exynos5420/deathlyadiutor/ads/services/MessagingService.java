@@ -9,7 +9,7 @@ import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.exynos5420.deathlyadiutor.ads.ads.MainActivity;
+import com.exynos5420.deathlyadiutor.ads.MainActivity;
 import com.exynos5420.deathlyadiutor.ads.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;

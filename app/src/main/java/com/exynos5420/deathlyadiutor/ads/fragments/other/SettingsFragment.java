@@ -31,7 +31,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.widget.LinearLayout;
 
-import com.exynos5420.deathlyadiutor.ads.ads.MainActivity;
+import com.exynos5420.deathlyadiutor.ads.MainActivity;
 import com.exynos5420.deathlyadiutor.ads.R;
 import com.exynos5420.deathlyadiutor.ads.elements.DAdapter;
 import com.exynos5420.deathlyadiutor.ads.elements.DDivider;

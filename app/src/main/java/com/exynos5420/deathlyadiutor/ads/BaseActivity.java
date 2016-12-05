@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.exynos5420.deathlyadiutor.ads.ads;
+package com.exynos5420.deathlyadiutor.ads;
 
 import android.os.Build;
 import android.os.Bundle;

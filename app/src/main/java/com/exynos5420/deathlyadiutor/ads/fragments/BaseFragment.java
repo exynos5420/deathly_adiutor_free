@@ -24,7 +24,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
-import com.exynos5420.deathlyadiutor.ads.ads.MainActivity;
+import com.exynos5420.deathlyadiutor.ads.MainActivity;
 
 /**
  * Created by willi on 14.04.15.
