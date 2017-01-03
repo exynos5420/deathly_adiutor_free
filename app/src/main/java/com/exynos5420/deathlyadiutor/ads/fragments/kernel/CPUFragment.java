@@ -164,9 +164,9 @@ public class CPUFragment extends ViewPagerFragment implements Constants {
             coreInit();
             freqInit();
             governorInit();
-            TSPBoosterInit();
-            TKBoosterInit();
-            if(Utils.existFile(Constants.WACOM_BOOSTER_ENABLED))WacomBoosterInit();
+            if(!CPU.getTSPBoosterPath().equals("-1")) TSPBoosterInit();
+            if(!CPU.getTKBoosterPath().equals("-1")) TKBoosterInit();
+            if(Utils.existFile(Constants.WACOM_BOOSTER_ENABLED)) WacomBoosterInit();
             mcPowerSavingInit();
             powerSavingWqInit();
         }

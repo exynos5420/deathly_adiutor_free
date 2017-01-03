@@ -227,14 +227,14 @@ public class CPU implements Constants {
         for (int i = 0; i < TOUCHSCREEN_BOOSTER_ENABLED.length; i++)
             if (Utils.existFile(TOUCHSCREEN_BOOSTER_ENABLED[i])) return TOUCHSCREEN_BOOSTER_ENABLED[i];
 
-        return "";
+        return "-1";
     }
 
     public static String getTKBoosterPath(){
         for (int i = 0; i < TOUCHKEY_BOOSTER_ENABLED.length; i++)
             if (Utils.existFile(TOUCHKEY_BOOSTER_ENABLED[i])) return TOUCHKEY_BOOSTER_ENABLED[i];
 
-        return "";
+        return "-1";
     }
 
     public static void activateTSPBooster(boolean active, Context context) {
