@@ -48,11 +48,12 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
 
-        batteryLevelInit();
-        batteryCapacityInit();
-        batteryVoltageInit();
-        batteryTemperatureInit();
-        chargingSourceInit();
+        if (Battery.getChargeLevel() != -1) batteryLevelInit();
+        if (Battery.getBatteryCapacity() != 0) batteryCapacityInit();
+        if (!Battery.getVoltage().equals("-1")) batteryVoltageInit();
+        if (!Battery.getTemperature().equals("-1")) batteryTemperatureInit();
+        if (!Battery.getChargingSource().equals("-1")) chargingSourceInit();
+        if (Battery.hasBatteryControlInterface()){
         chargingCurrentsInit();
         unstablePowerDetectionToggleInit();
         AddDivider(getString(R.string.ac_divider), getString(R.string.ac_divider_summary));
@@ -61,7 +62,7 @@ public class BatteryFragment extends RecyclerViewFragment implements SwitchCardV
         mSIOPInit();
         AddDivider(getString(R.string.sdp_divider), getString(R.string.sdp_divider_summary));
         mSDPCurrnetsInit();
-
+        }
     }
 
     @Override

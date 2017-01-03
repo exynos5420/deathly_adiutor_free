@@ -31,31 +31,18 @@ import java.util.LinkedHashMap;
  */
 public class Battery implements Constants {
     
-    private static String devicemodel;
-
     public static int getChargeLevel(){
-        return Utils.stringToInt(Utils.readFile(BATT_CHARGERATE));
+        if (Utils.existFile(BATT_CHARGERATE)) return Utils.stringToInt(Utils.readFile(BATT_CHARGERATE));
+        else return -1;
     }
 
     public static String getVoltage(){
-        return Utils.readFile(BATT_VOLTAGE);
+        if (Utils.existFile(BATT_VOLTAGE)) return Utils.readFile(BATT_VOLTAGE);
+        else return "-1";
     }
 
-    public static String getDevice(){
-        if (devicemodel == null) {
-            LinkedHashMap<String, String> buildpropItem;
-            buildpropItem = Buildprop.getProps();
-            Object[] keys = buildpropItem.keySet().toArray();
-            Object[] values = buildpropItem.values().toArray();
-            for (int i = 0; i < keys.length; i++) {
-                if (((String) keys[i]).contains("ro.product.name"))
-                    devicemodel = values[i].toString();
-            }
-        }
-        return devicemodel;
-    }
     public static int getBatteryCapacity(){
-        if (devicemodel == null) getDevice();
+        String devicemodel = Utils.getProp("ro.product.name");
         if (devicemodel.contains("ha"))
             return 3200;
         else if (devicemodel.contains("klimt"))
@@ -71,11 +58,13 @@ public class Battery implements Constants {
     }
 
     public static String getTemperature(){
-        return Utils.readFile(BATT_TEMP);
+        if(Utils.existFile(BATT_TEMP)) return Utils.readFile(BATT_TEMP);
+        else return "-1";
     }
 
     public static String getChargingSource(){
-        return Utils.readFile(BATT_CHARGING_SOURCE);
+        if (Utils.existFile(BATT_CHARGING_SOURCE)) return Utils.readFile(BATT_CHARGING_SOURCE);
+        else return "-1";
     }
 
     public static String getCurrent(String desired_current){
@@ -167,6 +156,11 @@ public class Battery implements Constants {
     public static void setSDPchrgcurr(int curr, Context context){
         curr = (curr*25) + 450;
         Control.runCommand(Integer.toString(curr), SDP_CHRG_CURR, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean hasBatteryControlInterface(){
+        if (Utils.existFile(UNSTABLE_POWER_DETECTION)) return true;
+        else return false;
     }
 
 }
