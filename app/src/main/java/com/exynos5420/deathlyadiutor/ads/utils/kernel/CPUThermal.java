@@ -62,8 +62,6 @@ public class CPUThermal implements Constants {
             else command += getTemps().get(i) + " ";
         }
         Control.runCommand(command, CPU_THERMAL_ONESHOT_TEMPS, Control.CommandType.GENERIC, context);
-
-
     }
 
     public static void setCPUTripPointFreq(int freq, int step, Context context) {
@@ -73,8 +71,11 @@ public class CPUThermal implements Constants {
             else command += getFreqs().get(i) + " ";
         }
         Control.runCommand(command, CPU_THERMAL_ONESHOT_FREQS, Control.CommandType.GENERIC, context);
+    }
 
-
+    public static boolean hasCpuThermalControl (){
+        if (Utils.existFile(CPU_THERMAL_ONESHOT_FREQS) && Utils.existFile(CPU_THERMAL_ONESHOT_TEMPS)) return true;
+        else return false;
     }
 
 }
