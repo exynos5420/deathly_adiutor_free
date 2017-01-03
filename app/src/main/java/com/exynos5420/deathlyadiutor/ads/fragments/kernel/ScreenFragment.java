@@ -60,8 +60,8 @@ public class ScreenFragment extends RecyclerViewFragment implements SwitchCardVi
         super.init(savedInstanceState);
 
         mdnieModeInit();
-        if (!Utils.hasCMSDK()) PowerReduceInit();
-        touchscreenGloveModeInit();
+        if (!Utils.hasCMSDK() && Utils.existFile(Constants.POWER_REDUCE)) PowerReduceInit();
+        if (Utils.existFile(Constants.COMMAND_RESULT_PATH) &&Utils.existFile(Constants.COMMAND_PATH)) touchscreenGloveModeInit();
         if (Utils.existFile(Constants.TOUCHKEY_GLOVE_MODE)) touchkeyGloveModeInit();
         if (Utils.existFile(Constants.EPEN_SAVING_MODE)) epenSavingModeInit();
     }
