@@ -34,7 +34,7 @@ import java.util.List;
  */
 public class GPUFragment extends RecyclerViewFragment implements PopupCardView.DPopupCard.OnDPopupCardListener {
 
-    private CardViewItem.DCardView mCurFreqCard;
+    private CardViewItem.DCardView mCurFreqCard, mVoltNowCard;
 
     private PopupCardView.DPopupCard mMaxFreqCard;
 
@@ -52,6 +52,7 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
 
         if (GPU.getGpuUsage() != -1) usageInit();
         if (GPU.getGpuCurFreq() != -1) curFreqInit();
+        if (GPU.getGpuVoltageNow() != -1) VoltNowInit();
         if (GPU.getGpuMaxFreq() != -1) maxFreqInit();
         if (GPU.getGpuMinFreq() != -1) minFreqInit();
         if (!GPU.getGpuPowerPolicy().equals("-1"))powerpolicyInit();
@@ -73,6 +74,14 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
         mCurFreqCard.setTitle(getString(R.string.gpu_cur_freq));
 
         addView(mCurFreqCard);
+    }
+
+    private void VoltNowInit() {
+
+        mVoltNowCard = new CardViewItem.DCardView();
+        mVoltNowCard.setTitle(getString(R.string.gpu_voltage_now));
+
+        addView(mVoltNowCard);
     }
 
     private void maxFreqInit() {
@@ -146,6 +155,9 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
 
         if (mCurFreqCard != null)
             mCurFreqCard.setDescription((GPU.getGpuCurFreq()) + getString(R.string.mhz));
+
+        if (mVoltNowCard != null)
+            mVoltNowCard.setDescription((GPU.getGpuVoltageNow()) + getString(R.string.mv));
 
         if (mUsageCard != null)
             mUsageCard.setProgress(GPU.getGpuUsage());

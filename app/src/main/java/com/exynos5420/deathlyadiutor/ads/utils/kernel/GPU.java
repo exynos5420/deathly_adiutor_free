@@ -172,6 +172,13 @@ public class GPU implements Constants {
         return -1;
     }
 
+    public static long getGpuVoltageNow(){
+        if (Utils.existFile(GPU_EXYNOS5_VOLTAGE_NOW)) {
+            String value = Utils.readFile(GPU_EXYNOS5_VOLTAGE_NOW);
+            return (Utils.stringToLong(value)/1000);
+        } else return -1;
+    }
+
     public static int getGpuUsage() {
         if (Utils.existFile(GPU_EXYNOS5_UTILIZATION)) {
             String value = Utils.readFile(GPU_EXYNOS5_UTILIZATION);

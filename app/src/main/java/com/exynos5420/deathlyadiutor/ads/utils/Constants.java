@@ -95,10 +95,11 @@ public interface Constants {
     String GPU_AVALIBLE_EXYNOS5_POWERP = "/sys/devices/platform/mali.0/power_policy";
     String GPU_TIME_IN_STATE = "/sys/devices/platform/mali.0/time_in_state";
     String GPU_EXYNOS5_GOVS_TUNABLES = "/sys/devices/system/cpu/cpu0/cpufreq/GPU_gov_table"; //Not implemented yet... For N
+    String GPU_EXYNOS5_VOLTAGE_NOW = "/sys/devices/platform/mali.0/vol";
 
     String[] GPU_ARRAY[] = {{GPU_EXYNOS5_DVFS, GPU_EXYNOS5_UTILIZATION,
             GPU_AVALIBLE_EXYNOS5_FREQS, GPU_AVALIBLE_EXYNOS5_GOVS, GPU_AVALIBLE_EXYNOS5_POWERP,
-            GPU_TIME_IN_STATE}, GPU_CUR_EXYNOS5_FREQ, GPU_MAX_EXYNOS5_FREQ, GPU_MIN_EXYNOS5_FREQ, };
+            GPU_TIME_IN_STATE, GPU_EXYNOS5_VOLTAGE_NOW}, GPU_CUR_EXYNOS5_FREQ, GPU_MAX_EXYNOS5_FREQ, GPU_MIN_EXYNOS5_FREQ};
 
     //GPU Voltage
 

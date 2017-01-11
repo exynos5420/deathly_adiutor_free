@@ -153,6 +153,7 @@
     <!-- GPU -->
     <string name="gpu_usage">GPU Usage</string>
     <string name="gpu_cur_freq">GPU Current Frequency</string>
+    <string name="gpu_voltage_now">GPU Voltage Now</string>
     <string name="gpu_max_freq">GPU Maximum Frequency</string>
     <string name="gpu_max_freq_summary">Set the maximum frequency the GPU scales up to.</string>
     <string name="gpu_min_freq">GPU Minimum Frequency</string>
