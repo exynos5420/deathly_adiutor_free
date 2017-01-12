@@ -58,12 +58,14 @@ public class GPU implements Constants {
     }
 
     public static String getGpuPowerPolicy() {
-        if (GPU_CURRENT_POWERPOLICY != null) {
-            return GPU_CURRENT_POWERPOLICY;
-        } else {
-            getGpuPowerPolicies();
-            return GPU_CURRENT_POWERPOLICY;
-        }
+        if (Utils.existFile(GPU_AVALIBLE_EXYNOS5_POWERP)) {
+            if (GPU_CURRENT_POWERPOLICY != null) {
+                return GPU_CURRENT_POWERPOLICY;
+            } else {
+                getGpuPowerPolicies();
+                return GPU_CURRENT_POWERPOLICY;
+            }
+        } else return "-1";
     }
 
     public static void setGpuGovernor(String governor, Context context) {
@@ -84,34 +86,52 @@ public class GPU implements Constants {
     }
 
     public static String getGpuGovernor() {
-        if (GPU_CURRENT_GOVERNOR != null) {
-            return GPU_CURRENT_GOVERNOR;
-        } else {
-            getGpuPowerPolicies();
-            return GPU_CURRENT_GOVERNOR;
-        }
+        if (Utils.existFile(GPU_CURRENT_GOVERNOR)) {
+            if (GPU_CURRENT_GOVERNOR != null) {
+                return GPU_CURRENT_GOVERNOR;
+            } else {
+                getGpuPowerPolicies();
+                return GPU_CURRENT_GOVERNOR;
+            }
+        } else return "-1";
     }
 
     public static void setGpuMinFreq(int freq, Context context) {
+        String path = getNodePath(GPU_MIN_EXYNOS5_FREQ);
+        //MM r7p0 gpu driver wont accept anything higher than 350mhz for min freq.
+        if (android.os.Build.VERSION.SDK_INT < 24 && freq < 350) freq = 350;
         Control.runCommand("0", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
-        Control.runCommand(String.valueOf(freq), GPU_MIN_EXYNOS5_FREQ, Control.CommandType.GENERIC, context);
+        Control.runCommand(String.valueOf(freq), path, Control.CommandType.GENERIC, context);
         Control.runCommand("1", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
     }
 
     public static void setGpuMaxFreq(int freq, Context context) {
+        String path = getNodePath(GPU_MAX_EXYNOS5_FREQ);
         Control.runCommand("0", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
-        Control.runCommand(String.valueOf(freq), GPU_MAX_EXYNOS5_FREQ, Control.CommandType.GENERIC, context);
+        Control.runCommand(String.valueOf(freq), path, Control.CommandType.GENERIC, context);
         Control.runCommand("1", GPU_EXYNOS5_DVFS, Control.CommandType.GENERIC, context);
     }
 
     public static List<Integer> getGpuFreqs() {
         if (mGpuFreqs == null) {
-            String value = Utils.readFile(GPU_AVALIBLE_EXYNOS5_FREQS);
-            if (value != null) {
-                String[] freqs = value.split(" ");
-                mGpuFreqs = new Integer[freqs.length];
-                for (int i = 0; i < mGpuFreqs.length; i++) {
-                    mGpuFreqs[i] = Utils.stringToInt(freqs[i]);
+            if (Utils.existFile(GPU_AVALIBLE_EXYNOS5_FREQS)) {
+                String value = Utils.readFile(GPU_AVALIBLE_EXYNOS5_FREQS);
+                if (value != null) {
+                    String[] freqs = value.split(" ");
+                    mGpuFreqs = new Integer[freqs.length];
+                    for (int i = 0; i < mGpuFreqs.length; i++) {
+                        mGpuFreqs[i] = Utils.stringToInt(freqs[i]);
+                    }
+                }
+            } else if (Utils.existFile(GPU_VOLTAGE_EXYNOS5_FILE[0])){
+                String value = Utils.readFile(GPU_VOLTAGE_EXYNOS5_FILE[0]);
+                if (value != null) {
+                    String[] lines;
+                    lines = value.split("\n");
+                    mGpuFreqs = new Integer[lines.length];
+                    for (int i = 0; i < lines.length; i++) {
+                        mGpuFreqs[i] = Utils.stringToInt(lines[i].split(" ")[0].trim());
+                    }
                 }
             }
         }
@@ -119,30 +139,54 @@ public class GPU implements Constants {
     }
 
     public static int getGpuMinFreq() {
-        String value = Utils.readFile(GPU_MIN_EXYNOS5_FREQ);
-        if (value != null) return Utils.stringToInt(value);
-        return 0;
+        String path = getNodePath(GPU_MIN_EXYNOS5_FREQ);
+        if (path.equals("-1")) return -1;
+        else {
+            String value = Utils.readFile(path);
+            if (value != null) return Utils.stringToInt(value);
+        }
+        return -1;
     }
 
     public static int getGpuMaxFreq() {
-        String value = Utils.readFile(GPU_MAX_EXYNOS5_FREQ);
-        if (value != null) return Utils.stringToInt(value);
-        return 0;
+        String path = getNodePath(GPU_MAX_EXYNOS5_FREQ);
+        if (path.equals("-1")) return -1;
+        else {
+            String value = Utils.readFile(path);
+            if (value != null) return Utils.stringToInt(value);
+        }
+        return -1;
     }
 
     public static int getGpuCurFreq() {
-        String value = Utils.readFile(GPU_CUR_EXYNOS5_FREQ);
-        if (value != null && Utils.stringToInt(value) != 0) {
-            return Utils.stringToInt(value);
-        } else if (value != null) {
-            return getGpuMinFreq();
+        String path = getNodePath(GPU_CUR_EXYNOS5_FREQ);
+        if (path.equals("-1")) return -1;
+        else {
+            String value = Utils.readFile(path);
+            if (value != null && Utils.stringToInt(value) != 0) {
+                return Utils.stringToInt(value);
+            } else if (value != null) {
+                return getGpuMinFreq();
+            }
         }
-        return 0;
+        return -1;
     }
 
     public static int getGpuUsage() {
-        String value = Utils.readFile(GPU_EXYNOS5_UTILIZATION);
-        return Utils.stringToInt(value);
+        if (Utils.existFile(GPU_EXYNOS5_UTILIZATION)) {
+            String value = Utils.readFile(GPU_EXYNOS5_UTILIZATION);
+            return Utils.stringToInt(value);
+        }
+        else return -1;
+    }
+
+    public static String getNodePath(String paths[]){
+        for (int i=0; i<paths.length; i++) {
+            if (Utils.existFile(paths[i])) {
+                return paths[i];
+            }
+        }
+        return "-1";
     }
 
 }

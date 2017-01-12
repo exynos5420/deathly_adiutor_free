@@ -50,12 +50,12 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
 
-        usageInit();
-        curFreqInit();
-        maxFreqInit();
-        minFreqInit();
-        powerpolicyInit();
-        governorInit();
+        if (GPU.getGpuUsage() != -1) usageInit();
+        if (GPU.getGpuCurFreq() != -1) curFreqInit();
+        if (GPU.getGpuMaxFreq() != -1) maxFreqInit();
+        if (GPU.getGpuMinFreq() != -1) minFreqInit();
+        if (!GPU.getGpuPowerPolicy().equals("-1"))powerpolicyInit();
+        if (!GPU.getGpuGovernor().equals("-1")) governorInit();
 
     }
     private void usageInit() {
@@ -92,12 +92,9 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
     }
 
     private void minFreqInit() {
-        offset = 0;
         List<String> freqs = new ArrayList<>();
-        for (int freq : GPU.getGpuFreqs()) {
-            if (freq <= 350) {
-                freqs.add(freq + getString(R.string.mhz));
-            } else offset++;
+        for (int i = 0; i < GPU.getGpuFreqs().size(); i++) {
+            freqs.add(GPU.getGpuFreqs().get(i) + getString(R.string.mhz));
         }
 
         mMinFreqCard = new PopupCardView.DPopupCard(freqs);
@@ -136,7 +133,7 @@ public class GPUFragment extends RecyclerViewFragment implements PopupCardView.D
         if (dPopupCard == mMaxFreqCard)
             GPU.setGpuMaxFreq(GPU.getGpuFreqs().get(position), getActivity());
         else if (dPopupCard == mMinFreqCard)
-            GPU.setGpuMinFreq(GPU.getGpuFreqs().get(position + offset), getActivity());
+            GPU.setGpuMinFreq(GPU.getGpuFreqs().get(position), getActivity());
         else if (dPopupCard == mPowerPolicyCard)
             GPU.setGpuPowerPolicy(GPU.getGpuPowerPolicies().get(position), getActivity());
         else if (dPopupCard == mGovernorCard)

@@ -82,8 +82,10 @@ import com.exynos5420.deathlyadiutor.ads.utils.Utils;
 import com.exynos5420.deathlyadiutor.ads.utils.database.ProfileDB;
 import com.exynos5420.deathlyadiutor.ads.utils.kernel.CPUVoltage;
 import com.exynos5420.deathlyadiutor.ads.utils.kernel.CPUThermal;
+import com.exynos5420.deathlyadiutor.ads.utils.kernel.GPUVoltage;
 import com.exynos5420.deathlyadiutor.ads.utils.kernel.Info;
 import com.exynos5420.deathlyadiutor.ads.utils.kernel.Sound;
+
 import com.kerneladiutor.library.root.RootUtils;
 
 import java.util.ArrayList;
@@ -220,11 +222,11 @@ public class MainActivity extends BaseActivity implements Constants {
             ITEMS.add(new DAdapter.Item(getString(R.string.cpu_voltage), new CPUVoltageFragment()));
         if (CPUThermal.hasCpuThermalControl())
             ITEMS.add(new DAdapter.Item(getString(R.string.cpu_thermal), new CPUThermalFragment()));
-        if (Utils.existFile(GPU_AVALIBLE_EXYNOS5_FREQS)) {
-            ITEMS.add(new DAdapter.Header(getString(R.string.gpu)));
-            ITEMS.add(new DAdapter.Item(getString(R.string.gpu_core_control), new GPUFragment()));
+        ITEMS.add(new DAdapter.Header(getString(R.string.gpu)));
+        ITEMS.add(new DAdapter.Item(getString(R.string.gpu_core_control), new GPUFragment()));
+        if (!GPUVoltage.getNodePath(Constants.GPU_VOLTAGE_EXYNOS5_FILE).equals("-1"))
             ITEMS.add(new DAdapter.Item(getString(R.string.gpu_voltage), new GPUVoltageFragment()));
-            ITEMS.add(new DAdapter.Item(getString(R.string.gpu_thermal), new GPUThermalFragment()));}
+        ITEMS.add(new DAdapter.Item(getString(R.string.gpu_thermal), new GPUThermalFragment()));
         ITEMS.add(new DAdapter.Header(getString(R.string.other_hardware)));
         ITEMS.add(new DAdapter.Item(getString(R.string.battery), new BatteryFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.screen), new ScreenFragment()));

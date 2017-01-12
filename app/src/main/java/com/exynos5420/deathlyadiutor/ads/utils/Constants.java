@@ -87,30 +87,31 @@ public interface Constants {
 
     String GPU_EXYNOS5_DVFS = "/sys/devices/platform/mali.0/dvfs";
     String GPU_EXYNOS5_UTILIZATION = "/sys/devices/platform/mali.0/utilization";
-    String GPU_CUR_EXYNOS5_FREQ = "/sys/devices/platform/mali.0/clock";
-    String GPU_MAX_EXYNOS5_FREQ = "/sys/devices/platform/mali.0/max_clock";
-    String GPU_MIN_EXYNOS5_FREQ = "/sys/devices/platform/mali.0/min_clock";
+    String GPU_CUR_EXYNOS5_FREQ[] = {"/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq_gpu", "/sys/devices/platform/mali.0/clock"};
+    String GPU_MAX_EXYNOS5_FREQ[] = {"/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq_gpu", "/sys/devices/platform/mali.0/max_clock"};
+    String GPU_MIN_EXYNOS5_FREQ[] = {"/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq_gpu", "/sys/devices/platform/mali.0/min_clock"};
     String GPU_AVALIBLE_EXYNOS5_FREQS = "/sys/devices/platform/mali.0/freq_table";
     String GPU_AVALIBLE_EXYNOS5_GOVS = "/sys/devices/platform/mali.0/dvfs_governor";
     String GPU_AVALIBLE_EXYNOS5_POWERP = "/sys/devices/platform/mali.0/power_policy";
     String GPU_TIME_IN_STATE = "/sys/devices/platform/mali.0/time_in_state";
+    String GPU_EXYNOS5_GOVS_TUNABLES = "/sys/devices/system/cpu/cpu0/cpufreq/GPU_gov_table"; //Not implemented yet... For N
 
-    String[] GPU_ARRAY = {GPU_EXYNOS5_DVFS, GPU_EXYNOS5_UTILIZATION, GPU_CUR_EXYNOS5_FREQ, GPU_MAX_EXYNOS5_FREQ,
-            GPU_MIN_EXYNOS5_FREQ, GPU_AVALIBLE_EXYNOS5_FREQS, GPU_AVALIBLE_EXYNOS5_GOVS, GPU_AVALIBLE_EXYNOS5_POWERP,
-            GPU_TIME_IN_STATE};
+    String[] GPU_ARRAY[] = {{GPU_EXYNOS5_DVFS, GPU_EXYNOS5_UTILIZATION,
+            GPU_AVALIBLE_EXYNOS5_FREQS, GPU_AVALIBLE_EXYNOS5_GOVS, GPU_AVALIBLE_EXYNOS5_POWERP,
+            GPU_TIME_IN_STATE}, GPU_CUR_EXYNOS5_FREQ, GPU_MAX_EXYNOS5_FREQ, GPU_MIN_EXYNOS5_FREQ, };
 
     //GPU Voltage
 
-    String GPU_VOLTAGE_EXYNOS5_FILE = "/sys/devices/platform/mali.0/volt_table";
+    String GPU_VOLTAGE_EXYNOS5_FILE[] = {"/sys/devices/system/cpu/cpu0/cpufreq/GPU_volt_table", "/sys/devices/platform/mali.0/volt_table"};
 
-    String[] GPU_VOLTAGE_ARRAY = {GPU_VOLTAGE_EXYNOS5_FILE};
+    String[] GPU_VOLTAGE_ARRAY[] = {GPU_VOLTAGE_EXYNOS5_FILE};
 
     //GPU Thermal
-    String GPU_THERMAL_THROTTLING5_FREQ = "/sys/devices/platform/mali.0/tripping";
-    String GPU_THERMAL_THROTTLING4_FREQ = "/sys/devices/platform/mali.0/throttling4";
-    String GPU_THERMAL_THROTTLING3_FREQ = "/sys/devices/platform/mali.0/throttling3";
-    String GPU_THERMAL_THROTTLING2_FREQ = "/sys/devices/platform/mali.0/throttling2";
-    String GPU_THERMAL_THROTTLING1_FREQ = "/sys/devices/platform/mali.0/throttling1";
+    String GPU_THERMAL_THROTTLING5_FREQ[] = {"/sys/module/mali_kbase_dvfs/parameters/tmu_gpu_freq5", "/sys/devices/platform/mali.0/tripping"};
+    String GPU_THERMAL_THROTTLING4_FREQ[] = {"/sys/module/mali_kbase_dvfs/parameters/tmu_gpu_freq4", "/sys/devices/platform/mali.0/throttling4"};
+    String GPU_THERMAL_THROTTLING3_FREQ[] = {"/sys/module/mali_kbase_dvfs/parameters/tmu_gpu_freq3", "/sys/devices/platform/mali.0/throttling3"};
+    String GPU_THERMAL_THROTTLING2_FREQ[] = {"/sys/module/mali_kbase_dvfs/parameters/tmu_gpu_freq2", "/sys/devices/platform/mali.0/throttling2"};
+    String GPU_THERMAL_THROTTLING1_FREQ[] = {"/sys/module/mali_kbase_dvfs/parameters/tmu_gpu_freq1", "/sys/devices/platform/mali.0/throttling1"};
 
     String GPU_THERMAL_THROTTLING5_TEMP = "/sys/module/exynos_thermal/parameters/tmu_gpu_temp5";
     String GPU_THERMAL_THROTTLING4_TEMP = "/sys/module/exynos_thermal/parameters/tmu_gpu_temp4";
@@ -118,13 +119,11 @@ public interface Constants {
     String GPU_THERMAL_THROTTLING2_TEMP = "/sys/module/exynos_thermal/parameters/tmu_gpu_temp2";
     String GPU_THERMAL_THROTTLING1_TEMP = "/sys/module/exynos_thermal/parameters/tmu_gpu_temp1";
 
-    String[] GPU_THRORRLING_FREQS_ARRAY = {GPU_THERMAL_THROTTLING1_FREQ, GPU_THERMAL_THROTTLING2_FREQ, GPU_THERMAL_THROTTLING3_FREQ,
+    String[] GPU_THRORRLING_FREQS_ARRAY[] = {GPU_THERMAL_THROTTLING1_FREQ, GPU_THERMAL_THROTTLING2_FREQ, GPU_THERMAL_THROTTLING3_FREQ,
                                             GPU_THERMAL_THROTTLING4_FREQ, GPU_THERMAL_THROTTLING5_FREQ};
 
     String[] GPU_THRORRLING_TEMPS_ARRAY =  {GPU_THERMAL_THROTTLING1_TEMP, GPU_THERMAL_THROTTLING2_TEMP, GPU_THERMAL_THROTTLING3_TEMP,
                                             GPU_THERMAL_THROTTLING4_TEMP, GPU_THERMAL_THROTTLING5_TEMP};
-
-    String[][] GPU_THERMAL_ARRAY = {GPU_THRORRLING_FREQS_ARRAY, GPU_THRORRLING_TEMPS_ARRAY};
 
     // Screen
     String COMMAND_PATH = "/sys/class/sec/tsp/cmd";

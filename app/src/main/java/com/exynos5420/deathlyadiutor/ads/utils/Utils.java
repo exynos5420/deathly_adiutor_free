@@ -324,12 +324,16 @@ public class Utils implements Constants {
             applys.addAll(new ArrayList<>(Arrays.asList(CPU_VOLTAGE_ARRAY)));
         else if (mClass == EntropyFragment.class)
             applys.addAll(new ArrayList<>(Arrays.asList(ENTROPY_ARRAY)));
-        else if (mClass == GPUFragment.class) for (String arrays : GPU_ARRAY)
+        else if (mClass == GPUFragment.class) for (String arrays[] : GPU_ARRAY)
             applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
-        else if (mClass == GPUVoltageFragment.class)
-            applys.add(GPU_VOLTAGE_EXYNOS5_FILE);
-        else if (mClass == GPUThermalFragment.class) for(String arrays[] : GPU_THERMAL_ARRAY)
-        applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
+        else if (mClass == GPUVoltageFragment.class) for (String arrays : GPU_VOLTAGE_EXYNOS5_FILE)
+            applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
+        else if (mClass == GPUThermalFragment.class) {
+            for (String arrays[] : GPU_THRORRLING_FREQS_ARRAY)
+                applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
+            for (String arrays : GPU_THRORRLING_TEMPS_ARRAY)
+                applys.addAll(new ArrayList<>(Arrays.asList(arrays)));
+        }
         else if (mClass == IOFragment.class)
             applys.addAll(new ArrayList<>(Arrays.asList(IO_ARRAY)));
         else if (mClass == KSMFragment.class)

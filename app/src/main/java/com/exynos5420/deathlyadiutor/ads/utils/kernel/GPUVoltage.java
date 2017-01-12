@@ -34,7 +34,7 @@ import java.util.List;
  */
 
 public class GPUVoltage implements Constants {
-    private static String GPU_VOLTAGE_FILE = GPU_VOLTAGE_EXYNOS5_FILE;
+    private static String GPU_VOLTAGE_FILE = getNodePath(GPU_VOLTAGE_EXYNOS5_FILE);
     private static String[] mGpuFreqs;
 
     public static void setGlobalOffset(String voltage, Context context) {
@@ -119,5 +119,14 @@ public class GPUVoltage implements Constants {
         } else {
             return false;
         }
+    }
+
+    public static String getNodePath(String paths[]){
+        for (int i=0; i<paths.length; i++) {
+            if (Utils.existFile(paths[i])) {
+                return paths[i];
+            }
+        }
+        return "-1";
     }
 }

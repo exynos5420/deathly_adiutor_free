@@ -132,9 +132,9 @@ public class UsageStatisticsFragment extends RecyclerViewFragment implements Con
                 "Uptime: " + getDurationBreakdown(SystemClock.elapsedRealtime()) +
                         "\nTotal Awake Time: " + getDurationBreakdown(SystemClock.uptimeMillis()) +
                         "\nDeep Sleep: " + getDurationBreakdown(SystemClock.elapsedRealtime() - SystemClock.uptimeMillis()) +
-                        "\nScreen ON Time: " + getDurationBreakdown(getUPtime(GPU_TIME_IN_STATE) * 10) +
-                        "\nDevice was kept awake " + getDurationBreakdown(SystemClock.uptimeMillis() - getUPtime(GPU_TIME_IN_STATE) * 10) + " while screen was OFF by background tasks, " +
-                        "repesenting a " + ((SystemClock.uptimeMillis() - getUPtime(GPU_TIME_IN_STATE) * 10) * 100) / SystemClock.elapsedRealtime() + "% of its uptime."
+                        "\nScreen ON Time: " + getDurationBreakdown(getUPtime(GPU_TIME_IN_STATE)) +
+                        "\nDevice was kept awake " + getDurationBreakdown(SystemClock.uptimeMillis() - getUPtime(GPU_TIME_IN_STATE)) + " while screen was OFF by background tasks, " +
+                        "repesenting a " + ((SystemClock.uptimeMillis() - getUPtime(GPU_TIME_IN_STATE)) * 100) / SystemClock.elapsedRealtime() + "% of its uptime."
         );
         addView(muptimeCard);
     }
@@ -202,7 +202,7 @@ public class UsageStatisticsFragment extends RecyclerViewFragment implements Con
         LinearLayout uiStatesView = new LinearLayout(getActivity());
         uiStatesView.setOrientation(LinearLayout.VERTICAL);
         CardViewItem.DCardView frequencyCard = new CardViewItem.DCardView();
-        frequencyCard.setTitle("GPU - Time in States (Online: " + getDurationBreakdown(total_time * 10) + ")");
+        frequencyCard.setTitle("GPU - Time in States (Online: " + getDurationBreakdown(total_time) + ")");
         frequencyCard.setView(uiStatesView);
         frequencyCard.setFullSpan(true);
 
@@ -222,8 +222,7 @@ public class UsageStatisticsFragment extends RecyclerViewFragment implements Con
             // modify the row
             freqText.setText(temp[0] + "Mhz");
             perText.setText(pct + "%");
-            // Multiple the time_in_state time value by 10 as it is stored in UserTime Units (10ms)
-            durText.setText(getDurationBreakdown(freq_time * 10));
+            durText.setText(getDurationBreakdown(freq_time));
             bar.setProgress(pct);
 
             uiStatesView.addView(layout);
