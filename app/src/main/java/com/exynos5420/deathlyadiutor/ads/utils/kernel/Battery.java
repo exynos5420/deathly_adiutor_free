@@ -43,12 +43,12 @@ public class Battery implements Constants {
 
     public static int getBatteryCapacity(){
         String devicemodel = Utils.getProp("ro.product.name");
-        if (devicemodel.contains("ha"))
-            return 3200;
+        if (devicemodel.contains("chagall"))
+            return 7900;
         else if (devicemodel.contains("klimt"))
             return 4900;
-        else if (devicemodel.contains("chagall"))
-            return 7900;
+        else if (devicemodel.contains("ha"))
+            return 3200;
         else if (devicemodel.contains("n1a") || devicemodel.contains("lt03"))
             return 8220;
         else if (devicemodel.contains("v1a") || devicemodel.contains("v2a"))
