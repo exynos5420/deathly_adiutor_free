@@ -147,6 +147,7 @@
     <!-- GPU -->
     <string name="gpu_usage">Использование GPU</string>
     <string name="gpu_cur_freq">Текущая частота GPU</string>
+    <string name="gpu_voltage_now">Текущее напряжение GPU</string>
     <string name="gpu_max_freq">Максимальная частота GPU</string>
     <string name="gpu_max_freq_summary">Настройка максимальной частоты графического процессора.</string>
     <string name="gpu_min_freq">Минимальная частота GPU</string>
